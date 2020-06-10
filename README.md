@@ -3,11 +3,10 @@
 A function that can compare any two values:
 
 --------------------------------------------------------------------------
--- Gaussian influenced - Aehnlichkeitswarscheinlichkeit
---- this function rates the similarity of two
--- lists compares thme und gives back a percentage of the "Einerstell3"
--- die Prozentzahl der einer stelle 
---
+Gaussian influenced - Aehnlichkeitswarscheinlichkeit
+this function rates the similarity of two
+lists compares thme und gives back a percentage of the "Einerstelle"
+
 foaehnli1 a b = (a-b)
 foaehnli2 a b = (b-a)
 --umrechnen in % mit a < b und b > a  
