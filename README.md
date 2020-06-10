@@ -1,5 +1,12 @@
 # SimilaritYWriter20
 
+###### Index:   
+-  to describe certain Types we wil use ' 
+
+            :=' -- which is equivalent to '::' but ':=' /= '::' thus
+
+                  
+
 A function that can compare any two lists:
 
      this will be the main example being used throughout this program
