@@ -6,13 +6,13 @@ A function that can compare any two values:
 Gaussian influenced - Aehnlichkeitswarscheinlichkeit
 this function rates the similarity of two
 lists compares thme und gives back a percentage of the "Einerstelle"
-
-=> foaehnli1 a b = (a-b)
-=> foaehnli2 a b = (b-a)
+  #####'Colored_2_3_5_Countrer20':= C*
+     C*> foaehnli1 a b = (a-b)
+      *> foaehnli2 a b = (b-a)
 
 turn into  % with a < b and b > a  
 
-=>aehnlichF a b = let a1 = if a > b then ((foaehnli1 a b)/ (a/100) )
+*>aehnlichF a b = let a1 = if a > b then ((foaehnli1 a b)/ (a/100) )
 =>                       else if a<b then  ((foaehnli2 a b)/ (b/100) )
 =>                       else 0
 =>               in let b1 g h = ((g) / ((h)/100)) 
