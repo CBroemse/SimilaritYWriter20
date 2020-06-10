@@ -1,0 +1,26 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 17.08.2 ] */
+
+/* [wxMaxima: input   start ] */
+bur1: [[1.0,1.1295993316325371e-2],[2.0,-1.8405104089030497e-2],[3.0,-1.6108501348523958e-3],[4.0,2.5864229910229457e-3],[5.0,2.9809369212910893e-2]];
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+bur2: [[1.0,5.923694718400669e-3],[2.0,2.962345618780112e-2],[3.0,9.026882230303134e-3],[4.0,2.2251628231418928e-2],[5.0,1.5141239587780403e-3]];
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+bur3: [[1.0,-9.184855655010985e-3],[2.0,-1.2730138645494476e-2],[3.0,-8.869872090361683e-3],[4.0,-1.0067428630717314e-3],[5.0,4.185193255184866e-3]];
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+bur4: [[1.0,5.96080461642958e-3],[2.0,8.427669106584254e-3],[3.0,5.395023028114655e-3],[4.0,-3.0555108845276347e-3],[5.0,-1.6338490085261427e-2]];
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+draw3d
+(color=red,bur1,color=red,bur2,color=red,bur3,color=red,bur4);
+/* [wxMaxima: input   end   ] */
+
+/* Maxima can't load/batch files which end with a comment! */
+"Created with wxMaxima"$

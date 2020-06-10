@@ -1,0 +1,187 @@
+-- This file has been generated from package.yaml by hpack version 0.20.0.
+--
+-- see: https://github.com/sol/hpack
+--
+-- hash: b6e4db0023ac4792852773aee29f21ee4f467d51a8dd64c6f3f5ede363b3db42
+
+name:           SimilaritYWriter20
+version:        0.1.0.0
+description:    Please see the README on GitHub at <https://github.com/CBRoemse/SimilaritYWriter20readme>
+homepage:       https://github.com/CBroemse/SimilaritYWriter20#readme
+bug-reports:    https://github.com/CBroemse/SimilaritYWriter20/issues
+author:         Author name Christian Broemse
+maintainer:     cbroemse@github.com
+copyright:      2019 Author name Christian Broemse
+license:        BSD3
+license-file:   LICENSE
+build-type:     Simple
+cabal-version:  >= 1.10
+
+extra-source-files:
+    ChangeLog.md
+    README.md
+   -- c:/proto-lens-master/proto-lens-setup/src/Data/ProtoLens/Setup.hs
+ --   c:/stack/juicyBox/src/Picture.hs
+    -- CodecPictureVectorByteConversion.hi
+--    c:/stack/juivyBox/src/CodecPictureVectorByteConversion.hi
+  --  c:/proto-lens-master/proto-lens/proto-lens.cabal
+ --   c:/proto-lens-master/proto-lens-protobuf-types/proto-lens-protobuf-types.cabal
+  --  c:/proto-lens-master/proto-lens-protoc/proto-lens-protoc.cabal
+
+source-repository head
+  type: git
+  location: https://github.com/githubuser/SimilaritYWriter20
+
+library
+  exposed-modules:
+      Lib
+  other-modules:
+      Paths_SimilaritYWriter20
+      DataTypePunkt
+      FourierFieldCLASSIFIER
+      Path2Val2
+      Colored_2_3_5_Counter20
+      UsefulFunctions19
+      WriteWXmaximaJuicy
+     -- JuicyBox
+      --KAAnsatz19
+  --    Glade
+     --      ConvGraph
+     -- Path_Source_TQ	
+    --  Picture
+    --  Star4Vincent
+  hs-source-dirs:
+      src
+  build-depends:
+      base>=4.2 && <5
+  --  , FindBin
+    , cassava
+    , random
+    , text
+    , Only
+    , attoparsec
+    , bytestring
+    , bytestring-builder
+    , hashable
+    , scientific
+    , unordered-containers
+    , vector
+    , deepseq
+    , integer-logarithms
+    , primitive
+    , process
+    , containers
+    , filepath
+    , transformers
+    , binary
+    , directory
+    , zlib
+    , array
+    , containers >=0.5
+    , stm
+    , time 
+    , old-locale
+  --  , Cabal >=1.24 && <1.25
+   -- , glade
+  --  , glib
+  --  , gtk
+  --  , gtk2hs-buildtools  
+ --   , hs-pkg-config >=0.9.0
+    --, tensorflow-mnist
+  --  , tensorflow-mnist-input-data
+   -- , tensorflow
+   -- , tensorflow-test
+--    , proto-lens >= 0.2.0.0 && <0.5.0.0
+--    , tensorflow-proto
+--    , proto-lens-protobuf-types
+  --  , proto-lens-protoc
+
+    --, wxc
+   -- , wxdirect
+    --, wxcore
+    --, split
+  default-language: Haskell2010
+
+executable SimilaritYWriter20-exe
+  main-is: Main.hs
+  other-modules:
+      Paths_SimilaritYWriter20
+      Lib
+      DataTypePunkt
+      FourierFieldCLASSIFIER
+      Path2Val2
+      Colored_2_3_5_Counter20
+      UsefulFunctions19
+      WriteWXmaximaJuicy
+
+     -- source_Source.TQ
+     -- JuicyBox
+      --ConvGraph
+      --MyJuicy
+      --Picture
+     -- Star4Vincent
+--      Start4Vincent
+  --    VectorByteConversion
+  hs-source-dirs:
+      src
+  ghc-options: -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      SimilaritYWriter20
+    , base >=4.2 && <5
+    -- , FindBin
+    --, JuicyBox
+    , cassava
+    , random
+    , text
+    , Only
+    , attoparsec
+    , bytestring
+    , bytestring-builder
+    , hashable
+    , scientific
+    , unordered-containers
+    , vector
+    , deepseq
+    , integer-logarithms
+    , primitive
+    , process
+    , containers
+    , filepath
+    , transformers
+    , binary
+    , directory
+    , zlib
+    , array
+    , containers >=0.5
+    , stm
+   -- , gtk2hs-buildtools  
+
+   -- , tensorflow-mnist
+   -- , tensorflow
+    --, tensorflow-mnist-input-data
+  --  , tensorflow-test
+  --  , proto-lens
+  --  , tensorflow-proto
+  --  , proto-lens-protobuf-types
+  --  , proto-lens-protoc
+
+    --, wxc
+    --, wxdirect
+   -- , wxcore
+    --, split
+
+  default-language: Haskell2010
+
+test-suite SimilaritYWriter20-test
+  type: exitcode-stdio-1.0
+  main-is: Spec.hs
+  other-modules:
+      Paths_SimilaritYWriter20
+  hs-source-dirs:
+      test
+  ghc-options: -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      SimilaritYWriter20
+    , base >=4.2 && <5
+ 
+  default-language: Haskell2010
