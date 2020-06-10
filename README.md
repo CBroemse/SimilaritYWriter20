@@ -87,9 +87,8 @@ where   a a a a = line1 ; b b b b = line2 ... x x x x = line n
      appears. kArmTest5 := max (map (similaritYvalue) bonelist) ->
                        -> athing = (map similaritYvalue bonelist)
                        -> phiMax: start with (map max athing)->
+                       => (pick1 phiMax)`elemIndices` (phiMax) -> 
                        -> phiMax-1
-                       => (pick1 phiMax)`eemIndices` (phiMax) -> 
-                       -> 
     ========================================================
 
 
