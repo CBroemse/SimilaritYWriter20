@@ -2,18 +2,21 @@
 
 A function that can compare any two lists:
 
-     this will be the main example being used trhoughout this program
+     this will be the main example being used throughout this program
      
      *> let li = ["AAABB","AABAA","AAA","BBBAA"]
      *> let bonelist = li
-     *> let pi = Punkt Nothing Nothing Nothing Nothing Nothing
+     *> let pi = Punkt "M" Nothing Nothing Nothing Nothing Nothing  -- "notM" will yield other output
      
      -- simiariYvalue network
      *> kArmTest5 li 1 pi 1 1 [] "AAA"    -- the last item "AAA" will be the test run
  
-     we compare all lines and atoms of this list. 
+     we compare all lines and atoms of the 
+     
+     kArmTest5 (bonelist) ::= type [ord (String)] -> [[Int]] -> [[Double]] => [([String],[Double])]
+     
      The aim is to find the most general rules that can 'maybe' 
-     help our understanding. 
+     help our understanding. 11
 
 
 ######  STEP 1: Examine
