@@ -24,9 +24,9 @@ There is an syntactic level and a conceptual level
 
     e.g Colored*>  ( beRepKEY "1" "2" [] )           
 
-###### ABSTRACT
+######   ABSTRACT
 
-####### Function: 'kArmTest'
+#######  Function: 'kArmTest'
 
 STEP 2: An abstact overview of the content of 'kArmTest5' in 'Colored_2_3_5_Counter20.hs'
 with I . CHAIN DISTRIBUTION
