@@ -25,14 +25,17 @@ There is an syntactic level and a conceptual level
     e.g Colored*>  ( beRepKEY "1" "2" [] )           
 
 ###### ABSTRACT
+
 ####### Function: 'kArmTest'
+
 STEP 2: An abstact overview of the content of 'kArmTest5' in 'Colored_2_3_5_Counter20.hs'
 with I . CHAIN DISTRIBUTION
      II. SIMILARITYVALUE 
          rate with simiYvalue to compare  all atoms of all lines to the same metric
          
 the matrix alike structures below represent lists not matrices 
-where  [ a a a a = line1 ; b b b b = line2 ... x x x x = line n ] 
+where   a a a a = line1 ; b b b b = line2 ... x x x x = line n 
+
     -------------------------------------------
           read  |   complement |  rate with                   
        bonelist |   fst ..last |  simiYvalue              
@@ -49,7 +52,7 @@ where  [ a a a a = line1 ; b b b b = line2 ... x x x x = line n ]
 
 
 --------------------------------------------------------------------------
-A function that can compare any two value:
+A function that can compare any two values:
 
 Gaussian influenced - Aehnlichkeitswahrscheinlichkeit
 this function rates the similarity of two
