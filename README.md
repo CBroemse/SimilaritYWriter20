@@ -9,15 +9,13 @@ A function that can compare any two lists:
      *> let bonelist = li
      *> let pi = Punkt "M" Nothing Nothing Nothing Nothing Nothing  -- "notM" will yield other output
      
-     -- simiariYvalue network
-     *> kArmTest5 li 1 pi 1 1 [] "AAA"    -- the last item "AAA" will be the test run
- 
      we compare all lines and atoms of the bonlist. To describe certain Types we wil use ' 
 
             ':=' -- which is equivalent to '::' but ':=' /= '::' thus
- 
      
      kArmTest5 (bonelist) := type [ord (String)] -> [[Int]] -> [[Double]] => [([String],[Double])]
+     -- simiariYvalue network
+     *> kArmTest5 li 1 pi 1 1 [] "AAA"    -- the last item "AAA" will be the test run
      
      The aim is to find the most general rules that can 'maybe' 
      help our understanding. 11
