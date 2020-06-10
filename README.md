@@ -2,6 +2,16 @@
 
 A function that can compare any two lists:
 
+     this will be the main example being used trhoughout this program
+     
+     *> let li = ["AAABB","AABAA","AAA","BBBAA"]
+     *> let bonelist = li
+     
+     we compare all lines and atoms of this list. 
+     The aim is to find the most general rules that can 'maybe' 
+     help our understanding. 
+
+
 ######  STEP 1: Examine
 
 There is an syntactic level and a conceptual level
