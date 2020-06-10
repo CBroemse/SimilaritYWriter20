@@ -5,7 +5,7 @@ A function that can compare any two lists:
 
      this will be the main example being used throughout this program
      
-     *> let li = ["AAABB","AABAA","AAA","BBBAA"]
+     *> let li = ["AAABB","AABAB","AAA","BBBAA"]
      *> let bonelist = li
      *> let pi = Punkt "M" Nothing Nothing Nothing Nothing Nothing  -- "notM" will yield other output
      
