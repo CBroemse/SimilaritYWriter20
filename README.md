@@ -6,7 +6,11 @@ A function that can compare any two lists:
      
      *> let li = ["AAABB","AABAA","AAA","BBBAA"]
      *> let bonelist = li
+     *> let pi = Punkt Nothing Nothing Nothing Nothing Nothing
      
+     -- simiariYvalue network
+     *> kArmTest5 li 1 pi 1 1 [] "AAA"    -- the last item "AAA" will be the test run
+ 
      we compare all lines and atoms of this list. 
      The aim is to find the most general rules that can 'maybe' 
      help our understanding. 
