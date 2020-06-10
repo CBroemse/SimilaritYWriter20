@@ -9,7 +9,9 @@ lists compares thme und gives back a percentage of the "Einerstelle"
 
 foaehnli1 a b = (a-b)
 foaehnli2 a b = (b-a)
---umrechnen in % mit a < b und b > a  
+
+turn into  % with a < b and b > a  
+
 aehnlichF a b = let a1 = if a > b then ((foaehnli1 a b)/ (a/100) )
                          else if a<b then  ((foaehnli2 a b)/ (b/100) )
                          else 0
