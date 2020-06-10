@@ -13,7 +13,7 @@ A function that can compare any two lists:
 
             ':=' -- which is equivalent to '::' but ':=' /= '::' thus
      
-     kArmTest5 (bonelist) := type [ord (String)] -> [[Int]] -> [[Double]] => [([String],[Double])]
+     kArmTest5 (bonelist) := [type [ord (String)] ] -> [[Int]] -> [[Double]] => [([String],[Double])]
      -- simiariYvalue network
      *> kArmTest5 li 1 pi 1 1 [] "AAA"    -- the last item "AAA" will be the test run
      
@@ -91,6 +91,13 @@ where   a a a a = line1 ; b b b b = line2 ... x x x x = line n
                        -> phiMax-1
     ========================================================
 
+Now we try to define rules concerning the metric' above. One guidline is
+to use bone list as a mode but keep 'realy big' input like:
+
+      e.g*> listBackofHead = map show [1..1978419655660313589123979]
+         *> line= [[1..1978419655660313589123979]]
+         
+  Is there a way to 'leapfrog' the shortest path whithout reading every atom of boneist? 
 
 --------------------------------------------------------------------------
 A function that can compare any two values:
