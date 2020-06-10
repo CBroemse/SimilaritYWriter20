@@ -92,7 +92,7 @@ where   a a a a = line1 ; b b b b = line2 ... x x x x = line n
     ========================================================
 
 Now we try to define rules concerning the metric' above. One guidline is
-to use bone list as a mode but keep 'realy big' input like:
+to use bone list as a mode but keep 'realy big' input like below at bay:
 
       e.g*> listBackofHead = map show [1..1978419655660313589123979]
          *> lineTerror= map show [[1..1978419655660313589123979]]
