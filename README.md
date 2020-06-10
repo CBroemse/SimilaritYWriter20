@@ -95,7 +95,7 @@ Now we try to define rules concerning the metric' above. One guidline is
 to use bone list as a mode but keep 'realy big' input like:
 
       e.g*> listBackofHead = map show [1..1978419655660313589123979]
-         *> line= [[1..1978419655660313589123979]]
+         *> lineTerror= map show [[1..1978419655660313589123979]]
          
   Is there a way to 'leapfrog' the shortest path whithout reading every atom of boneist? 
 
@@ -113,7 +113,7 @@ lists of the same list compares them und gives back a percentage of the "Einerst
       
  ##### 'similaritYvalue' ('src/Colered_2_3_5_Counter.hs')
 
-*turn into  % with a < b and b > a  
+*turn into  % with a < b and b < a  
 
     *>simiValF a b = let a1 = if a > b then ((cond1 a b)/ (a/100) )
                               else if a<b then  ((cond2 a b)/ (b/100) )
