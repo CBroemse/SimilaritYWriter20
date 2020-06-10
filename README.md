@@ -24,6 +24,29 @@ There is an syntactic level and a conceptual level
 
     e.g Colored*>  ( beRepKEY "1" "2" [] )           
 
+###### ABSTRACT
+####### Function: 'kArmTest'
+STEP 2: An abstact overview of the content of 'kArmTest5' in 'Colored_2_3_5_Counter20.hs'
+with I . CHAIN DISTRIBUTION
+     II. SIMILARITYVALUE 
+         rate with simiYvalue to compare  all atoms of all lines to the same metric
+         
+the matrix alike structures below represent lists not matrices 
+where  [ a a a a = line1 ; b b b b = line2 ... x x x x = line n ] 
+    -------------------------------------------
+          read  |   complement |  rate with                   
+       bonelist |   fst ..last |  simiYvalue              
+    ------------------------------------------------
+      a a a a   |   a1 a2 a3   |    a a a     a01 a01 a01           |a0 b0 c0|           b0 a0 c0     
+      b b b b  --\  b0 b2 b3 --\  b b b --\   a01 a01 a01 --\ MONAD |a1 b1 c2| --\ MAYBE a1 c1 1b --\
+      c c c c  --/  c0 c1 c3 --/  c c c --/   a3  a3  a3  --/       |a2 b1 c3| --/  e.g  b2 c2 a2 --/
+      d d d d   |   d0 d1 d2   |  d d d       a2  a2  a2            |a4 b4 c4|           c3 a3 b2 
+    ======================================================================================================
+              |a0 b0 c0|           b0 a0 c0       
+    --\ MONAD |a1 b1 c2| --\ MAYBE a1 c1 1b --\
+    --/       |a2 b1 c3| --/  e.g  b2 c2 a2 --/  0 0 0
+    ========================================================
+
 
 --------------------------------------------------------------------------
 A function that can compare any two value:
