@@ -1,8 +1,33 @@
 # SimilaritYWriter20
 
-A function that can compare any two values:
+A function that can compare any two lists:
+
+######  STEP 1: Examine
+
+There is an syntactic level and a conceptual level
+
+    =======================================================================================================================
+                                  SYNTAX                  |             CONCEPT
+    =======================================================================================================================
+       hints:       all Functions in 'e.g-sections' have  |  The 'e.g-sections' should be able to be called via ghc
+                    to be takenout of the do functions    |  without a doupt that shall help understanding.
+                      in 'chainDistribute'    AND         |  see if atom is already in list , dile:
+                         'kArmTest5'                      |
+    ------------------------------------------------------------------------------------------------------------------------
+    given:  row-width (length atom bonelist, 'zeilenlaenge ) 
+            pick1:String; a of (a,b) -> compare a to b    | one feasible way is to 'weigh' Strings is with simiaritYvalue
+            pick2:String; b of (a,b) -> compare a to b    | The aim is to rerieve a reliable function that will destinct 
+                                                          | between any two strings. 
+          via ( beRepKEY pick1 pick2 punktList )          |           punktist :: Punkt -> [Punkt] -> not used
+                                                                         ausw pick1 bonelist ->  atombonelist 
+                                                                           
+
+    e.g Colored*>  ( beRepKEY "1" "2" [] )           
+
 
 --------------------------------------------------------------------------
+A function that can compare any two value:
+
 Gaussian influenced - Aehnlichkeitswahrscheinlichkeit
 this function rates the similarity of two
 lists of the same list compares them und gives back a percentage of the "Einerstelle"
@@ -31,24 +56,3 @@ lists of the same list compares them und gives back a percentage of the "Einerst
                           in simiValF c2 c3 
 
 
-######  STEP 1: Examine
-
-There is an syntactic level and a conceptual level
-
-    =======================================================================================================================
-                                  SYNTAX                  |             CONCEPT
-    =======================================================================================================================
-       hints:       all Functions in 'e.g-sections' have  |  The 'e.g-sections' should be able to be called via ghc
-                    to be takenout of the do functions    |  without a doupt that shall help understanding.
-                      in 'chainDistribute'    AND         |  see if atom is already in list , dile:
-                         'kArmTest5'                      |
-    ------------------------------------------------------------------------------------------------------------------------
-    given:  row-width (length atom bonelist, 'zeilenlaenge ) 
-            pick1:String; a of (a,b) -> compare a to b    | one feasible way is to 'weigh' Strings is with simiaritYvalue
-            pick2:String; b of (a,b) -> compare a to b    | The aim is to rerieve a reliable function that will destinct 
-                                                          | between any two strings. 
-          via ( beRepKEY pick1 pick2 punktList )          |           punktist :: Punkt -> [Punkt] -> not used
-                                                                         ausw pick1 bonelist ->  atombonelist 
-                                                                           
-
-    e.g Colored*>  ( beRepKEY "1" "2" [] )           
