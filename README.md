@@ -66,7 +66,30 @@ where   a a a a = line1 ; b b b b = line2 ... x x x x = line n
     ======================================================================================================
               |a0 b0 c0|           b0 a0 c0       
     --\ MONAD |a1 b1 c2| --\ MAYBE a1 c1 1b --\
-    --/       |a2 b1 c3| --/  e.g  b2 c2 a2 --/  0 0 0
+    --/       |a2 b1 c3| --/  e.g  b2 c2 a2 --/ 
+    [[0],[0],[],[]]
+    [[0],[0],[],[]]
+    [[],[],[],[0]]
+    [[],[],[0],[]]
+    [[0],[0],[],[]]
+    [[0],[0],[],[]]
+    [[],[],[],[0]]
+    [[],[],[0],[]]
+    [[],[],[],[0]]
+    [[],[],[],[0]]
+    [[],[],[],[]]
+    [[],[],[0],[]]
+    [[],[],[0],[]]
+    [[],[],[],[]]
+    [[0],[0],[],[]]                       
+    
+     All boils down to this depending on bonelist. Every atom 
+     appears. kArmTest5 := max (map (similaritYvalue) bonelist) ->
+                       -> athing = (map similaritYvalue bonelist)
+                       -> phiMax: start with (map max athing)->
+                       -> phiMax-1
+                       => (pick1 phiMax)`eemIndices` (phiMax) -> 
+                       -> 
     ========================================================
 
 
