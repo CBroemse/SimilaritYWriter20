@@ -164,6 +164,7 @@ accesFWX l nlist = let aw1 n = (ausw n nlist)
  --  Fabrizio Romano Genovese 
  --
  --e.g *> let li = ["AAABB","AABAB","AAA","BBBAA"]
+ --       let pi = Punkt "M" Nothing Nothing Nothing Nothing Nothing
  --    *  let kArmTest5 li 1 pi 1 1 [] "AAA"
 kArmTest5 bonelist mofaList connectWrist dit dit2 mCommand crit= do
      let allAcc p = show(checkflow [] [p])           
@@ -559,8 +560,18 @@ kArmTest5 bonelist mofaList connectWrist dit dit2 mCommand crit= do
               putStrLn (edR1 4 3)
               putStrLn (edR1 4 4)
              -- putStrLn (newToStep 2 4)
-
- ---------------------------------------------------------------------------------
+             --
+            -- ARISING: 
+            -- a line that yields [[0],[0],[0],[0],[0]
+       
+          -- Plot-------------------------------------------------------------------
+          -- 3. Part of program
+              let foe t = head (ausw t bonelist)
+          --    let op = atrix0a (foe 1) (foe 2) (foe 3) (foe 4) (foe 2) (foe 1) 1 1
+              putStrLn "readY to plot"
+              let pop = (ptc0  5)
+              M.writeWXCloudNODE (pop) (ptc2 5) (ptc3 5) (ptc4 5) (ptc5 5) (ptc6 5)
+              putStrLn "1" --(show pop) --(pop (head(map ord "1")))  ---------------------------------------------------------------------------------
  --run randomPunkt list with input:
  --e.g *> gh = "AAAABBBB"  
  -- COMPARE BONELIST to INPUT:  (a'S of bonlist) to  gh
@@ -1261,101 +1272,99 @@ wohlGeor3 compar punktList = let inpu = (toGeor3 compar punktList) -- wohlGeor3
 -- a program Variables
 -- when buiding the final 'Punkt' structure these are different
 -- computation that can be used with '[father,mother...' 
-progVar1 koa = (koa) --"wrist"
-progVar2 koa = koa --"Wrist lowerArm"
-progVar3 koa = koa --"lowerArm"
-progVar4 koa = koa --"somthing"
-progVar5 koa = koa --"something different"
-progVar6 koa = koa --"different"
+progVar1 = "wrist" --koa = koa
+progVar2 = "Wrist lowerArm"
+progVar3 = "lowerArm"
+progVar4 = "somthing"
+progVar5 = "something different"
+progVar6 = "different"
 
 
 
-theGeors o = do
-        let auswa = head (F.chooseMQ o [(wohlGeor1),(wohlGeor2)])
-        auswa
+theGeors o = let auswa = head (F.chooseMQ o [(wohlGeor1),(wohlGeor2)])
+             in auswa
 
-theVarias koa1 koa2 koa3 koa4 koa5 koa6 p = do
-        let auswa = head (F.chooseMQ p [(progVar1 koa1),(progVar2 koa2),(progVar3 koa3),(progVar4 koa4),(progVar5 koa5),(progVar6 koa6)])
-        auswa
+theVarias p = let auswa = head (F.chooseMQ p [(progVar1 ),(progVar2 ),(progVar3 ),(progVar4 ),(progVar5 ),(progVar6 )])
+              in auswa
 
-theTrix koa1 koa2 koa3 koa4 koa5 koa6 w  = do
-        let auswa = head (F.chooseMQ w [(amatrix koa1 koa2 koa3 koa4 koa5 koa6 ),(amatrixDif koa1 koa2 koa3 koa4 koa5 koa6),(amatrixa koa1 koa2 koa3 koa4 koa5 koa6),(amatrixDifa koa1 koa2 koa3 koa4 koa5 koa6),(amatrixb koa1 koa2 koa3 koa4 koa5 koa6),(amatrixDifb koa1 koa2 koa3 koa4 koa5 koa6)])
-        auswa
+theTrix w  = let auswa = head (F.chooseMQ w [(amatrix ),(amatrixDif ),(amatrixa ),(amatrixDifa ),(amatrixb ),(amatrixDifb )])
+             in auswa
 
 
 --o:Int choose wohlGeors 
 --t:Int choose atom in line
 --t:Int choose line
-atrix0R foGeo o t foprog koa1 koa2 koa3 koa4 koa5 koa6 p n  = (F.chooseMQ t (concat ((foGeo o) (foprog koa1 koa2 koa3 koa4 koa5 koa6 p) n)))
+atrix0R foGeo o t foprog p n  = (F.chooseMQ t (concat ((foGeo o) (foprog p) n)))
 atrix0R2 t foprog p n  = (F.chooseMQ t ((wohlGeor3 (foprog p) n)))
 
 --------------------------------------------------
 -- wohlGeor1 <--> wohlGeor2 <-> wohGeor1
 --   I              I+II         III
-atrix0 koa1 koa2 koa3 koa4 koa5 koa6 t n = atrix0R theGeors 1 t theVarias koa1 koa2 koa3 koa4 koa5 koa6 1 n
-atrix1 koa1 koa2 koa3 koa4 koa5 koa6 t n = atrix0R theGeors 2 t theVarias koa1 koa2 koa3 koa4 koa5 koa6 2 n
-atrix2 koa1 koa2 koa3 koa4 koa5 koa6 t n = atrix0R theGeors 1 t theVarias koa1 koa2 koa3 koa4 koa5 koa6 3 n
+atrix0 t n = atrix0R theGeors 1 t theVarias 1 n
+atrix1 t n = atrix0R theGeors 2 t theVarias 2 n
+atrix2 t n = atrix0R theGeors 1 t theVarias 3 n
 
-atrix3 koa1 t m = (F.chooseMQ t (wohlGeor3 (progVar1 koa1) m))
+atrix3 t m = (F.chooseMQ t (wohlGeor3 (progVar1 ) m))
 --    IV   <->      set to progVar3   <->  VI
-atrix4 koa1 koa2 koa3 koa4 koa5 koa6 t n = atrix0R theGeors 1 t theVarias koa1 koa2 koa3 koa4 koa5 koa6 4 n
-atrix5 koa1 koa2 koa3 koa4 koa5 koa6 t n = atrix0R theGeors 2 t theVarias koa1 koa2 koa3 koa4 koa5 koa6 5 n
-atrix6 koa1 koa2 koa3 koa4 koa5 koa6 t n = atrix0R theGeors 1 t theVarias koa1 koa2 koa3 koa4 koa5 koa6 6 n
+atrix4 t n = atrix0R theGeors 1 t theVarias 4 n
+atrix5 t n = atrix0R theGeors 2 t theVarias 5 n
+atrix6 t n = atrix0R theGeors 1 t theVarias 6 n
 ---------------------------------------------------
 --------------------------------------------------
 -- wohlGeor1 <--> wohlGeor1 <-> wohGeor1
 --   I              I+II         III
 --   question for project: isomorphsims ?!:) over various pg functions eqivalent to 
-atrix0a koa1 koa2 koa3 koa4 koa5 koa6 t n = atrix0R theGeors 1 t theVarias koa1 koa2 koa3 koa4 koa5 koa6 1 n
-atrix1a koa1 koa2 koa3 koa4 koa5 koa6 t n = atrix0R theGeors 1 t theVarias koa1 koa2 koa3 koa4 koa5 koa6 2 n
-atrix2a koa1 koa2 koa3 koa4 koa5 koa6 t n = atrix0R theGeors 1 t theVarias koa1 koa2 koa3 koa4 koa5 koa6 3 n
+atrix0a t n = atrix0R theGeors 1 t theVarias 1 n
+atrix1a t n = atrix0R theGeors 1 t theVarias 2 n
+atrix2a t n = atrix0R theGeors 1 t theVarias 3 n
 
-atrix3a koa1 t m = (F.chooseMQ t (wohlGeor3 (progVar1 koa1) m))
+atrix3a t m = (F.chooseMQ t (wohlGeor3 (progVar1 ) m))
 --    IV   <->      set to progVar3   <->  VI
-atrix4a koa1 koa2 koa3 koa4 koa5 koa6 t n = atrix0R theGeors 1 t theVarias koa1 koa2 koa3 koa4 koa5 koa6 4 n
-atrix5a koa1 koa2 koa3 koa4 koa5 koa6 t n = atrix0R theGeors 1 t theVarias koa1 koa2 koa3 koa4 koa5 koa6 5 n
-atrix6a koa1 koa2 koa3 koa4 koa5 koa6 t n = atrix0R theGeors 1 t theVarias koa1 koa2 koa3 koa4 koa5 koa6 6 n
+atrix4a t n = atrix0R theGeors 1 t theVarias 4 n
+atrix5a t n = atrix0R theGeors 1 t theVarias 5 n
+atrix6a t n = atrix0R theGeors 1 t theVarias 6 n
 ---------------------------------------------------
 --------------------------------------------------
 -- wohlGeor2 <--> wohlGeor2 <-> wohGeor2
 --   I              I+II         III
-atrix0b koa1 koa2 koa3 koa4 koa5 koa6 t n = atrix0R theGeors 2 t theVarias koa1 koa2 koa3 koa4 koa5 koa6 1 n
-atrix1b koa1 koa2 koa3 koa4 koa5 koa6 t n = atrix0R theGeors 2 t theVarias koa1 koa2 koa3 koa4 koa5 koa6 2 n
-atrix2b koa1 koa2 koa3 koa4 koa5 koa6 t n = atrix0R theGeors 2 t theVarias koa1 koa2 koa3 koa4 koa5 koa6 3 n
+atrix0b t n = atrix0R theGeors 2 t theVarias 1 n
+atrix1b t n = atrix0R theGeors 2 t theVarias 2 n
+atrix2b t n = atrix0R theGeors 2 t theVarias 3 n
 
-atrix3b koa1 t m = (F.chooseMQ t (wohlGeor3 (progVar1 koa1) m))
+atrix3b t m = (F.chooseMQ t (wohlGeor3 (progVar1 ) m))
 --    IV   <->      set to progVar3   <->  VI
-atrix4b koa1 koa2 koa3 koa4 koa5 koa6 t n = atrix0R theGeors 2 t theVarias koa1 koa2 koa3 koa4 koa5 koa6 4 n
-atrix5b koa1 koa2 koa3 koa4 koa5 koa6 t n = atrix0R theGeors 2 t theVarias koa1 koa2 koa3 koa4 koa5 koa6 5 n
-atrix6b koa1 koa2 koa3 koa4 koa5 koa6 t n = atrix0R theGeors 2 t theVarias koa1 koa2 koa3 koa4 koa5 koa6 6 n
+atrix4b t n = atrix0R theGeors 2 t theVarias 4 n
+atrix5b t n = atrix0R theGeors 2 t theVarias 5 n
+atrix6b t n = atrix0R theGeors 2 t theVarias 6 n
 ---------------------------------------------------
 
-amatrix koa1 koa2 koa3 koa4 koa5 koa6 n m = concat [(atrix0 koa1 koa2 koa3 koa4 koa5 koa6 n m),(atrix1 koa1 koa2 koa3 koa4 koa5 koa6 n m),(atrix2 koa1 koa2 koa3 koa4 koa5 koa6 n m)]
-amatrixDif koa1 koa2 koa3 koa4 koa5 koa6 n m = concat [(atrix4 koa1 koa2 koa3 koa4 koa5 koa6 n m),(atrix5 koa1 koa2 koa3 koa4 koa5 koa6 n m),(atrix6 koa1 koa2 koa3 koa4 koa5 koa6 n m)]
-amatrixa koa1 koa2 koa3 koa4 koa5 koa6 n m = concat [(atrix0a koa1 koa2 koa3 koa4 koa5 koa6 n m),(atrix1a koa1 koa2 koa3 koa4 koa5 koa6 n m),(atrix2a koa1 koa2 koa3 koa4 koa5 koa6 n m)]
-amatrixDifa koa1 koa2 koa3 koa4 koa5 koa6 n m = concat [(atrix4a koa1 koa2 koa3 koa4 koa5 koa6 n m),(atrix5a koa1 koa2 koa3 koa4 koa5 koa6 n m),(atrix6a koa1 koa2 koa3 koa4 koa5 koa6 n m)]
-amatrixb koa1 koa2 koa3 koa4 koa5 koa6 n m = concat [(atrix0b koa1 koa2 koa3 koa4 koa5 koa6 n m),(atrix1b koa1 koa2 koa3 koa4 koa5 koa6 n m),(atrix2b koa1 koa2 koa3 koa4 koa5 koa6 n m)]
-amatrixDifb koa1 koa2 koa3 koa4 koa5 koa6 n m = concat [(atrix4b koa1 koa2 koa3 koa4 koa5 koa6 n m),(atrix5b koa1 koa2 koa3 koa4 koa5 koa6 n m),(atrix6b koa1 koa2 koa3 koa4 koa5 koa6 n m)]
+amatrix n m = concat [(atrix0 n m),(atrix1 n m),(atrix2 n m)]
+amatrixDif n m = concat [(atrix4 n m),(atrix5 n m),(atrix6 n m)]
+amatrixa n m = concat [(atrix0a n m),(atrix1a n m),(atrix2a n m)]
+amatrixDifa n m = concat [(atrix4a n m),(atrix5a n m),(atrix6a n m)]
+amatrixb n m = concat [(atrix0b n m),(atrix1b n m),(atrix2b n m)]
+amatrixDifb n m = concat [(atrix4b n m),(atrix5b n m),(atrix6b n m)]
 
 -------------------------------------------------------------
 --COMPUTE UNIQUE POINTCLOUD WITH progVar3 ; added 25-4-20 (first approach)
 
 -- atrix constant based on MQ function does not change with string
-atrixCo anyKoa t m = (F.chooseMQ t (wohlGeor3 (progVar3 anyKoa) m))
+atrixCo t m = (F.chooseMQ t (wohlGeor3 (progVar3 ) m))
 -- Makes own metric
 -- one value selected each line is sorted
 -- with -order1 which is ascending
 -- the othe two rows wil be sorted like order1
-foorder anyKoa k t  = F.chooseMQ k (sort (amatrix2 anyKoa t t))
-amatrix2 anyKoa n m = concat [(atrixCo anyKoa 1 m),(atrixCo anyKoa 2 m),(atrixCo anyKoa 3 m)]
+foorder k t  = F.chooseMQ k (sort (amatrix2 t t))
+amatrix2 n m = concat [(atrixCo 1 m),(atrixCo 2 m),(atrixCo 3 m)]
 
 -- where is value k in each line t
-findes anyKoa k t = let inpu = foorder anyKoa k t 
-                in let inpu2 = (head inpu) `elemIndices` (amatrix2 anyKoa t t)
+findes k t = let inpu = foorder k t 
+                in let inpu2 = (head inpu) `elemIndices` (amatrix2 t t)
                 in inpu2
 -- sort them
-changs anyKoa t k = F.chooseMQ ((head(findes anyKoa k t))+1) (amatrix2 anyKoa k t)
-changs2 koa1 koa2 koa3 koa4 koa5 koa6 w t k = F.chooseMQ ((head(findes "fixed" k t))+1) ((theTrix koa1 koa2 koa3 koa4 koa5 koa6 w) k t)
+changs t k = F.chooseMQ ((head(findes k t))+1) (amatrix2 k t)
+changs2 w t k = F.chooseMQ ((head(findes k t))+1) ((theTrix w) k t)
+
 {-
 ------------------------------------------------------------------
 -- ALL THE SAME DONT WORK  ********************************!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -1400,29 +1409,35 @@ ptcPG1_6b  = pointCloudPG106
 ptcPG1_7b  = pointCloudPG107 
 -----------------------------------------------------------
 -}
-
-chgLine anyKoa t = concat(map (changs anyKoa t) [1..3]) 
-chgLine2 koa1 koa2 koa3 koa4 koa5 koa6 w t = let a koa1 koa2 koa3 koa4 koa5 koa6 w t k=  (head(changs2 koa1 koa2 koa3 koa4 koa5 koa6 w t k ))
-               in map (a  koa1 koa2 koa3 koa4 koa5 koa6 w t) [1..3]
+-- WHAT HAPPENED here:
+-- Experiment every atom of bonelist is compared to a 'formation'
+--  pg1 -> MQ6;  pg2 -> MQ5;  pg3 -> MQ4 ; pg4 -> TRACE
+--
+--   input x -> MQ6 x              -> MQ6  |
+--           -> MQ5 x              -> MQ5  | --\ val 1=(x1)
+--           -> MQ4 x              -> MQ4  | --/  [ MQ6(x1),MQ5(x1),MQ4(x1),TRACE(x1)]
+--           -> MQ4 (MQ5(MQ6 x))   -> TRACE|
+chgLine t = concat(map (changs t) [1..3]) 
+chgLine2 w t = let a w t k=  (head(changs2 w t k ))
+               in map (a  w t) [1..3]
 
 --order1 =  if 
-pointCloud01 koa1 koa2 koa3 koa4 koa5 koa6 n  = let toMap e = last((map (amatrix koa1 koa2 koa3 koa4 koa5 koa6 e) [1..500]))
+pointCloud01 n  = let toMap e = last((map (amatrix e) [1..500]))
                   in map toMap [1..n]
 -- based on wohlGeor3 -> constant-> any string -> aways same points depending on pg functions
-pointCloud02 n = drop (n-1) (map (amatrix2 "any will do" n) [1..50])
+pointCloud02 n = drop (n-1) (map (amatrix2 n) [1..5])
 
-pointCloud03 koa1 koa2 koa3 koa4 koa5 koa6 n  = let toMap e = last((map ((theTrix koa1 koa2 koa3 koa4 koa5 koa6 2) e) [1..500]))
+pointCloud03 n  = let toMap e = last((map ((theTrix 2) e) [1..500]))
                   in map toMap [1..n]
-pointCloud03a koa1 koa2 koa3 koa4 koa5 koa6 n  = let toMap e = last((map ((theTrix koa1 koa2 koa3 koa4 koa5 koa6 4) e) [1..500]))
+pointCloud03a n  = let toMap e = last((map ((theTrix 4) e) [1..500]))
                   in map toMap [1..n]
-pointCloud03b koa1 koa2 koa3 koa4 koa5 koa6 n  = let toMap e = last((map ((theTrix koa1 koa2 koa3 koa4 koa5 koa6 6) e) [1..500]))
+pointCloud03b n = let toMap e = last((map ((theTrix 6) e) [1..500]))
                   in map toMap [1..n]
 
-pointCloud04 n = ( map (chgLine "any will do") [1..n])
-pointCloud05 koa1 koa2 koa3 koa4 koa5 koa6 n = drop 2 (map (chgLine2  koa1 koa2 koa3 koa4 koa5 koa6 1) [1..n])
-pointCloud06 koa1 koa2 koa3 koa4 koa5 koa6 n = drop 2 (map (chgLine2  koa1 koa2 koa3 koa4 koa5 koa6 3) [1..n])
-pointCloud07 koa1 koa2 koa3 koa4 koa5 koa6 n = drop 2 (map (chgLine2  koa1 koa2 koa3 koa4 koa5 koa6 5) [1..n])
-
+pointCloud04 n = ( map chgLine [1..n])
+pointCloud05 n = drop 2 (map (chgLine2  1) [1..n])
+pointCloud06 n = drop 2 (map (chgLine2  3) [1..n])
+pointCloud07 n = drop 2 (map (chgLine2  5) [1..n])
 --                e.gs
 --crit: String   "0.56" ??? 
 
@@ -1458,6 +1473,8 @@ chainDistribute crit dipfade2 criterium pt = let provideVals = [show(map ord cri
                     --     in wereWHat --fodip4 --group aFiltNum --roces --cdMAP --parsE aFilt --(map head (map words((concat(head cdMAP)))))
 
 
+
+-----------------------------------------------------------------------------------------------------------------
 -- EXPORT visiualize 
 -- e.g 'M.writeWXCloudNODE (ptc0 3)(ptc1 3)(ptc2 3)(ptc3 3)(ptc 3) (ptc5)'
 -- or  'M.writeWXCloud4 (ptc0 50)(ptc1 50)(ptc2 50)(ptc3 50)(ptc 50) (ptc5)'
@@ -1498,25 +1515,24 @@ chainDistribute crit dipfade2 criterium pt = let provideVals = [show(map ord cri
 
 
 
-foptc e = take e [1,4..]
-ptc0  koa1 koa2 koa3 koa4 koa5 koa6 e = pointCloud01  koa1 koa2 koa3 koa4 koa5 koa6 e
+foptc e = take e [1,4..]  --ptc1
+ptc0  e = pointCloud01  e
 -- constant based on Mqs
 ptc2 e = ( pointCloud02 e)
 
-ptc3RAW koa1 koa2 koa3 koa4 koa5 koa6 e = pointCloud03 koa1 koa2 koa3 koa4 koa5 koa6 e
+ptc3RAW e = pointCloud03 e
 -- ptc3 : variable function 
 -- decide how many points to plot via function variable 'e'
-ptc3 e = (ptc3RAW "Wrist lowerArm" "lowerArm" "somthing" "something different" "different" e)
+ptc3 e = (ptc3RAW e)
 
 
-ptc3a koa1 koa2 koa3 koa4 koa5 koa6 e = pointCloud03a koa1 koa2 koa3 koa4 koa5 koa6 e
-ptc3b koa1 koa2 koa3 koa4 koa5 koa6 e = pointCloud03b  koa1 koa2 koa3 koa4 koa5 koa6 e
+ptc3a e = pointCloud03a e
+ptc3b e = pointCloud03b e
 
 ptc4 e = pointCloud04 e
-ptc5  koa1 koa2 koa3 koa4 koa5 koa6 n = pointCloud05 koa1 koa2 koa3 koa4 koa5 koa6 n 
-ptc6 koa1 koa2 koa3 koa4 koa5 koa6 n = pointCloud06 n 
-ptc7  koa1 koa2 koa3 koa4 koa5 koa6 n = pointCloud07 koa1 koa2 koa3 koa4 koa5 koa6 n 
-
+ptc5  n = pointCloud05 n 
+ptc6 n = pointCloud06 n 
+ptc7  n = pointCloud07 n 
 ------------------------------------------------------
 -- MINIMA I,II,III
 fodf1 compar pub = let inpu2 =   map (wohlGeorNeRAW compar) [1..pub] -- same as get tolerance
