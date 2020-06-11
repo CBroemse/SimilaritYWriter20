@@ -46,11 +46,8 @@ module Colored_2_3_5_Counter20 (
    -- , trackPoint
    -- , trackPoint2
     , similaritYvalue
-    , trackArmTest5 -- reimport IO-String via Punkt data-type !!
-    , trackArmTest6 -- used in 'trackArmTest5' 
-   -- , trackArmTest4 -- NEW MAIN PIPE
-    -- , armSimu  -- elaborated Run with this simple simulation
    -- naiveSim
+    , kArmTest5 -- new Main 
       ) where
 
 --import Mutter
@@ -249,9 +246,7 @@ kArmTest5 bonelist mofaList connectWrist dit dit2 mCommand crit= do
          	  where
               ----------------------------------------------------------
             frame0a = do
-              foCombo <- (trackArmTest6 "AAABBB" "AA" "AB" "BB" "BBBAA" 5 (connectWrist) (dit) dit2 (head bonelist) mCommand ) --line1Id)
-              let combo = show foCombo
-      -----------------------------------------------------------------------------------------------
+                   -----------------------------------------------------------------------------------------------
      --   " Truth (Wahrheit) over certainty (Gewissheit)"
 --                  (Illobrandt von Ludwiger)
 --   " Lets start a framework that derives truth from certainty, 
@@ -570,7 +565,9 @@ kArmTest5 bonelist mofaList connectWrist dit dit2 mCommand crit= do
           --    let op = atrix0a (foe 1) (foe 2) (foe 3) (foe 4) (foe 2) (foe 1) 1 1
               putStrLn "readY to plot"
               let pop = (ptc0  5)
-              M.writeWXCloudNODE (pop) (ptc2 5) (ptc3 5) (ptc4 5) (ptc5 5) (ptc6 5)
+              --M.writeWXCloudNODE (pop) (ptc2 5) (ptc3 5) (ptc4 5) (ptc5 5) (ptc6 5)
+              M.writeWXCloudNODE (ptc2 5) (ptc2 25) (ptc2 50) (ptc4 5) (ptc4 25) (ptc4 50)
+              M.writeWXCloud4 (ptc2 5) (ptc2 25) (ptc2 50) (ptc4 5) (ptc4 25) (ptc4 50)
               putStrLn "1" --(show pop) --(pop (head(map ord "1")))  ---------------------------------------------------------------------------------
  --run randomPunkt list with input:
  --e.g *> gh = "AAAABBBB"  
@@ -688,21 +685,20 @@ kArmTest5 bonelist mofaList connectWrist dit dit2 mCommand crit= do
               putStrLn (unlines(checkflow [] ((outputPunktOrder 4))))
               let altgh2 i = let steA i = show (zipWith (+) (aliste7 i) (checLength i))
                              in let steB i =  (checkflow [] ((outputPunktOrder i)))
-                             in (((steA i))++" Real Order: " ++ (unlines (steB i)))
+                             in (((steA i))++" bonelist content: " ++ (unwords (steB i)))
               let altgh3 i = let steA i = show (zipWith (+) (aliste7 i) (checLength i))
                              in let steB i =  (checkflow [mother] ((outputPunktOrder i)))
-                             in (((steA i))++" Real Order: " ++ (unlines (steB i)))
+                             in (((steA i))++"atom bonelist: " ++ (unwords (steB i)))
               let neFunc l = do
                    does <- forM [1..prepRyth] (\l -> do
                        let alines=   ((altgh2 l)) -- ++" "++(altgh3 4)))
                        let aliasType = (altgh3 (last [(prepRyth)]))
-                       let narrowGate r = if r<=l then "Rank "++alines
-                                          else "Rank "++aliasType
+                       let narrowGate r = if r<=l then "Occurance: "++(show l)++" bonelist item: "++alines
+                                          else "Occurance: "++(show l)++ " bonelist item: "++aliasType
                        return (narrowGate l))
                    does 
             
               putStrLn (unlines(neFunc 2))
-              putStrLn (show (((altgh2 4)) ++" "++(altgh3 4)))
               putStrLn "End"
 
        --------------------------------------------------------------------------------------------
@@ -717,454 +713,6 @@ kArmTest5 bonelist mofaList connectWrist dit dit2 mCommand crit= do
         --      putStrLn line1Ideal 
      (frame0 bonelist (mofaList) connectWrist dit dit2) 
 
-
-
-
-
-
--- 26-11-19 TWO WAYS TO RUN 
--- ---------------------------------------------------- 
--- LEVEL1
--- wayI   search the Path for M   -> keep searching in this subPath
---
--- wayII  search the Path for similarities
--------------------------------------------------------
--- LEVEL2
--- wayI compare idealbones to subPath -> find Min in subPath -> 
--- # 9-5-2020 ##############################            
--- e.g : trackArmTest5 "wrissts" "wost" "wrust" "wrat" "wrist" 0 pi 3 3333 []
---       trackArmTest5 a1 a2 a3 a4 a5 b1 c1 d1 d2 e1
---       function is restrained to d1: must be within max number of subpath of 'ideal'
---       in this case 5
---       e1: mother | mother2 | father | loopNumber | minMaxTrueOrFalse
-
-trackArmTest5 bone1 bone2 bone3 bone4 bone5 mofaList connectWrist dit dit2 mCommand= do
-     let allAcc p = show(checkflow [] [p])           
-     
-     let allAcc foPun =  (checkflow [] [(foPun)])
-     let checkFo g = if (length g) == 0 then ""
-                     else "MOTHER MODE: on"  
-     let fnACCOUT cou = if unPoint == ("\"notM\"") then unwords [""] -- cou
-                        else snd cou
-                    where unPoint = (show(head(words(unwords(checkflow [] [connectWrist]))))) ;
-
-     let fnACCRAW cou = if unPoint == ("\"notM\"") then fst cou
-                        else snd cou
-                    where  -- understand1:= unwords it :: [[Char]] -> String
-                           --             => came up with
-                           --                "notM" ->  " notM" -> (" "++String) 
-                           -- understand2 := words (understand1) -> filter /= (' ')  -> String => understand2 :: [String]
-                           --             : the words is the filter :)
-                           -- understand3 := head understand2 -> [String] => String 
-                           -- show understand3.    
-             unPoint = (show(head(words(unwords(checkflow [] [connectWrist]))))) ;
-     let maybePu rt = Punkt rt Nothing Nothing Nothing Nothing Nothing
-     let basis mm = Punkt (fnACCRAW(nACCRAW (unwords(allAcc connectWrist)) ["When set M will work:"++" now sleeping", checkFo mm ] ) ) (Just connectWrist) Nothing Nothing Nothing Nothing
- 
-     let mixUpTray0 showClass pushTPosition fiPalette testData = sirRetrun --beRep1 (read showClass) (show(words(unwords testData))) -- (sirRetrun oriPosition pushTPosition)
-                         where
-                           palette = fiPalette -- [bone1,foExp,(show(makeBreak sl)),anEx,(show aRate)] ;
-                           goodChoice doer = head (ausw doer palette);
-                           beRep1 doer showData = (Punkt (fnACCRAW (nACCRAW (showData) [(showClass),(goodChoice doer),"YES MONAD:_"++show dit])) (Just pushTPosition) Nothing Nothing Nothing Nothing);
-                               -- testData =  ((map snd (map snd (head commaBreakGuess)))) ;
-                           sirRetrun =  
-                                  let ans showClass = if showClass==bone1 || showClass=="5"
-                                                      then do 
-                                                         (beRep1 5 (show testData))
-                                                      else if showClass=="1" || showClass=="2" || showClass=="3" || showClass=="4"
-                                                      then do
-                                                          let reAd = read showClass
-                                                          (beRep1 reAd (show testData))
-                                                      else
-                                                          pushTPosition
-                                  in ans showClass;
-   --  let processImport foTrack4Orders = mixUpTray0 bone1 foTrack4Orders (allAcc basis) -- 
- ----------------------------------------------------------------------------------------------------
-       -- __________________________   |           |   _______________________
-        --   basis => mixUpTray0       |           |   mixUTray0    (GoTO (Punktt)  (comareTo String)   (main String)  
-        --   --------------------------|           |   -----------------------
-        --    showClass                |___________|
-        ---   .....................     ..........     ......................
-        --                          ||                /\
-        --                          \/                ||
-        --                         beRepIMPORT  => Fractional
-        --   ________________________________________________________________
-              --creates instance points as fills points with commands via togoToList
-              -- togoToList: [String] ; pick1: string e.g "1" fst of punklist
-              --  pick2: string e.g"3" connect 3rd of togoToList
-     let makePalette pick1 pick2 punktList togoToList = noSense togoToList
-                       where
-                          dada fopick deze = head (ausw (read fopick) deze);
-                          noSense deze = Punkt (dada pick1 deze) (Just (maybePu (dada pick2 togoToList))) Nothing Nothing Nothing Nothing;
-     let gaussRate eins zuI = similaritYvalue eins zuI
-
-
-   -- 19-3-20-############################# The gaussian Rate is wrapped into two functions 
-   -- beRepKEYRAW ; pick1 value of onelist and compare it to an snd pick2 of another list
-   -- There is an allAcc function without any purpose that could be used lateron
-    -- Rate any two things bone1 with 
-    -- ---------------------------------------------------------------------------------
-     let beRepKEYRAW pick1 pick2 onelist punktList = (crunchtoSimi pick2) -- makePalette pick1 pick2 punktList commands
-                      where
-                  --      commands =   [bone1,bone2,bone3,bone4,bone5]; 
-                        compar = head(ausw dit onelist);
-                        paletteKEY fpic2 astrList = makePalette pick1 fpic2 astrList onelist;
-                        cleanPaletteRaw fpic2 astrList = allAcc (paletteKEY fpic2 astrList );  -- go to pick2 of list goTo
-                        crunchtoSimi fpic2  = let sta1 d = map ord d  
-                                              in let sta2New = map realToFrac (sta1 (unwords(cleanPaletteRaw fpic2 punktList)))
-                                              in let sta3New = map realToFrac (sta1 ((compar))) -- *****************************SELECT EACH LINE OF GUESS
-                                              in gaussRate sta3New sta2New
-
-     let beRepKEY pick1 pick2 punktList = show (beRepKEYRAW pick1 pick2 commands punktList  )-- makePalette pick1 pick2 punktList commands
-  
-                      where
-                        commands =   [bone1,bone2,bone3,bone4,bone5]; 
-     --let beRepIMPORT pick1 pick2 commands = (show (beRepKEYRAW pick1 pick2 commands basis ))-- import A in beReKEYRAW via 'Punkt basis' to gaussrate A with B 
-    -- putStrLn (beRepIMPORT "1" "1" (allAcc basis))
-     let frame0 i1 i2 i3 i4 i5 i6 i7 i8 i9 =  (frame0a)   
-         	  where
-              ----------------------------------------------------------
-            frame0a = do
-              theIdeal <- readFile (root++"test7.svg") --Bilder/testUnfold.svg")  -- as ideal
-              theGuess <- readFile (root++"find7.svg") --"Bilder#7ink3.svg") --henne52S.svg") -- as guess
-              let checkLen fOc  = length (lines fOc)
-                          --  putStrLn (theGuess)----------------------------------------
-              dRun <- forM [1..(checkLen theIdeal)] (\d -> do   -- **********************filters a M path out of 'theIdeal'
-                   let fromSource =  ausw d (lines theIdeal) --ideal
-                   let cond = head (filter (/=' ') (unlines fromSource))
-                   let seles = if cond=='d' then d -- (filter (/=' ') (unlines fromSource))
-                               else 0
-                   return (seles))
-              putStrLn (("Found M position in 'ideal' at :\n")++(show dRun))
-            ---------------------------------------------------------------
-              dRunGuess <- forM [1..(checkLen theGuess)] (\d -> do   -- ****************filters a M path out of 'theGuess'
-                   let fromGuess =  ausw d (lines theGuess)
-                   let condGuess =  head (filter (/=' ') (unlines fromGuess))
-                   let selesGuess = if condGuess=='d' then d -- (filter (/=' ') (unlines fromSource))
-                                    else 0
-                   return (selesGuess))
-         --     putStrLn (show dRunGuess)
-            ---------------------------------------------------------------
-              let mifilter whichdRun = let sch1 t= filter (/=0) (whichdRun ) -- *******GET THE IDEAL (bonelist)
-                                       in sch1 1
-              let ditReplace = if dit > 5 then 
-                                    let stq1 = repeat [1..5] 
-                                    in let fostq2 = dit `div` 5
-                                    in let stq2 = head (ausw dit (concat (take fostq2 stq1))) -- if dit > 6 then count through lists of 1..5
-                                    in 6 --stq2 -- stq2
-                               else dit
-              getDs <- forM [1..dit] (\g -> do                    -- ****************** gons every line of an Ideal'
-                   let seleC = head (ausw g (mifilter dRun))
-                   let takeLine = ausw (seleC) (lines (theIdeal)) -- ideal
-                   let makeClean   = let ir1 = break (/=' ') (head takeLine)
-                                         in let ir2 = fst ir1
-                                         in let checj = length ir2
-                                         in if checj>0 then snd ir1
-                                            else fst ir1  
-                   let mos = ( makeClean)
-                   return ([mos] ))
-             -- putStrLn (show getDs)
-             -------------------------------------------------------------- **********GET THE GUESS from 'POINTCLOUD' (henne52S.svg)
-              getDsGuess <- forM [1] (\g -> do
-                   let seleC = head (ausw g (mifilter dRunGuess))
-                   let takeLineGuess = ausw (seleC) (lines (theGuess))
-                   let makeClean     = let ir1 = break (/=' ') (head takeLineGuess)
-                                         in let ir2 = fst ir1
-                                         in let checj = length ir2
-                                         in if checj>0 then snd ir1
-                                            else fst ir1  
-                   return (makeClean))
-         --     putStrLn (show getDsGuess)
-         --- Feed in getDsGuess for guess or getDs for ideal
-              let manyT f = ',' `elemIndices` (unwords(f)) 
-              let guessplitUp t = do
-                    splitUp   <- forM [1..(length (manyT t))] (\sp -> do
-                         let takeRythm fosp = head (ausw fosp (manyT t))
-                         let fromSource = if sp==1 then lines(take (takeRythm sp) (unwords t))
-                                          else lines (drop (takeRythm (sp-1)) (take (takeRythm  sp) (unwords t))) --ideal
-                   --      let cond = head (filter (/=' ') (unlines fromSource))
-                     --    let seles = if cond=='m' then d -- (filter (/=' ') (unlines fromSource))
-             --                       else 0
-                                               --   let foReps =  (((beRepKEYRAW (searchIdeal) (show sp) ((concat tideal)) fromSource)))
-                         return (head fromSource))
-                    splitUp
-            --  putStrLn (show (guessplitUp getDsGuess))
-              -- prep getDS 
-              let tideal = guessplitUp (((words(unwords(ausw  dit (concat getDs))))))
-              let tguess = guessplitUp getDsGuess 
-              putStrLn (show tideal)
-         -- ################################################# searchGuess :: String
-         --                                                   e.g> "1" ; will take the first Path number pair
-         --                                                              only ful numbers up until (length
-         --   Searching the right thing with beRepKEYRAW
-         --            can access every line of guess
-         --            get the second line of a selected idealbone                                                            
-              let rateAtoB searchGuess = do
-                    atob   <- forM [1..(length tideal)] (\sp -> do
-                          let haal o p =  (ausw o p)
-                          let oneCom = haal dit tideal -- get the second line of any IDEALBONE ----------------------------------------------------------- ALGO1
-                          let twoCom fsp = haal fsp tguess   -- get every lne of the guess
-                          let foReps = (beRepKEYRAW (show sp) (searchGuess) (tideal) (twoCom (read searchGuess)))  --(beRepKEYRAW "1" "1" (oneCom) (twoCom))
-                          return(foReps))
-                    atob
-             -- putStrLn (show (guessplitUp tideal))
-              let aMax = (minimum (rateAtoB (show dit))) 
-          --    putStrLn (show (rateAtoB (show dit)))
-         --     putStrLn (show aMax)
-            ------------------------------------------------
-            -- Algo 1 : search an M from Guess
-            --  length guess 
-              let algoLen = manyT getDsGuess
-            -- search M
-              let manyM = 'M' `elemIndices` (unwords getDsGuess)
-                          --in zipWith (+) (take (length stw1 ) [1,1..]) stw
-              let manyMsplit = do
-                    msplit <- forM [1..(length (manyM))] (\sp -> do
-                         let takeRythm fosp = head (ausw fosp (manyM))
-                         let fromSource = if sp==1 then lines(take (takeRythm sp) (unwords getDsGuess))
-                                          else lines (drop (takeRythm (sp-1)) (take (takeRythm  sp) (unwords getDsGuess))) --ideal
-                   --      let cond = head (filter (/=' ') (unlines fromSource))
-                     --    let seles = if cond=='m' then d -- (filter (/=' ') (unlines fromSource))
-             --                       else 0
-                                               --   let foReps =  (((beRepKEYRAW (searchIdeal) (show sp) ((concat tideal)) fromSource)))
-                         return (head fromSource))
-                    msplit
-              putStrLn (("Found M positions in 'guess' at :\n")++(show manyM))
-              putStrLn (show manyM)  -- see how many M there are
-            --  putStrLn (show manyMsplit) -- see every M split
-             ----------------------------------------------------------------------------------------------------------------------------
-             ---19-3-20- rateAtoB needs the desired line number in the GUESS
-             -- the problem is that this line number requires another ccomputation that can fold throug all the lines of the guess.
-             -- Therefore the selected line of the selected idealbone is exported into trackArmTest6 that will go throug all the steps 
-             --    overview:
-             --    trackArmTest5:
-             --        dit  -> selects idealbone -> 
-             --             -> passed to preKEYRAW ->     select one line of it 
-             --             => export to trackArmTest6 
-             --
-             --    trackArmTest6  
-             --          pa: extra variable preselected by see above
-             --          whic
-             -----------------------------------------------------------------------------------------------------------------------------
-             -- take from ideals: (concat getDs) -> selected ideal 'dit' -> searchIdeal: get coml
-             --      from guess : guessplitUp  -> searchGuess: e.g"1" take line 1 of guess
-             -- let foReps searchIdeal searchGuess =  (((beRepKEYRAW (searchIdeal) searchGuess ((concat getDs)) guessplitUp)))
-       --       let getMinOMax = minimum (rateAtoB (show dit) ) 
-              let whereTO  = let sw = aMax `elemIndices` (rateAtoB (show dit))
-                             in zipWith (+) (take (length sw ) [1,1..]) sw
-           --   putStrLn (show ((beRepKEYRAW "2" "3" ((concat getDs)) guessplitUp)))
-             -- putStrLn (show (whereTO ))
-             --putStrLn (show (foReps "1" "3"))
-            --  let mos = filter (/=' ') (unlines (concat getDs)
-          --    putStrLn (show getDs)
-              let getinFilePercent t = ausw (head t) (rateAtoB (show dit)) 
-              let getinFile t = ausw (head t) (words(unwords tguess))
-              
-              let line1Chance= (show ( getinFilePercent (whereTO)))
-              let line1Ideal = (show (getinFile [(head whereTO)]))
-              let line1Guess = ausw dit2 tideal -- tideal --(show (ausw 2 tideal))
-              let line1Id = (((ausw (head whereTO) tguess))) 
-            --  putStrLn (unlines line1Guess ) --    print tideal
-              let line1 = (( line1Chance) ++(unwords line1Guess)++"at"++show whereTO++"_"++show (line1Id))
-
-              let selectAxiom = let steRAW = Punkt (fnACCRAW(nACCRAW (line1) [("starting") ,"LEVEL:TrackArmTest5_'idealbone'_No:_"++(show dit),"in mode: "++show mofaList++" select Search"])) (Just (maybePu line1Chance)) (Just (maybePu line1Ideal)) (Just (maybePu (unlines line1Guess))) (Just (maybePu (head line1Id))) (Just(maybePu (show whereTO)))
-                                            -- ABOVE USES just mother acces                          -------------------------
-                                            -- BELOW do a [[Char]] -> String -> Punkt
-                                                --   in let makeClean =  mother steRAW
-                                in let nexusPunkt = Punkt (nACC "Nexus" [""]) Nothing Nothing Nothing Nothing Nothing
-                                in steRAW --chooseRaw (read unParse) --connectWrist --steRAW
-                                                  --  else newSTATE0 --otherWise
-       --       putStrLn (unwords (checkflow [mother] [selectAxiom]))
-              let selectOR = (unwords (checkflow [father] [(selectAxiom) ]))
-          ------    add (["testInhalt4.txt", (selectOR) ]) 
-          -------------------------------------------------------------------------
-              let importFoundOne = Punkt (unlines tideal) Nothing Nothing Nothing Nothing Nothing
-       ---------------------------------------------------------------------------------------------
-       --------------------------------------------------------------------------------------------
-        -- tideal: selected line of preselected idealbone
-        -- mCommand : mother,father,mother2,loopNumber,minMaxTrueOrFalse select which function in trackArmTest6 to show string
-              foCombo <- (trackArmTest6 "1" "wrisT" "wriSt" "1" "Wrist" 5 (connectWrist) (dit) dit2 ( tideal) mCommand ) --line1Id)
-              let combo = show foCombo
-              putStrLn (show combo) --(take 20 (concat (lines (show combo)))))
-       --------------------------------------------------------------------------------------------
-       --------------------------------------------------------------------------------------------
-             -- let forWrite = let commaWeg = map (\c -> if c==',' then ' ' ; else c)
-
-               --              in  ( combo) --commaWeg ((((filter (/='"') combo)))
-             -- writeFile "testInhalt4.txt" (forWrite) --putStrLn (show (length manyMsplit))
-  --            putStrLn (unlines line1Id) --(unwords tideal)
-    --          putStrLn (show whereTO)
-      --        putStrLn (show(length(unlines tguess)))
-        --      putStrLn line1Ideal
-     (frame0 bone1 bone2 bone3 bone4 bone5 (mofaList) connectWrist dit dit2) 
-         -- (trackArmTest4 bone1 bone2 bone3 bone4 bone5 mofaList connectWrist dit dit2)           
-  
-
-
-
--- PROCESS PART OF GUESS SELECTED BY trackArmTest5
--- RECEIVE INPUT VIA which; that is a selected line of an selected idealbone of the ideal input of trackArmTest5             
-trackArmTest6 bone1 bone2 bone3 bone4 bone5 mofaList connectWrist dit dit2 whic mCommand = do
-    -- let allAcc p = show(checkflow [] [p])           
-     
-     let allAcc foPun =  (checkflow [] [(foPun)])
-     let checkFo g = if (length g) == 0 then ""
-                     else "MOTHER MODE: on"  
-     let fnACCOUT cou = if unPoint == ("\"notM\"") then unwords [""] -- cou
-                        else snd cou
-                    where unPoint = (show(head(words(unwords(checkflow [] [connectWrist]))))) ;
-     let fnACCRAW cou = if unPoint == ("\"notM\"") then fst cou
-                        else snd cou
-                    where  -- understand1:= unwords it :: [[Char]] -> String
-                           --             => came up with
-                           --                "notM" ->  " notM" -> (" "++String) 
-                           -- understand2 := words (understand1) -> filter /= (' ')  -> String => understand2 :: [String]
-                           --             : the words is the filter :)
-                           -- understand3 := head understand2 -> [String] => String 
-                           -- show understand3.    
-             unPoint = (show(head(words(unwords(checkflow [] [connectWrist]))))) ;
-     let maybePu rt = Punkt rt Nothing Nothing Nothing Nothing Nothing
-     let maybePu2 rt pu2 = Punkt rt (Just (maybePu pu2)) Nothing Nothing Nothing Nothing
-     let basis  = Punkt (fnACCRAW(nACCRAW (unwords(allAcc connectWrist)) ["When set M will work:"++" now sleeping" ] ) ) (Just connectWrist) Nothing Nothing Nothing Nothing
-     let mixUpTray0 showClass pushTPosition fiPalette testData = sirRetrun --beRep1 (read showClass) (show(words(unwords testData))) -- (sirRetrun oriPosition pushTPosition)
-                         where
-                           palette = fiPalette -- [bone1,foExp,(show(makeBreak sl)),anEx,(show aRate)] ;
-                           goodChoice doer = head (ausw doer palette);
-                           beRep1 doer showData = (Punkt (fnACCRAW (nACCRAW (showData) [(showClass),(goodChoice doer),"YES MONAD:_"])) (Just pushTPosition) Nothing Nothing Nothing Nothing);
-                               -- testData =  ((map snd (map snd (head commaBreakGuess)))) ;
-                           sirRetrun =  
-                                  let ans showClass = if showClass==bone1 || showClass=="5"
-                                                      then do 
-                                                         (beRep1 5 (show testData))
-                                                      else if showClass=="1" || showClass=="2" || showClass=="3" || showClass=="4"
-                                                      then do
-                                                          let reAd = read showClass
-                                                          (beRep1 reAd (show testData))
-                                                      else
-                                                          pushTPosition
-                                  in ans showClass;
-       --                else basis
-     let processImport = mixUpTray0 bone1 (basis) ["1"] (checkflow [mother] [basis]) -- get basis ,   or its mother 
-     let makePalette pick1 pick2 punktList togoToList = noSense togoToList
-                       where
-                          dada fopick deze = head (ausw (read fopick) deze);
-                          noSense deze = Punkt (dada pick1 deze) (Just (maybePu (dada pick2 togoToList))) Nothing Nothing Nothing Nothing;
-     let gaussRate eins zuI = similaritYvalue eins zuI
-    
-    -- Rate any two things bone1 with 
-     let beRepKEYRAW pick1 pick2 onelist punktlist = (crunchtoSimi pick2) -- makePalette pick1 pick2 punktList commands
-                      where
-                  --      commands =   [bone1,bone2,bone3,bone4,bone5]; 
-                        compar = head(ausw pick1 onelist);
-                        toother =  head(ausw pick2 punktlist);
-                        crunchtoSimi fpic2  = let sta1 d = map ord d  
-                                              in let sta2New = map realToFrac (sta1 toother)
-                                              in let sta3New = map realToFrac (sta1  compar) -- *****************************SELECT EACH LINE OF GUESS
-                                              in gaussRate sta3New sta2New
-
-     let beRepIMPORT pick1 pick2 commands pulist = (show (beRepKEYRAW pick1 pick2 commands pulist ))-- import A in beReKEYRAW via 'Punkt basis' to gaussrate A with B 
-     --putStrLn (beRepIMPORT (show dit) "4" (checkflow [] ([basis])))
-     let frame0 i1 i2 i3 i4 i5 i6 i7 i8 i9 =  (frame0a)   
-         	  where
-              ----------------------------------------------------------
-            frame0a = do
-              theIdeal <- readFile (root++"test7.svg") --"Bilder/testUnfold.svg")  -- as ideal
-              theGuess <- readFile (root++"find7.svg")--"Bilder/ink3.svg") --henne52S.svg") -- as guess
-              let checkLen fOc  = length (lines fOc)
-                          --  putStrLn (theGuess)----------------------------------------
-              dRun <- forM [1..(checkLen theIdeal)] (\d -> do   -- **********************filters a M path out of 'theIdeal'
-                   let fromSource =  ausw d (lines theIdeal) --ideal
-                   let cond = head (filter (/=' ') (unlines fromSource))
-                   let seles = if cond=='d' then d -- (filter (/=' ') (unlines fromSource))
-                               else 0
-                   return (seles))
-             -- putStrLn (show dRun)
-            ---------------------------------------------------------------
-              dRunGuess <- forM [1..(checkLen theGuess)] (\d -> do   -- ****************filters a M path out of 'theGuess'
-                   let fromGuess =  ausw d (lines theGuess)
-                   let condGuess =  head (filter (/=' ') (unlines fromGuess))
-                   let selesGuess = if condGuess=='d' then d -- (filter (/=' ') (unlines fromSource))
-                                    else 0
-                   return (selesGuess))
-            ---------------------------------------------------------------
-              let mifilter whichdRun = let sch1 t= filter (/=0) (whichdRun ) -- *******GET THE IDEAL (bonelist)
-                                       in sch1 1
-              getDs <- forM [1] (\g -> do                    -- ****************** gons every line of an Ideal'
-                   let seleC = head (ausw g (mifilter dRun))
-                   let takeLine = ausw (seleC) (lines (theIdeal)) -- ideal
-                   let makeClean   = let ir1 = break (/=' ') (head takeLine)
-                                         in let ir2 = fst ir1
-                                         in let checj = length ir2
-                                         in if checj>0 then snd ir1
-                                            else fst ir1  
-                   let mos = ( makeClean)
-                   return (mos))
-       --       putStrLn (show getDs)
-             -------------------------------------------------------------- **********GET THE GUESS from 'POINTCLOUD' (henne52S.svg)
-              getDsGuess <- forM [1] (\g -> do
-                   let seleC = head (ausw g (mifilter dRunGuess))
-                   let takeLineGuess = ausw (seleC) (lines (theGuess))
-                   let makeClean     = let ir1 = break (/=' ') (head takeLineGuess)
-                                         in let ir2 = fst ir1
-                                         in let checj = length ir2
-                                         in if checj>0 then snd ir1
-                                            else fst ir1  
-                   return (makeClean))
-              let manyT f = ',' `elemIndices` ((f)) 
-              let guessplitUp t = do
-                    splitUp   <- forM [1..(length (manyT t))] (\sp -> do
-                         let takeRythm fosp = head (ausw fosp (manyT t))
-                         let fromSource = if sp==1 then (take (takeRythm sp) (t))
-                                          else (drop (takeRythm (sp-1)) (take (takeRythm  sp) (t))) --ideal
-                         let filterS = map chr (filter (/=92) (map ord fromSource))
-                         return (filterS))
-                    splitUp
-            --  putStrLn (show (guessplitUp getDsGuess))
-          ------------------------------------------------------------------------------------
-          -- rateAToB processes the preselected ideal and takes the second line of it via beRepKEYRAW
-          --          this line is compared to every single line of the Guess
-              let tideal2 = (whic) -- ####################################################################### Import the selected line of the seected idealbone
-              let tguess =  show(getDsGuess) 
-        -- #################################################################################################### Data piped from tracArmTest5 into trackArmTest6
-        --                                                                The first attempts to automate rating, and to get a grip on the latest
-        --                                                                development of this Module
-              let rateAtoB = do
-                    atob   <- forM [1..(length (guessplitUp tguess))] (\sp -> do
-                          let haal o p =  head (ausw o p)
-                         -- let cal = (length tguess) `div` (length tideal)
-                          let oneCom = show (ausw 2 tideal2) -- get the second line of any IDEALBONE ----------------------------------------------------------- ALGO 20-3-20
-                          let twoCom rit = haal rit (guessplitUp tguess)   -- get every lne of the guess
-                          let foReps = (beRepKEYRAW (1) (1) ([(oneCom)]) [(twoCom sp)])  --(beRepKEYRAW "1" "1" (oneCom) (twoCom))
-                          return(foReps))
-                    atob
-            -----------------------------------------------------------------------------------
-             -- putStrLn (show (guessplitUp tideal))
-              let aMax = minimum rateAtoB --(length dRunGuess) --guessplitUp (concat whic) -- dRunGuess --((rateAtoB)) 
-              let whereTO  = let sw = (aMax) `elemIndices` (((rateAtoB)))
-                             in zipWith (+) (take (length sw ) [1,1..]) sw
-              let getinFilePercent t = ausw (head t) (rateAtoB) 
-              let getinFile t = ausw (head t) (lines(unlines [tguess]))
-              let line1Chance= show whereTO -- (show ( getinFilePercent (whereTO)))
-              let line1Ideal = (show (getinFile [(head whereTO)]))
-              let line1Guess = sort rateAtoB --show (ausw 2 whic) --(guessplitUp (tguess)) --rateAtoB -- ((guessplitUp tguess)) --tideal -------------------------- SELECT ONE LINE FROM EACH IDEAL
-           -- find the sorted in the source guess to get its position
-              let findD t =  show(head (head(ausw t line1Guess) `elemIndices` rateAtoB))
-              let line1Id = "this is a level" --unlines (take (head whereTO) ([ tguess]))  -----------  SELECT ONE LINE FROM GUESS
-            --  putStrLn (unlines line1Guess ) --    print tideal
-              let line1 = show line1Guess --(("_"++show(line1Id))++(show rateAtoB))
-              let liner li = show(head(ausw li rateAtoB))
-              let selectAxiom = let steRAW = Punkt (fnACCRAW(nACCRAW (line1) [("starting") ,"LEVEL1_'trackArmTest6'_No:_"," in mode: "++show mofaList++" select Search"])) (Just(maybePu2 ((findD 1)) (liner (read (findD 1))))) (Just(maybePu (show (findD 1))))  (Just (maybePu2 (liner 2) ((findD 2)))) (Just(maybePu ((findD 3)))) (Just(maybePu ((findD 4))))                                             -- ABOVE USES just mother acces                          -------------------------
-                                            -- BELOW do a [[Char]] -> String -> Punkt
-                                                --   in let makeClean =  mother steRAW
-                                in let nexusPunkt = Punkt (nACC "Nexus" [""]) Nothing Nothing Nothing Nothing Nothing
-                                in steRAW --chooseRaw (read unParse) --connectWrist --steRAW
-              let selectOR = head (checkflow mCommand [selectAxiom]) --Punkt (show aMax) Nothing Nothing Nothing Nothing Nothing --selectAxiom --line1Id ++ line1Ideal ++ line1Chance -- ++ (show whereTO )++line1Chance ++ show tideal ++ show (length tguess) --show(unwords (checkflow [line1Guess] [(selectAxiom) ]))
-          --    putStrLn ("FRAME1_")
-             -- (putStrLn selectOR) 
-             -- putStrLn ((show whereTO) ++ (show line1Ideal))
-              return(selectOR++" selectioned")
-     (frame0 bone1 bone2 bone3 bone4 bone5 (mofaList) connectWrist dit dit2)
-         -- (trackArmTest4 bone1 bone2 bone3 bone4 bone5 mofaList connectWrist dit dit2)           
 
  ----------------------------------------------------------------------------------------------------
 
@@ -1269,16 +817,6 @@ wohlGeor3 compar punktList = let inpu = (toGeor3 compar punktList) -- wohlGeor3
                        in let way1 =[(similaritYvalue (foCombos a) (foCombos b)),(similaritYvalue (foCombos a) (foCombos c)),(similaritYvalue (foCombos a) (foCombos d)),(similaritYvalue (foCombos a) (foCombos e )),(similaritYvalue (foCombos e) (foCombos d)),(similaritYvalue (foCombos e) (foCombos c))]
                        in let way2 =[(similaritYvalue (foCombos e) (foCombos d)),(similaritYvalue (foCombos e) (foCombos c)),(similaritYvalue (foCombos e) (foCombos b)),(similaritYvalue (foCombos e) (foCombos a))]
                        in way1
--- a program Variables
--- when buiding the final 'Punkt' structure these are different
--- computation that can be used with '[father,mother...' 
-progVar1 = "wrist" --koa = koa
-progVar2 = "Wrist lowerArm"
-progVar3 = "lowerArm"
-progVar4 = "somthing"
-progVar5 = "something different"
-progVar6 = "different"
-
 
 
 theGeors o = let auswa = head (F.chooseMQ o [(wohlGeor1),(wohlGeor2)])
@@ -1425,7 +963,7 @@ chgLine2 w t = let a w t k=  (head(changs2 w t k ))
 pointCloud01 n  = let toMap e = last((map (amatrix e) [1..500]))
                   in map toMap [1..n]
 -- based on wohlGeor3 -> constant-> any string -> aways same points depending on pg functions
-pointCloud02 n = drop (n-1) (map (amatrix2 n) [1..5])
+pointCloud02 n = drop (n-1) (map (amatrix2 n) [1..50])
 
 pointCloud03 n  = let toMap e = last((map ((theTrix 2) e) [1..500]))
                   in map toMap [1..n]
@@ -1443,8 +981,6 @@ pointCloud07 n = drop 2 (map (chgLine2  5) [1..n])
 
 -- e.g Colored*> let gh r = chainDistribute r ["2","2","1"] r (lines "1")
 -- ARISING STRUCTURES
--- search digits > number || capital letters || small letters 
--- via 'aFiltNum' or 'aFiltcapLETT' or 'aFiltsmaLETT' all don via wereWHat
    -- KETTENVERTEILUNG aka CHAIN-DISTRIBUTION
        -- in which order do Values occur are they groupd and in which occurance 
        -- e.g Colored*> let example = ["A","A","B",BA",BA","AABB"..]
@@ -1474,10 +1010,32 @@ chainDistribute crit dipfade2 criterium pt = let provideVals = [show(map ord cri
 
 
 
------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------
 -- EXPORT visiualize 
 -- e.g 'M.writeWXCloudNODE (ptc0 3)(ptc1 3)(ptc2 3)(ptc3 3)(ptc 3) (ptc5)'
 -- or  'M.writeWXCloud4 (ptc0 50)(ptc1 50)(ptc2 50)(ptc3 50)(ptc 50) (ptc5)'
+pg1 x = (F.fourierMQ6NOPAN123 x)
+pg2 x = (F.fourierMQ5NOPAN123 x)
+pg3 x = (F.fourierMQ4NOPAN123 x)
+pg4 x = (F.fourierMQ4TRACE x)
+pg11 x = show x --show(F.fourierMQ6NOPAN123 x)
+pg22 x = show x --show(F.fourierMQ5NOPAN123 x)
+pg33 x = show x --show(F.fourierMQ4NOPAN123 x)
+pg44 x = show x --show(F.fourierMQ4TRACE x)
+
+-- a program Variables
+-- when buiding the final 'Punkt' structure these are different
+-- computation that can be used with '[father,mother...' 
+progVar1 = "AAABB" --"wrist" --koa = koa
+progVar2 = "AAABBAABAB"
+progVar3 = "AABAB"
+progVar4 = "AAA"
+progVar5 = "AAABBBAA"
+progVar6 = "BBBAA"
+
+
+
 --  DOMAIN:
 --  pointCoud1                    JustI or JustI and JustII or JustII -> (fst or fst/snd or snd Compare)
 --                     A                   |         B
@@ -1501,7 +1059,7 @@ chainDistribute crit dipfade2 criterium pt = let provideVals = [show(map ord cri
 --                  -> with pg3 mq4
 --                  -> with pg2 TRACEmq4
 --
---                  -> with loop (tomporariy set to pg3 mq4)
+--                  -> with loop (tomporarily set to pg3 mq4)
 
 -- pointCloud4      sort like pointCloud3
 --               constant -> matrix2
@@ -1605,14 +1163,6 @@ accesFuncWX33 l goghi dipfa fodp1 fodp2 bob =
                   in let aw6 = "100"              
                   in enExp aw2 aw4 aw6 --enExp
 
-pg1 x = (F.fourierMQ6NOPAN123 x)
-pg2 x = (F.fourierMQ5NOPAN123 x)
-pg3 x = (F.fourierMQ4NOPAN123 x)
-pg4 x = (F.fourierMQ4TRACE x)
-pg11 x = show(F.fourierMQ6NOPAN123 x)
-pg22 x = show(F.fourierMQ5NOPAN123 x)
-pg33 x = show(F.fourierMQ4NOPAN123 x)
-pg44 x = show(F.fourierMQ4TRACE x)
 
 vb x = let as = accesFuncWX33 4 [(map pg44 [1..(x)])] [(map pg33 [1..(x)])] [(map pg22 [1..(x)])] [(map pg11 [1..(x)])]  [1..x] "100"
        in writeFile "tutu.wxm" as
