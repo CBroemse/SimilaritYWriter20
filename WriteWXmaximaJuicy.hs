@@ -195,7 +195,7 @@ aCloudPoint3 stream1 stream2 stream3 =
     drawAll = "draw3d(color=red,mycloud,color=green,mycloud2,color=black,mycloud3,color=orange,v1,v2,v3,v4,color=blue,text)$";
     aCons above = (lineStart ++ above ++"\n"++ lineEnd)
 writeWXCloud4 functionList ste3 ste4 ste5 ste6 ste7 = do
-     writeFile "lala.wxm" (aCloudPoint4 functionList ste3 ste4 ste5 ste6 ste7)
+     writeFile "lala2.wxm" (aCloudPoint4 functionList ste3 ste4 ste5 ste6 ste7)
 
 aCloudPoint4 functionList ste3 ste4 ste5 ste6 ste7 = 
                      let ausw = length functionList

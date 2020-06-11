@@ -565,7 +565,9 @@ kArmTest5 bonelist mofaList connectWrist dit dit2 mCommand crit= do
           --    let op = atrix0a (foe 1) (foe 2) (foe 3) (foe 4) (foe 2) (foe 1) 1 1
               putStrLn "readY to plot"
               let pop = (ptc0  5)
-              M.writeWXCloudNODE (pop) (ptc2 5) (ptc3 5) (ptc4 5) (ptc5 5) (ptc6 5)
+              --M.writeWXCloudNODE (pop) (ptc2 5) (ptc3 5) (ptc4 5) (ptc5 5) (ptc6 5)
+              M.writeWXCloudNODE (ptc2 5) (ptc2 25) (ptc2 50) (ptc4 5) (ptc4 25) (ptc4 50)
+              M.writeWXCloud4 (ptc2 5) (ptc2 25) (ptc2 50) (ptc4 5) (ptc4 25) (ptc4 50)
               putStrLn "1" --(show pop) --(pop (head(map ord "1")))  ---------------------------------------------------------------------------------
  --run randomPunkt list with input:
  --e.g *> gh = "AAAABBBB"  
@@ -683,21 +685,20 @@ kArmTest5 bonelist mofaList connectWrist dit dit2 mCommand crit= do
               putStrLn (unlines(checkflow [] ((outputPunktOrder 4))))
               let altgh2 i = let steA i = show (zipWith (+) (aliste7 i) (checLength i))
                              in let steB i =  (checkflow [] ((outputPunktOrder i)))
-                             in (((steA i))++" Real Order: " ++ (unlines (steB i)))
+                             in (((steA i))++" bonelist content: " ++ (unwords (steB i)))
               let altgh3 i = let steA i = show (zipWith (+) (aliste7 i) (checLength i))
                              in let steB i =  (checkflow [mother] ((outputPunktOrder i)))
-                             in (((steA i))++" Real Order: " ++ (unlines (steB i)))
+                             in (((steA i))++"atom bonelist: " ++ (unwords (steB i)))
               let neFunc l = do
                    does <- forM [1..prepRyth] (\l -> do
                        let alines=   ((altgh2 l)) -- ++" "++(altgh3 4)))
                        let aliasType = (altgh3 (last [(prepRyth)]))
-                       let narrowGate r = if r<=l then "Rank "++alines
-                                          else "Rank "++aliasType
+                       let narrowGate r = if r<=l then "Occurance: "++(show l)++" bonelist item: "++alines
+                                          else "Occurance: "++(show l)++ " bonelist item: "++aliasType
                        return (narrowGate l))
                    does 
             
               putStrLn (unlines(neFunc 2))
-              putStrLn (show (((altgh2 4)) ++" "++(altgh3 4)))
               putStrLn "End"
 
        --------------------------------------------------------------------------------------------
@@ -962,7 +963,7 @@ chgLine2 w t = let a w t k=  (head(changs2 w t k ))
 pointCloud01 n  = let toMap e = last((map (amatrix e) [1..500]))
                   in map toMap [1..n]
 -- based on wohlGeor3 -> constant-> any string -> aways same points depending on pg functions
-pointCloud02 n = drop (n-1) (map (amatrix2 n) [1..5])
+pointCloud02 n = drop (n-1) (map (amatrix2 n) [1..50])
 
 pointCloud03 n  = let toMap e = last((map ((theTrix 2) e) [1..500]))
                   in map toMap [1..n]
@@ -1014,10 +1015,10 @@ chainDistribute crit dipfade2 criterium pt = let provideVals = [show(map ord cri
 -- EXPORT visiualize 
 -- e.g 'M.writeWXCloudNODE (ptc0 3)(ptc1 3)(ptc2 3)(ptc3 3)(ptc 3) (ptc5)'
 -- or  'M.writeWXCloud4 (ptc0 50)(ptc1 50)(ptc2 50)(ptc3 50)(ptc 50) (ptc5)'
-pg1 x = x--(F.fourierMQ6NOPAN123 x)
-pg2 x = x--(F.fourierMQ5NOPAN123 x)
-pg3 x = x--(F.fourierMQ4NOPAN123 x)
-pg4 x = x --(F.fourierMQ4TRACE x)
+pg1 x = (F.fourierMQ6NOPAN123 x)
+pg2 x = (F.fourierMQ5NOPAN123 x)
+pg3 x = (F.fourierMQ4NOPAN123 x)
+pg4 x = (F.fourierMQ4TRACE x)
 pg11 x = show x --show(F.fourierMQ6NOPAN123 x)
 pg22 x = show x --show(F.fourierMQ5NOPAN123 x)
 pg33 x = show x --show(F.fourierMQ4NOPAN123 x)
