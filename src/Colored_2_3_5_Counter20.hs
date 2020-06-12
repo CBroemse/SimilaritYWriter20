@@ -13,8 +13,9 @@
 -- 
 --  nACC nACCRAW, checkflow as main access functions
 --
---  DATA rating: using the 4.10.19 version with similariTYvalue plus its source functions
---    into 'trackArmTest4' that includes 'trackArmTest5
+--  DATA rating: using the 12.6.20 version with similariTYvalue plus its source functions
+--
+--    into 'kArmTest5'
 --
 ---
 -- VIEW all concepts in Colored_2_3_5_Counter.hs                                       --
@@ -50,7 +51,6 @@ module Colored_2_3_5_Counter20 (
     , kArmTest5 -- new Main 
       ) where
 
---import Mutter
 import Data.List
 import Data.Char
 import Control.Monad
@@ -126,7 +126,7 @@ import qualified WriteWXmaximaJuicy as M
 -- LEVEL 2    |                     |    innerAccessRAW "1" this OR inner..RAW "2" this   |
 -- LEVEL 2    |   e.g 
 --
--- FUNCTION IN 'trackArmTest4'                             'trackArmTest5'
+-- FUNCTION IN 'kArmTest5'                             'kArmTest5'
 -- ACCESS FUNCTIONS  
 -- ___________|___________________________________________________________________________|
 -- LEVEL 0   :|   [A]       [B]                                A             B           |
@@ -141,7 +141,7 @@ import qualified WriteWXmaximaJuicy as M
                                                                                 
   
  -- "The real power of cathegory-theory is kind of to isolate what you care about...
- --  a group of homomorphisms is aways a function between sets"
+ --  a group of homomorphisms is always a function between sets..."
  --  Fabrizio Romano Genovese 
  --
  --e.g *> let li = ["AAABB","AABAB","AAA","BBBAA"]
@@ -228,20 +228,21 @@ kArmTest5 bonelist mofaList connectWrist dit dit2 mCommand crit= do
   
                       where
                         commands = bonelist; 
-     --let beRepIMPORT pick1 pick2 commands = (show (beRepKEYRAW pick1 pick2 commands basis ))-- import A in beReKEYRAW via 'Punkt basis' to gaussrate A with B 
-    -- putStrLn (beRepIMPORT "1" "1" (allAcc basis))
+     
      let frame0 ibonelist i6 i7 i8 i9 =  (frame0a)   
          	  where
-              ----------------------------------------------------------
+              --------------------------------------------------------------------------------------------------------------------------------------
             frame0a = do
                    -----------------------------------------------------------------------------------------------
---   --      chainDistribution:
---      e.g Colored*> let gh = chainDistribute r ["2","2","1"] r (lines "1")
---                         |     
---    a)         Choose (if syn>1                        |    Punkt (simiYval a b )
---                simiaritYvalue                         | COMPARE ANY dit to any dit2 of bonelist ----------------------------------------INHERENT REATIONS 'bonelist'
---       e.g Colored*> (beRepKEY pick1 pick2 punktList)  | COMPARE ANY dit to any dit2 of bonelist 
---                            
+--   STEP 2)    chainDistribution   Choose (if bonelist>1                   |    Punkt (simiYval a b )
+
+--                      e.g ..*> let gh = chainDistribute r ["2","2","1"] r (lines "1")
+--                              
+--                            *> (beRepKEY pick1 pick2 punktList) 
+
+
+--   STEP 3)    chainDistribute ->  OCCURANCE   
+--       --                            
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -281,7 +282,7 @@ kArmTest5 bonelist mofaList connectWrist dit dit2 mCommand crit= do
 --
 --     OCCURANCE PROPOSITION                                     | in all ATOMS of all lines of bonelist
 --
---    *> let gh = chainDistribute r bonelist r (lines "1")
+--    *> let gh r = chainDistribute r bonelist r (lines "1")
 --    *> gh "AAABB"
 --    *> ([3],[[65,65,65,66,66,32,65,65,66,65,66,32,65,65,66,66,32,66,66,66,65,65],[4,5,9,11,15,16,18,19,20]])
 
@@ -378,11 +379,24 @@ kArmTest5 bonelist mofaList connectWrist dit dit2 mCommand crit= do
  -- Where are atoms on :  phiMax :: [Double] -> max ([(sum[Double])] ->[Double]   
  --                       phiMax = max (sum simYval )               |  calculating the most different line due to simiVal
  --                       also simYval :: [Double]
- --                    two new strategies arise: 
+ --foas:     | u:[Doulbe] -> WHEREELEMENT  ------------------------------------------------------------------------------------------"THE FIRST ORDER :)"
+ --                          The where element rpresent is the first step after choosing atrategy. In this case amximm is the strategy so we count down.
+ --                          We know the limit of how many steps to go is the length of bonelist  
+ --                           n -1 or +1 
+ --                         depeding if we introduce a new atom
+ --                          into the list of all atoms , inother words if the value we are comparing to is element of the list we would ony need to go  
+ --                          n-1 
+ --                          steps and vice versa. 
+ --                          strategy is being put
+ --                          frequenty into a fold . In other words if we start with phiMax (the maximum simval line of bonelist)
+ --                          the next smaller eement is being found via all those `elemIndices` functions.
+ --                          Important is the order that emerggece
+
+ --   two new strategies arise: 
  --                     
- --                    A) comparing the phiMax line to an ordered  phi line: compare (simYval) to  (sort phiMax)
- --                    B  comparing phiMax line to the phiMin
- --                    C) compare phiMax line to aother line
+ -- A) comparing the phiMax line to an ordered  phi line: compare (simYval) to  (sort phiMax)
+ -- B  comparing phiMax line to the phiMin
+ -- C) compare phiMax line to another line
               inlinesortEm <- forM [1..prepRyth] (\pw -> do
                              let toStep e w = ( w `elemIndices` e)
                              let lineorder =  nub(concat(concat sortEm))
@@ -395,10 +409,6 @@ kArmTest5 bonelist mofaList connectWrist dit dit2 mCommand crit= do
                              tmap3 <- forM [1..prepRyth] (\pi -> do
                                     let oiDo =  (tmaps3 pi)
                                     let oiDoform = ((concat (ausw pi ( head (ausw pw (map tmaps3 prep))))))
-                                  --  let comparesort = ausw pi (sort oiDoform)
-                                  --  let sortAns = reverse oiDoform
-
-                                    --let whereS = toStep comparesort (concat oiDoform)
                                     return((oiDoform)))
                           --   let tmaps3 t = (1map (toStep ((map snd randPunktList))) (ausw t (oi)))
                             -- let lineorder3 = map tmaps3 [1..pw] --(frmDoubletoInt (concat(map snd randPunktList)))
@@ -449,18 +459,6 @@ kArmTest5 bonelist mofaList connectWrist dit dit2 mCommand crit= do
       --  1. maximum -> step to next smaller atom ....  -- r shall be mapped
               let enduranceRace8a9_6_20 r u = show (map (toStep (muster u)) (concat (ausw r justIO))  )
               let edR1 r u = enduranceRace8a9_6_20 r u 
- --foas:     | u:[Doulbe] -> WHEREELEMENT  ------------------------------------------------------------------------------------------"THE FIRST ORDER :)"
- --                          The where element rpresent is the first step after choosing atrategy. In this case amximm is the strategy so we count down.
- --                          We know the limit of how many steps to go is the length of bonelist  
- --                           n -1 or +1 
- --                         depeding if we introduce a new atom
- --                          into the list of all atoms , inother words if the value we are comparing to is element of the list we would ony need to go  
- --                          n-1 
- --                          steps and vice versa. 
- --                          strategy is being put
- --                          frequenty into a fold . In other words if we start with phiMax (the maximum simval line of bonelist)
- --                          the next smaller eement is being found via all those `elemIndices` functions.
- --                          Important is the order that emerggece
  --           u: the normal order ?  
               let motherTYPE o u r = map (mayer2 ((ausw r (edR1 r o )))) [(map (edR1 r) u )]
 
@@ -497,7 +495,9 @@ kArmTest5 bonelist mofaList connectWrist dit dit2 mCommand crit= do
              --
             -- ARISING: 
             -- a line that yields [[0],[0],[0],[0],[0]
-       
+            -- There might be regression in the functions that+
+            -- comes out of above. -the phiMax strategy , starting from max simiYalist counting downwards
+            -- looking of te overal destribtions of zeros it seems that dpends argey of the mentioned function !? 
           -- Plot-------------------------------------------------------------------
           -- 3. Part of program
               let foe t = head (ausw t bonelist)
@@ -505,16 +505,16 @@ kArmTest5 bonelist mofaList connectWrist dit dit2 mCommand crit= do
               putStrLn "readY to plot"
               let pop = (ptc0  5)
               --M.writeWXCloudNODE (pop) (ptc2 5) (ptc3 5) (ptc4 5) (ptc5 5) (ptc6 5)
-              M.writeWXCloudNODE (ptc2 5) (ptc2 25) (ptc2 50) (ptc4 5) (ptc6 25) (ptc4 50)
+              M.writeWXCloudNODE (ptc2 5) (ptc2 15) (ptc2 25) (ptc4 2) (ptc4 3) (ptc4 5)
               M.writeWXCloud4 (ptc2 5) (ptc2 25) (ptc2 50) (ptc4 5) (ptc4 25) (ptc4 50)
               putStrLn "1" --(show pop) --(pop (head(map ord "1")))  ---------------------------------------------------------------------------------
  --run randomPunkt list with input:
- --e.g *> gh = "AAAABBBB"  
- -- COMPARE BONELIST to INPUT:  (a'S of bonlist) to  gh
-              let gh = concat (take prepRyth (repeat [crit]))
+ --e.g *> ghCheck = "AAAABBBB"    
+ -- COMPARE BONELIST to INPUT:  (a'S of bonlist) to  ghCheck
+              let ghCheck = concat (take prepRyth (repeat [crit]))
               randPunktList2 <- forM [1..(prepRyth)] (\z -> do
                         let chhos = ((ausw z (concat(snd(theTrix crit))))) 
-                        let mapRepKEY aa = beRepKEYRAW aa (show z) gh bonelist []
+                        let mapRepKEY aa = beRepKEYRAW aa (show z) ghCheck bonelist []
                         let forole = (prepRyth -1)
                         roleKEY <- forM [1..prepRyth] (\y -> do -----------------------------------------------------------------Export complete simiYmatrix as Strig
                                 let gegenStueck = filter (/=z) [1..prepRyth]
@@ -530,13 +530,14 @@ kArmTest5 bonelist mofaList connectWrist dit dit2 mCommand crit= do
                         let sta2 = sum sta1
                         putStrLn ((show sta1)++" "++((show sta2)))
                         return (sta2))
-              putStrLn (show (randPunktList2))
--- COMPARE bonlist thistime :  gh to (a'S of bonelist )
+              
+              putStrLn (show (randPunktList2)++"\n")
+-- COMPARE bonlist thistime :  ghCheck to (a'S of bonelist )
 --
 --  =>  randPunktList2 /= randPunktList2 but randPunktist2 = (transpose randPunkList3)   
               randPunktList3 <- forM [1..(prepRyth)] (\z -> do
                         let chhos = ((ausw z (concat(snd(theTrix crit))))) 
-                        let mapRepKEY aa = beRepKEYRAW aa (show z) bonelist gh []
+                        let mapRepKEY aa = beRepKEYRAW aa (show z) bonelist ghCheck []
                         let forole = (prepRyth -1)
                         roleKEY <- forM [1..prepRyth] (\y -> do -----------------------------------------------------------------Export complete simiYmatrix as Strig
                                 let gegenStueck = filter (/=z) [1..prepRyth]
@@ -552,8 +553,8 @@ kArmTest5 bonelist mofaList connectWrist dit dit2 mCommand crit= do
                         let sta2 = sum sta1
                         putStrLn ((show sta1)++" "++((show sta2)))
                         return (sta2))
+              putStrLn "sum matrix row" 
               putStrLn (show (randPunktList3))
-              putStrLn "Test Finger"
 ----------------------------------------------------------------------------------------------------------
 --
 ---------------------------------------------------------------------------------------------------------
@@ -562,6 +563,10 @@ kArmTest5 bonelist mofaList connectWrist dit dit2 mCommand crit= do
 
 
               let asDot inp = ((map mayer (map words inp)))
+
+ -- RETRIEVE the DATA turn any 
+ -- type:  [Maybe Punkt] -> String
+ -- with brute force.
               let justGoneRAW t som = let prep1 = ((map ord (concat(concat ((ausw t som))))))
          -- take always second
                              in let prep2 = head (ausw 2 ((ord '[') `elemIndices` (prep1)))
@@ -574,6 +579,7 @@ kArmTest5 bonelist mofaList connectWrist dit dit2 mCommand crit= do
               let justGone t = justGoneRAW t (asDot bonelist) 
               putStrLn (show (justGone 2))
               putStrLn "furter"
+
               putStrLn (justGoneRAW 1 ([(map tester  [1..4])])) 
               let pointeMA w2 w = Punkt (show(justGone w)) (Just(maybePu(show(justGone ((w2)-1))))) Nothing Nothing Nothing Nothing
               putStrLn (unlines (checkflow [] ([pointeMA 3 2])))
@@ -583,6 +589,7 @@ kArmTest5 bonelist mofaList connectWrist dit dit2 mCommand crit= do
               putStrLn (unlines(concat (asDot bonelist)))
               let hiveList = let ste1 w = (Just(maybePu(show(justGone (w-1)))))
                              in map ste1 [1..(length bonelist)] 
+              putStrLn "TEST: 9.6.20   ; not finished"
               putStrLn (head(ausw 3 (checkflow [mother] (sortPunkts 3))))
               let raw w =  (head((checkflow [mother] (w))))
               let fromOccur =  (((concat(sortEm)))) 
