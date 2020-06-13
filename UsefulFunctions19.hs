@@ -13,12 +13,12 @@ module UsefulFunctions19 (
         , desper
         , add
   -- 'Punkt' functions 
-        , allAccU
-   --     , publishPunkt
-        , checkflowU
+--        , allAccU
+        , publishPunktRAW
+        --, checkflowU
         , maybePu
-        , maybePu2 
-        , basisRAW) where
+        , maybePu2) where 
+      --  , basisRAW) where
      --   , nACC
      --   , nACCRAW
         --, fnACCRAW
@@ -154,13 +154,13 @@ reaDin pathNo = do
 -- Punkt functions
 --allAccU p = show(checkflow [] [p])           
      
-allAccU foPun =  (checkflowU [] [(foPun)])
+--allAccU foPun =  (checkflowU [] [(foPun)])
 
 -- transform any PUNKT conctruction into a string
 -- Punkt a -> String a -> show a 
 --architect: Punkt ; a whole Overview of the DataType tree with all its Branches
 -- searchTrail: ACCESFUNCTIONS e.g. [mother,mother,father] 
-publishPunkt architect searchTrail = let firstAccess = architect searchTrail 
+publishPunktRAW architect searchTrail = let firstAccess = architect searchTrail 
                in let ste1 = map ord (show firstAccess)
                in let breakCriteria = (32 `elemIndices` ste1)
      -- leersteln komme nur vor wenn ein term wie "Just blue" appears 
@@ -168,15 +168,17 @@ publishPunkt architect searchTrail = let firstAccess = architect searchTrail
                in let findeLeerstelln = snd (break (==32) ste1)
                in let seeIfBreaksNeeded = if (length breakCriteria<=0) then ste1
                                           else findeLeerstelln 
-               in let ste2 = filter (/=34) seeIfBreaksNeeded
-               in  let mapToChar = map chr ste2
-               in mapToChar 
+               in seeIfBreaksNeeded --ste2 mapToChar
+
+--publishPunkt archi searc = let ste1 = map chr (publishPunkt archi searc)
+  --                         in  filter (/=34) ste1
+
 
 --see the different states of flowState above
 -- e.g checkflow [mother] (flowState fotrack3 head) -> the optimized OUTPUT row ala [0.52,0.52,0.59,0.52,0.59,0.59,0.59]
-checkflowU lis f = let ste1 lis f= publishPunkt f lis
-                  in let ste2 = map (ste1 lis) f
-                  in ste2
+--checkflowU lis f = let ste1 lis f= publishPunkt f lis
+  --                in let ste2 = map (ste1 lis) f
+    --              in ste2
 -- let basis mm foA = Punkt (fnACCRAW(nACCRAW (unwords(allAcc connectWrist)) ["When set M will work:"++" now sleeping", checkFo mm ] ) ) foA foA foA foA foA
 
 
@@ -185,7 +187,9 @@ maybePu rt = Punkt rt Nothing Nothing Nothing Nothing Nothing
  -- *> type: maybePu:: String -> Maybe Punkt -> Punkt
 maybePu2 rt koA = Punkt rt koA Nothing Nothing Nothing Nothing
 
-basisRAW f n co ch mm foA = Punkt (f( n (unwords(allAccU ch)) ["When set M will work:"++" now sleeping", ch mm ]  )) foA foA foA foA foA
+ -- let basis mm foA = Punkt (fnACCRAW(nACCRAW (unwords(allAcc connectWrist)) ["When set M will work:"++" now sleeping", checkFo mm ] ) ) foA foA foA foA foA
+
+--basisRAW f n co ch mm foA = Punkt (f( n (unwords(allAccU ch)) ["When set M will work:"++" now sleeping", ch mm ]  )) foA foA foA foA foA
  
     --putStrLn "Wrote Punkt: startWert"
 -- this builds our sheep family tree

@@ -453,7 +453,7 @@ kArmTest5 bonelist mofaList connectWrist dit dit2 mCommand crit= do
 
               putStrLn "1" --(checkflow [] (toIter justNames))
               let justGene u =  map show(ausw u justIO)
-              -- A) comparing the phiMax line to an ordered  phi line: compare (simYval) to  (sort phiMax)
+-- A) comparing the phiMax line to an ordered  phi line: compare (simYval) to  (sort phiMax)
 -- B  comparing phiMax line to the phiMin
 -- C) compare phiMax line to another line
 
@@ -686,7 +686,15 @@ kArmTest5 bonelist mofaList connectWrist dit dit2 mCommand crit= do
 -- e.g checkflow [mother] (flowState fotrack3 head) -> the optimized OUTPUT row ala [0.52,0.52,0.59,0.52,0.59,0.59,0.59]
 checkflow lis f = let ste1 lis f= publishPunkt f lis
                   in let ste2 = map (ste1 lis) f
-                  in ste2 
+                  in ste2
+
+----------------------------------------------------------------------------------
+--see the different states of flowState above
+-- e.g checkflow [mother] (flowState fotrack3 head) -> the optimized OUTPUT row ala [0.52,0.52,0.59,0.52,0.59,0.59,0.59]
+checkflowInt lis f = let ste1 lis f= publishPunktRAW f lis
+                     in let ste2 = map (ste1 lis) f
+                     in ste2 
+ 
     --putStrLn "Wrote Punkt: startWert"
 ---------------------------------------------------------------------------
 
@@ -968,8 +976,26 @@ chainDistribute crit dipfade2 criterium pt = let provideVals = [show(map ord cri
 -- e.g 'M.writeWXCloudNODE (ptc0 3)(ptc1 3)(ptc2 3)(ptc3 3)(ptc 3) (ptc5)'
 -- or  'M.writeWXCloud4 (ptc0 50)(ptc1 50)(ptc2 50)(ptc3 50)(ptc 50) (ptc5)'
 -- let basis mm foA = basisRAW fnACCRAW nACCRAW (allAcc connectWrist) checkFo foA 
+basis2 foAL m = maybePu (head (ausw m foAL )) 
+basis3 foAL =  ((map ( (basis2 foAL)) [1..(length foAL)]))
+basis2New foAL x m = maybePu (head (ausw m (foAL x))) 
+-- Upload functions and apply them to the data
+-- -- when buiding the final 'Punkt' structure these are different
+-- computation that can be used with '[father,mother...' 
+-- a) turn bonelist into Punkt
+-- b) turn pg functions into Punkt via 'uniqueClassRAW' 
+formation e = Punkt "formation" (Just (basis2 e 1 )) (Just (basis2 e 2 )) (Just (basis2 e 3 )) (Just (basis2 e 4 )) (Just (basis2 e 5 )) 
 
-pg1 x = sin x --(F.fourierMQ6NOPAN123 x)
+-- store data in String because there are only 5 other spots left
+-- when reading a longer list that wont help thus store in Punkt "String"
+basis4 foAL  = maybePu (show(checkflow [] (map (basis2 foAL) [1..(length foAL)])))
+formTest io e normalFunction =  let punktOrPg = checkflow  io [(Punkt  (head(checkflow [] [(basis2 e 1 )])) (Just (basis2 e 1 )) (Just (basis2 e 3 )) (Just (basis2 e 4 )) (Just (basis2 e 5 )) (Just (basis2 e 6))) ]
+                 in let choosBy = length(head (group(punktOrPg)))
+                 in if choosBy ==2 then normalFunction
+                                   else punktOrPg 
+
+-- import your functions into kArmTest5 via formation
+pg1 x =  (sin x) -- (read((head(checkflow [mother] [(formTest [show(F.fourierMQ6NOPAN123 x)])]  ))))) -- head(ausw 1 [(F.fourierMQ6NOPAN123 x)]) 
 pg2 x = cos x --(F.fourierMQ5NOPAN123 x)
 pg3 x = cos x --(F.fourierMQ4NOPAN123 x)
 pg4 x = sin x --(F.fourierMQ4TRACE x)
@@ -979,10 +1005,10 @@ pg33 x = show x --show(F.fourierMQ4NOPAN123 x)
 pg44 x = show x --show(F.fourierMQ4TRACE x)
 pgFun x = x
 
--- a program Variables
--- when buiding the final 'Punkt' structure these are different
--- computation that can be used with '[father,mother...' 
-progVar1 = "AAABB" --"wrist" --koa = koa
+-- a program Variables:
+-- the data to be fed into plot via kArmTrack5 
+--
+progVar1 = "AAABB" 
 progVar2 = "AAABBAABAB"
 progVar3 = "AABAB"
 progVar4 = "AAA"
@@ -1002,9 +1028,68 @@ pointCloud03a n  = let toMap e = last((map ((theTrix 4) e) [1..50]))
 pointCloud03b n = let toMap e = last((map ((theTrix 6) e) [1..50]))
                   in map toMap [1..n]
 
+kArmT bonelist mofaList connectWrist dit dit2 mCommand crit= do
+     let allAcc p = show(checkflow [] [p])           
+     
+     let allAcc foPun =  (checkflow [] [(foPun)])
+     let checkFo g = if (length g) == 0 then ""
+                     else "MOTHER MODE: on"  
+     let fnACCOUT cou = if unPoint == ("\"notM\"") then unwords [""] -- cou
+                        else snd cou
+                    where unPoint = (show(head(words(unwords(checkflow [] [connectWrist]))))) ;
 
+     let fnACCRAW cou = if unPoint == ("\"notM\"") then fst cou
+                        else snd cou
+                    where 
+             unPoint = (show(head(words(unwords(checkflow [] [connectWrist]))))) ;
+     let maybePu rt = Punkt rt Nothing Nothing Nothing Nothing Nothing
+ -- Punkt function that inherits ancestory
+ -- *> type: maybePu:: String -> Maybe Punkt -> Punkt
+     let maybePu2 rt koA = Punkt rt koA Nothing Nothing Nothing Nothing
+     let foAdecide foA = if foA==[] then Nothing
+                         else (Just (maybePu foA)) --let whereBreak = chainDistribute crit bonelist crit (lines "1")
+
+-- make a function that is a [(Maybe Punkt)]-> that by itself is the definiton of
+-- mother :: Punkt -> Maybe Punkt 
+-- this function below shall lead to => a motherTYPE that is depending on the type of simiyritYvalue
+     let foAdecide2 foA = let boa rt t = (Just (maybePu2 rt t)) --let whereBreak = chainDistribute crit bonelist crit (lines "1")
+                          in let mapMaybePun k = let ste1 k rt = (boa (head(ausw k rt))) ((Just (maybePu (head (ausw k rt)))) ) 
+                                                 in ste1 k foA -- e.g foA = ["vb","vb2","vb3"]
+                          in let preMoa = length foA
+                          in let eindelijk = do (map mapMaybePun [1..preMoa]) 
+                          in 
+                          if foA==[] then Nothing
+                          else let chssd i = maybePu2 (head(ausw i foA))  (((boa (head(ausw i foA)) (head(ausw i eindelijk))))) -- (Just (maybePu (unwords(checkflow [] eindelijk)))) 
+                               in Just (show[(chssd 1)]) 
+ 
+     let basis mm foA = Punkt (fnACCRAW(nACCRAW (unwords(allAcc connectWrist)) ["When set M will work:"++" now sleeping", checkFo mm ] ) ) foA foA foA foA foA
+ {-
+     let mixUpTray0 showClass pushTPosition fiPalette testData = sirRetrun --beRep1 (read showClass) (show(words(unwords testData))) -- (sirRetrun oriPosition pushTPosition)
+                         where
+                           palette = fiPalette -- [bone1,foExp,(show(makeBreak sl)),anEx,(show aRate)] ;
+                           goodChoice doer = head (ausw doer palette);
+                           beRep1 doer showData = (Punkt (fnACCRAW (nACCRAW (showData) [(showClass),(goodChoice doer),"YES MONAD:_"++show dit])) (Just pushTPosition) Nothing Nothing Nothing Nothing);
+                               -- testData =  ((map snd (map snd (head commaBreakGuess)))) ;
+                           sirRetrun =  
+                                  let ans showClass = if showClass==bone1 || showClass=="5"
+                                                      then do 
+                                                         (beRep1 5 (show testData))
+                                                      else if showClass=="1" || showClass=="2" || showClass=="3" || showClass=="4"
+                                                      then do
+                                                          let reAd = read showClass
+                                                          (beRep1 reAd (show testData))
+                                                      else
+                                                          pushTPosition
+                                  in ans showClass; -}
+    -- take from deze [String] e.g -> 
+     let foChain = length bonelist
+     let makePalette pick1 pick2 punktList togoToList togtoList2  = noSense togoToList togtoList2
+                       where
+                          dada fopick fodeze = head (ausw (read fopick) fodeze);
+                          noSense deze deze2 = Punkt (dada pick1 deze) (Just (maybePu (dada pick2 deze2))) Nothing Nothing Nothing Nothing;
+     putStrLn (unlines(checkflow [mother] [(basis (checkflow [ ] [(basis4 liT )]) (Just (basis4 liT )))]))
 ----------------------------------------------------------
-
+liT = ["AAABB","AABAB","AAA","BBBAA"]
 
 --  DOMAIN:
 --  pointCoud1                    JustI or JustI and JustII or JustII -> (fst or fst/snd or snd Compare)
