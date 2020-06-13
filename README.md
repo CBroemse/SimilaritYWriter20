@@ -2,12 +2,21 @@
 ## Plot graphs writing to wxmaxima
                   
 A function that can compare any two lists:
+    
+      - define a structure that is called 'formation'
+      - which uploads functions into the main pipe and apply them to the data
+      - when buiding the final 'Punkt' structure these are different
+        computations that can be used with '[father,mother...' 
+
+        formation :: [String] -> Punkt
+     *> formation e = Punkt "formation" (Just (basis2 1 e)) (Just (basis2 2 e)) (Just (basis2 3 e)) (Just (basis2 4 e)) (Just (basis2 5 e)) 
+     
 
      this will be the main example being used throughout this program
      
      *> let li = ["AAABB","AABAB","AAA","BBBAA"]
      *> let bonelist = li
-     *> let pi = Punkt "M" Nothing Nothing Nothing Nothing Nothing  -- "notM" will yield other output
+     *> let pi = Punkt "M" Nothing Nothing Nothing Nothing Nothing  -- 
      
      we compare all lines and atoms of the bonlist. To describe certain Types we wil use ' 
 
