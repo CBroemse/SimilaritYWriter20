@@ -146,10 +146,7 @@ import qualified WriteWXmaximaJuicy as M
  --       let pi = Punkt "M" Nothing Nothing Nothing Nothing Nothing
  --    *  let kArmTest5 li 1 pi 1 1 [] "AAA"
 kArmTest5 bonelist mofaList connectWrist dit dit2 mCommand crit= do
-  --   let allAcc p = show(checkflow [] [p])           
      
-     let allAcc foPun =  (checkflow [] [(foPun)])
-          
      let foAdecide foA = if foA==[] then Nothing
                          else (Just (maybePu foA)) --let whereBreak = chainDistribute crit bonelist crit (lines "1")
 
@@ -213,7 +210,7 @@ kArmTest5 bonelist mofaList connectWrist dit dit2 mCommand crit= do
                   --      commands =   [bone1,bone2,bone3,bone4,bone5]; 
                         compar = head (ausw (read pick2) twoList);
                         paletteKEY fpic2 twoList astrList = makePalette pick1 fpic2 astrList onelist twoList;
-                        cleanPaletteRaw fpic2 twoList astrList = allAcc (paletteKEY fpic2 twoList astrList );  -- go to pick2 of list goTo
+                        cleanPaletteRaw fpic2 twoList astrList = checkflow [] [(paletteKEY fpic2 twoList astrList )];  -- go to pick2 of list goTo
                         crunchtoSimi fpic2  = let sta1 d = map ord d  
                                               in let sta2New = let ste1 = (map realToFrac (sta1 (unwords(cleanPaletteRaw fpic2 twoList punktList))))
                                                                 in drop 1 (take (length ste1) ste1)
