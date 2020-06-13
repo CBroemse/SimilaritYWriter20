@@ -146,23 +146,10 @@ import qualified WriteWXmaximaJuicy as M
  --       let pi = Punkt "M" Nothing Nothing Nothing Nothing Nothing
  --    *  let kArmTest5 li 1 pi 1 1 [] "AAA"
 kArmTest5 bonelist mofaList connectWrist dit dit2 mCommand crit= do
-     let allAcc p = show(checkflow [] [p])           
+  --   let allAcc p = show(checkflow [] [p])           
      
      let allAcc foPun =  (checkflow [] [(foPun)])
-     let checkFo g = if (length g) == 0 then ""
-                     else "MOTHER MODE: on"  
-     let fnACCOUT cou = if unPoint == ("\"notM\"") then unwords [""] -- cou
-                        else snd cou
-                    where unPoint = (show(head(words(unwords(checkflow [] [connectWrist]))))) ;
-
-     let fnACCRAW cou = if unPoint == ("\"notM\"") then fst cou
-                        else snd cou
-                    where 
-             unPoint = (show(head(words(unwords(checkflow [] [connectWrist]))))) ;
-     let maybePu rt = Punkt rt Nothing Nothing Nothing Nothing Nothing
- -- Punkt function that inherits ancestory
- -- *> type: maybePu:: String -> Maybe Punkt -> Punkt
-     let maybePu2 rt koA = Punkt rt koA Nothing Nothing Nothing Nothing
+          
      let foAdecide foA = if foA==[] then Nothing
                          else (Just (maybePu foA)) --let whereBreak = chainDistribute crit bonelist crit (lines "1")
 
@@ -177,9 +164,20 @@ kArmTest5 bonelist mofaList connectWrist dit dit2 mCommand crit= do
                           in 
                           if foA==[] then Nothing
                           else let chssd i = maybePu2 (head(ausw i foA))  (((boa (head(ausw i foA)) (head(ausw i eindelijk))))) -- (Just (maybePu (unwords(checkflow [] eindelijk)))) 
-                               in Just (show[(chssd 1)]) 
+                               in Just (show[(chssd 1)])
+     let mayer2 r foa = if (foa) == [] then maybePu "empty"
+                                       else maybePu2 (r) (Just(maybePu ((show [(foAdecide2 (foa))]))))
+     let justNames = ["name1","name2","name3"]
+     let motherType foas r = map (mayer2 (head(ausw r (justNames)))) ([foas])
+
+     putStrLn "TEST mayer2"
+     --putStrLn  
  
-     let basis mm foA = Punkt (fnACCRAW(nACCRAW (unwords(allAcc connectWrist)) ["When set M will work:"++" now sleeping", checkFo mm ] ) ) foA foA foA foA foA
+ -- import 'roaming' data into kArmTrack5     |  
+ -- stems from 'basisRAW' 'UsefuFunctions19.hs' :
+ -- let basis mm foA = Punkt (fnACCRAW(nACCRAW (unwords(allAcc connectWrist)) ["When set M will work:"++" now sleeping", checkFo mm ] ) ) foA foA foA foA foA
+
+   --  let basis mm foA = basisRAW fnACCRAW nACCRAW connectWrist checkFo foA 
  {-
      let mixUpTray0 showClass pushTPosition fiPalette testData = sirRetrun --beRep1 (read showClass) (show(words(unwords testData))) -- (sirRetrun oriPosition pushTPosition)
                          where
@@ -444,12 +442,10 @@ kArmTest5 bonelist mofaList connectWrist dit dit2 mCommand crit= do
 --                                        -> ( [0,1],  [0,1],    [3],   [2]] ) -> 
 --       => sortEM                           
               let findOrdeR = nub (concat(concat (sortEm)))       
-              let mayer2 r foa = if (foa) == [] then maybePu "empty"
-                                else maybePu2 (r) (Just(maybePu ((show [(foAdecide2 (foa))]))))
+              
                -- inp:[String] -> bonelist
        -- the lineorder can be funnelt into a (maybe mother)/= Nothing
        --  a motherType e.g simiSum Order 
-              let justNames = ["name1","name2","name3"]
               let toStep e w = ( w `elemIndices` e)
               let muster u = ausw u (sort(head inlinesortEm))
               let justIO = inlinesortEm
@@ -460,8 +456,7 @@ kArmTest5 bonelist mofaList connectWrist dit dit2 mCommand crit= do
 
               putStrLn "1" --(checkflow [] (toIter justNames))
               let justGene u =  map show(ausw u justIO)
-              let motherType foas r = map (mayer2 (head(ausw r (justNames)))) ([foas])
--- A) comparing the phiMax line to an ordered  phi line: compare (simYval) to  (sort phiMax)
+              -- A) comparing the phiMax line to an ordered  phi line: compare (simYval) to  (sort phiMax)
 -- B  comparing phiMax line to the phiMin
 -- C) compare phiMax line to another line
 
@@ -975,6 +970,8 @@ chainDistribute crit dipfade2 criterium pt = let provideVals = [show(map ord cri
 -- EXPORT visiualize 
 -- e.g 'M.writeWXCloudNODE (ptc0 3)(ptc1 3)(ptc2 3)(ptc3 3)(ptc 3) (ptc5)'
 -- or  'M.writeWXCloud4 (ptc0 50)(ptc1 50)(ptc2 50)(ptc3 50)(ptc 50) (ptc5)'
+-- let basis mm foA = basisRAW fnACCRAW nACCRAW (allAcc connectWrist) checkFo foA 
+
 pg1 x = sin x --(F.fourierMQ6NOPAN123 x)
 pg2 x = cos x --(F.fourierMQ5NOPAN123 x)
 pg3 x = cos x --(F.fourierMQ4NOPAN123 x)

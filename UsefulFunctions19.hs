@@ -11,10 +11,14 @@ module UsefulFunctions19 (
         , evallis
         , mymonaD
         , desper
-        , add 
+        , add
+  -- 'Punkt' functions 
         , allAccU
    --     , publishPunkt
-        , checkflowU ) where
+        , checkflowU
+        , maybePu
+        , maybePu2 
+        , basisRAW) where
      --   , nACC
      --   , nACCRAW
         --, fnACCRAW
@@ -29,6 +33,10 @@ import System.IO
 --import Data.Time as T
 -- import System.Locale
 import System.Random
+
+--own modules
+import DataTypePunkt
+
 
 replaceE = map (\c -> if c=='e' then '1'; else c)
 replaceColon = map (\c -> if c==',' then ' '; else c)
@@ -168,7 +176,17 @@ publishPunkt architect searchTrail = let firstAccess = architect searchTrail
 -- e.g checkflow [mother] (flowState fotrack3 head) -> the optimized OUTPUT row ala [0.52,0.52,0.59,0.52,0.59,0.59,0.59]
 checkflowU lis f = let ste1 lis f= publishPunkt f lis
                   in let ste2 = map (ste1 lis) f
-                  in ste2 
+                  in ste2
+-- let basis mm foA = Punkt (fnACCRAW(nACCRAW (unwords(allAcc connectWrist)) ["When set M will work:"++" now sleeping", checkFo mm ] ) ) foA foA foA foA foA
+
+
+maybePu rt = Punkt rt Nothing Nothing Nothing Nothing Nothing
+ -- Punkt function that inherits ancestory
+ -- *> type: maybePu:: String -> Maybe Punkt -> Punkt
+maybePu2 rt koA = Punkt rt koA Nothing Nothing Nothing Nothing
+
+basisRAW f n co ch mm foA = Punkt (f( n (unwords(allAccU ch)) ["When set M will work:"++" now sleeping", ch mm ]  )) foA foA foA foA foA
+ 
     --putStrLn "Wrote Punkt: startWert"
 -- this builds our sheep family tree
 -- HYRACHY IN DATA-TYPE
