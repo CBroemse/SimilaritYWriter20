@@ -380,17 +380,17 @@ kArmTest5 bonelist mofaList connectWrist dit dit2 mCommand crit= do
  --                       phiMax = max (sum simYval )               |  calculating the most different line due to simiVal
  --                       also simYval :: [Double]
  --foas:     | u:[Doulbe] -> WHEREELEMENT  ------------------------------------------------------------------------------------------"THE FIRST ORDER :)"
- --                          The where element rpresent is the first step after choosing atrategy. In this case amximm is the strategy so we count down.
- --                          We know the limit of how many steps to go is the length of bonelist  
+ --                          The where element represent is the first step after choosing atrategy. In this case phiMax is the strategy so we count down.
+ --                          We know the limit of how many steps to go is the length of the given bonelist.  
  --                           n -1 or +1 
- --                         depeding if we introduce a new atom
- --                          into the list of all atoms , inother words if the value we are comparing to is element of the list we would ony need to go  
+ --                         depending if we introduce a new atom
+ --                          into the list of all atoms , in other words if the value we are comparing to is element of the list we would only need to go  
  --                          n-1 
  --                          steps and vice versa. 
  --                          strategy is being put
  --                          frequenty into a fold . In other words if we start with phiMax (the maximum simval line of bonelist)
- --                          the next smaller eement is being found via all those `elemIndices` functions.
- --                          Important is the order that emerggece
+ --                          the next smaller element is being found via all those `elemIndices` functions.
+ --                          Important is the order that emerges.
 
  --   two new strategies arise: 
  --                     
