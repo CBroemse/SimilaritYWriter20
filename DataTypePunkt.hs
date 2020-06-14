@@ -7,9 +7,16 @@ import Control.Monad
 import System.Environment
 import System.IO
 
+
+aSieve f = [((plugit f 2),(stelle2er f)),((plugit f 3),(stelle3er f)),((plugit f 5) ,(stelle5er f))] 
+
+aSieve2 f = [((plugit2 f 2),(stelle2er f)),((plugit2 f 3),(stelle3er f)),((plugit2 f 5) ,(stelle5er f))] 
+einTyp3 f g = [(plugit2 f g)]
+
+
 --------------------------------------------------------------
 --------------------------------------------------------------
---FARBGEBER KUGELN
+--COLOR BALLS
 --------------------------------------------------------------
 
 bougaer x= let gaga =(read x)

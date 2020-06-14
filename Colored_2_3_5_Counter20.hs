@@ -65,16 +65,7 @@ import qualified Path2Val2 as HT
 import qualified FourierFieldCLASSIFIER as F
 import qualified WriteWXmaximaJuicy as M
 
-     --   " Truth (Wahrheit) over certainty (Gewissheit)"
---                  (Illobrandt von Ludwiger)
---   " Lets start a framework that derives truth from certainty, 
---     based on truth"
----- \
----- /  truth -> certainty -> truth
----- glossary ideas: the colores
---     iPunkts:= imaginary Punkts used for own reasoning
 --
---       - one of infinity?
 --     1. layer of concept: The Haskell string below is not easily understood 
 --                          
 --inner lexicon :
@@ -85,9 +76,8 @@ import qualified WriteWXmaximaJuicy as M
 --        but ':=' /= '::' thus
 --
 --simiYvals = [similaritYvalue] := pick1 a [list] -> pick2 a [list] -> compare (pick1 a) to (pick2 a)   
---        there is an equivalent unconsistent (not relyibe) way to describe
---                          the ineherit concept of this project.    
---                          e.g Colored*> 
+--        this is an equivalent unconsistent (not relyibe) way to describe the concept of this project.    
+--                         
 --
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -140,7 +130,19 @@ import qualified WriteWXmaximaJuicy as M
   
  -- "The real power of cathegory-theory is kind of to isolate what you care about...
  --  a group of homomorphisms is always a function between sets..."
- --  Fabrizio Romano Genovese 
+ --  Fabrizio Romano Genovese
+ --
+ --        --   " Truth (Wahrheit) over certainty (Gewissheit)"
+--                  (Illobrandt von Ludwiger)
+--   " Lets start a framework that derives truth from certainty, 
+--     based on truth"
+---- \
+---- /  truth -> certainty -> truth
+---- glossary ideas:
+--     the colores := takes the a modified step of sieve of Eratosthens
+--                    2 - 3 - 5 and viusualizes structures 
+--     iPunkts:= imaginary Punkts used for own reasoning
+
  --
  --e.g *> let li = ["AAABB","AABAB","AAA","BBBAA"]
  --       let pi = Punkt "M" Nothing Nothing Nothing Nothing Nothing
