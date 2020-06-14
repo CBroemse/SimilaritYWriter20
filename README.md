@@ -112,6 +112,8 @@ to use bone list as a mode but keep 'realy big' input like below at bay:
   
 ![alt tag](https://github.com/CBroemse/SimilaritYWriter20/blob/master/source/2_3_5_1.png)
 
+      aSieve :: Num b => Int -> [(String, b)]
+
 
 --------------------------------------------------------------------------
 A function that can compare any two values:
