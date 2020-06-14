@@ -146,7 +146,8 @@ import qualified WriteWXmaximaJuicy as M
  --       let pi = Punkt "M" Nothing Nothing Nothing Nothing Nothing
  --    *  let kArmTest5 li 1 pi 1 1 [] "AAA"
 kArmTest5 bonelist mofaList connectWrist dit dit2 mCommand crit= do
-     
+     let allAcc foPun =  (checkflow [] [(foPun)])
+ 
      let foAdecide foA = if foA==[] then Nothing
                          else (Just (maybePu foA)) --let whereBreak = chainDistribute crit bonelist crit (lines "1")
 
@@ -169,10 +170,18 @@ kArmTest5 bonelist mofaList connectWrist dit dit2 mCommand crit= do
 
      putStrLn "TEST mayer2"
      --putStrLn  
+     let fnACCRAW cou = if unPoint == ("\"notM\"") then fst cou
+                        else snd cou
+            where 
+             unPoint = (show(head(words(unwords(checkflow [] [connectWrist]))))) ;
  
  -- import 'roaming' data into kArmTrack5     |  
- -- stems from 'basisRAW' 'UsefuFunctions19.hs' :
- -- let basis mm foA = Punkt (fnACCRAW(nACCRAW (unwords(allAcc connectWrist)) ["When set M will work:"++" now sleeping", checkFo mm ] ) ) foA foA foA foA foA
+ --  all data in one clunky data-type :
+     let checkFo g = if (length g) == 0 then ""
+                     else "MOTHER MODE: on"  
+
+     let basis mm foA = Punkt (fnACCRAW(nACCRAW (unwords(allAcc (connectWrist))) ["When set M will work:"++" now sleeping", checkFo mm ] ) ) foA foA foA foA foA
+     let formation io1 io2 rd = [(basis (checkflow io1 [(basis4 liT (preX rd))]) (Just (maybePu(unwords(formTest io2 (preX rd) [show(F.fourierMQ6NOPAN123 rd )] (words(show(sin rd))))))  ))]
 
    --  let basis mm foA = basisRAW fnACCRAW nACCRAW connectWrist checkFo foA 
  {-
@@ -984,19 +993,28 @@ basis2New foAL x m = maybePu (head (ausw m (foAL x)))
 -- computation that can be used with '[father,mother...' 
 -- a) turn bonelist into Punkt
 -- b) turn pg functions into Punkt via 'uniqueClassRAW' 
-formation e = Punkt "formation" (Just (basis2 e 1 )) (Just (basis2 e 2 )) (Just (basis2 e 3 )) (Just (basis2 e 4 )) (Just (basis2 e 5 )) 
+formationB e = Punkt "formation" (Just (basis2 e 1 )) (Just (basis2 e 2 )) (Just (basis2 e 3 )) (Just (basis2 e 4 )) (Just (basis2 e 5 )) 
 
 -- store data in String because there are only 5 other spots left
 -- when reading a longer list that wont help thus store in Punkt "String"
-basis4 foAL  = maybePu (show(checkflow [] (map (basis2 foAL) [1..(length foAL)])))
-formTest io e normalFunction =  let punktOrPg = checkflow  io [(Punkt  (head(checkflow [] [(basis2 e 1 )])) (Just (basis2 e 1 )) (Just (basis2 e 3 )) (Just (basis2 e 4 )) (Just (basis2 e 5 )) (Just (basis2 e 6))) ]
+basis4 foAL r = maybePu (show(checkflow [] [((basis2 foAL r))]))
+-- map befehle
+-- befehle:  [(F.fourierMQ6NOPAN123),(F.fourierMQ5NOPAN123),(F.fourierMQ4NOPAN123),(F.fourierMQ4TRACE)] 
+
+formTest io r e normalFunction =  let punktOrPg = checkflow  io [(Punkt  (head(checkflow [] [(basis4 liT r)])) (Just (basis2 e 1 )) (Just (basis2 e 3 )) (Just (basis2 e 4 )) (Just (basis2 e 5 )) (Just (basis2 e 6))) ]
                  in let choosBy = length(head (group(punktOrPg)))
                  in if choosBy ==2 then normalFunction
                                    else punktOrPg 
 
+runner x = do  --scanChar
+        sin x 
+    --     f <- (f getLine)    --head [(sin x),(cos x)])
+      --   r <- (x)
+        -- (return (do r)) --putStrLn (show e) --show(return e)
 -- import your functions into kArmTest5 via formation
-pg1 x =  (sin x) -- (read((head(checkflow [mother] [(formTest [show(F.fourierMQ6NOPAN123 x)])]  ))))) -- head(ausw 1 [(F.fourierMQ6NOPAN123 x)]) 
-pg2 x = cos x --(F.fourierMQ5NOPAN123 x)
+preX x = head(map scanChar (frmDoubletoInt (show x)))
+pg1 x =  (sin (read((head((formTest [mother] (preX x) [show(F.fourierMQ6NOPAN123 (x))] (words(show(sin 1))))  ))))) -- (((([(formTest [mother] 1 [show(F.fourierMQ6NOPAN123 (realToFrac (show x)))] (words(show(sin (x)))))]  )))) -- head(ausw 1 [(F.fourierMQ6NOPAN123 x)]) 
+pg2 x = cos x --(F.fourierMQ5NOPAN123 x)0
 pg3 x = cos x --(F.fourierMQ4NOPAN123 x)
 pg4 x = sin x --(F.fourierMQ4TRACE x)
 pg11 x = show x --show(F.fourierMQ6NOPAN123 x)
@@ -1087,7 +1105,17 @@ kArmT bonelist mofaList connectWrist dit dit2 mCommand crit= do
                        where
                           dada fopick fodeze = head (ausw (read fopick) fodeze);
                           noSense deze deze2 = Punkt (dada pick1 deze) (Just (maybePu (dada pick2 deze2))) Nothing Nothing Nothing Nothing;
-     putStrLn (unlines(checkflow [mother] [(basis (checkflow [ ] [(basis4 liT )]) (Just (basis4 liT )))]))
+    -- io1: mother ;  io2 [mother -> pg1 ; father -> pg2  ... 
+     let formation io1 io2 rd = (head(head(map words(checkflow io1 [(basis (checkflow io1 [(basis4 liT (preX rd))]) (Just (maybePu(unwords(formTest io2 (preX rd) [show(F.fourierMQ6NOPAN123 rd )] (words(show(sin rd))))))  ))]))))
+  --  putStrLn (unlines(checkflow [father] [(basis (checkflow [] [(basis4 liT 1)]) (Just (maybePu(unwords(formTest [] 1 [show(F.fourierMQ6NOPAN123 1 )] (words(show(pg2 1))))))  ))]))
+   --  putStrLn (unlines(checkflow [father] [(basis (checkflow [] [(basis4 liT 1)]) (Just (maybePu(unwords(formTest [] dit2 [show(F.fourierMQ6NOPAN123 (1) )] (words(show(pg2 1))))))  ))]))
+     --(formation [mother] [mother] 1)
+     (formation [mother] [mother] 1)
+     --(formation [mother] [] 1)
+
+
+     --pg111 
+    -- putStrLn (unlines(checkflow [father] (formation (pg1 1) 1)  ))
 ----------------------------------------------------------
 liT = ["AAABB","AABAB","AAA","BBBAA"]
 
