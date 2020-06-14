@@ -109,8 +109,8 @@ to use bone list as a mode but keep 'realy big' input like below at bay:
   Is there a way to 'leapfrog' the shortest path whithout reading every atom of boneist? 
   
 ![alt tag](https://github.com/CBroemse/SimilaritYWriter20/blob/master/src/source/2_3_5_1.png)
-<img src="/src/source/2_3_5_1.png" alt="My cool logo"/>
-# My cool project and above is the logo of it
+<img src="https://github.com/CBroemse/SimilaritYWriter20/blob/master/src/source/2_3_5_1.png" alt="concept"/>
+
 --------------------------------------------------------------------------
 A function that can compare any two values:
 
