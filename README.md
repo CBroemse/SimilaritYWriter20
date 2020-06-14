@@ -4,7 +4,7 @@
 A function that can compare any two lists:
     
       - define a structure that is called 'formation'
-      - which uploads functions into the main pipe and apply them to the data
+      - which uploads functions into the main pipe and applies them to the data
       - when buiding the final 'Punkt' structure these are different
         computations that can be used with '[father,mother...' 
 
