@@ -107,6 +107,12 @@ to use bone list as a mode but keep 'realy big' input like below at bay:
 
       e.g*> listBackofHead = map show [1..1978419655660313589123979]
          *> lineTerror= map show [[1..1978419655660313589123979]]
+      
+ a certain somone knew anyway ;) but the proposition above is a relation
+ between 19 and the floating numbers ?!. The number above is 19^19
+ which is a prime group limit. ( 19 is special with prime numbers:)  
+ Thus below, the beginnig three digits of any possible prime number group until
+ 19, 2_3_5_to 1
          
   Is there a way to 'leapfrog' the shortest path whithout reading every atom of boneist? 
   
