@@ -123,7 +123,7 @@ to use bone list as a mode but keep 'realy big' input like below at bay:
     The intend was to symolize the computation that all numbers on the Haskell side became 
     their own computation. It is tempting to assemble whole programs that way, maybe its 
     like an old assembler language but that I need to ask more experienced peers. 
-    However it aint a 'walk in a park' and the number of posssibities is a frightening abyss.
+    However it aint a 'walk in the park' and the number of posssibities is a frightening abyss.
     Now the Haskell type declaration system with its syntax seems much more appealing. I believe the solution if I ought to   
     understand it must be in the Haskell types with simYvalues first and secondarily to apply this metric
     to compare the different domains found and vsiualize their effects. So back to 'kArmTrack5'
