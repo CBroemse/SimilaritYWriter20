@@ -443,7 +443,10 @@ kArmTest5 bonelist mofaList connectWrist dit dit2 mCommand crit= do
                
 
 ----------------------------------------------------------------------------------
-
+-- MAP ANCESTORY    
+--             I ...
+--             II bonelist  -> simiYVal   
+--                functions: 'tester' (ausw t) [phiMax] ->  Just mother t   
 ----------------------------------------------------------------------------------
 --MAP ANCESTORY     start with the pre-ordered phiMax 
 --  e.g  ["AAABB","AABAB","AAA","BBBAA"]  -> ["AAABB"/"AAABAB","BBBAA","AAA"]  -> sortEm
@@ -474,6 +477,8 @@ kArmTest5 bonelist mofaList connectWrist dit dit2 mCommand crit= do
               let enduranceRace8a9_6_20 r u = show (map (toStep (muster u)) (concat (ausw r justIO))  )
               let edR1 r u = enduranceRace8a9_6_20 r u 
 
+              let moreEdR1 r = map (edR1 r) [1..prepRyth]
+
  --           u: the normal order ?     
  --   r:Int ; which to take of sortEm to be mapped with [1..(length bonelist)]
             --    let motherTYPE o u r = map (mayer2 ((ausw r (edR1 r o )))) [(map (edR1 r) u )]
@@ -483,6 +488,11 @@ kArmTest5 bonelist mofaList connectWrist dit dit2 mCommand crit= do
               let mapMo o r = unwords (checkflow [mother] (motherTYPE o [1..prepRyth] r))
               putStrLn "\n test mother functions"
               putStrLn (unlines(checkflow [mother] (ausw 1 (motherType (justGene 3) (3)))))
+   -- Punkt function:
+   -- insert your desired mother type to any Punkt
+   -- e.g *> let mymotherT03 t = (ausw 1 (motherType (justGene t) (t)))
+   --     *> let accesMT03 t= unlines$checkflow [mother] mymotherT3$ t
+   --   use function 'tester' below to accomplish that
               let tester t = (unlines(checkflow [mother] (ausw 1 (motherType (justGene t) (t)))))
               let motherType3 foas r = map (mayer3 (head(ausw r (map show justIO)))) ([foas])
               putStrLn (unlines(checkflow [mother] (ausw 1 (motherType3 (justGene 3) (3)))))
@@ -506,6 +516,7 @@ kArmTest5 bonelist mofaList connectWrist dit dit2 mCommand crit= do
     --           [[ ],[ ],[0],[]]
     --           [[ ],[ ],[ ],[]]
     --           [[0],[0],[ ],[]]
+              putStrLn (edR1 3 3)
               putStrLn (edR1 3 4)
               putStrLn (edR1 4 1)
               putStrLn (edR1 4 2)
@@ -513,6 +524,9 @@ kArmTest5 bonelist mofaList connectWrist dit dit2 mCommand crit= do
               putStrLn (edR1 4 4)
               putStrLn "Test map mother"
               putStrLn (mapMo 1 1)
+              putStrLn (unlines(sort(moreEdR1 1 )))
+ 
+    
 --              putStrLn (mapMo 2)
   --            putStrLn (mapMo 3)
     --          putStrLn (mapMo 4)
@@ -687,6 +701,7 @@ kArmTest5 bonelist mofaList connectWrist dit dit2 mCommand crit= do
     --          putStrLn (show whereTO)
       --        putStrLn (show(length(unlines tguess)))
         --      putStrLn line1Ideal 
+        
      (frame0 bonelist (mofaList) connectWrist dit dit2) 
 
 
