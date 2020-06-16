@@ -151,7 +151,7 @@ kArmTest5 bonelist mofaList connectWrist dit dit2 mCommand crit= do
      let allAcc foPun =  (checkflow [] [(foPun)])
  
      let foAdecide foA = if foA==[] then Nothing
-                         else (Just (maybePu foA)) --let whereBreak = chainDistribute crit bonelist crit (lines "1")
+                         else (Just (maybePu foA)) 
 
 -- make a function that is a [(Maybe Punkt)]-> that by itself is the definiton of
 -- mother :: Punkt -> Maybe Punkt 
@@ -300,10 +300,10 @@ kArmTest5 bonelist mofaList connectWrist dit dit2 mCommand crit= do
 --            dataFormat :==   ( occurance position,  map ord input ,    occurance fst atom ( "A" of "AABBB" -> [1,2])   )
 --                       :== (  [occurance posi.] , [[ map ord input] , [occur.proposi.]]   )
 --
-              let theTrix crit = chainDistribute crit bonelist crit (lines "1")
+              let theTrix2 crit = chainDistribute crit bonelist crit (lines "1")
               -- ACCESS functions:
-              let foinnerOrd = head(snd (theTrix crit))
-              let foinner = last (snd(theTrix crit))
+              let foinnerOrd = head(snd (theTrix2 crit)) --
+              let foinner = last (snd(theTrix2 crit))
               let rythm = (32) `elemIndices` (foinnerOrd)
               let prepRyth = if head rythm ==0 then length rythm
                              else (length rythm)+1
@@ -350,7 +350,7 @@ kArmTest5 bonelist mofaList connectWrist dit dit2 mCommand crit= do
 --                                         
 
               randPunktList <- forM [1..(prepRyth)] (\z -> do
-                        let chhos = ((ausw z (concat(snd(theTrix crit))))) 
+                        let chhos = ((ausw z (concat(snd(theTrix2 crit)))))  
                         let mapRepKEY aa = (sortWith aa) (show z)
                         let forole = (prepRyth -1)
                         roleKEY <- forM [1..prepRyth] (\y -> do -----------------------------------------------------------------Export complete simiYmatrix as Strig
@@ -425,28 +425,72 @@ kArmTest5 bonelist mofaList connectWrist dit dit2 mCommand crit= do
                              let theInner = (concat (take 1 tmap3 )) 
                              return(theInner))
                       
-              sortAncestor <- forM [1..prepRyth] (\pr -> do
-                      let lineorder =  nub(concat(concat sortEm))
-                      let prep = zipWith (+) (take (length lineorder) [1,1..]) (lineorder)
-
-                      let toStep e w = ( w `elemIndices` e)
-                      let holdOn t = concat (ausw t (inlinesortEm)) 
-                      let tmaps t v = map (toStep (ausw t [holdOn pr])) (ausw t v)
-                      let lineorder t = tmaps t [(holdOn pr)] --tmaps pr 
-                      putStrLn "testin"
-                      return (show (holdOn pr)))
-              putStrLn "below: sortEm ; inlinesortEm; sortAncestors" 
+              
+              putStrLn "below: sortEm ; inlinesortEm; " 
               putStrLn ((unlines (map show (concat (sortEm)))))
               putStrLn ((show inlinesortEm))
               putStrLn ""
-              putStrLn ((show sortAncestor))
+              --run randomPunkt list with input:
+ --e.g *> ghCheck = "AAAABBBB"    
+ -- COMPARE BONELIST to INPUT:  (a'S of bonlist) to  ghCheck
+              let ghCheck = concat (take prepRyth (repeat [crit]))
+                            
+-- COMPARE bonlist thistime :  ghCheck to (a'S of bonelist )
+--
+--  =>  randPunktList2 /= randPunktList2 but randPunktist2 = (transpose randPunkList3)   
+              randPunktList3 <- forM [1..(prepRyth)] (\z -> do
+                        let chhos = ((ausw z (concat(snd(theTrix2 crit))))) 
+                        let mapRepKEY aa = beRepKEYRAW aa (show z) bonelist ghCheck []
+                        let forole = (prepRyth -1)
+                        roleKEY <- forM [1..prepRyth] (\y -> do -----------------------------------------------------------------Export complete simiYmatrix as Strig
+                                let gegenStueck = filter (/=z) [1..prepRyth]
+                                let makShow aa = show(mapRepKEY aa)
+                                let role = map makShow (map show gegenStueck)
+                                return(role) )
+                        roleKEY2 <- forM [1..prepRyth] (\y -> do ----------------------------------------------------------------Export as Double 
+                                let gegenStueck = filter (/=z) [1..prepRyth]
+                                let role = mapRepKEY(show y)
+                                return(role) ) 
+ 
+                        let sta1 =  roleKEY2 --(ausw 1 (concat (take 1 roleKEY2)))
+                        let sta2 = sum sta1
+                        putStrLn ((show sta1)++" "++((show sta2)))
+                        return (sta1))
+              putStrLn "sum matrix row" 
+              putStrLn (show (randPunktList3))
+
+	 -- the input variable ghCheck is sorted into phiMax list.
+	 -- ghCheck could end up in any spot of a list  sorL1 
+	 -- find max different of group 
+	 -- ghCheck :: bonelist
+              let prepPhiorder = take 1 randPunktList3 
+              sortEmInput <- forM [1..prepRyth] (\pr -> do
+                      let withInput = (show (prepPhiorder))
+                      let toStep e w = ( w `elemIndices` e)
+                      let tmaps t w2 = map (toStep (sort (map fst randPunktList))) (ausw t w2)
+                      let lineorder = last (last (tmaps pr (map fst randPunktList))) -- take phimax order
+                      let accessSTEPI = (map snd randPunktList)
+                      let foAddgh = head (sort accessSTEPI)
+                       
+                       
+                      putStrLn "testin"
+                      return (show foAddgh))
+              putStrLn (unlines sortEmInput)
+
+
                
 
 ----------------------------------------------------------------------------------
 -- MAP ANCESTORY    
 --             I ...
---             II bonelist  -> simiYVal   
---                functions: 'tester' (ausw t) [phiMax] ->  Just mother t   
+--             II bonelist  -> simiYVal [line1..lineN]  
+--                
+--           functions:
+--'tester' (ausw t) [phiMax] ->  Just mother t   
+--motherType3  | like above test your own name ist
+--            step [phiMax] -1    ..mother..         ["name list"]
+--
+--             
 ----------------------------------------------------------------------------------
 --MAP ANCESTORY     start with the pre-ordered phiMax 
 --  e.g  ["AAABB","AABAB","AAA","BBBAA"]  -> ["AAABB"/"AAABAB","BBBAA","AAA"]  -> sortEm
@@ -486,6 +530,7 @@ kArmTest5 bonelist mofaList connectWrist dit dit2 mCommand crit= do
               let motherTYPE o u r = map (mayer2 ((ausw r (edR1 r o )))) [(map (edR1 r) u )]
 
               let mapMo o r = unwords (checkflow [mother] (motherTYPE o [1..prepRyth] r))
+              let exportMother o = (words (head(map (mapMo o) [1..prepRyth])))
               putStrLn "\n test mother functions"
               putStrLn (unlines(checkflow [mother] (ausw 1 (motherType (justGene 3) (3)))))
    -- Punkt function:
@@ -495,7 +540,7 @@ kArmTest5 bonelist mofaList connectWrist dit dit2 mCommand crit= do
    --   use function 'tester' below to accomplish that
               let tester t = (unlines(checkflow [mother] (ausw 1 (motherType (justGene t) (t)))))
               let motherType3 foas r = map (mayer3 (head(ausw r (map show justIO)))) ([foas])
-              putStrLn (unlines(checkflow [mother] (ausw 1 (motherType3 (justGene 3) (3)))))
+              putStrLn (unlines(checkflow [] (ausw 1 (motherType3 (justGene 3) (3)))))
               putStrLn (tester 4)
               putStrLn (edR1 1 1)
               putStrLn (edR1 1 2)
@@ -523,9 +568,8 @@ kArmTest5 bonelist mofaList connectWrist dit dit2 mCommand crit= do
               putStrLn (edR1 4 3)
               putStrLn (edR1 4 4)
               putStrLn "Test map mother"
-              putStrLn (mapMo 1 1)
-              putStrLn (unlines(sort(moreEdR1 1 )))
- 
+            --  putStrLn (unlines(sort(moreEdR1 1 )))
+             -- putStrLn (unines(checkflow [mother] 
     
 --              putStrLn (mapMo 2)
   --            putStrLn (mapMo 3)
@@ -552,54 +596,7 @@ kArmTest5 bonelist mofaList connectWrist dit dit2 mCommand crit= do
               M.writeWXCloudNODE (ptc2 5) (ptc2 15) (ptc2 25) (ptc4 2) (ptc4 3) (ptc4 5)
               M.writeWXCloud4 (ptc2 5) (ptc2 25) (ptc2 50) (ptc4 5) (ptc4 25) (ptc4 50)
               putStrLn "1" --(show pop) --(pop (head(map ord "1")))  ---------------------------------------------------------------------------------
- --run randomPunkt list with input:
- --e.g *> ghCheck = "AAAABBBB"    
- -- COMPARE BONELIST to INPUT:  (a'S of bonlist) to  ghCheck
-              let ghCheck = concat (take prepRyth (repeat [crit]))
-              randPunktList2 <- forM [1..(prepRyth)] (\z -> do
-                        let chhos = ((ausw z (concat(snd(theTrix crit))))) 
-                        let mapRepKEY aa = beRepKEYRAW aa (show z) ghCheck bonelist []
-                        let forole = (prepRyth -1)
-                        roleKEY <- forM [1..prepRyth] (\y -> do -----------------------------------------------------------------Export complete simiYmatrix as Strig
-                                let gegenStueck = filter (/=z) [1..prepRyth]
-                                let makShow aa = show(mapRepKEY aa)
-                                let role = map makShow (map show gegenStueck)
-                                return(role) )
-                        roleKEY2 <- forM [1..prepRyth] (\y -> do ----------------------------------------------------------------Export as Double 
-                                let gegenStueck = filter (/=z) [1..prepRyth]
-                                let role = mapRepKEY(show y)
-                                return(role) ) 
- 
-                        let sta1 =  roleKEY2 --(ausw 1 (concat (take 1 roleKEY2)))
-                        let sta2 = sum sta1
-                        putStrLn ((show sta1)++" "++((show sta2)))
-                        return (sta2))
-              
-              putStrLn (show (randPunktList2)++"\n")
--- COMPARE bonlist thistime :  ghCheck to (a'S of bonelist )
---
---  =>  randPunktList2 /= randPunktList2 but randPunktist2 = (transpose randPunkList3)   
-              randPunktList3 <- forM [1..(prepRyth)] (\z -> do
-                        let chhos = ((ausw z (concat(snd(theTrix crit))))) 
-                        let mapRepKEY aa = beRepKEYRAW aa (show z) bonelist ghCheck []
-                        let forole = (prepRyth -1)
-                        roleKEY <- forM [1..prepRyth] (\y -> do -----------------------------------------------------------------Export complete simiYmatrix as Strig
-                                let gegenStueck = filter (/=z) [1..prepRyth]
-                                let makShow aa = show(mapRepKEY aa)
-                                let role = map makShow (map show gegenStueck)
-                                return(role) )
-                        roleKEY2 <- forM [1..prepRyth] (\y -> do ----------------------------------------------------------------Export as Double 
-                                let gegenStueck = filter (/=z) [1..prepRyth]
-                                let role = mapRepKEY(show y)
-                                return(role) ) 
- 
-                        let sta1 =  roleKEY2 --(ausw 1 (concat (take 1 roleKEY2)))
-                        let sta2 = sum sta1
-                        putStrLn ((show sta1)++" "++((show sta2)))
-                        return (sta2))
-              putStrLn "sum matrix row" 
-              putStrLn (show (randPunktList3))
-----------------------------------------------------------------------------------------------------------
+ ----------------------------------------------------------------------------------------------------------
 --
 ---------------------------------------------------------------------------------------------------------
               let mayer foa = if foa == [] then [""]
@@ -622,7 +619,7 @@ kArmTest5 bonelist mofaList connectWrist dit dit2 mCommand crit= do
                              in map chr filAll
               let justGone t = justGoneRAW t (asDot bonelist) 
               putStrLn (show (justGone 2))
-              putStrLn "furter"
+              putStrLn "furter" 
 
               putStrLn (justGoneRAW 1 ([(map tester  [1..4])])) 
               let pointeMA w2 w = Punkt (show(justGone w)) (Just(maybePu(show(justGone ((w2)-1))))) Nothing Nothing Nothing Nothing
@@ -652,7 +649,7 @@ kArmTest5 bonelist mofaList connectWrist dit dit2 mCommand crit= do
               putStrLn (show (outputPunktOrder 3))
 
               allTogether <- forM [1..(prepRyth)] (\z -> do
-                        let chhos = ((ausw z (concat(snd(theTrix crit))))) 
+                        let chhos = ((ausw z (concat(snd(theTrix2 crit))))) 
                         let mapRepKEYI aa = (sortWith aa) (show z)
                         let forole = (prepRyth -1)
                         roleKEY <- forM [1..prepRyth] (\y -> do
