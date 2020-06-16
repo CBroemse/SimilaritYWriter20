@@ -583,10 +583,10 @@ kArmTest5 bonelist mofaList connectWrist dit dit2 mCommand crit= do
              --
             -- ARISING: 
             -- a line that yields [[0],[0],[0],[0],[0]
-            -- There might be regression in the functions that+
-            -- comes out of above. -the phiMax strategy , starting from max simiYalist counting downwards
-            -- looking of te overal destribtions of zeros it seems that dpends argey of the mentioned function !? 
-          -- Plot-------------------------------------------------------------------
+            -- There might be regression in the functions tha
+            -- comes out of above,
+            --
+    -- Plot-------------------------------------------------------------------
           -- 3. Part of program
               let foe t = head (ausw t bonelist)
           --    let op = atrix0a (foe 1) (foe 2) (foe 3) (foe 4) (foe 2) (foe 1) 1 1
