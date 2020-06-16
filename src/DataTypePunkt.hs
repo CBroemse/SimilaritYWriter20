@@ -7,9 +7,16 @@ import Control.Monad
 import System.Environment
 import System.IO
 
+
+aSieve f = [((plugit f 2),(stelle2er f)),((plugit f 3),(stelle3er f)),((plugit f 5) ,(stelle5er f))] 
+
+aSieve2 f = [((plugit2 f 2),(stelle2er f)),((plugit2 f 3),(stelle3er f)),((plugit2 f 5) ,(stelle5er f))] 
+einTyp3 f g = [(plugit2 f g)]
+
+
 --------------------------------------------------------------
 --------------------------------------------------------------
---FARBGEBER KUGELN
+--COLOR BALLS
 --------------------------------------------------------------
 
 bougaer x= let gaga =(read x)
@@ -153,16 +160,26 @@ dhfg  x y = let boss = chr x
 --
 data Punkt = Punkt {name::String, mother::Maybe Punkt, father::Maybe Punkt,mother2::Maybe Punkt,loopNumber:: Maybe Punkt,minMaxTrueOrFalse::Maybe Punkt}
 -- Punkt "what" 
+data PunktInt =  PunktInt {nameI::Int, motherI::Maybe Punkt, motherII::Maybe Punkt,motherIII::Maybe Punkt,motherIV:: Maybe Punkt,motherV::Maybe Punkt}
+
+
 
 -- we show sheep by name
 instance Show Punkt where
   show s = show (name s)
 	
 
+-- we show sheep by name
+instance Show PunktInt where
+  show s = show (nameI s)
+
+
 -- traceFamily is a generic function to find an ancestor
 richtungHoeheY :: Punkt -> [ (Punkt -> Maybe Punkt) ] -> Maybe Punkt
 richtungHoeheY s l = foldM getParent s l
   where getParent s f = f s
+
+
 
 -- we can define complex queries using traceFamily in an easy, clear way
 --BEISPIEL:

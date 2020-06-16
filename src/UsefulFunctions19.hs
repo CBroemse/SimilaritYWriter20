@@ -11,7 +11,21 @@ module UsefulFunctions19 (
         , evallis
         , mymonaD
         , desper
-        , add ) where
+        , add
+  -- 'Punkt' functions 
+        , allAccU
+        , publishPunktRAW
+        , checkflowU
+        , maybePu
+        , maybePu2 
+        , basisRAW
+    --    , nACC
+    --    , nACCRAW
+        , fnACCRAW2 
+    --    , innerAccess
+    --    , innerAccessRAW
+        , checkFo) where
+     --   , nameACCESSFUNCTION ) where
 -- always color sceME 'delek'
 
 import Data.List
@@ -22,6 +36,10 @@ import System.IO
 --import Data.Time as T
 -- import System.Locale
 import System.Random
+
+--own modules
+import DataTypePunkt
+
 
 replaceE = map (\c -> if c=='e' then '1'; else c)
 replaceColon = map (\c -> if c==',' then ' '; else c)
@@ -132,9 +150,105 @@ reaDin pathNo = do
     let proccfi = takerleiN pathNo (thisfi) 
     putStrLn (unwords(concat oteval)++"\n\n" )
     putStrLn ((unlines proccfi)) 
- 
+--------------------------------------------------------------------------- 
 
---_________________________________________________
+---------------------------------------------------------------------------
+----- SimilaritYwWiter20 12-6-20
+-- Punkt functions
+--allAccU p = show(checkflow [] [p])           
+     
+allAccU foPun =  (checkflowU [] [(foPun)])
+
+-- transform any PUNKT conctruction into a string
+-- Punkt a -> String a -> show a 
+--architect: Punkt ; a whole Overview of the DataType tree with all its Branches
+-- searchTrail: ACCESFUNCTIONS e.g. [mother,mother,father] 
+publishPunktRAW architect searchTrail = let firstAccess = architect searchTrail 
+               in let ste1 = map ord (show firstAccess)
+               in let breakCriteria = (32 `elemIndices` ste1)
+     -- leersteln komme nur vor wenn ein term wie "Just blue" appears 
+     -- this in order ot get rid of the Just
+               in let findeLeerstelln = snd (break (==32) ste1)
+               in let seeIfBreaksNeeded = if (length breakCriteria<=0) then ste1
+                                          else findeLeerstelln 
+               in let ste2 = filter (/=34) seeIfBreaksNeeded
+               in  let mapToChar = map chr ste2
+               in mapToChar
+
+
+--see the different states of flowState above
+-- e.g checkflow [mother] (flowState fotrack3 head) -> the optimized OUTPUT row ala [0.52,0.52,0.59,0.52,0.59,0.59,0.59]
+checkflowU lis f = let ste1 lis f= publishPunktRAW f lis
+                  in let ste2 = map (ste1 lis) f
+                  in ste2
+-- let basis mm foA = Punkt (fnACCRAW(nACCRAW (unwords(allAcc connectWrist)) ["When set M will work:"++" now sleeping", checkFo mm ] ) ) foA foA foA foA foA
+
+
+maybePu rt = Punkt rt Nothing Nothing Nothing Nothing Nothing
+ -- Punkt function that inherits ancestory
+ -- *> type: maybePu:: String -> Maybe Punkt -> Punkt
+maybePu2 rt koA = Punkt rt koA Nothing Nothing Nothing Nothing
+
+ -- let basis mm foA = Punkt (fnACCRAW(nACCRAW (unwords(allAcc connectWrist)) ["When set M will work:"++" now sleeping", checkFo mm ] ) ) foA foA foA foA foA
+
+basisRAW f n co ch mm foA = Punkt (f( n (unwords(allAccU ch)) ["When set M will work:"++" now sleeping", ch mm ]  )) foA foA foA foA foA
+ 
+    --putStrLn "Wrote Punkt: startWert"
+-- this builds our sheep family tree
+-- HYRACHY IN DATA-TYPE
+--          |ACCESS FUNCTIONS  
+-- ___________|___________________________________________________________________________|
+-- LEVEL 0   :|    nACC                                                                   |
+-- LEVEL 1 in:|    nACCRAW -> fst -> tracker1                                             |
+--            |            -> snd -> findArm,findHand                                     |
+-- LEVEL 1    |     tracker1        |    findArm,findHand                                 |   
+-- LEVEL 1 output =>fst: "tracker!" OR    snd:  ["findArm","hand"])                       |                      
+-- LEVEL 2    |                     |    innerAccessRAW "1" this OR inner..RAW "2" this   |
+-- LEVEL 2    |   e.g 
+-- -- as INNERACCESS function retieving data of each single ACCESSFUNCTIONS          
+-- within the string of a Punkt
+-- e.g: *Main> Co.innerAccessRAW "2" (unwords ["findArm","hand\n"])
+--      " hand\n"
+
+innerAccessRAW on this = let convToBit = map ord this
+                   in let chopUp1 = (break (<=32) convToBit)
+                   in let chopUp2 = (break (>=32) convToBit)
+
+                   in if on=="1" then 
+                        --let theFst = fst (break (>32) ((fst chopUp1)))	
+                        map chr (fst chopUp1)
+                      else
+                        (map chr (snd chopUp1))
+
+innerAccess on this = (innerAccessRAW on) this
+----------------------------------------------------------------------
+-----------------------------------------------------------------------
+--Fill AccesFuctions with Data
+-- theName: String; Fill AccesFuctions with Data
+-- set to shwo tracker1 see below
+nameACCESSFUNCTION on theName input= let whichAccesFunction = (innerAccess on theName)
+                            in let theData = whichAccesFunction++" "++(unlines input)
+                            in theData
+
+
+--short
+nACC theName input = (nameACCESSFUNCTION "1" theName input)
+nACCRAW tracker1 input = break (==' ') (nACC tracker1 input)
+--nACCTAG =  
+
+fnACCRAW2 foCon cou = if unPoint == ("\"notM\"") then fst cou
+                        else snd cou
+          where 
+             unPoint = (show(head(words(unwords(checkflowU [] foCon ))))) ;
+
+checkFo g = if (length g) == 0 then ""
+            else "MOTHER MODE: on"  
+
+-----------------------------------------------------------------------------
+
+
+
+----------------------------------------------------------------------------
 --filtert String z nach zeichenzahl (s. dropwhile ..)
 --in 'wolfram' werden leerstellen noch angezeigt (concat entfernt diese)
 --in 'rythmuS' werden die stellen der valieden pfade als [Int] ausgegeben
@@ -318,4 +432,14 @@ scanString = let ste = (go 0)
           go a (x:xs) | 0 <= sc && sc <= 9 = go (10*a+sc) xs
                       | otherwise = 0
               where sc = scanChar x
+
+
+--g: is for pi
+--h: wie spitz/flach ist Glocke
+--x: Wert der  beobachteten Groesse e.g. val 
+--innerhalb von  
+fogAussVerteilung h g= (h/(sqrt g))
+
+foefactor h x e= (((sqrt h^2)*(x^2))*e)
+gaussVerTeilung h g x e = ((fogAussVerteilung h g )*(foefactor h x e))
 

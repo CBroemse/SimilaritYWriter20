@@ -65,16 +65,7 @@ import qualified Path2Val2 as HT
 import qualified FourierFieldCLASSIFIER as F
 import qualified WriteWXmaximaJuicy as M
 
-     --   " Truth (Wahrheit) over certainty (Gewissheit)"
---                  (Illobrandt von Ludwiger)
---   " Lets start a framework that derives truth from certainty, 
---     based on truth"
----- \
----- /  truth -> certainty -> truth
----- glossary ideas: the colores
---     iPunkts:= imaginary Punkts used for own reasoning
 --
---       - one of infinity?
 --     1. layer of concept: The Haskell string below is not easily understood 
 --                          
 --inner lexicon :
@@ -85,9 +76,8 @@ import qualified WriteWXmaximaJuicy as M
 --        but ':=' /= '::' thus
 --
 --simiYvals = [similaritYvalue] := pick1 a [list] -> pick2 a [list] -> compare (pick1 a) to (pick2 a)   
---        there is an equivalent unconsistent (not relyibe) way to describe
---                          the ineherit concept of this project.    
---                          e.g Colored*> 
+--        this is an equivalent unconsistent (not relyibe) way to describe the concept of this project.    
+--                         
 --
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -137,36 +127,31 @@ import qualified WriteWXmaximaJuicy as M
 -- LEVEL 2    |                     |    innerAccessRAW "1" this OR inner..RAW "2" this   |
 -- LEVEL 2    |   e.g 
 --
---
-                                                                                
   
  -- "The real power of cathegory-theory is kind of to isolate what you care about...
  --  a group of homomorphisms is always a function between sets..."
- --  Fabrizio Romano Genovese 
+ --  Fabrizio Romano Genovese
+ --
+ --        --   " Truth (Wahrheit) over certainty (Gewissheit)"
+--                  (Illobrandt von Ludwiger)
+--   " Lets start a framework that derives truth from certainty, 
+--     based on truth"
+---- \
+---- /  truth -> certainty -> truth
+---- glossary ideas:
+--     the colores := takes the a modified step of sieve of Eratosthens
+--                    2 - 3 - 5 and viusualizes structures 
+--     iPunkts:= imaginary Punkts used for own reasoning
+
  --
  --e.g *> let li = ["AAABB","AABAB","AAA","BBBAA"]
  --       let pi = Punkt "M" Nothing Nothing Nothing Nothing Nothing
  --    *  let kArmTest5 li 1 pi 1 1 [] "AAA"
 kArmTest5 bonelist mofaList connectWrist dit dit2 mCommand crit= do
-     let allAcc p = show(checkflow [] [p])           
-     
      let allAcc foPun =  (checkflow [] [(foPun)])
-     let checkFo g = if (length g) == 0 then ""
-                     else "MOTHER MODE: on"  
-     let fnACCOUT cou = if unPoint == ("\"notM\"") then unwords [""] -- cou
-                        else snd cou
-                    where unPoint = (show(head(words(unwords(checkflow [] [connectWrist]))))) ;
-
-     let fnACCRAW cou = if unPoint == ("\"notM\"") then fst cou
-                        else snd cou
-                    where 
-             unPoint = (show(head(words(unwords(checkflow [] [connectWrist]))))) ;
-     let maybePu rt = Punkt rt Nothing Nothing Nothing Nothing Nothing
- -- Punkt function that inherits ancestory
- -- *> type: maybePu:: String -> Maybe Punkt -> Punkt
-     let maybePu2 rt koA = Punkt rt koA Nothing Nothing Nothing Nothing
+ 
      let foAdecide foA = if foA==[] then Nothing
-                         else (Just (maybePu foA)) --let whereBreak = chainDistribute crit bonelist crit (lines "1")
+                         else (Just (maybePu foA)) 
 
 -- make a function that is a [(Maybe Punkt)]-> that by itself is the definiton of
 -- mother :: Punkt -> Maybe Punkt 
@@ -179,9 +164,28 @@ kArmTest5 bonelist mofaList connectWrist dit dit2 mCommand crit= do
                           in 
                           if foA==[] then Nothing
                           else let chssd i = maybePu2 (head(ausw i foA))  (((boa (head(ausw i foA)) (head(ausw i eindelijk))))) -- (Just (maybePu (unwords(checkflow [] eindelijk)))) 
-                               in Just (show[(chssd 1)]) 
+                               in Just (show[(chssd 1)])
+     let mayer2 r foa = if (foa) == [] then maybePu "empty"
+                                       else maybePu2 (r) (Just(maybePu ((show [(foAdecide2 (foa))]))))
+     let justNames = ["name1","name2","name3"]
+     let motherType foas r = map (mayer2 (head(ausw r (justNames)))) ([foas])
+
+     putStrLn "TEST mayer2"
+     --putStrLn  
+     let fnACCRAW cou = if unPoint == ("\"notM\"") then fst cou
+                        else snd cou
+            where 
+             unPoint = (show(head(words(unwords(checkflow [] [connectWrist]))))) ;
  
-     let basis mm foA = Punkt (fnACCRAW(nACCRAW (unwords(allAcc connectWrist)) ["When set M will work:"++" now sleeping", checkFo mm ] ) ) foA foA foA foA foA
+ -- import 'roaming' data into kArmTrack5     |  
+ --  all data in one clunky data-type :
+     let checkFo g = if (length g) == 0 then ""
+                     else "MOTHER MODE: on"  
+
+     let basis mm foA = Punkt (fnACCRAW(nACCRAW (unwords(allAcc (connectWrist))) ["When set M will work:"++" now sleeping", checkFo mm ] ) ) foA foA foA foA foA
+     let formation io1 io2 rd = [(basis (checkflow io1 [(basis4 liT (preX rd))]) (Just (maybePu(unwords(formTest io2 (preX rd) [show(F.fourierMQ6NOPAN123 rd )] (words(show(sin rd))))))  ))]
+
+   --  let basis mm foA = basisRAW fnACCRAW nACCRAW connectWrist checkFo foA 
  {-
      let mixUpTray0 showClass pushTPosition fiPalette testData = sirRetrun --beRep1 (read showClass) (show(words(unwords testData))) -- (sirRetrun oriPosition pushTPosition)
                          where
@@ -217,7 +221,7 @@ kArmTest5 bonelist mofaList connectWrist dit dit2 mCommand crit= do
                   --      commands =   [bone1,bone2,bone3,bone4,bone5]; 
                         compar = head (ausw (read pick2) twoList);
                         paletteKEY fpic2 twoList astrList = makePalette pick1 fpic2 astrList onelist twoList;
-                        cleanPaletteRaw fpic2 twoList astrList = allAcc (paletteKEY fpic2 twoList astrList );  -- go to pick2 of list goTo
+                        cleanPaletteRaw fpic2 twoList astrList = checkflow [] [(paletteKEY fpic2 twoList astrList )];  -- go to pick2 of list goTo
                         crunchtoSimi fpic2  = let sta1 d = map ord d  
                                               in let sta2New = let ste1 = (map realToFrac (sta1 (unwords(cleanPaletteRaw fpic2 twoList punktList))))
                                                                 in drop 1 (take (length ste1) ste1)
@@ -241,7 +245,14 @@ kArmTest5 bonelist mofaList connectWrist dit dit2 mCommand crit= do
 --                            *> (beRepKEY pick1 pick2 punktList) 
 
 
---   STEP 3)    chainDistribute ->  OCCURANCE   
+--   STEP 3)    chainDistribute ->  OCCURANCE   ->  randPunktList -> sortEm -> 
+--              => edR1                             | the function to be mapped in motherTYPE
+--              => motherTYPE                       | a f
+--              *> let edR1 r u = enduranceRace8a9_6_20 r u 
+--
+--               u: the normal order ?  
+--              *> let motherTYPE o u r = map (mayer2 ((ausw r (edR1 r o )))) [(map (edR1 r) u )]
+
 --       --                            
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -289,10 +300,10 @@ kArmTest5 bonelist mofaList connectWrist dit dit2 mCommand crit= do
 --            dataFormat :==   ( occurance position,  map ord input ,    occurance fst atom ( "A" of "AABBB" -> [1,2])   )
 --                       :== (  [occurance posi.] , [[ map ord input] , [occur.proposi.]]   )
 --
-              let theTrix crit = chainDistribute crit bonelist crit (lines "1")
+              let theTrix2 crit = chainDistribute crit bonelist crit (lines "1")
               -- ACCESS functions:
-              let foinnerOrd = head(snd (theTrix crit))
-              let foinner = last (snd(theTrix crit))
+              let foinnerOrd = head(snd (theTrix2 crit)) --
+              let foinner = last (snd(theTrix2 crit))
               let rythm = (32) `elemIndices` (foinnerOrd)
               let prepRyth = if head rythm ==0 then length rythm
                              else (length rythm)+1
@@ -339,7 +350,7 @@ kArmTest5 bonelist mofaList connectWrist dit dit2 mCommand crit= do
 --                                         
 
               randPunktList <- forM [1..(prepRyth)] (\z -> do
-                        let chhos = ((ausw z (concat(snd(theTrix crit))))) 
+                        let chhos = ((ausw z (concat(snd(theTrix2 crit)))))  
                         let mapRepKEY aa = (sortWith aa) (show z)
                         let forole = (prepRyth -1)
                         roleKEY <- forM [1..prepRyth] (\y -> do -----------------------------------------------------------------Export complete simiYmatrix as Strig
@@ -380,17 +391,17 @@ kArmTest5 bonelist mofaList connectWrist dit dit2 mCommand crit= do
  --                       phiMax = max (sum simYval )               |  calculating the most different line due to simiVal
  --                       also simYval :: [Double]
  --foas:     | u:[Doulbe] -> WHEREELEMENT  ------------------------------------------------------------------------------------------"THE FIRST ORDER :)"
- --                          The where element rpresent is the first step after choosing atrategy. In this case amximm is the strategy so we count down.
- --                          We know the limit of how many steps to go is the length of bonelist  
+ --                          The where element represent is the first step after choosing atrategy. In this case phiMax is the strategy so we count down.
+ --                          We know the limit of how many steps to go is the length of the given bonelist.  
  --                           n -1 or +1 
- --                         depeding if we introduce a new atom
- --                          into the list of all atoms , inother words if the value we are comparing to is element of the list we would ony need to go  
+ --                         depending if we introduce a new atom
+ --                          into the list of all atoms , in other words if the value we are comparing to is element of the list we would only need to go  
  --                          n-1 
  --                          steps and vice versa. 
  --                          strategy is being put
  --                          frequenty into a fold . In other words if we start with phiMax (the maximum simval line of bonelist)
- --                          the next smaller eement is being found via all those `elemIndices` functions.
- --                          Important is the order that emerggece
+ --                          the next smaller element is being found via all those `elemIndices` functions.
+ --                          Important is the order that emerges.
 
  --   two new strategies arise: 
  --                     
@@ -410,39 +421,86 @@ kArmTest5 bonelist mofaList connectWrist dit dit2 mCommand crit= do
                                     let oiDo =  (tmaps3 pi)
                                     let oiDoform = ((concat (ausw pi ( head (ausw pw (map tmaps3 prep))))))
                                     return((oiDoform)))
-                          --   let tmaps3 t = (1map (toStep ((map snd randPunktList))) (ausw t (oi)))
-                            -- let lineorder3 = map tmaps3 [1..pw] --(frmDoubletoInt (concat(map snd randPunktList)))
  
-                             let theInner = (concat (take 1 tmap3 )) --(toStep (ausw pw tmaps2) (concat tmaps2))  --toStep (ausw pw [tmaps2]) (tmaps2) --tmaps2 pw (concat(map snd randPunktList))
+                             let theInner = (concat (take 1 tmap3 )) 
                              return(theInner))
                       
-              sortAncestor <- forM [1..prepRyth] (\pr -> do
-                      let lineorder =  nub(concat(concat sortEm))
-                      let prep = zipWith (+) (take (length lineorder) [1,1..]) (lineorder)
-
-                      let toStep e w = ( w `elemIndices` e)
-                      let holdOn t = concat (ausw t (inlinesortEm)) 
-                      let tmaps t v = map (toStep (ausw t [holdOn pr])) (ausw t v)
-                      let lineorder t = tmaps t [(holdOn pr)] --tmaps pr 
-                      putStrLn "testin"
-                      return (show (holdOn pr)))
- 
+              
+              putStrLn "below: sortEm ; inlinesortEm; " 
               putStrLn ((unlines (map show (concat (sortEm)))))
               putStrLn ((show inlinesortEm))
-              putStrLn ((show sortAncestor))
-              
+              putStrLn ""
+              --run randomPunkt list with input:
+ --e.g *> ghCheck = "AAAABBBB"    
+ -- COMPARE BONELIST to INPUT:  (a'S of bonlist) to  ghCheck
+              let ghCheck = concat (take prepRyth (repeat [crit]))
+                            
+-- COMPARE bonlist thistime :  ghCheck to (a'S of bonelist )
+--
+--  =>  randPunktList2 /= randPunktList2 but randPunktist2 = (transpose randPunkList3)   
+              randPunktList3 <- forM [1..(prepRyth)] (\z -> do
+                        let chhos = ((ausw z (concat(snd(theTrix2 crit))))) 
+                        let mapRepKEY aa = beRepKEYRAW aa (show z) bonelist ghCheck []
+                        let forole = (prepRyth -1)
+                        roleKEY <- forM [1..prepRyth] (\y -> do -----------------------------------------------------------------Export complete simiYmatrix as Strig
+                                let gegenStueck = filter (/=z) [1..prepRyth]
+                                let makShow aa = show(mapRepKEY aa)
+                                let role = map makShow (map show gegenStueck)
+                                return(role) )
+                        roleKEY2 <- forM [1..prepRyth] (\y -> do ----------------------------------------------------------------Export as Double 
+                                let gegenStueck = filter (/=z) [1..prepRyth]
+                                let role = mapRepKEY(show y)
+                                return(role) ) 
+ 
+                        let sta1 =  roleKEY2 --(ausw 1 (concat (take 1 roleKEY2)))
+                        let sta2 = sum sta1
+                        putStrLn ((show sta1)++" "++((show sta2)))
+                        return (sta1))
+              putStrLn "sum matrix row" 
+              putStrLn (show (randPunktList3))
+
+	 -- the input variable ghCheck is sorted into phiMax list.
+	 -- ghCheck could end up in any spot of a list  sorL1 
+	 -- find max different of group 
+	 -- ghCheck :: bonelist
+              let prepPhiorder = take 1 randPunktList3 
+              sortEmInput <- forM [1..prepRyth] (\pr -> do
+                      let withInput = (show (prepPhiorder))
+                      let toStep e w = ( w `elemIndices` e)
+                      let tmaps t w2 = map (toStep (sort (map fst randPunktList))) (ausw t w2)
+                      let lineorder = last (last (tmaps pr (map fst randPunktList))) -- take phimax order
+                      let accessSTEPI = (map snd randPunktList)
+                      let foAddgh = head (sort accessSTEPI)
+                       
+                       
+                      putStrLn "testin"
+                      return (show foAddgh))
+              putStrLn (unlines sortEmInput)
+
+
+               
 
 ----------------------------------------------------------------------------------
-
+-- MAP ANCESTORY    
+--             I ...
+--             II bonelist  -> simiYVal [line1..lineN]  
+--                
+--           functions:
+--'tester' (ausw t) [phiMax] ->  Just mother t   
+--motherType3  | like above test your own name ist
+--            step [phiMax] -1    ..mother..         ["name list"]
+--
+--             
 ----------------------------------------------------------------------------------
---MAP ANCESTORY     
+--MAP ANCESTORY     start with the pre-ordered phiMax 
+--  e.g  ["AAABB","AABAB","AAA","BBBAA"]  -> ["AAABB"/"AAABAB","BBBAA","AAA"]  -> sortEm
+--                                        -> ( [0,1],  [0,1],    [3],   [2]] ) -> 
+--       => sortEM                           
               let findOrdeR = nub (concat(concat (sortEm)))       
-              let mayer2 r foa = if (foa) == [] then maybePu "empty"
-                                else maybePu2 (r) (Just(maybePu ((show [(foAdecide2 (foa))]))))
+              
                -- inp:[String] -> bonelist
        -- the lineorder can be funnelt into a (maybe mother)/= Nothing
        --  a motherType e.g simiSum Order 
-              let justNames = ["name1","name2","name3"]
               let toStep e w = ( w `elemIndices` e)
               let muster u = ausw u (sort(head inlinesortEm))
               let justIO = inlinesortEm
@@ -453,19 +511,36 @@ kArmTest5 bonelist mofaList connectWrist dit dit2 mCommand crit= do
 
               putStrLn "1" --(checkflow [] (toIter justNames))
               let justGene u =  map show(ausw u justIO)
-              let motherType foas r = map (mayer2 (head(ausw r (justNames)))) ([foas])
-      -- CHOOSE A STRATEGY build on simyVal   phiMax we can ask the simiYval order
+-- A) comparing the phiMax line to an ordered  phi line: compare (simYval) to  (sort phiMax)
+-- B  comparing phiMax line to the phiMin
+-- C) compare phiMax line to another line
+
+      -- CHOOSE A STRATEGY build on A
       -- choosen: 
       --  1. maximum -> step to next smaller atom ....  -- r shall be mapped
               let enduranceRace8a9_6_20 r u = show (map (toStep (muster u)) (concat (ausw r justIO))  )
               let edR1 r u = enduranceRace8a9_6_20 r u 
- --           u: the normal order ?  
+
+              let moreEdR1 r = map (edR1 r) [1..prepRyth]
+
+ --           u: the normal order ?     
+ --   r:Int ; which to take of sortEm to be mapped with [1..(length bonelist)]
+            --    let motherTYPE o u r = map (mayer2 ((ausw r (edR1 r o )))) [(map (edR1 r) u )]
+              let areplace r o = ((ausw r (edR1 r o )))
               let motherTYPE o u r = map (mayer2 ((ausw r (edR1 r o )))) [(map (edR1 r) u )]
 
+              let mapMo o r = unwords (checkflow [mother] (motherTYPE o [1..prepRyth] r))
+              let exportMother o = (words (head(map (mapMo o) [1..prepRyth])))
+              putStrLn "\n test mother functions"
               putStrLn (unlines(checkflow [mother] (ausw 1 (motherType (justGene 3) (3)))))
+   -- Punkt function:
+   -- insert your desired mother type to any Punkt
+   -- e.g *> let mymotherT03 t = (ausw 1 (motherType (justGene t) (t)))
+   --     *> let accesMT03 t= unlines$checkflow [mother] mymotherT3$ t
+   --   use function 'tester' below to accomplish that
               let tester t = (unlines(checkflow [mother] (ausw 1 (motherType (justGene t) (t)))))
               let motherType3 foas r = map (mayer3 (head(ausw r (map show justIO)))) ([foas])
-              putStrLn (unlines(checkflow [mother] (ausw 1 (motherType3 (justGene 3) (3)))))
+              putStrLn (unlines(checkflow [] (ausw 1 (motherType3 (justGene 3) (3)))))
               putStrLn (tester 4)
               putStrLn (edR1 1 1)
               putStrLn (edR1 1 2)
@@ -486,11 +561,24 @@ kArmTest5 bonelist mofaList connectWrist dit dit2 mCommand crit= do
     --           [[ ],[ ],[0],[]]
     --           [[ ],[ ],[ ],[]]
     --           [[0],[0],[ ],[]]
+              putStrLn (edR1 3 3)
               putStrLn (edR1 3 4)
               putStrLn (edR1 4 1)
               putStrLn (edR1 4 2)
               putStrLn (edR1 4 3)
               putStrLn (edR1 4 4)
+              putStrLn "Test map mother"
+            --  putStrLn (unlines(sort(moreEdR1 1 )))
+             -- putStrLn (unines(checkflow [mother] 
+    
+--              putStrLn (mapMo 2)
+  --            putStrLn (mapMo 3)
+    --          putStrLn (mapMo 4)
+      --        putStrLn (mapMo 5)
+        --      putStrLn (mapMo 6)
+          --    putStrLn (mapMo 7)
+            --  putStrLn (mapMo 8)
+
              -- putStrLn (newToStep 2 4)
              --
             -- ARISING: 
@@ -508,54 +596,7 @@ kArmTest5 bonelist mofaList connectWrist dit dit2 mCommand crit= do
               M.writeWXCloudNODE (ptc2 5) (ptc2 15) (ptc2 25) (ptc4 2) (ptc4 3) (ptc4 5)
               M.writeWXCloud4 (ptc2 5) (ptc2 25) (ptc2 50) (ptc4 5) (ptc4 25) (ptc4 50)
               putStrLn "1" --(show pop) --(pop (head(map ord "1")))  ---------------------------------------------------------------------------------
- --run randomPunkt list with input:
- --e.g *> ghCheck = "AAAABBBB"    
- -- COMPARE BONELIST to INPUT:  (a'S of bonlist) to  ghCheck
-              let ghCheck = concat (take prepRyth (repeat [crit]))
-              randPunktList2 <- forM [1..(prepRyth)] (\z -> do
-                        let chhos = ((ausw z (concat(snd(theTrix crit))))) 
-                        let mapRepKEY aa = beRepKEYRAW aa (show z) ghCheck bonelist []
-                        let forole = (prepRyth -1)
-                        roleKEY <- forM [1..prepRyth] (\y -> do -----------------------------------------------------------------Export complete simiYmatrix as Strig
-                                let gegenStueck = filter (/=z) [1..prepRyth]
-                                let makShow aa = show(mapRepKEY aa)
-                                let role = map makShow (map show gegenStueck)
-                                return(role) )
-                        roleKEY2 <- forM [1..prepRyth] (\y -> do ----------------------------------------------------------------Export as Double 
-                                let gegenStueck = filter (/=z) [1..prepRyth]
-                                let role = mapRepKEY(show y)
-                                return(role) ) 
- 
-                        let sta1 =  roleKEY2 --(ausw 1 (concat (take 1 roleKEY2)))
-                        let sta2 = sum sta1
-                        putStrLn ((show sta1)++" "++((show sta2)))
-                        return (sta2))
-              
-              putStrLn (show (randPunktList2)++"\n")
--- COMPARE bonlist thistime :  ghCheck to (a'S of bonelist )
---
---  =>  randPunktList2 /= randPunktList2 but randPunktist2 = (transpose randPunkList3)   
-              randPunktList3 <- forM [1..(prepRyth)] (\z -> do
-                        let chhos = ((ausw z (concat(snd(theTrix crit))))) 
-                        let mapRepKEY aa = beRepKEYRAW aa (show z) bonelist ghCheck []
-                        let forole = (prepRyth -1)
-                        roleKEY <- forM [1..prepRyth] (\y -> do -----------------------------------------------------------------Export complete simiYmatrix as Strig
-                                let gegenStueck = filter (/=z) [1..prepRyth]
-                                let makShow aa = show(mapRepKEY aa)
-                                let role = map makShow (map show gegenStueck)
-                                return(role) )
-                        roleKEY2 <- forM [1..prepRyth] (\y -> do ----------------------------------------------------------------Export as Double 
-                                let gegenStueck = filter (/=z) [1..prepRyth]
-                                let role = mapRepKEY(show y)
-                                return(role) ) 
- 
-                        let sta1 =  roleKEY2 --(ausw 1 (concat (take 1 roleKEY2)))
-                        let sta2 = sum sta1
-                        putStrLn ((show sta1)++" "++((show sta2)))
-                        return (sta2))
-              putStrLn "sum matrix row" 
-              putStrLn (show (randPunktList3))
-----------------------------------------------------------------------------------------------------------
+ ----------------------------------------------------------------------------------------------------------
 --
 ---------------------------------------------------------------------------------------------------------
               let mayer foa = if foa == [] then [""]
@@ -578,7 +619,7 @@ kArmTest5 bonelist mofaList connectWrist dit dit2 mCommand crit= do
                              in map chr filAll
               let justGone t = justGoneRAW t (asDot bonelist) 
               putStrLn (show (justGone 2))
-              putStrLn "furter"
+              putStrLn "furter" 
 
               putStrLn (justGoneRAW 1 ([(map tester  [1..4])])) 
               let pointeMA w2 w = Punkt (show(justGone w)) (Just(maybePu(show(justGone ((w2)-1))))) Nothing Nothing Nothing Nothing
@@ -608,7 +649,7 @@ kArmTest5 bonelist mofaList connectWrist dit dit2 mCommand crit= do
               putStrLn (show (outputPunktOrder 3))
 
               allTogether <- forM [1..(prepRyth)] (\z -> do
-                        let chhos = ((ausw z (concat(snd(theTrix crit))))) 
+                        let chhos = ((ausw z (concat(snd(theTrix2 crit))))) 
                         let mapRepKEYI aa = (sortWith aa) (show z)
                         let forole = (prepRyth -1)
                         roleKEY <- forM [1..prepRyth] (\y -> do
@@ -657,6 +698,7 @@ kArmTest5 bonelist mofaList connectWrist dit dit2 mCommand crit= do
     --          putStrLn (show whereTO)
       --        putStrLn (show(length(unlines tguess)))
         --      putStrLn line1Ideal 
+        
      (frame0 bonelist (mofaList) connectWrist dit dit2) 
 
 
@@ -667,7 +709,15 @@ kArmTest5 bonelist mofaList connectWrist dit dit2 mCommand crit= do
 -- e.g checkflow [mother] (flowState fotrack3 head) -> the optimized OUTPUT row ala [0.52,0.52,0.59,0.52,0.59,0.59,0.59]
 checkflow lis f = let ste1 lis f= publishPunkt f lis
                   in let ste2 = map (ste1 lis) f
-                  in ste2 
+                  in ste2
+
+----------------------------------------------------------------------------------
+--see the different states of flowState above
+-- e.g checkflow [mother] (flowState fotrack3 head) -> the optimized OUTPUT row ala [0.52,0.52,0.59,0.52,0.59,0.59,0.59]
+checkflowInt lis f = let ste1 lis f= publishPunktRAW f lis
+                     in let ste2 = map (ste1 lis) f
+                     in ste2 
+ 
     --putStrLn "Wrote Punkt: startWert"
 ---------------------------------------------------------------------------
 
@@ -948,19 +998,49 @@ chainDistribute crit dipfade2 criterium pt = let provideVals = [show(map ord cri
 -- EXPORT visiualize 
 -- e.g 'M.writeWXCloudNODE (ptc0 3)(ptc1 3)(ptc2 3)(ptc3 3)(ptc 3) (ptc5)'
 -- or  'M.writeWXCloud4 (ptc0 50)(ptc1 50)(ptc2 50)(ptc3 50)(ptc 50) (ptc5)'
-pg1 x = (F.fourierMQ6NOPAN123 x)
-pg2 x = (F.fourierMQ5NOPAN123 x)
-pg3 x = (F.fourierMQ4NOPAN123 x)
-pg4 x = (F.fourierMQ4TRACE x)
+-- let basis mm foA = basisRAW fnACCRAW nACCRAW (allAcc connectWrist) checkFo foA 
+basis2 foAL m = maybePu (head (ausw m foAL )) 
+basis3 foAL =  ((map ( (basis2 foAL)) [1..(length foAL)]))
+basis2New foAL x m = maybePu (head (ausw m (foAL x))) 
+-- Upload functions and apply them to the data
+-- -- when buiding the final 'Punkt' structure these are different
+-- computation that can be used with '[father,mother...' 
+-- a) turn bonelist into Punkt
+-- b) turn pg functions into Punkt via 'uniqueClassRAW' 
+formationB e = Punkt "formation" (Just (basis2 e 1 )) (Just (basis2 e 2 )) (Just (basis2 e 3 )) (Just (basis2 e 4 )) (Just (basis2 e 5 )) 
+
+-- store data in String because there are only 5 other spots left
+-- when reading a longer list that wont help thus store in Punkt "String"
+basis4 foAL r = maybePu (show(checkflow [] [((basis2 foAL r))]))
+-- map befehle
+-- befehle:  [(F.fourierMQ6NOPAN123),(F.fourierMQ5NOPAN123),(F.fourierMQ4NOPAN123),(F.fourierMQ4TRACE)] 
+
+formTest io r e normalFunction =  let punktOrPg = checkflow  io [(Punkt  (head(checkflow [] [(basis4 liT r)])) (Just (basis2 e 1 )) (Just (basis2 e 3 )) (Just (basis2 e 4 )) (Just (basis2 e 5 )) (Just (basis2 e 6))) ]
+                 in let choosBy = length(head (group(punktOrPg)))
+                 in if choosBy ==2 then normalFunction
+                                   else punktOrPg 
+
+runner x = do  --scanChar
+        sin x 
+    --     f <- (f getLine)    --head [(sin x),(cos x)])
+      --   r <- (x)
+        -- (return (do r)) --putStrLn (show e) --show(return e)
+-- import your functions into kArmTest5 via formation
+preX x = head(map scanChar (frmDoubletoInt (show x)))
+pg1 x =  (sin (read((head((formTest [mother] (preX x) [show(F.fourierMQ6NOPAN123 (x))] (words(show(sin 1))))  ))))) -- (((([(formTest [mother] 1 [show(F.fourierMQ6NOPAN123 (realToFrac (show x)))] (words(show(sin (x)))))]  )))) -- head(ausw 1 [(F.fourierMQ6NOPAN123 x)]) 
+pg2 x = cos x --(F.fourierMQ5NOPAN123 x)0
+pg3 x = cos x --(F.fourierMQ4NOPAN123 x)
+pg4 x = sin x --(F.fourierMQ4TRACE x)
 pg11 x = show x --show(F.fourierMQ6NOPAN123 x)
 pg22 x = show x --show(F.fourierMQ5NOPAN123 x)
 pg33 x = show x --show(F.fourierMQ4NOPAN123 x)
 pg44 x = show x --show(F.fourierMQ4TRACE x)
+pgFun x = x
 
--- a program Variables
--- when buiding the final 'Punkt' structure these are different
--- computation that can be used with '[father,mother...' 
-progVar1 = "AAABB" --"wrist" --koa = koa
+-- a program Variables:
+-- the data to be fed into plot via kArmTrack5 
+--
+progVar1 = "AAABB" 
 progVar2 = "AAABBAABAB"
 progVar3 = "AABAB"
 progVar4 = "AAA"
@@ -980,9 +1060,78 @@ pointCloud03a n  = let toMap e = last((map ((theTrix 4) e) [1..50]))
 pointCloud03b n = let toMap e = last((map ((theTrix 6) e) [1..50]))
                   in map toMap [1..n]
 
+kArmT bonelist mofaList connectWrist dit dit2 mCommand crit= do
+     let allAcc p = show(checkflow [] [p])           
+     
+     let allAcc foPun =  (checkflow [] [(foPun)])
+     let checkFo g = if (length g) == 0 then ""
+                     else "MOTHER MODE: on"  
+     let fnACCOUT cou = if unPoint == ("\"notM\"") then unwords [""] -- cou
+                        else snd cou
+                    where unPoint = (show(head(words(unwords(checkflow [] [connectWrist]))))) ;
 
+     let fnACCRAW cou = if unPoint == ("\"notM\"") then fst cou
+                        else snd cou
+                    where 
+             unPoint = (show(head(words(unwords(checkflow [] [connectWrist]))))) ;
+     let maybePu rt = Punkt rt Nothing Nothing Nothing Nothing Nothing
+ -- Punkt function that inherits ancestory
+ -- *> type: maybePu:: String -> Maybe Punkt -> Punkt
+     let maybePu2 rt koA = Punkt rt koA Nothing Nothing Nothing Nothing
+     let foAdecide foA = if foA==[] then Nothing
+                         else (Just (maybePu foA)) --let whereBreak = chainDistribute crit bonelist crit (lines "1")
+
+-- make a function that is a [(Maybe Punkt)]-> that by itself is the definiton of
+-- mother :: Punkt -> Maybe Punkt 
+-- this function below shall lead to => a motherTYPE that is depending on the type of simiyritYvalue
+     let foAdecide2 foA = let boa rt t = (Just (maybePu2 rt t)) --let whereBreak = chainDistribute crit bonelist crit (lines "1")
+                          in let mapMaybePun k = let ste1 k rt = (boa (head(ausw k rt))) ((Just (maybePu (head (ausw k rt)))) ) 
+                                                 in ste1 k foA -- e.g foA = ["vb","vb2","vb3"]
+                          in let preMoa = length foA
+                          in let eindelijk = do (map mapMaybePun [1..preMoa]) 
+                          in 
+                          if foA==[] then Nothing
+                          else let chssd i = maybePu2 (head(ausw i foA))  (((boa (head(ausw i foA)) (head(ausw i eindelijk))))) -- (Just (maybePu (unwords(checkflow [] eindelijk)))) 
+                               in Just (show[(chssd 1)]) 
+ 
+     let basis mm foA = Punkt (fnACCRAW(nACCRAW (unwords(allAcc connectWrist)) ["When set M will work:"++" now sleeping", checkFo mm ] ) ) foA foA foA foA foA
+ {-
+     let mixUpTray0 showClass pushTPosition fiPalette testData = sirRetrun --beRep1 (read showClass) (show(words(unwords testData))) -- (sirRetrun oriPosition pushTPosition)
+                         where
+                           palette = fiPalette -- [bone1,foExp,(show(makeBreak sl)),anEx,(show aRate)] ;
+                           goodChoice doer = head (ausw doer palette);
+                           beRep1 doer showData = (Punkt (fnACCRAW (nACCRAW (showData) [(showClass),(goodChoice doer),"YES MONAD:_"++show dit])) (Just pushTPosition) Nothing Nothing Nothing Nothing);
+                               -- testData =  ((map snd (map snd (head commaBreakGuess)))) ;
+                           sirRetrun =  
+                                  let ans showClass = if showClass==bone1 || showClass=="5"
+                                                      then do 
+                                                         (beRep1 5 (show testData))
+                                                      else if showClass=="1" || showClass=="2" || showClass=="3" || showClass=="4"
+                                                      then do
+                                                          let reAd = read showClass
+                                                          (beRep1 reAd (show testData))
+                                                      else
+                                                          pushTPosition
+                                  in ans showClass; -}
+    -- take from deze [String] e.g -> 
+     let foChain = length bonelist
+     let makePalette pick1 pick2 punktList togoToList togtoList2  = noSense togoToList togtoList2
+                       where
+                          dada fopick fodeze = head (ausw (read fopick) fodeze);
+                          noSense deze deze2 = Punkt (dada pick1 deze) (Just (maybePu (dada pick2 deze2))) Nothing Nothing Nothing Nothing;
+    -- io1: mother ;  io2 [mother -> pg1 ; father -> pg2  ... 
+     let formation io1 io2 rd = (head(head(map words(checkflow io1 [(basis (checkflow io1 [(basis4 liT (preX rd))]) (Just (maybePu(unwords(formTest io2 (preX rd) [show(F.fourierMQ6NOPAN123 rd )] (words(show(sin rd))))))  ))]))))
+  --  putStrLn (unlines(checkflow [father] [(basis (checkflow [] [(basis4 liT 1)]) (Just (maybePu(unwords(formTest [] 1 [show(F.fourierMQ6NOPAN123 1 )] (words(show(pg2 1))))))  ))]))
+   --  putStrLn (unlines(checkflow [father] [(basis (checkflow [] [(basis4 liT 1)]) (Just (maybePu(unwords(formTest [] dit2 [show(F.fourierMQ6NOPAN123 (1) )] (words(show(pg2 1))))))  ))]))
+     --(formation [mother] [mother] 1)
+     (formation [mother] [mother] 1)
+     --(formation [mother] [] 1)
+
+
+     --pg111 
+    -- putStrLn (unlines(checkflow [father] (formation (pg1 1) 1)  ))
 ----------------------------------------------------------
-
+liT = ["AAABB","AABAB","AAA","BBBAA"]
 
 --  DOMAIN:
 --  pointCoud1                    JustI or JustI and JustII or JustII -> (fst or fst/snd or snd Compare)
@@ -1166,17 +1315,20 @@ getRid x = let a = (map ord x)
 -- a List is given of the Form 
 --      "wrist" -> similaritYvalue "wrist" 
 -- e.g uniquEClass01 "wirst" 1 1 
-uniquEClassRAW compar punktList = 
+uniquEClassReallyRAW compar punktList befehle = 
                    let sta1 d = map ord d  
                   -- in let sta1New = map realToFrac (sta1 (show(F.fourierMQ6NOPAN2 fstOsnd )))
-                   in let sta2New = map realToFrac (sta1 (show(F.fourierMQ6NOPAN123 punktList )))
-                   in let sta3New = map realToFrac (sta1 (show(F.fourierMQ5NOPAN123 punktList )))
-                   in let sta4New = map realToFrac (sta1 (show(F.fourierMQ4NOPAN123 punktList )))
-                   in let sta5New = map realToFrac (sta1 (show(F.fourierMQ4TRACE punktList )))
+                   in let sta2New = map realToFrac (sta1 (show(head(ausw 1 befehle ) punktList )))
+                   in let sta3New = map realToFrac (sta1 (show(head(ausw 2 befehle ) punktList )))
+                   in let sta4New = map realToFrac (sta1 (show(head(ausw 3 befehle ) punktList )))
+                   in let sta5New = map realToFrac (sta1 (show(head(ausw 4 befehle )punktList )))
                    in let staLoop = map realToFrac (sta1 (show(wohlGeorNet02 compar 1 punktList )))
 
                    in let staCompare = map realToFrac (sta1 ((compar))) -- *****************************SELECT EACH LINE OF GUESS
                    in [(similaritYvalue staCompare sta2New),(similaritYvalue staCompare sta3New),(similaritYvalue staCompare sta4New),(similaritYvalue staCompare sta5New),(similaritYvalue staCompare staLoop)]
+
+
+uniquEClassRAW compar pk = uniquEClassReallyRAW compar pk [(F.fourierMQ6NOPAN123),(F.fourierMQ5NOPAN123),(F.fourierMQ4NOPAN123),(F.fourierMQ4TRACE)] 
 --similaritYValue "wrist" (
 uniquEClass01 compar punktList = uniquEClassRAW compar punktList 
 --
