@@ -488,15 +488,20 @@ kArmTest5 bonelist mofaList connectWrist dit dit2 mCommand crit= do
                               let try = ((ausw (phiMsorted ol) (concat prepPhiorder) )) -- => [[1.5151515151515151]]
                               let fotraceOther i = head(ausw i foAddgh)
                               let traceOther = map fotraceOther (reverse (sort phiMaxorder))
-                              let cheGH = maximum withInput
-                              let nowSort = (fotraceOther 3) + (head(map realToFrac (ausw 3 (concat prepPhiorder))))--(fotraceOther 1) + (head(map realToFrac (concat prepPhiorder)))
+                              let cheGH = maximum (take ol (reverse(sort withInput)))
+                              let nowSort = (fotraceOther (phiMsorted ol)) + (head(map realToFrac (ausw (phiMsorted ol) (concat prepPhiorder))))--(fotraceOther 1) + (head(map realToFrac (concat prepPhiorder)))
                               let applyAlgo = if (nowSort)>cheGH  then 
                                                   let ste1 = break (==cheGH) (map realToFrac (concat prepPhiorder)) 
                                                   in concat(((fst ste1)): [(nowSort:(snd ste1))]) --"right" --ste1
                                               else  (map realToFrac (concat prepPhiorder)) --"false"
                                      
-                              return (show applyAlgo))
-                      putStrLn (show (concat runTries))
+                              return (applyAlgo))
+                      let judgeTries = map length runTries
+                      let filterMy = let ste1 = filter (==5) judgeTries
+                                     in if ste1 == [] then (take 1 runTries)
+                                        else ausw 1 runTries
+                      putStrLn (show judgeTries)
+                      putStrLn (show (runTries))
                -- [((ausw (phiMsorted 1) (concat prepPhiorder) ))] => [[1.5151515151515151]]
                       let checkGH = (maximum withInput)
          -- get most diferent row of   ghCheck:: bonelist -> expanded bonelist  
@@ -504,8 +509,8 @@ kArmTest5 bonelist mofaList connectWrist dit dit2 mCommand crit= do
                       let prepInpu =   (concat prepPhiorder)
                     --  let localMax = (toStep (map ord checkGH) (map concat prepInpu))
                       putStrLn "testin"
-                      return (show (foAddgh)))
-              putStrLn (unlines sortEmInput)
+                      return (show (filterMy)))
+              putStrLn (unlines (take 1 sortEmInput))
 
 
                
