@@ -1,12 +1,20 @@
 -- this module provides:
 -- --------------------------------------
--- 9-6-2020
--- Standing true to my premise after having worked out a methodoogy 
--- of simiYval networks there shall be two giants to step on 
--- 1. What are the Eulercaracteristics of the graphs dessribed by kArmTest5
--- 2. What is the dimensionality with regard to roughness(Bernstein??)
--- I. the PUNKT TYPE 
--- can store data in:
+-- four lines of thought
+--
+--  I. a. compare all atoms of [String] called bonelist and order them due to similaritYvalue
+--     b. insert a new line (ghCheck) into a. do the same as above.
+-- II. an inherent data type 'Punkt' :: String -> Maybe String
+--     that is customized to fit I. The data type , so far
+--     is only connected to the plotting functions of below.
+-- III. library to plot wxmaxima graphs . functions to compare
+--      a. two lines of boneist with each other.
+--      b. compare a to periodic functions called pg1 functions
+--         e.g  pg1 x = sin x 
+-- IV. a 2_3_5_Counter to compare I, II and III with each other
+--
+
+
 -- Monadic non-dterministic DATA tye 
 -- ----------------------------------
 -- e.g let ones = Punkt (nACC "tracker1" ["FindMovment","what"]) Nothing Nothing Nothing Nothing Nothing
@@ -462,20 +470,47 @@ kArmTest5 bonelist mofaList connectWrist dit dit2 mCommand crit= do
 	 -- the input variable ghCheck is sorted into phiMax list.
 	 -- ghCheck could end up in any spot of a list  sorL1 
 	 -- find max different of group 
-	 -- ghCheck :: bonelist
+	 -- ghCheck 
               let prepPhiorder = take 1 randPunktList3 
               sortEmInput <- forM [1..prepRyth] (\pr -> do
-                      let withInput = (show (prepPhiorder))
+                      let withInput = (map realToFrac (concat prepPhiorder)) -- now we can use maximum again
                       let toStep e w = ( w `elemIndices` e)
                       let tmaps t w2 = map (toStep (sort (map fst randPunktList))) (ausw t w2)
                       let lineorder = last (last (tmaps pr (map fst randPunktList))) -- take phimax order
                       let accessSTEPI = (map snd randPunktList)
                       let foAddgh = head (sort accessSTEPI)
-                       
-                       
+                      --(show (map last (concat sortEm))))  => [1,1,3,2] ; phiMax order
+                      let phiMaxorder =  (map last (concat sortEm)) -- => [1,1,3,2] 
+                      let phiMsorted i =  (head (ausw i (reverse (sort phiMaxorder)))) -- we want to reverse to count 'downwards' 
+                --      let mapPhi = realToFrac (phiMsorted 1) --[1..prepRyth]
+                      let tryOut  fo =  toStep  [((ausw (phiMsorted fo ) (concat prepPhiorder) ))] ((withInput))
+                      runTries <- forM [1..(length phiMaxorder)] (\ol -> do
+                              let try = ((ausw (phiMsorted ol) (concat prepPhiorder) )) -- => [[1.5151515151515151]]
+                              let fotraceOther i = head(ausw i foAddgh)
+                              let traceOther = map fotraceOther (reverse (sort phiMaxorder))
+                              let cheGH = maximum (take ol (reverse(sort withInput)))
+                              let nowSort = (fotraceOther (phiMsorted ol)) + (head(map realToFrac (ausw (phiMsorted ol) (concat prepPhiorder))))--(fotraceOther 1) + (head(map realToFrac (concat prepPhiorder)))
+                              let applyAlgo = if (nowSort)>cheGH  then 
+                                                  let ste1 = break (==cheGH) (map realToFrac (concat prepPhiorder)) 
+                                                  in concat(((fst ste1)): [(nowSort:(snd ste1))]) --"right" --ste1
+                                              else  (map realToFrac (concat prepPhiorder)) --"false"
+                                     
+                              return (applyAlgo))
+                      let judgeTries = map length runTries
+                      let filterMy = let ste1 = filter (==5) judgeTries
+                                     in if ste1 == [] then (take 1 runTries)
+                                        else ausw 1 runTries
+                      putStrLn (show judgeTries)
+                      putStrLn (show (runTries))
+               -- [((ausw (phiMsorted 1) (concat prepPhiorder) ))] => [[1.5151515151515151]]
+                      let checkGH = (maximum withInput)
+         -- get most diferent row of   ghCheck:: bonelist -> expanded bonelist  
+               -- test is the value a new maximum
+                      let prepInpu =   (concat prepPhiorder)
+                    --  let localMax = (toStep (map ord checkGH) (map concat prepInpu))
                       putStrLn "testin"
-                      return (show foAddgh))
-              putStrLn (unlines sortEmInput)
+                      return (show (filterMy)))
+              putStrLn (unlines (take 1 sortEmInput))
 
 
                
@@ -490,7 +525,8 @@ kArmTest5 bonelist mofaList connectWrist dit dit2 mCommand crit= do
 --motherType3  | like above test your own name ist
 --            step [phiMax] -1    ..mother..         ["name list"]
 --
---             
+--     
+--
 ----------------------------------------------------------------------------------
 --MAP ANCESTORY     start with the pre-ordered phiMax 
 --  e.g  ["AAABB","AABAB","AAA","BBBAA"]  -> ["AAABB"/"AAABAB","BBBAA","AAA"]  -> sortEm
@@ -570,7 +606,7 @@ kArmTest5 bonelist mofaList connectWrist dit dit2 mCommand crit= do
               putStrLn "Test map mother"
             --  putStrLn (unlines(sort(moreEdR1 1 )))
              -- putStrLn (unines(checkflow [mother] 
-    
+   {- 
 --              putStrLn (mapMo 2)
   --            putStrLn (mapMo 3)
     --          putStrLn (mapMo 4)
@@ -698,9 +734,14 @@ kArmTest5 bonelist mofaList connectWrist dit dit2 mCommand crit= do
     --          putStrLn (show whereTO)
       --        putStrLn (show(length(unlines tguess)))
         --      putStrLn line1Ideal 
-        
+              -}   
      (frame0 bonelist (mofaList) connectWrist dit dit2) 
 
+-- 9-6-2020
+-- Standing true to my premise after having worked out a methodoogy 
+-- of simiYval networks there shall be two giants to step on 
+-- 1. What are the Eulercaracteristics of the graphs dessribed by kArmTest5
+-- 2. What is the dimensionality with regard to roughness(Bernstein??)
 
  ----------------------------------------------------------------------------------------------------
 
