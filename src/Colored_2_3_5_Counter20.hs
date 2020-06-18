@@ -504,7 +504,7 @@ kArmTest5 bonelist mofaList connectWrist dit dit2 mCommand crit= do
                                      in if ste1 == [] then bonelist
                                         
                 -- proposition : take 1 runTries = [[39.44954128440367,39.44954128440367,1.5151515151515151,41.88212399221574,39.63414634146342],
-                --               if                                           A         >       B
+                --               if                                                             A         >       B
                 --               then sort ghCheck right of A
                                         else let fobuildD = (take (phiMsorted 2) (map words bonelist))  --ghCheck
                                                      in let fobuildTail = (take ((-1*(phiMsorted 1))+(length bonelist)) (reverse ((map words bonelist))))
