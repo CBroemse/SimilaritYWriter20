@@ -2,7 +2,33 @@
 ## Plot graphs writing to wxmaxima
                   
 A function that can compare any two lists:
-    
+
+four lines of thought
+
+  I. 
+  
+     a. compare all atoms of a [String] called bonelist and order them due to similaritYvalue
+     b. insert a new line (ghCheck) into a. do the same as above.
+     
+ II.
+     
+     an inherent data type 'Punkt' :: String -> Maybe String
+     that is customized to fit I. The data type , so far
+     is only connected to the plotting functions of below.
+     
+ III.
+ 
+      library to plot wxmaxima graphs . functions to compare
+      a. two lines of boneist with each other.
+      b. compare a to periodic functions called pg functions
+         e.g  pg1 x = sin x 
+         
+ IV. 
+
+       a 2_3_5_Counter to compare I, II and III with each other
+
+
+ #### data type:'Punkt'
       - define a structure that is called 'formation'
       - which uploads functions into the main pipe and applies them to the data
       - when buiding the final 'Punkt' structure these are different
