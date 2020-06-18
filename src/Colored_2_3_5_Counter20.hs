@@ -481,10 +481,10 @@ kArmTest5 bonelist mofaList connectWrist dit dit2 mCommand crit= do
                       let foAddgh = head (sort accessSTEPI)
                       --(show (map last (concat sortEm))))  => [1,1,3,2] ; phiMax order
                       let phiMaxorder =  (map last (concat sortEm)) -- => [1,1,3,2] 
-                      let phiMsorted i =  (head (ausw i (reverse (sort phiMaxorder)))) -- we want to reverse to count 'downwards' 
+                      let phiMsorted i =  (head (ausw i (reverse (sort phiMaxorder)))) -- we want to reverse to count 'downwards' => [3,2,1,1] 
                 --      let mapPhi = realToFrac (phiMsorted 1) --[1..prepRyth]
                       let tryOut  fo =  toStep  [((ausw (phiMsorted fo ) (concat prepPhiorder) ))] ((withInput))
-                      runTries <- forM [1..(length phiMaxorder)] (\ol -> do
+                      runTriesRAW <- forM [1..(length phiMaxorder)] (\ol -> do
                               let try = ((ausw (phiMsorted ol) (concat prepPhiorder) )) -- => [[1.5151515151515151]]
                               let fotraceOther i = head(ausw i foAddgh)
                               let traceOther = map fotraceOther (reverse (sort phiMaxorder))
@@ -495,13 +495,35 @@ kArmTest5 bonelist mofaList connectWrist dit dit2 mCommand crit= do
                                                   in concat(((fst ste1)): [(nowSort:(snd ste1))]) --"right" --ste1
                                               else  (map realToFrac (concat prepPhiorder)) --"false"
                                      
-                              return (applyAlgo))
+                              return (applyAlgo,cheGH))  -- ( ( inserts ghCheck [phiMax]    ,(the changeable phiMax of bonelist))
+                      let runTries = map fst runTriesRAW
                       let judgeTries = map length runTries
                       let filterMy = let ste1 = filter (==5) judgeTries
-                                     in if ste1 == [] then (take 1 runTries)
-                                        else ausw 1 runTries
+                                     in let seeTries g k = ausw (phiMsorted g) (ausw k runTries)
+
+                                     in if ste1 == [] then bonelist
+                                        
+                -- proposition : take 1 runTries = [[39.44954128440367,39.44954128440367,1.5151515151515151,41.88212399221574,39.63414634146342],
+                --               if                                           A         >       B
+                --               then sort ghCheck right of A
+                                        else let fobuildD = (take (phiMsorted 2) (map words bonelist))  --ghCheck
+                                                     in let fobuildTail = (take ((-1*(phiMsorted 1))+(length bonelist)) (reverse ((map words bonelist))))
+                                                     in let withGH = ("GGGG":(concat fobuildTail))
+                                                     in let getMaxIn = (maximum (map snd runTriesRAW)) `elemIndices` (head runTries)
+                                                     in let prepMax = zipWith (+) (take (length runTries) [1,1..]) getMaxIn
+                                                     in let fobuildHead = take ((phiMsorted 1)-1) ( (map words bonelist)) --reverse (take ((-1*(phiMsorted 1))+(length bonelist)) (reverse (concat (bonelist))))
+
+                                    -- phiMsorted => [3,2,1,1] 
+                                                        --  if bigger ordered to the right of max
+                                                     in if (map realToFrac ((ausw ((phiMsorted 1)+1)(concat(take 1 runTries ))))) > ((map realToFrac (ausw ((phiMsorted 1))(concat(take 1 runTries ))))) 
+                                                        then let fobuildD = (take (phiMsorted 1) [bonelist])  --ghCheck
+                                                             in let withGH2 = reverse ("UUUU":(reverse (concat fobuildHead)))
+                                                             in reverse((concat(reverse(concat fobuildTail))): (reverse withGH2)) -- : (fobuildTail) --bonelist --ausw 1 runTries --(head withGH) --ausw 1 runTries
+                                                        else (concat fobuildHead) -- bonelist --((unlines(concat fobuildD)):withGH) --(concat fobuildD) --(concat withGH)
+                                        --else ausw 1 runTries
                       putStrLn (show judgeTries)
                       putStrLn (show (runTries))
+                      putStrLn ((show(map snd runTriesRAW)))
                -- [((ausw (phiMsorted 1) (concat prepPhiorder) ))] => [[1.5151515151515151]]
                       let checkGH = (maximum withInput)
          -- get most diferent row of   ghCheck:: bonelist -> expanded bonelist  
@@ -509,6 +531,7 @@ kArmTest5 bonelist mofaList connectWrist dit dit2 mCommand crit= do
                       let prepInpu =   (concat prepPhiorder)
                     --  let localMax = (toStep (map ord checkGH) (map concat prepInpu))
                       putStrLn "testin"
+                    
                       return (show (filterMy)))
               putStrLn (unlines (take 1 sortEmInput))
 
