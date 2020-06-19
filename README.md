@@ -55,7 +55,7 @@ There is an syntactic level and a conceptual level
     ------------------------------------------------------------------------------------------------------------------------
     given:  row-width (length atom bonelist, 'zeilenlaenge ) 
             pick1:String; a of (a,b) -> compare a to b    | one feasible way is to 'weigh' Strings is with simiaritYvalue
-            pick2:String; b of (a,b) -> compare a to b    | The aim is to rerieve a reliable function that will destinct 
+            pick2:String; b of (a,b) -> compare a to b    | The aim is to retrieve a reliable function that will destinct 
                                                           | between any two strings. 
           via ( beRepKEY pick1 pick2 punktList )          |           punktist :: Punkt -> [Punkt] -> not used
                                                                          ausw pick1 bonelist ->  atombonelist 
@@ -77,7 +77,8 @@ There is an syntactic level and a conceptual level
        after: ["AAABB","AABAB","left","AAA","BBBAA"] => yields new order
        
        
- #### data type:'Punkt'
+   ##### Step III
+   ###### data type:'Punkt'
       - define a structure that is called 'formation'
       - which uploads functions into the main pipe and applies them to the data
       - when buiding the final 'Punkt' structure these are different
