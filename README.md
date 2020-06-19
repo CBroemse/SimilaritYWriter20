@@ -5,29 +5,42 @@ A function that can compare any two lists:
 
 four lines of thought
 
-  I. 
-  
+     I. 
      a. compare all atoms of a [String] called bonelist and order them due to similaritYvalue
      b. insert a new line (ghCheck) into a. do the same as above.
      
- II.
-     
+     II.
      an inherent data type 'Punkt' :: String -> Maybe String
      that is customized to fit I. The data type , so far
      is only connected to the plotting functions of below.
      
- III.
- 
+     III.
       library to plot wxmaxima graphs . functions to compare
       a. two lines of boneist with each other.
       b. compare a to periodic functions called pg functions
          e.g  pg1 x = sin x 
          
- IV. 
+     IV. 
+      a 2_3_5_Counter to compare I, II and III with each other
 
-       a 2_3_5_Counter to compare I, II and III with each other
+#### Step I
 
-
+  ###### a.
+  
+  ###### b.
+     
+      in function 'kArmTest5'  sort a variable called 'ghCheck' in the bonelist 
+      ghCheck :: String,   
+      via operation 'sortEmInput'
+      example 1
+       before:  ["AAABB","AABAB","AAA","BBBAA"]   with ghCheck = "BBB"
+       after: ["AAABB","AABAB","AAA","right","BBBAA"] => yields new order
+      example 2
+      
+       before:  ["AAABB","AABAB","AAA","BBBAA"]   with ghCheck = "ZZZ"
+       after: ["AAABB","AABAB","left","AAA","BBBAA"] => yields new order
+       
+       
  #### data type:'Punkt'
       - define a structure that is called 'formation'
       - which uploads functions into the main pipe and applies them to the data
