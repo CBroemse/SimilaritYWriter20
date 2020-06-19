@@ -1,7 +1,8 @@
 # SimilaritYWriter20
 ## Plot graphs writing to wxmaxima
                   
-A function that can compare any two lists:
+A function that can compare any two lists, The aim is to find the most general rules that can 'maybe' 
+help my understanding.
 
 four lines of thought
 
@@ -77,21 +78,21 @@ There is an syntactic level and a conceptual level
        after: ["AAABB","AABAB","left","AAA","BBBAA"] => yields new order
        
        
-   ##### Step III
+   ##### Step II
    ###### data type:'Punkt'
       - define a structure that is called 'formation'
       - which uploads functions into the main pipe and applies them to the data
       - when buiding the final 'Punkt' structure these are different
         computations that can be used with '[father,mother...' 
-
+       
+         -- to be used with pg-functions
         formation :: [String] -> Punkt
      *> formation e = Punkt "formation" (Just (basis2 1 e)) (Just (basis2 2 e)) (Just (basis2 3 e)) (Just (basis2 4 e)) (Just (basis2 5 e)) 
-     
+      
+         -- inserted into 'kArmTest5'
+         formTest :: [Punkt -> Maybe Punkt] -> Int -> [String] -> [[Char]] -> [[Char]]
 
      
-     
-     The aim is to find the most general rules that can 'maybe' 
-     help our understanding. 11
 
 
 
