@@ -21,7 +21,7 @@ four lines of thought
       b. compare a to periodic functions called pg functions
          e.g  pg1 x = sin x 
          
- ![alt tag](https://github.com/CBroemse/SimilaritYWriter20/blob/master/source/sinCosCosSin.png)
+ ![alt tag](https://github.com/CBroemse/SimilaritYWriter20/blob/master/source/sinCosSinCos.png)
          
      IV. 
       a 2_3_5_Counter to compare I, II and III with each other
