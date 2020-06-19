@@ -16,7 +16,7 @@ four lines of thought
      
      III.
       library to plot wxmaxima graphs . functions to compare
-      a. two lines of boneist with each other.
+      a. two lines of bonelist with each other.
       b. compare a to periodic functions called pg functions
          e.g  pg1 x = sin x 
          
