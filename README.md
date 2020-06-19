@@ -24,8 +24,44 @@ four lines of thought
       a 2_3_5_Counter to compare I, II and III with each other
 
 #### Step I
-
+   
   ###### a.
+  
+      this will be the main example being used throughout this program
+     
+     *> let li = ["AAABB","AABAB","AAA","BBBAA"]
+     *> let bonelist = li
+     *> let pi = Punkt "M" Nothing Nothing Nothing Nothing Nothing  -- 
+     
+     we compare all lines and atoms of the bonlist. To describe certain Types we wil use ' 
+
+            ':=' -- which is equivalent to '::' but ':=' /= '::' thus
+     
+     kArmTest5 (bonelist) := [type [ord (String)] ] -> [[Int]] -> [[Double]] => [([String],[Double])]
+     -- simiariYvalue network
+     *> kArmTest5 li 1 pi 1 1 [] "AAA"    -- the last item "AAA" will be the test run
+     
+ ######  Examine
+
+There is an syntactic level and a conceptual level
+
+    =======================================================================================================================
+                                  SYNTAX                  |             CONCEPT
+    =======================================================================================================================
+       hints:       all Functions in 'e.g-sections' have  |  The 'e.g-sections' should be able to be called via ghc
+                    to be takenout of the do functions    |  without a doupt that would help understanding.
+                      in 'chainDistribute'    AND         |  see if atom is already in list , dile:
+                         'kArmTest5'                      |
+    ------------------------------------------------------------------------------------------------------------------------
+    given:  row-width (length atom bonelist, 'zeilenlaenge ) 
+            pick1:String; a of (a,b) -> compare a to b    | one feasible way is to 'weigh' Strings is with simiaritYvalue
+            pick2:String; b of (a,b) -> compare a to b    | The aim is to rerieve a reliable function that will destinct 
+                                                          | between any two strings. 
+          via ( beRepKEY pick1 pick2 punktList )          |           punktist :: Punkt -> [Punkt] -> not used
+                                                                         ausw pick1 bonelist ->  atombonelist 
+                                                                           
+
+    e.g Colored*>  ( beRepKEY "1" "2" [] )           
   
   ###### b.
      
@@ -51,45 +87,13 @@ four lines of thought
      *> formation e = Punkt "formation" (Just (basis2 1 e)) (Just (basis2 2 e)) (Just (basis2 3 e)) (Just (basis2 4 e)) (Just (basis2 5 e)) 
      
 
-     this will be the main example being used throughout this program
      
-     *> let li = ["AAABB","AABAB","AAA","BBBAA"]
-     *> let bonelist = li
-     *> let pi = Punkt "M" Nothing Nothing Nothing Nothing Nothing  -- 
-     
-     we compare all lines and atoms of the bonlist. To describe certain Types we wil use ' 
-
-            ':=' -- which is equivalent to '::' but ':=' /= '::' thus
-     
-     kArmTest5 (bonelist) := [type [ord (String)] ] -> [[Int]] -> [[Double]] => [([String],[Double])]
-     -- simiariYvalue network
-     *> kArmTest5 li 1 pi 1 1 [] "AAA"    -- the last item "AAA" will be the test run
      
      The aim is to find the most general rules that can 'maybe' 
      help our understanding. 11
 
 
-######  STEP 1: Examine
 
-There is an syntactic level and a conceptual level
-
-    =======================================================================================================================
-                                  SYNTAX                  |             CONCEPT
-    =======================================================================================================================
-       hints:       all Functions in 'e.g-sections' have  |  The 'e.g-sections' should be able to be called via ghc
-                    to be takenout of the do functions    |  without a doupt that shall help understanding.
-                      in 'chainDistribute'    AND         |  see if atom is already in list , dile:
-                         'kArmTest5'                      |
-    ------------------------------------------------------------------------------------------------------------------------
-    given:  row-width (length atom bonelist, 'zeilenlaenge ) 
-            pick1:String; a of (a,b) -> compare a to b    | one feasible way is to 'weigh' Strings is with simiaritYvalue
-            pick2:String; b of (a,b) -> compare a to b    | The aim is to rerieve a reliable function that will destinct 
-                                                          | between any two strings. 
-          via ( beRepKEY pick1 pick2 punktList )          |           punktist :: Punkt -> [Punkt] -> not used
-                                                                         ausw pick1 bonelist ->  atombonelist 
-                                                                           
-
-    e.g Colored*>  ( beRepKEY "1" "2" [] )           
 
 #####   ABSTRACT
 
