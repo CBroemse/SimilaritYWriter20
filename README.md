@@ -12,7 +12,7 @@ four lines of thought
      
      II.
      an inherent data type 'Punkt' :: String -> Maybe String
-     that is customized to fit I. The data type , so far
+     that is customized to fit I,III and IV. The data type , so far
      is only connected to the plotting functions of below.
      
      III.
