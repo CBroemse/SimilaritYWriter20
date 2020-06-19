@@ -526,13 +526,16 @@ kArmTest5 bonelist mofaList connectWrist dit dit2 mCommand crit= do
                       putStrLn (show (runTries))
                       putStrLn ((show(map snd runTriesRAW)))
                                   
-                      return (show (filterMy,(take 1 runTries))) )  
+                      return ((filterMy,(runTries))) )  
           -- => (  class names , class simivals)
           -- => ( (sorted ghCheck into bonelist), (its simiVals) 
           -- with (length bonelist)> 1 to work , otherwise there is not much sorting needed
-              putStrLn (unlines (take 1 ( sortEmInput)))
+              putStrLn ((show (take 5 ( sortEmInput))))
 ------------------------------------------------------------------------------------------
-
+          -- 19-6-20 
+          -- Does the new  (sorted ghCheck into bonelist) of 'sortEmInput' above need to sorted agian,how and why? 
+          -- experiment will not sort 
+          --  sortEmInput := inlinesortEm   
 
                
 
@@ -559,7 +562,14 @@ kArmTest5 bonelist mofaList connectWrist dit dit2 mCommand crit= do
        -- the lineorder can be funnelt into a (maybe mother)/= Nothing
        --  a motherType e.g simiSum Order 
               let toStep e w = ( w `elemIndices` e)
-              let muster u = ausw u (sort(head inlinesortEm))
+              let muster u = ausw u (sort(head inlinesortEm)) -- bonelist -> simiVals
+              let withGHcheck = ((concat(map snd sortEmInput))) 
+              let muster2 u = ausw u (sort(head withGHcheck)) -- ghCheck: bonelist -> simiVals
+              putStrLn (show( muster2 1))
+              putStrLn (show(muster 1))
+            --  putStrLn (show inlinesortEm)
+              putStrLn "with GH" 
+              putStrLn (show withGHcheck)
               let justIO = inlinesortEm
               let toIter foa = (Just(maybePu ((show [(foAdecide2 (foa))]))))
               let inMap = map toIter (map words justNames)
@@ -575,11 +585,12 @@ kArmTest5 bonelist mofaList connectWrist dit dit2 mCommand crit= do
       -- CHOOSE A STRATEGY build on A
       -- choosen: 
       --  1. maximum -> step to next smaller atom ....  -- r shall be mapped
-              let enduranceRace8a9_6_20 r u = show (map (toStep (muster u)) (concat (ausw r justIO))  )
+              let enduranceRace8a9_6_20 r u = show (map (toStep (muster u)) (concat (ausw r justIO))  ) -- stepI a. ([phiMax])
               let edR1 r u = enduranceRace8a9_6_20 r u 
-
+              let edRGH r u = show (map (toStep (muster2 u)) (concat(ausw r withGHcheck))  ) -- stepI b.  ghCheck: [phiMax]
+              putStrLn (show(map (edRGH 1) [1..5]))
               let moreEdR1 r = map (edR1 r) [1..prepRyth]
-
+              
  --           u: the normal order ?     
  --   r:Int ; which to take of sortEm to be mapped with [1..(length bonelist)]
             --    let motherTYPE o u r = map (mayer2 ((ausw r (edR1 r o )))) [(map (edR1 r) u )]
@@ -599,17 +610,30 @@ kArmTest5 bonelist mofaList connectWrist dit dit2 mCommand crit= do
               let motherType3 foas r = map (mayer3 (head(ausw r (map show justIO)))) ([foas])
               putStrLn (unlines(checkflow [] (ausw 1 (motherType3 (justGene 3) (3)))))
               putStrLn (tester 4)
-              putStrLn (edR1 1 1)
-              putStrLn (edR1 1 2)
-              putStrLn (edR1 1 3)
-              putStrLn (edR1 1 4)
-              putStrLn (edR1 2 1)
+              putStrLn ((edR1 1 1) ++ "     " ++ (edRGH 1 1))
+              putStrLn ((edR1 1 2) ++ "     " ++ (edRGH 1 2))
 
-              putStrLn (edR1 2 2)
-              putStrLn (edR1 2 3)
-              putStrLn (edR1 2 4)
-              putStrLn (edR1 3 1)
-              putStrLn (edR1 3 2)
+              putStrLn ((edR1 1 3) ++ "      " ++ (edRGH 1 3))
+
+              putStrLn ((edR1 1 4) ++ "      " ++ (edRGH 1 4))
+
+              putStrLn ("                    " ++ (edRGH 1 5))
+              putStrLn ((edR1 2 1)  ++ "     " ++ (edRGH 2 1))
+
+              putStrLn ((edR1 2 2)  ++ "     " ++ (edRGH 2 2))
+
+              putStrLn ((edR1 2 3)  ++ "      " ++ (edRGH 2 3))
+
+              putStrLn ((edR1 2 4)  ++ "      " ++ (edRGH 2 4))
+              putStrLn ("                    "++ (edRGH 2 5))
+              putStrLn ((edR1 3 1) ++ "      " ++ (edRGH 3 1))
+              putStrLn ((edR1 3 2)  ++ "      " ++ (edRGH 3 2))
+
+              putStrLn ((edR1 3 3) ++ "     " ++ (edRGH 3 3))
+
+              putStrLn ((edR1 3 4) ++ "       " ++ (edRGH 3 4))
+
+              putStrLn ("                    " ++ (edRGH 3 5))
               --putStrLn (newToStep 2 3)
           -- EMERGENT structure
           -- [Just \[\\\[40.36697247706422,40.36697247706422,0.0,40.54878048780488]\\\]\]  THE REAl 3 but Rated 4 
@@ -618,12 +642,16 @@ kArmTest5 bonelist mofaList connectWrist dit dit2 mCommand crit= do
     --           [[ ],[ ],[0],[]]
     --           [[ ],[ ],[ ],[]]
     --           [[0],[0],[ ],[]]
-              putStrLn (edR1 3 3)
-              putStrLn (edR1 3 4)
-              putStrLn (edR1 4 1)
-              putStrLn (edR1 4 2)
-              putStrLn (edR1 4 3)
-              putStrLn (edR1 4 4)
+              putStrLn ((edR1 4 1) ++ "      " ++ (edRGH 4 1))
+              putStrLn ((edR1 4 2)  ++ "      " ++ (edRGH 4 2))
+
+              putStrLn ((edR1 4 3) ++ "       "  ++ (edRGH 4 3))
+
+              putStrLn ((edR1 4 4) ++ "     " ++ (edRGH 4 4))
+
+              putStrLn ("                    " ++ (edRGH 4 5))
+              putStrLn ("                    " ++ (edRGH 5 5))
+
               putStrLn "Test map mother"
             --  putStrLn (unlines(sort(moreEdR1 1 )))
              -- putStrLn (unines(checkflow [mother] 
