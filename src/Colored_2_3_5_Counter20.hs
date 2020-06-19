@@ -1067,9 +1067,9 @@ runner x = do  --scanChar
         -- (return (do r)) --putStrLn (show e) --show(return e)
 -- import your functions into kArmTest5 via formation
 preX x = head(map scanChar (frmDoubletoInt (show x)))
-pg1 x =  (sin (read((head((formTest [mother] (preX x) [show(F.fourierMQ6NOPAN123 (x))] (words(show(sin 1))))  ))))) -- (((([(formTest [mother] 1 [show(F.fourierMQ6NOPAN123 (realToFrac (show x)))] (words(show(sin (x)))))]  )))) -- head(ausw 1 [(F.fourierMQ6NOPAN123 x)]) 
-pg2 x = cos x --(F.fourierMQ5NOPAN123 x)0
-pg3 x = cos x --(F.fourierMQ4NOPAN123 x)
+pg1 x = sin x  --(sin (read((head((formTest [mother] (preX x) [show(sin (x))] (words(show(sin 2))))  ))))) -- (((([(formTest [mother] 1 [show(F.fourierMQ6NOPAN123 (realToFrac (show x)))] (words(show(sin (x)))))]  )))) -- head(ausw 1 [(F.fourierMQ6NOPAN123 x)]) 
+pg2 x = x --cos x --(F.fourierMQ5NOPAN123 x)0
+pg3 x = x --cos x --(F.fourierMQ4NOPAN123 x)
 pg4 x = sin x --(F.fourierMQ4TRACE x)
 pg11 x = show x --show(F.fourierMQ6NOPAN123 x)
 pg22 x = show x --show(F.fourierMQ5NOPAN123 x)
