@@ -173,7 +173,7 @@ to use bone list as a mode but keep 'realy big' input like below at bay:
 #### So what is it
 
     To me the thing above is a metric a 'trivial machiene' sort of speak yet it looks funky.
-    The intend was to symolize the computation that all numbers on the Haskell side became 
+    The intend was to symbolize the computation that all numbers on the Haskell side became 
     their own computation. It is tempting to assemble whole programs that way, maybe its 
     like an old assembler language but that I need to ask more experienced peers. 
     However it aint a 'walk in the park' and the number of posssibities is staggering.
