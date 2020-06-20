@@ -529,7 +529,9 @@ kArmTest5 bonelist mofaList connectWrist dit dit2 mCommand crit= do
 --  e.g  ["AAABB","AABAB","AAA","BBBAA"]  -> ["AAABB"/"AAABAB","BBBAA","AAA"]  -> sortEm
 --                                        -> ( [0,1],  [0,1],    [3],   [2]] ) -> 
 --       => sortEM                           
-              let findOrdeR = nub (concat(concat (sortEm)))       
+              let findOrdeR = nub (concat(concat (sortEm)))      -- -> [
+              putStrLn "FinD ORDER"
+              putStrLn (show findOrdeR) 
                -- inp:[String] -> bonelist
        -- the lineorder can be funnelt into a (maybe mother)/= Nothing
        --  a motherType e.g simiSum Order 
@@ -571,10 +573,13 @@ kArmTest5 bonelist mofaList connectWrist dit dit2 mCommand crit= do
  --   r:Int ; which to take of sortEm to be mapped with [1..(length bonelist)]
             --    let motherTYPE o u r = map (mayer2 ((ausw r (edR1 r o )))) [(map (edR1 r) u )]
               let areplace r o = ((ausw r (edR1 r o )))
-              let motherTYPE o u r = map (mayer2 ((ausw r (edR1 r o )))) [(map (edR1 r) u )]
+              let motherTYPE o u r = map (mayer2 (concat(ausw r (map show findOrdeR)))) [(map (edR1 r) u )]
 
               let mapMo o r = unwords (checkflow [mother] (motherTYPE o [1..prepRyth] r))
-              let exportMother o = (words (head(map (mapMo o) [1..prepRyth])))
+              let foexpoMo r w =  unlines (map (edR1 w ) r)
+              let exportMother r = unlines(map (foexpoMo r ) r)
+              let exportMother2 o = (words (concat(map (mapMo o) [2,3,4])))
+
               putStrLn "\n test mother functions"
           --    putStrLn (show (map muster [1..4]))
           --    putStrLn (show (map muster2 [1..4]))
@@ -588,7 +593,7 @@ kArmTest5 bonelist mofaList connectWrist dit dit2 mCommand crit= do
               let motherType3 foas r = map (mayer3 (head(ausw r (map show justIO)))) ([foas])
               putStrLn (unlines(checkflow [] (ausw 1 (motherType3 (justGene 3) (3)))))
               putStrLn (tester 4)
-              putStrLn ((edR1 1 1) )-- ++ "     " ++ (edRGH 1 1))
+           {-   putStrLn ((edR1 1 1) )-- ++ "     " ++ (edRGH 1 1))
               putStrLn ((edR1 1 2) )-- ++ "     " ++ (edRGH 1 2))
 
               putStrLn ((edR1 1 3) )-- ++ "      " ++ (edRGH 1 3))
@@ -611,7 +616,7 @@ kArmTest5 bonelist mofaList connectWrist dit dit2 mCommand crit= do
 
               putStrLn ((edR1 3 4) )-- ++ "       " ++ (edRGH 3 4))
 
-            --  putStrLn ("                    " ++ (edRGH 3 5))
+            --  putStrLn ("                    " ++ (edRGH 3 5))  -}
               --putStrLn (newToStep 2 3)
           -- EMERGENT structure
           -- [Just \[\\\[40.36697247706422,40.36697247706422,0.0,40.54878048780488]\\\]\]  THE REAl 3 but Rated 4 
@@ -634,6 +639,15 @@ kArmTest5 bonelist mofaList connectWrist dit dit2 mCommand crit= do
             --  putStrLn (unlines(sort(moreEdR1 1 )))
              -- putStrLn (unines(checkflow [mother] 
               putStrLn (mapMo 1 1)
+              putStrLn (mapMo 1 2)
+              putStrLn (mapMo 1 3)
+              putStrLn "Test exportMother"
+              putStrLn ((exportMother [1..4]))
+              putStrLn (unlines (exportMother2 1))
+          --    putStrLn ((exportMother 3))
+            --  putStrLn ((exportMother 4))
+
+
   --            putStrLn (mapMo 3)
     --          putStrLn (mapMo 4)
       --        putStrLn (mapMo 5)
