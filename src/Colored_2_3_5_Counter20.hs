@@ -616,8 +616,8 @@ kArmTest5 bonelist mofaList connectWrist dit dit2 mCommand crit= do
 
               putStrLn ((edR1 3 4) )-- ++ "       " ++ (edRGH 3 4))
 
-            --  putStrLn ("                    " ++ (edRGH 3 5))  -}
-              --putStrLn (newToStep 2 3)
+            --  putStrLn ("                    " ++ (edRGH 3 5)) 
+            --  --putStrLn (newToStep 2 3)
           -- EMERGENT structure
           -- [Just \[\\\[40.36697247706422,40.36697247706422,0.0,40.54878048780488]\\\]\]  THE REAl 3 but Rated 4 
           --
@@ -630,7 +630,7 @@ kArmTest5 bonelist mofaList connectWrist dit dit2 mCommand crit= do
 
               putStrLn ((edR1 4 3) )-- ++ "       "  ++ (edRGH 4 3))
 
-              putStrLn ((edR1 4 4) )-- ++ "     " ++ (edRGH 4 4))
+              putStrLn ((edR1 4 4) )-- ++ "     " ++ (edRGH 4 4)) -}
 
             --  putStrLn ("                    " ++ (edRGH 4 5))
              -- putStrLn ("                    " ++ (edRGH 5 5))
