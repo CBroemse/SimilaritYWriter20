@@ -81,6 +81,7 @@ import Data.Char
 import Control.Monad
 import System.Environment
 import System.IO
+import Control.Applicative
 --import Data.ByteString.Lazy
 --import qualified Data.ByteString.Read as W hiding (writeFile,readFile, putstrLn,read,map,unlines,lines)
 
@@ -89,7 +90,7 @@ import DataTypePunkt
 import qualified Path2Val2 as HT
 import qualified FourierFieldCLASSIFIER as F
 import qualified WriteWXmaximaJuicy as M
-
+import qualified GHCguiNfunctions as GHC
 --
 --     1. layer of concept: The Haskell string below is not easily understood 
 --                          
@@ -188,6 +189,8 @@ kArmTest5 bonelist mofaList connectWrist dit dit2 mCommand crit= do
                           if foA==[] then Nothing
                           else let chssd i = maybePu2 (head(ausw i foA))  (((boa (head(ausw i foA)) (head(ausw i eindelijk)))))  
                                in Just (show[(chssd 1)])
+     let mayer foa = if foa == [] then [""]
+                              else lines(show [(foAdecide2 foa)])
      let mayer2 r foa = if (foa) == [] then maybePu "empty"
                                        else maybePu2 (r) (Just(maybePu ((show [(foAdecide2 (foa))]))))
      let justNames = ["name1","name2","name3"]
@@ -206,8 +209,29 @@ kArmTest5 bonelist mofaList connectWrist dit dit2 mCommand crit= do
                      else "MOTHER MODE: on"  
 
      let basis mm foA = Punkt (fnACCRAW(nACCRAW (unwords(allAcc (connectWrist))) ["When set M will work:"++" now sleeping", checkFo mm ] ) ) foA foA foA foA foA
-     let formation io1 io2 rd = [(basis (checkflow io1 [(basis4 liT (preX rd))]) (Just (maybePu(unwords(formTest io2 (preX rd) [show(F.fourierMQ6NOPAN123 rd )] (words(show(sin rd))))))  ))]
+    -- EXAMPLE Punkt new format connect two [Maybe Punkt] list1 and list2
+     let formationRAW io1 io2 rd = (head(head(map words(checkflow io1 [(basis (checkflow io1 [(basis4 liT (preX rd))]) (Just (maybePu(unwords(formTest io2 (preX rd) [show(F.fourierMQ6NOPAN123 rd )] (words(show(sin rd))))))  ))]))))
+     let formation io2 rd = [(formationRAW [mother] io2 (realToFrac rd))] --(preX rd) list1 (checkflow [] [(basis4 list2 rd)])) 
+--formTest io  rd bonelist io2 rd
+   --  let formation2 io1 io2 rd  = checkflow [] [(basis (checkflow io1 [(basis4 liT (preX rd))]) (Just (maybePu(unwords(formTest io2 (preX rd) [show(F.fourierMQ6NOPAN123 rd )] (words(show(sin rd))))))  ))]
+     let asDot2 inp = ((map mayer (map words inp)))
 
+ -- RETRIEVE the DATA turn any 
+ -- type:  [Maybe Punkt] -> String
+ -- with brute force.
+     let justGoneRAW2 io t  = let prep1 = ((map ord (((head(ausw t((formation io t))))))))
+         -- take always second
+                           in let prep2 = head ((ord '[') `elemIndices` (prep1))
+         -- take always second , fixed
+                           in let prep3 = head  ((ord ']') `elemIndices` (prep1))
+
+                           in let prep4 = drop prep2 (take prep3 ((head((ausw t ((formation io t))))))) 
+                           in let filAll = filter (/=92) (filter (/=34) (filter (/=93) (filter (/=91) (map ord (prep4))))) 
+                           in map chr filAll
+     let justGone2 io t = justGoneRAW2 io t  --(asDot2 ([(show(formation [] 10))])) 
+     putStrLn (show(map scanChar(formationRAW [mother] [mother] (realToFrac 1))))  --------------------------------------Punkt data: show pg values
+     let formT io r z = (formTest io r liT z)
+     putStrLn (show (formT [father] 2 bonelist )) ---------------------------------------------------------------data for Punkt  mother father ...progVars
    --  let basis mm foA = basisRAW fnACCRAW nACCRAW connectWrist checkFo foA 
      -- take from deze [String] e.g -> 
      let foChain = length bonelist
@@ -288,7 +312,10 @@ kArmTest5 bonelist mofaList connectWrist dit dit2 mCommand crit= do
 --                       :== (  [occurance posi.] , [[ map ord input] , [occur.proposi.]]   )
 --
               let theTrix2 crit = chainDistribute crit bonelist crit (lines "1")
-              -- ACCESS functions:
+
+             
+                            -- ACCESS functions:
+              putStrLn "TEST fomration TYPE "
               let foinnerOrd = head(snd (theTrix2 crit)) --
               let foinner = last (snd(theTrix2 crit))
               let rythm = (32) `elemIndices` (foinnerOrd)
@@ -318,7 +345,7 @@ kArmTest5 bonelist mofaList connectWrist dit dit2 mCommand crit= do
 --                                        | simiVal a1 ([a0..a3] \\ a1)    |
 --                                        | simiVal a2 ([a0..a3] \\ a2)    |
 --                                        | simiVal a3 ([a0..a2] )         |
---                    |   work 'bonelist' |    NOT USED                    |
+--                    |   work 'bonelist' |  edR1 , ...    |
 --                       ===============      =========
 -- =>  boneListOrder
 --
@@ -410,7 +437,9 @@ kArmTest5 bonelist mofaList connectWrist dit dit2 mCommand crit= do
  
                              let theInner = (concat (take 1 tmap3 )) 
                              return(theInner))
-                      
+
+
+          
               putStrLn "below: sortEm ; inlinesortEm; " 
               putStrLn ((unlines (map show (concat (sortEm)))))
               putStrLn ((show inlinesortEm))
@@ -448,8 +477,10 @@ kArmTest5 bonelist mofaList connectWrist dit dit2 mCommand crit= do
 	 -- The input variable ghCheck is sorted into phiMax list.
 	 -- ghCheck could end up in any spot of a list function 'sortEmInput' 
 	 -- find max different of group 
-	 -- ghCheck 
+	 -- ghCheck
+	       
               let prepPhiorder = take 1 randPunktList3 
+              
               sortEmInput <- forM [1..prepRyth] (\pr -> do
                       let withInput = (map realToFrac (concat prepPhiorder)) -- now we can use maximum again
                       let toStep e w = ( w `elemIndices` e)
@@ -577,10 +608,12 @@ kArmTest5 bonelist mofaList connectWrist dit dit2 mCommand crit= do
 
               let mapMo o r = unwords (checkflow [mother] (motherTYPE o [1..prepRyth] r))
               let foexpoMo r w =  unlines (map (edR1 w ) r)
+              --let innerLineMother = 
               let exportMother r = unlines(map (foexpoMo r ) r)
               let exportMother2 o = (words (concat(map (mapMo o) [2,3,4])))
-
+              --let tryformation io1 io2 r = formationRAW io1 io2 r --bonelist [(exportMother [1..r])] io r 
               putStrLn "\n test mother functions"
+             -- putStrLn (show (tryformation [mother] 1))
           --    putStrLn (show (map muster [1..4]))
           --    putStrLn (show (map muster2 [1..4]))
               putStrLn (unlines(checkflow [mother] (ausw 1 (motherType (justGene 3) (3)))))
@@ -625,6 +658,14 @@ kArmTest5 bonelist mofaList connectWrist dit dit2 mCommand crit= do
     --           [[ ],[ ],[0],[]]
     --           [[ ],[ ],[ ],[]]
     --           [[0],[0],[ ],[]]
+    --
+    --           thanks to Miran Lipovaca
+    --           zipWith' :: (a -> b -> c) -> [a] -> [b] -> [c]  
+--zipWith' _ [] _ = []  
+--zipWith' _ _ [] = []  
+--zipWith' f (x:xs) (y:ys) = f x y : zipWith' f xs ys
+-- 
+--         Just 3 >>= (\x -> Just (show x ++ "!"))
               putStrLn ((edR1 4 1) )-- ++ "      " ++ (edRGH 4 1))
               putStrLn ((edR1 4 2) )--  ++ "      " ++ (edRGH 4 2))
 
@@ -644,6 +685,9 @@ kArmTest5 bonelist mofaList connectWrist dit dit2 mCommand crit= do
               putStrLn "Test exportMother"
               putStrLn ((exportMother [1..4]))
               putStrLn (unlines (exportMother2 1))
+             -- putStrLn (unlines(map fst randPunktList))
+            --  putStrLn (unlines((map snd (unlines randPunktList)))
+
           --    putStrLn ((exportMother 3))
             --  putStrLn ((exportMother 4))
 
@@ -666,7 +710,7 @@ kArmTest5 bonelist mofaList connectWrist dit dit2 mCommand crit= do
               let foe t = head (ausw t bonelist)
           --    let op = atrix0a (foe 1) (foe 2) (foe 3) (foe 4) (foe 2) (foe 1) 1 1
               putStrLn "readY to plot"
-              let pop = (ptc0  5)
+             -- let pop = (ptc0  5)
               --M.writeWXCloudNODE (pop) (ptc2 5) (ptc3 5) (ptc4 5) (ptc5 5) (ptc6 5)
               M.writeWXCloudNODE (ptc2 5) (ptc2 15) (ptc2 25) (ptc4 2) (ptc4 3) (ptc4 5)
               M.writeWXCloud4 (ptc2 5) (ptc2 25) (ptc2 50) (ptc4 5) (ptc4 25) (ptc4 50)
@@ -775,8 +819,63 @@ kArmTest5 bonelist mofaList connectWrist dit dit2 mCommand crit= do
     --          putStrLn (show whereTO)
       --        putStrLn (show(length(unlines tguess)))
         --      putStrLn line1Ideal 
-              -}   
+              -}  
+---------------------------------------------------------------------------------------------------
+--
+    -- a writer cant solve a problem "just list what is this writer program"
+    -- from here we work our way back which functions are needed 
+              let allFunctions selectFunc iO iO2 iO3 adds selectLine= do putStrLn "1" --GHC.selecTOR1 ((allFUNC iO iO2 iO3 adds selectLine) )
+                    where
+                     ranPL = ((map snd randPunktList),  "randPunktList" ); --(simSums, ofLine);
+                     sorEM = ( sortEm,         "sortEm"        );
+                     isoEM = ( inlinesortEm,   "inlineSortEm"  );  
+                     raPL3 = ( randPunktList3, "randPunktist3" );
+                     finDR = ( findOrdeR,      "findOrdeR"     ); -- :562
+                     tS  e w  = ( (toStep e w),  "toStep"      ); -- :397
+                 --    muuus u = ( (muster u) ,         "muster"        ); -- :569
+                   --  wGHc =  (withGHcheck,     "withGHcheck"   ); -- :570
+                     ms2 u =((muster2 u),         "muster2" ); -- :571
+                     jIO   = (justIO,          "justIO"        ); -- :577
+                     tTx2  = (theTrix2,        "theTrix2"      ); -- :313
+                     ryt   = (rythm,           "rythm"         ); -- :320
+                     pR    = (prepRyth,        "prepRyth"      ); -- :321
+                     sWit  = (sortWith,        "sortWith"      ); -- :325
+         {-            foInO = (foinnerOrd,      "foinnerOrd"    );  -- :319
+                     foIn  = (foinner,         "foinner"       ); -- :320
+                     toIt  = (toIter,          "toIter"        ); -- :578
+                     iM    = (inMap,           "inMap"         ); -- :579
+                     may3  = (mayer3,          "mayer3"        ); -- :581 
+                     jGe u  = (justGene u,        "justGene"      ); -- :584
+                     may   = (mayer,           "mayer"         ); -- :191
+                     foAde = (foAdecide,       "foAdecide"     ); -- :176
+                     fAde2 = (foAdecide2,      "foAdecide2"    ) ; -- :182
+                -- :263   :1675  all functions in this range are in frame 
+                     gauss = (gaussRate,       "gaussRate"     ); -- :241 
+                     m2    = (mayer2,          "mayer"         ); -- :192
+                     jNam  = (justNames,       "justNames"     ); -- :196
+                     mT    = (motherType,      "motherType"    ); -- :197
+                     fACR  = (fnACCRAW,        "fnACCRAW"      );  -- :210
+                     cFo   = (checkFo,         "checkFo"       );  -- :208
+                     baas  = (basis,           "basis"         ); -- :211
+                     foCh  = (foChain,         "foChain"       ); -- :237
+                     mkPal = (makePalette,     "makePalette"   );  -- :328
+                     fomoN = (formation,       "formation"     );  -- :214
+                     asD2  = (asDot2,          "asDot2"        );  -- :217
+                     jsG   = (justGoneRAW2,    "justGoneRAW2"  ); -- :222
+                     fMT   = (formT,           "formT"         ); -- :233 -}
+                     jG    = (justGone2,       "justGone2"     ); -- :331    Punkt 
+                     expoMum l = (exportMother l , "exportMother" ); 
+                     alABOVE= head (ausw selectFunc [(expoMum selectLine)]) 
+           --[ranPL,sorEM,isoEM,raPL3,finDR,(tS e w){-,(muuus u),wGHc,(ms2 u),-}jIO,tTx2,ryt,pR,sWit,foInO,foIn,toIt,iM,may3,jGe u,may,foAde,fAde2,gauss,m2,jNam,mT,fACR,cFo,baas,foCh,mkPal,fomoN,asD2,jsG,fMT,jG])
+                     foFuncPair fox aDD = (checkflow [] [mayer2"otto" fox] >>= (\x -> checkflow [] [(mayer2 "otto" [(show x ++ aDD)])]))  --Just 3 >>= (\x -> Just (show x ++ "!"))
+                --     want itsIOname = mayer2 (snd itsIOname) (fst itsIOname) 
+                  --   strives io3 = (checkflow io3 (want alABOVE)) -- get name or functionality 
+                  --   fmrTEST io r lis1 lis2 = formTestRAW io r lis1 lis2  --[(foFuncPair fox aDD)] 
+                  --   allFUNC io io2 io3 aDD foLine = fmrTEST io foLine (checkflow io2 [(want alABOVE)]) [justGoneRAW2 (foFuncPair (strives io3) aDD) 1 ] 
+              --allFunctions 1 [] [] [] "adding" [1]
+              putStrLn "Done" 
      (frame0 bonelist (mofaList) connectWrist dit dit2) 
+
 
 -- 9-6-2020
 -- Standing true to my premise after having worked out a methodoogy 
@@ -854,7 +953,7 @@ fotoGeor3 compar punktList pg = (wohlGeorNet03 compar pg) punktList
 
 -- serve 5 possible random values that are OUTPUT of each Line called
 -- the output is used to find solutions.
-toGeor3 compar punktList = ((concat (map (fotoGeor3 compar punktList) [1,2,3,4,5])))
+toGeor3 compar punktList = (concat (map (fotoGeor3 compar punktList) [1..(length liT)]))
 ------------------------------------------------------
 
 
@@ -1059,7 +1158,9 @@ chainDistribute crit dipfade2 criterium pt = let provideVals = [show(map ord cri
 -- e.g 'M.writeWXCloudNODE (ptc0 3)(ptc1 3)(ptc2 3)(ptc3 3)(ptc 3) (ptc5)'
 -- or  'M.writeWXCloud4 (ptc0 50)(ptc1 50)(ptc2 50)(ptc3 50)(ptc 50) (ptc5)'
 -- let basis mm foA = basisRAW fnACCRAW nACCRAW (allAcc connectWrist) checkFo foA 
-basis2 foAL m = maybePu (head (ausw m foAL )) 
+
+------------------------------------------------------------------------------------------------------------------------
+basis2 foAL m = maybePu (head (ausw m foAL ))         -- ACCESS functions to any bonelist line 
 basis3 foAL =  ((map ( (basis2 foAL)) [1..(length foAL)]))
 basis2New foAL x m = maybePu (head (ausw m (foAL x))) 
 -- Upload functions and apply them to the data
@@ -1075,7 +1176,14 @@ basis4 foAL r = maybePu (show(checkflow [] [((basis2 foAL r))]))
 -- map befehle
 -- befehle:  [(F.fourierMQ6NOPAN123),(F.fourierMQ5NOPAN123),(F.fourierMQ4NOPAN123),(F.fourierMQ4TRACE)] 
 
-formTest io r e normalFunction =  let punktOrPg = checkflow  io [(Punkt  (head(checkflow [] [(basis4 liT r)])) (Just (basis2 e 1 )) (Just (basis2 e 3 )) (Just (basis2 e 4 )) (Just (basis2 e 5 )) (Just (basis2 e 6))) ]
+-- 20-6-20 Enter bonelist 
+-- io:: [mother,father...   ; choose connect or not 
+-- r :: Char ; which line of the  just connected Punkt to get. 
+-- e :: bonelist ; a previous order 
+-- normalFunctions :: the Punkt just connected 
+formTest io r e normalFunction = formTestRAW io r e liT normalFunction
+
+formTestRAW io r e e2 normalFunction =  let punktOrPg = checkflow  io [(Punkt  (head(checkflow [] [(basis4 e2 r)])) (Just (basis2 e 1 )) (Just (basis2 e 3 )) (Just (basis2 e 4 )) (Just (basis2 e 5 )) (Just (basis2 e 6))) ]
                  in let choosBy = length(head (group(punktOrPg)))
                  in if choosBy ==2 then normalFunction
                                    else punktOrPg 
@@ -1087,8 +1195,8 @@ runner x = do  --scanChar
         -- (return (do r)) --putStrLn (show e) --show(return e)
 -- import your functions into kArmTest5 via formation
 preX x = head(map scanChar (frmDoubletoInt (show x)))
-pg1 x = sin x  --(sin (read((head((formTest [mother] (preX x) [show(sin (x))] (words(show(sin 2))))  ))))) -- (((([(formTest [mother] 1 [show(F.fourierMQ6NOPAN123 (realToFrac (show x)))] (words(show(sin (x)))))]  )))) -- head(ausw 1 [(F.fourierMQ6NOPAN123 x)]) 
-pg2 x = cos x --(F.fourierMQ5NOPAN123 x)0
+pg1 x = sin x --F.fourierMQ6NOPAN123 x--(sin (read((head((formTest [father] (preX x) [show(sin (x))] (words(show(sin 2))))  ))))) -- (((([(formTest [mother] 1 [show(F.fourierMQ6NOPAN123 (realToFrac (show x)))] (words(show(sin (x)))))]  )))) -- head(ausw 1 [(F.fourierMQ6NOPAN123 x)]) 
+pg2 x = cos x --(F.fourierMQ5NOPAN123 x)
 pg3 x = sin x --(F.fourierMQ4NOPAN123 x)
 pg4 x = cos x --(F.fourierMQ4TRACE x)
 pg11 x = show x --show(F.fourierMQ6NOPAN123 x)
@@ -1180,11 +1288,11 @@ kArmT bonelist mofaList connectWrist dit dit2 mCommand crit= do
                           dada fopick fodeze = head (ausw (read fopick) fodeze);
                           noSense deze deze2 = Punkt (dada pick1 deze) (Just (maybePu (dada pick2 deze2))) Nothing Nothing Nothing Nothing;
     -- io1: mother ;  io2 [mother -> pg1 ; father -> pg2  ... 
-     let formation io1 io2 rd = (head(head(map words(checkflow io1 [(basis (checkflow io1 [(basis4 liT (preX rd))]) (Just (maybePu(unwords(formTest io2 (preX rd) [show(F.fourierMQ6NOPAN123 rd )] (words(show(sin rd))))))  ))]))))
+     let formation io1 io2 rd = ((head(map words(checkflow io1 [(basis (checkflow io1 [(basis4 liT (preX rd))]) (Just (maybePu(unwords(formTest io2 (preX rd) [show(F.fourierMQ6NOPAN123 rd )] (words(show(sin rd))))))  ))]))))
   --  putStrLn (unlines(checkflow [father] [(basis (checkflow [] [(basis4 liT 1)]) (Just (maybePu(unwords(formTest [] 1 [show(F.fourierMQ6NOPAN123 1 )] (words(show(pg2 1))))))  ))]))
    --  putStrLn (unlines(checkflow [father] [(basis (checkflow [] [(basis4 liT 1)]) (Just (maybePu(unwords(formTest [] dit2 [show(F.fourierMQ6NOPAN123 (1) )] (words(show(pg2 1))))))  ))]))
      --(formation [mother] [mother] 1)
-     (formation [mother] [mother] 1)
+     (formation [mother] [mother] (dit))
      --(formation [mother] [] 1)
 
 
