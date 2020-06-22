@@ -605,8 +605,10 @@ kArmTest5 bonelist mofaList connectWrist dit dit2 mCommand crit= do
             --    let motherTYPE o u r = map (mayer2 ((ausw r (edR1 r o )))) [(map (edR1 r) u )]
               let areplace r o = ((ausw r (edR1 r o )))
               let motherTYPE o u r = map (mayer2 (concat(ausw r (map show findOrdeR)))) [(map (edR1 r) u )]
+              let motherTYPE2 o u r = map (mayer2 (concat(ausw r (map show findOrdeR)))) [(map (edRGH r) u )]
 
               let mapMo o r = unwords (checkflow [mother] (motherTYPE o [1..prepRyth] r))
+              let mapMo2 o r = unwords (checkflow [mother] (motherTYPE2 o [1..prepRyth] r))
               let foexpoMo r w =  unlines (map (edR1 w ) r)
               --let innerLineMother = 
               let exportMother r = unlines(map (foexpoMo r ) r)
@@ -714,117 +716,12 @@ kArmTest5 bonelist mofaList connectWrist dit dit2 mCommand crit= do
               --M.writeWXCloudNODE (pop) (ptc2 5) (ptc3 5) (ptc4 5) (ptc5 5) (ptc6 5)
               M.writeWXCloudNODE (ptc2 5) (ptc2 15) (ptc2 25) (ptc4 2) (ptc4 3) (ptc4 5)
               M.writeWXCloud4 (ptc2 5) (ptc2 25) (ptc2 50) (ptc4 5) (ptc4 25) (ptc4 50)
-    {- 
-
-              putStrLn "1" --(show pop) --(pop (head(map ord "1")))  ---------------------------------------------------------------------------------
- ----------------------------------------------------------------------------------------------------------
---
----------------------------------------------------------------------------------------------------------
-              let mayer foa = if foa == [] then [""]
-                              else lines(show [(foAdecide2 foa)])
-
-
-              let asDot inp = ((map mayer (map words inp)))
-
- -- RETRIEVE the DATA turn any 
- -- type:  [Maybe Punkt] -> String
- -- with brute force.
-              let justGoneRAW t som = let prep1 = ((map ord (concat(concat ((ausw t som))))))
-         -- take always second
-                             in let prep2 = head (ausw 2 ((ord '[') `elemIndices` (prep1)))
-         -- take always second , fixed
-                             in let prep3 = head (ausw 2 ((ord ']') `elemIndices` (prep1)))
-
-                             in let prep4 = drop prep2 (take prep3 (unlines(concat ((ausw t som))))) 
-                             in let filAll = filter (/=92) (filter (/=34) (filter (/=93) (filter (/=91) (map ord prep4)))) 
-                             in map chr filAll
-              let justGone t = justGoneRAW t (asDot bonelist) 
-              putStrLn (show (justGone 2))
-              putStrLn "furter" 
-
-              putStrLn (justGoneRAW 1 ([(map tester  [1..4])])) 
-              let pointeMA w2 w = Punkt (show(justGone w)) (Just(maybePu(show(justGone ((w2)-1))))) Nothing Nothing Nothing Nothing
-              putStrLn (unlines (checkflow [] ([pointeMA 3 2])))
-              let sortPunkts w2 =  map (pointeMA w2) [1..(length bonelist)]
-              let pointeMA2 w2 w = Punkt (show(justGone w)) (Just(maybePu(show(justGone ((w2)-1))))) Nothing Nothing Nothing Nothing
-              let sortPunkts2 w2 =  map (pointeMA2 w2) [1..(length bonelist)]
-              putStrLn (unlines(concat (asDot bonelist)))
-              let hiveList = let ste1 w = (Just(maybePu(show(justGone (w-1)))))
-                             in map ste1 [1..(length bonelist)] 
-              putStrLn "TEST: 9.6.20   ; not finished"
-              putStrLn (head(ausw 3 (checkflow [mother] (sortPunkts 3))))
-              let raw w =  (head((checkflow [mother] (w))))
-              let fromOccur =  (((concat(sortEm)))) 
-              let checLength z = concat(ausw z fromOccur)
-
-              let outputPunktOrder z =  let innerMap z = let innerOrder2 z b =  ausw b (checLength z)
-                                                         in let innerLengt z = [1..(length(checLength z))]
-                                                         in let withRaw z = map (innerOrder2 z) (innerLengt z) 
-                                                         in let apointer w2 = (pointeMA2 w2) (w2+1)
-                                                         in
-                                                         if (length(checLength z))>1 then 
-                                                              map apointer (concat (withRaw z)) -- (pointeMA2 (withRaw z --map withRaw (concat(sortPunkts z)) --((map sortPunkts2 (innerLengt z))) --map raw [1,2] --(concat(withRaw z))
-                                                         else  map apointer (concat (withRaw z)) --map withRaw (concat(sortPunkts z)) --withRaw z-- ((map sortPunkts2 (checLength z)))
-                                        in (innerMap z) --sortPunkts z -- map raw (innerMap z) --innerMap 2 --map innerMap [1..(length fromOccur)] --innerMap z
-             -- putStrLn (head(ausw 3 (checkflow [mother] (hiveList))))
-              putStrLn (show (outputPunktOrder 3))
-
-              allTogether <- forM [1..(prepRyth)] (\z -> do
-                        let chhos = ((ausw z (concat(snd(theTrix2 crit))))) 
-                        let mapRepKEYI aa = (sortWith aa) (show z)
-                        let forole = (prepRyth -1)
-                        roleKEY <- forM [1..prepRyth] (\y -> do
-                                let gegenStueck = filter (/=z) [1..prepRyth]
-                                let makShow aa = show(mapRepKEYI aa)
-                                let role = (map show gegenStueck)
-                                return(role) )
-                        
-                        putStrLn (show (take 1 roleKEY))
-                       -- let sta1 =  roleKEY --(ausw 1 (concat (take 1 roleKEY2)))
-                       -- let sta2 = sum sta1
-                       -- putStrLn (show sta1) 
-                       -- putStrLn (show sta2)
-                       -- let foPoin = sta2--basis crit (foAdecide (show chhos) )
-                        --innerPoints <- forM 
-                        return ())
-
-              let aliste7 u = take (length (checLength u)) [1,1..] 
-              putStrLn (show (zipWith (+) (aliste7 4) (checLength 4)))
-              putStrLn (unlines(checkflow [] ((outputPunktOrder 4))))
-              let altgh2 i = let steA i = show (zipWith (+) (aliste7 i) (checLength i))
-                             in let steB i =  (checkflow [] ((outputPunktOrder i)))
-                             in (((steA i))++" bonelist content: " ++ (unwords (steB i)))
-              let altgh3 i = let steA i = show (zipWith (+) (aliste7 i) (checLength i))
-                             in let steB i =  (checkflow [mother] ((outputPunktOrder i)))
-                             in (((steA i))++"atom bonelist: " ++ (unwords (steB i)))
-              let neFunc l = do
-                   does <- forM [1..prepRyth] (\l -> do
-                       let alines=   ((altgh2 l)) -- ++" "++(altgh3 4)))
-                       let aliasType = (altgh3 (last [(prepRyth)]))
-                       let narrowGate r = if r<=l then "Occurance: "++(show l)++" bonelist item: "++alines
-                                          else "Occurance: "++(show l)++ " bonelist item: "++aliasType
-                       return (narrowGate l))
-                   does 
-            
-              putStrLn (unlines(neFunc 2))
-              putStrLn "End"
-
-       --------------------------------------------------------------------------------------------
-       --------------------------------------------------------------------------------------------
-             -- let forWrite = let commaWeg = map (\c -> if c==',' then ' ' ; else c)
-
-               --              in  ( combo) --commaWeg ((((filter (/='"') combo)))
-             -- writeFile "testInhalt4.txt" (forWrite) --putStrLn (show (length manyMsplit))
-  --            putStrLn (unlines line1Id) --(unwords tideal)
-    --          putStrLn (show whereTO)
-      --        putStrLn (show(length(unlines tguess)))
-        --      putStrLn line1Ideal 
-              -}  
----------------------------------------------------------------------------------------------------
+    ---------------------------------------------------------------------------------------------------
 --
     -- a writer cant solve a problem "just list what is this writer program"
     -- from here we work our way back which functions are needed 
-              let allFunctions selectFunc iO iO2 iO3 adds selectLine= do putStrLn "1" --GHC.selecTOR1 ((allFUNC iO iO2 iO3 adds selectLine) )
+              let allFunctions selectFunc iO iO2 iO3 adds selectLine= do  putStrLn$unlines$head$ (return(allFUNC2 iO iO2 selectLine)) -- putStrLn "1" --GHC.selecTOR1 [(putStrLn (show((allFUNC iO iO2 iO3 adds selectLine)) ) )] --putStrLn "1"
+                                                                       --   putStrLn$unlines$head$ (return(allFUNC2 iO iO2 selectLine))   
                     where
                      ranPL = ((map snd randPunktList),  "randPunktList" ); --(simSums, ofLine);
                      sorEM = ( sortEm,         "sortEm"        );
@@ -864,15 +761,42 @@ kArmTest5 bonelist mofaList connectWrist dit dit2 mCommand crit= do
                      jsG   = (justGoneRAW2,    "justGoneRAW2"  ); -- :222
                      fMT   = (formT,           "formT"         ); -- :233 -}
                      jG    = (justGone2,       "justGone2"     ); -- :331    Punkt 
-                     expoMum l = (exportMother l , "exportMother" ); 
-                     alABOVE= head (ausw selectFunc [(expoMum selectLine)]) 
+                     expoMum l = (exportMother l , "exportMother" );
+                     lisOlists w = [w] 
+                  --   mam = map expoMum ((map lisOlists [1..(selectLine)])); 
+                   --  alABOVE fstOsnd = head (ausw selectFunc (map fstOsnd mam)); 
            --[ranPL,sorEM,isoEM,raPL3,finDR,(tS e w){-,(muuus u),wGHc,(ms2 u),-}jIO,tTx2,ryt,pR,sWit,foInO,foIn,toIt,iM,may3,jGe u,may,foAde,fAde2,gauss,m2,jNam,mT,fACR,cFo,baas,foCh,mkPal,fomoN,asD2,jsG,fMT,jG])
-                     foFuncPair fox aDD = (checkflow [] [mayer2"otto" fox] >>= (\x -> checkflow [] [(mayer2 "otto" [(show x ++ aDD)])]))  --Just 3 >>= (\x -> Just (show x ++ "!"))
-                --     want itsIOname = mayer2 (snd itsIOname) (fst itsIOname) 
-                  --   strives io3 = (checkflow io3 (want alABOVE)) -- get name or functionality 
-                  --   fmrTEST io r lis1 lis2 = formTestRAW io r lis1 lis2  --[(foFuncPair fox aDD)] 
-                  --   allFUNC io io2 io3 aDD foLine = fmrTEST io foLine (checkflow io2 [(want alABOVE)]) [justGoneRAW2 (foFuncPair (strives io3) aDD) 1 ] 
-              --allFunctions 1 [] [] [] "adding" [1]
+                     foFuncPair fox aDD =  (checkflow [] [mayer2"jack" fox] >>= (\x -> checkflow [] [(mayer2 "jack2" [(show x ++ aDD)])]));  --Just 3 >>= (\x -> Just (show x ++ "!"))
+                     foFuncPair2  o r  =  (  [mayer2 "otto" [(mapMo o r)] ] >>= (\x ->  [(mayer2 "otto" [(show x ++"   " ++(mapMo2 o r))])])); 
+                     punktUpFuncPair fox1 fox aDD io = [( mayer2 (unlines(foFuncPair fox1 "")) (checkflow io [(maybePu (concat(foFuncPair fox aDD)))]))];
+                    
+                  --   strives io io2 r aDD ifo = let preIO3 = (checkflow io2  [(maybePu2 "dot" (Just(head(ausw ifo (punktUpFuncPair [(alABOVE fst)] [(alABOVE snd)] aDD io)))))] ) --((head (checkflow [] (io3)))) 
+                                   --         in preIO3 --(checkflow io3 [(want ((alABOVE kiez),(alABOVE kiez)))]) -- get name or functionality 
+                     fmrTEST io r lis1 lis2 normFu  = formTestRAW io r lis1 lis2 normFu  --[(foFuncPair fox aDD)]
+                     fmrTEST2 io e e2 forLine =  checkflow  io [(Punkt  (head(checkflow [] [(basis4 e2 forLine)])) (Just (basis2 e 1 )) (Just (basis2 e 3 )) (Just (basis2 e 4 )) (Just (basis2 e 5 )) (Just (basis2 e 6))) ]
+                     mapfoFunc2 o = checkflow [] (concat(map (foFuncPair2 o) (fst finDR)))
+                     fmrTEST3RAW io o r e2 forLine =  checkflow  io [(Punkt  (head(checkflow [] [(basis4 e2 forLine)])) (Just (head(foFuncPair2 o r ))) Nothing Nothing Nothing Nothing )]
+                     fmrTEST3 io o r forLine = ((fmrTEST3RAW io o r (mapfoFunc2 o) forLine), "specialSort can get missing part???")
+                     allFUNC2RAW io io2 forLine = fmrTEST2 io (ausw selectFunc [(fst (expoMum forLine)),show(fst ranPL),show(fst sorEM),show(fst (fmrTEST3 io2 forLine 1 (head forLine)))])  (ausw selectFunc [(snd (expoMum forLine)),(snd ranPL),(snd sorEM),(snd (fmrTEST3 io2 forLine 1 (head forLine)))]) (head forLine) 
+                     allFUNC2 io io2 forLine = (allFUNC2RAW io io2 [forLine]) 
+           --   putStrLn (unlines(head(allFunctions 1 [] [] [] "adding" [1])))111
+              (allFunctions 1 [] [] [] ""  1)
+              (allFunctions 1 [mother] [] [] "a comment" 2)
+              (allFunctions 1 [mother] [] [] "" 3)
+
+              (allFunctions 1 [] [mother] [] "" 1)
+           --   (allFunctions 2 [] [] [] "" 2)
+              (allFunctions 2 [mother] [mother] [] "" 1)
+              (allFunctions 3 [mother] [] [] "" 1)
+              (allFunctions 3 [] [] [] "" 1)
+            --  (allFunctions 2 [father] [] [] "" 1)
+
+
+
+
+
+
+
               putStrLn "Done" 
      (frame0 bonelist (mofaList) connectWrist dit dit2) 
 
