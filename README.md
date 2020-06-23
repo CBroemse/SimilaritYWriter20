@@ -162,7 +162,8 @@ where   a a a a = line1 ; b b b b = line2 ... x x x x = line n
 
 how things are compared
 
-        wohlGeor3 ->atrixCo -> progVar3
+        wohlGeor3 ->atrixCo -> amatrix2 -> changs ->chgLine -> ptc4
+             below not used
                 ->   atrix3 t m = (F.chooseMQ t (wohlGeor3 (progVar1 ) m))
                 ->  atrix3a t m = (F.chooseMQ t (wohlGeor3 (progVar1 ) m))
                 ->  atrix3b t m = (F.chooseMQ t (wohlGeor3 (progVar1 ) m))
