@@ -160,6 +160,15 @@ where   a a a a = line1 ; b b b b = line2 ... x x x x = line n
                                          ,progVar4
 ![alt tag](https://github.com/CBroemse/SimilaritYWriter20/blob/master/source/conceptPlotter.png)
 
+how things are compared
+
+        wohlGeor3 ->atrixCo -> progVar3
+                ->   atrix3 t m = (F.chooseMQ t (wohlGeor3 (progVar1 ) m))
+                ->  atrix3a t m = (F.chooseMQ t (wohlGeor3 (progVar1 ) m))
+                ->  atrix3b t m = (F.chooseMQ t (wohlGeor3 (progVar1 ) m))
+
+
+
 ##### Step IV
 
 Now we try to define rules concerning the metric' above. One guidline is
