@@ -81,6 +81,7 @@ import Data.Char
 import Control.Monad
 import System.Environment
 import System.IO
+import Control.Applicative
 --import Data.ByteString.Lazy
 --import qualified Data.ByteString.Read as W hiding (writeFile,readFile, putstrLn,read,map,unlines,lines)
 
@@ -89,7 +90,7 @@ import DataTypePunkt
 import qualified Path2Val2 as HT
 import qualified FourierFieldCLASSIFIER as F
 import qualified WriteWXmaximaJuicy as M
-
+import qualified GHCguiNfunctions as GHC
 --
 --     1. layer of concept: The Haskell string below is not easily understood 
 --                          
@@ -127,29 +128,6 @@ import qualified WriteWXmaximaJuicy as M
 --
 --
 
-
--- HYRACHY IN 'kArmTest5' 'Punkt'DATA-TYPE
---          |ACCESS FUNCTIONS  
--- ___________|___________________________________________________________________________|
--- LEVEL 0   :|    nACC                                                                   |
--- LEVEL 1 in:|    nACCRAW -> fst -> "M"                                                  |
---            |            -> snd -> "notM"                                               |
--- LEVEL 1    |     tracker1        |    findArm,findHand                                 |   
--- LEVEL 1 output =>fst: "tracker!" OR    snd:  ["findArm","hand"])                       |                      
--- LEVEL 2    |                     |    innerAccessRAW "1" this OR inner..RAW "2" this   |
--- LEVEL 2    |   e.g 
---
--- FUNCTION IN 'kArmTest5'                             'kArmTest5'
--- ACCESS FUNCTIONS  
--- ___________|___________________________________________________________________________|
--- LEVEL 0   :|   [A]       [B]                                A             B           |
--- LEVEL 1 in:|   ideal     guess                             ideal       guess
---            |   [a]    ->   b                                [a]
--- LEVEL 1    |    =>  similar in [a]  |    findArm,findHand                                 |   
--- LEVEL 1 output  =>  simi [A] ~ b                      |                      
--- LEVEL 2    |                     |    innerAccessRAW "1" this OR inner..RAW "2" this   |
--- LEVEL 2    |   e.g 
---
   
  -- "The real power of cathegory-theory is kind of to isolate what you care about...
  --  a group of homomorphisms is always a function between sets..."
@@ -188,6 +166,8 @@ kArmTest5 bonelist mofaList connectWrist dit dit2 mCommand crit= do
                           if foA==[] then Nothing
                           else let chssd i = maybePu2 (head(ausw i foA))  (((boa (head(ausw i foA)) (head(ausw i eindelijk)))))  
                                in Just (show[(chssd 1)])
+     let mayer foa = if foa == [] then [""]
+                              else lines(show [(foAdecide2 foa)])
      let mayer2 r foa = if (foa) == [] then maybePu "empty"
                                        else maybePu2 (r) (Just(maybePu ((show [(foAdecide2 (foa))]))))
      let justNames = ["name1","name2","name3"]
@@ -206,8 +186,29 @@ kArmTest5 bonelist mofaList connectWrist dit dit2 mCommand crit= do
                      else "MOTHER MODE: on"  
 
      let basis mm foA = Punkt (fnACCRAW(nACCRAW (unwords(allAcc (connectWrist))) ["When set M will work:"++" now sleeping", checkFo mm ] ) ) foA foA foA foA foA
-     let formation io1 io2 rd = [(basis (checkflow io1 [(basis4 liT (preX rd))]) (Just (maybePu(unwords(formTest io2 (preX rd) [show(F.fourierMQ6NOPAN123 rd )] (words(show(sin rd))))))  ))]
+    -- EXAMPLE Punkt new format connect two [Maybe Punkt] list1 and list2
+     let formationRAW io1 io2 rd = (head(head(map words(checkflow io1 [(basis (checkflow io1 [(basis4 liT (preX rd))]) (Just (maybePu(unwords(formTest io2 (preX rd) [show(F.fourierMQ6NOPAN123 rd )] (words(show(sin rd))))))  ))]))))
+     let formation io2 rd = [(formationRAW [mother] io2 (realToFrac rd))] --(preX rd) list1 (checkflow [] [(basis4 list2 rd)])) 
+--formTest io  rd bonelist io2 rd
+   --  let formation2 io1 io2 rd  = checkflow [] [(basis (checkflow io1 [(basis4 liT (preX rd))]) (Just (maybePu(unwords(formTest io2 (preX rd) [show(F.fourierMQ6NOPAN123 rd )] (words(show(sin rd))))))  ))]
+     let asDot2 inp = ((map mayer (map words inp)))
 
+ -- RETRIEVE the DATA turn any 
+ -- type:  [Maybe Punkt] -> String
+ -- with brute force.
+     let justGoneRAW2 io t  = let prep1 = ((map ord (((head(ausw t((formation io t))))))))
+         -- take always second
+                           in let prep2 = head ((ord '[') `elemIndices` (prep1))
+         -- take always second , fixed
+                           in let prep3 = head  ((ord ']') `elemIndices` (prep1))
+
+                           in let prep4 = drop prep2 (take prep3 ((head((ausw t ((formation io t))))))) 
+                           in let filAll = filter (/=92) (filter (/=34) (filter (/=93) (filter (/=91) (map ord (prep4))))) 
+                           in map chr filAll
+     let justGone2 io t = justGoneRAW2 io t  --(asDot2 ([(show(formation [] 10))])) 
+     putStrLn (show(map scanChar(formationRAW [mother] [mother] (realToFrac 1))))  --------------------------------------Punkt data: show pg values
+     let formT io r z = (formTest io r liT z)
+     putStrLn (show (formT [father] 2 bonelist )) ---------------------------------------------------------------data for Punkt  mother father ...progVars
    --  let basis mm foA = basisRAW fnACCRAW nACCRAW connectWrist checkFo foA 
      -- take from deze [String] e.g -> 
      let foChain = length bonelist
@@ -216,11 +217,7 @@ kArmTest5 bonelist mofaList connectWrist dit dit2 mCommand crit= do
                           dada fopick fodeze = head (ausw (read fopick) fodeze);
                           noSense deze deze2 = Punkt (dada pick1 deze) (Just (maybePu (dada pick2 deze2))) Nothing Nothing Nothing Nothing;
      let gaussRate eins zuI = similaritYvalue eins zuI
- -- ############################# The gaussian Rate is wrapped into two functions 
-   -- beRepKEYRAW ; pick1 value of onelist and compare it to an snd pick2 of another list
-   -- There is an allAcc function without any purpose that could be used lateron
-    -- Rate any two things bone1 with 
-    -- ---------------------------------------------------------------------------------
+     -- ---------------------------------------------------------------------------------
      let beRepKEYRAW pick1 pick2 onelist twoList punktList = (crunchtoSimi pick2) 
                       where
                   --      commands =   [bone1,bone2,bone3,bone4,bone5]; 
@@ -242,53 +239,10 @@ kArmTest5 bonelist mofaList connectWrist dit dit2 mCommand crit= do
               --------------------------------------------------------------------------------------------------------------------------------------
             frame0a = do
                    -----------------------------------------------------------------------------------------------
----------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-
---    #)    chainDistribution   Choose (if bonelist>1                   |    Punkt (simiYval a b )
-
---                      e.g ..*> let gh = chainDistribute r ["2","2","1"] r (lines "1")
---                            *> (beRepKEY pick1 pick2 punktList) 
-
-
---   ##)    chainDistribute ->  OCCURANCE   ->  randPunktList -> sortEm -> 
---              => edR1                             | the function to be mapped in motherTYPE
---              => motherTYPE                       | a f
---              *> let edR1 r u = enduranceRace8a9_6_20 r u 
---               u: the normal order ?  
---              *> let motherTYPE o u r = map (mayer2 ((ausw r (edR1 r o )))) [(map (edR1 r) u )]
-
---       --                            
-
---
--- KETTENVERTEILUNG aka CHAIN-DISTRIBUTION                                   |  -- in which order do Values occur are they groupd and in which occurance 
---e.g *> let proposition = "AABBBB"                                          |  -- a proposion is a string that will probe the bonelist
---    *> let bonelist =["AAABB","AABAB","AABB","BBBAA"]                       |
---    *> let fochain = group  (map ord(unwords bonelist))                                        
--- [[65,65,65],[66,66],[32],[65,65],[66],[65],[66],[32],[65,65],[66,66],[32],[66,66,66],[65,65]]| ::= ord  [["A","A"],["B","B"],["BA",BA"]..]
---    
---     OCCURANCE OF ALL DIGITS
---    *> let occORD = map ord fochain                                        | -bonelist in ord, 
---    *> [65,65,65,66,66,32,65,65,66,65,66,32,65,65,66,66,32,66,66,66,65,65] | all needed data chain distributions can be found in this format
---                                                                         
---
---     OCCURRANCE POSITION
---    *> let occPOS= proposition `elemIndices` bonelist                
---          | if [] not occure 
---          | else e.g [0,1]
---
---
---     OCCURANCE PROPOSITION                                     | in all ATOMS of all lines of bonelist
---
---    *> let gh r = chainDistribute r bonelist r (lines "1")
---    *> gh "AAABB"
---    *> ([3],[[65,65,65,66,66,32,65,65,66,65,66,32,65,65,66,66,32,66,66,66,65,65],[4,5,9,11,15,16,18,19,20]])
-
---            dataFormat :==   ( occurance position,  map ord input ,    occurance fst atom ( "A" of "AABBB" -> [1,2])   )
---                       :== (  [occurance posi.] , [[ map ord input] , [occur.proposi.]]   )
 --
               let theTrix2 crit = chainDistribute crit bonelist crit (lines "1")
-              -- ACCESS functions:
+                            -- ACCESS functions:
+              putStrLn "TEST fomration TYPE "
               let foinnerOrd = head(snd (theTrix2 crit)) --
               let foinner = last (snd(theTrix2 crit))
               let rythm = (32) `elemIndices` (foinnerOrd)
@@ -302,37 +256,6 @@ kArmTest5 bonelist mofaList connectWrist dit dit2 mCommand crit= do
               putStrLn (show (beRepKEY (show dit) (show dit2) []))
 
               putStrLn ((show rythm) ++ " break positions in whole bonelist") 
-
--- COMBINE 'mapRepKEY' with ' chainDistribution '
--- e.g    fst 'randPunktList' := (compare pick1) [pick2] -> [compare[pick1..pick2]]
---            => roleKEY  -> [[String]] 
---            => roleKEY2 -> [[Double]] -> sum roleKEY2 ->
---            -> roleKEY2 := in a line of bonelist -> turn every (String a) into (Double a) ->
---                   -> (with simiYval a) -> [(simiVal a)]
--- =>  everyLineOrder
---
---                    |  every line has its inner order 
---                    |        I.         |      II.
---                    |   map ord line    |    simiVal a b                 |
---                    | map ord [a0..c0]  | simiVal a0 ([a1..3] )          |
---                                        | simiVal a1 ([a0..a3] \\ a1)    |
---                                        | simiVal a2 ([a0..a3] \\ a2)    |
---                                        | simiVal a3 ([a0..a2] )         |
---                    |   work 'bonelist' |    NOT USED                    |
---                       ===============      =========
--- =>  boneListOrder
---
---                    |  every boneList has its inner order 
---                    |        I.         |      II.
---                    |   map ord line    |    simiVal a b                 |
---                    | map ord [a0..c0]  | sim0 = simiVal a0 ([a1..3] )          | [0.0,0.0,19.877675840978593,0.3048780487804878]
---                                        | sim1 = simiVal a1 ([a0..a3] \\ a1)    | [0.0,0.0,19.877675840978593,0.3048780487804878]
---                                        | sim2 = simiVal a2 ([a0..a3] \\ a2)    | [19.877675840978593,19.877675840978593,0.0,20.121951219512198]
---                                        | sim3 = simiVal a3 ([a0..a2] )         | [0.3048780487804878,0.3048780487804878,20.121951219512198,0.0]
---                  'chainDistribution'   | simSums = [(sum sim0)..(sum sim3)]    | [20.18255388975908,20.18255388975908,59.877302901469385,20.731707317073173]
---                  ===================   |  maximum simSums                      |  show most differing order vs minimum most similar
---                                        |   'randPunktList'                     |
---                                            =================
 -- ---------------------------------------------------------------------------
 
               randPunktList <- forM [1..(prepRyth)] (\z -> do
@@ -373,24 +296,6 @@ kArmTest5 bonelist mofaList connectWrist dit dit2 mCommand crit= do
                       let lineorder = tmaps pr (map fst randPunktList)
                       putStrLn "testin"
                       return (lineorder))
- -- Where are atoms on :  phiMax :: [Double] -> max ([(sum[Double])] ->[Double]   
- --                       phiMax = max (sum simYval )               |  calculating the most different line due to simiVal
- --                       also simYval :: [Double]
- --foas:     | u:[Doulbe] -> WHEREELEMENT  ------------------------------------------------------------------------------------------"THE FIRST ORDER :)"
- --                          The where element represent is the first step after choosing atrategy. In this case phiMax is the strategy so we count down.
- --                          We know the limit of how many steps to go is the length of the given bonelist.  
- --                           n -1 or +1 
- --                         depending if we introduce a new atom
- --                          into the list of all atoms , in other words if the value we are comparing to is element of the list we would only need to go  
- --                          n-1 
- --                          steps and vice versa. 
- --                          strategy is being put
- --                          frequenty into a fold . In other words if we start with phiMax (the maximum simval line of bonelist)
- --                          the next smaller element is being found via all those `elemIndices` functions.
- --                          Important is the order that emerges.
-
- --   new strategies arise: 
- --                     
  -- A) comparing the phiMax line to an ordered  phi line: compare (simYval) to  (sort phiMax)
  -- B  comparing phiMax line to the phiMin
  -- C) compare phiMax line to another line
@@ -410,7 +315,7 @@ kArmTest5 bonelist mofaList connectWrist dit dit2 mCommand crit= do
  
                              let theInner = (concat (take 1 tmap3 )) 
                              return(theInner))
-                      
+          
               putStrLn "below: sortEm ; inlinesortEm; " 
               putStrLn ((unlines (map show (concat (sortEm)))))
               putStrLn ((show inlinesortEm))
@@ -422,7 +327,6 @@ kArmTest5 bonelist mofaList connectWrist dit dit2 mCommand crit= do
               let ghCheck = concat (take prepRyth (repeat [crit]))
                             
 -- COMPARE bonlist this time :  ghCheck to (a'S of bonelist )
---
 --  =>  randPunktList2 /= randPunktList3 but randPunktist2 = (transpose randPunkList3)   
               randPunktList3 <- forM [1..(prepRyth)] (\z -> do
                         let chhos = ((ausw z (concat(snd(theTrix2 crit))))) 
@@ -443,13 +347,13 @@ kArmTest5 bonelist mofaList connectWrist dit dit2 mCommand crit= do
                         putStrLn ((show sta1)++" "++((show sta2)))
                         return (sta1))
               putStrLn "sum matrix row" 
-              putStrLn (show (randPunktList3))
-
 	 -- The input variable ghCheck is sorted into phiMax list.
 	 -- ghCheck could end up in any spot of a list function 'sortEmInput' 
 	 -- find max different of group 
-	 -- ghCheck 
+	 -- ghCheck
+	       
               let prepPhiorder = take 1 randPunktList3 
+              
               sortEmInput <- forM [1..prepRyth] (\pr -> do
                       let withInput = (map realToFrac (concat prepPhiorder)) -- now we can use maximum again
                       let toStep e w = ( w `elemIndices` e)
@@ -499,37 +403,18 @@ kArmTest5 bonelist mofaList connectWrist dit dit2 mCommand crit= do
                                                              in (concat fobuildHead)++boneMax++["right"]++(concat fobuildTail) 
                                                         else (concat fobuildHead)++["left"]++boneMax++(concat fobuildTail) 
                                         --else ausw 1 runTries
-                      putStrLn (show judgeTries)
-                      putStrLn (show (runTries))
-                      putStrLn ((show(map snd runTriesRAW)))
+                --      putStrLn (show judgeTries)
+                  --    putStrLn (show (runTries))
+                    --  putStrLn ((show(map snd runTriesRAW)))
                                   
-                      return ((filterMy,(runTries))) )  
-          -- => (  class names , class simivals)
-          -- => ( (sorted ghCheck into bonelist), (its simiVals) 
-          -- with (length bonelist)> 1 to work , otherwise there is not much sorting needed
-              putStrLn ((show (take 5 ( sortEmInput))))
-------------------------------------------------------------------------------------------
-          -- 19-6-20 
-          -- Does the new  (sorted ghCheck into bonelist) of 'sortEmInput' above need to sorted agian,how and why? 
-          -- experiment will again like inlinesortEm sort 
-          --  sortEmInput := inlinesortEm   
-
-----------------------------------------------------------------------------------
-----------------------------------------------------------------------------------
---MAP ANCESTORY     start with the pre-ordered phiMax 
---             I ...
---             II bonelist  -> simiYVal [line1..lineN]  
---                
---           functions:
---'tester' (ausw t) [phiMax] ->  Just mother t   
---motherType3  | like above test your own name ist
---            step [phiMax] -1    ..mother..         ["name list"]
---
---
---  e.g  ["AAABB","AABAB","AAA","BBBAA"]  -> ["AAABB"/"AAABAB","BBBAA","AAA"]  -> sortEm
+                      return ((filterMy,(runTries))) ) 
+ 
+         --  e.g  ["AAABB","AABAB","AAA","BBBAA"]  -> ["AAABB"/"AAABAB","BBBAA","AAA"]  -> sortEm
 --                                        -> ( [0,1],  [0,1],    [3],   [2]] ) -> 
 --       => sortEM                           
-              let findOrdeR = nub (concat(concat (sortEm)))       
+              let findOrdeR = nub (concat(concat (sortEm)))      -- -> [
+              putStrLn "FinD ORDER"
+              putStrLn (show findOrdeR) 
                -- inp:[String] -> bonelist
        -- the lineorder can be funnelt into a (maybe mother)/= Nothing
        --  a motherType e.g simiSum Order 
@@ -541,7 +426,7 @@ kArmTest5 bonelist mofaList connectWrist dit dit2 mCommand crit= do
               putStrLn (show(muster 1))
             --  putStrLn (show inlinesortEm)
               putStrLn "with GH" 
-              putStrLn (show withGHcheck)
+           --   putStrLn (show withGHcheck)
               let justIO = inlinesortEm
               let toIter foa = (Just(maybePu ((show [(foAdecide2 (foa))]))))
               let inMap = map toIter (map words justNames)
@@ -559,19 +444,32 @@ kArmTest5 bonelist mofaList connectWrist dit dit2 mCommand crit= do
       --  1. maximum -> step to next smaller atom ....  -- r shall be mapped
               let enduranceRace8a9_6_20 r u = show (map (toStep (muster u)) (concat (ausw r justIO))  ) -- stepI a. ([phiMax])
               let edR1 r u = enduranceRace8a9_6_20 r u 
+
+    -- function below can crash the whole 'kArmTest5' the error handeling 
+    -- can be done via a Punkt ?! ------------------------------------------------####################################################### 20-6-20 
+    --                                                                                                               must have li order to work 
               let edRGH r u = show (map (toStep (muster2 u)) (concat(ausw r withGHcheck))  ) -- stepI b.  ghCheck: [phiMax]
-              putStrLn (show(map (edRGH 1) [1..5]))
+            --  putStrLn (show(map (edRGH 1) [1..5]))
               let moreEdR1 r = map (edR1 r) [1..prepRyth]
               
  --           u: the normal order ?     
  --   r:Int ; which to take of sortEm to be mapped with [1..(length bonelist)]
             --    let motherTYPE o u r = map (mayer2 ((ausw r (edR1 r o )))) [(map (edR1 r) u )]
               let areplace r o = ((ausw r (edR1 r o )))
-              let motherTYPE o u r = map (mayer2 ((ausw r (edR1 r o )))) [(map (edR1 r) u )]
+              let motherTYPE o u r = map (mayer2 (concat(ausw r (map show findOrdeR)))) [(map (edR1 r) u )]
+              let motherTYPE2 o u r = map (mayer2 (concat(ausw r (map show findOrdeR)))) [(map (edRGH r) u )]
 
               let mapMo o r = unwords (checkflow [mother] (motherTYPE o [1..prepRyth] r))
-              let exportMother o = (words (head(map (mapMo o) [1..prepRyth])))
+              let mapMo2 o r = unwords (checkflow [mother] (motherTYPE2 o [1..prepRyth] r))
+              let foexpoMo r w =  unlines (map (edR1 w ) r)
+              --let innerLineMother = 
+              let exportMother r = unlines(map (foexpoMo r ) r)
+              let exportMother2 o = (words (concat(map (mapMo o) [2,3,4])))
+              --let tryformation io1 io2 r = formationRAW io1 io2 r --bonelist [(exportMother [1..r])] io r 
               putStrLn "\n test mother functions"
+             -- putStrLn (show (tryformation [mother] 1))
+          --    putStrLn (show (map muster [1..4]))
+          --    putStrLn (show (map muster2 [1..4]))
               putStrLn (unlines(checkflow [mother] (ausw 1 (motherType (justGene 3) (3)))))
    -- Punkt function:
    -- insert your desired mother type to any Punkt
@@ -582,31 +480,31 @@ kArmTest5 bonelist mofaList connectWrist dit dit2 mCommand crit= do
               let motherType3 foas r = map (mayer3 (head(ausw r (map show justIO)))) ([foas])
               putStrLn (unlines(checkflow [] (ausw 1 (motherType3 (justGene 3) (3)))))
               putStrLn (tester 4)
-              putStrLn ((edR1 1 1) ++ "     " ++ (edRGH 1 1))
-              putStrLn ((edR1 1 2) ++ "     " ++ (edRGH 1 2))
+           {-   putStrLn ((edR1 1 1) )-- ++ "     " ++ (edRGH 1 1))
+              putStrLn ((edR1 1 2) )-- ++ "     " ++ (edRGH 1 2))
 
-              putStrLn ((edR1 1 3) ++ "      " ++ (edRGH 1 3))
+              putStrLn ((edR1 1 3) )-- ++ "      " ++ (edRGH 1 3))
 
-              putStrLn ((edR1 1 4) ++ "      " ++ (edRGH 1 4))
+              putStrLn ((edR1 1 4) )-- ++ "      " ++ (edRGH 1 4))
 
-              putStrLn ("                    " ++ (edRGH 1 5))
-              putStrLn ((edR1 2 1)  ++ "     " ++ (edRGH 2 1))
+      --        putStrLn ("                    " ++ (edRGH 1 5))
+              putStrLn ((edR1 2 1) )-- ++ "     " ++ (edRGH 2 1))
 
-              putStrLn ((edR1 2 2)  ++ "     " ++ (edRGH 2 2))
+              putStrLn ((edR1 2 2) )-- ++ "     " ++ (edRGH 2 2))
 
-              putStrLn ((edR1 2 3)  ++ "      " ++ (edRGH 2 3))
+              putStrLn ((edR1 2 3) )-- ++ "      " ++ (edRGH 2 3))
 
-              putStrLn ((edR1 2 4)  ++ "      " ++ (edRGH 2 4))
-              putStrLn ("                    "++ (edRGH 2 5))
-              putStrLn ((edR1 3 1) ++ "      " ++ (edRGH 3 1))
-              putStrLn ((edR1 3 2)  ++ "      " ++ (edRGH 3 2))
+              putStrLn ((edR1 2 4) )-- ++ "      " ++ (edRGH 2 4))
+              -- putStrLn ("                    "++ (edRGH 2 5))
+              putStrLn ((edR1 3 1) )-- ++ "      " ++ (edRGH 3 1))
+              putStrLn ((edR1 3 2) )-- ++ "      " ++ (edRGH 3 2))
 
-              putStrLn ((edR1 3 3) ++ "     " ++ (edRGH 3 3))
+              putStrLn ((edR1 3 3) )-- ++ "     " ++ (edRGH 3 3))
 
-              putStrLn ((edR1 3 4) ++ "       " ++ (edRGH 3 4))
+              putStrLn ((edR1 3 4) )-- ++ "       " ++ (edRGH 3 4))
 
-              putStrLn ("                    " ++ (edRGH 3 5))
-              --putStrLn (newToStep 2 3)
+            --  putStrLn ("                    " ++ (edRGH 3 5)) 
+            --  --putStrLn (newToStep 2 3)
           -- EMERGENT structure
           -- [Just \[\\\[40.36697247706422,40.36697247706422,0.0,40.54878048780488]\\\]\]  THE REAl 3 but Rated 4 
           --
@@ -614,149 +512,127 @@ kArmTest5 bonelist mofaList connectWrist dit dit2 mCommand crit= do
     --           [[ ],[ ],[0],[]]
     --           [[ ],[ ],[ ],[]]
     --           [[0],[0],[ ],[]]
-              putStrLn ((edR1 4 1) ++ "      " ++ (edRGH 4 1))
-              putStrLn ((edR1 4 2)  ++ "      " ++ (edRGH 4 2))
+    --
+    --           thanks to Miran Lipovaca
+    --           zipWith' :: (a -> b -> c) -> [a] -> [b] -> [c]  
+--zipWith' _ [] _ = []  
+--zipWith' _ _ [] = []  
+--zipWith' f (x:xs) (y:ys) = f x y : zipWith' f xs ys
+-- 
+--         Just 3 >>= (\x -> Just (show x ++ "!"))
+              putStrLn ((edR1 4 1) )-- ++ "      " ++ (edRGH 4 1))
+              putStrLn ((edR1 4 2) )--  ++ "      " ++ (edRGH 4 2))
 
-              putStrLn ((edR1 4 3) ++ "       "  ++ (edRGH 4 3))
+              putStrLn ((edR1 4 3) )-- ++ "       "  ++ (edRGH 4 3))
 
-              putStrLn ((edR1 4 4) ++ "     " ++ (edRGH 4 4))
+              putStrLn ((edR1 4 4) )-- ++ "     " ++ (edRGH 4 4)) -}
 
-              putStrLn ("                    " ++ (edRGH 4 5))
-              putStrLn ("                    " ++ (edRGH 5 5))
+            --  putStrLn ("                    " ++ (edRGH 4 5))
+             -- putStrLn ("                    " ++ (edRGH 5 5))
 
               putStrLn "Test map mother"
             --  putStrLn (unlines(sort(moreEdR1 1 )))
              -- putStrLn (unines(checkflow [mother] 
---              putStrLn (mapMo 2)
-  --            putStrLn (mapMo 3)
-    --          putStrLn (mapMo 4)
-      --        putStrLn (mapMo 5)
-        --      putStrLn (mapMo 6)
-          --    putStrLn (mapMo 7)
-            --  putStrLn (mapMo 8)
-
-             -- putStrLn (newToStep 2 4)
-             --
-            -- ARISING: 
-            -- a line that yields [[0],[0],[0],[0],[0]
-            -- There might be some insights in the functions that comes out of above,
-            --
+              putStrLn (mapMo 1 1)
+              putStrLn (mapMo 1 2)
+              putStrLn (mapMo 1 3)
+              putStrLn "Test exportMother"
+              putStrLn ((exportMother [1..4]))
+              putStrLn (unlines (exportMother2 1))
+             -- putStrLn (unlines(map fst randPunktList))
+            --  putStrLn (unlines((map snd (unlines randPunktList)))
     -- Plot-------------------------------------------------------------------
           -- STEP III. of program
               let foe t = head (ausw t bonelist)
           --    let op = atrix0a (foe 1) (foe 2) (foe 3) (foe 4) (foe 2) (foe 1) 1 1
               putStrLn "readY to plot"
-              let pop = (ptc0  5)
+             -- let pop = (ptc0  5)
               --M.writeWXCloudNODE (pop) (ptc2 5) (ptc3 5) (ptc4 5) (ptc5 5) (ptc6 5)
               M.writeWXCloudNODE (ptc2 5) (ptc2 15) (ptc2 25) (ptc4 2) (ptc4 3) (ptc4 5)
               M.writeWXCloud4 (ptc2 5) (ptc2 25) (ptc2 50) (ptc4 5) (ptc4 25) (ptc4 50)
-    {- 
-
-              putStrLn "1" --(show pop) --(pop (head(map ord "1")))  ---------------------------------------------------------------------------------
- ----------------------------------------------------------------------------------------------------------
+    ---------------------------------------------------------------------------------------------------
 --
----------------------------------------------------------------------------------------------------------
-              let mayer foa = if foa == [] then [""]
-                              else lines(show [(foAdecide2 foa)])
+    -- a writer cant solve a problem "just list what is this writer program"
+    -- from here we work our way back which functions are needed 
+              let allFunctions selectFunc iO iO2 iO3 adds selectLine= do  putStrLn$unlines$head$ (return(allFUNC2 iO iO2 selectLine)) -- putStrLn "1" --GHC.selecTOR1 [(putStrLn (show((allFUNC iO iO2 iO3 adds selectLine)) ) )] --putStrLn "1"
+                                                                       --   putStrLn$unlines$head$ (return(allFUNC2 iO iO2 selectLine))   
+                    where
+                     ranPL = ((map snd randPunktList),  "randPunktList" ); --(simSums, ofLine);
+                     sorEM = ( sortEm,         "sortEm"        );
+                     isoEM = ( inlinesortEm,   "inlineSortEm"  );  
+                     raPL3 = ( randPunktList3, "randPunktist3" );
+                     finDR = ( findOrdeR,      "findOrdeR"     ); -- :562
+                     tS  e w  = ( (toStep e w),  "toStep"      ); -- :397
+                 --    muuus u = ( (muster u) ,         "muster"        ); -- :569
+                   --  wGHc =  (withGHcheck,     "withGHcheck"   ); -- :570
+                     ms2 u =((muster2 u),         "muster2" ); -- :571
+                     jIO   = (justIO,          "justIO"        ); -- :577
+                     tTx2  = (theTrix2,        "theTrix2"      ); -- :313
+                     ryt   = (rythm,           "rythm"         ); -- :320
+                     pR    = (prepRyth,        "prepRyth"      ); -- :321
+                     sWit  = (sortWith,        "sortWith"      ); -- :325
+         {-            foInO = (foinnerOrd,      "foinnerOrd"    );  -- :319
+                     foIn  = (foinner,         "foinner"       ); -- :320
+                     toIt  = (toIter,          "toIter"        ); -- :578
+                     iM    = (inMap,           "inMap"         ); -- :579
+                     may3  = (mayer3,          "mayer3"        ); -- :581 
+                     jGe u  = (justGene u,        "justGene"      ); -- :584
+                     may   = (mayer,           "mayer"         ); -- :191
+                     foAde = (foAdecide,       "foAdecide"     ); -- :176
+                     fAde2 = (foAdecide2,      "foAdecide2"    ) ; -- :182
+                -- :263   :1675  all functions in this range are in frame 
+                     gauss = (gaussRate,       "gaussRate"     ); -- :241 
+                     m2    = (mayer2,          "mayer"         ); -- :192
+                     jNam  = (justNames,       "justNames"     ); -- :196
+                     mT    = (motherType,      "motherType"    ); -- :197
+                     fACR  = (fnACCRAW,        "fnACCRAW"      );  -- :210
+                     cFo   = (checkFo,         "checkFo"       );  -- :208
+                   --  baas  = (basis,           "basis"         ); -- :211
+                     foCh  = (foChain,         "foChain"       ); -- :237
+                     mkPal = (makePalette,     "makePalette"   );  -- :328
+                     fomoN = (formation,       "formation"     );  -- :214
+                     asD2  = (asDot2,          "asDot2"        );  -- :217
+                     jsG   = (justGoneRAW2,    "justGoneRAW2"  ); -- :222
+                     fMT   = (formT,           "formT"         ); -- :233 -}
+                     jG    = (justGone2,       "justGone2"     ); -- :331    Punkt 
+                     expoMum l = (exportMother l , "exportMother" );
+                     lisOlists w = [w] 
+                  --   mam = map expoMum ((map lisOlists [1..(selectLine)])); 
+                   --  alABOVE fstOsnd = head (ausw selectFunc (map fstOsnd mam)); 
+           --[ranPL,sorEM,isoEM,raPL3,finDR,(tS e w){-,(muuus u),wGHc,(ms2 u),-}jIO,tTx2,ryt,pR,sWit,foInO,foIn,toIt,iM,may3,jGe u,may,foAde,fAde2,gauss,m2,jNam,mT,fACR,cFo,baas,foCh,mkPal,fomoN,asD2,jsG,fMT,jG])
+                     foFuncPair fox aDD =  (checkflow [] [mayer2"jack" fox] >>= (\x -> checkflow [] [(mayer2 "jack2" [(show x ++ aDD)])]));  --Just 3 >>= (\x -> Just (show x ++ "!"))
+                     foFuncPair2  o r  =  (  [mayer2 "otto" [(mapMo o r)] ] >>= (\x ->  [(mayer2 "otto" [(show x ++"   " ++(mapMo2 o r))])])); 
+                     punktUpFuncPair fox1 fox aDD io = [( mayer2 (unlines(foFuncPair fox1 "")) (checkflow io [(maybePu (concat(foFuncPair fox aDD)))]))];
+                    
+                  --   strives io io2 r aDD ifo = let preIO3 = (checkflow io2  [(maybePu2 "dot" (Just(head(ausw ifo (punktUpFuncPair [(alABOVE fst)] [(alABOVE snd)] aDD io)))))] ) --((head (checkflow [] (io3)))) 
+                                   --         in preIO3 --(checkflow io3 [(want ((alABOVE kiez),(alABOVE kiez)))]) -- get name or functionality 
+                     fmrTEST io r lis1 lis2 normFu  = formTestRAW io r lis1 lis2 normFu  --[(foFuncPair fox aDD)]
+                     fmrTEST2 io e e2 forLine =  checkflow  io [(Punkt  (head(checkflow [] [(basis4 e2 forLine)])) (Just (basis2 e 1 )) (Just (basis2 e 3 )) (Just (basis2 e 4 )) (Just (basis2 e 5 )) (Just (basis2 e 6))) ]
+                     mapfoFunc2 o = checkflow [] (concat(map (foFuncPair2 o) (fst finDR)))
+                     fmrTEST3RAW io o r e2 forLine =  checkflow  io [(Punkt  (head(checkflow [] [(basis4 e2 forLine)])) (Just (head(foFuncPair2 o r ))) Nothing Nothing Nothing Nothing )]
+                     fmrTEST3 io o r forLine = ((fmrTEST3RAW io o r (mapfoFunc2 o) forLine), "specialSort can get missing part???")
+                     allFUNC2RAW io io2 forLine = fmrTEST2 io (ausw selectFunc [(fst (expoMum forLine)),show(fst ranPL),show(fst sorEM),show(fst (fmrTEST3 io forLine (head forLine) (head forLine)))])  (ausw selectFunc [(snd (expoMum forLine)),(snd ranPL),(snd sorEM),(snd (fmrTEST3 io2 forLine 1 (head forLine)))]) (head forLine) 
+                     allFUNC2 io io2 forLine = (allFUNC2RAW io io2 [forLine]) 
+           --   putStrLn (unlines(head(allFunctions 1 [] [] [] "adding" [1])))111
+              (allFunctions 1 [] [] [] ""  1)
+              (allFunctions 1 [mother] [] [] "a comment" 2)
+             -- (allFunctions 1 [mother] [mother] [] "" 7)
+              (allFunctions 1 [mother] [] [] "" 4)
+              (allFunctions 1 [mother] [] [] "" 5)
+              (allFunctions 1 [] [mother] [] "" 1)
+              (allFunctions 1 [mother] [mother] [] "" 3)
+            ---  (allFunctions 1 [father] [mother] [] "" 3)
+           --   (allFunctions 2 [] [] [] "" 2)
+              (allFunctions 2 [mother] [mother] [] "" 1)
+              (allFunctions 3 [mother] [] [] "" 1)
+              (allFunctions 3 [] [] [] "" 1)
+              (allFunctions 3 [mother] [mother] [] "" 2)
+              (allFunctions 3 [mother] [mother] [] "" 3)
+              --(allFunctions 3 [mother] [father] [] "" 4)
 
-
-              let asDot inp = ((map mayer (map words inp)))
-
- -- RETRIEVE the DATA turn any 
- -- type:  [Maybe Punkt] -> String
- -- with brute force.
-              let justGoneRAW t som = let prep1 = ((map ord (concat(concat ((ausw t som))))))
-         -- take always second
-                             in let prep2 = head (ausw 2 ((ord '[') `elemIndices` (prep1)))
-         -- take always second , fixed
-                             in let prep3 = head (ausw 2 ((ord ']') `elemIndices` (prep1)))
-
-                             in let prep4 = drop prep2 (take prep3 (unlines(concat ((ausw t som))))) 
-                             in let filAll = filter (/=92) (filter (/=34) (filter (/=93) (filter (/=91) (map ord prep4)))) 
-                             in map chr filAll
-              let justGone t = justGoneRAW t (asDot bonelist) 
-              putStrLn (show (justGone 2))
-              putStrLn "furter" 
-
-              putStrLn (justGoneRAW 1 ([(map tester  [1..4])])) 
-              let pointeMA w2 w = Punkt (show(justGone w)) (Just(maybePu(show(justGone ((w2)-1))))) Nothing Nothing Nothing Nothing
-              putStrLn (unlines (checkflow [] ([pointeMA 3 2])))
-              let sortPunkts w2 =  map (pointeMA w2) [1..(length bonelist)]
-              let pointeMA2 w2 w = Punkt (show(justGone w)) (Just(maybePu(show(justGone ((w2)-1))))) Nothing Nothing Nothing Nothing
-              let sortPunkts2 w2 =  map (pointeMA2 w2) [1..(length bonelist)]
-              putStrLn (unlines(concat (asDot bonelist)))
-              let hiveList = let ste1 w = (Just(maybePu(show(justGone (w-1)))))
-                             in map ste1 [1..(length bonelist)] 
-              putStrLn "TEST: 9.6.20   ; not finished"
-              putStrLn (head(ausw 3 (checkflow [mother] (sortPunkts 3))))
-              let raw w =  (head((checkflow [mother] (w))))
-              let fromOccur =  (((concat(sortEm)))) 
-              let checLength z = concat(ausw z fromOccur)
-
-              let outputPunktOrder z =  let innerMap z = let innerOrder2 z b =  ausw b (checLength z)
-                                                         in let innerLengt z = [1..(length(checLength z))]
-                                                         in let withRaw z = map (innerOrder2 z) (innerLengt z) 
-                                                         in let apointer w2 = (pointeMA2 w2) (w2+1)
-                                                         in
-                                                         if (length(checLength z))>1 then 
-                                                              map apointer (concat (withRaw z)) -- (pointeMA2 (withRaw z --map withRaw (concat(sortPunkts z)) --((map sortPunkts2 (innerLengt z))) --map raw [1,2] --(concat(withRaw z))
-                                                         else  map apointer (concat (withRaw z)) --map withRaw (concat(sortPunkts z)) --withRaw z-- ((map sortPunkts2 (checLength z)))
-                                        in (innerMap z) --sortPunkts z -- map raw (innerMap z) --innerMap 2 --map innerMap [1..(length fromOccur)] --innerMap z
-             -- putStrLn (head(ausw 3 (checkflow [mother] (hiveList))))
-              putStrLn (show (outputPunktOrder 3))
-
-              allTogether <- forM [1..(prepRyth)] (\z -> do
-                        let chhos = ((ausw z (concat(snd(theTrix2 crit))))) 
-                        let mapRepKEYI aa = (sortWith aa) (show z)
-                        let forole = (prepRyth -1)
-                        roleKEY <- forM [1..prepRyth] (\y -> do
-                                let gegenStueck = filter (/=z) [1..prepRyth]
-                                let makShow aa = show(mapRepKEYI aa)
-                                let role = (map show gegenStueck)
-                                return(role) )
-                        
-                        putStrLn (show (take 1 roleKEY))
-                       -- let sta1 =  roleKEY --(ausw 1 (concat (take 1 roleKEY2)))
-                       -- let sta2 = sum sta1
-                       -- putStrLn (show sta1) 
-                       -- putStrLn (show sta2)
-                       -- let foPoin = sta2--basis crit (foAdecide (show chhos) )
-                        --innerPoints <- forM 
-                        return ())
-
-              let aliste7 u = take (length (checLength u)) [1,1..] 
-              putStrLn (show (zipWith (+) (aliste7 4) (checLength 4)))
-              putStrLn (unlines(checkflow [] ((outputPunktOrder 4))))
-              let altgh2 i = let steA i = show (zipWith (+) (aliste7 i) (checLength i))
-                             in let steB i =  (checkflow [] ((outputPunktOrder i)))
-                             in (((steA i))++" bonelist content: " ++ (unwords (steB i)))
-              let altgh3 i = let steA i = show (zipWith (+) (aliste7 i) (checLength i))
-                             in let steB i =  (checkflow [mother] ((outputPunktOrder i)))
-                             in (((steA i))++"atom bonelist: " ++ (unwords (steB i)))
-              let neFunc l = do
-                   does <- forM [1..prepRyth] (\l -> do
-                       let alines=   ((altgh2 l)) -- ++" "++(altgh3 4)))
-                       let aliasType = (altgh3 (last [(prepRyth)]))
-                       let narrowGate r = if r<=l then "Occurance: "++(show l)++" bonelist item: "++alines
-                                          else "Occurance: "++(show l)++ " bonelist item: "++aliasType
-                       return (narrowGate l))
-                   does 
-            
-              putStrLn (unlines(neFunc 2))
-              putStrLn "End"
-
-       --------------------------------------------------------------------------------------------
-       --------------------------------------------------------------------------------------------
-             -- let forWrite = let commaWeg = map (\c -> if c==',' then ' ' ; else c)
-
-               --              in  ( combo) --commaWeg ((((filter (/='"') combo)))
-             -- writeFile "testInhalt4.txt" (forWrite) --putStrLn (show (length manyMsplit))
-  --            putStrLn (unlines line1Id) --(unwords tideal)
-    --          putStrLn (show whereTO)
-      --        putStrLn (show(length(unlines tguess)))
-        --      putStrLn line1Ideal 
-              -}   
+              putStrLn "Done" 
      (frame0 bonelist (mofaList) connectWrist dit dit2) 
+
 
 -- 9-6-2020
 -- Standing true to my premise after having worked out a methodoogy 
@@ -834,7 +710,7 @@ fotoGeor3 compar punktList pg = (wohlGeorNet03 compar pg) punktList
 
 -- serve 5 possible random values that are OUTPUT of each Line called
 -- the output is used to find solutions.
-toGeor3 compar punktList = ((concat (map (fotoGeor3 compar punktList) [1,2,3,4,5])))
+toGeor3 compar punktList = (concat (map (fotoGeor3 compar punktList) [1..(length liT)]))
 ------------------------------------------------------
 
 
@@ -1039,7 +915,9 @@ chainDistribute crit dipfade2 criterium pt = let provideVals = [show(map ord cri
 -- e.g 'M.writeWXCloudNODE (ptc0 3)(ptc1 3)(ptc2 3)(ptc3 3)(ptc 3) (ptc5)'
 -- or  'M.writeWXCloud4 (ptc0 50)(ptc1 50)(ptc2 50)(ptc3 50)(ptc 50) (ptc5)'
 -- let basis mm foA = basisRAW fnACCRAW nACCRAW (allAcc connectWrist) checkFo foA 
-basis2 foAL m = maybePu (head (ausw m foAL )) 
+
+------------------------------------------------------------------------------------------------------------------------
+basis2 foAL m = maybePu (head (ausw m foAL ))         -- ACCESS functions to any bonelist line 
 basis3 foAL =  ((map ( (basis2 foAL)) [1..(length foAL)]))
 basis2New foAL x m = maybePu (head (ausw m (foAL x))) 
 -- Upload functions and apply them to the data
@@ -1055,7 +933,14 @@ basis4 foAL r = maybePu (show(checkflow [] [((basis2 foAL r))]))
 -- map befehle
 -- befehle:  [(F.fourierMQ6NOPAN123),(F.fourierMQ5NOPAN123),(F.fourierMQ4NOPAN123),(F.fourierMQ4TRACE)] 
 
-formTest io r e normalFunction =  let punktOrPg = checkflow  io [(Punkt  (head(checkflow [] [(basis4 liT r)])) (Just (basis2 e 1 )) (Just (basis2 e 3 )) (Just (basis2 e 4 )) (Just (basis2 e 5 )) (Just (basis2 e 6))) ]
+-- 20-6-20 Enter bonelist 
+-- io:: [mother,father...   ; choose connect or not 
+-- r :: Char ; which line of the  just connected Punkt to get. 
+-- e :: bonelist ; a previous order 
+-- normalFunctions :: the Punkt just connected 
+formTest io r e normalFunction = formTestRAW io r e liT normalFunction
+
+formTestRAW io r e e2 normalFunction =  let punktOrPg = checkflow  io [(Punkt  (head(checkflow [] [(basis4 e2 r)])) (Just (basis2 e 1 )) (Just (basis2 e 3 )) (Just (basis2 e 4 )) (Just (basis2 e 5 )) (Just (basis2 e 6))) ]
                  in let choosBy = length(head (group(punktOrPg)))
                  in if choosBy ==2 then normalFunction
                                    else punktOrPg 
@@ -1067,10 +952,10 @@ runner x = do  --scanChar
         -- (return (do r)) --putStrLn (show e) --show(return e)
 -- import your functions into kArmTest5 via formation
 preX x = head(map scanChar (frmDoubletoInt (show x)))
-pg1 x = sin x  --(sin (read((head((formTest [mother] (preX x) [show(sin (x))] (words(show(sin 2))))  ))))) -- (((([(formTest [mother] 1 [show(F.fourierMQ6NOPAN123 (realToFrac (show x)))] (words(show(sin (x)))))]  )))) -- head(ausw 1 [(F.fourierMQ6NOPAN123 x)]) 
-pg2 x = x --cos x --(F.fourierMQ5NOPAN123 x)0
-pg3 x = x --cos x --(F.fourierMQ4NOPAN123 x)
-pg4 x = sin x --(F.fourierMQ4TRACE x)
+pg1 x = sin x --F.fourierMQ6NOPAN123 x--(sin (read((head((formTest [father] (preX x) [show(sin (x))] (words(show(sin 2))))  ))))) -- (((([(formTest [mother] 1 [show(F.fourierMQ6NOPAN123 (realToFrac (show x)))] (words(show(sin (x)))))]  )))) -- head(ausw 1 [(F.fourierMQ6NOPAN123 x)]) 
+pg2 x = cos x --(F.fourierMQ5NOPAN123 x)
+pg3 x = sin x --(F.fourierMQ4NOPAN123 x)
+pg4 x = cos x --(F.fourierMQ4TRACE x)
 pg11 x = show x --show(F.fourierMQ6NOPAN123 x)
 pg22 x = show x --show(F.fourierMQ5NOPAN123 x)
 pg33 x = show x --show(F.fourierMQ4NOPAN123 x)
@@ -1100,72 +985,6 @@ pointCloud03a n  = let toMap e = last((map ((theTrix 4) e) [1..50]))
 pointCloud03b n = let toMap e = last((map ((theTrix 6) e) [1..50]))
                   in map toMap [1..n]
 
-kArmT bonelist mofaList connectWrist dit dit2 mCommand crit= do
-     let allAcc p = show(checkflow [] [p])           
-     
-     let allAcc foPun =  (checkflow [] [(foPun)])
-     let checkFo g = if (length g) == 0 then ""
-                     else "MOTHER MODE: on"  
-     let fnACCOUT cou = if unPoint == ("\"notM\"") then unwords [""] -- cou
-                        else snd cou
-                    where unPoint = (show(head(words(unwords(checkflow [] [connectWrist]))))) ;
-
-     let fnACCRAW cou = if unPoint == ("\"notM\"") then fst cou
-                        else snd cou
-                    where 
-             unPoint = (show(head(words(unwords(checkflow [] [connectWrist]))))) ;
-     let maybePu rt = Punkt rt Nothing Nothing Nothing Nothing Nothing
- -- Punkt function that inherits ancestory
- -- *> type: maybePu:: String -> Maybe Punkt -> Punkt
-     let maybePu2 rt koA = Punkt rt koA Nothing Nothing Nothing Nothing
-     let foAdecide foA = if foA==[] then Nothing
-                         else (Just (maybePu foA)) --let whereBreak = chainDistribute crit bonelist crit (lines "1")
-
--- make a function that is a [(Maybe Punkt)]-> that by itself is the definiton of
--- mother :: Punkt -> Maybe Punkt 
--- this function below shall lead to => a motherTYPE that is depending on the type of simiyritYvalue
-     let foAdecide2 foA = let boa rt t = (Just (maybePu2 rt t)) --let whereBreak = chainDistribute crit bonelist crit (lines "1")
-                          in let mapMaybePun k = let ste1 k rt = (boa (head(ausw k rt))) ((Just (maybePu (head (ausw k rt)))) ) 
-                                                 in ste1 k foA -- e.g foA = ["vb","vb2","vb3"]
-                          in let preMoa = length foA
-                          in let eindelijk = do (map mapMaybePun [1..preMoa]) 
-                          in 
-                          if foA==[] then Nothing
-                          else let chssd i = maybePu2 (head(ausw i foA))  (((boa (head(ausw i foA)) (head(ausw i eindelijk))))) -- (Just (maybePu (unwords(checkflow [] eindelijk)))) 
-                               in Just (show[(chssd 1)]) 
- 
-     let basis mm foA = Punkt (fnACCRAW(nACCRAW (unwords(allAcc connectWrist)) ["When set M will work:"++" now sleeping", checkFo mm ] ) ) foA foA foA foA foA
- {-
-     let mixUpTray0 showClass pushTPosition fiPalette testData = sirRetrun --beRep1 (read showClass) (show(words(unwords testData))) -- (sirRetrun oriPosition pushTPosition)
-                         where
-                           palette = fiPalette -- [bone1,foExp,(show(makeBreak sl)),anEx,(show aRate)] ;
-                           goodChoice doer = head (ausw doer palette);
-                           beRep1 doer showData = (Punkt (fnACCRAW (nACCRAW (showData) [(showClass),(goodChoice doer),"YES MONAD:_"++show dit])) (Just pushTPosition) Nothing Nothing Nothing Nothing);
-                               -- testData =  ((map snd (map snd (head commaBreakGuess)))) ;
-                           sirRetrun =  
-                                  let ans showClass = if showClass==bone1 || showClass=="5"
-                                                      then do 
-                                                         (beRep1 5 (show testData))
-                                                      else if showClass=="1" || showClass=="2" || showClass=="3" || showClass=="4"
-                                                      then do
-                                                          let reAd = read showClass
-                                                          (beRep1 reAd (show testData))
-                                                      else
-                                                          pushTPosition
-                                  in ans showClass; -}
-    -- take from deze [String] e.g -> 
-     let foChain = length bonelist
-     let makePalette pick1 pick2 punktList togoToList togtoList2  = noSense togoToList togtoList2
-                       where
-                          dada fopick fodeze = head (ausw (read fopick) fodeze);
-                          noSense deze deze2 = Punkt (dada pick1 deze) (Just (maybePu (dada pick2 deze2))) Nothing Nothing Nothing Nothing;
-    -- io1: mother ;  io2 [mother -> pg1 ; father -> pg2  ... 
-     let formation io1 io2 rd = (head(head(map words(checkflow io1 [(basis (checkflow io1 [(basis4 liT (preX rd))]) (Just (maybePu(unwords(formTest io2 (preX rd) [show(F.fourierMQ6NOPAN123 rd )] (words(show(sin rd))))))  ))]))))
-  --  putStrLn (unlines(checkflow [father] [(basis (checkflow [] [(basis4 liT 1)]) (Just (maybePu(unwords(formTest [] 1 [show(F.fourierMQ6NOPAN123 1 )] (words(show(pg2 1))))))  ))]))
-   --  putStrLn (unlines(checkflow [father] [(basis (checkflow [] [(basis4 liT 1)]) (Just (maybePu(unwords(formTest [] dit2 [show(F.fourierMQ6NOPAN123 (1) )] (words(show(pg2 1))))))  ))]))
-     --(formation [mother] [mother] 1)
-     (formation [mother] [mother] 1)
-     --(formation [mother] [] 1)
 
 
      --pg111 
@@ -1257,96 +1076,6 @@ sumdf1 compar pub = (minimum(map sum (df1 compar pub))) `elemIndices` (map sum(d
 sumdf2 compar pub = (minimum(map sum (df2 compar pub))) `elemIndices` (map sum(df2 compar pub))
 
 
-checkType ffi = [(map length (group(sort(ffi)))), (ffi)]
-
-    --            in let f = ((minimum inpu) `elemIndices` (inpu)) 
-      --          in inpu --f 
------------------------------------------------------------------
------------------------------------------------------------------
---list for accesFuncWX below
--- exportiert:  [(filtern b a),(filtern b c)]
--- die (simulierten Vals, einen zweiten stream )
--- DEFINE WX MAXIMA kann viele streams in einem
--- Koordinatensystem plotten 
--- wird in 
-outPutMaxima333 goghi dipfa fodp1 fodp2 bob = 
-                let a =  (concat goghi) -- quelle simulierte vals
-                    b = (map show bob) -- laenge val liste 
-                    c = (concat dipfa)
-                    d = (concat fodp1)
-                    e = (concat fodp2)
-                    kerry x y = zipWith (\x y -> [x,y]) x y -- a-- (zip a b)
-                    fofiltern x y= show (kerry x y)
-                    filtern  x y = let tussenstap  = map ord (fofiltern x y)
-                                       tss2 = filter (/=34) tussenstap
-                                   in map chr (tss2)
-                in [(filtern b a),(filtern b c),(filtern b d),(filtern b e)]
------------------------------------------------------------------
------------------------------------------------------------------
---- Extraordinary function chooses which AND howmany functions of the list above will be put in output
--- l: [Int] ~ oder auch welche kombination von funktionen
--- bob laenge val liste
--- ghogi quelle1 simukieter val
--- dipfa quelle2 
-accesFuncWX33 l goghi dipfa fodp1 fodp2 bob =
-                  let aw1 n = concat(F.chooseMQ n (outPutMaxima333 goghi dipfa fodp1 fodp2 bob))
-                  in let wielanGg  = [1..l]
-                  in let aw2 = map aw1 wielanGg
-                  in let foaw1 = show bob
-                  in let enExp a b sqale2 = (M.aCompleteWX3 a b foaw1 sqale2) -- diese display nach compiliren  vs aCompleteWX2 schreibt display in file     
-                     --  in let aw3 =  ceiling (l/2)	
-                  in let aw4 = wielanGg --([wielanGg ,[(l+1)..(l*2) ]])
-                  in let aw5 = "0.0" 
-                  in let aw6 = "100"              
-                  in enExp aw2 aw4 aw6 --enExp
-
-
-vb x = let as = accesFuncWX33 4 [(map pg44 [1..(x)])] [(map pg33 [1..(x)])] [(map pg22 [1..(x)])] [(map pg11 [1..(x)])]  [1..x] "100"
-       in writeFile "tutu.wxm" as
-         
-scanChar :: Char -> Int
-
-scanChar c | '0' <= c && c <= '9' = fromEnum c - fromEnum '0'
-           | otherwise = -1
-
---scanString :: String -> Int a -> Double 
-scanString = let ste = (go 0) 
-             in zipWith (/) [1] 
-    where go a [] = a
-          go a (x:xs) | 0 <= sc && sc <= 9 = go (10*a+sc) xs
-                      | otherwise = 0
-              where sc = scanChar x
-	 
-
-
----------------------------------------------------------------------------
--- transform any PUNKT conctruction into a string
--- Punkt a -> String a -> show a 
---architect: Punkt ; a whole Overview of the DataType tree with all its Branches
--- searchTrail: ACCESFUNCTIONS e.g. [mother,mother,father] 
-publishPunkt architect searchTrail = let firstAccess = mysee architect searchTrail 
-               in let ste1 = map ord (show firstAccess)
-               in let breakCriteria = (32 `elemIndices` ste1)
-     -- leersteln komme nur vor wenn ein term wie "Just blue" appears 
-     -- this in order ot get rid of the Just
-               in let findeLeerstelln = snd (break (==32) ste1)
-               in let seeIfBreaksNeeded = if (length breakCriteria<=0) then ste1
-                                          else findeLeerstelln 
-               in let ste2 = filter (/=34) seeIfBreaksNeeded
-               in  let mapToChar = map chr ste2
-               in mapToChar
------------------------------------------------------------------------------
-
------------------------------------------------------------------------------
--- multipliziert Zahlen damit Sie in das SpurenSystem passen
--- Vorsicht nur bei Aehnlichen z.b. 0.59 0.94 0.22 ....
---  nicht 0.45 3.4 ....
-getRid x = let a = (map ord x)
-           in let b = map chr (filter (/=46) ( snd (break (<=46) a)))
-           in let c = b 
-           in c
-
---------------------------------------------------------------------------
 
 --------------------------------------------------------------------------
 --Source Code Experiment MQ-Network 20-5-20
@@ -1560,6 +1289,98 @@ nACCRAW tracker1 input = break (==' ') (nACC tracker1 input)
 accesFWX l nlist = let aw1 n = (ausw n nlist)
                  in let wielanGg  = [1..l]
                  in  ([wielanGg ,[(l+1)..(l*2) ]])
+
+
+checkType ffi = [(map length (group(sort(ffi)))), (ffi)]
+
+    --            in let f = ((minimum inpu) `elemIndices` (inpu)) 
+      --          in inpu --f 
+-----------------------------------------------------------------
+-----------------------------------------------------------------
+--list for accesFuncWX below
+-- exportiert:  [(filtern b a),(filtern b c)]
+-- die (simulierten Vals, einen zweiten stream )
+-- DEFINE WX MAXIMA kann viele streams in einem
+-- Koordinatensystem plotten 
+-- wird in 
+outPutMaxima333 goghi dipfa fodp1 fodp2 bob = 
+                let a =  (concat goghi) -- quelle simulierte vals
+                    b = (map show bob) -- laenge val liste 
+                    c = (concat dipfa)
+                    d = (concat fodp1)
+                    e = (concat fodp2)
+                    kerry x y = zipWith (\x y -> [x,y]) x y -- a-- (zip a b)
+                    fofiltern x y= show (kerry x y)
+                    filtern  x y = let tussenstap  = map ord (fofiltern x y)
+                                       tss2 = filter (/=34) tussenstap
+                                   in map chr (tss2)
+                in [(filtern b a),(filtern b c),(filtern b d),(filtern b e)]
+-----------------------------------------------------------------
+-----------------------------------------------------------------
+--- Extraordinary function chooses which AND howmany functions of the list above will be put in output
+-- l: [Int] ~ oder auch welche kombination von funktionen
+-- bob laenge val liste
+-- ghogi quelle1 simukieter val
+-- dipfa quelle2 
+accesFuncWX33 l goghi dipfa fodp1 fodp2 bob =
+                  let aw1 n = concat(F.chooseMQ n (outPutMaxima333 goghi dipfa fodp1 fodp2 bob))
+                  in let wielanGg  = [1..l]
+                  in let aw2 = map aw1 wielanGg
+                  in let foaw1 = show bob
+                  in let enExp a b sqale2 = (M.aCompleteWX3 a b foaw1 sqale2) -- diese display nach compiliren  vs aCompleteWX2 schreibt display in file     
+                     --  in let aw3 =  ceiling (l/2)	
+                  in let aw4 = wielanGg --([wielanGg ,[(l+1)..(l*2) ]])
+                  in let aw5 = "0.0" 
+                  in let aw6 = "100"              
+                  in enExp aw2 aw4 aw6 --enExp
+
+
+vb x = let as = accesFuncWX33 4 [(map pg44 [1..(x)])] [(map pg33 [1..(x)])] [(map pg22 [1..(x)])] [(map pg11 [1..(x)])]  [1..x] "100"
+       in writeFile "tutu.wxm" as
+         
+scanChar :: Char -> Int
+
+scanChar c | '0' <= c && c <= '9' = fromEnum c - fromEnum '0'
+           | otherwise = -1
+
+--scanString :: String -> Int a -> Double 
+scanString = let ste = (go 0) 
+             in zipWith (/) [1] 
+    where go a [] = a
+          go a (x:xs) | 0 <= sc && sc <= 9 = go (10*a+sc) xs
+                      | otherwise = 0
+              where sc = scanChar x
+	 
+
+
+---------------------------------------------------------------------------
+-- transform any PUNKT conctruction into a string
+-- Punkt a -> String a -> show a 
+--architect: Punkt ; a whole Overview of the DataType tree with all its Branches
+-- searchTrail: ACCESFUNCTIONS e.g. [mother,mother,father] 
+publishPunkt architect searchTrail = let firstAccess = mysee architect searchTrail 
+               in let ste1 = map ord (show firstAccess)
+               in let breakCriteria = (32 `elemIndices` ste1)
+     -- leersteln komme nur vor wenn ein term wie "Just blue" appears 
+     -- this in order ot get rid of the Just
+               in let findeLeerstelln = snd (break (==32) ste1)
+               in let seeIfBreaksNeeded = if (length breakCriteria<=0) then ste1
+                                          else findeLeerstelln 
+               in let ste2 = filter (/=34) seeIfBreaksNeeded
+               in  let mapToChar = map chr ste2
+               in mapToChar
+-----------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------
+-- multipliziert Zahlen damit Sie in das SpurenSystem passen
+-- Vorsicht nur bei Aehnlichen z.b. 0.59 0.94 0.22 ....
+--  nicht 0.45 3.4 ....
+getRid x = let a = (map ord x)
+           in let b = map chr (filter (/=46) ( snd (break (<=46) a)))
+           in let c = b 
+           in c
+
+--------------------------------------------------------------------------
 
 
 
