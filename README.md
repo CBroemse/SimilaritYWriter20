@@ -149,6 +149,13 @@ where   a a a a = line1 ; b b b b = line2 ... x x x x = line n
                        -> phiMax-1
     ========================================================
 
+##### Step III
+###### Concept plotter
+
+![alt tag](https://github.com/CBroemse/SimilaritYWriter20/blob/master/source/conceptPlotter.png)
+
+##### Step IV
+
 Now we try to define rules concerning the metric' above. One guidline is
 to use bone list as a mode but keep 'realy big' input like below at bay:
 
