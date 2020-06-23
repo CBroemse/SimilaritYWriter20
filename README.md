@@ -162,7 +162,23 @@ where   a a a a = line1 ; b b b b = line2 ... x x x x = line n
 
 how things are compared
 
-        wohlGeor3 ->atrixCo -> amatrix2 -> changs ->chgLine -> ptc4
+       pointCloud01
+ 
+             -- wohlGeor1    <-->    wohlGeor2    <->    wohGeor1
+             --   I                   I+II               III
+              progVar1         progVar!++progVar2       progVar2
+       
+        amatrix n m = concat [(atrix0 n m),(atrix1 n m),(atrix2 n m)]
+
+   
+                                                       amatrix -> ptc0
+        --------------------------------------------------------------+
+                            
+        wohlGeor3 ->atrixCo -> amatrix2 -> changs ->  chgLine  -> ptc4
+                            -> amatrix2 ->                        ptc2
+                                        -> changs2 -> chgLine2 -> ptc5
+                                        -> changs2 -> chgLine2 -> ptc6
+                                        -> changs2 -> chgLine2 -> ptc7
              below not used
                 ->   atrix3 t m = (F.chooseMQ t (wohlGeor3 (progVar1 ) m))
                 ->  atrix3a t m = (F.chooseMQ t (wohlGeor3 (progVar1 ) m))
