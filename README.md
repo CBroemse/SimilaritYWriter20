@@ -176,9 +176,18 @@ how things are compared
                             
         wohlGeor3 ->atrixCo -> amatrix2 -> changs ->  chgLine  -> ptc4
                             -> amatrix2 ->                        ptc2
-                                        -> changs2 -> chgLine2 -> ptc5
+                            
+               -> amatrix2 -> the Trix -> changs2 -> chgLine2 -> ptc5
+               find .... in matrix2
+                
                                         -> changs2 -> chgLine2 -> ptc6
                                         -> changs2 -> chgLine2 -> ptc7
+                                        
+                      theTrix 2 -> ptc3
+                      theTrix 4 -> ptc3a
+                      theTrix 6 -> ptc3b
+                      
+                      
              below not used
                 ->   atrix3 t m = (F.chooseMQ t (wohlGeor3 (progVar1 ) m))
                 ->  atrix3a t m = (F.chooseMQ t (wohlGeor3 (progVar1 ) m))
