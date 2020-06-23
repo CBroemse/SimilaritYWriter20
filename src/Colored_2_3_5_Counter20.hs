@@ -128,29 +128,6 @@ import qualified GHCguiNfunctions as GHC
 --
 --
 
-
--- HYRACHY IN 'kArmTest5' 'Punkt'DATA-TYPE
---          |ACCESS FUNCTIONS  
--- ___________|___________________________________________________________________________|
--- LEVEL 0   :|    nACC                                                                   |
--- LEVEL 1 in:|    nACCRAW -> fst -> "M"                                                  |
---            |            -> snd -> "notM"                                               |
--- LEVEL 1    |     tracker1        |    findArm,findHand                                 |   
--- LEVEL 1 output =>fst: "tracker!" OR    snd:  ["findArm","hand"])                       |                      
--- LEVEL 2    |                     |    innerAccessRAW "1" this OR inner..RAW "2" this   |
--- LEVEL 2    |   e.g 
---
--- FUNCTION IN 'kArmTest5'                             'kArmTest5'
--- ACCESS FUNCTIONS  
--- ___________|___________________________________________________________________________|
--- LEVEL 0   :|   [A]       [B]                                A             B           |
--- LEVEL 1 in:|   ideal     guess                             ideal       guess
---            |   [a]    ->   b                                [a]
--- LEVEL 1    |    =>  similar in [a]  |    findArm,findHand                                 |   
--- LEVEL 1 output  =>  simi [A] ~ b                      |                      
--- LEVEL 2    |                     |    innerAccessRAW "1" this OR inner..RAW "2" this   |
--- LEVEL 2    |   e.g 
---
   
  -- "The real power of cathegory-theory is kind of to isolate what you care about...
  --  a group of homomorphisms is always a function between sets..."
@@ -240,11 +217,7 @@ kArmTest5 bonelist mofaList connectWrist dit dit2 mCommand crit= do
                           dada fopick fodeze = head (ausw (read fopick) fodeze);
                           noSense deze deze2 = Punkt (dada pick1 deze) (Just (maybePu (dada pick2 deze2))) Nothing Nothing Nothing Nothing;
      let gaussRate eins zuI = similaritYvalue eins zuI
- -- ############################# The gaussian Rate is wrapped into two functions 
-   -- beRepKEYRAW ; pick1 value of onelist and compare it to an snd pick2 of another list
-   -- There is an allAcc function without any purpose that could be used lateron
-    -- Rate any two things bone1 with 
-    -- ---------------------------------------------------------------------------------
+     -- ---------------------------------------------------------------------------------
      let beRepKEYRAW pick1 pick2 onelist twoList punktList = (crunchtoSimi pick2) 
                       where
                   --      commands =   [bone1,bone2,bone3,bone4,bone5]; 
@@ -266,54 +239,8 @@ kArmTest5 bonelist mofaList connectWrist dit dit2 mCommand crit= do
               --------------------------------------------------------------------------------------------------------------------------------------
             frame0a = do
                    -----------------------------------------------------------------------------------------------
----------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-
---    #)    chainDistribution   Choose (if bonelist>1                   |    Punkt (simiYval a b )
-
---                      e.g ..*> let gh = chainDistribute r ["2","2","1"] r (lines "1")
---                            *> (beRepKEY pick1 pick2 punktList) 
-
-
---   ##)    chainDistribute ->  OCCURANCE   ->  randPunktList -> sortEm -> 
---              => edR1                             | the function to be mapped in motherTYPE
---              => motherTYPE                       | a f
---              *> let edR1 r u = enduranceRace8a9_6_20 r u 
---               u: the normal order ?  
---              *> let motherTYPE o u r = map (mayer2 ((ausw r (edR1 r o )))) [(map (edR1 r) u )]
-
---       --                            
-
---
--- KETTENVERTEILUNG aka CHAIN-DISTRIBUTION                                   |  -- in which order do Values occur are they groupd and in which occurance 
---e.g *> let proposition = "AABBBB"                                          |  -- a proposion is a string that will probe the bonelist
---    *> let bonelist =["AAABB","AABAB","AABB","BBBAA"]                       |
---    *> let fochain = group  (map ord(unwords bonelist))                                        
--- [[65,65,65],[66,66],[32],[65,65],[66],[65],[66],[32],[65,65],[66,66],[32],[66,66,66],[65,65]]| ::= ord  [["A","A"],["B","B"],["BA",BA"]..]
---    
---     OCCURANCE OF ALL DIGITS
---    *> let occORD = map ord fochain                                        | -bonelist in ord, 
---    *> [65,65,65,66,66,32,65,65,66,65,66,32,65,65,66,66,32,66,66,66,65,65] | all needed data chain distributions can be found in this format
---                                                                         
---
---     OCCURRANCE POSITION
---    *> let occPOS= proposition `elemIndices` bonelist                
---          | if [] not occure 
---          | else e.g [0,1]
---
---
---     OCCURANCE PROPOSITION                                     | in all ATOMS of all lines of bonelist
---
---    *> let gh r = chainDistribute r bonelist r (lines "1")
---    *> gh "AAABB"
---    *> ([3],[[65,65,65,66,66,32,65,65,66,65,66,32,65,65,66,66,32,66,66,66,65,65],[4,5,9,11,15,16,18,19,20]])
-
---            dataFormat :==   ( occurance position,  map ord input ,    occurance fst atom ( "A" of "AABBB" -> [1,2])   )
---                       :== (  [occurance posi.] , [[ map ord input] , [occur.proposi.]]   )
 --
               let theTrix2 crit = chainDistribute crit bonelist crit (lines "1")
-
-             
                             -- ACCESS functions:
               putStrLn "TEST fomration TYPE "
               let foinnerOrd = head(snd (theTrix2 crit)) --
@@ -329,37 +256,6 @@ kArmTest5 bonelist mofaList connectWrist dit dit2 mCommand crit= do
               putStrLn (show (beRepKEY (show dit) (show dit2) []))
 
               putStrLn ((show rythm) ++ " break positions in whole bonelist") 
-
--- COMBINE 'mapRepKEY' with ' chainDistribution '
--- e.g    fst 'randPunktList' := (compare pick1) [pick2] -> [compare[pick1..pick2]]
---            => roleKEY  -> [[String]] 
---            => roleKEY2 -> [[Double]] -> sum roleKEY2 ->
---            -> roleKEY2 := in a line of bonelist -> turn every (String a) into (Double a) ->
---                   -> (with simiYval a) -> [(simiVal a)]
--- =>  everyLineOrder
---
---                    |  every line has its inner order 
---                    |        I.         |      II.
---                    |   map ord line    |    simiVal a b                 |
---                    | map ord [a0..c0]  | simiVal a0 ([a1..3] )          |
---                                        | simiVal a1 ([a0..a3] \\ a1)    |
---                                        | simiVal a2 ([a0..a3] \\ a2)    |
---                                        | simiVal a3 ([a0..a2] )         |
---                    |   work 'bonelist' |  edR1 , ...    |
---                       ===============      =========
--- =>  boneListOrder
---
---                    |  every boneList has its inner order 
---                    |        I.         |      II.
---                    |   map ord line    |    simiVal a b                 |
---                    | map ord [a0..c0]  | sim0 = simiVal a0 ([a1..3] )          | [0.0,0.0,19.877675840978593,0.3048780487804878]
---                                        | sim1 = simiVal a1 ([a0..a3] \\ a1)    | [0.0,0.0,19.877675840978593,0.3048780487804878]
---                                        | sim2 = simiVal a2 ([a0..a3] \\ a2)    | [19.877675840978593,19.877675840978593,0.0,20.121951219512198]
---                                        | sim3 = simiVal a3 ([a0..a2] )         | [0.3048780487804878,0.3048780487804878,20.121951219512198,0.0]
---                  'chainDistribution'   | simSums = [(sum sim0)..(sum sim3)]    | [20.18255388975908,20.18255388975908,59.877302901469385,20.731707317073173]
---                  ===================   |  maximum simSums                      |  show most differing order vs minimum most similar
---                                        |   'randPunktList'                     |
---                                            =================
 -- ---------------------------------------------------------------------------
 
               randPunktList <- forM [1..(prepRyth)] (\z -> do
@@ -400,24 +296,6 @@ kArmTest5 bonelist mofaList connectWrist dit dit2 mCommand crit= do
                       let lineorder = tmaps pr (map fst randPunktList)
                       putStrLn "testin"
                       return (lineorder))
- -- Where are atoms on :  phiMax :: [Double] -> max ([(sum[Double])] ->[Double]   
- --                       phiMax = max (sum simYval )               |  calculating the most different line due to simiVal
- --                       also simYval :: [Double]
- --foas:     | u:[Doulbe] -> WHEREELEMENT  ------------------------------------------------------------------------------------------"THE FIRST ORDER :)"
- --                          The where element represent is the first step after choosing atrategy. In this case phiMax is the strategy so we count down.
- --                          We know the limit of how many steps to go is the length of the given bonelist.  
- --                           n -1 or +1 
- --                         depending if we introduce a new atom
- --                          into the list of all atoms , in other words if the value we are comparing to is element of the list we would only need to go  
- --                          n-1 
- --                          steps and vice versa. 
- --                          strategy is being put
- --                          frequenty into a fold . In other words if we start with phiMax (the maximum simval line of bonelist)
- --                          the next smaller element is being found via all those `elemIndices` functions.
- --                          Important is the order that emerges.
-
- --   new strategies arise: 
- --                     
  -- A) comparing the phiMax line to an ordered  phi line: compare (simYval) to  (sort phiMax)
  -- B  comparing phiMax line to the phiMin
  -- C) compare phiMax line to another line
@@ -437,8 +315,6 @@ kArmTest5 bonelist mofaList connectWrist dit dit2 mCommand crit= do
  
                              let theInner = (concat (take 1 tmap3 )) 
                              return(theInner))
-
-
           
               putStrLn "below: sortEm ; inlinesortEm; " 
               putStrLn ((unlines (map show (concat (sortEm)))))
@@ -451,7 +327,6 @@ kArmTest5 bonelist mofaList connectWrist dit dit2 mCommand crit= do
               let ghCheck = concat (take prepRyth (repeat [crit]))
                             
 -- COMPARE bonlist this time :  ghCheck to (a'S of bonelist )
---
 --  =>  randPunktList2 /= randPunktList3 but randPunktist2 = (transpose randPunkList3)   
               randPunktList3 <- forM [1..(prepRyth)] (\z -> do
                         let chhos = ((ausw z (concat(snd(theTrix2 crit))))) 
@@ -472,8 +347,6 @@ kArmTest5 bonelist mofaList connectWrist dit dit2 mCommand crit= do
                         putStrLn ((show sta1)++" "++((show sta2)))
                         return (sta1))
               putStrLn "sum matrix row" 
-          --    putStrLn (show (randPunktList3))
-
 	 -- The input variable ghCheck is sorted into phiMax list.
 	 -- ghCheck could end up in any spot of a list function 'sortEmInput' 
 	 -- find max different of group 
@@ -534,30 +407,9 @@ kArmTest5 bonelist mofaList connectWrist dit dit2 mCommand crit= do
                   --    putStrLn (show (runTries))
                     --  putStrLn ((show(map snd runTriesRAW)))
                                   
-                      return ((filterMy,(runTries))) )  
-          -- => (  class names , class simivals)
-          -- => ( (sorted ghCheck into bonelist), (its simiVals) 
-          -- with (length bonelist)> 1 to work , otherwise there is not much sorting needed
-            --  putStrLn ((show (take 5 ( sortEmInput))))
-------------------------------------------------------------------------------------------
-          -- 19-6-20 
-          -- Does the new  (sorted ghCheck into bonelist) of 'sortEmInput' above need to sorted agian,how and why? 
-          -- experiment will again like inlinesortEm sort 
-          --  sortEmInput := inlinesortEm   
-
-----------------------------------------------------------------------------------
-----------------------------------------------------------------------------------
---MAP ANCESTORY     start with the pre-ordered phiMax 
---             I ...
---             II bonelist  -> simiYVal [line1..lineN]  
---                
---           functions:
---'tester' (ausw t) [phiMax] ->  Just mother t   
---motherType3  | like above test your own name ist
---            step [phiMax] -1    ..mother..         ["name list"]
---
---
---  e.g  ["AAABB","AABAB","AAA","BBBAA"]  -> ["AAABB"/"AAABAB","BBBAA","AAA"]  -> sortEm
+                      return ((filterMy,(runTries))) ) 
+ 
+         --  e.g  ["AAABB","AABAB","AAA","BBBAA"]  -> ["AAABB"/"AAABAB","BBBAA","AAA"]  -> sortEm
 --                                        -> ( [0,1],  [0,1],    [3],   [2]] ) -> 
 --       => sortEM                           
               let findOrdeR = nub (concat(concat (sortEm)))      -- -> [
@@ -689,24 +541,6 @@ kArmTest5 bonelist mofaList connectWrist dit dit2 mCommand crit= do
               putStrLn (unlines (exportMother2 1))
              -- putStrLn (unlines(map fst randPunktList))
             --  putStrLn (unlines((map snd (unlines randPunktList)))
-
-          --    putStrLn ((exportMother 3))
-            --  putStrLn ((exportMother 4))
-
-
-  --            putStrLn (mapMo 3)
-    --          putStrLn (mapMo 4)
-      --        putStrLn (mapMo 5)
-        --      putStrLn (mapMo 6)
-          --    putStrLn (mapMo 7)
-            --  putStrLn (mapMo 8)
-
-             -- putStrLn (newToStep 2 4)
-             --
-            -- ARISING: 
-            -- a line that yields [[0],[0],[0],[0],[0]
-            -- There might be some insights in the functions that comes out of above,
-            --
     -- Plot-------------------------------------------------------------------
           -- STEP III. of program
               let foe t = head (ausw t bonelist)
@@ -753,7 +587,7 @@ kArmTest5 bonelist mofaList connectWrist dit dit2 mCommand crit= do
                      mT    = (motherType,      "motherType"    ); -- :197
                      fACR  = (fnACCRAW,        "fnACCRAW"      );  -- :210
                      cFo   = (checkFo,         "checkFo"       );  -- :208
-                     baas  = (basis,           "basis"         ); -- :211
+                   --  baas  = (basis,           "basis"         ); -- :211
                      foCh  = (foChain,         "foChain"       ); -- :237
                      mkPal = (makePalette,     "makePalette"   );  -- :328
                      fomoN = (formation,       "formation"     );  -- :214
@@ -777,25 +611,24 @@ kArmTest5 bonelist mofaList connectWrist dit dit2 mCommand crit= do
                      mapfoFunc2 o = checkflow [] (concat(map (foFuncPair2 o) (fst finDR)))
                      fmrTEST3RAW io o r e2 forLine =  checkflow  io [(Punkt  (head(checkflow [] [(basis4 e2 forLine)])) (Just (head(foFuncPair2 o r ))) Nothing Nothing Nothing Nothing )]
                      fmrTEST3 io o r forLine = ((fmrTEST3RAW io o r (mapfoFunc2 o) forLine), "specialSort can get missing part???")
-                     allFUNC2RAW io io2 forLine = fmrTEST2 io (ausw selectFunc [(fst (expoMum forLine)),show(fst ranPL),show(fst sorEM),show(fst (fmrTEST3 io2 forLine 1 (head forLine)))])  (ausw selectFunc [(snd (expoMum forLine)),(snd ranPL),(snd sorEM),(snd (fmrTEST3 io2 forLine 1 (head forLine)))]) (head forLine) 
+                     allFUNC2RAW io io2 forLine = fmrTEST2 io (ausw selectFunc [(fst (expoMum forLine)),show(fst ranPL),show(fst sorEM),show(fst (fmrTEST3 io forLine (head forLine) (head forLine)))])  (ausw selectFunc [(snd (expoMum forLine)),(snd ranPL),(snd sorEM),(snd (fmrTEST3 io2 forLine 1 (head forLine)))]) (head forLine) 
                      allFUNC2 io io2 forLine = (allFUNC2RAW io io2 [forLine]) 
            --   putStrLn (unlines(head(allFunctions 1 [] [] [] "adding" [1])))111
               (allFunctions 1 [] [] [] ""  1)
               (allFunctions 1 [mother] [] [] "a comment" 2)
-              (allFunctions 1 [mother] [] [] "" 3)
-
+             -- (allFunctions 1 [mother] [mother] [] "" 7)
+              (allFunctions 1 [mother] [] [] "" 4)
+              (allFunctions 1 [mother] [] [] "" 5)
               (allFunctions 1 [] [mother] [] "" 1)
+              (allFunctions 1 [mother] [mother] [] "" 3)
+            ---  (allFunctions 1 [father] [mother] [] "" 3)
            --   (allFunctions 2 [] [] [] "" 2)
               (allFunctions 2 [mother] [mother] [] "" 1)
               (allFunctions 3 [mother] [] [] "" 1)
               (allFunctions 3 [] [] [] "" 1)
-            --  (allFunctions 2 [father] [] [] "" 1)
-
-
-
-
-
-
+              (allFunctions 3 [mother] [mother] [] "" 2)
+              (allFunctions 3 [mother] [mother] [] "" 3)
+              --(allFunctions 3 [mother] [father] [] "" 4)
 
               putStrLn "Done" 
      (frame0 bonelist (mofaList) connectWrist dit dit2) 
