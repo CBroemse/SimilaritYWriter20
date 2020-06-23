@@ -1,5 +1,5 @@
 # SimilaritYWriter20
-## Plot graphs writing to wxmaxima
+## plot graphs writing to wxmaxima
                   
 A function that can compare any two lists, The aim is to find the most general rules that can 'maybe' 
 help my understanding.
