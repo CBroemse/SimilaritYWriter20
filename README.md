@@ -171,22 +171,29 @@ how things are compared
         amatrix n m = concat [(atrix0 n m),(atrix1 n m),(atrix2 n m)]
 
    
-                                                       amatrix -> ptc0
+                                                       amatrix -> ptc0 => ?progVar? group vector
         --------------------------------------------------------------+
                             
         wohlGeor3 ->atrixCo -> amatrix2 -> changs ->  chgLine  -> ptc4
                             -> amatrix2 ->                        ptc2
-                            
+        ---------------------------------------------------------------                    
                -> amatrix2 -> the Trix -> changs2 -> chgLine2 -> ptc5
-               find .... in matrix2
+               find .... in matrix2                                     => vector
                 
                                         -> changs2 -> chgLine2 -> ptc6
                                         -> changs2 -> chgLine2 -> ptc7
-                                        
-                      theTrix 2 -> ptc3
-                      theTrix 4 -> ptc3a
+        ---------------------------------------------------------------                                 
+                      theTrix 2 -> ptc3   =>     ?progVar? group vector
+                 
+                      theTrix 4 -> ptc3a                                 
+                      --    IV   <->      IV++VI  <->  VI
+             atrix4a t n = atrix0R theGeors 1 t theVarias 4 n
+             atrix5a t n = atrix0R theGeors 1 t theVarias 5 n
+             atrix6a t n = atrix0R theGeors 1 t theVarias 6 n
+
+                                                   amatrixDifa    => unique sin of progVars ?     
                       theTrix 6 -> ptc3b
-                      
+          ----------------------------------------------------------------         
                       
              below not used
                 ->   atrix3 t m = (F.chooseMQ t (wohlGeor3 (progVar1 ) m))
