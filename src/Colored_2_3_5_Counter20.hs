@@ -985,72 +985,6 @@ pointCloud03a n  = let toMap e = last((map ((theTrix 4) e) [1..50]))
 pointCloud03b n = let toMap e = last((map ((theTrix 6) e) [1..50]))
                   in map toMap [1..n]
 
-kArmT bonelist mofaList connectWrist dit dit2 mCommand crit= do
-     let allAcc p = show(checkflow [] [p])           
-     
-     let allAcc foPun =  (checkflow [] [(foPun)])
-     let checkFo g = if (length g) == 0 then ""
-                     else "MOTHER MODE: on"  
-     let fnACCOUT cou = if unPoint == ("\"notM\"") then unwords [""] -- cou
-                        else snd cou
-                    where unPoint = (show(head(words(unwords(checkflow [] [connectWrist]))))) ;
-
-     let fnACCRAW cou = if unPoint == ("\"notM\"") then fst cou
-                        else snd cou
-                    where 
-             unPoint = (show(head(words(unwords(checkflow [] [connectWrist]))))) ;
-     let maybePu rt = Punkt rt Nothing Nothing Nothing Nothing Nothing
- -- Punkt function that inherits ancestory
- -- *> type: maybePu:: String -> Maybe Punkt -> Punkt
-     let maybePu2 rt koA = Punkt rt koA Nothing Nothing Nothing Nothing
-     let foAdecide foA = if foA==[] then Nothing
-                         else (Just (maybePu foA)) --let whereBreak = chainDistribute crit bonelist crit (lines "1")
-
--- make a function that is a [(Maybe Punkt)]-> that by itself is the definiton of
--- mother :: Punkt -> Maybe Punkt 
--- this function below shall lead to => a motherTYPE that is depending on the type of simiyritYvalue
-     let foAdecide2 foA = let boa rt t = (Just (maybePu2 rt t)) --let whereBreak = chainDistribute crit bonelist crit (lines "1")
-                          in let mapMaybePun k = let ste1 k rt = (boa (head(ausw k rt))) ((Just (maybePu (head (ausw k rt)))) ) 
-                                                 in ste1 k foA -- e.g foA = ["vb","vb2","vb3"]
-                          in let preMoa = length foA
-                          in let eindelijk = do (map mapMaybePun [1..preMoa]) 
-                          in 
-                          if foA==[] then Nothing
-                          else let chssd i = maybePu2 (head(ausw i foA))  (((boa (head(ausw i foA)) (head(ausw i eindelijk))))) -- (Just (maybePu (unwords(checkflow [] eindelijk)))) 
-                               in Just (show[(chssd 1)]) 
- 
-     let basis mm foA = Punkt (fnACCRAW(nACCRAW (unwords(allAcc connectWrist)) ["When set M will work:"++" now sleeping", checkFo mm ] ) ) foA foA foA foA foA
- {-
-     let mixUpTray0 showClass pushTPosition fiPalette testData = sirRetrun --beRep1 (read showClass) (show(words(unwords testData))) -- (sirRetrun oriPosition pushTPosition)
-                         where
-                           palette = fiPalette -- [bone1,foExp,(show(makeBreak sl)),anEx,(show aRate)] ;
-                           goodChoice doer = head (ausw doer palette);
-                           beRep1 doer showData = (Punkt (fnACCRAW (nACCRAW (showData) [(showClass),(goodChoice doer),"YES MONAD:_"++show dit])) (Just pushTPosition) Nothing Nothing Nothing Nothing);
-                               -- testData =  ((map snd (map snd (head commaBreakGuess)))) ;
-                           sirRetrun =  
-                                  let ans showClass = if showClass==bone1 || showClass=="5"
-                                                      then do 
-                                                         (beRep1 5 (show testData))
-                                                      else if showClass=="1" || showClass=="2" || showClass=="3" || showClass=="4"
-                                                      then do
-                                                          let reAd = read showClass
-                                                          (beRep1 reAd (show testData))
-                                                      else
-                                                          pushTPosition
-                                  in ans showClass; -}
-    -- take from deze [String] e.g -> 
-     let foChain = length bonelist
-     let makePalette pick1 pick2 punktList togoToList togtoList2  = noSense togoToList togtoList2
-                       where
-                          dada fopick fodeze = head (ausw (read fopick) fodeze);
-                          noSense deze deze2 = Punkt (dada pick1 deze) (Just (maybePu (dada pick2 deze2))) Nothing Nothing Nothing Nothing;
-    -- io1: mother ;  io2 [mother -> pg1 ; father -> pg2  ... 
-     let formation io1 io2 rd = ((head(map words(checkflow io1 [(basis (checkflow io1 [(basis4 liT (preX rd))]) (Just (maybePu(unwords(formTest io2 (preX rd) [show(F.fourierMQ6NOPAN123 rd )] (words(show(sin rd))))))  ))]))))
-  --  putStrLn (unlines(checkflow [father] [(basis (checkflow [] [(basis4 liT 1)]) (Just (maybePu(unwords(formTest [] 1 [show(F.fourierMQ6NOPAN123 1 )] (words(show(pg2 1))))))  ))]))
-   --  putStrLn (unlines(checkflow [father] [(basis (checkflow [] [(basis4 liT 1)]) (Just (maybePu(unwords(formTest [] dit2 [show(F.fourierMQ6NOPAN123 (1) )] (words(show(pg2 1))))))  ))]))
-     --(formation [mother] [mother] 1)
-     (formation [mother] [mother] (dit))
-     --(formation [mother] [] 1)
 
 
      --pg111 
@@ -1142,96 +1076,6 @@ sumdf1 compar pub = (minimum(map sum (df1 compar pub))) `elemIndices` (map sum(d
 sumdf2 compar pub = (minimum(map sum (df2 compar pub))) `elemIndices` (map sum(df2 compar pub))
 
 
-checkType ffi = [(map length (group(sort(ffi)))), (ffi)]
-
-    --            in let f = ((minimum inpu) `elemIndices` (inpu)) 
-      --          in inpu --f 
------------------------------------------------------------------
------------------------------------------------------------------
---list for accesFuncWX below
--- exportiert:  [(filtern b a),(filtern b c)]
--- die (simulierten Vals, einen zweiten stream )
--- DEFINE WX MAXIMA kann viele streams in einem
--- Koordinatensystem plotten 
--- wird in 
-outPutMaxima333 goghi dipfa fodp1 fodp2 bob = 
-                let a =  (concat goghi) -- quelle simulierte vals
-                    b = (map show bob) -- laenge val liste 
-                    c = (concat dipfa)
-                    d = (concat fodp1)
-                    e = (concat fodp2)
-                    kerry x y = zipWith (\x y -> [x,y]) x y -- a-- (zip a b)
-                    fofiltern x y= show (kerry x y)
-                    filtern  x y = let tussenstap  = map ord (fofiltern x y)
-                                       tss2 = filter (/=34) tussenstap
-                                   in map chr (tss2)
-                in [(filtern b a),(filtern b c),(filtern b d),(filtern b e)]
------------------------------------------------------------------
------------------------------------------------------------------
---- Extraordinary function chooses which AND howmany functions of the list above will be put in output
--- l: [Int] ~ oder auch welche kombination von funktionen
--- bob laenge val liste
--- ghogi quelle1 simukieter val
--- dipfa quelle2 
-accesFuncWX33 l goghi dipfa fodp1 fodp2 bob =
-                  let aw1 n = concat(F.chooseMQ n (outPutMaxima333 goghi dipfa fodp1 fodp2 bob))
-                  in let wielanGg  = [1..l]
-                  in let aw2 = map aw1 wielanGg
-                  in let foaw1 = show bob
-                  in let enExp a b sqale2 = (M.aCompleteWX3 a b foaw1 sqale2) -- diese display nach compiliren  vs aCompleteWX2 schreibt display in file     
-                     --  in let aw3 =  ceiling (l/2)	
-                  in let aw4 = wielanGg --([wielanGg ,[(l+1)..(l*2) ]])
-                  in let aw5 = "0.0" 
-                  in let aw6 = "100"              
-                  in enExp aw2 aw4 aw6 --enExp
-
-
-vb x = let as = accesFuncWX33 4 [(map pg44 [1..(x)])] [(map pg33 [1..(x)])] [(map pg22 [1..(x)])] [(map pg11 [1..(x)])]  [1..x] "100"
-       in writeFile "tutu.wxm" as
-         
-scanChar :: Char -> Int
-
-scanChar c | '0' <= c && c <= '9' = fromEnum c - fromEnum '0'
-           | otherwise = -1
-
---scanString :: String -> Int a -> Double 
-scanString = let ste = (go 0) 
-             in zipWith (/) [1] 
-    where go a [] = a
-          go a (x:xs) | 0 <= sc && sc <= 9 = go (10*a+sc) xs
-                      | otherwise = 0
-              where sc = scanChar x
-	 
-
-
----------------------------------------------------------------------------
--- transform any PUNKT conctruction into a string
--- Punkt a -> String a -> show a 
---architect: Punkt ; a whole Overview of the DataType tree with all its Branches
--- searchTrail: ACCESFUNCTIONS e.g. [mother,mother,father] 
-publishPunkt architect searchTrail = let firstAccess = mysee architect searchTrail 
-               in let ste1 = map ord (show firstAccess)
-               in let breakCriteria = (32 `elemIndices` ste1)
-     -- leersteln komme nur vor wenn ein term wie "Just blue" appears 
-     -- this in order ot get rid of the Just
-               in let findeLeerstelln = snd (break (==32) ste1)
-               in let seeIfBreaksNeeded = if (length breakCriteria<=0) then ste1
-                                          else findeLeerstelln 
-               in let ste2 = filter (/=34) seeIfBreaksNeeded
-               in  let mapToChar = map chr ste2
-               in mapToChar
------------------------------------------------------------------------------
-
------------------------------------------------------------------------------
--- multipliziert Zahlen damit Sie in das SpurenSystem passen
--- Vorsicht nur bei Aehnlichen z.b. 0.59 0.94 0.22 ....
---  nicht 0.45 3.4 ....
-getRid x = let a = (map ord x)
-           in let b = map chr (filter (/=46) ( snd (break (<=46) a)))
-           in let c = b 
-           in c
-
---------------------------------------------------------------------------
 
 --------------------------------------------------------------------------
 --Source Code Experiment MQ-Network 20-5-20
@@ -1445,6 +1289,98 @@ nACCRAW tracker1 input = break (==' ') (nACC tracker1 input)
 accesFWX l nlist = let aw1 n = (ausw n nlist)
                  in let wielanGg  = [1..l]
                  in  ([wielanGg ,[(l+1)..(l*2) ]])
+
+
+checkType ffi = [(map length (group(sort(ffi)))), (ffi)]
+
+    --            in let f = ((minimum inpu) `elemIndices` (inpu)) 
+      --          in inpu --f 
+-----------------------------------------------------------------
+-----------------------------------------------------------------
+--list for accesFuncWX below
+-- exportiert:  [(filtern b a),(filtern b c)]
+-- die (simulierten Vals, einen zweiten stream )
+-- DEFINE WX MAXIMA kann viele streams in einem
+-- Koordinatensystem plotten 
+-- wird in 
+outPutMaxima333 goghi dipfa fodp1 fodp2 bob = 
+                let a =  (concat goghi) -- quelle simulierte vals
+                    b = (map show bob) -- laenge val liste 
+                    c = (concat dipfa)
+                    d = (concat fodp1)
+                    e = (concat fodp2)
+                    kerry x y = zipWith (\x y -> [x,y]) x y -- a-- (zip a b)
+                    fofiltern x y= show (kerry x y)
+                    filtern  x y = let tussenstap  = map ord (fofiltern x y)
+                                       tss2 = filter (/=34) tussenstap
+                                   in map chr (tss2)
+                in [(filtern b a),(filtern b c),(filtern b d),(filtern b e)]
+-----------------------------------------------------------------
+-----------------------------------------------------------------
+--- Extraordinary function chooses which AND howmany functions of the list above will be put in output
+-- l: [Int] ~ oder auch welche kombination von funktionen
+-- bob laenge val liste
+-- ghogi quelle1 simukieter val
+-- dipfa quelle2 
+accesFuncWX33 l goghi dipfa fodp1 fodp2 bob =
+                  let aw1 n = concat(F.chooseMQ n (outPutMaxima333 goghi dipfa fodp1 fodp2 bob))
+                  in let wielanGg  = [1..l]
+                  in let aw2 = map aw1 wielanGg
+                  in let foaw1 = show bob
+                  in let enExp a b sqale2 = (M.aCompleteWX3 a b foaw1 sqale2) -- diese display nach compiliren  vs aCompleteWX2 schreibt display in file     
+                     --  in let aw3 =  ceiling (l/2)	
+                  in let aw4 = wielanGg --([wielanGg ,[(l+1)..(l*2) ]])
+                  in let aw5 = "0.0" 
+                  in let aw6 = "100"              
+                  in enExp aw2 aw4 aw6 --enExp
+
+
+vb x = let as = accesFuncWX33 4 [(map pg44 [1..(x)])] [(map pg33 [1..(x)])] [(map pg22 [1..(x)])] [(map pg11 [1..(x)])]  [1..x] "100"
+       in writeFile "tutu.wxm" as
+         
+scanChar :: Char -> Int
+
+scanChar c | '0' <= c && c <= '9' = fromEnum c - fromEnum '0'
+           | otherwise = -1
+
+--scanString :: String -> Int a -> Double 
+scanString = let ste = (go 0) 
+             in zipWith (/) [1] 
+    where go a [] = a
+          go a (x:xs) | 0 <= sc && sc <= 9 = go (10*a+sc) xs
+                      | otherwise = 0
+              where sc = scanChar x
+	 
+
+
+---------------------------------------------------------------------------
+-- transform any PUNKT conctruction into a string
+-- Punkt a -> String a -> show a 
+--architect: Punkt ; a whole Overview of the DataType tree with all its Branches
+-- searchTrail: ACCESFUNCTIONS e.g. [mother,mother,father] 
+publishPunkt architect searchTrail = let firstAccess = mysee architect searchTrail 
+               in let ste1 = map ord (show firstAccess)
+               in let breakCriteria = (32 `elemIndices` ste1)
+     -- leersteln komme nur vor wenn ein term wie "Just blue" appears 
+     -- this in order ot get rid of the Just
+               in let findeLeerstelln = snd (break (==32) ste1)
+               in let seeIfBreaksNeeded = if (length breakCriteria<=0) then ste1
+                                          else findeLeerstelln 
+               in let ste2 = filter (/=34) seeIfBreaksNeeded
+               in  let mapToChar = map chr ste2
+               in mapToChar
+-----------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------
+-- multipliziert Zahlen damit Sie in das SpurenSystem passen
+-- Vorsicht nur bei Aehnlichen z.b. 0.59 0.94 0.22 ....
+--  nicht 0.45 3.4 ....
+getRid x = let a = (map ord x)
+           in let b = map chr (filter (/=46) ( snd (break (<=46) a)))
+           in let c = b 
+           in c
+
+--------------------------------------------------------------------------
 
 
 
