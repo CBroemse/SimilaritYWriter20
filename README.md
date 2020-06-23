@@ -152,6 +152,12 @@ where   a a a a = line1 ; b b b b = line2 ... x x x x = line n
 ##### Step III
 ###### Concept plotter
 
+    get 4 lines of bonelist as variables  progVar1
+                                         ,progVar1++progVar2
+                                         ,progVar2
+                                         ,progVar3
+                                         ,porgVar3++progVar4
+                                         ,progVar4
 ![alt tag](https://github.com/CBroemse/SimilaritYWriter20/blob/master/source/conceptPlotter.png)
 
 ##### Step IV
