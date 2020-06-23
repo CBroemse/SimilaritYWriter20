@@ -180,10 +180,13 @@ how things are compared
                -> amatrix2 -> the Trix -> changs2 -> chgLine2 -> ptc5
                find .... in matrix2                                     => vector
                 
-                                        -> changs2 -> chgLine2 -> ptc6
-                                        -> changs2 -> chgLine2 -> ptc7
+                                        -> changs2 -> chgLine2 -> ptc6 =>  interesting
+
+                                        -> changs2 -> chgLine2 -> ptc7 => half 'crown'
+                                                                  ptc8 => half 'crown' similar to ptc7
+                                                                  ptc9 => half 'crown' similar to ptc8
         ---------------------------------------------------------------                                 
-                      theTrix 2 -> ptc3   =>     ?progVar? group vector
+                      theTrix 2 -> ptc3                               =>  progVar group vector (5 steps 1 vector ?)
                  
                       theTrix 4 -> ptc3a                                 
                       --    IV   <->      IV++VI  <->  VI
@@ -191,16 +194,9 @@ how things are compared
              atrix5a t n = atrix0R theGeors 1 t theVarias 5 n
              atrix6a t n = atrix0R theGeors 1 t theVarias 6 n
 
-                                                   amatrixDifa    => unique sin of progVars ?     
-                      theTrix 6 -> ptc3b
-          ----------------------------------------------------------------         
-                      
-             below not used
-                ->   atrix3 t m = (F.chooseMQ t (wohlGeor3 (progVar1 ) m))
-                ->  atrix3a t m = (F.chooseMQ t (wohlGeor3 (progVar1 ) m))
-                ->  atrix3b t m = (F.chooseMQ t (wohlGeor3 (progVar1 ) m))
-
-
+                                              amatrixDifa  -> ptc3a    => sin of progVars ?     
+                                              theTrix 6    -> ptc3b    => 
+         
 
 ##### Step IV
 
