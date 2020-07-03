@@ -1,5 +1,5 @@
 # SimilaritYWriter20
-#### sort and filter any ["String"] with similaritYValue in function 'kArmTrack5' = gh1
+#### sort and filter any [String] ~ [[Char]] with similaritYValue in function 'kArmTrack5' = gh1
       gh: ["A","B","A","A"] to ["A","A","A","B"]
       OR
       gh1: ["AAABB","AAABAB","AAA","BBBAA"] => 'kArmTrack5' -> phiMax -> ["AAABB","AAABAB","BBBAA","AAA"] 
