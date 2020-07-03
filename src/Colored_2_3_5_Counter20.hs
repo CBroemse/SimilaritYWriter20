@@ -548,7 +548,17 @@ kArmTest5 bonelist mofaList connectWrist dit dit2 mCommand crit= do
               putStrLn "readY to plot"
              -- let pop = (ptc0  5)
               --M.writeWXCloudNODE (pop) (ptc2 5) (ptc3 5) (ptc4 5) (ptc5 5) (ptc6 5)
-              M.writeWXCloudNODE (ptc2 5) (ptc2 15) (ptc2 25) (ptc4 2) (ptc4 3) (ptc4 5)
+           --   M.writeWXCloudNODE (ptc3b 1) (ptc3b 2) (ptc3b 3) (ptc3b 4) (ptc3b 5) (ptc3b 6)
+           --   M.writeWXCloudNODE (ptc3 2) (ptc3 4) (ptc3 6) (ptc3 8) (ptc3 10) (ptc3 20)  -- nested graph ? 
+           --   M.writeWXCloudNODE (ptc2 5) (ptc2 25) (ptc2 50) (ptc4 100) (ptc4 125) (ptc4 150) -- ???
+           --   M.writeWXCloudNODE (ptc5 5) (ptc5 25) (ptc5 50) (ptc5 100) (ptc5 125) (ptc5 150) --  a plaine 
+           --   M.writeWXCloudNODE (ptc6 5) (ptc6 25) (ptc6 50) (ptc6 100) (ptc6 125) (ptc6 150) -- interesting
+            --  M.writeWXCloudNODE (ptc7 5) (ptc7 25) (ptc7 50) (ptc7 100) (ptc7 125) (ptc7 150) -- half 'crown'
+             -- M.writeWXCloudNODE (ptc8 5) (ptc8 25) (ptc8 50) (ptc8 100) (ptc8 125) (ptc8 150) -- similar to above
+              M.writeWXCloudNODE (ptc9 5) (ptc9 25) (ptc9 50) (ptc9 100) (ptc9 125) (ptc9 150)  -- similar to above 
+           --   M.writeWXCloudNODE (ptc0 5) (ptc0 25) (ptc0 50) (ptc0 100) (ptc0 125) (ptc0 150) -- ???
+
+--              M.writeWXCloudNODE (ptc2 5) (ptc2 15) (ptc2 25) (ptc4 2) (ptc4 3) (ptc4 5)
               M.writeWXCloud4 (ptc2 5) (ptc2 25) (ptc2 50) (ptc4 5) (ptc4 25) (ptc4 50)
     ---------------------------------------------------------------------------------------------------
 --
@@ -755,7 +765,7 @@ atrix1 t n = atrix0R theGeors 2 t theVarias 2 n
 atrix2 t n = atrix0R theGeors 1 t theVarias 3 n
 
 atrix3 t m = (F.chooseMQ t (wohlGeor3 (progVar1 ) m))
---    IV   <->      set to progVar3   <->  VI
+--    IV   <->      IV++VI  <->  VI
 atrix4 t n = atrix0R theGeors 1 t theVarias 4 n
 atrix5 t n = atrix0R theGeors 2 t theVarias 5 n
 atrix6 t n = atrix0R theGeors 1 t theVarias 6 n
@@ -769,7 +779,7 @@ atrix1a t n = atrix0R theGeors 1 t theVarias 2 n
 atrix2a t n = atrix0R theGeors 1 t theVarias 3 n
 
 atrix3a t m = (F.chooseMQ t (wohlGeor3 (progVar1 ) m))
---    IV   <->      set to progVar3   <->  VI
+--    IV   <->      IV++VI  <->  VI
 atrix4a t n = atrix0R theGeors 1 t theVarias 4 n
 atrix5a t n = atrix0R theGeors 1 t theVarias 5 n
 atrix6a t n = atrix0R theGeors 1 t theVarias 6 n
@@ -782,7 +792,7 @@ atrix1b t n = atrix0R theGeors 2 t theVarias 2 n
 atrix2b t n = atrix0R theGeors 2 t theVarias 3 n
 
 atrix3b t m = (F.chooseMQ t (wohlGeor3 (progVar1 ) m))
---    IV   <->      set to progVar3   <->  VI
+--    IV   <->      IV++VI   <->  VI
 atrix4b t n = atrix0R theGeors 2 t theVarias 4 n
 atrix5b t n = atrix0R theGeors 2 t theVarias 5 n
 atrix6b t n = atrix0R theGeors 2 t theVarias 6 n
@@ -872,9 +882,12 @@ chgLine2 w t = let a w t k=  (head(changs2 w t k ))
                in map (a  w t) [1..3]
 
 pointCloud04 n = ( map chgLine [1..n])
-pointCloud05 n = drop 2 (map (chgLine2  1) [1..n])
-pointCloud06 n = drop 2 (map (chgLine2  3) [1..n])
-pointCloud07 n = drop 2 (map (chgLine2  5) [1..n])
+pointCloud05 n = (map (chgLine2  1) [3..n])
+pointCloud06 n =   (map (chgLine2  2) [3..(realToFrac n)])
+pointCloud07 n =  (map (chgLine2  3) [3..(realToFrac n)])
+pointCloud08 n = (map (chgLine2  4) [3..n])
+pointCloud09 n = (map (chgLine2  6) [3..n])
+
 --                e.gs
 --crit: String   "0.56" ??? 
 
@@ -952,10 +965,10 @@ runner x = do  --scanChar
         -- (return (do r)) --putStrLn (show e) --show(return e)
 -- import your functions into kArmTest5 via formation
 preX x = head(map scanChar (frmDoubletoInt (show x)))
-pg1 x = sin x --F.fourierMQ6NOPAN123 x--(sin (read((head((formTest [father] (preX x) [show(sin (x))] (words(show(sin 2))))  ))))) -- (((([(formTest [mother] 1 [show(F.fourierMQ6NOPAN123 (realToFrac (show x)))] (words(show(sin (x)))))]  )))) -- head(ausw 1 [(F.fourierMQ6NOPAN123 x)]) 
-pg2 x = cos x --(F.fourierMQ5NOPAN123 x)
-pg3 x = sin x --(F.fourierMQ4NOPAN123 x)
-pg4 x = cos x --(F.fourierMQ4TRACE x)
+pg1 x = F.fourierMQ6NOPAN123 x--(sin (read((head((formTest [father] (preX x) [show(sin (x))] (words(show(sin 2))))  ))))) -- (((([(formTest [mother] 1 [show(F.fourierMQ6NOPAN123 (realToFrac (show x)))] (words(show(sin (x)))))]  )))) -- head(ausw 1 [(F.fourierMQ6NOPAN123 x)]) 
+pg2 x = (F.fourierMQ5NOPAN123 x)
+pg3 x = (F.fourierMQ4NOPAN123 x)
+pg4 x = cos x --(F.fourierMQ4TRACE (x))
 pg11 x = show x --show(F.fourierMQ6NOPAN123 x)
 pg22 x = show x --show(F.fourierMQ5NOPAN123 x)
 pg33 x = show x --show(F.fourierMQ4NOPAN123 x)
@@ -976,7 +989,7 @@ progVar6 = "BBBAA"
 pointCloud01 n  = let toMap e = last((map (amatrix e) [1..50]))
                   in map toMap [1..n]
 -- based on wohlGeor3 -> constant-> any string -> aways same points depending on pg functions
-pointCloud02 n = drop (n-1) (map (amatrix2 n) [1..50])
+pointCloud02 n = drop (n-1) (map (amatrix2 n) [1..(realToFrac n)])
 
 pointCloud03 n  = let toMap e = last((map ((theTrix 2) e) [1..50]))
                   in map toMap [1..n]
@@ -1046,7 +1059,9 @@ ptc3b e = pointCloud03b e
 ptc4 e = pointCloud04 e
 ptc5  n = pointCloud05 n 
 ptc6 n = pointCloud06 n 
-ptc7  n = pointCloud07 n 
+ptc7  n = pointCloud07 n
+ptc8  n = pointCloud08 n 
+ptc9  n = pointCloud09 n  
 ------------------------------------------------------
 -- MINIMA I,II,III
 fodf1 compar pub = let inpu2 =   map (wohlGeorNeRAW compar) [1..pub] -- same as get tolerance

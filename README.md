@@ -1,5 +1,5 @@
 # SimilaritYWriter20
-## Plot graphs writing to wxmaxima
+## plot graphs writing to wxmaxima
                   
 A function that can compare any two lists, The aim is to find the most general rules that can 'maybe' 
 help my understanding.
@@ -148,6 +148,57 @@ where   a a a a = line1 ; b b b b = line2 ... x x x x = line n
                        => (pick1 phiMax)`elemIndices` (phiMax) -> 
                        -> phiMax-1
     ========================================================
+
+##### Step III
+###### Concept plotter
+
+    get 4 lines of bonelist as variables  progVar1
+                                         ,progVar1++progVar2
+                                         ,progVar2
+                                         ,progVar3
+                                         ,porgVar3++progVar4
+                                         ,progVar4
+![alt tag](https://github.com/CBroemse/SimilaritYWriter20/blob/master/source/conceptPlotter.png)
+
+how things are compared
+
+       pointCloud01
+ 
+             -- wohlGeor1    <-->    wohlGeor2    <->    wohGeor1
+             --   I                   I+II               III
+              progVar1         progVar!++progVar2       progVar2
+       
+        amatrix n m = concat [(atrix0 n m),(atrix1 n m),(atrix2 n m)]
+
+   
+                                                       amatrix -> ptc0 => ?progVar? group vector
+        --------------------------------------------------------------+
+                            
+        wohlGeor3 ->atrixCo -> amatrix2 -> changs ->  chgLine  -> ptc4
+                            -> amatrix2 ->                        ptc2
+        ---------------------------------------------------------------                    
+               -> amatrix2 -> the Trix -> changs2 -> chgLine2 -> ptc5
+               find .... in matrix2                                     => vector
+                
+                                        -> changs2 -> chgLine2 -> ptc6 =>  interesting
+
+                                        -> changs2 -> chgLine2 -> ptc7 => half 'crown'
+                                                                  ptc8 => half 'crown' similar to ptc7
+                                                                  ptc9 => half 'crown' similar to ptc8
+        ---------------------------------------------------------------                                 
+                      theTrix 2 -> ptc3                               =>  progVar group vector (5 steps 1 vector ?)
+                 
+                      theTrix 4 -> ptc3a                                 
+                      --    IV   <->      IV++VI  <->  VI
+             atrix4a t n = atrix0R theGeors 1 t theVarias 4 n
+             atrix5a t n = atrix0R theGeors 1 t theVarias 5 n
+             atrix6a t n = atrix0R theGeors 1 t theVarias 6 n
+
+                                              amatrixDifa  -> ptc3a    => sin of progVars ?     
+                                              theTrix 6    -> ptc3b    => 
+         
+
+##### Step IV
 
 Now we try to define rules concerning the metric' above. One guidline is
 to use bone list as a mode but keep 'realy big' input like below at bay:

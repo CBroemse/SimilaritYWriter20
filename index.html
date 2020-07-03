@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>CSS Template</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Style the header */
+.header {
+  background-color: #f1f1f1;
+  padding: 30px;
+  text-align: center;
+  font-size: 35px;
+}
+
+/* Create three unequal columns that floats next to each other */
+.column {
+  float: left;
+  padding: 10px;
+  height: 300px;  Should be removed. Only for demonstration */
+}
+
+/* Left and right column */
+.column.side {
+  }
+
+/* Middle column */
+.column.middle {
+  width: 50%;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Style the footer */
+.footer {
+  background-color: #f1f1f1;
+  padding: 10px;
+  text-align: center;
+}
+
+/* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
+@media (max-width: 600px) {
+  .column.side, .column.middle {
+    width: 100%;
+  }
+}
+
+a:link, a:visited {
+  background-color: white;
+  color: black;
+  border: 2px solid green;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  width:50%;	  
+}
+
+a:hover, a:active {
+  background-color: green;
+  color: white;
+}
+.img2 {
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  z-index: -1;
+}
+div.gallery {
+  margin: 5px;
+  border: 1px solid #ccc;
+  float: left;
+  width: 180px;
+}
+
+div.gallery:hover {
+  border: 1px solid #777;
+}
+
+div.gallery img {
+  width: 100%;
+  height: auto;
+}
+
+div.desc {
+  padding: 15px;
+  text-align: center;
+}
+
+/* The expanding image container */
+.container {
+  position: relative;
+  display: none;
+	  
+}
+/* Closable button inside the expanded image */
+.closebtn {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  color: white;
+  font-size: 35px;
+  cursor: pointer;
+}
+</style>
+</head>
+<script>
+function myFunction(imgs) {
+  var expandImg = document.getElementById("expandedImg");
+  var imgText = document.getElementById("imgtext");
+  expandImg.src = imgs.src;
+  imgText.innerHTML = imgs.alt;
+  expandImg.parentElement.style.display = "block";
+}
+function RunExe2(){
+    var shell2 = new ActiveXObject("WScript.Shell");
+    var path2 = '"http://127.0.0.1:8023"';
+    shell2.run(path2,1,false);
+
+}
+function w3_open() {
+  document.getElementById("mySidebar").style.display = "block";
+}
+
+function w3_close() {
+  document.getElementById("mySidebar").style.display = "none";
+}
+</script>
+
+<body>
+
+<h2>Select image in original Size</h2>
+<p>Here an image for furtehr processing is selected.</p>
+<p>Sfar it is in regular size.</p>
+<div class="w3-teal">
+  <button class="w3-button w3-teal w3-xlarge" onclick="w3_open()">?</button>
+  </div>
+
+<div class="header" name="oben">
+    <div class="w3-sidebar w3-bar-block w3-border-right" style="display:none" id="mySidebar">
+   <button onclick="w3_close()" class="w3-bar-item w3-large">Close &times;</button>
+   <iframe src="file://http://127.0.0.1:8023" name="iframe_a" style="border:2px solid red;" width="100%" height="200"></iframe>
+
+</div>	
+ 
+  <h2></h2>	
+  </div>
+
+
+<div class="row">
+  <div class="column side" style="background-color:#aaa; width: 15%;">
+	  
+	  <a href="Layout.html" target="_parent">Export           </a>
+
+          <a href="Layout.html" target="_parent">Layer           </a>
+
+	  <a href="Sort.html" target="_parent">Library          </a>
+
+          <a href="http://127.0.0.1:8023" target="iframe_a">Server        </a>
+	  <a href="  file:///c:/stack/forGlade/src/Many.html" target="_parent"> Just wrote</a>
+	  <a href="  file:///c:/stack/forGlade/src/2014-11-27-stairs-original.png" target="iframe_a"> BigPicture</a>
+	  <a href=" " onclick="RunExe2();"> BigPicture</a>  <p>
+	  <button onClick="RunExe2(this);">openHaskell</button><p> </div>
+
+		  <!--"  file:///H:/Logini17/Neuer%20Ordner/BackBoneOldFiles/Testbutton.html" -->
+
+	  
+  <div class="column middle" style="background-color:#bbb;">
+	 
+ 	  <img src="harry.png" style="width:10%" target="iframe_a" onclick="myFunction(this);">
+           <img src="takeOne1.png" style="width:10%" onclick="myFunction(this);">
+          <img src="henne51.png" style="width:10%" onclick="myFunction(this);">
+          <img src="henne52.png" style="width:10%" onclick="myFunction(this);">
+          <img src="henne53.png" style="width:10%" onclick="myFunction(this);">
+          <img src="harry.png" style="width:10%" onclick="myFunction(this);">
+           <img src="henne.png" style="width:10%" onclick="myFunction(this);">
+          <img src="henne51.png" style="width:10%" onclick="myFunction(this);">
+          <img src="henne52.png" style="width:10%" onclick="myFunction(this);">
+          <img src="henne53.png" style="width:10%" onclick="myFunction(this);">
+          <img src="harry.png" style="width:10%" onclick="myFunction(this);">
+           <img src="henne.png" style="width:10%" onclick="myFunction(this);">
+          <img src="henne51.png" style="width:10%" onclick="myFunction(this);">
+          <img src="henne52.png" style="width:10%">
+          <img src="henne53.png" style="width:10%">
+          <img src="harry.png" style="width:10%">
+           <img src="henne.png" style="width:10%">
+          <img src="henne51.png" style="width:10%">
+          <img src="henne52.png" style="width:10%">
+          <img src="henne53.png" style="width:10%">
+         <img src="harry.png" style="width:10%">
+           <img src="henne.png" style="width:10%">
+          <img src="henne51.png" style="width:10%">
+          <img src="henne52.png" style="width:10%">
+          <img src="henne53.png" style="width:10%">
+
+	   
+  </div>
+  <div class="column side" style="height:300px; width:30%">
+         
+        <div class="container" style="height:300px; width:30%">
+
+          <span onclick="this.parentElement.style.display='none'" class="closebtn">&times;</span>
+          <img id="expandedImg">
+	  
+         <div id="imgtext"></div>
+</div>        
+                   
+</div>
+
+
+
+
+</body>
+</html>
