@@ -24,7 +24,8 @@ module UsefulFunctions19 (
         , fnACCRAW2 
     --    , innerAccess
     --    , innerAccessRAW
-        , checkFo) where
+        , checkFo
+        , evalToWrite) where
      --   , nameACCESSFUNCTION ) where
 -- always color sceME 'delek'
 
@@ -33,8 +34,8 @@ import Data.Char
 import Control.Monad
 import System.Environment
 import System.IO
---import Data.Time as T
--- import System.Locale
+import Data.Time as T
+import System.Locale
 import System.Random
 
 --own modules
@@ -51,7 +52,7 @@ zufallsBasic1 t a x = (take t  (randomRs (1,a) (mkStdGen x)))::[Int]
 
 rndLength1 = zufallsBasic1 3 1000000000 10
 easyfoNowRun1 wieviele = zufallsBasic1 wieviele 5000 10
--- rndList:[String] e.g ["1","55","4","34566543"] any N number which is I
+--rndList:[String] e.g ["1","55","4","34566543"] any N number which is I
 
 -- foTime: IO must read Time
 -- soMany : Int; length of outputList :soMany lines
@@ -59,7 +60,7 @@ easyfoNowRun1 wieviele = zufallsBasic1 wieviele 5000 10
 getInts foTime soMany digits = let prepStringtoInt = (map chr (filter (<58)(filter (>47)(map ord (show foTime)))))
                                in let plugRandom wieviele = zufallsBasic1 wieviele (read prepStringtoInt) digits
                                in (show (plugRandom soMany))
-{- 
+ 
 time :: IO ()
 time = do
   myTime <- getCurrentTime
@@ -75,7 +76,7 @@ time = do
   let christmasDay = T.fromGregorian 2013 12 25
       n = christmasDay `diffDays` utctDay myTime
   putStrLn $ "Only " ++ show n ++ " days to go until Christmas!"
--}
+
 -----------------------------------
 -- x = how man 2 take
 -- y = which function 2 iterate
@@ -442,4 +443,28 @@ fogAussVerteilung h g= (h/(sqrt g))
 
 foefactor h x e= (((sqrt h^2)*(x^2))*e)
 gaussVerTeilung h g x e = ((fogAussVerteilung h g )*(foefactor h x e))
+
+-- write six files then start back overwrite 1 ....
+-- will turn on number digit of a Sring +1
+--  e.g "aname1.txt" -> "aname2.txt"
+--  used in time depending random file writing in 'dit' 
+--aString:Sting ; the sourceFile
+evalToWrite astrinG = if tzBool>0 then prsRoot++(head tz3)++(show tzInt)++"."++(last tz3)
+                      else prsRoot++(head tz3)++("1.")++(last tz3)
+     where
+    poc1 fOsnd = reverse( fOsnd(break (=='/') (reverse(astrinG))));--prevent '/' cause trouble
+    prsInput = poc1 fst;
+    prsRoot = poc1 snd;  
+    tz0 = (map ord prsInput);
+    tz = (filter (>47) (filter (<57)  tz0));
+    tzExp = (map chr tz);
+    tzBool = length tzExp;
+    tzRootSource  = filter (==47); 
+    tz1 = tz0 \\ tz;
+    tz2 = map (\c -> if c=='.' then ' '; else c);
+    tz3 = words (tz2 (map chr tz1));
+    tzInt = if tzBool==0 then 1
+            else if (read tzExp)<7 then (read tzExp)+1
+            else 1 ;
+
 

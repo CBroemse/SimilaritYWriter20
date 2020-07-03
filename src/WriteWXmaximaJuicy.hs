@@ -1,8 +1,15 @@
-module WriteWXmaximaJuicy where
+module WriteWXmaximaJuicy (
+     writeWXCloud4
+   , aCloudPointNODE -- in use: write ullu.wxms writes seven files than start at fist again
+   , writeWXCloudNODE  -- write lala.wxms to wxms folder being used
+   , aCompleteWX
+   , aCompleteWX3) where
 
 import Data.Char
 import Data.List
 import Control.Monad
+
+import qualified UsefulFunctions19 as Ev
 {-
 let begin = "/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
              /* [ Created with wxMaxima version 15.08.2 ] */
@@ -195,7 +202,7 @@ aCloudPoint3 stream1 stream2 stream3 =
     drawAll = "draw3d(color=red,mycloud,color=green,mycloud2,color=black,mycloud3,color=orange,v1,v2,v3,v4,color=blue,text)$";
     aCons above = (lineStart ++ above ++"\n"++ lineEnd)
 writeWXCloud4 functionList ste3 ste4 ste5 ste6 ste7 = do
-     writeFile "lala2.wxm" (aCloudPoint4 functionList ste3 ste4 ste5 ste6 ste7)
+     writeFile (Ev.evalToWrite "wxms/ullu.wxm") (aCloudPoint4 functionList ste3 ste4 ste5 ste6 ste7)
 
 aCloudPoint4 functionList ste3 ste4 ste5 ste6 ste7 = 
                      let ausw = length functionList
@@ -225,7 +232,7 @@ aCloudPoint4 functionList ste3 ste4 ste5 ste6 ste7 =
     aCons above = (lineStart ++ above ++"\n"++ lineEnd)
 
 writeWXCloudNODE functionList ste3 ste4 ste5 ste6 ste7 = do
-     writeFile "lala.wxm" (aCloudPointNODE functionList ste3 ste4 ste5 ste6 ste7)
+     writeFile (Ev.evalToWrite "wxms/lala.wxm") (aCloudPointNODE functionList ste3 ste4 ste5 ste6 ste7)
 
 aCloudPointNODE functionList ste3 ste4 ste5 ste6 ste7 = 
                      let ausw = length functionList

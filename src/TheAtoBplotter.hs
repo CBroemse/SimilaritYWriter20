@@ -1,80 +1,19 @@
 -- this module provides:
 -- --------------------------------------
--- four lines of thought
---
---  I. a. compare all atoms of [String] called bonelist and order them due to similaritYvalue
---     b. insert a new line (ghCheck) into a. do the same as above.
--- II. an inherent data type 'Punkt' :: String -> Maybe String
---     that sall fit to I,III and IV. The data type , so far
---     is only connected to the plotting functions of below.
 -- III. library to plot wxmaxima graphs . functions to compare
 --      a. two lines of boneist with each other.
 --      b. compare a to periodic functions called pg1 functions
 --         e.g  pg1 x = sin x 
--- IV. a 2_3_5_Counter to compare I, II and III with each other
 
----------------------------------------------------------------------------------------------------------------------------------------------------------------------
--- ABSTRACT:
--- rate with simiYvalue to compare 
--- all atoms of all lines to the same metric
---  read         complement    rate with                   
---  bonelist      fst ..last    simiYvalue              
---
--- a a a a       a1 a2 a3      a a a     a01 a01 a01           |a0 b0 c0|           b0 a0 c0     
--- b b b b  --\  b0 b2 b3 --\  b b b --\ a01 a01 a01 --\ MONAD |a1 b1 c2| --\ MAYBE a1 c1 1b --\
--- c c c c  --/  c0 c1 c3 --/  c c c --/ a3  a3  a3  --/       |a2 b1 c3| --/  e.g  b2 c2 a2 --/
--- d d d d       d0 d1 d2      d d d     a2  a2  a2            |a4 b4 c4|           c3 a3 b2 
---
---           |a0 b0 c0|           b0 a0 c0     
--- --\ MONAD |a1 b1 c2| --\ MAYBE a1 c1 1b --\
--- --/       |a2 b1 c3| --/  e.g  b2 c2 a2 --/
-------------------------------------------------------------------------------------
+              --
 
-
-
--- Monadic non-dterministic DATA tye 
--- ----------------------------------
--- e.g let ones = Punkt (nACC "tracker1" ["FindMovment","what"]) Nothing Nothing Nothing Nothing Nothing
--- 
---  nACC nACCRAW, checkflow as main access functions
---
---  DATA rating: using the 12.6.20 version with similariTYvalue plus its source functions
---
---    into 'kArmTest5'
---
----
--- VIEW all concepts in Colored_2_3_5_Counter.hs                                       --
-
-module Colored_2_3_5_Counter20 (
-      einTyp
-    , getRid --t transorming input vals 0,01 ..0,99
-    , Punkt
-   -- , mutateSVG1
-    , nACC -- :115
-    , nACCRAW -- same as above + extra variable: 'on' ; decide tracker1 
-    , father
-    , mother
-    , mother2
-    , loopNumber
-    , minMaxTrueOrFalse
-   -- , processFst
-    , publishPunkt
--- functions related to interconnectivity between modules
-    , checkflow
-  --  , flowState
-  --  , bewertung 
-    , Punkt -- a data type
-   -- , playingFi2 -- the first Main TEST of a quick svg path simulator 
-   -- , trackDiagram
-  --  , trackBody -- experimantal DATA Punkt sort
-    , innerAccess
-    , innerAccessRAW
-   -- , trackPoint
-   -- , trackPoint2
-    , similaritYvalue
-   -- naiveSim
-    , kArmTest5 -- new Main 
-      ) where
+module TheAtoBplotter (
+    
+      defSearch  -- enter pg functions and progVars
+    , defSearchRAW  
+    , runKRAW  -- like below but set to pick 4 variables of a bonelist
+    , runKBASE -- enter a [li,li..], decide to plot, choose search for a bonelist 
+     ) where
 
 import Data.List
 import Data.Char
@@ -91,88 +30,468 @@ import qualified Path2Val2 as HT
 import qualified FourierFieldCLASSIFIER as F
 import qualified WriteWXmaximaJuicy as M
 import qualified GHCguiNfunctions as G
---import Hs2Buttons
---
---     1. layer of concept: The Haskell string below is not easily understood 
---                          
---inner lexicon :
--- similaritYvalue :: (Fractional p, Ord p, Foldable t1, Foldable t2) => t2 p -> t1 p -> p
---  
---        to describe certain Types we wil use ':=' 
---        which is equivalent to '::' 
---        but ':=' /= '::' thus
---
---simiYvals = [similaritYvalue] := pick1 a [list] -> pick2 a [list] -> compare (pick1 a) to (pick2 a)   
---        this is an equivalent unconsistent (not relyibe) way to describe the concept of this project.    
-
-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
--- STEP 1: Examine
--- There is an syntactic Level and a conceptual Level
--- ===============================================================================================================================================
---                                       SYNTAX                  |             CONCEPT
--- ===============================================================================================================================================
---  hints:                 all Functions in 'e.g-sections' have  |  The 'e.g-sections' should be able to be called via ghc
---                         to be take out of the do functions    |  without a doupt that helps human understanding
---                         in 'chainDistribute'    AND         |  see if atom is already in list , dile:
---                              'kArmTest5'                      |
------------------------------------------------------------------
---  given:  row-width (length atom bonelist, 'zeilenlaenge )   
---                 pick1:String; a of (a,b) -> compare a to b    | one feasible way is to 'weigh' Strings is with simiaritYvalue^
---                 pick2:String; b of (a,b) -> compare a to b    | The aim is to rerieve a reliable function that will destinct between
---                                                               | any two strings. 
---
---          via ( beRepKEY pick1 pick2 punktList )               |           punktist :: Punkt -> [Punkt] -> not used
---
---                                                                           ausw pick1 bonelist ->  atombonelist       
---
--- e.g Colored*>  ( beRepKEY "1" "2" [] )           
---
---
-
-  
- -- "The real power of cathegory-theory is kind of to isolate what you care about...
- --  a group of homomorphisms is always a function between sets..."
- --  Fabrizio Romano Genovese
+ --e.g *> runKRAW 1 1 [["AAA","BBB","CCC"],["DDD","FFF","HHH"]]
+ ----- #####################################################################
+ -- TAKE FROM : four lines of bonelist
+ --        with order : a  to b to c ( line1 to line1n2 to line 
  --
- --        --   " Truth (Wahrheit) over certainty (Gewissheit)"
---                  (Illobrandt von Ludwiger)
---   " Lets start a framework that derives truth from certainty, 
---     based on truth"
----- \
----- /  truth -> certainty -> truth
----- glossary ideas:
---     the colores := takes the a modified step of sieve of Eratosthens
---                    2 - 3 - 5 and viusualizes structures 
---     iPunkts:= imaginary Punkts used for own reasoning
-
- --
- --e.g *> let li = ["AAABB","AABAB","AAA","BBBAA"]
- --       let pi = Punkt "M" Nothing Nothing Nothing Nothing Nothing
- --    *  let kArmTest5 li 1 pi 1 1 [] "AAA"
-runK d = do 
-   let ghd t d = (ausw t d)
-   let leng d = length d
-   dooer <- forM [1..1] (\fd -> do
-        let act = (head (ghd fd d))
-        let pi = Punkt "M" Nothing Nothing Nothing Nothing Nothing
-        kArmTest5 act 1 pi 1 1 [] "AAA"
-        return ())
-   return dooer
+runKRAW offOn target plot n d = runKBASE offOn target plot n d 1 2 3 4
+runKBASE offOn target plot n d get1 get2 get3 get4 =  do 
+   let ghd t de = ( (ausw t de))
+   let leng= ((length d) - 1)
+   let hold t = do
+        dooer <- forM t (\fd -> do
+           let act = ((ghd fd d))
+           let pi = Punkt "notM" Nothing Nothing Nothing Nothing Nothing
+           let bonelis = head act
+        --aaS <- forM [1..(length bonelis)] (\bl -> do  --   kArmTest5 act 1 pi 1 1 [] "AAA"
+           let whichLine1 = head(ausw get1 (head(ghd fd act)))
+           let wL2 = head(ausw get2 (head(ghd fd act)))
+           let wL1n2 = (whichLine1++wL2)
+           let wL3 = head(ausw get3 (head (ghd fd act)))
+           let wL4 = head (ausw get4 (head(ghd fd act)))
+           let wL3n4 = (wL3++wL4)
+     --   let doubInt u = (read (frmDoubletoInt u))
+        --pi
+           let vanAllen = defSearch offOn d plot whichLine1 wL1n2 wL2 wL3 wL3n4 wL4 n (head(ghd fd d)) bonelis
+           belt <- forM [1] (\bel -> do
+                 vanAllen
+                 return(vanAllen)) 
+           return (belt))
+        return(dooer)
+   let offON = if offOn == 1 then hold [1..(leng)]
+               else if offOn == 2 then hold [1..(leng)] --(return(return [(return(putStr("")))]))
+               else hold [1..(leng)]
+   offON
+   (return (leng)) --offON)
         
 -- a program Variables:
 -- the data to be fed into plot via kArmTrack5 
-progVarRAW t r = do 
-    let df = head (ausw t r)
-    df
-progVar1 = "AAABB" 
-progVar2 = "AAABBAABAB"
-progVar3 = "AABAB"
-progVar4 = "AAA"
-progVar5 = "AAABBBAA"
-progVar6 = "BBBAA"
+--   progVarRAW t r = do 
+  --      let df = head (ausw t r)
+    --    df
+defSearch offOn target plot pV1 pV2 pV3 pV4 pV5 pV6 n bonelist pipebone = (defSearchRAW offOn target plot pV1 pV2 pV3 pV4 pV5 pV6 50 50 50 50 n bonelist pipebone)  
+--e.g> defSearchRAW "AAABB" "AAABBAAABAB" "AAABAB" "AAA" "AAABBBAA" "BBBAA" 1 1 1 1 1 li
+--
+--pipebone: variable for runKBASE, n-(length target)-many, of a [bonelist]
+defSearchRAW offOn target plot pV1 pV2 pV3 pV4 pV5 pV6 ptc0Len ptc3Len ptc3aLen ptc3bLen n bonelist pipebone = do
+     --  let pi = fopi --Punkt "M" Nothing Nothing Nothing Nothing Nothing -- switch for io at bottom
+       let progVar1 = pV1 --"ccccc" --"AAABB" 
+       let progVar2 = pV2 --"AAABBAABAB"
+       let progVar3 = pV3 --"A"--"AABAB"
+       let progVar4 = pV4 --"A"--"AAA"
+       let progVar5 = pV5 --"AAABBBAA"
+       let progVar6 = pV6 --"BBBAA"
+
+       let liT = [pV1,pV2,pV3,pV4,pV5,pV6] --["AAABB","AABAB","AAA","BBBAA"]
+       let pg1 x = F.fourierMQ6NOPAN123 x--(sin (read((head((formTest [father] (preX x) [show(sin (x))] (words(show(sin 2))))  ))))) -- (((([(formTest [mother] 1 [show(F.fourierMQ6NOPAN123 (realToFrac (show x)))] (words(show(sin (x)))))]  )))) -- head(ausw 1 [(F.fourierMQ6NOPAN123 x)]) 
+       let pg2 x = (F.fourierMQ5NOPAN123 x)
+       let pg3 x = (F.fourierMQ4NOPAN123 x)
+       let pg4 x = cos x --(F.fourierMQ4TRACE (x))
+       let pg11 x = show x --show(F.fourierMQ6NOPAN123 x)
+       let pg22 x = show x --show(F.fourierMQ5NOPAN123 x)
+       let pg33 x = show x --show(F.fourierMQ4NOPAN123 x)
+       let pg44 x = show x --show(F.fourierMQ4TRACE x)
+       let pgFun x = x
+   
+       let wohlGeorNet02 compar fopu punktList = --let inpu = uniquEClass01 compar 1
+                   let b=  (pg1 punktList) 
+                   in let c = (pg2 punktList)
+                   in let d = (pg3 punktList)
+                   in let e = (pg4 punktList)
+                   in let loop = head(F.chooseMQ 5 [punktList])
+ 
+                 --  in let g fopu= (getInts compar fopu)
+                 --  r: e.g 100
+                 --  in let forythm = concat (zufallsBasic1 1 10) fopu
+                   in let rythm  = head(zufallsBasic1 1 5 fopu)
+                   in let h  = (F.chooseMQ (rythm) [b,c,d,e,loop])
+                   in h  -- h punk
 
 
-kArmTest5 bonelist mofaList connectWrist dit dit2 mCommand crit= do
+       let uniquEClassReallyRAW compar punktList befehle = 
+                   let sta1 d = map ord d  
+                  -- in let sta1New = map realToFrac (sta1 (show(F.fourierMQ6NOPAN2 fstOsnd )))
+                   in let sta2New = map realToFrac (sta1 (show(head(ausw 1 befehle ) punktList )))
+                   in let sta3New = map realToFrac (sta1 (show(head(ausw 2 befehle ) punktList )))
+                   in let sta4New = map realToFrac (sta1 (show(head(ausw 3 befehle ) punktList )))
+                   in let sta5New = map realToFrac (sta1 (show(head(ausw 4 befehle )punktList )))
+                   in let staLoop = map realToFrac (sta1 (show(wohlGeorNet02 compar 1 punktList )))
+
+                   in let staCompare = map realToFrac (sta1 ((compar))) -- *****************************SELECT EACH LINE OF GUESS
+                   in [(similaritYvalue staCompare sta2New),(similaritYvalue staCompare sta3New),(similaritYvalue staCompare sta4New),(similaritYvalue staCompare sta5New),(similaritYvalue staCompare staLoop)]
+
+
+       let uniquEClassRAW compar pk = uniquEClassReallyRAW compar pk [(F.fourierMQ6NOPAN123),(F.fourierMQ5NOPAN123),(F.fourierMQ4NOPAN123),(F.fourierMQ4TRACE)] 
+--similaritYValue "wrist" (
+       let uniquEClass01 compar punktList = uniquEClassRAW compar punktList 
+--
+       let toleranceNet compar punktList = let inpu = uniquEClass01 compar punktList 
+                   in let b=  head(F.chooseMQ 1 inpu) 
+                   in let c = head(F.chooseMQ 2 inpu)
+                   in let d = head(F.chooseMQ 3 inpu)
+                   in let e = head(F.chooseMQ 4 inpu)
+                   in let loop = head(F.chooseMQ 5 inpu)
+                   in let foCombos func  = map realToFrac (map ord (show(func)))
+                   in let way1 =[(similaritYvalue (foCombos b) (foCombos c)),(similaritYvalue (foCombos b) (foCombos d)),(similaritYvalue (foCombos b) (foCombos e)),(similaritYvalue (foCombos c) (foCombos d )),(similaritYvalue (foCombos c) (foCombos e))]
+                   in let way2 =[(similaritYvalue (foCombos e) (foCombos d)),(similaritYvalue (foCombos e) (foCombos c)),(similaritYvalue (foCombos e) (foCombos b)),(similaritYvalue (foCombos e) (foCombos e )),(similaritYvalue (foCombos e) (foCombos loop))]
+                   in way2
+
+  --if b>c && c>d && d>e then [punktList]
+                      --else []
+       let wohlGeorNeRAW compar punktList = let inpu = uniquEClass01 compar punktList
+                   in let f = ((minimum inpu) `elemIndices` (inpu)) 
+                   in f --F.chooseMQ f [b,c,d,e]--if b>c && c>d && d>e then [punktList]
+                     -- else []
+                     --
+       let toleranceNew compar punktList=
+                let inpu = toleranceNet compar punktList
+                in (minimum inpu) `elemIndices` (inpu) 
+
+       let gettolerance compar punktList = map (wohlGeorNeRAW compar) [1..punktList]
+       let wohlGeorNet0 compar punktList = let inpu = uniquEClass01 compar punktList
+                   in let b=  head(F.chooseMQ 1 inpu) 
+                   in let c = head(F.chooseMQ 2 inpu)
+                   in let d = head(F.chooseMQ 3 inpu)
+                   in let e = head(F.chooseMQ 4 inpu)
+                   in let loop = head(F.chooseMQ 5 inpu)
+               --    in let d = head(F.chooseMQ 5 inpu)
+                   in let f = ((minimum inpu) `elemIndices` (inpu)) 
+                   in let g fopu= concat(gettolerance compar fopu)
+                   in let h fopu = (F.chooseMQ ((head (g fopu))+1) [b,c,d,e,loop])
+                   in h punktList--if b>c && c>d && d>e then [punktList]
+                     -- else []
+       let wohlGeorNet01 compar punktList = let inpu = toleranceNet compar punktList
+                   in let b=  head(F.chooseMQ 1 inpu) 
+                   in let c = head(F.chooseMQ 2 inpu)
+                   in let d = head(F.chooseMQ 3 inpu)
+                   in let e = head(F.chooseMQ 4 inpu)
+                   in let loop = head(F.chooseMQ 5 inpu)
+               --    in let d = head(F.chooseMQ 5 inpu)
+                   in let f = ((minimum inpu) `elemIndices` (inpu)) 
+                   in let g fopu= concat(gettolerance compar fopu)
+                   in let h fopu = (F.chooseMQ ((head (g fopu))+1) [b,c,d,e,loop])
+                   in h punktList--if b>c && c>d && d>e then [punktList]
+                     -- else []
+
+       let wohlGeorNet03 compar fopu punktList = --let inpu = uniquEClass01 compar 1
+                   let b=  (pg1 punktList) 
+                   in let c = (pg2 punktList)
+                   in let d = (pg3 punktList)
+                   in let e = (pg4 punktList)
+                   in let loop = c
+ 
+                 --  in let g fopu= (getInts compar fopu)
+                 --  r: e.g 100
+                 --  in let forythm = concat (zufallsBasic1 1 10) fopu
+                   in let rythm  = head(zufallsBasic1 1 5 fopu)
+                   in let h  = (F.chooseMQ (rythm) [b,c,d,e,loop])
+                   in h --punk
+
+
+
+--type3 compar punktList = let fg = (punktList*1.0) 
+  --                  in let inpu = (wohlGeor3 compar fg) 
+    --                in let tak = punktList
+      --              in drop (tak-1) (take tak inpu)
+
+       let wohlGeorNet compar punktList = let inpu = uniquEClass01 compar punktList
+                   in let b=  head(F.chooseMQ 1 inpu) 
+                   in let c = head(F.chooseMQ 2 inpu)
+                   in let d = head(F.chooseMQ 3 inpu)
+                   in let e = head(F.chooseMQ 4 inpu)
+               --    in let d = head(F.chooseMQ 5 inpu)
+                   in if b>c && c>d && d>e then [punktList]
+                      else []
+       let findOrdung compar until= map (wohlGeorNet compar) [1..until] 
+-- I) rate bone with 1,2,3,4,5
+       let df1 compar pub = map (uniquEClassRAW compar) [1..pub] -- [pg1,pg2,pg2,pg4,pg5] 
+------------------------------------------------------
+-- II) rate within df1: 4. with 1,2,3,5  
+       let df2 compar pub = map (toleranceNet compar) [1..pub]
+------------------------------------------------------
+       let fotoGeor3 compar punktList pg = (wohlGeorNet03 compar pg) punktList
+  
+-- serve 5 possible random values that are OUTPUT of each Line called
+-- the output is used to find solutions.
+       let toGeor3 compar punktList = (concat (map (fotoGeor3 compar punktList) [1..(length liT)]))
+
+-- III) get a random value of 1,2,3,4
+       let df3 compar pub = map (toGeor3 compar) [1..pub]
+   ------------------------------------------------------
+
+
+------------------------------------------------------
+       let wohlGeor1 compar punktList = map (wohlGeorNet0 compar) [1..punktList]
+
+       let wohlGeor2 compar punktList = map (wohlGeorNet01 compar) [1..punktList]
+
+       let wohlGeor3 compar punktList = let inpu = (toGeor3 compar punktList) -- wohlGeor3
+                       in let a = head$F.chooseMQ 1 inpu
+                       in let b = head$F.chooseMQ 2 inpu
+                       in let c = head$F.chooseMQ 3 inpu
+                       in let d = head$F.chooseMQ 4 inpu
+                       in let e = head$F.chooseMQ 5 inpu
+                       in let foCombos func  = map realToFrac (map ord (show(func)))
+                       in let way1 =[(similaritYvalue (foCombos a) (foCombos b)),(similaritYvalue (foCombos a) (foCombos c)),(similaritYvalue (foCombos a) (foCombos d)),(similaritYvalue (foCombos a) (foCombos e )),(similaritYvalue (foCombos e) (foCombos d)),(similaritYvalue (foCombos e) (foCombos c))]
+                       in let way2 =[(similaritYvalue (foCombos e) (foCombos d)),(similaritYvalue (foCombos e) (foCombos c)),(similaritYvalue (foCombos e) (foCombos b)),(similaritYvalue (foCombos e) (foCombos a))]
+                       in way1
+
+
+       let theGeors o = let auswa = head (F.chooseMQ o [(wohlGeor1),(wohlGeor2)])
+                    in auswa
+
+       let theVarias p = let auswa = head (F.chooseMQ p [(progVar1 ),(progVar2 ),(progVar3 ),(progVar4 ),(progVar5 ),(progVar6 )])
+                     in auswa
+
+--o:Int choose wohlGeors 
+--t:Int choose atom in line
+--t:Int choose line
+       let atrix0R foGeo o t foprog p n  = (F.chooseMQ t (concat ((foGeo o) (foprog p) n)))
+       let atrix0R2 t foprog p n  = (F.chooseMQ t ((wohlGeor3 (foprog p) n)))
+
+--------------------------------------------------
+-- wohlGeor1 <--> wohlGeor2 <-> wohGeor1
+--   I              I+II         III
+       let atrix0 t n = atrix0R theGeors 1 t theVarias 1 n
+       let atrix1 t n = atrix0R theGeors 2 t theVarias 2 n
+       let atrix2 t n = atrix0R theGeors 1 t theVarias 3 n
+
+       let atrix3 t m = (F.chooseMQ t (wohlGeor3 (progVar1 ) m))
+--    IV   <->      IV++VI  <->  VI
+       let atrix4 t n = atrix0R theGeors 1 t theVarias 4 n
+       let atrix5 t n = atrix0R theGeors 2 t theVarias 5 n
+       let atrix6 t n = atrix0R theGeors 1 t theVarias 6 n
+---------------------------------------------------
+--------------------------------------------------
+-- wohlGeor1 <--> wohlGeor1 <-> wohGeor1
+--   I              I+II         III
+--   question for project: isomorphsims ?!:) over various pg functions eqivalent to 
+       let atrix0a t n = atrix0R theGeors 1 t theVarias 1 n
+       let atrix1a t n = atrix0R theGeors 1 t theVarias 2 n
+       let atrix2a t n = atrix0R theGeors 1 t theVarias 3 n
+
+       let atrix3a t m = (F.chooseMQ t (wohlGeor3 (progVar1 ) m))
+--    IV   <->      IV++VI  <->  VI
+       let atrix4a t n = atrix0R theGeors 1 t theVarias 4 n
+       let atrix5a t n = atrix0R theGeors 1 t theVarias 5 n
+       let atrix6a t n = atrix0R theGeors 1 t theVarias 6 n
+---------------------------------------------------
+--------------------------------------------------
+-- wohlGeor2 <--> wohlGeor2 <-> wohGeor2
+--   I              I+II         III
+       let atrix0b t n = atrix0R theGeors 2 t theVarias 1 n
+       let atrix1b t n = atrix0R theGeors 2 t theVarias 2 n
+       let atrix2b t n = atrix0R theGeors 2 t theVarias 3 n
+
+       let atrix3b t m = (F.chooseMQ t (wohlGeor3 (progVar1 ) m))
+--    IV   <->      IV++VI   <->  VI
+       let atrix4b t n = atrix0R theGeors 2 t theVarias 4 n
+       let atrix5b t n = atrix0R theGeors 2 t theVarias 5 n
+       let atrix6b t n = atrix0R theGeors 2 t theVarias 6 n
+---------------------------------------------------
+
+       let amatrix n m = concat [(atrix0 n m),(atrix1 n m),(atrix2 n m)]
+       let amatrixDif n m = concat [(atrix4 n m),(atrix5 n m),(atrix6 n m)]
+       let amatrixa n m = concat [(atrix0a n m),(atrix1a n m),(atrix2a n m)]
+       let amatrixDifa n m = concat [(atrix4a n m),(atrix5a n m),(atrix6a n m)]
+       let amatrixb n m = concat [(atrix0b n m),(atrix1b n m),(atrix2b n m)]
+       let amatrixDifb n m = concat [(atrix4b n m),(atrix5b n m),(atrix6b n m)]
+
+-------------------------------------------------------------
+--COMPUTE UNIQUE POINTCLOUD WITH progVar3 ; added 25-4-20 (first approach)
+
+-- atrix constant based on MQ function does not change with string
+       let atrixCo t m = (F.chooseMQ t (wohlGeor3 (progVar3 ) m))
+-- Makes own metric
+-- one value selected each line is sorted
+-- with -order1 which is ascending
+-- the othe two rows wil be sorted like order1
+   
+       let amatrix2 n m = concat [(atrixCo 1 m),(atrixCo 2 m),(atrixCo 3 m)]
+       let foorder k t  = F.chooseMQ k (sort (amatrix2 t t))
+
+-- where is value k in each line t
+       let findes k t = let inpu = foorder k t 
+                in let inpu2 = (head inpu) `elemIndices` (amatrix2 t t)
+                in inpu2
+-- sort them
+       let changs t k = F.chooseMQ ((head(findes k t))+1) (amatrix2 k t)
+   
+       let theTrix w  = let auswa = head (F.chooseMQ w [(amatrix ),(amatrixDif ),(amatrixa ),(amatrixDifa ),(amatrixb ),(amatrixDifb )])
+                    in auswa
+       let changs2 w t k = F.chooseMQ ((head(findes k t))+1) ((theTrix w) k t)
+
+-- WHAT HAPPENED here:
+-- Experiment every atom of bonelist is compared to a 'formation'
+--  pg1 -> MQ6;  pg2 -> MQ5;  pg3 -> MQ4 ; pg4 -> TRACE
+--
+--   input x -> MQ6 x              -> MQ6  |
+--           -> MQ5 x              -> MQ5  | --\ val 1=(x1)
+--           -> MQ4 x              -> MQ4  | --/  [ MQ6(x1),MQ5(x1),MQ4(x1),TRACE(x1)]
+--           -> MQ4 (MQ5(MQ6 x))   -> TRACE|
+       let chgLine t = concat(map (changs t) [1..3]) 
+       let chgLine2 w t = let a w t k=  (head(changs2 w t k ))
+                      in map (a  w t) [1..3]
+
+       let pointCloud04 n = ( map chgLine [1..n])
+       let pointCloud05 n = (map (chgLine2  1) [3..n])
+
+       let pointCloud06 n =   (map (chgLine2  2) [3..(realToFrac n)])
+       let pointCloud07 n =  (map (chgLine2  3) [3..(realToFrac n)])
+       let pointCloud08 n = (map (chgLine2  4) [3..n])
+       let pointCloud09 n = (map (chgLine2  6) [3..n])
+
+       let workptc9 ptc n = let be f = nub (ptc n) --([(ste1 f),(ste2 f),(ste3 f)])
+                        in be n
+              where
+                ste1 f= head (ptc f);
+                ste2 f = head(ausw 2 (ptc f));
+                ste3 f = last (ptc f);  
+  --order1 =  if 
+       let pointCloud01 n  = let toMap e = last((map (amatrix e) [1..ptc0Len]))
+                  in map toMap [1..n]
+-- based on wohlGeor3 -> constant-> any string -> aways same points depending on pg functions
+       let pointCloud02 n = drop (n-1) (map (amatrix2 n) [1..(realToFrac n)])
+
+       let pointCloud03 n  = let toMap e = last((map ((theTrix 2) e) [1..ptc3Len]))
+                  in map toMap [1..n]
+       let pointCloud03a n  = let toMap e = last((map ((theTrix 4) e) [1..ptc3aLen]))
+                  in map toMap [1..n]
+       let pointCloud03b n = let toMap e = last((map ((theTrix 6) e) [1..ptc3bLen]))
+                  in map toMap [1..n]
+
+       let foptc e = take e [1,4..]  --ptc1
+       let ptc0  e = pointCloud01  e
+-- constant based on Mqs
+       let ptc2 e = ( pointCloud02 e)
+
+       let ptc3RAW e = pointCloud03 e
+-- ptc3 : variable function 
+-- decide how many points to plot via function variable 'e'
+       let ptc3 e = (ptc3RAW e)
+
+
+       let ptc3a e = pointCloud03a e
+       let ptc3b e = pointCloud03b e
+
+       let ptc4 e = pointCloud04 e
+       let ptc5  n = pointCloud05 n 
+       let ptc6 n = pointCloud06 n 
+       let ptc7  n = pointCloud07 n
+       let ptc8  n = pointCloud08 n 
+       let ptc9  n = pointCloud09 n  
+------------------------------------------------------
+-- MINIMA I,II,III
+       let fodf1 compar pub = let inpu2 =   map (wohlGeorNeRAW compar) [1..pub] -- same as get tolerance
+                   in let toAds t = take t [1,1..]
+                   in let toPubs = toAds (length [1..pub])
+                   in zipWith (+) (toPubs) (concat inpu2)
+
+       let fodf2 compar pub = let inpu2 = map (toleranceNew compar) [1..pub]
+                   in let toAds t = take t [1,1..]
+                   in let toPubs = toAds (length [1..pub])
+                   in zipWith (+) (toPubs) (concat inpu2)
+
+       let fodf3 compar pub = let inpu fopu = wohlGeor3 compar fopu
+                   in let inpu2 fopu = (minimum(inpu fopu)) `elemIndices` (inpu fopu)
+                   in let toAds t = take t [1,1..]
+                   in let toPubs = [1..pub]
+                   in zipWith (+) (toAds (length toPubs)) (concat(map inpu2 toPubs))
+
+   ---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+--play programmer(Main.hs) : 
+-- turn a 3d Pointcloud into 3 destinct 2d representations
+-- functions exported to main module:
+-- tsRAW -- take 100 and nub out (delete all occurances>1) 
+-- pp t -- get nubbed lines 
+-- daZip -- reduce matix
+       let tsRAW pt = map group(transpose(nub(pt 100)))
+
+       let ts = tsRAW ptc5 
+       let maxa t =head$last$group$sort$concat$concat$ausw t ts
+       let picks p = concat(concat(ausw p (transpose ts)))
+       let runM t = take (length (picks t)) (repeat (maxa t))
+       let pp t = concat$concat$ausw t ts
+       let daZip t = zipWith(/) (runM t) (pp t)
+       let qs t = ( "1.0") `elemIndices` (map show (daZip t))
+       let rep r = map (\c -> if c==r then "0"; else c)
+       let rep2 r = map (\c -> if c==r then "0"; else c)
+
+       let getrep t = rep "1.0" (map show(daZip t))
+       let getrep2 s t = rep s (map show(daZip t))
+       let source line = (group((getrep line)))
+       let metric r line = ausw r (group(sort(concat(concat(ausw line ts)))))
+       let dats r line = ausw r (group(getrep line))
+       let sol r line = length (concat(metric r line))
+
+       let myMonad = do
+             pin <- forM [1,2,3] (\pu -> do
+                 let fosol = length (group(getrep pu)) 
+                 checklin <- forM [1..(fosol)] (\chk -> do
+                       let maak = metric chk pu
+                       let retrun = if (map length (maak)) == [2] && (concat maak)/=[1.0,1.0] then [1.0,1.0]
+                                  else (concat maak) --[(head (metric 1 line)),head(ausw 2 (metric 2 line)),["0","0"]]
+                       return(retrun))
+                 let binder = ( (concat checklin))
+          --putStrLn checklin
+                 return(checklin))
+          
+             (pin)      
+
+       let choosM t = (concat(concat(ausw t myMonad) ))
+       let build2d = nub(concat [fw1,fw2,fw3])
+             where 
+               frameW t g = transpose [(choosM t),(choosM g)];
+               fw1 = frameW 1 2;
+               fw2 = frameW 1 3;
+               fw3 = frameW 2 3;
+       
+             -- let pop = (ptc0  5)
+              --M.writeWXCloudNODE (pop) (ptc2 5) (ptc3 5) (ptc4 5) (ptc5 5) (ptc6 5)
+           --   M.writeWXCloudNODE (ptc3b 1) (ptc3b 2) (ptc3b 3) (ptc3b 4) (ptc3b 5) (ptc3b 6)
+           --   M.writeWXCloudNODE (ptc3 2) (ptc3 4) (ptc3 6) (ptc3 8) (ptc3 10) (ptc3 20)  -- nested graph ? 
+           --   M.writeWXCloudNODE (ptc2 5) (ptc2 25) (ptc2 50) (ptc4 100) (ptc4 125) (ptc4 150) -- ???
+           --   M.writeWXCloudNODE (ptc5 5) (ptc5 25) (ptc5 50) (ptc5 100) (ptc5 125) (ptc5 150) --  a plaine 
+           --   M.writeWXCloudNODE (ptc6 5) (ptc6 25) (ptc6 50) (ptc6 100) (ptc6 125) (ptc6 150) -- interesting
+            --  M.writeWXCloudNODE (ptc7 5) (ptc7 25) (ptc7 50) (ptc7 100) (ptc7 125) (ptc7 150) -- half 'crown'
+             -- M.writeWXCloudNODE (ptc8 5) (ptc8 25) (ptc8 50) (ptc8 100) (ptc8 125) (ptc8 150) -- similar to above
+       let plotOn = if plot == 1 then do
+                   putStrLn "readY to plot" 
+                   M.writeWXCloudNODE (nub(ptc9 5)) (nub(ptc9 25)) (nub(ptc9 50)) (nub(ptc9 100)) (nub(ptc9 125)) (nub(ptc9 150))  -- similar to above 
+                   M.writeWXCloud4 (ptc2 5) (ptc2 25) (ptc2 50) (ptc4 5) (ptc4 25) (ptc4 50)
+                   putStrLn "END plotter";
+
+                else putStr (unwords [""]) -- nothing :)
+       plotOn
+           --   M.writeWXCloudNODE (ptc0 5) (ptc0 25) (ptc0 50) (ptc0 100) (ptc0 125) (ptc0 150) -- ???
+
+--              M.writeWXCloudNODE (ptc2 5) (ptc2 15) (ptc2 25) (ptc4 2) (ptc4 3) (ptc4 5)
+--
+       let pi = Punkt "M" Nothing Nothing Nothing Nothing Nothing   
+       let offON pipeBone = if offOn == 1 then do
+                               let forBase = (length target)
+                               foBase <- forM [1..forBase](\l -> do 
+                                     let pray = kArmTest5 liT pipeBone 1 pi 1 1 [] "AAA"
+                                     pray
+                                     putStrLn "END 'display 'exportMother'"
+                                     return (pray))
+                               return foBase
+                            else do 
+                               (return [(return())]   )
+                               --putStrLn "no display" 
+       offON pipebone
+       let chuckList x = [(ptc0 x),(ptc2 x),(ptc3 x)]
+       print (concat(chuckList n))
+
+----------------------------------------------------------------------------------------------
+
+
+
+
+
+kArmTest5 liT bonelist mofaList connectWrist dit dit2 mCommand crit= do
      let allAcc foPun =  (checkflow [] [(foPun)])
  
      let foAdecide foA = if foA==[] then Nothing
@@ -198,7 +517,14 @@ kArmTest5 bonelist mofaList connectWrist dit dit2 mCommand crit= do
      let motherType foas r = map (mayer2 (head(ausw r (justNames)))) ([foas])
 
      putStrLn "TEST mayer2"
-    
+     let formTestRAW io r e e2 normalFunction =  let punktOrPg = checkflow  io [(Punkt  (head(checkflow [] [(basis4 e2 r)])) (Just (basis2 e 1 )) (Just (basis2 e 3 )) (Just (basis2 e 4 )) (Just (basis2 e 5 )) (Just (basis2 e 6))) ]
+                 in let choosBy = length(head (group(punktOrPg)))
+                 in if choosBy ==2 then normalFunction
+                                   else punktOrPg 
+ 
+
+     let formTest io r e normalFunction = formTestRAW io r e liT normalFunction
+
      let fnACCRAW cou = if unPoint == ("\"notM\"") then fst cou
                         else snd cou
             where 
@@ -569,22 +895,7 @@ kArmTest5 bonelist mofaList connectWrist dit dit2 mCommand crit= do
           -- STEP III. of program
               let foe t = head (ausw t bonelist)
           --    let op = atrix0a (foe 1) (foe 2) (foe 3) (foe 4) (foe 2) (foe 1) 1 1
-              putStrLn "readY to plot"
-             -- let pop = (ptc0  5)
-              --M.writeWXCloudNODE (pop) (ptc2 5) (ptc3 5) (ptc4 5) (ptc5 5) (ptc6 5)
-           --   M.writeWXCloudNODE (ptc3b 1) (ptc3b 2) (ptc3b 3) (ptc3b 4) (ptc3b 5) (ptc3b 6)
-           --   M.writeWXCloudNODE (ptc3 2) (ptc3 4) (ptc3 6) (ptc3 8) (ptc3 10) (ptc3 20)  -- nested graph ? 
-           --   M.writeWXCloudNODE (ptc2 5) (ptc2 25) (ptc2 50) (ptc4 100) (ptc4 125) (ptc4 150) -- ???
-           --   M.writeWXCloudNODE (ptc5 5) (ptc5 25) (ptc5 50) (ptc5 100) (ptc5 125) (ptc5 150) --  a plaine 
-           --   M.writeWXCloudNODE (ptc6 5) (ptc6 25) (ptc6 50) (ptc6 100) (ptc6 125) (ptc6 150) -- interesting
-            --  M.writeWXCloudNODE (ptc7 5) (ptc7 25) (ptc7 50) (ptc7 100) (ptc7 125) (ptc7 150) -- half 'crown'
-             -- M.writeWXCloudNODE (ptc8 5) (ptc8 25) (ptc8 50) (ptc8 100) (ptc8 125) (ptc8 150) -- similar to above
-              M.writeWXCloudNODE (nub(ptc9 5)) (nub(ptc9 25)) (nub(ptc9 50)) (nub(ptc9 100)) (nub(ptc9 125)) (nub(ptc9 150))  -- similar to above 
-           --   M.writeWXCloudNODE (ptc0 5) (ptc0 25) (ptc0 50) (ptc0 100) (ptc0 125) (ptc0 150) -- ???
-
---              M.writeWXCloudNODE (ptc2 5) (ptc2 15) (ptc2 25) (ptc4 2) (ptc4 3) (ptc4 5)
-              M.writeWXCloud4 (ptc2 5) (ptc2 25) (ptc2 50) (ptc4 5) (ptc4 25) (ptc4 50)
-    ---------------------------------------------------------------------------------------------------
+                 ---------------------------------------------------------------------------------------------------
 --
     -- a writer cant solve a problem "just list what is this writer program"
     -- from here we work our way back which functions are needed
@@ -669,14 +980,6 @@ kArmTest5 bonelist mofaList connectWrist dit dit2 mCommand crit= do
      (frame0 bonelist (mofaList) connectWrist dit dit2) 
 
 
--- 9-6-2020
--- Standing true to my premise after having worked out a methodoogy 
--- of simiYval networks there shall be two giants to step on 
--- 1. What are the Eulercaracteristics of the graphs dessribed by kArmTest5
--- 2. What is the dimensionality with regard to roughness(Bernstein??)
-
- ----------------------------------------------------------------------------------------------------
-
 ----------------------------------------------------------------------------------
 --see the different states of flowState above
 -- e.g checkflow [mother] (flowState fotrack3 head) -> the optimized OUTPUT row ala [0.52,0.52,0.59,0.52,0.59,0.59,0.59]
@@ -714,262 +1017,6 @@ formWe2 t c z = 100/(t* (c/c)*(1/z))
 
 
 
-
---------------------------------------------------------------------------------------------------
---AN EXAMPLE PROBLEM :
--- a product:    stage1          stage2         stage3   
---       I.    
---       II.
---       III.  
------------------------------------------------------------------------------
--- provide DATA ####################################################################################### EXPLAINED !! 20-5-20
--- Framework for trackArmTest5 (tAT5)
--- the tat5 works only Data on a 'detailed level' to use this computation in a framework
--- that linkes the BONES , SKELETTON structures with tat5 
--- THE DATA STRUCTURE -----------------------------------------------------------
--- 1. fourierMQ6PANOPAN
--- 2. fourierMQ5NOPAN
--- 3. fourierMQ4NOPAN
--- 4. fourierMQ4TRACE
--- 5. wohlGeor3
-
--- I) rate bone with 1,2,3,4,5
-df1 compar pub = map (uniquEClassRAW compar) [1..pub] -- [pg1,pg2,pg2,pg4,pg5] 
-------------------------------------------------------
--- II) rate within df1: 4. with 1,2,3,5  
-df2 compar pub = map (toleranceNet compar) [1..pub]
-------------------------------------------------------
--- III) get a random value of 1,2,3,4
-df3 compar pub = map (toGeor3 compar) [1..pub]
-fotoGeor3 compar punktList pg = (wohlGeorNet03 compar pg) punktList
-
--- serve 5 possible random values that are OUTPUT of each Line called
--- the output is used to find solutions.
-toGeor3 compar punktList = (concat (map (fotoGeor3 compar punktList) [1..(length liT)]))
-------------------------------------------------------
-
-
-------------------------------------------------------
-wohlGeor1 compar punktList = map (wohlGeorNet0 compar) [1..punktList]
-
-wohlGeor2 compar punktList = map (wohlGeorNet01 compar) [1..punktList]
-
-wohlGeor3 compar punktList = let inpu = (toGeor3 compar punktList) -- wohlGeor3
-                       in let a = head$F.chooseMQ 1 inpu
-                       in let b = head$F.chooseMQ 2 inpu
-                       in let c = head$F.chooseMQ 3 inpu
-                       in let d = head$F.chooseMQ 4 inpu
-                       in let e = head$F.chooseMQ 5 inpu
-                       in let foCombos func  = map realToFrac (map ord (show(func)))
-                       in let way1 =[(similaritYvalue (foCombos a) (foCombos b)),(similaritYvalue (foCombos a) (foCombos c)),(similaritYvalue (foCombos a) (foCombos d)),(similaritYvalue (foCombos a) (foCombos e )),(similaritYvalue (foCombos e) (foCombos d)),(similaritYvalue (foCombos e) (foCombos c))]
-                       in let way2 =[(similaritYvalue (foCombos e) (foCombos d)),(similaritYvalue (foCombos e) (foCombos c)),(similaritYvalue (foCombos e) (foCombos b)),(similaritYvalue (foCombos e) (foCombos a))]
-                       in way1
-
-
-theGeors o = let auswa = head (F.chooseMQ o [(wohlGeor1),(wohlGeor2)])
-             in auswa
-
-theVarias p = let auswa = head (F.chooseMQ p [(progVar1 ),(progVar2 ),(progVar3 ),(progVar4 ),(progVar5 ),(progVar6 )])
-              in auswa
-
-theTrix w  = let auswa = head (F.chooseMQ w [(amatrix ),(amatrixDif ),(amatrixa ),(amatrixDifa ),(amatrixb ),(amatrixDifb )])
-             in auswa
-
-
---o:Int choose wohlGeors 
---t:Int choose atom in line
---t:Int choose line
-atrix0R foGeo o t foprog p n  = (F.chooseMQ t (concat ((foGeo o) (foprog p) n)))
-atrix0R2 t foprog p n  = (F.chooseMQ t ((wohlGeor3 (foprog p) n)))
-
---------------------------------------------------
--- wohlGeor1 <--> wohlGeor2 <-> wohGeor1
---   I              I+II         III
-atrix0 t n = atrix0R theGeors 1 t theVarias 1 n
-atrix1 t n = atrix0R theGeors 2 t theVarias 2 n
-atrix2 t n = atrix0R theGeors 1 t theVarias 3 n
-
-atrix3 t m = (F.chooseMQ t (wohlGeor3 (progVar1 ) m))
---    IV   <->      IV++VI  <->  VI
-atrix4 t n = atrix0R theGeors 1 t theVarias 4 n
-atrix5 t n = atrix0R theGeors 2 t theVarias 5 n
-atrix6 t n = atrix0R theGeors 1 t theVarias 6 n
----------------------------------------------------
---------------------------------------------------
--- wohlGeor1 <--> wohlGeor1 <-> wohGeor1
---   I              I+II         III
---   question for project: isomorphsims ?!:) over various pg functions eqivalent to 
-atrix0a t n = atrix0R theGeors 1 t theVarias 1 n
-atrix1a t n = atrix0R theGeors 1 t theVarias 2 n
-atrix2a t n = atrix0R theGeors 1 t theVarias 3 n
-
-atrix3a t m = (F.chooseMQ t (wohlGeor3 (progVar1 ) m))
---    IV   <->      IV++VI  <->  VI
-atrix4a t n = atrix0R theGeors 1 t theVarias 4 n
-atrix5a t n = atrix0R theGeors 1 t theVarias 5 n
-atrix6a t n = atrix0R theGeors 1 t theVarias 6 n
----------------------------------------------------
---------------------------------------------------
--- wohlGeor2 <--> wohlGeor2 <-> wohGeor2
---   I              I+II         III
-atrix0b t n = atrix0R theGeors 2 t theVarias 1 n
-atrix1b t n = atrix0R theGeors 2 t theVarias 2 n
-atrix2b t n = atrix0R theGeors 2 t theVarias 3 n
-
-atrix3b t m = (F.chooseMQ t (wohlGeor3 (progVar1 ) m))
---    IV   <->      IV++VI   <->  VI
-atrix4b t n = atrix0R theGeors 2 t theVarias 4 n
-atrix5b t n = atrix0R theGeors 2 t theVarias 5 n
-atrix6b t n = atrix0R theGeors 2 t theVarias 6 n
----------------------------------------------------
-
-amatrix n m = concat [(atrix0 n m),(atrix1 n m),(atrix2 n m)]
-amatrixDif n m = concat [(atrix4 n m),(atrix5 n m),(atrix6 n m)]
-amatrixa n m = concat [(atrix0a n m),(atrix1a n m),(atrix2a n m)]
-amatrixDifa n m = concat [(atrix4a n m),(atrix5a n m),(atrix6a n m)]
-amatrixb n m = concat [(atrix0b n m),(atrix1b n m),(atrix2b n m)]
-amatrixDifb n m = concat [(atrix4b n m),(atrix5b n m),(atrix6b n m)]
-
--------------------------------------------------------------
---COMPUTE UNIQUE POINTCLOUD WITH progVar3 ; added 25-4-20 (first approach)
-
--- atrix constant based on MQ function does not change with string
-atrixCo t m = (F.chooseMQ t (wohlGeor3 (progVar3 ) m))
--- Makes own metric
--- one value selected each line is sorted
--- with -order1 which is ascending
--- the othe two rows wil be sorted like order1
-foorder k t  = F.chooseMQ k (sort (amatrix2 t t))
-amatrix2 n m = concat [(atrixCo 1 m),(atrixCo 2 m),(atrixCo 3 m)]
-
--- where is value k in each line t
-findes k t = let inpu = foorder k t 
-                in let inpu2 = (head inpu) `elemIndices` (amatrix2 t t)
-                in inpu2
--- sort them
-changs t k = F.chooseMQ ((head(findes k t))+1) (amatrix2 k t)
-changs2 w t k = F.chooseMQ ((head(findes k t))+1) ((theTrix w) k t)
-
-{-
-------------------------------------------------------------------
--- ALL ORKS THE SAME DONT WORK  =>  constant 
----- COMPUTE UNIQUE POINTCLOUD WITH progVar1 ; added 2-6-20
-atrixCo2 t m = (F.chooseMQ t (wohlGeor3 progVar1 m)) --added 2-6-20 
-foorder2 k t  = F.chooseMQ k (sort (amatrix3 t t))
-
-amatrix3 n m = concat [(atrixCo2 1 m),(atrixCo2 2 m),(atrixCo2 3 m)] --added 2-6-20 
-findes2 k t = let inpu = foorder2 k t  --added 2-6-20 
-                in let inpu2 = (head inpu) `elemIndices` (amatrix3 t t)
-                in inpu2 
-changsI t k = F.chooseMQ ((head(findes2 k t))+1) (amatrix3 k t)
-changs4 w t k = F.chooseMQ ((head(findes2 k t))+1) ((theTrix w) k t)
-chgLineI t = concat(map (changsI t) [1..3]) 
-chgLine3 w t = let a w t k=  (head(changs4 w t k ))
-               in map (a w t) [1..3]
-pointCloudPG105  = drop 2 (map (chgLine3 1) [1..50])
-pointCloudPG106  = drop 2 (map (chgLine3 3) [1..50])
-pointCloudPG107  = drop 2 (map (chgLine3 5) [1..7])
-ptcPG1_5  = pointCloudPG105 
-ptcPG1_6  = pointCloudPG106 
-ptcPG1_7  = pointCloudPG107 
------------------------------------------------------------
----- COMPUTE UNIQUE POINTCLOUD WITH progVar2 ; added 2-6-20
-atrixCo2b t m = (F.chooseMQ t (wohlGeor3 progVar2 m)) --added 2-6-20 
-foorder2b k t  = F.chooseMQ k (sort (amatrix3b t t))
-
-amatrix3b n m = concat [(atrixCo2b 1 m),(atrixCo2b 2 m),(atrixCo2b 3 m)] --added 2-6-20 
-findes2b k t = let inpu = foorder2b k t  --added 2-6-20 
-                in let inpu2 = (head inpu) `elemIndices` (amatrix3b t t)
-                in inpu2 
-changsIb t k = F.chooseMQ ((head(findes2b k t))+1) (amatrix3b k t)
-changs4b w t k = F.chooseMQ ((head(findes2b k t))+1) ((theTrix w) k t)
-chgLineIb t = concat(map (changsIb t) [1..3]) 
-chgLine3b w t = let a w t k=  (head(changs4b w t k ))
-               in map (a w t) [1..3]
-pointCloudPG105b  = drop 2 (map (chgLine3b 1) [1..50])
-pointCloudPG106b  = drop 2 (map (chgLine3b 3) [1..50])
-pointCloudPG107b  = drop 2 (map (chgLine3b 5) [1..7])
-ptcPG1_5b  = pointCloudPG105 
-ptcPG1_6b  = pointCloudPG106 
-ptcPG1_7b  = pointCloudPG107 
------------------------------------------------------------
--}
--- WHAT HAPPENED here:
--- Experiment every atom of bonelist is compared to a 'formation'
---  pg1 -> MQ6;  pg2 -> MQ5;  pg3 -> MQ4 ; pg4 -> TRACE
---
---   input x -> MQ6 x              -> MQ6  |
---           -> MQ5 x              -> MQ5  | --\ val 1=(x1)
---           -> MQ4 x              -> MQ4  | --/  [ MQ6(x1),MQ5(x1),MQ4(x1),TRACE(x1)]
---           -> MQ4 (MQ5(MQ6 x))   -> TRACE|
-chgLine t = concat(map (changs t) [1..3]) 
-chgLine2 w t = let a w t k=  (head(changs2 w t k ))
-               in map (a  w t) [1..3]
-
-pointCloud04 n = ( map chgLine [1..n])
-pointCloud05 n = (map (chgLine2  1) [3..n])
-
-pointCloud06 n =   (map (chgLine2  2) [3..(realToFrac n)])
-pointCloud07 n =  (map (chgLine2  3) [3..(realToFrac n)])
-pointCloud08 n = (map (chgLine2  4) [3..n])
-pointCloud09 n = (map (chgLine2  6) [3..n])
-
-workptc9 ptc n = let be f = nub (ptc n) --([(ste1 f),(ste2 f),(ste3 f)])
-             in be n
-   where
-    ste1 f= head (ptc f);
-    ste2 f = head(ausw 2 (ptc f));
-    ste3 f = last (ptc f);  
----------------------------------------------------------------------------------
----------------------------------------------------------------------------------
---play programmer(Main.hs) : 
--- turn a 3d Pointcloud into 3 destinct 2d representations
--- functions exported to main module:
--- tsRAW -- take 100 and nub out (delete all occurances>1) 
--- pp t -- get nubbed lines 
--- daZip -- reduce matix
-tsRAW pt = map group(transpose(nub(pt 100)))
-
-ts = tsRAW ptc5 
-maxa t =head$last$group$sort$concat$concat$ausw t ts
-picks p = concat(concat(ausw p (transpose ts)))
-runM t = take (length (picks t)) (repeat (maxa t))
-pp t = concat$concat$ausw t ts
-daZip t = zipWith(/) (runM t) (pp t)
-qs t = ( "1.0") `elemIndices` (map show (daZip t))
-rep r = map (\c -> if c==r then "0"; else c)
-rep2 r = map (\c -> if c==r then "0"; else c)
-
-getrep t = rep "1.0" (map show(daZip t))
-getrep2 s t = rep s (map show(daZip t))
-source line = (group((getrep line)));
-
-
-myMonad = do
-      let metric r line = ausw r (group(sort(concat(concat(ausw line ts)))));
-      let dats r line = ausw r (group(getrep line))
-      let sol r line = length (concat(metric r line))
-      pin <- forM [1,2,3] (\pu -> do
-          let fosol = length (group(getrep pu)) 
-          checklin <- forM [1..(fosol)] (\chk -> do
-                 let maak = metric chk pu
-                 let retrun = if (map length (maak)) == [2] && (concat maak)/=[1.0,1.0] then [1.0,1.0]
-                              else (concat maak) --[(head (metric 1 line)),head(ausw 2 (metric 2 line)),["0","0"]]
-                 return(retrun))
-          let binder = ( (concat checklin))
-          --putStrLn checklin
-          return(checklin))
-          
-      (pin)      
-
-choosM t = (concat(concat(ausw t myMonad) ))
-build2d = nub(concat [fw1,fw2,fw3])
-   where 
-      frameW t g = transpose [(choosM t),(choosM g)];
-      fw1 = frameW 1 2;
-      fw2 = frameW 1 3;
-      fw3 = frameW 2 3;
-     
 --
 --                e.gs
 --            
@@ -1035,12 +1082,6 @@ basis4 foAL r = maybePu (show(checkflow [] [((basis2 foAL r))]))
 -- r :: Char ; which line of the  just connected Punkt to get. 
 -- e :: bonelist ; a previous order 
 -- normalFunctions :: the Punkt just connected 
-formTest io r e normalFunction = formTestRAW io r e liT normalFunction
-
-formTestRAW io r e e2 normalFunction =  let punktOrPg = checkflow  io [(Punkt  (head(checkflow [] [(basis4 e2 r)])) (Just (basis2 e 1 )) (Just (basis2 e 3 )) (Just (basis2 e 4 )) (Just (basis2 e 5 )) (Just (basis2 e 6))) ]
-                 in let choosBy = length(head (group(punktOrPg)))
-                 in if choosBy ==2 then normalFunction
-                                   else punktOrPg 
 
 runner x = do  --scanChar
         sin x 
@@ -1049,239 +1090,14 @@ runner x = do  --scanChar
         -- (return (do r)) --putStrLn (show e) --show(return e)
 -- import your functions into kArmTest5 via formation
 preX x = head(map scanChar (frmDoubletoInt (show x)))
-pg1 x = F.fourierMQ6NOPAN123 x--(sin (read((head((formTest [father] (preX x) [show(sin (x))] (words(show(sin 2))))  ))))) -- (((([(formTest [mother] 1 [show(F.fourierMQ6NOPAN123 (realToFrac (show x)))] (words(show(sin (x)))))]  )))) -- head(ausw 1 [(F.fourierMQ6NOPAN123 x)]) 
-pg2 x = (F.fourierMQ5NOPAN123 x)
-pg3 x = (F.fourierMQ4NOPAN123 x)
-pg4 x = cos x --(F.fourierMQ4TRACE (x))
-pg11 x = show x --show(F.fourierMQ6NOPAN123 x)
-pg22 x = show x --show(F.fourierMQ5NOPAN123 x)
-pg33 x = show x --show(F.fourierMQ4NOPAN123 x)
-pg44 x = show x --show(F.fourierMQ4TRACE x)
-pgFun x = x
 
---order1 =  if 
-pointCloud01 n  = let toMap e = last((map (amatrix e) [1..50]))
-                  in map toMap [1..n]
--- based on wohlGeor3 -> constant-> any string -> aways same points depending on pg functions
-pointCloud02 n = drop (n-1) (map (amatrix2 n) [1..(realToFrac n)])
-
-pointCloud03 n  = let toMap e = last((map ((theTrix 2) e) [1..50]))
-                  in map toMap [1..n]
-pointCloud03a n  = let toMap e = last((map ((theTrix 4) e) [1..50]))
-                  in map toMap [1..n]
-pointCloud03b n = let toMap e = last((map ((theTrix 6) e) [1..50]))
-                  in map toMap [1..n]
-
-
-
-     --pg111 
-    -- putStrLn (unlines(checkflow [father] (formation (pg1 1) 1)  ))
-----------------------------------------------------------
-liT = ["A","A","A","A","A","A"] --["AAABB","AABAB","AAA","BBBAA"]
-
---  DOMAIN:
---  pointCoud1                    JustI or JustI and JustII or JustII -> (fst or fst/snd or snd Compare)
---                     A                   |         B
---        => thing 1 -> atrix0 -> progVar1 |=> thing3 -> atrix0 -> progVar1 
---        => thing1 thing2                 | => thing3 thing4 
---        => thing2                        |=> thing4  
---
--- pointCloud2          A (thing1 thing1/thing2 thing2)
---        Constant based on matrix2  always 50!!!
---        wohlGeorNet03 ->  wohlGeor3 -> atrixCo ->  matrix2
---        =>mq6 pg1 -> with pg2 mq5
---                  -> with pg3 mq4
---                  -> with pg2 TRACEmq4
---
---                  -> with loop (tomporariy set to pg3 mq4)
---
--- -- pointCloud3   JustI or JustI and JustII or JustII -> (fst or fst/snd or snd Compare)
---                  B (thing3 thing3/thing4 thing4)
---        --    ->  matrix
---        =>mq6 pg1 -> with pg2 mq5
---                  -> with pg3 mq4
---                  -> with pg2 TRACEmq4
---
---                  -> with loop (tomporarily set to pg3 mq4)
-
--- pointCloud4      sort like pointCloud3
---               constant -> matrix2
---               -> each line of matrix2 sort 
---               ->get smallest ones first 
---
--- pointCloud5      sort like pointCloud3
---               constant -> matrix2
---               -> each line of matrix2 sort 
---               ->get smallest ones first 
-
-
-
-foptc e = take e [1,4..]  --ptc1
-ptc0  e = pointCloud01  e
--- constant based on Mqs
-ptc2 e = ( pointCloud02 e)
-
-ptc3RAW e = pointCloud03 e
--- ptc3 : variable function 
--- decide how many points to plot via function variable 'e'
-ptc3 e = (ptc3RAW e)
-
-
-ptc3a e = pointCloud03a e
-ptc3b e = pointCloud03b e
-
-ptc4 e = pointCloud04 e
-ptc5  n = pointCloud05 n 
-ptc6 n = pointCloud06 n 
-ptc7  n = pointCloud07 n
-ptc8  n = pointCloud08 n 
-ptc9  n = pointCloud09 n  
-------------------------------------------------------
--- MINIMA I,II,III
-fodf1 compar pub = let inpu2 =   map (wohlGeorNeRAW compar) [1..pub] -- same as get tolerance
-                   in let toAds t = take t [1,1..]
-                   in let toPubs = toAds (length [1..pub])
-                   in zipWith (+) (toPubs) (concat inpu2)
-
-fodf2 compar pub = let inpu2 = map (toleranceNew compar) [1..pub]
-                   in let toAds t = take t [1,1..]
-                   in let toPubs = toAds (length [1..pub])
-                   in zipWith (+) (toPubs) (concat inpu2)
-
-fodf3 compar pub = let inpu fopu = wohlGeor3 compar fopu
-                   in let inpu2 fopu = (minimum(inpu fopu)) `elemIndices` (inpu fopu)
-                   in let toAds t = take t [1,1..]
-                   in let toPubs = [1..pub]
-                   in zipWith (+) (toAds (length toPubs)) (concat(map inpu2 toPubs))
 
 seven= ["    - - -  \n"++
         "        -   \n"++
         "      - - - \n"++
         "        -  " ]   
       
--- WHERE minima rate bone         
-sumdf1 compar pub = (minimum(map sum (df1 compar pub))) `elemIndices` (map sum(df1 compar pub))
--- WHERE minima rate within
-sumdf2 compar pub = (minimum(map sum (df2 compar pub))) `elemIndices` (map sum(df2 compar pub))
 
-
-
---------------------------------------------------------------------------
---Source Code Experiment MQ-Network 20-5-20
--- see also conceptColored_Counter20.svg for overview
--- more explainations above :df1
--- a List is given of the Form 
---      "wrist" -> similaritYvalue "wrist" 
--- e.g uniquEClass01 "wirst" 1 1 
-uniquEClassReallyRAW compar punktList befehle = 
-                   let sta1 d = map ord d  
-                  -- in let sta1New = map realToFrac (sta1 (show(F.fourierMQ6NOPAN2 fstOsnd )))
-                   in let sta2New = map realToFrac (sta1 (show(head(ausw 1 befehle ) punktList )))
-                   in let sta3New = map realToFrac (sta1 (show(head(ausw 2 befehle ) punktList )))
-                   in let sta4New = map realToFrac (sta1 (show(head(ausw 3 befehle ) punktList )))
-                   in let sta5New = map realToFrac (sta1 (show(head(ausw 4 befehle )punktList )))
-                   in let staLoop = map realToFrac (sta1 (show(wohlGeorNet02 compar 1 punktList )))
-
-                   in let staCompare = map realToFrac (sta1 ((compar))) -- *****************************SELECT EACH LINE OF GUESS
-                   in [(similaritYvalue staCompare sta2New),(similaritYvalue staCompare sta3New),(similaritYvalue staCompare sta4New),(similaritYvalue staCompare sta5New),(similaritYvalue staCompare staLoop)]
-
-
-uniquEClassRAW compar pk = uniquEClassReallyRAW compar pk [(F.fourierMQ6NOPAN123),(F.fourierMQ5NOPAN123),(F.fourierMQ4NOPAN123),(F.fourierMQ4TRACE)] 
---similaritYValue "wrist" (
-uniquEClass01 compar punktList = uniquEClassRAW compar punktList 
---
-toleranceNet compar punktList = let inpu = uniquEClass01 compar punktList 
-                   in let b=  head(F.chooseMQ 1 inpu) 
-                   in let c = head(F.chooseMQ 2 inpu)
-                   in let d = head(F.chooseMQ 3 inpu)
-                   in let e = head(F.chooseMQ 4 inpu)
-                   in let loop = head(F.chooseMQ 5 inpu)
-                   in let foCombos func  = map realToFrac (map ord (show(func)))
-                   in let way1 =[(similaritYvalue (foCombos b) (foCombos c)),(similaritYvalue (foCombos b) (foCombos d)),(similaritYvalue (foCombos b) (foCombos e)),(similaritYvalue (foCombos c) (foCombos d )),(similaritYvalue (foCombos c) (foCombos e))]
-                   in let way2 =[(similaritYvalue (foCombos e) (foCombos d)),(similaritYvalue (foCombos e) (foCombos c)),(similaritYvalue (foCombos e) (foCombos b)),(similaritYvalue (foCombos e) (foCombos e )),(similaritYvalue (foCombos e) (foCombos loop))]
-                   in way2
-
-  --if b>c && c>d && d>e then [punktList]
-                      --else []
-wohlGeorNeRAW compar punktList = let inpu = uniquEClass01 compar punktList
-                   in let f = ((minimum inpu) `elemIndices` (inpu)) 
-                   in f --F.chooseMQ f [b,c,d,e]--if b>c && c>d && d>e then [punktList]
-                     -- else []
-                     --
-toleranceNew compar punktList=
-                let inpu = toleranceNet compar punktList
-                in (minimum inpu) `elemIndices` (inpu) 
-
-gettolerance compar punktList = map (wohlGeorNeRAW compar) [1..punktList]
-wohlGeorNet0 compar punktList = let inpu = uniquEClass01 compar punktList
-                   in let b=  head(F.chooseMQ 1 inpu) 
-                   in let c = head(F.chooseMQ 2 inpu)
-                   in let d = head(F.chooseMQ 3 inpu)
-                   in let e = head(F.chooseMQ 4 inpu)
-                   in let loop = head(F.chooseMQ 5 inpu)
-               --    in let d = head(F.chooseMQ 5 inpu)
-                   in let f = ((minimum inpu) `elemIndices` (inpu)) 
-                   in let g fopu= concat(gettolerance compar fopu)
-                   in let h fopu = (F.chooseMQ ((head (g fopu))+1) [b,c,d,e,loop])
-                   in h punktList--if b>c && c>d && d>e then [punktList]
-                     -- else []
-wohlGeorNet01 compar punktList = let inpu = toleranceNet compar punktList
-                   in let b=  head(F.chooseMQ 1 inpu) 
-                   in let c = head(F.chooseMQ 2 inpu)
-                   in let d = head(F.chooseMQ 3 inpu)
-                   in let e = head(F.chooseMQ 4 inpu)
-                   in let loop = head(F.chooseMQ 5 inpu)
-               --    in let d = head(F.chooseMQ 5 inpu)
-                   in let f = ((minimum inpu) `elemIndices` (inpu)) 
-                   in let g fopu= concat(gettolerance compar fopu)
-                   in let h fopu = (F.chooseMQ ((head (g fopu))+1) [b,c,d,e,loop])
-                   in h punktList--if b>c && c>d && d>e then [punktList]
-                     -- else []
-
-wohlGeorNet02 compar fopu punktList = --let inpu = uniquEClass01 compar 1
-                   let b=  (pg1 punktList) 
-                   in let c = (pg2 punktList)
-                   in let d = (pg3 punktList)
-                   in let e = (pg4 punktList)
-                   in let loop = head(F.chooseMQ 5 [punktList])
- 
-                 --  in let g fopu= (getInts compar fopu)
-                 --  r: e.g 100
-                 --  in let forythm = concat (zufallsBasic1 1 10) fopu
-                   in let rythm  = head(zufallsBasic1 1 5 fopu)
-                   in let h  = (F.chooseMQ (rythm) [b,c,d,e,loop])
-                   in h  -- h punk
-
-wohlGeorNet03 compar fopu punktList = --let inpu = uniquEClass01 compar 1
-                   let b=  (pg1 punktList) 
-                   in let c = (pg2 punktList)
-                   in let d = (pg3 punktList)
-                   in let e = (pg4 punktList)
-                   in let loop = c
- 
-                 --  in let g fopu= (getInts compar fopu)
-                 --  r: e.g 100
-                 --  in let forythm = concat (zufallsBasic1 1 10) fopu
-                   in let rythm  = head(zufallsBasic1 1 5 fopu)
-                   in let h  = (F.chooseMQ (rythm) [b,c,d,e,loop])
-                   in h --punk
-
-
-
---type3 compar punktList = let fg = (punktList*1.0) 
-  --                  in let inpu = (wohlGeor3 compar fg) 
-    --                in let tak = punktList
-      --              in drop (tak-1) (take tak inpu)
-
-wohlGeorNet compar punktList = let inpu = uniquEClass01 compar punktList
-                   in let b=  head(F.chooseMQ 1 inpu) 
-                   in let c = head(F.chooseMQ 2 inpu)
-                   in let d = head(F.chooseMQ 3 inpu)
-                   in let e = head(F.chooseMQ 4 inpu)
-               --    in let d = head(F.chooseMQ 5 inpu)
-                   in if b>c && c>d && d>e then [punktList]
-                      else []
-findOrdung compar until= map (wohlGeorNet compar) [1..until] 
 
 --------------------------------------------------------------------------
 
@@ -1424,8 +1240,6 @@ accesFuncWX33 l goghi dipfa fodp1 fodp2 bob =
                   in enExp aw2 aw4 aw6 --enExp
 
 
-vb x = let as = accesFuncWX33 4 [(map pg44 [1..(x)])] [(map pg33 [1..(x)])] [(map pg22 [1..(x)])] [(map pg11 [1..(x)])]  [1..x] "100"
-       in writeFile "tutu.wxm" as
          
 scanChar :: Char -> Int
 
