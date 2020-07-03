@@ -65,7 +65,7 @@ fomain = do
           "        4. setup decide which functions to apply to input\n"++
           "        5 close\n"]
   let rnd ="1" 
-  thats <- readFile ("lala.wxm")   
+  thats <- readFile ("src\\lala.wxm")   
   let rnd = head(words (U.replaceE (thats)))
   putStrLn ("the Rnd" ++ rnd) 
   stelsel <- getLine
@@ -94,7 +94,7 @@ fomainAction = ["RUN: 1 one analysis with plot via 'kArmTest5'\n"++
                 "        3. write Html\n"++
                 "        4. setup decide which functions to apply to input\n"++
                 "        5 close\n"] 
-
+--lala
 fomain2 autoInputI autoInputII foRnd goBack autoInputIII = do
   --dit  -- write random.txt for main
   foutN1 <- getLine 
