@@ -1,8 +1,8 @@
 # SimilaritYWriter20
-#### sort and filter any ["String"] with similaritYValue in function:'kArmTrack5'
+#### sort and filter any ["String"] with similaritYValue in function 'kArmTrack5' = gh1
       gh: ["A","B","A","A"] to ["A","A","A","B"]
       OR
-      gh: ["AAABB","AAABAB","AAA","BBBAA"] => 'kArmTrack5' -> phiMax -> ["AAABB","AAABAB","BBBAA","AAA"] 
+      gh1: ["AAABB","AAABAB","AAA","BBBAA"] => 'kArmTrack5' -> phiMax -> ["AAABB","AAABAB","BBBAA","AAA"] 
 #### add a new element to the list above: 
 
 ## plot graphs writing to wxmaxima
