@@ -37,7 +37,9 @@
                offOn: Int, if==1 then run 'kArmTrack5'
                target: Int , if==1 then ....
                plot: Int , if==1 then write file.wxm
-               addGH: Int , if==1 then run addGH
+               addGH: Int , if==1 then run kArmTrack5 --display order without ghCheck
+                            else if ==2 then  run kArmTrack5 -- dispay order WITH ghCheck
+                            else dont run
                ghAdd: String , add a string to a bonelist e.g "AAA"
                n : Int ; io (n) in 'kArmTrack5'
                d: [[String]] , [bonelist]
