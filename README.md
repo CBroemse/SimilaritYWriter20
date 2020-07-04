@@ -1,28 +1,5 @@
 # SimilaritYWriter20
-A function that can compare any two lists, The aim is to find the most general rules that can 'maybe' 
-help my understanding.
 
-four lines of thought
-
-     I. 
-     a. compare all atoms of a [String] called bonelist and order them due to similaritYvalue
-     b. insert a new line (ghCheck) into a. do the same as above.
-     
-     II.
-     an inherent data type 'Punkt' :: String -> Maybe String
-     that is customized with other functions to fit I,III and IV. The data type , so far
-     is only connected to the plotting functions of below.
-     
-     III.
-      library to plot wxmaxima graphs . functions to compare
-      a. two lines of bonelist with each other.
-      b. compare a to periodic functions called pg functions
-         e.g  pg1 x = sin x 
-         
- ![alt tag](https://github.com/CBroemse/SimilaritYWriter20/blob/master/source/sinCosSinCos.png)
-         
-     IV. 
-      a 2_3_5_Counter to compare I, II and III with each other
      
 
 #### sort and filter any [String] ~ [[Char]] with similaritYValue in function 'kArmTrack5' = gh1
@@ -67,31 +44,25 @@ four lines of thought
 
             ':=' -- which is equivalent to '::' but ':=' /= '::' thus
      
-     kArmTest5 (bonelist) := [type [ord (String)] ] -> [[Int]] -> [[Double]] => [([String],[Double])]
+     
      -- simiariYvalue network
-     *> kArmTest5 li 1 pi 1 1 [] "AAA"    -- the last item "AAA" will be the test run
+     *> kArmTest5 addGh li 1 pi 1 1 [] "AAA"    -- the last item "AAA" will be the test run
      
  ######  Examine
 
 There is an syntactic level and a conceptual level
 
-    =======================================================================================================================
+ =======================================================================================================================
                                   SYNTAX                  |             CONCEPT
-    =======================================================================================================================
-       hints:       all Functions in 'e.g-sections' have  |  The 'e.g-sections' should be able to be called via ghc
-                    to be takenout of the do functions    |  without a doupt that would help understanding.
-                      in 'chainDistribute'    AND         |  see if atom is already in list , dile:
-                         'kArmTest5'                      |
-    ------------------------------------------------------------------------------------------------------------------------
-    given:  row-width (length atom bonelist, 'zeilenlaenge ) 
-            pick1:String; a of (a,b) -> compare a to b    | one feasible way is to 'weigh' Strings is with simiaritYvalue
-            pick2:String; b of (a,b) -> compare a to b    | The aim is to retrieve a reliable function that will destinct 
-                                                          | between any two strings. 
-          via ( beRepKEY pick1 pick2 punktList )          |           punktist :: Punkt -> [Punkt] -> not used
-                                                                         ausw pick1 bonelist ->  atombonelist 
-                                                                           
-
-    e.g Colored*>  ( beRepKEY "1" "2" [] )           
+ =======================================================================================================================
+   runKBASE  the main function that handes all            |   data seection printing and mostly used in main IO
+             kArmTrack5 and M.writeWXCloudNODE            |  
+             via  'defSearch'                             |   defSearch <- defSearchRAW (kaRmTrack5,
+                                                                                      M.writeWXCloudNODE  )  
+                                                                                      
+                    main> let mybase addGH n = runKBASE 1 [1,2] 1 addGh n d 1 2 3 4 
+ ------------------------------------------------------------------------------------------------------------------------
+    
   
   ###### b.
      
