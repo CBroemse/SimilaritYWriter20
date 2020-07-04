@@ -1,4 +1,30 @@
 # SimilaritYWriter20
+A function that can compare any two lists, The aim is to find the most general rules that can 'maybe' 
+help my understanding.
+
+four lines of thought
+
+     I. 
+     a. compare all atoms of a [String] called bonelist and order them due to similaritYvalue
+     b. insert a new line (ghCheck) into a. do the same as above.
+     
+     II.
+     an inherent data type 'Punkt' :: String -> Maybe String
+     that is customized with other functions to fit I,III and IV. The data type , so far
+     is only connected to the plotting functions of below.
+     
+     III.
+      library to plot wxmaxima graphs . functions to compare
+      a. two lines of bonelist with each other.
+      b. compare a to periodic functions called pg functions
+         e.g  pg1 x = sin x 
+         
+ ![alt tag](https://github.com/CBroemse/SimilaritYWriter20/blob/master/source/sinCosSinCos.png)
+         
+     IV. 
+      a 2_3_5_Counter to compare I, II and III with each other
+     
+
 #### sort and filter any [String] ~ [[Char]] with similaritYValue in function 'kArmTrack5' = gh1
     thought experiment
       gh: ["A","B","A","A"] to ["A","A","A","B"]
@@ -25,30 +51,7 @@
                get3: Int ,compare get3 to get3++get4
                get4: Int ,compare get4 to get3++get4
                
-A function that can compare any two lists, The aim is to find the most general rules that can 'maybe' 
-help my understanding.
 
-four lines of thought
-
-     I. 
-     a. compare all atoms of a [String] called bonelist and order them due to similaritYvalue
-     b. insert a new line (ghCheck) into a. do the same as above.
-     
-     II.
-     an inherent data type 'Punkt' :: String -> Maybe String
-     that is customized with other functions to fit I,III and IV. The data type , so far
-     is only connected to the plotting functions of below.
-     
-     III.
-      library to plot wxmaxima graphs . functions to compare
-      a. two lines of bonelist with each other.
-      b. compare a to periodic functions called pg functions
-         e.g  pg1 x = sin x 
-         
- ![alt tag](https://github.com/CBroemse/SimilaritYWriter20/blob/master/source/sinCosSinCos.png)
-         
-     IV. 
-      a 2_3_5_Counter to compare I, II and III with each other
 
 #### Step I
    
