@@ -2,21 +2,20 @@
 
      
 
-#### sort and filter any [String] ~ [[Char]] with similaritYValue in function 'kArmTrack5' = gh1
+##### sort and filter any [String] ~ [[Char]] with similaritYValue in function 'kArmTrack5' = gh1
     thought experiment
       gh: ["A","B","A","A"] to ["A","A","A","B"]
       OR
       gh1:= ["AAABB","AAABAB","AAA","BBBAA"] => 'kArmTrack5' -> phiMax -> ["AAABB","AAABAB","BBBAA","AAA"] 
-#### add a new element to the list above: 
+##### add a new element to the list above: 
       addGh:Int ; 1 == add new line (ghAdd) to a bonelist: ghCheck and write
                   else not
       ghAdd: String , e.g "BBB"            
 
-#### plot graphs writing to wxmaxima
+##### plot graphs writing to wxmaxima
       kArmTrack5 and M.writeWXCloudNODE
       
-      
-              
+               
 #### Step I
    
   ###### a.
