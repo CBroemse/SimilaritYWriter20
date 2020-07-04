@@ -8,7 +8,7 @@
       OR
       gh1:= ["AAABB","AAABAB","AAA","BBBAA"] => 'kArmTrack5' -> phiMax -> ["AAABB","AAABAB","BBBAA","AAA"] 
 ##### add a new element to the list above: 
-      addGh:Int ; 1 == add new line (ghAdd) to a bonelist: ghCheck and write
+      addGh:Int ; if Int == 1 then add new line (ghAdd) to a bonelist: ghCheck and write
                   else not
       ghAdd: String , e.g "BBB"            
 
