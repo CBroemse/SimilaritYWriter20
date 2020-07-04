@@ -52,13 +52,13 @@
 
 There is an syntactic level and a conceptual level
 
- =======================================================================================================================
+        =======================================================================================================================
                                   SYNTAX                  |             CONCEPT
- =======================================================================================================================
-   runKBASE  the main function that handes all            |   data seection printing and mostly used in main IO
-             kArmTrack5 and M.writeWXCloudNODE            |  
-             via  'defSearch'                             |   defSearch <- defSearchRAW (kaRmTrack5,
-                                                                                      M.writeWXCloudNODE  )  
+        =======================================================================================================================
+        runKBASE  the main function that handes all       |   data seection printing and mostly used in main IO
+                  kArmTrack5 and M.writeWXCloudNODE       |  
+                  via  'defSearch'                        |   defSearch <- defSearchRAW (kaRmTrack5,
+                                                                                         M.writeWXCloudNODE  )  
                                                                                       
                     main> let mybase addGH n = runKBASE 1 [1,2] 1 addGh n d 1 2 3 4 
  ------------------------------------------------------------------------------------------------------------------------
