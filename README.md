@@ -8,7 +8,9 @@
       OR
       gh1:= ["AAABB","AAABAB","AAA","BBBAA"] => 'kArmTrack5' -> phiMax -> ["AAABB","AAABAB","BBBAA","AAA"] 
 #### add a new element to the list above: 
-      addGh:Int ; 1 == add new line to a bonelist: ghCheck and write
+      addGh:Int ; 1 == add new line (ghAdd) to a bonelist: ghCheck and write
+                  else not
+      ghAdd: String , e.g "BBB"            
 
 #### plot graphs writing to wxmaxima
       kArmTrack5 and M.writeWXCloudNODE
@@ -32,11 +34,12 @@
      
      -- simiariYvalue network
      kArmTest5 addGh li 1 pi 1 1 [] "AAA"    -- the last item "AAA" will be the test run
-     runKBASE offOn target plot addGh n d get1 get2 get3 get4 
+     runKBASE offOn target plot addGh ghAdd n d get1 get2 get3 get4 
                offOn: Int, if==1 then run 'kArmTrack5'
                target: Int , if==1 then ....
                plot: Int , if==1 then write file.wxm
-               addGH: Int , if==1 then run addGH 
+               addGH: Int , if==1 then run addGH
+               ghAdd: String , add a string to a bonelist e.g "AAA"
                n : Int ; io (n) in 'kArmTrack5'
                d: [[String]] , [bonelist]
                e.g main> let d = [["AAA","AAA","AAA","AAAB"],["AAABB","AAABAB","AAA","BBBAA"]]
@@ -56,7 +59,7 @@ There is an syntactic level and a conceptual level
         =======================================================================================================================
                                   SYNTAX                  |             CONCEPT
         =======================================================================================================================
-        runKBASE  the main function that handes all       |   data seection printing and mostly used in main IO
+        runKBASE  the main function that handes all       |   data selection printing and mostly used in main IO
                   kArmTrack5 and M.writeWXCloudNODE       |  
                   via  'defSearch'                        |   defSearch <- defSearchRAW (kaRmTrack5,
                                                                                          M.writeWXCloudNODE  )  
