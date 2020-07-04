@@ -63,12 +63,12 @@ There is an syntactic level and a conceptual level
                   via  'defSearch'                        |   defSearch <- defSearchRAW (kaRmTrack5,
                                                                                          M.writeWXCloudNODE  )  
                                                                                       
-                    main> let mybase addGH n = runKBASE 1 [1,2] 1 addGh n d 1 2 3 4 
+                    main> let mybase addGH ghAdd n = runKBASE 1 [1,2] 1 addGh ghAdd n d 1 2 3 4 
  ------------------------------------------------------------------------------------------------------------------------
     
  ######  Examine
       run 
-      mybase 1 n : change bonelist, make it crash and handle error   
+      mybase 1 ghAdd n : change bonelist, make it crash and handle error   
   ###### b.
      
       in function 'kArmTest5'  sort a variable called 'ghCheck' in the bonelist 
