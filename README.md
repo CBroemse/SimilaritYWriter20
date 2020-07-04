@@ -23,7 +23,7 @@
      
      *> let li = ["AAABB","AABAB","AAA","BBBAA"]
      *> let bonelist = li
-      
+     *> let pi = "M" Punkt Nothing Nothing Nothing Nothing Nothing -- data type in kArmTrack5 could help error handling ??
      
      we compare all lines and atoms of the bonlist. To describe certain Types we wil use ' 
 
@@ -45,7 +45,7 @@
                e.g main> get 1 ["AAABB","AAABAB","AAA","BBBAA"]
                        > "AAABB"
                get1: Int ,compare get1 to get1++get2 
-               get2: Int , compare get2 to get1++get2 
+               get2: Int ,compare get2 to get1++get2 
                get3: Int ,compare get3 to get3++get4
                get4: Int ,compare get4 to get3++get4
      
