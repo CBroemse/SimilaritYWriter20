@@ -11,7 +11,28 @@
       addGh:Int ; 1 == add new line to a bonelist: ghCheck and write
 
 #### plot graphs writing to wxmaxima
-      runKBASE offOn target plot addGh n d get1 get2 get3 get4 
+      kArmTrack5 and M.writeWXCloudNODE
+      
+      
+              
+#### Step I
+   
+  ###### a.
+  
+      this will be the main example being used throughout this program
+     
+     *> let li = ["AAABB","AABAB","AAA","BBBAA"]
+     *> let bonelist = li
+      
+     
+     we compare all lines and atoms of the bonlist. To describe certain Types we wil use ' 
+
+            ':=' -- which is equivalent to '::' but ':=' /= '::' thus
+     
+     
+     -- simiariYvalue network
+     kArmTest5 addGh li 1 pi 1 1 [] "AAA"    -- the last item "AAA" will be the test run
+     runKBASE offOn target plot addGh n d get1 get2 get3 get4 
                offOn: Int, if==1 then run 'kArmTrack5'
                target: Int , if==1 then ....
                plot: Int , if==1 then write file.wxm
@@ -27,28 +48,8 @@
                get2: Int , compare get2 to get1++get2 
                get3: Int ,compare get3 to get3++get4
                get4: Int ,compare get4 to get3++get4
-               
+     
 
-
-#### Step I
-   
-  ###### a.
-  
-      this will be the main example being used throughout this program
-     
-     *> let li = ["AAABB","AABAB","AAA","BBBAA"]
-     *> let bonelist = li
-     *> let pi = Punkt "M" Nothing Nothing Nothing Nothing Nothing  -- 
-     
-     we compare all lines and atoms of the bonlist. To describe certain Types we wil use ' 
-
-            ':=' -- which is equivalent to '::' but ':=' /= '::' thus
-     
-     
-     -- simiariYvalue network
-     *> kArmTest5 addGh li 1 pi 1 1 [] "AAA"    -- the last item "AAA" will be the test run
-     
- ######  Examine
 
 There is an syntactic level and a conceptual level
 
@@ -63,7 +64,9 @@ There is an syntactic level and a conceptual level
                     main> let mybase addGH n = runKBASE 1 [1,2] 1 addGh n d 1 2 3 4 
  ------------------------------------------------------------------------------------------------------------------------
     
-  
+ ######  Examine
+      run 
+      mybase 1 n : change bonelist, make it crash and handle error   
   ###### b.
      
       in function 'kArmTest5'  sort a variable called 'ghCheck' in the bonelist 
