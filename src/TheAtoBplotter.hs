@@ -849,11 +849,11 @@ kArmTest5 addGh liT bonelist mofaList connectWrist dit dit2 mCommand crit= do
                             putStrLn ((edR1 3 3)  ++ "     " ++ (edRGH 3 3))
                             putStrLn ((edR1 3 4)  ++ "       " ++ (edRGH 3 4))
                             putStrLn ("                    " ++ (edRGH 3 5)) 
-                            putStrLn ((edR1 4 1)  ++ "      " ++ (edRGH 4 1))
-                            putStrLn ((edR1 4 2)   ++ "      " ++ (edRGH 4 2))
-                            putStrLn ((edR1 4 3)  ++ "       "  ++ (edRGH 4 3))
-                            putStrLn ((edR1 4 4) ++ "     " ++ (edRGH 4 4)) 
-                            putStrLn ("                    " ++ (edRGH 4 5))
+                            putStrLn ((edR1 4 1) )-- ++ "      " ++ (edRGH 4 1))
+                            putStrLn ((edR1 4 2) )--  ++ "      " ++ (edRGH 4 2))
+                            putStrLn ((edR1 4 3)  ) -- ++ "       "  ++ (edRGH 4 3))
+                            putStrLn ((edR1 4 4) ) -- ++ "     " ++ (edRGH 4 4)) 
+                         --   putStrLn ("                    " ++ (edRGH 4 5))
                             putStrLn ("                    " ++ (edRGH 5 5))
                           else if addGh == 1 then do
                             putStrLn ((edR1 1 1) )
@@ -880,6 +880,8 @@ kArmTest5 addGh liT bonelist mofaList connectWrist dit dit2 mCommand crit= do
                             (putStr"") 
               putStrLn "Test map mother"
               addGH
+ -- BELOW ALL taken out for deveopment but still valid 04-7-20
+ {-
             --  putStrLn (unlines(sort(moreEdR1 1 )))
              -- putStrLn (unines(checkflow [mother] 
           --    putStrLn (mapMo 1 1)
@@ -976,6 +978,7 @@ kArmTest5 addGh liT bonelist mofaList connectWrist dit dit2 mCommand crit= do
               --(allFunctions 3 [mother] [father] [] "" 4)
 
               putStrLn "Done" 
+                  -}
      (frame0 bonelist (mofaList) connectWrist dit dit2) 
 
 
