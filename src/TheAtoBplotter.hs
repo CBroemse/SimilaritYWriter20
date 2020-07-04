@@ -38,7 +38,8 @@ import qualified GHCguiNfunctions as G
 runKRAW offOn target plot n d addGh ghAdd = runKBASE offOn target plot addGh ghAdd n d 1 2 3 4
 runKBASE offOn target plot addGh ghAdd n d get1 get2 get3 get4 =  do 
    let ghd t de = ( (ausw t de))
-   let leng= ((length d) - 1)
+   let leng= if length d >1 then ((length d) - 1)
+             else 1
    let hold t = do
         dooer <- forM t (\fd -> do
            let act = ((ghd fd d))
@@ -831,7 +832,7 @@ kArmTest5 addGh liT bonelist mofaList connectWrist dit dit2 mCommand crit= do
               let motherType3 foas r = map (mayer3 (head(ausw r (map show justIO)))) ([foas])
               putStrLn (unlines(checkflow [] (ausw 1 (motherType3 (justGene 3) (3)))))
               putStrLn (tester 4)
-              let addGH = if addGh == 1 then do
+              let addGH = if addGh == 2 then do
                             putStrLn ((edR1 1 1)  ++ "     " ++ (edRGH 1 1)) -- maybePu
                             putStrLn ((edR1 1 2)  ++ "     " ++ (edRGH 1 2))
                             putStrLn ((edR1 1 3)  ++ "      " ++ (edRGH 1 3))
@@ -854,17 +855,39 @@ kArmTest5 addGh liT bonelist mofaList connectWrist dit dit2 mCommand crit= do
                             putStrLn ((edR1 4 4) ++ "     " ++ (edRGH 4 4)) 
                             putStrLn ("                    " ++ (edRGH 4 5))
                             putStrLn ("                    " ++ (edRGH 5 5))
+                          else if addGh == 1 then do
+                            putStrLn ((edR1 1 1) )
+                            putStrLn ((edR1 1 2) )
+                            putStrLn ((edR1 1 3) )
+                            putStrLn ((edR1 1 4) )
+
+                            putStrLn ((edR1 2 1) )
+                            putStrLn ((edR1 2 2) )
+                            putStrLn ((edR1 2 3) )
+                            putStrLn ((edR1 2 4) )
+
+                            putStrLn ((edR1 3 1) )
+                            putStrLn ((edR1 3 2) )
+                            putStrLn ((edR1 3 3) )
+                            putStrLn ((edR1 3 4) )
+
+                            putStrLn ((edR1 4 1) )
+                            putStrLn ((edR1 4 2) )
+                            putStrLn ((edR1 4 3) )
+                            putStrLn ((edR1 4 4) ) 
+
                           else
                             (putStr"") 
               putStrLn "Test map mother"
+              addGH
             --  putStrLn (unlines(sort(moreEdR1 1 )))
              -- putStrLn (unines(checkflow [mother] 
-              putStrLn (mapMo 1 1)
-              putStrLn (mapMo 1 2)
-              putStrLn (mapMo 1 3)
-              putStrLn "Test exportMother"
-              putStrLn ((exportMother [1..4]))
-              putStrLn (unlines (exportMother2 1))
+          --    putStrLn (mapMo 1 1)
+          --    putStrLn (mapMo 1 2)
+          --    putStrLn (mapMo 1 3)
+          --    putStrLn "Test exportMother"
+          --    putStrLn ((exportMother [1..4]))
+          --    putStrLn (unlines (exportMother2 1))
              -- putStrLn (unlines(map fst randPunktList))
             --  putStrLn (unlines((map snd (unlines randPunktList)))
     -- Plot-------------------------------------------------------------------
