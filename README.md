@@ -66,7 +66,7 @@ There is an syntactic level and a conceptual level
                   kArmTrack5 and M.writeWXCloudNODE       |  
                   via  'defSearch'                        |   defSearch <- defSearchRAW (kaRmTrack5,
                                                                                          M.writeWXCloudNODE  )  
-                    e.g > let li2 = [li,["AAA","AAA","CCC"."FFFFF"]]                                                               
+                    e.g > let li2 = [li,["AAA","AAA","CCC","FFFFF"]]                                                               
                     main> let mybase addGH ghAdd n = runKBASE 1 [1..(length li)] 1 addGh ghAdd n li2 1 2 3 4 
  ------------------------------------------------------------------------------------------------------------------------
     
@@ -74,7 +74,7 @@ There is an syntactic level and a conceptual level
       run 
       mybase 2 ghAdd n : change bonelist, make it crash and handle error
         >let myTest1 ghAdd = mybase 2 ghAdd 1  -- set to print screen with ghCheck 
-    e.g >myTest "ZZZ" 
+    e.g >myTest1 "ZZZ" 
   ###### b.
      
       in function 'kArmTest5'  sort a variable called 'ghCheck' in the bonelist 
