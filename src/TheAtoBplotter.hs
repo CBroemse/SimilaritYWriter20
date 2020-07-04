@@ -35,8 +35,8 @@ import qualified GHCguiNfunctions as G
  -- TAKE FROM : four lines of bonelist
  --        with order : a  to b to c ( line1 to line1n2 to line 
  --
-runKRAW offOn target plot n d addGh = runKBASE offOn target plot addGh n d 1 2 3 4
-runKBASE offOn target plot addGh n d get1 get2 get3 get4 =  do 
+runKRAW offOn target plot n d addGh ghAdd = runKBASE offOn target plot addGh ghAdd n d 1 2 3 4
+runKBASE offOn target plot addGh ghAdd n d get1 get2 get3 get4 =  do 
    let ghd t de = ( (ausw t de))
    let leng= ((length d) - 1)
    let hold t = do
@@ -53,7 +53,7 @@ runKBASE offOn target plot addGh n d get1 get2 get3 get4 =  do
            let wL3n4 = (wL3++wL4)
      --   let doubInt u = (read (frmDoubletoInt u))
         --pi
-           let vanAllen = defSearch offOn d plot addGh whichLine1 wL1n2 wL2 wL3 wL3n4 wL4 n (head(ghd fd d)) bonelis
+           let vanAllen = defSearch offOn d plot addGh ghAdd whichLine1 wL1n2 wL2 wL3 wL3n4 wL4 n (head(ghd fd d)) bonelis
            belt <- forM [1] (\bel -> do
                  vanAllen
                  return(vanAllen)) 
@@ -70,11 +70,11 @@ runKBASE offOn target plot addGh n d get1 get2 get3 get4 =  do
 --   progVarRAW t r = do 
   --      let df = head (ausw t r)
     --    df
-defSearch offOn target plot addGh pV1 pV2 pV3 pV4 pV5 pV6 n bonelist pipebone = (defSearchRAW offOn target plot addGh pV1 pV2 pV3 pV4 pV5 pV6 50 50 50 50 n bonelist pipebone)  
+defSearch offOn target plot addGh ghAdd pV1 pV2 pV3 pV4 pV5 pV6 n bonelist pipebone = (defSearchRAW offOn target plot addGh ghAdd pV1 pV2 pV3 pV4 pV5 pV6 50 50 50 50 n bonelist pipebone)  
 --e.g> defSearchRAW "AAABB" "AAABBAAABAB" "AAABAB" "AAA" "AAABBBAA" "BBBAA" 1 1 1 1 1 li
 --
 --pipebone: variable for runKBASE, n-(length target)-many, of a [bonelist]
-defSearchRAW offOn target plot addGh pV1 pV2 pV3 pV4 pV5 pV6 ptc0Len ptc3Len ptc3aLen ptc3bLen n bonelist pipebone = do
+defSearchRAW offOn target plot addGh ghAdd pV1 pV2 pV3 pV4 pV5 pV6 ptc0Len ptc3Len ptc3aLen ptc3bLen n bonelist pipebone = do
      --  let pi = fopi --Punkt "M" Nothing Nothing Nothing Nothing Nothing -- switch for io at bottom
        let progVar1 = pV1 --"ccccc" --"AAABB" 
        let progVar2 = pV2 --"AAABBAABAB"
@@ -471,10 +471,10 @@ defSearchRAW offOn target plot addGh pV1 pV2 pV3 pV4 pV5 pV6 ptc0Len ptc3Len ptc
 --
        let pi = Punkt "M" Nothing Nothing Nothing Nothing Nothing
     -- on is the default :)   
-       let offON pipeBone = if offOn == 1 then do
+       let offON ghAdd pipeBone = if offOn == 1 then do
                                let forBase = (length target)
                                foBase <- forM [1..forBase](\l -> do 
-                                     let pray = kArmTest5 addGh liT pipeBone 1 pi 1 1 [] "AAA"
+                                     let pray = kArmTest5 addGh liT pipeBone 1 pi 1 1 [] ghAdd --"AAA"
                                      pray
                                      putStrLn "END 'display 'exportMother'"
                                      return (pray))
@@ -482,7 +482,7 @@ defSearchRAW offOn target plot addGh pV1 pV2 pV3 pV4 pV5 pV6 ptc0Len ptc3Len ptc
                             else do 
                                (return [(return())]   )
                                --putStrLn "no display" 
-       offON pipebone
+       offON ghAdd pipebone
        let chuckList x = [(ptc0 x),(ptc2 x),(ptc3 x)]
        print (concat(chuckList n))
 
