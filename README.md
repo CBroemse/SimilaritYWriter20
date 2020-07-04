@@ -71,7 +71,8 @@ There is an syntactic level and a conceptual level
  ######  Examine
       run 
       mybase 2 ghAdd n : change bonelist, make it crash and handle error
-      >let myTest1 ghAdd = mybase 2 ghAdd 1  -- set to print screen with ghCheck 
+        >let myTest1 ghAdd = mybase 2 ghAdd 1  -- set to print screen with ghCheck 
+    e.g >myTest "ZZZ" 
   ###### b.
      
       in function 'kArmTest5'  sort a variable called 'ghCheck' in the bonelist 
