@@ -267,10 +267,4 @@ lists of the same list compares them und gives back a percentage of the "Einerst
 
 ###### Programmers nodes
 Status Q
-There is a certain relation between the Haskell type system and the usage of the Punkt type.
-The former being so deep  I am barely scratching the surface.The latter being over and overly repeated by 
-me throughout his endevour, to finally being put to a hold.
-The thing that mainly stands out in this program attempt with the Punkt type that it helped understanding
-but became not used within the main function , more resembeling a 'braket' with less meaning inside
-kArmTrack5 but more with its initiatisation and the output that can export some functions of kArmTest5
-as do IO'. 
+Shurely the 'Punkt' data type can do error handling but is it useful this way or is another way to handle errors better?
