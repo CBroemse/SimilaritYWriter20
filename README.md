@@ -8,7 +8,7 @@
       OR
       gh1:= ["AAABB","AAABAB","AAA","BBBAA"] => 'kArmTrack5' -> phiMax -> ["AAABB","AAABAB","BBBAA","AAA"] 
 ##### add a new element to the list above: 
-      addGh:Int ; if Int == 1 then run kArmTrack5 show occurance fst atom ("A") thoughout the whole bonelist
+      addGh:Int ; if Int == 1 then run kArmTrack5 show occurance fst atom ("A") throughout the whole bonelist
                                    without ghCheck in display
                   else if Int==2 then like above but add new line (ghAdd) to a bonelist: ghCheck in display 
                   else not
