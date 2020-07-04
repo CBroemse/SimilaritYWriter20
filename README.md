@@ -241,6 +241,9 @@ to use bone list as a mode but keep 'realy big' input like below at bay:
     understand it must be in the Haskell types with simYvalues first and secondarily to apply this metric
     to compare the different domains found and vsiualize their effects. So back to 'kArmTrack5'
     map ancestory
+    
+    This last step is more for visiualization 
+    
 ------------------------------------------------------------------------
 
 --------------------------------------------------------------------------
