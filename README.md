@@ -24,7 +24,7 @@
      
      *> let li = ["AAABB","AABAB","AAA","BBBAA"]
      *> let bonelist = li
-     *> let pi = "M" Punkt Nothing Nothing Nothing Nothing Nothing -- data type in kArmTrack5 could help error handling ??
+     *> let pi = Punkt "m" Nothing Nothing Nothing Nothing Nothing -- data type in kArmTrack5 could help error handling ??
      
      we compare all lines and atoms of the bonlist. To describe certain Types we wil use ' 
 
