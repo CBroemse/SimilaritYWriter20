@@ -66,8 +66,8 @@ There is an syntactic level and a conceptual level
                   kArmTrack5 and M.writeWXCloudNODE       |  
                   via  'defSearch'                        |   defSearch <- defSearchRAW (kaRmTrack5,
                                                                                          M.writeWXCloudNODE  )  
-                                                                                      
-                    main> let mybase addGH ghAdd n = runKBASE 1 [1,2] 1 addGh ghAdd n d 1 2 3 4 
+                    e.g > let li2 = [li,["AAA","AAA","CCC"."FFFFF"]]                                                               
+                    main> let mybase addGH ghAdd n = runKBASE 1 [1..(length li)] 1 addGh ghAdd n li2 1 2 3 4 
  ------------------------------------------------------------------------------------------------------------------------
     
  ######  Examine
