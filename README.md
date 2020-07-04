@@ -5,6 +5,7 @@
       OR
       gh1:= ["AAABB","AAABAB","AAA","BBBAA"] => 'kArmTrack5' -> phiMax -> ["AAABB","AAABAB","BBBAA","AAA"] 
 #### add a new element to the list above: 
+      addGh:Int ; 1 == add new line to a bonelist: ghCheck and write
 
 ## plot graphs writing to wxmaxima
                   
