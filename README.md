@@ -7,8 +7,24 @@
 #### add a new element to the list above: 
       addGh:Int ; 1 == add new line to a bonelist: ghCheck and write
 
-## plot graphs writing to wxmaxima
-                  
+#### plot graphs writing to wxmaxima
+      runKBASE offOn target plot addGh n d get1 get2 get3 get4 
+               offOn: Int, if==1 then run 'kArmTrack5'
+               target: Int , if==1 then ....
+               plot: Int , if==1 then write file.wxm
+               addGH: Int , if==1 then run addGH 
+               n : Int ; io (n) in 'kArmTrack5'
+               d: [[String]] , [bonelist]
+               e.g main> let d = [["AAA","AAA","AAA","AAAB"],["AAABB","AAABAB","AAA","BBBAA"]]
+               
+               of a bonelist get an element
+               e.g main> get 1 ["AAABB","AAABAB","AAA","BBBAA"]
+                       > "AAABB"
+               get1: Int ,compare get1 to get1++get2 
+               get2: Int , compare get2 to get1++get2 
+               get3: Int ,compare get3 to get3++get4
+               get4: Int ,compare get4 to get3++get4
+               
 A function that can compare any two lists, The aim is to find the most general rules that can 'maybe' 
 help my understanding.
 
