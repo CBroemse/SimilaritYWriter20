@@ -16,6 +16,8 @@
 
 ##### plot graphs writing to wxmaxima
       kArmTrack5 and M.writeWXCloudNODE
+
+##### connect to openProcessing in index.html
       
                
 #### Step I
