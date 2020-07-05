@@ -1,0 +1,16 @@
+<div class="row">
+  <div class="column side" style="background-color:#aaa; width: 15%;">
+	  <a href="Manual2.html" target="iframe_a">Pointer</a>
+	  <a href="takeOne2.html" target="_parent">All Rows</a>
+          <a href="2014-11-27-stairs-original.png" target="iframe_a">This is a link</a></div>
+	  
+  <div class="column middle" style="background-color:#bbb;"><a name="#chapter1"></a>Column
+	 
+	   
+  </div>
+  <div class="column side" style="background-image: url('2014-11-27-stairs-original.png'); height:120px; width:150px;">
+	   <div class="gallery">
+                   <img src="harry.png"  style="height:33px; width:24px"  >
+
+</div>
+</div>
