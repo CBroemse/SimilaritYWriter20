@@ -32,7 +32,8 @@ module GHCguiNfunctions
       , spherJs
       -- write index.html
       , fobase
-      , writeHtml)
+      , writeHtml
+      , root)
       --, picks)
    --   , setIn)
        where
@@ -247,7 +248,7 @@ writeHtml target ht pv1 pv2 pv3 pv4 pv5 pv6 daZip1 daZip2 daZip3 textAA pt0 pt2 
                      
                      putStrLn (unwords(return("")))
  
-
+root = "/c:/stack/SimilaritYWriter20/src/"
 fobase et1 et2 et3 et4 et5 et6 daZip1 daZip2 daZip3 textAA tabs foalt = let slc e r = unwords$head (ausw e r) 
                                 in let slcT e = slc e tabs 
                                 in let slalt e = slc e foalt
@@ -259,7 +260,7 @@ fobase et1 et2 et3 et4 et5 et6 daZip1 daZip2 daZip3 textAA tabs foalt = let slc 
 	                       "<a href=\"file:///c:/stack/SimilaritYWriter20/src/p5SimY/action.html\" style=\"width:5%;\" target=\"iframe_a\">plot   ____"++et1++" "++et2++" "++et3++" "++et4++" "++et5++" "++et6++"</a>\n\n\n"++ 
                                "</div>\n\n"++  
                                "<div class=\"column middle\" style=\"background-color:none;\">\n"++
-                               "<img src=\"file:///c:/stack/SimilaritYWriter20/src/source/liblabel.png\" name=\"lib_b\" alt= \""++ (daZip1 ) ++"\n"++ (daZip2 )++"\n"++(daZip3 )++"\n"++textAA++
+                               "<img src=\"file:///"++root++"/source/liblabel.png\" name=\"lib_b\" alt= \""++ (daZip1 ) ++"\n"++ (daZip2 )++"\n"++(daZip3 )++"\n"++textAA++
                                " style=\"width:5%\" onclick=\"myFunction(this);\">\n"++
     	                       "<img src=\"file:///c:/stack/SimilaritYWriter20/src/source/"++slcT 1++"\" style=\"width:5%\" alt=\""++slalt 1++"\" onclick=\"myFunction(this);\">\n"++
                                
