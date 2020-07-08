@@ -19,7 +19,7 @@
 
 ##### connect to openProcessing in index.html
 ##### How to write a filter for index.html 
-    four colors : reduced,green,red,bue
+    four colors : reduced,green,red,blue
     are used to indicate the dimension of a matrix: tsRAW (ptc)
     There are 9 different ptc functions each is a given matrix.
     criteria:
@@ -33,7 +33,7 @@
                           red   to: 93  ->    2
                           blue  >   92  ->    3
                     
-     tsRAW pt9c:= [1 (ptc)9 1)..10(ptc9 100)]
+     tsRAW pt9c:= [1 (ptc9) 1)..100 (ptc9 100)]
         *>length(nub(concat(tsRAW ptc9)))
         *> 3
                
