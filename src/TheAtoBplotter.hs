@@ -35,8 +35,9 @@ import qualified GHCguiNfunctions as G
  -- TAKE FROM : four lines of bonelist
  --        with order : a  to b to c ( line1 to line1n2 to line 
  --
-runKRAW offOn target plot n d addGh ghAdd = runKBASE offOn target plot addGh ghAdd n d 1 2 3 4
-runKBASE offOn target plot addGh ghAdd n d get1 get2 get3 get4 =  do 
+ --ht:int ;if==1 then plot StepIV List
+runKRAW offOn target plot n d addGh ghAdd ht = runKBASE offOn target plot addGh ghAdd n d 1 2 3 4 ht
+runKBASE offOn target plot addGh ghAdd n d get1 get2 get3 get4 ht =  do 
    let ghd t de = ( (ausw t de))
    let leng= if length d >1 then ((length d) - 1)
              else 1
@@ -54,15 +55,31 @@ runKBASE offOn target plot addGh ghAdd n d get1 get2 get3 get4 =  do
            let wL3n4 = (wL3++wL4)
      --   let doubInt u = (read (frmDoubletoInt u))
         --pi
-           let vanAllen = defSearch offOn d plot addGh ghAdd whichLine1 wL1n2 wL2 wL3 wL3n4 wL4 n (head(ghd fd d)) bonelis
+           let vanAllen = defSearch offOn d plot addGh ghAdd whichLine1 wL1n2 wL2 wL3 wL3n4 wL4 n (head(ghd fd d)) bonelis ht
            belt <- forM [1] (\bel -> do
                  vanAllen
-                 return(vanAllen)) 
+                 return(vanAllen))
+            
            return (belt))
         return(dooer)
-   let offON = if offOn == 1 then hold [1..(leng)]
-               else if offOn == 2 then hold [1..(leng)] --(return(return [(return(putStr("")))]))
-               else hold [1..(leng)]
+      
+  -- let priHtml = do 
+    --        let workaa = return ((do (hold [1..(leng)])))
+      --      
+   let offON = if offOn == 1 then do 
+                     let wse = hold [1..(leng)]
+                     wse 
+                     header <- readFile "HtmlS/allRowsHeader.txt"
+                     wirs <- readFile "HtmlS/foyourRun.txt"
+         --
+          --  let wirs2 = (return[(return wirs)])
+                     let theListIV = header++(wirs)++"</body>\n"++"</html>\n"
+                     writeFile "HtmlS/yourRun.html" (theListIV)
+           --          putStrLn (unlines foPeace)
+             --   ..writeFile  "HtmlS/yourRun.html" (unlines$foPeace) 
+
+               else if offOn == 2 then putStrLn "1" --HT.avanti (head$(hold [1..(leng)])) --(return(return [(return(putStr("")))]))
+               else do putStrLn "1" --hold [1..(leng)]
    offON
    (return (leng)) --offON)
         
@@ -71,11 +88,11 @@ runKBASE offOn target plot addGh ghAdd n d get1 get2 get3 get4 =  do
 --   progVarRAW t r = do 
   --      let df = head (ausw t r)
     --    df
-defSearch offOn target plot addGh ghAdd pV1 pV2 pV3 pV4 pV5 pV6 n bonelist pipebone = (defSearchRAW offOn target plot addGh ghAdd pV1 pV2 pV3 pV4 pV5 pV6 50 50 50 50 n bonelist pipebone)  
+defSearch offOn target plot addGh ghAdd pV1 pV2 pV3 pV4 pV5 pV6 n bonelist pipebone ht = (defSearchRAW offOn target plot addGh ghAdd pV1 pV2 pV3 pV4 pV5 pV6 50 50 50 50 n bonelist pipebone ht)  
 --e.g> defSearchRAW "AAABB" "AAABBAAABAB" "AAABAB" "AAA" "AAABBBAA" "BBBAA" 1 1 1 1 1 li
 --
 --pipebone: variable for runKBASE, n-(length target)-many, of a [bonelist]
-defSearchRAW offOn target plot addGh ghAdd pV1 pV2 pV3 pV4 pV5 pV6 ptc0Len ptc3Len ptc3aLen ptc3bLen n bonelist pipebone = do
+defSearchRAW offOn target plot addGh ghAdd pV1 pV2 pV3 pV4 pV5 pV6 ptc0Len ptc3Len ptc3aLen ptc3bLen n bonelist pipebone ht= do
      --  let pi = fopi --Punkt "M" Nothing Nothing Nothing Nothing Nothing -- switch for io at bottom
        let progVar1 = pV1 --"ccccc" --"AAABB" 
        let progVar2 = pV2 --"AAABBAABAB"
@@ -484,15 +501,96 @@ defSearchRAW offOn target plot addGh ghAdd pV1 pV2 pV3 pV4 pV5 pV6 ptc0Len ptc3L
                                (return [(return())]   )
                                --putStrLn "no display" 
        offON ghAdd pipebone
-       let chuckList x = [(ptc0 x),(ptc2 x),(ptc3 x)]
-       print (concat(chuckList n))
+
+       let wHtml = 1
+       let nn n =  (realToFrac n) 
+       let nn1 n =  (realToFrac n) 
+       let spawn b p = (tsRAW(p (nn b)))
+       let swn b r = map (spawn b) r
+       
+      -- let mapIns n = map (inser n ) [1..9]
+       --let cd n = do 
+         --   cD <- forM [1..9] (\nu -> do
+           --      let trunInt n = realToFrac n
+             --    let inser n b = ausw b ([map show (ptc0 (n)),map show (ptc2 (n)),map show (ptc3 (n)),map show (ptc4 (n)),map show (ptc5 (n)),map show (ptc6 (n)),map show(ptc7 (n)),map show(ptc8 (n)),map show(ptc9 (n))]) 
+               --  return(inser n nu))  
+          ---  return(cD) i
+          --
+       let tsR d = length$group$nub$concat$tsRAW d 
+       let ts0 = tsR (ptc0)
+       let ts2 = tsR (ptc2)
+       let ts3 = tsR (ptc3)
+       let ts4 = tsR (ptc4)
+       let ts5 = tsR (ptc5)
+       let ts6 = tsR (ptc6)
+       let ts7 = tsR (ptc7)
+       let ts8 = tsR (ptc8)
+       let ts9 = tsR (ptc9)
+
+       let tsal g = tsRAW g
+       -- ht:Int ;if==1 then plot else not
+       -- target:[Int] ;length how many lines to plot
+       -- pv1: progVar1 ;String  fst pick runKBASE
+       -- daZip: a 2d representation of a 3d cloud 
+--picks pt0 pt2 pt3 pt4 pt5 pt6 pt7 pt8 pt9 = [pt0,pt2,pt3,pt4,pt5,pt6,pt7,pt8,pt9]
+       let writeHtml target ht pv1 pv2 pv3 pv4 pv5 pv6 daZip1 daZip2 daZip3 textAA = do
+                 if ht==1 then do
+                     let foBase = (length target)
+                  --   let prem2 n = length$nub$group$ausw n fotsRAW
+                    -- let prem3 d n = map length$group$nub$ausw n d
+
+                     foPeace <- forM [1](\j -> do
+                          let textAA = "=>(1.167*10^5*%i+2.772*10^5)^(1/3)+(4.489*10^3)/(1.167*10^5*%i+2.772*10^5)^(1/3)+69.18\"\n"
+                          
+                          
+                          let foalt = map words ["info ptc0","info ptc2","info ptc3","info ptc4","i","i","i","i","i9"]
+                          ptcButoons <- forM [1..9] (\btn -> do
+                                let stril = [ts0,ts2,ts3,ts4,ts5,ts6,ts7,ts8,ts9]
+
+                                let seleD = head(ausw btn stril)
+                                --let seleD = show((realToFrac foseleD)/3)
+                                let rightPtc = if btn == 1  then btn - 1
+                                               else btn
+
+                                --chooslabel <- forM [1] (\wbt -> do  
+                                let gh = if seleD ==3 then ["ptc"++show (rightPtc)++"reduced.png"]
+                                         else if seleD ==6 then ["ptc"++show (rightPtc)++"green.png"]
+                                         else if seleD == 92 then ["ptc"++show (rightPtc)++"red.png"]
+                                         else ["ptc"++show (rightPtc)++"blue.png"]
+                                
+                                --         return (df))
+                                --let altText = do stril 
+                                return(gh))  
+                                --return(seleD))        
+                                                    --let df = concat (ptcButoons)
+                          let df =  (G.fobase pv1 pv2 pv3 pv4 pv5 pv6 daZip1 daZip2 daZip3 textAA (ptcButoons) foalt)
+ 
+                          return (df))
+                     return foPeace
+                     --return(fobase "A" "A" "A" "A" "A" "A" daZip1 daZip2 daZip3 textAA (unlines (map fst (concat$foBae))) foalt))
+                     putStrLn "1" 
+                   --  writeFile "HtmlS/yourRun.html" ((unlines$concat$ foBae))
+                     header <- readFile "HtmlS/allRowsHeader.txt"
+                     let theListIV = header++(unlines foPeace)++"</body>\n"++"</html>\n"
+                     --writeFile "HtmlS/yourRun.html" (theListIV)
+                     putStrLn (unlines foPeace)
+                     writeFile  "HtmlS/foyourRun.txt" (unlines$foPeace) 
+                 else 
+                     
+                     putStrLn (unwords(return("")))
+
+       (writeHtml target wHtml pV1 pV2 pV3 pV4 pV5 pV6 (show(daZip 1)) (show(daZip 2)) (show(daZip 3))  "textbla") 
+       --return (cd n)          
+                                  --putStrLn "1"-}
+     --  let chuckList x = [(ptc0 x),(ptc2 x),(ptc3 x)]
+      -- print (concat(chuckList n))
 
 ----------------------------------------------------------------------------------------------
 
 
 
 
---addGh:Int ; 1 == add new line to a bonelist: ghCheck and write
+--addGh:Int ; 1 == add new line to a bonelist: ghCheck and write111111111
 kArmTest5 addGh liT bonelist mofaList connectWrist dit dit2 mCommand crit= do
      let allAcc foPun =  (checkflow [] [(foPun)])
  

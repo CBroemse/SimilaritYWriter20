@@ -29,7 +29,11 @@ module GHCguiNfunctions
       , scaledJs
       , verJs
       , sphereJs2
-      , spherJs)
+      , spherJs
+      -- write index.html
+      , fobase
+      , writeHtml)
+      --, picks)
    --   , setIn)
        where
 import Control.Monad
@@ -162,4 +166,110 @@ writeFileJs2 v1 v2 v3 foptc t = writeFile "p5SimY/openProces.js" ((writePTCsJs2 
 
 
 ausw n m = drop (n-1) (take n m) 
-         
+        
+
+-----------------------------------------------------------------------------
+--WRITE index html plot a runKBase run 
+--
+fobaseD = ("                      </div>\n\n"++
+	   "         <div class=\"row\">\n"++
+          "<div class=\"column side\" style=\"background-color:none; width: 10%;\">\n\n"++
+	  "<a href=\"file:///c://stack/SimilaritYWriter20/src/source/ptcDATA.txt\" target=\"iframe_a\">library           </a>\n"++
+          "<a href=\"file:///c:/stack/SimilaritYWriter20/src/p5SimY/action.html\" target=\"iframe_a\">Animate           </a>\n"++
+	  "<a href=\"file:///c:/stack/SimilaritYWriter20/src/p5SimY/action.html\" style=\"width:5%;\" target=\"iframe_a\">plot   ____\"A\"_\"A\"_\"A\"_\"A\"_\"A\"</a>\n\n\n"++ 
+          "</div>\n\n"++  
+          "<div class=\"column middle\" style=\"background-color:none;\">\n"++
+           "<img src=\"file:///c:/stack/SimilaritYWriter20/src/source/liblabel.png\" name=\"lib_b\"  alt=\"daZip A..A\n"++
+           " daZip 1\n"++
+           "[1.0,1.0,25.447993447993454]\n"++
+           "daZip 2\n"++
+           "[1.0,22.318740325077396,1.0]\n"++
+           "daZip 3\n"++
+           "[30.99532710280374]\" style=\"width:5%\" onclick=\"myFunction(this);\">\n"++
+    	   "<img src=\"file:///c:/stack/SimilaritYWriter20/src/source/ptc9label.png\" style=\"width:5%\"alt=\"[2.587176602924634,9.333333333333334,1.70261066969353],\n"++
+           "[7.469342251950947,1.324503311258278,1.70261066969353],\n"++
+           "[7.469342251950947,4.942528735632185,2.1857923497267757],\n"++
+           "[11.473565804274465,9.333333333333334,2.1857923497267757],[11.473565804274465,1.324503311258278,0.44493882091212456],\n"++
+           "[7.469342251950947,9.333333333333334,1.70261066969353],\n"++
+           "[2.587176602924634,4.942528735632185,0.44493882091212456]\n"++
+           "=>(1.167*10^5*%i+2.772*10^5)^(1/3)+(4.489*10^3)/(1.167*10^5*%i+2.772*10^5)^(1/3)+69.18\"\n"++
+           "onclick=\"myFunction(this);\">\n"++
+           "<img src=\"file:///c:/stack/SimilaritYWriter20/src/source/ptc8label.png\" style=\"width:5%\" alt=\"[[93.72586872586874,94.02573529411764,93.92523364485982]]\" onclick=\"myFunction(this);\">\n"++  
+           "<img src=\"file:///c:/stack/SimilaritYWriter20/src/source/ptc7label.png\" style=\"width:5%\" alt=\"[[93.72586872586874,94.02573529411764,93.92523364485982]]\" alt=\"[93.72586872586874,94.02573529411764,3.03030303030303],\n"++
+                         "[93.72586872586874,4.212860310421286,93.92523364485982],\n"++
+                         "[3.683035714285714,94.02573529411764,93.92523364485982]\" onclick=\"myFunction(this);\">\n"++
+                         "<img src=\"file:///c:/stack/SimilaritYWriter20/src/source/ptc6label.png\"  style=\"width:5%\" onclick=\"myFunction(this);\">\n"++
+                         "<img src=\"file:///c:/stack/SimilaritYWriter20/src/source/ptc5label.png\"  style=\"width:5%\" onclick=\"myFunction(this);\">\n"++
+                         "<img src=\"file:///c:/stack/SimilaritYWriter20/src/source/ptc4label.png\"  style=\"width:5%\" onclick=\"myFunction(this);\">\n"++
+                         "<img src=\"file:///c:/stack/SimilaritYWriter20/src/source/ptc3label.png\"  style=\"width:5%\" onclick=\"myFunction(this);\">\n"++
+                         "<img src=\"file:///c:/stack/SimilaritYWriter20/src/source/ptc2label.png\" style=\"width:5%\" onclick=\"myFunction(this);\">\n"++
+                         "<img src=\"file:///c:/stack/SimilaritYWriter20/src/source/ilabel.png\" style=\"width:5%\" onclick=\"myFunction(this);\">\n"++
+                         "</div>\n")
+
+
+--picks: [String] , [[which ptc],[alt Text]]
+--picks pt0 pt2 pt3 pt4 pt5 pt6 pt7 pt8 pt9 = [pt0,pt2,pt3,pt4,pt5,pt6,pt7,pt8,pt9]
+writeHtml target ht pv1 pv2 pv3 pv4 pv5 pv6 daZip1 daZip2 daZip3 textAA pt0 pt2 pt3 pt4 pt5 pt6 pt7 pt8 pt9  = if ht==1 then do
+                     let foBase = (length target)
+                  --   let prem2 n = length$nub$group$ausw n fotsRAW
+                     let prem3 d n = map length$group$nub$ausw n d
+
+                     foPeace <- forM [1..foBase](\j -> do
+                          let textAA = "=>(1.167*10^5*%i+2.772*10^5)^(1/3)+(4.489*10^3)/(1.167*10^5*%i+2.772*10^5)^(1/3)+69.18\"\n"
+                          
+                          let stril = [pt0,pt2,pt3,pt4,pt5,pt6,pt7,pt8,pt9]
+                          let foalt = map words ["info ptc0","info ptc2","info ptc3","info ptc4","i","i","i","i","i9"]
+                          ptcButoons <- forM [1..9] (\btn -> do
+                                let seleD = head $prem3 (stril) btn--map group(transpose(nub((ausw btn stril))))
+                                let rightPtc = if btn <= 1  then btn - 1
+                                               else btn +1
+                                chooslabel <- forM [1..4] (\wbt -> do  
+                                         let gh = if seleD ==1 then ["ptc"++show (rightPtc)++"reduced.png"]
+                                                  else if seleD ==2 then ["ptc"++show (rightPtc)++"green.png"]
+                                                  else if seleD == 51 then ["ptc"++show (rightPtc)++"red.png"]
+                                                  else ["ptc"++show (rightPtc)++"blue.png"]
+                                         let df =  (fobase pv1 pv2 pv3 pv4 pv5 pv6 daZip1 daZip2 daZip3 textAA ([gh]) foalt)
+
+                                         return (df))
+                                --let altText = do stril 
+                              --  return(chooslabel))  
+                                return(seleD))        
+                                                    --let df = concat (ptcButoons) 
+                          return (ptcButoons))
+                     --return(fobase "A" "A" "A" "A" "A" "A" daZip1 daZip2 daZip3 textAA (unlines (map fst (concat$foBae))) foalt))
+                     putStrLn "1" 
+                   --  writeFile "HtmlS/yourRun.html" ((unlines$concat$ foBae))
+                     header <- readFile "HtmlS/allRowsHeader.txt"
+               --      let theListIV = header++(unlines foPeace)++"</body>\n"++"</html>\n"
+                   --  writeFile "HtmlS/yourRun.html" (unlines$concat$concat$foPeace) --((theListIV))
+                     writeFile  "HtmlS/yourRun.html" (show$foPeace) 
+                 else 
+                     
+                     putStrLn (unwords(return("")))
+ 
+
+fobase et1 et2 et3 et4 et5 et6 daZip1 daZip2 daZip3 textAA tabs foalt = let slc e r = unwords$head (ausw e r) 
+                                in let slcT e = slc e tabs 
+                                in let slalt e = slc e foalt
+                                in  ("                      </div>\n\n"++
+	                       "               <div class=\"row\">\n"++
+                               "<div class=\"column side\" style=\"background-color:none; width: 10%;\">\n\n"++
+	                       "<a href=\"file:///c://stack/SimilaritYWriter20/src/source/ptcDATA.txt\" target=\"iframe_a\">library           </a>\n"++
+                               "<a href=\"file:///c:/stack/SimilaritYWriter20/src/p5SimY/action.html\" target=\"iframe_a\">Animate           </a>\n"++
+	                       "<a href=\"file:///c:/stack/SimilaritYWriter20/src/p5SimY/action.html\" style=\"width:5%;\" target=\"iframe_a\">plot   ____"++et1++" "++et2++" "++et3++" "++et4++" "++et5++" "++et6++"</a>\n\n\n"++ 
+                               "</div>\n\n"++  
+                               "<div class=\"column middle\" style=\"background-color:none;\">\n"++
+                               "<img src=\"file:///c:/stack/SimilaritYWriter20/src/source/liblabel.png\" name=\"lib_b\" alt= \""++ (daZip1 ) ++"\n"++ (daZip2 )++"\n"++(daZip3 )++"\n"++textAA++
+                               " style=\"width:5%\" onclick=\"myFunction(this);\">\n"++
+    	                       "<img src=\"file:///c:/stack/SimilaritYWriter20/src/source/"++slcT 1++"\" style=\"width:5%\" alt=\""++slalt 1++"\" onclick=\"myFunction(this);\">\n"++
+                               
+                               "<img src=\"file:///c:/stack/SimilaritYWriter20/src/source/"++slcT 2++"\" style=\"width:5%\" alt=\""++slalt 3++"\" onclick=\"myFunction(this);\">\n"++  
+                               "<img src=\"file:///c:/stack/SimilaritYWriter20/src/source/"++slcT 3++"\"  style=\"width:5%\" alt=\""++slalt 4++"\" onclick=\"myFunction(this);\">\n"++ 
+                               "<img src=\"file:///c:/stack/SimilaritYWriter20/src/source/"++slcT 4++"\"  style=\"width:5%\" alt=\""++slalt 5++"\" onclick=\"myFunction(this);\">\n"++  
+                               "<img src=\"file:///c:/stack/SimilaritYWriter20/src/source/"++slcT 5++"\"  style=\"width:5%\" alt=\""++slalt 6++"\" onclick=\"myFunction(this);\">\n"++  
+                               "<img src=\"file:///c:/stack/SimilaritYWriter20/src/source/"++slcT 6++"\"  style=\"width:5%\" alt=\""++slalt 7++"\" onclick=\"myFunction(this);\">\n"++  
+                               "<img src=\"file:///c:/stack/SimilaritYWriter20/src/source/"++slcT 7++"\" style=\"width:5%\" alt=\""++slalt 8++"\" onclick=\"myFunction(this);\">\n"++  
+                               "<img src=\"file:///c:/stack/SimilaritYWriter20/src/source/"++slcT 8++"\" style=\"width:5%\" alt=\""++slalt 9++"\" onclick=\"myFunction(this);\">\n"++  
+                               "</div>\n")
+
+

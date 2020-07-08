@@ -73,7 +73,8 @@ module Colored_2_3_5_Counter20 (
    -- , trackPoint2
     , similaritYvalue
    -- naiveSim
-    , kArmTest5 -- new Main 
+    , kArmTest5 -- new Main
+    , tsRAW 
       ) where
 
 import Data.List
@@ -164,12 +165,12 @@ runK d = do
 progVarRAW t r = do 
     let df = head (ausw t r)
     df
-progVar1 = "AAABB" 
-progVar2 = "AAABBAABAB"
-progVar3 = "AABAB"
-progVar4 = "AAA"
-progVar5 = "AAABBBAA"
-progVar6 = "BBBAA"
+progVar1 = "A" --"AAABB" 
+progVar2 = "A" --"AAABBAABAB"
+progVar3 = "A" --"AABAB"
+progVar4 = "A" --"AAA"
+progVar5 = "A" -- "AAABBBAA"
+progVar6 = "A" -- "BBBAA"
 
 
 kArmTest5 bonelist mofaList connectWrist dit dit2 mCommand crit= do
@@ -584,86 +585,6 @@ kArmTest5 bonelist mofaList connectWrist dit dit2 mCommand crit= do
 
 --              M.writeWXCloudNODE (ptc2 5) (ptc2 15) (ptc2 25) (ptc4 2) (ptc4 3) (ptc4 5)
               M.writeWXCloud4 (ptc2 5) (ptc2 25) (ptc2 50) (ptc4 5) (ptc4 25) (ptc4 50)
-    ---------------------------------------------------------------------------------------------------
---
-    -- a writer cant solve a problem "just list what is this writer program"
-    -- from here we work our way back which functions are needed
-    -- even code that is a comment can sti have a function in syntax and concept 
-              let allFunctions selectFunc iO iO2 iO3 adds selectLine= do  putStrLn$unlines$head$ (return(allFUNC2 iO iO2 selectLine)) -- putStrLn "1" --GHC.selecTOR1 [(putStrLn (show((allFUNC iO iO2 iO3 adds selectLine)) ) )] --putStrLn "1"
-                                                                       --   putStrLn$unlines$head$ (return(allFUNC2 iO iO2 selectLine))   
-                    where
-                     ranPL = ((map snd randPunktList),  "randPunktList" ); --(simSums, ofLine);
-                     sorEM = ( sortEm,         "sortEm"        );
-                     isoEM = ( inlinesortEm,   "inlineSortEm"  );  
-                     raPL3 = ( randPunktList3, "randPunktist3" );
-                     finDR = ( findOrdeR,      "findOrdeR"     ); -- :562
-                     tS  e w  = ( (toStep e w),  "toStep"      ); -- :397
-                 --    muuus u = ( (muster u) ,         "muster"        ); -- :569
-                   --  wGHc =  (withGHcheck,     "withGHcheck"   ); -- :570
-                     ms2 u =((muster2 u),         "muster2" ); -- :571
-                     jIO   = (justIO,          "justIO"        ); -- :577
-                     tTx2  = (theTrix2,        "theTrix2"      ); -- :313
-                     ryt   = (rythm,           "rythm"         ); -- :320
-                     pR    = (prepRyth,        "prepRyth"      ); -- :321
-                     sWit  = (sortWith,        "sortWith"      ); -- :325
-         {-            foInO = (foinnerOrd,      "foinnerOrd"    );  -- :319
-                     foIn  = (foinner,         "foinner"       ); -- :320
-                     toIt  = (toIter,          "toIter"        ); -- :578
-                     iM    = (inMap,           "inMap"         ); -- :579
-                     may3  = (mayer3,          "mayer3"        ); -- :581 
-                     jGe u  = (justGene u,        "justGene"      ); -- :584
-                     may   = (mayer,           "mayer"         ); -- :191
-                     foAde = (foAdecide,       "foAdecide"     ); -- :176
-                     fAde2 = (foAdecide2,      "foAdecide2"    ) ; -- :182
-                -- :263   :1675  all functions in this range are in frame 
-                     gauss = (gaussRate,       "gaussRate"     ); -- :241 
-                     m2    = (mayer2,          "mayer"         ); -- :192
-                     jNam  = (justNames,       "justNames"     ); -- :196
-                     mT    = (motherType,      "motherType"    ); -- :197
-                     fACR  = (fnACCRAW,        "fnACCRAW"      );  -- :210
-                     cFo   = (checkFo,         "checkFo"       );  -- :208
-                   --  baas  = (basis,           "basis"         ); -- :211
-                     foCh  = (foChain,         "foChain"       ); -- :237
-                     mkPal = (makePalette,     "makePalette"   );  -- :328
-                     fomoN = (formation,       "formation"     );  -- :214
-                     asD2  = (asDot2,          "asDot2"        );  -- :217
-                     jsG   = (justGoneRAW2,    "justGoneRAW2"  ); -- :222
-                     fMT   = (formT,           "formT"         ); -- :233 -}
-                     jG    = (justGone2,       "justGone2"     ); -- :331    Punkt 
-                     expoMum l = (exportMother l , "exportMother" );
-                     lisOlists w = [w] 
-                  --   mam = map expoMum ((map lisOlists [1..(selectLine)])); 
-                   --  alABOVE fstOsnd = head (ausw selectFunc (map fstOsnd mam)); 
-           --[ranPL,sorEM,isoEM,raPL3,finDR,(tS e w){-,(muuus u),wGHc,(ms2 u),-}jIO,tTx2,ryt,pR,sWit,foInO,foIn,toIt,iM,may3,jGe u,may,foAde,fAde2,gauss,m2,jNam,mT,fACR,cFo,baas,foCh,mkPal,fomoN,asD2,jsG,fMT,jG])
-                     foFuncPair fox aDD =  (checkflow [] [mayer2"jack" fox] >>= (\x -> checkflow [] [(mayer2 "jack2" [(show x ++ aDD)])]));  --Just 3 >>= (\x -> Just (show x ++ "!"))
-                     foFuncPair2  o r  =  (  [mayer2 "otto" [(mapMo o r)] ] >>= (\x ->  [(mayer2 "otto" [(show x ++"   " ++(mapMo2 o r))])])); 
-                     punktUpFuncPair fox1 fox aDD io = [( mayer2 (unlines(foFuncPair fox1 "")) (checkflow io [(maybePu (concat(foFuncPair fox aDD)))]))];
-                    
-                  --   strives io io2 r aDD ifo = let preIO3 = (checkflow io2  [(maybePu2 "dot" (Just(head(ausw ifo (punktUpFuncPair [(alABOVE fst)] [(alABOVE snd)] aDD io)))))] ) --((head (checkflow [] (io3)))) 
-                                   --         in preIO3 --(checkflow io3 [(want ((alABOVE kiez),(alABOVE kiez)))]) -- get name or functionality 
-                     fmrTEST io r lis1 lis2 normFu  = formTestRAW io r lis1 lis2 normFu  --[(foFuncPair fox aDD)]
-                     fmrTEST2 io e e2 forLine =  checkflow  io [(Punkt  (head(checkflow [] [(basis4 e2 forLine)])) (Just (basis2 e 1 )) (Just (basis2 e 3 )) (Just (basis2 e 4 )) (Just (basis2 e 5 )) (Just (basis2 e 6))) ]
-                     mapfoFunc2 o = checkflow [] (concat(map (foFuncPair2 o) (fst finDR)))
-                     fmrTEST3RAW io o r e2 forLine =  checkflow  io [(Punkt  (head(checkflow [] [(basis4 e2 forLine)])) (Just (head(foFuncPair2 o r ))) Nothing Nothing Nothing Nothing )]
-                     fmrTEST3 io o r forLine = ((fmrTEST3RAW io o r (mapfoFunc2 o) forLine), "specialSort can get missing part???")
-                     allFUNC2RAW io io2 forLine = fmrTEST2 io (ausw selectFunc [(fst (expoMum forLine)),show(fst ranPL),show(fst sorEM),show(fst (fmrTEST3 io forLine (head forLine) (head forLine)))])  (ausw selectFunc [(snd (expoMum forLine)),(snd ranPL),(snd sorEM),(snd (fmrTEST3 io2 forLine 1 (head forLine)))]) (head forLine) 
-                     allFUNC2 io io2 forLine = (allFUNC2RAW io io2 [forLine]) 
-           --   putStrLn (unlines(head(allFunctions 1 [] [] [] "adding" [1])))111
-              (allFunctions 1 [] [] [] ""  1)
-              (allFunctions 1 [mother] [] [] "a comment" 2)
-             -- (allFunctions 1 [mother] [mother] [] "" 7)
-              (allFunctions 1 [mother] [] [] "" 4)
-              (allFunctions 1 [mother] [] [] "" 5)
-              (allFunctions 1 [] [mother] [] "" 1)
-              (allFunctions 1 [mother] [mother] [] "" 3)
-            ---  (allFunctions 1 [father] [mother] [] "" 3)
-           --   (allFunctions 2 [] [] [] "" 2)
-              (allFunctions 2 [mother] [mother] [] "" 1)
-              (allFunctions 3 [mother] [] [] "" 1)
-              (allFunctions 3 [] [] [] "" 1)
-              (allFunctions 3 [mother] [mother] [] "" 2)
-              (allFunctions 3 [mother] [mother] [] "" 3)
-              --(allFunctions 3 [mother] [father] [] "" 4)
 
               putStrLn "Done" 
      (frame0 bonelist (mofaList) connectWrist dit dit2) 
