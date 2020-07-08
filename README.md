@@ -31,7 +31,7 @@
                       state is set to :3  -> as reduced
                       the green to:  6  -> as 1
                           red   to: 93  ->    2
-                          blue  >   92  ->    3
+                          blue  >   93  ->    3
                     
      tsRAW pt9c:= [1 (ptc9) 1)..100 (ptc9 100)]
         *>length(nub(concat(tsRAW ptc9)))
