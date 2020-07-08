@@ -18,7 +18,24 @@
       kArmTrack5 and M.writeWXCloudNODE
 
 ##### connect to openProcessing in index.html
-      
+##### How to write a filter for index.html 
+    four colors : reduced,green,red,bue
+    are used to indicate the dimension of a matrix: tsRAW (ptc)
+    There are 9 different ptc functions each is a given matrix.
+    criteria:
+        tsRAW := 100 points of a point cloud (ptc) -> (ptc 100)->
+                 -> filter all occourcances > 1 with nub ->
+                ( -> group so that digits next to each other
+                    are [String] )
+                  -> due to three zipper functions the reduced 
+                      state is set to :3  -> as reduced
+                      the green to:  6  -> as 1
+                          red   to: 93  ->    2
+                          blue  >   92  ->    3
+                    
+     tsRAW pt9c:= [1 (ptc)9 1)..10(ptc9 100)]
+        *>length(nub(concat(tsRAW ptc9)))
+        *> 3
                
 #### Step I
    
