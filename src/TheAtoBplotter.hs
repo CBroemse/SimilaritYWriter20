@@ -70,10 +70,18 @@ runKBASE offOn target plot addGh ghAdd n d get1 get2 get3 get4 ht =  do
                      let wse = hold [1..(leng)]
                      wse 
                      header <- readFile "HtmlS/allRowsHeader.txt"
-                     wirs <- readFile "HtmlS/foyourRun.txt"
+                     let whichopen = 
+                             let tzExp = (length target)
+                             in   if tzExp==0 then 7
+                                  else if (tzExp)<7 then (tzExp)-1
+                                  else 1
+
+                     wirs <- readFile ("HtmlS/foyourRun"++show whichopen++".txt")
+                     wirs2 <- readFile ("HtmlS/foyourRun"++show (whichopen+1)++".txt")
+
          --
           --  let wirs2 = (return[(return wirs)])
-                     let theListIV = header++(wirs)++"</body>\n"++"</html>\n"
+                     let theListIV = header++unlines [wirs]++ unlines [wirs2]++"</body>\n"++"</html>\n"
                      writeFile "HtmlS/yourRun.html" (theListIV)
            --          putStrLn (unlines foPeace)
              --   ..writeFile  "HtmlS/yourRun.html" (unlines$foPeace) 
@@ -574,7 +582,7 @@ defSearchRAW offOn target plot addGh ghAdd pV1 pV2 pV3 pV4 pV5 pV6 ptc0Len ptc3L
                      let theListIV = header++(unlines foPeace)++"</body>\n"++"</html>\n"
                      --writeFile "HtmlS/yourRun.html" (theListIV)
                      putStrLn (unlines foPeace)
-                     writeFile  "HtmlS/foyourRun.txt" (unlines$foPeace) 
+                     writeFile  ("HtmlS/"++(evalToWrite ("foyourRun.txt"))) (unlines$foPeace) 
                  else 
                      
                      putStrLn (unwords(return("")))
