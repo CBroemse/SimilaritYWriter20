@@ -4,6 +4,13 @@
       run 
       >let myTest1 ghAdd = mybase 2 ghAdd 1  -- set to print screen with ghCheck 
     e.g > let myTest at = runKBASE 1 [1,2] 2 2 at 1 li2 1 2 3 4 1
+    
+    setup the path to write htmls 
+    *>root
+    *>/c:/stack/SimilaritYWriter20/src/
+    *>:t root
+    *>:i root
+    do...
       
 ##### sort and filter any [String] ~ [[Char]] with similaritYValue in function 'kArmTrack5' = gh1
     thought experiment
