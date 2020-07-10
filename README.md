@@ -2,8 +2,8 @@
 
 ##### visiualize your network or your name 
       run 
-      >let myTest1 ghAdd = mybase 2 ghAdd 1  -- set to print screen with ghCheck 
-    e.g Main> let myTest at = runKBASE 1 [1,2] 2 2 at 1 li2 1 2 3 4 1
+     set to print screen with ghCheck 
+    e.g Main> let myTest at = runKBASE 2 [1,2] 1 2 at 2 (li3) 1 2 3 4
     
     setup the path to write htmls 
     *Main>root
@@ -11,6 +11,21 @@
     *Main>:t root
     *Main>:i root
     do...
+    
+ open folder ../src/wxms
+   compile lala2.wxm 
+   ....img
+   
+ lets have some fun
+  1.The world is everything that is the case.∗
+     
+    TheAtoBplotter*> let li = ["The","world","is","everything"]
+                  *> let li2 = ["that","is","the","case."]
+                  *> let li3 = [[li1,li2]]
+  
+                  *> let myTest at = runKBASE 2 [1,2] 1 2 at 2 (li3) 1 2 3 4
+  
+  ![alt tag](https://github.com/CBroemse/SimilaritYWriter20/blob/master/source/ptc4wittsatz1.png)
       
 ##### sort and filter any [String] ~ [[Char]] with similaritYValue in function 'kArmTrack5' = gh1
     thought experiment
