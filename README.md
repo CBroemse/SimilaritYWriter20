@@ -1,10 +1,7 @@
 # SimilaritYWriter20
 
 ##### visiualize your network or your name 
-      run 
-     set to print screen with ghCheck 
-    e.g Main> let myTest at = runKBASE 2 [1,2] 1 2 at 2 (li3) 1 2 3 4
-    
+     
     setup the path to write htmls 
     *Main>root
     *Main>/c:/stack/SimilaritYWriter20/src/
