@@ -580,7 +580,7 @@ kArmTest5 bonelist mofaList connectWrist dit dit2 mCommand crit= do
            --   M.writeWXCloudNODE (ptc6 5) (ptc6 25) (ptc6 50) (ptc6 100) (ptc6 125) (ptc6 150) -- interesting
             --  M.writeWXCloudNODE (ptc7 5) (ptc7 25) (ptc7 50) (ptc7 100) (ptc7 125) (ptc7 150) -- half 'crown'
              -- M.writeWXCloudNODE (ptc8 5) (ptc8 25) (ptc8 50) (ptc8 100) (ptc8 125) (ptc8 150) -- similar to above
-              M.writeWXCloudNODE (nub(ptc9 5)) (nub(ptc9 25)) (nub(ptc9 50)) (nub(ptc9 100)) (nub(ptc9 125)) (nub(ptc9 150))  -- similar to above 
+              M.writeWXCloudNODE (nub(ptc9 5)) (nub(ptc9 25)) (nub(ptc9 50)) (nub(ptc9 100)) (nub(ptc9 125)) (nub(ptc0 5))    -- similar to above 
            --   M.writeWXCloudNODE (ptc0 5) (ptc0 25) (ptc0 50) (ptc0 100) (ptc0 125) (ptc0 150) -- ???
 
 --              M.writeWXCloudNODE (ptc2 5) (ptc2 15) (ptc2 25) (ptc4 2) (ptc4 3) (ptc4 5)

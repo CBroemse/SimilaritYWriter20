@@ -11,8 +11,8 @@ module TheAtoBplotter (
     
       defSearch  -- enter pg functions and progVars
     , defSearchRAW  
-    , runKRAW  -- like below but set to pick 4 variables of a bonelist
-    , runKBASE -- enter a [li,li..], decide to plot, choose search for a bonelist 
+    --, runKRAW  -- like below but set to pick 4 variables of a bonelist
+    --, runKBASE -- enter a [li,li..], decide to plot, choose search for a bonelist 
      ) where
 
 import Data.List
@@ -34,82 +34,150 @@ import qualified GHCguiNfunctions as G
  ----- #####################################################################
  -- TAKE FROM : four lines of bonelist
  --        with order : a  to b to c ( line1 to line1n2 to line 
- --
+theDs f g = head$ausw f (concat g)
+-- df2 ttt offOn target plot addGh ghAdd n (theDs ttt d) (get1) (get2) (get3)  (get4) 1 (theDs ttt d)
+-- =  runKAXIOM offOn target plot addGh ghAdd n (theDs ttt d) (get1) (get2) (get3)  (get4) 1 (theDs ttt d)
+
+runKBASE offOn target plot addGh ghAdd n d get1 get2 get3 get4 = do
+       allforIV <- forM [1..(length target)] (\four4 -> do
+            let fg = runKAXIOM offOn target plot addGh ghAdd n (theDs four4 d) (get1) (get2) (get3)  (get4) 1 (theDs four4 d) four4
+            fg
+            return (fg))
+
+       header <- readFile "HtmlS/allRowsHeader.txt"
+   --    let whichopen =  if clicks==0 then 7
+     --                   else if clicks<7 then (tzExp)-1
+       --                 else 1
+--   wirs <- readFile ("HtmlS/foyourRun"++show whichopen++".txt")
+  -- wirs2 <- readFile ("HtmlS/foyourRun"++show (whichopen)++".txt")
+       writeAll <- forM [1,2] (\dt -> do
+            wirs <- readFile ("HtmlS/foyourRun"++(show (dt+1))++".txt")
+            return (wirs))
+     --  nugget = map ord nuDoe
+     --  let gbb = map chr [nugget]
+       let theListIV = (header++unwords writeAll++"</body>\n"++"</html>\n")
+       writeFile "HtmlS/yourRun.html" (theListIV) 
+
  --ht:int ;if==1 then plot StepIV List
-runKRAW offOn target plot n d addGh ghAdd ht = runKBASE offOn target plot addGh ghAdd n d 1 2 3 4 ht
-runKBASE offOn target plot addGh ghAdd n d get1 get2 get3 get4 ht =  do 
+--runKRAW offOn target plot n d addGh ghAdd ht = runKBASE offOn target plot addGh ghAdd n d [1,1] [2,2] [3,3] [4,4] ht
+-- addGh: Int if==1 then add new element to a bonelist [String] else not
+-- ghAdd: [Char]; e.g "ZZZ" what to add to a boneist 
+--
+runKBASED offOn target plot addGh ghAdd n d get1 get2 get3 get4 = do 
+       let fg = runKAXIOM offOn target plot addGh ghAdd n (theDs 1 d) (get1) (get2) (get3)  (get4) 1 (theDs 1 d) 1
+       fg
+       return (fg)
+       let fg2 = runKAXIOM offOn target plot addGh ghAdd n (theDs 2 d) (get1) (get2) (get3)  (get4) 1 (theDs 2 d) 2
+       fg2 
+       return (fg2)
+       --df2 2
+       header <- readFile "HtmlS/allRowsHeader.txt"
+   --    let whichopen =  if clicks==0 then 7
+     --                   else if clicks<7 then (tzExp)-1
+       --                 else 1
+--   wirs <- readFile ("HtmlS/foyourRun"++show whichopen++".txt")
+  -- wirs2 <- readFile ("HtmlS/foyourRun"++show (whichopen)++".txt")
+       writeAll <- forM [1,2] (\dt -> do
+            wirs <- readFile ("HtmlS/foyourRun"++(evalToWrite (show (dt+1)))++".txt")
+            return (wirs))
+     --  nugget = map ord nuDoe
+     --  let gbb = map chr [nugget]
+       let theListIV = (header++unwords writeAll++"</body>\n"++"</html>\n")
+       writeFile "HtmlS/yourRun.txt" (unlines writeAll) --(theListIV) 
+   --return("1"))
+   --putStrLn "done" 
+
+-- e.g let myTest at = runKAXIOM 1 [1,2] 2 2 at 2 (li3) 1 2 3 4 3 (head(ausw 1 li3))
+runKAXIOM offOn target plot addGh ghAdd n d get1 get2 get3 get4 ht ulu bog=  do
+   let solong = length ulu 
    let ghd t de = ( (ausw t de))
    let leng= if length d >1 then ((length d) - 1)
              else 1
-   let hold t = do
-        dooer <- forM t (\fd -> do
-           let act = ((ghd fd d))
-           let pi = Punkt "notM" Nothing Nothing Nothing Nothing Nothing
-           let bonelis = head act
+   --let fostepper fs = head (ausw fs solong)
+  -- let stepper fe = fostepper fe
+  -- let foact fe = if fe == 1 then (drop 0 ) (take (stepper fe) (ulu))
+              --    else  (drop (stepper(fe-1)) (take (stepper fe) (ulu)))
+
+  -- inMonadCharToLine <- forM [1,2] (\mcL -> do 
+   let robe = ulu
+   let hold  = do
+          dooer <- forM [1] (\fd -> do
+             -- let fostepper fs = head (ausw fs solong)
+             -- let stepper = fostepper fd
+              let beta =  ulu --(foact ulu ) --(map --robe --let foact = if fd == 1 then (drop 0 ) (take stepper (concat d))
+                               --     else  (drop (fostepper (fd-1))) (take stepper (concat d))
+                              
+                     --   in foact
+              let pi = Punkt "notM" Nothing Nothing Nothing Nothing Nothing
         --aaS <- forM [1..(length bonelis)] (\bl -> do  --   kArmTest5 act 1 pi 1 1 [] "AAA"
-           let whichLine1 = head(ausw get1 (head(ghd fd act)))
-           let wL2 = head(ausw get2 (head(ghd fd act)))
-           let wL1n2 = (whichLine1++wL2)
-           let wL3 = head(ausw get3 (head (ghd fd act)))
-           let wL4 = head (ausw get4 (head(ghd fd act)))
-           let wL3n4 = (wL3++wL4)
+              let whichLine1 = (ausw get1 beta)
+              let wL2 = (ausw get2 beta)
+              let wL1n2 = (whichLine1++wL2)
+              let wL3 = (ausw get3 beta)
+              let wL4 = (ausw get4 beta)
+              let wL3n4 = (wL3++wL4)
      --   let doubInt u = (read (frmDoubletoInt u))
         --pi
-           let vanAllen = defSearch offOn d plot addGh ghAdd whichLine1 wL1n2 wL2 wL3 wL3n4 wL4 n (head(ghd fd d)) bonelis ht
-           belt <- forM [1] (\bel -> do
-                 vanAllen
-                 return(vanAllen))
+              let vanAllen = defSearch offOn d plot addGh ghAdd whichLine1 wL1n2 wL2 wL3 wL3n4 wL4 n ulu (["AAA"]) ht (evalToWrite("foyourRun"++show bog++".txt")) ht
+         --  belt <- forM [1] (\bel -> d
+              vanAllen
+              return([vanAllen]))
             
-           return (belt))
-        return(dooer)
-      
+              --return (foact fd))
+          return(dooer)
+   hold 
+-- tsRAW  
   -- let priHtml = do 
     --        let workaa = return ((do (hold [1..(leng)])))
-      --      
-   let offON = if offOn == 1 then do 
-                     let wse = hold [1..(leng)]
-                     wse 
-                     header <- readFile "HtmlS/allRowsHeader.txt"
-                     let whichopen = 
-                             let tzExp = (length target)
-                             in   if tzExp==0 then 7
-                                  else if (tzExp)<7 then (tzExp)-1
-                                  else 1
+      {-      
+      let offON = if offOn == 1 then do 
+                  let wse = hold  --[1..(leng)]
+                  wse 
+                     
+                    
+                  else if offOn == 2 then do(return (do[([])])) --putStrLn "1" --HT.avanti (head$(hold [1..(leng)])) --(return(return [(return(putStr("")))]))
+                  else do(return (do[([])])) --hold [1..(leng)]
+      offON
+       -}
+ --  return (hold) --offON)
+   --do (return inMonadCharToLine) --show
+  {- header <- readFile "HtmlS/allRowsHeader.txt"
+   unlines  
+ --  let whichopen =  let tzExp = (length target)
+   --                 in   if tzExp==0 then 7
+     --               else if (tzExp)<7 then (tzExp)-1
+       --             else 1
+--   wirs <- readFile ("HtmlS/foyourRun"++show whichopen++".txt")
+  -- wirs2 <- readFile ("HtmlS/foyourRun"++show (whichopen)++".txt")
+   writeAll <- forM [1..(length target)] (\dt -> do
+            wirs <- readFile ("HtmlS/foyourRun"++show dt++".txt")
+            return (wirs))
+   let theListIV = (header++unlines writeAll++"</body>\n"++"</html>\n")
+   writeFile "HtmlS/yourRun.html" (theListIV) -}
+   --return("1"))
+   --putStrLn "done"
 
-                     wirs <- readFile ("HtmlS/foyourRun"++show whichopen++".txt")
-                     wirs2 <- readFile ("HtmlS/foyourRun"++show (whichopen+1)++".txt")
-
-         --
-          --  let wirs2 = (return[(return wirs)])
-                     let theListIV = header++unlines [wirs]++ unlines [wirs2]++"</body>\n"++"</html>\n"
-                     writeFile "HtmlS/yourRun.html" (theListIV)
-           --          putStrLn (unlines foPeace)
-             --   ..writeFile  "HtmlS/yourRun.html" (unlines$foPeace) 
-
-               else if offOn == 2 then putStrLn "1" --HT.avanti (head$(hold [1..(leng)])) --(return(return [(return(putStr("")))]))
-               else do putStrLn "1" --hold [1..(leng)]
-   offON
-   (return (leng)) --offON)
         
 -- a program Variables:
 -- the data to be fed into plot via kArmTrack5 
 --   progVarRAW t r = do 
   --      let df = head (ausw t r)
     --    df
-defSearch offOn target plot addGh ghAdd pV1 pV2 pV3 pV4 pV5 pV6 n bonelist pipebone ht = (defSearchRAW offOn target plot addGh ghAdd pV1 pV2 pV3 pV4 pV5 pV6 50 50 50 50 n bonelist pipebone ht)  
+defSearch offOn target plot addGh ghAdd pV1 pV2 pV3 pV4 pV5 pV6 n bonelist pipebone ht forRunHtml htm= (defSearchRAW offOn target plot addGh ghAdd pV1 pV2 pV3 pV4 pV5 pV6 50 50 50 50 n bonelist pipebone ht forRunHtml htm)  
 --e.g> defSearchRAW "AAABB" "AAABBAAABAB" "AAABAB" "AAA" "AAABBBAA" "BBBAA" 1 1 1 1 1 li
 --
 --pipebone: variable for runKBASE, n-(length target)-many, of a [bonelist]
-defSearchRAW offOn target plot addGh ghAdd pV1 pV2 pV3 pV4 pV5 pV6 ptc0Len ptc3Len ptc3aLen ptc3bLen n bonelist pipebone ht= do
+defSearchRAW offOn target plot addGh ghAdd pV1 pV2 pV3 pV4 pV5 pV6 ptc0Len ptc3Len ptc3aLen ptc3bLen n bonelist pipebone ht forRunHtml htm= do
      --  let pi = fopi --Punkt "M" Nothing Nothing Nothing Nothing Nothing -- switch for io at bottom
-       let progVar1 = pV1 --"ccccc" --"AAABB" 
-       let progVar2 = pV2 --"AAABBAABAB"
-       let progVar3 = pV3 --"A"--"AABAB"
-       let progVar4 = pV4 --"A"--"AAA"
-       let progVar5 = pV5 --"AAABBBAA"
-       let progVar6 = pV6 --"BBBAA"
+     --                                                           PV1s  list a  | PV1s list b
+       let progVar1 = head(ausw htm pV1) --"ccccc" --"AAABB"  --  "AAABB"
+       let progVar2 = head(ausw htm pV2) --"AAABBAABAB"
+       let progVar3 = head (ausw htm pV3) --"A"--"AABAB"
+       let progVar4 = head(ausw htm pV4) --"A"--"AAA"
+       let progVar5 = head (ausw htm pV5) --"AAABBBAA"
+       let progVar6 = head (ausw htm pV6) --"BBBAA"
 
-       let liT = [pV1,pV2,pV3,pV4,pV5,pV6] --["AAABB","AABAB","AAA","BBBAA"]
+       let liT = [progVar1,progVar2,progVar3,progVar4,progVar5,progVar6] --["AAABB","AABAB","AAA","BBBAA"]
        let pg1 x = F.fourierMQ6NOPAN123 x--(sin (read((head((formTest [father] (preX x) [show(sin (x))] (words(show(sin 2))))  ))))) -- (((([(formTest [mother] 1 [show(F.fourierMQ6NOPAN123 (realToFrac (show x)))] (words(show(sin (x)))))]  )))) -- head(ausw 1 [(F.fourierMQ6NOPAN123 x)]) 
        let pg2 x = (F.fourierMQ5NOPAN123 x)
        let pg3 x = (F.fourierMQ4NOPAN123 x)
@@ -433,7 +501,7 @@ defSearchRAW offOn target plot addGh ghAdd pV1 pV2 pV3 pV4 pV5 pV6 ptc0Len ptc3L
 -- tsRAW -- take 100 and nub out (delete all occurances>1) 
 -- pp t -- get nubbed lines 
 -- daZip -- reduce matix
-       let tsRAW pt = map group(transpose(nub(pt 100)))
+       let tsRAW pt = map group(transpose(nub(pt 10)))
 
        let ts = tsRAW ptc5 
        let maxa t =head$last$group$sort$concat$concat$ausw t ts
@@ -484,8 +552,12 @@ defSearchRAW offOn target plot addGh ghAdd pV1 pV2 pV3 pV4 pV5 pV6 ptc0Len ptc3L
             --  M.writeWXCloudNODE (ptc7 5) (ptc7 25) (ptc7 50) (ptc7 100) (ptc7 125) (ptc7 150) -- half 'crown'
              -- M.writeWXCloudNODE (ptc8 5) (ptc8 25) (ptc8 50) (ptc8 100) (ptc8 125) (ptc8 150) -- similar to above
        let plotOn = if plot == 1 then do
-                   putStrLn "readY to plot" 
-                   M.writeWXCloudNODE (nub(ptc9 5)) (nub(ptc9 25)) (nub(ptc9 50)) (nub(ptc9 100)) (nub(ptc9 125)) (nub(ptc9 150))  -- similar to above 
+                   putStrLn "readY to plot"
+
+      -- plot only one function to follow its course and change how many points to plot (track path !!!)***********************************
+      --    *> let theOlmegs = ptcs = liT
+      --  e.g> olmeg m = (head(ausw m liT))  
+                   M.writeWXCloudNODE (nub(ptc4 5)) (nub(ptc4 25)) (nub(ptc4 10)) (nub(ptc4 10)) (nub(ptc4 10)) (nub(ptc4 5)) -- similar to above 
                    M.writeWXCloud4 (ptc2 5) (ptc2 25) (ptc2 50) (ptc4 5) (ptc4 25) (ptc4 50)
                    putStrLn "END plotter";
 
@@ -499,7 +571,10 @@ defSearchRAW offOn target plot addGh ghAdd pV1 pV2 pV3 pV4 pV5 pV6 ptc0Len ptc3L
     -- on is the default :)   
        let offON ghAdd pipeBone = if offOn == 1 then do
                                let forBase = (length target)
-                               foBase <- forM [1..forBase](\l -> do 
+                               foBase <- forM [1..forBase](\l -> do
+        --e.g *> let li = ["AAABB","AABAB","AAA","BBBAA"]
+ --       let pi = Punkt "M" Nothing Nothing Nothing Nothing Nothing
+ --           *>kArmTest5 li 1 pi 1 1 [] "AAA"
                                      let pray = kArmTest5 addGh liT pipeBone 1 pi 1 1 [] ghAdd --"AAA"
                                      pray
                                      putStrLn "END 'display 'exportMother'"
@@ -541,7 +616,7 @@ defSearchRAW offOn target plot addGh ghAdd pV1 pV2 pV3 pV4 pV5 pV6 ptc0Len ptc3L
        -- pv1: progVar1 ;String  fst pick runKBASE
        -- daZip: a 2d representation of a 3d cloud 
 --picks pt0 pt2 pt3 pt4 pt5 pt6 pt7 pt8 pt9 = [pt0,pt2,pt3,pt4,pt5,pt6,pt7,pt8,pt9]
-       let writeHtml target ht pv1 pv2 pv3 pv4 pv5 pv6 daZip1 daZip2 daZip3 textAA = do
+       let writeHtml target ht daZip1 daZip2 daZip3 textAA = do
                  if ht==1 then do
                      let foBase = (length target)
                   --   let prem2 n = length$nub$group$ausw n fotsRAW
@@ -571,7 +646,7 @@ defSearchRAW offOn target plot addGh ghAdd pV1 pV2 pV3 pV4 pV5 pV6 ptc0Len ptc3L
                                 return(gh))  
                                 --return(seleD))        
                                                     --let df = concat (ptcButoons)
-                          let df =  (G.fobase pv1 pv2 pv3 pv4 pv5 pv6 daZip1 daZip2 daZip3 textAA (ptcButoons) foalt)
+                          let df =  (G.fobase progVar1 progVar2 progVar3 progVar4 progVar5 progVar6 daZip1 daZip2 daZip3 textAA (ptcButoons) foalt)
  
                           return (df))
                      return foPeace
@@ -582,12 +657,12 @@ defSearchRAW offOn target plot addGh ghAdd pV1 pV2 pV3 pV4 pV5 pV6 ptc0Len ptc3L
                      let theListIV = header++(unlines foPeace)++"</body>\n"++"</html>\n"
                      --writeFile "HtmlS/yourRun.html" (theListIV)
                      putStrLn (unlines foPeace)
-                     writeFile  ("HtmlS/"++(evalToWrite ("foyourRun.txt"))) (unlines$foPeace) 
+                     writeFile  ("HtmlS/"++(forRunHtml)) (unlines$foPeace) 
                  else 
                      
                      putStrLn (unwords(return("")))
 
-       (writeHtml target wHtml pV1 pV2 pV3 pV4 pV5 pV6 (show(daZip 1)) (show(daZip 2)) (show(daZip 3))  "textbla") 
+       (writeHtml target wHtml (show(daZip 1)) (show(daZip 2)) (show(daZip 3))  "textbla") 
        --return (cd n)          
                                   --putStrLn "1"-}
      --  let chuckList x = [(ptc0 x),(ptc2 x),(ptc3 x)]
