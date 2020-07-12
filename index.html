@@ -19,7 +19,7 @@ body {
 
 /* Style the header */
 .header {
-  background-color: none;
+  background-color: 7;
   padding: 30px;
   text-align: center;
   font-size: 35px;
@@ -120,6 +120,23 @@ div.desc {
   font-size: 35px;
   cursor: pointer;
 }
+	.buttonM {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+.button2 {background-color: #008CBA;border-radius: 12px;} /* Blue */
+.button3 {background-color: #f44336;} /* Red */ 
+.button4 {background-color: #e7e7e7; color: black;} /* Gray */ 
+.button5 {background-color: #555555;} /* Black */
+
 </style>
 </head>
 <script>
@@ -163,7 +180,10 @@ function w3_close() {
 
 <div class="header" name="oben">
     <div class="w3-sidebar w3-bar-block w3-border-right" style="display:block" id="mySidebar">
-   <button onclick="w3_close()" class="w3-bar-item w3-large">Close &times;</button>
+	    <button onclick="w3_close()" class="w3-bar-item w3-large">Close &times;</button>
+	    <button class="ButtonM button2" onclick="w3_open()">Help</button> 
+	    <a href="file:///stack/SimilaritYWriter20/src/p5SimY/perl.html"  target="iframe_a">path node          </a>
+
    <iframe src="src/p5SimY/perl.html" name="iframe_a" style="border:none;background:#d1d00f6;" width="500px" height="400px"></iframe>
 
 </div>	
