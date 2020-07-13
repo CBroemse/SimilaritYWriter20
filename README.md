@@ -24,6 +24,40 @@
   
   ![alt tag](https://github.com/CBroemse/SimilaritYWriter20/blob/master/source/ptc4wittsatz1.png)
       
+##### state of development
+
+let myTest at = runKBASE 2 [1,2] 1 2 at 2 (li3) 1 2 3 4
+                                       |    the List for ListIV    
+                                       | visiualize the reduction in
+                                       | the ptc functions matrices
+
+                                       | finalize to add text to every 'ptc butoon' (weird writing helps my memory)
+                                       | when clicked
+
+                                       | whished visualization of
+                                       | the 2_3_5_Counter with data
+                                       | from above
+
+                                       | - keep track of the wxm files
+
+                                       | - integrate the MQ functions in the display
+                                       |   the 'Dom' ??
+                                       |
+                                       | - how can Gnuplot scripts or Wxmaxima
+                                       |   be embedded lazily
+                                       | - fill up a library , an overview of everything 
+                                       |   also in Git-pages
+                                       |
+                                       | - experiment with calling Haskell from Html
+                                       |   in index.html top button row
+
+                                       | - follow the development track of kArmTrack5
+                                       |       embed the occurence display neatly, lazily
+
+                                       |  Zweig Haken Stab in a path
+                                           geometry, pull, push...
+    
+
 ##### sort and filter any [String] ~ [[Char]] with similaritYValue in function 'kArmTrack5' = gh1
     thought experiment
       gh: ["A","B","A","A"] to ["A","A","A","B"]
@@ -143,10 +177,6 @@ There is an syntactic level and a conceptual level
       
          -- inserted into 'kArmTest5'
          formTest :: [Punkt -> Maybe Punkt] -> Int -> [String] -> [[Char]] -> [[Char]]
-
-     
-
-
 
 
 #####   ABSTRACT
