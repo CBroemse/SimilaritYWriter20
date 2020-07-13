@@ -26,7 +26,6 @@
       
 ##### state of development
 
-let myTest at = runKBASE 2 [1,2] 1 2 at 2 (li3) 1 2 3 4
                                        |    the List for ListIV    
                                        | visiualize the reduction in
                                        | the ptc functions matrices
