@@ -54,10 +54,7 @@ function plotEllipse(string, x, z) {
 				translate(plotX, plotY, plotZ)
 				sphere(1)
 				pop()
-				push()
-				translate(plotX+100, plotY, plotZ)
-				sphere(1)
-				pop()
+				
 				
 			}
 		}
@@ -78,6 +75,10 @@ function plotPunkt(string, x, z) {
 			 
 				push()
 				translate(plotX, plotY, plotZ)
+				sphere(1)
+				pop()
+				push()
+				translate(plotX+100, plotY+50, plotZ)
 				sphere(1)
 				pop()
 				
