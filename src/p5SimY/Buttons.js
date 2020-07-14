@@ -18,7 +18,7 @@ function addButtons() {
 	labelYw.position(30, 150)
 	inputYw = createInput();
 	inputYw.size(60, 20)
-	inputYw.value(10.0)
+	inputYw.value(3.0)
 	inputYw.position(30, 175);
 	inputYw.input(function() {
 		yw = inputYw.value()
