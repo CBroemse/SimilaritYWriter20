@@ -14,7 +14,7 @@ function setup() {
 	
 	rev = 1
 	
-	equation = "0.6711409395973155*x*y*z=1.05062082139446*y+10.52123552123552*z+x"
+	equation = "x*y*z=1*x+1*y+1*z"
 	addButtons()
 	equation = cleanEquation(equation)
 	
