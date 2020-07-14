@@ -290,7 +290,7 @@ to use bone list as a mode but keep 'realy big' input like below at bay:
  , the beginnig three digits of one fictive prime number group sorting system until
  19, would be 2 3 5 making 1 step on the sieve below..
          
-  Is there a way to 'leapfrog' the shortest path whithout reading every atom of boneist? 
+  Is there a way to 'leapfrog' the shortest path whithout reading every atom of bonelist? 
   
   #### concept to build rules for the case
   
