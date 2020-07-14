@@ -69,8 +69,8 @@ function plotPunkt(string, x, z) {
 				plotY = (y*yw*-1)
 				plotZ = (z*w)
 				//cArray.push([x,y,z])
-				col = map(dist(0,0,0,plotX,plotY,plotZ), 0, 150, 0, 360)
-				stroke(col, 5, 5)
+				col = map(dist(0,0,0,plotX,plotY,plotZ), 0, 50, 0, 60)
+				stroke(col, 1, 1)
 			 
 				push()
 				translate(plotX, plotY, plotZ)
