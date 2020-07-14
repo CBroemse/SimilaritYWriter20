@@ -47,6 +47,10 @@ function draw() {
 			if(equation.length == 1){
 				plotEquation(equation, x, z)
 			}
+			else if(equation.length == 3){
+				plotPunkt(equation, x, z)
+                        }
+			
 			else{
 				plotEllipse(equation, x, z)
 			}
