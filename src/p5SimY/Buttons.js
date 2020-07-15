@@ -22,7 +22,7 @@ function addButtons() {
 	inputYw.position(30, 175);
 	inputYw.input(function() {
 		yw = inputYw.value()
-		labelYw.position(30, 450)
+		
 	})
 
 
