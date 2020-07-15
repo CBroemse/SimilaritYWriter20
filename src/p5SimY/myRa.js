@@ -47,7 +47,7 @@ function draw() {
 			if(equation.length == 1){
 				plotEquation(equation, x, z)
 			}
-                        else if(equation.length == 3){
+                        else if(equation.length == 2){
 				plotPunktNu(equation, x, z)
                         }
 			else{
