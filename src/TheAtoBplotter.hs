@@ -30,17 +30,19 @@ import qualified Path2Val2 as HT
 import qualified FourierFieldCLASSIFIER as F
 import qualified WriteWXmaximaJuicy as M
 import qualified GHCguiNfunctions as G
+ 
+--"primam sediem a niguem sidicari "
  --e.g *> runKRAW 1 1 [["AAA","BBB","CCC"],["DDD","FFF","HHH"]]
  ----- #####################################################################
  -- TAKE FROM : four lines of bonelist
  --        with order : a  to b to c ( line1 to line1n2 to line 
-theDs f g = head$ausw f (concat g)
+theDs f g = concat$ausw f ((concat g))
 -- df2 ttt offOn target plot addGh ghAdd n (theDs ttt d) (get1) (get2) (get3)  (get4) 1 (theDs ttt d)
 -- =  runKAXIOM offOn target plot addGh ghAdd n (theDs ttt d) (get1) (get2) (get3)  (get4) 1 (theDs ttt d)
 
 runKBASE offOn target plot addGh ghAdd n d get1 get2 get3 get4 = do
        allforIV <- forM [1..(length target)] (\four4 -> do
-            let fg = runKAXIOM offOn target plot addGh ghAdd n (theDs four4 d) (get1) (get2) (get3)  (get4) 1 (theDs four4 d) four4
+            let fg = runKAXIOM offOn target plot addGh ghAdd n (theDs (1) (d)) (get1) (get2) (get3) (get4) 1 (theDs four4 d) (four4+1)
             fg
             return (fg))
 
@@ -50,12 +52,12 @@ runKBASE offOn target plot addGh ghAdd n d get1 get2 get3 get4 = do
        --                 else 1
 --   wirs <- readFile ("HtmlS/foyourRun"++show whichopen++".txt")
   -- wirs2 <- readFile ("HtmlS/foyourRun"++show (whichopen)++".txt")
-       writeAll <- forM [1,2] (\dt -> do
+       writeAll <- forM [1..(length target)] (\dt -> do
             wirs <- readFile ("HtmlS/foyourRun"++(show (dt+1))++".txt")
             return (wirs))
      --  nugget = map ord nuDoe
      --  let gbb = map chr [nugget]
-       let theListIV = (header++unwords writeAll++"</body>\n"++"</html>\n")
+       let theListIV = (header++unwords writeAll++(G.screenInfo (map lines["which info"]) 1) ++"</body>\n"++"</html>\n")
        writeFile "HtmlS/yourRun.html" (theListIV) 
 
  --ht:int ;if==1 then plot StepIV List
@@ -106,15 +108,20 @@ runKAXIOM offOn target plot addGh ghAdd n d get1 get2 get3 get4 ht ulu bog=  do
              -- let stepper = fostepper fd
               let beta =  ulu --(foact ulu ) --(map --robe --let foact = if fd == 1 then (drop 0 ) (take stepper (concat d))
                                --     else  (drop (fostepper (fd-1))) (take stepper (concat d))
-                              
-                     --   in foact
+
+                 -- transpose the input data to pass to writeHtmlIn
+                 -- from   
+                 -- [list1,list2]] 
+                 -- to 
+                 -- [[1st elem list1, fstelem list2],[2nd elem list1,2nd elem list2]]
+              let topass = transpose ulu 
               let pi = Punkt "notM" Nothing Nothing Nothing Nothing Nothing
         --aaS <- forM [1..(length bonelis)] (\bl -> do  --   kArmTest5 act 1 pi 1 1 [] "AAA"
-              let whichLine1 = (ausw get1 beta)
-              let wL2 = (ausw get2 beta)
+              let whichLine1 = (ausw get1 topass)
+              let wL2 = (ausw get2 topass)
               let wL1n2 = (whichLine1++wL2)
-              let wL3 = (ausw get3 beta)
-              let wL4 = (ausw get4 beta)
+              let wL3 = (ausw get3 topass)
+              let wL4 = (ausw get4 topass)
               let wL3n4 = (wL3++wL4)
      --   let doubInt u = (read (frmDoubletoInt u))
         --pi
@@ -168,9 +175,13 @@ defSearch offOn target plot addGh ghAdd pV1 pV2 pV3 pV4 pV5 pV6 n bonelist pipeb
 --
 --pipebone: variable for runKBASE, n-(length target)-many, of a [bonelist]
 defSearchRAW offOn target plot addGh ghAdd pV1 pV2 pV3 pV4 pV5 pV6 ptc0Len ptc3Len ptc3aLen ptc3bLen n bonelist pipebone ht forRunHtml htm= do
+
      --  let pi = fopi --Punkt "M" Nothing Nothing Nothing Nothing Nothing -- switch for io at bottom
+     --
+     --    PV: 
+
      --                                                           PV1s  list a  | PV1s list b
-       let progVar1 = head(ausw htm pV1) --"ccccc" --"AAABB"  --  "AAABB"
+       let progVar1 = head(ausw htm pV1) --"ccccc" --"AAABB"  --  "AAABB"       |   "TTTT" 
        let progVar2 = head(ausw htm pV2) --"AAABBAABAB"
        let progVar3 = head (ausw htm pV3) --"A"--"AABAB"
        let progVar4 = head(ausw htm pV4) --"A"--"AAA"
@@ -557,7 +568,7 @@ defSearchRAW offOn target plot addGh ghAdd pV1 pV2 pV3 pV4 pV5 pV6 ptc0Len ptc3L
       -- plot only one function to follow its course and change how many points to plot (track path !!!)***********************************
       --    *> let theOlmegs = ptcs = liT
       --  e.g> olmeg m = (head(ausw m liT))  
-                   M.writeWXCloudNODE (nub(ptc4 5)) (nub(ptc4 25)) (nub(ptc4 10)) (nub(ptc4 10)) (nub(ptc4 10)) (nub(ptc4 5)) -- similar to above 
+                   M.writeWXCloudNODE (nub(ptc4 5)) (nub(ptc4 25)) (nub(ptc4 50)) (nub(ptc4 75)) (nub(ptc4 84)) (nub(ptc4 100)) -- similar to above 
                    M.writeWXCloud4 (ptc2 5) (ptc2 25) (ptc2 50) (ptc4 5) (ptc4 25) (ptc4 50)
                    putStrLn "END plotter";
 
@@ -609,27 +620,30 @@ defSearchRAW offOn target plot addGh ghAdd pV1 pV2 pV3 pV4 pV5 pV6 ptc0Len ptc3L
        let ts7 = tsR (ptc7)
        let ts8 = tsR (ptc8)
        let ts9 = tsR (ptc9)
+       let stril = [ts0,ts2,ts3,ts4,ts5,ts6,ts7,ts8,ts9]
 
        let tsal g = tsRAW g
+ ----------------------------------------------------
+ -- connect to raPlot in git-pages
+      -- let raplot = ht==1 then do
+  
        -- ht:Int ;if==1 then plot else not
        -- target:[Int] ;length how many lines to plot
        -- pv1: progVar1 ;String  fst pick runKBASE
        -- daZip: a 2d representation of a 3d cloud 
 --picks pt0 pt2 pt3 pt4 pt5 pt6 pt7 pt8 pt9 = [pt0,pt2,pt3,pt4,pt5,pt6,pt7,pt8,pt9]
-       let writeHtml target ht daZip1 daZip2 daZip3 textAA = do
+       let writeHtmlIn target ht daZip1 daZip2 daZip3 textAA = do
                  if ht==1 then do
                      let foBase = (length target)
                   --   let prem2 n = length$nub$group$ausw n fotsRAW
                     -- let prem3 d n = map length$group$nub$ausw n d
-
                      foPeace <- forM [1](\j -> do
                           let textAA = "=>(1.167*10^5*%i+2.772*10^5)^(1/3)+(4.489*10^3)/(1.167*10^5*%i+2.772*10^5)^(1/3)+69.18\"\n"
                           
                           
-                          let foalt = map words ["info ptc0","info ptc2","info ptc3","info ptc4","i","i","i","i","i9"]
+                          let foalt = map words [("info ptc0\n"++(show ts0)),"info ptc2\n"++show ts2,"info ptc3"++show ts3,"info ptc4"++show ts4,show ts5,show ts6,show ts7,show ts8,show ts9]
                           ptcButoons <- forM [1..9] (\btn -> do
-                                let stril = [ts0,ts2,ts3,ts4,ts5,ts6,ts7,ts8,ts9]
-
+                                
                                 let seleD = head(ausw btn stril)
                                 --let seleD = show((realToFrac foseleD)/3)
                                 let rightPtc = if btn == 1  then btn - 1
@@ -644,10 +658,60 @@ defSearchRAW offOn target plot addGh ghAdd pV1 pV2 pV3 pV4 pV5 pV6 ptc0Len ptc3L
                                 --         return (df))
                                 --let altText = do stril 
                                 return(gh))  
-                                --return(seleD))        
-                                                    --let df = concat (ptcButoons)
-                          let df =  (G.fobase progVar1 progVar2 progVar3 progVar4 progVar5 progVar6 daZip1 daZip2 daZip3 textAA (ptcButoons) foalt)
- 
+                                --return(seleD))   
+              ----------------------------------------------------------------------------------------------------------------------------------------------------------     
+                          let raplot = do
+                                      goddTime <- forM [1..(length subA)] (\fa -> do
+                                           let drinks = (concat (ausw fa subA)) -- e.g [[93.72586872586874,94.02573529411764,3.0303030303030303]]
+                                           let xs = head drinks;
+                                           let ys = head$ausw 2 drinks;
+                                           let zs = last drinks;
+                                           let foframe = "push()\n"++
+				                         "translate(plotX +"++show xs ++", plotY +" ++show ys++", plotZ +"++ show zs++")\n"++
+				                         "sphere(1)\n"++
+				                          "pop()\n"
+                                           return (foframe)) 
+                                      return (goddTime)
+                                      buildOP <- readFile "p5SimY/dataJstoOP.txt"
+                                      
+                                      let makRaport = return (thebase goddTime)
+                                      let zipdataJs = (lines buildOP) ++ makRaport
+
+                                      --makRaport
+                                      writeFile "p5SimY/raPlotter.js" (unlines zipdataJs)
+                                      putStrLn "wrote p5SimYs/raPlotter.js"
+                                      --return(makRaport)
+                                where
+                                    substituteAlt = [(nub(ptc4 10)),(nub(ptc4 25)),(nub(ptc4 50)),(nub(ptc4 75)),(nub(ptc4 84)),(nub(ptc4 100))]; -- similar to above
+                                    subA = head (ausw 1 substituteAlt);
+                                    thebase beat = G.foraPlot beat;
+                          raplot         
+                          let df =  (G.fobase progVar1 progVar2 progVar3 progVar4 progVar5 progVar6 daZip1 daZip2 daZip3 textAA (ptcButoons) (foalt))
+                          let fobase = let slc e r = unwords$last (ausw e r) 
+                                in let slcT e = unwords(ausw e (concat (ptcButoons)))
+                                in let slalt e = slc e foalt
+                                in  ("                      </div>\n\n"++
+	                       "               <div class=\"row\">\n"++
+                               "<div class=\"column side\" style=\"background-color:none; width: 10%;\">\n\n"++
+	                       "<a href=\"file:///"++root++"source/ptcDATA.txt\" target=\"iframe_a\">library           </a>\n"++
+                               "<a href=\"file:///"++root++"p5SimY/action.html\" target=\"iframe_a\">Animate           </a>\n"++
+	                       "<a href=\"file:///"++root++"p5SimY/action.html\" style=\"width:5%;\" target=\"iframe_a\">plot   ____"++progVar1++" "++progVar2++" "++progVar3++" "++progVar4++" "++progVar5++" "++progVar6++"</a>\n\n\n"++ 
+                               "</div>\n\n"++  
+                               "<div class=\"column middle\" style=\"background-color:none;\">\n"++
+                               "<img src=\"file:///"++root++"/source/liblabel.png\" name=\"lib_b\" alt= \""++ (daZip1 ) ++"\n"++ (daZip2 )++"\n"++(daZip3 )++"\n"++textAA++
+                               " style=\"width:5%\" onclick=\"myFunction(this);\">\n"++
+    	                       "<img src=\"file:///"++root++"source/"++slcT 1++"\" style=\"width:5%\" alt=\""++slalt 1++"\" onclick=\"myFunction(this);\">\n"++
+                               
+                               "<img src=\"file:///"++root++"source/"++slcT 2++"\" style=\"width:5%\" alt=\""++slalt 3++"\" onclick=\"myFunction(this);\">\n"++  
+                               "<img src=\"file:///"++root++"source/"++slcT 3++"\"  style=\"width:5%\" alt=\""++slalt 4++"\" onclick=\"myFunction(this);\">\n"++ 
+                               "<img src=\"file:///"++root++"source/"++slcT 4++"\"  style=\"width:5%\" alt=\""++slalt 5++"\" onclick=\"myFunction(this);\">\n"++  
+                               "<img src=\"file:///"++root++"source/"++slcT 5++"\"  style=\"width:5%\" alt=\""++slalt 6++"\" onclick=\"myFunction(this);\">\n"++  
+                               "<img src=\"file:///"++root++"source/"++slcT 6++"\"  style=\"width:5%\" alt=\""++slalt 7++"\" onclick=\"myFunction(this);\">\n"++  
+                               "<img src=\"file:///"++root++"source/"++slcT 7++"\" style=\"width:5%\" alt=\""++slalt 8++"\" onclick=\"myFunction(this);\">\n"++  
+                               "<img src=\"file:///"++root++"source/"++slcT 8++"\" style=\"width:5%\" alt=\""++slalt 9++"\" onclick=\"myFunction(this);\">\n"++  
+                               "</div>\n")
+
+
                           return (df))
                      return foPeace
                      --return(fobase "A" "A" "A" "A" "A" "A" daZip1 daZip2 daZip3 textAA (unlines (map fst (concat$foBae))) foalt))
@@ -662,7 +726,7 @@ defSearchRAW offOn target plot addGh ghAdd pV1 pV2 pV3 pV4 pV5 pV6 ptc0Len ptc3L
                      
                      putStrLn (unwords(return("")))
 
-       (writeHtml target wHtml (show(daZip 1)) (show(daZip 2)) (show(daZip 3))  "textbla") 
+       (writeHtmlIn target wHtml (show(daZip 1)) (show(daZip 2)) (show(daZip 3))  "textbla") 
        --return (cd n)          
                                   --putStrLn "1"-}
      --  let chuckList x = [(ptc0 x),(ptc2 x),(ptc3 x)]

@@ -32,8 +32,11 @@ module GHCguiNfunctions
       , spherJs
       -- write index.html
       , fobase
-      , writeHtml
-      , root)
+      , writeHtml -- basic functions that writes buttons that call ptc functions each line should be different 
+      , screenInfo -- choose screen for screen key board dispalying ptc functions 11-7-20
+      , root
+      , foraPlot -- export any list of x y z to the Raplotter
+        )
       --, picks)
    --   , setIn)
        where
@@ -166,7 +169,27 @@ writeFileJs v1 v2 v3 foptc t = writeFile "p5SimY/openProces.js" ((writePTCsJs v1
 writeFileJs2 v1 v2 v3 foptc t = writeFile "p5SimY/openProces.js" ((writePTCsJs2 v1 v2 v3 foptc t))
 
 
-ausw n m = drop (n-1) (take n m) 
+ausw n m = drop (n-1) (take n m)
+----------------------------------------------------------------------------
+--write to Ra-net
+foraPlot listolist = ("function plotPunktNu(string, x, z) {\n"++
+	    "string1 = string[0]\n"++
+	    "string2 = string[1]\n"++
+	    "if(Math.abs(x) <= 25 && Math.abs(z) <= 25){\n"++
+            "   for(var y = -10; y < 10; y += 0.2){\n"++
+	    "         if(Math.abs(eval(string1)-eval(string2)) <= 2){\n"++
+	    "                   plotX = (x*w)\n"++
+	    "                   plotY = (y*yw*-1)\n"++
+            "                   plotZ = (z*w)\n"++
+	    "                   //cArray.push([x,y,z])\n"++
+	    "                   col = map(dist(0,0,0,plotX,plotY,plotZ), 0, 250, 0,360)\n"++
+            "                   stroke(col, 5, 5)\n"++ (unlines listolist)++"\n\n"++
+			 
+	    				
+            "                 }\n"++
+            "              }\n"++
+            "            }\n"++
+            "         }\n\n")
         
 
 -----------------------------------------------------------------------------
@@ -229,7 +252,7 @@ writeHtml target ht pv1 pv2 pv3 pv4 pv5 pv6 daZip1 daZip2 daZip3 textAA pt0 pt2 
                                                   else if seleD ==2 then ["ptc"++show (rightPtc)++"green.png"]
                                                   else if seleD == 51 then ["ptc"++show (rightPtc)++"red.png"]
                                                   else ["ptc"++show (rightPtc)++"blue.png"]
-                                         let df =  (fobase pv1 pv2 pv3 pv4 pv5 pv6 daZip1 daZip2 daZip3 textAA ([gh]) foalt)
+                                         let df =  (fobase pv1 pv2 pv3 pv4 pv5 pv6 daZip1 daZip2 daZip3 textAA [(gh)] (foalt))
 
                                          return (df))
                                 --let altText = do stril 
@@ -248,29 +271,40 @@ writeHtml target ht pv1 pv2 pv3 pv4 pv5 pv6 daZip1 daZip2 daZip3 textAA pt0 pt2 
                      
                      putStrLn (unwords(return("")))
  
-root = "/c:/stack/SimilaritYWriter20/src/"
-fobase et1 et2 et3 et4 et5 et6 daZip1 daZip2 daZip3 textAA tabs foalt = let slc e r = unwords$head (ausw e r) 
+root = "c:/stack/SimilaritYWriter20/src/"
+fobase et1 et2 et3 et4 et5 et6 daZip1 daZip2 daZip3 textAA tabs foalt = let slc e r = unwords$last$(ausw e r) 
                                 in let slcT e = slc e tabs 
                                 in let slalt e = slc e foalt
                                 in  ("                      </div>\n\n"++
 	                       "               <div class=\"row\">\n"++
                                "<div class=\"column side\" style=\"background-color:none; width: 10%;\">\n\n"++
-	                       "<a href=\"file:///c://stack/SimilaritYWriter20/src/source/ptcDATA.txt\" target=\"iframe_a\">library           </a>\n"++
-                               "<a href=\"file:///c:/stack/SimilaritYWriter20/src/p5SimY/action.html\" target=\"iframe_a\">Animate           </a>\n"++
-	                       "<a href=\"file:///c:/stack/SimilaritYWriter20/src/p5SimY/action.html\" style=\"width:5%;\" target=\"iframe_a\">plot   ____"++et1++" "++et2++" "++et3++" "++et4++" "++et5++" "++et6++"</a>\n\n\n"++ 
+	                       "<a href=\"file:///"++root++"source/ptcDATA.txt\" target=\"iframe_a\">library           </a>\n"++
+                               "<a href=\"file:///"++root++"p5SimY/action.html\" target=\"iframe_a\">Animate           </a>\n"++
+	                       "<a href=\"file:///"++root++"p5SimY/action.html\" style=\"width:5%;\" target=\"iframe_a\">plot   ____"++et1++" "++et2++" "++et3++" "++et4++" "++et5++" "++et6++"</a>\n\n\n"++ 
                                "</div>\n\n"++  
                                "<div class=\"column middle\" style=\"background-color:none;\">\n"++
                                "<img src=\"file:///"++root++"/source/liblabel.png\" name=\"lib_b\" alt= \""++ (daZip1 ) ++"\n"++ (daZip2 )++"\n"++(daZip3 )++"\n"++textAA++
                                " style=\"width:5%\" onclick=\"myFunction(this);\">\n"++
-    	                       "<img src=\"file:///c:/stack/SimilaritYWriter20/src/source/"++slcT 1++"\" style=\"width:5%\" alt=\""++slalt 1++"\" onclick=\"myFunction(this);\">\n"++
+    	                       "<img src=\"file:///"++root++"source/"++slcT 1++"\" style=\"width:5%\" alt=\""++slalt 1++"\" onclick=\"myFunction(this);\">\n"++
                                
-                               "<img src=\"file:///c:/stack/SimilaritYWriter20/src/source/"++slcT 2++"\" style=\"width:5%\" alt=\""++slalt 3++"\" onclick=\"myFunction(this);\">\n"++  
-                               "<img src=\"file:///c:/stack/SimilaritYWriter20/src/source/"++slcT 3++"\"  style=\"width:5%\" alt=\""++slalt 4++"\" onclick=\"myFunction(this);\">\n"++ 
-                               "<img src=\"file:///c:/stack/SimilaritYWriter20/src/source/"++slcT 4++"\"  style=\"width:5%\" alt=\""++slalt 5++"\" onclick=\"myFunction(this);\">\n"++  
-                               "<img src=\"file:///c:/stack/SimilaritYWriter20/src/source/"++slcT 5++"\"  style=\"width:5%\" alt=\""++slalt 6++"\" onclick=\"myFunction(this);\">\n"++  
-                               "<img src=\"file:///c:/stack/SimilaritYWriter20/src/source/"++slcT 6++"\"  style=\"width:5%\" alt=\""++slalt 7++"\" onclick=\"myFunction(this);\">\n"++  
-                               "<img src=\"file:///c:/stack/SimilaritYWriter20/src/source/"++slcT 7++"\" style=\"width:5%\" alt=\""++slalt 8++"\" onclick=\"myFunction(this);\">\n"++  
-                               "<img src=\"file:///c:/stack/SimilaritYWriter20/src/source/"++slcT 8++"\" style=\"width:5%\" alt=\""++slalt 9++"\" onclick=\"myFunction(this);\">\n"++  
+                               "<img src=\"file:///"++root++"source/"++slcT 2++"\" style=\"width:5%\" alt=\""++slalt 3++"\" onclick=\"myFunction(this);\">\n"++  
+                               "<img src=\"file:///"++root++"source/"++slcT 3++"\"  style=\"width:5%\" alt=\""++slalt 4++"\" onclick=\"myFunction(this);\">\n"++ 
+                               "<img src=\"file:///"++root++"source/"++slcT 4++"\"  style=\"width:5%\" alt=\""++slalt 5++"\" onclick=\"myFunction(this);\">\n"++  
+                               "<img src=\"file:///"++root++"source/"++slcT 5++"\"  style=\"width:5%\" alt=\""++slalt 6++"\" onclick=\"myFunction(this);\">\n"++  
+                               "<img src=\"file:///"++root++"source/"++slcT 6++"\"  style=\"width:5%\" alt=\""++slalt 7++"\" onclick=\"myFunction(this);\">\n"++  
+                               "<img src=\"file:///"++root++"source/"++slcT 7++"\" style=\"width:5%\" alt=\""++slalt 8++"\" onclick=\"myFunction(this);\">\n"++  
+                               "<img src=\"file:///"++root++"source/"++slcT 8++"\" style=\"width:5%\" alt=\""++slalt 9++"\" onclick=\"myFunction(this);\">\n"++  
                                "</div>\n")
 
+
+screenInfo info1 r =
+      let ed r =  unwords$head$(ausw r info1)
+      in  ("<div class=\"column side\" style=\"height:300px; width:30%\">\n"++
+            "<div class=\"container\" style=\"height:300px; width:30%\">\n"++
+            "<span onclick=\"this.parentElement.style.display='none'\" class=\"closebtn\">&times;</span>\n"++
+            "<img id=\"expandedImg\">\n"++
+	    "<p>"++ (ed r) ++"</p>\n"++ 
+            "<div id=\"imgtext\"></div>\n"++
+            "</div>\n"++        
+            "</div>\n\n")
 

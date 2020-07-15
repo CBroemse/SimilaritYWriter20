@@ -21,9 +21,11 @@ module UsefulFunctions19 (
         , basisRAW
     --    , nACC
     --    , nACCRAW
-        , fnACCRAW2 
+        , fnACCRAW2
+        , fhackbart 
     --    , innerAccess
     --    , innerAccessRAW
+        , tk -- ==ausw
         , checkFo
         , evalToWrite) where
      --   , nameACCESSFUNCTION ) where
@@ -141,6 +143,10 @@ takeMY x y z = (mits y) (hits z)
 --Nimmt zeile aus String
 --x: Int ; y:String
 takerleiN x y = drop (x -1)(take x (lines y))
+tk x y = takerleiN x y
+
+-- a monad in steno
+fhackbart some = do(return (do[([some])])) 
 
 reaDin pathNo = do 
     thisfi <- readFile "HtmlS/dininWalAllPath.txt"
@@ -464,7 +470,7 @@ evalToWrite astrinG = if tzBool>0 then prsRoot++(head tz3)++(show tzInt)++"."++(
     tz2 = map (\c -> if c=='.' then ' '; else c);
     tz3 = words (tz2 (map chr tz1));
     tzInt = if tzBool==0 then 1
-            else if (read tzExp)<7 then (read tzExp)+1
+            else if (read tzExp)<9 then (read tzExp)+1
             else 1 ;
 
 
