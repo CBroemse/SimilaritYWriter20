@@ -26,7 +26,7 @@ function setup() {
 }
 
 function draw() {
-	background(0,0,100)
+	background(7)
 	
 	strokeWeight(0.5)
 	stroke(0)
@@ -46,6 +46,9 @@ function draw() {
 		for(var z = balance(-1*lim); z < balance(lim)+space; z+=space){
 			if(equation.length == 1){
 				plotEquation(equation, x, z)
+			}
+			else if(equation.length == 5){
+				plotPunkt(equation, x, z)
 			}
 			else{
 				plotEllipse(equation, x, z)
