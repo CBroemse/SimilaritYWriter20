@@ -63,6 +63,32 @@ function plotEllipse(string, x, z) {
 		}
 	}
 }
+function plotPolyline(string, x, z) {
+	string1 = string[0]
+	string2 = string[1]
+	if(Math.abs(x) <= 25 && Math.abs(z) <= 25){
+		for(var y = -10; y < 10; y += 0.2){
+			if(Math.abs(eval(string1)-eval(string2)) <= 2){
+				plotX = (x*w)
+				plotY = (y*yw*-1)
+				plotZ = (z*w)
+				//cArray.push([x,y,z])
+				col = map(dist(0,0,0,plotX,plotY,plotZ), 0, 1, 0, 1)
+				stroke(col, 10, 10)
+			 
+				push()
+				translate(plotX, plotY, plotZ)
+				sphere(1)
+				pop()
+				push()
+				translate(plotX+200, plotY+200, plotZ)
+				sphere(1)
+				pop()
+				
+			}
+		}
+	}
+}
 function plotPunkt(string, x, z) {
 	string1 = string[0]
 	string2 = string[1]
