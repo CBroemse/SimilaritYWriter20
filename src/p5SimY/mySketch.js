@@ -6,7 +6,7 @@ function setup() {
 	
 	axes = 60*4
 	lim = 30
-	yw = 0.1
+	yw = 3.0
 	space = 1.5
 	size = space
 	
@@ -14,7 +14,7 @@ function setup() {
 	
 	rev = 1
 	
-	equation = "y = x^2 + z^2"
+	equation = "0.2*(y-1)^2 = -0.3*(x-1)^2 - 0.3*(z-1)^2 + 15"
 	addButtons()
 	equation = cleanEquation(equation)
 	
