@@ -14,7 +14,7 @@ function setup() {
 	
 	rev = 1
 	
-	equation = "y^x*y =x+y+z"
+	equation = "y*(y-1)^y = -0.3*(x-1)^2 - 0.3*(z-1)^2 + 15"
 	addButtons()
 	equation = cleanEquation(equation)
 	
@@ -48,8 +48,12 @@ function draw() {
 				plotEquation(equation, x, z)
 			}
                         else if(equation.length == 2){
+				plotEllipse(equation, x, z)
+                        }
+			else if(equation.length == 3){
 				plotPunkt(equation, x, z)
                         }
+			
 			else{
 				plotEllipse(equation, x, z)
 			}
