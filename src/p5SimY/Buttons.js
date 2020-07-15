@@ -18,19 +18,17 @@ function addButtons() {
 	labelYw.position(30, 150)
 	inputYw = createInput();
 	inputYw.size(60, 20)
-	inputYw.value(1.0)
+	inputYw.value(0.1)
 	inputYw.position(30, 175);
 	inputYw.input(function() {
 		yw = inputYw.value()
-		
 	})
 
 
 	examples = {
 		"y = x^2 + z^2": 0.1,
 		"y = x^2 * z^2": 0.0002,
-                "0.6711409395973155*x =1.05062082139446*y+10.52123552123552*z": 7,
-		"x*y*z = sin(x+z)": 10,
+		"y = sin(x+z)": 10,
 		"y = log(x^2 + z^2)": 15,
 		"y = e^(x*z)": 1,
 		"y = (sin(x*4))*(cos(201*(z*4) + (fc/10)))": 20,

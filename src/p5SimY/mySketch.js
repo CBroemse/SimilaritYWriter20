@@ -4,7 +4,7 @@ function setup() {
 	cam = createEasyCam()
 	background(0,0,100);
 	
-	axes = 60*1
+	axes = 60*4
 	lim = 30
 	yw = 0.1
 	space = 1.5
@@ -14,7 +14,7 @@ function setup() {
 	
 	rev = 1
 	
-	equation = "y*(y-1)^y = -0.3*(x-1)^2 - 0.3*(z-1)^2 + 15"
+	equation = "y = x^2 + z^2"
 	addButtons()
 	equation = cleanEquation(equation)
 	
@@ -26,12 +26,12 @@ function setup() {
 }
 
 function draw() {
-	background(7)
+	background(0,0,100)
 	
 	strokeWeight(0.5)
 	stroke(0)
 	fill(0)
-	ambientMaterial(190, 100, 100)
+	ambientMaterial(240, 100, 100)
 	box(axes, 3, 3)
 	ambientMaterial(120, 100, 100)
 	box(3, axes, 3)
@@ -47,13 +47,6 @@ function draw() {
 			if(equation.length == 1){
 				plotEquation(equation, x, z)
 			}
-                        else if(equation.length == 2){
-				plotEllipse(equation, x, z)
-                        }
-			else if(equation.length == 3){
-				plotPunkt(equation, x, z)
-                        }
-			
 			else{
 				plotEllipse(equation, x, z)
 			}
