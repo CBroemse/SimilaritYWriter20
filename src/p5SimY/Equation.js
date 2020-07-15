@@ -55,11 +55,11 @@ function plotEllipse(string, x, z) {
 				sphere(1)
 				pop()
 				
-				
 			}
 		}
 	}
 }
+
 function plotPunkt(string, x, z) {
 	string1 = string[0]
 	string2 = string[1]
@@ -70,23 +70,21 @@ function plotPunkt(string, x, z) {
 				plotY = (y*yw*-1)
 				plotZ = (z*w)
 				//cArray.push([x,y,z])
-				col = map(dist(0,0,0,plotX,plotY,plotZ), 0, 250, 0, 360)
-				stroke(col, 3, 3)
+				col = map(dist(0,0,0,plotX,plotY,plotZ), 0, 0, 0, 60)
+				stroke(col, 5, 5)
 			 
 				push()
 				translate(plotX, plotY, plotZ)
 				sphere(1)
 				pop()
 				push()
-				translate(plotX+100, plotY+50, plotZ)
+				translate(plotX+100, plotY+100, plotZ)
 				sphere(1)
 				pop()
-				
 			}
 		}
 	}
 }
-
 function plotEquation(string, x, z) {
 	string1 = string[0]
 	if(string){
