@@ -50,6 +50,9 @@ function draw() {
 			else if(equation.length == 5){
 				plotPunkt(equation, x, z)
 			}
+			else if(equation.length == 6){
+				plotPolyline(equation, x, z)
+			}
 			else{
 				plotEllipse(equation, x, z)
 			}
