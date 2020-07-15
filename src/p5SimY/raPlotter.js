@@ -100,7 +100,7 @@ if(Math.abs(x) <= 25 && Math.abs(z) <= 25){
                    plotY = (y*yw*-1)
                    plotZ = (z*w)
                    //cArray.push([x,y,z])
-                   col = map(dist(0,0,0,plotX,plotY,plotZ), 0, 250, 0,360)
+                   col = map(dist(0,0,0,plotX,plotY,plotZ), 0, 50, 0,60)
                    stroke(col, 5, 5)
 push()
 translate(plotX +0.6711409395973155, plotY +1.0506208213944603, plotZ +10.521235521235521)
