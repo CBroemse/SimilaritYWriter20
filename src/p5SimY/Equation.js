@@ -54,6 +54,42 @@ function plotEllipse(string, x, z) {
 				translate(plotX, plotY, plotZ)
 				sphere(1)
 				pop()
+				push()
+				translate(plotX+200, plotY+200, plotZ)
+				sphere(1)
+				pop()
+				
+			}
+		}
+	}
+}
+function plotPunkt(string, x, z) {
+	string1 = string[0]
+	string2 = string[1]
+	if(Math.abs(x) <= 25 && Math.abs(z) <= 25){
+		for(var y = -10; y < 10; y += 0.2){
+			if(Math.abs(eval(string1)-eval(string2)) <= 2){
+				plotX = (x*w)
+				plotY = (y*yw*-1)
+				plotZ = (z*w)
+				//cArray.push([x,y,z])
+				col = map(dist(0,0,0,plotX,plotY,plotZ), 0, 250, 0, 360)
+				stroke(col, 100, 100)
+			 
+				push()
+                                translate(plotX +0.6711409395973155, plotY +1.0506208213944603, plotZ +10.521235521235521)
+                                sphere(1)
+                                pop()
+
+                                push() 
+                                translate(plotX +0.45955882352941174, plotY +2.5089605734767026, plotZ +10.56985294117647)
+                                sphere(1)
+                                pop()
+
+                                push()
+                                translate(plotX +0.0, plotY +5.892700087950748, plotZ +7.009345794392524)
+                                sphere(1)
+                                pop()
 				
 			}
 		}
