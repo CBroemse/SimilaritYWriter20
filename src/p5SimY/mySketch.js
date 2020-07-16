@@ -35,7 +35,7 @@ function draw() {
 	box(axes, 3, 3)
 	ambientMaterial(120, 100, 100)
 	box(3, axes, 3)
-	ambientMaterial(360, 100, 100)
+	ambientMaterial(490, 100, 100)
 	box(3, 3, axes)
 	
 	noFill()
