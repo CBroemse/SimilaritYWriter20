@@ -2,7 +2,7 @@ function addButtons() {
 	input = createInput();
 	input.size(200, 40)
 	input.value(equation)
-	input.position(width / 2 - input.width / 2, height - 200);
+	input.position(width / 2 - input.width / 2, height - 400);
 	
 	
 	//labelSpace = createDiv("Number of boxes")
