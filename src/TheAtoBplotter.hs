@@ -685,7 +685,32 @@ defSearchRAW offOn target plot addGh ghAdd pV1 pV2 pV3 pV4 pV5 pV6 ptc0Len ptc3L
                                     substituteAlt = [(nub(ptc4 10)),(nub(ptc4 25)),(nub(ptc4 50)),(nub(ptc4 75)),(nub(ptc4 84)),(nub(ptc4 100))]; -- similar to above
                                     subA = head (ausw 1 substituteAlt);
                                     thebase beat = G.foraPlot beat;
-                          raplot         
+                          raplot 
+                          let sEEnplot = do
+                                      godPlot <- forM [1..(length subA)] (\fa -> do
+                                           let drinks = (concat (ausw fa subA)) -- e.g [[93.72586872586874,94.02573529411764,3.0303030303030303]]
+                                           let xs = head drinks;
+                                           let ys = head$ausw 2 drinks;
+                                           let zs = last drinks;
+                                           let foSeen = ("        seen.P("++show xs++","++show ys++","++show zs++")")
+                                           return (foSeen)) 
+                                      return (godPlot)
+                                      buildSeen <- readFile "p5SimY/seenJs/simiYValsBuildRAW.txt"
+                                      let seenHeader = (take 118 (lines buildSeen))
+                                      let seenTail = (drop 122 (take 188 (lines buildSeen)))
+                                      let target l = show (head (ausw l(head (ausw 1 (subA)))))
+                                      let focusScreen = (lines ("      ], seen.P("++ target 1 ++","++ target 2++","++target 3++"))\n")) 
+                                      let zipdataJs = ((seenHeader) ++ godPlot ++ focusScreen ++ (seenTail))
+                                     
+                                      --make pointcloud in seen.js and plot it
+                                      writeFile "p5SimY/seenJs/simiYVals.html" (unlines zipdataJs)
+                                      putStrLn "wrote p5SimYs/seenJs/simiYVals.html"
+                                      --return(makRaport)
+                                where
+                                    substituteAlt = [(nub(ptc4 10)),(nub(ptc4 25)),(nub(ptc4 50)),(nub(ptc4 75)),(nub(ptc4 84)),(nub(ptc4 100))]; -- similar to above
+                                    subA = head (ausw 1 substituteAlt);
+                                    thebase beat = G.foraPlot beat;
+                          sEEnplot         
                           let df =  (G.fobase progVar1 progVar2 progVar3 progVar4 progVar5 progVar6 daZip1 daZip2 daZip3 textAA (ptcButoons) (foalt))
                           let fobase = let slc e r = unwords$last (ausw e r) 
                                 in let slcT e = unwords(ausw e (concat (ptcButoons)))

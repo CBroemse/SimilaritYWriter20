@@ -308,3 +308,10 @@ screenInfo info1 r =
             "</div>\n"++        
             "</div>\n\n")
 
+
+
+------------------------------------------------
+--write to Seen.Js
+foSeenPlot olSeen = let onLineSeen = olSeen
+                    in ("seen.P("++show (head olSeen)++","++show(head(ausw 2 olSeen))++","++show (last olSeen)++")\n")
+
