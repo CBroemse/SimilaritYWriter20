@@ -41,7 +41,7 @@
     </div>
 
     
-    <canvas width="300" height="500" id="seen-canvas"></canvas>
+    <canvas width="900" height="500" id="seen-canvas"></canvas>
     
 
     <div class="caption">
@@ -53,7 +53,7 @@
     
 <script src="lib/StackBlur.js"></script>
 <script type="text/coffeescript" id="code">
-  width        = 300
+  width        = 900
   height       = 500
   shapeCount   = 4
   dofEnabled   = false
@@ -116,29 +116,59 @@
   # Generate shapes for the scene
   generateShape = ->
     shape = seen.Shapes.extrude([
-        seen.P(0.6711409395973155,1.0506208213944603,10.521235521235521)
-        seen.P(0.45955882352941174,2.5089605734767026,10.56985294117647)
-        seen.P(0.0,5.892700087950748,7.009345794392524)
-        seen.P(3.4834324553950724,9.17587085811385,17.07731520815633)
-        seen.P(1.621160409556314,1.706484641638225,16.296928327645052)
-        seen.P(0.7130124777183601,1.9366197183098592,21.095152603231597)
-        seen.P(0.3524229074889868,5.906821963394343,18.47922192749779)
-        seen.P(2.723404255319149,12.76595744680851,13.957446808510639)
-        seen.P(9.216589861751152e-2,8.67003367003367,9.76958525345622)
-        seen.P(0.1855287569573284,4.601769911504425,9.183673469387756)
-      ], seen.P(0.6711409395973155,1.0506208213944603,10.521235521235521))
-     .scale(8)
+function plotPunktNu(string, x, z) {
+string1 = string[0]
+string2 = string[1]
+if(Math.abs(x) <= 25 && Math.abs(z) <= 25){
+   for(var y = -10; y < 10; y += 0.2){
+         if(Math.abs(eval(string1)-eval(string2)) <= 2){
+                   plotX = (x*w)
+                   plotY = (y*yw*-1)
+                   plotZ = (z*w)
+                   //cArray.push([x,y,z])
+                   col = map(dist(0,0,0,plotX,plotY,plotZ), 0, 250, 0,360)
+                   stroke(col, 5, 5)
+                   seen.P(0.6711409395973155,1.0506208213944603,10.521235521235521)
+
+                   seen.P(0.45955882352941174,2.5089605734767026,10.56985294117647)
+
+                   seen.P(0.0,5.892700087950748,7.009345794392524)
+
+                   seen.P(3.4834324553950724,9.17587085811385,17.07731520815633)
+
+                   seen.P(1.621160409556314,1.706484641638225,16.296928327645052)
+
+                   seen.P(0.7130124777183601,1.9366197183098592,21.095152603231597)
+
+                   seen.P(0.3524229074889868,5.906821963394343,18.47922192749779)
+
+                   seen.P(2.723404255319149,12.76595744680851,13.957446808510639)
+
+                   seen.P(9.216589861751152e-2,8.67003367003367,9.76958525345622)
+
+                   seen.P(0.1855287569573284,4.601769911504425,9.183673469387756)
+
+
+
+                 }
+              }
+            }
+         }
+
+
+      ], seen.P(0, 0, 0)) 
+     .scale(40)
      .bake()
-    shape.fill new seen.Material seen.Colors.hsl(0, 1, 0.6)
+    shape.fill new seen.Material seen.Colors.hsl(0, 0, Math.random())
     shape.eachSurface (s) -> s.painter = dofPainter
     return shape
 
   generateFocalShape = ->
     shape = seen.Shapes.unitcube()
       .scale(1, 4, 1)
-      .scale(4)
+      .scale(40)
       .bake()
-    shape.fill new seen.Material seen.Colors.hsl(0, 1, 7)
+    shape.fill new seen.Material seen.Colors.hsl(0, 1, 0.5)
     shape.eachSurface (s) -> s.painter = dofPainter
     return shape
 
@@ -156,14 +186,13 @@
 
   # Create render context from canvas
   context = seen.Context('seen-canvas')
-    .layer(new seen.FillLayer(width, height, '#000000'))
+    .layer(new seen.FillLayer(width, height, '#DDDDDD'))
     .sceneLayer(scene)
     .render()
 
   # Drag to rotate. Disable DoF while rotating
   dragger = new seen.Drag('seen-canvas', {inertia : true})
   .on('drag.rotate', (e) ->
-    group.rotz(e.offsetRelative[0]*1e-2)
     group.roty(e.offsetRelative[0]*1e-2)
     context.render()
   )
