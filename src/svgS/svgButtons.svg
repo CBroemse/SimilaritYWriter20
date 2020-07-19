@@ -328,8 +328,8 @@ functin clicked(evt)
         />
      <rect
        class="room"
-       y="891"
-       x="-896.99988"
+       y="691"
+       x="-696.99988"
        height="123"
        width="94"
        id="rect3877"
