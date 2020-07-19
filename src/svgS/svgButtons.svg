@@ -47,8 +47,8 @@ prepprogrammed</text>
 <style
      id="style4">
         .room{
-            fill:       red;
-            fill-opacity:0.2;
+            fill:       lime;
+            fill-opacity:0.3;
             stroke:     #999;
             stroke-width:   3;
             stroke-color:   blue;
