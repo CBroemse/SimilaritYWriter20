@@ -1,0 +1,135 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xml="http://www.w3.org/XML/1998/namespace" xmlns:xlink="http://www.w3.org/1999/xlink" id="root" xml:space="preserve" width="300" height="800" onload="OnLoadEvent(evt)">
+
+<script><![CDATA[
+
+
+}
+var click = false; object=""
+var x_obj = 0, y_obj = 0,x_trans = 0,y_tans = 0
+
+functin clicked(evt)
+{
+   click = true
+   object = 
+]]></script>
+<script>
+
+function changeFill() {
+    document.getElementById("hexagon").style.fill = "rgb(" + Math.floor(255 * Math.random()) + ", " + Math.floor(255 * Math.random()) + ", " + Math.floor(255 * Math.random()) + ")";
+}
+
+</script>
+<text x="80" fill="green" y="10">content</text>
+<text x="80" y="50" fill="lime">intro</text>
+<text x="80" y="100" fill="white">Haskell</text>
+<text x="80" y="150" fill="yellow">four lines of thought</text>
+<text x="100" y="170" fill ="yellow">StepI</text>
+<text x="100" y="190" class="intro" >StepII</text>
+
+<text x="100" y="210" class="intro">StepIII</text>
+<text x="100" y="230" class="intro">StepIV</text>
+<text x="80" y="300" class="intro">Abstract an overview</text>
+<text x="80" y="350" class="intro">'k5TestArmTest'</text>
+
+<text x="80" y="430" class="intro"> how things are compared</text>
+<text x="100" y="450" class="intro">What are 'progVars'?</text>
+<text x="80" y="500" class="intro">'runKBASE' the main function</text>
+<text x="80" y="580" class="intro">write htmls</text>
+<text x="80" y="650" class="intro">fun experiment01 </text>
+<text x="80" y="720" class="intro">MQ functions</text>
+
+<rect id="go" x="20" y="20" width="300" height="750" style="fill:green;fill-opacity:0.2"/>
+
+<g>
+<text x="20" y="20" font-size="10"></text>
+
+</g>
+
+<g>
+
+
+
+
+</g>
+
+<style
+     id="style4">
+        room{
+            fill:       lime;
+            fill-opacity:0.4;
+            stroke:     #999;
+            stroke-width:   3;
+            stroke-color:   blue;
+        }
+        .room:hover{
+            fill:       red;
+            fill-opacity:0.5;
+        }
+        .hexa{
+            fill:       blue;
+            fill-opacity:0.4;
+            stroke:     #999;
+            stroke-width:   2;
+        }
+        .hexa:hover{
+            fill:       lightblue;
+            fill-opacity:0.4;
+        }
+        .intro{
+            fill:       blue;
+            fill-opacity:0.4;
+            stroke:     #999;
+            stroke-width:   2;
+        }
+        .hexa:intro{
+            fill:       lightblue;
+            fill-opacity:0.4;
+        }
+    </style>
+ <g transform="translate(0,10)">
+ <g transform="translate(40,20)">
+<polyline id="hexagon" points="87,0 174,50 174,150 87,200 0,150 0,50 87,0" class="hexa" onclick="changeFill()"/>
+<animateTransform attributeName="transform" attributeType="XML" type="scale" from="1" to="0.2" additive="sum" begin="0.1s" dur="0.1s" fill="freeze"/> 
+</g>
+<g transform="translate(48,70)">
+<polyline id="hexagon" points="87,0 174,50 174,150 87,200 0,150 0,50 87,0" class="room" onclick="changeFill()"/>
+<animateTransform attributeName="transform" attributeType="XML" type="scale" from="0.3" to="0.1" additive="sum" begin="0.1s" dur="0.1s" fill="freeze"/> 
+</g>
+<g transform="translate(48,130)">
+<polyline points="87,0 174,50 174,150 87,200 0,150 0,50 87,0" class="hexa" onclick="changeFill()"/>
+<animateTransform attributeName="transform" attributeType="XML" type="scale" from="0.3" to="0.1" additive="sum" begin="0.1s" dur="0.1s" fill="freeze"/> 
+</g>
+<g transform="translate(48,270)">
+<polyline id="hexagon" points="87,0 174,50 174,150 87,200 0,150 0,50 87,0" class="hexa" onclick="changeFill()"/>
+<animateTransform attributeName="transform" attributeType="XML" type="scale" from="0.3" to="0.1" additive="sum" begin="0.1s" dur="0.1s" fill="freeze"/> 
+</g>
+<g transform="translate(48,325)">
+<polyline id="hexagon" points="87,0 174,50 174,150 87,200 0,150 0,50 87,0" class="hexa" onclick="changeFill()"/>
+<animateTransform attributeName="transform" attributeType="XML" type="scale" from="0.3" to="0.1" additive="sum" begin="0.1s" dur="0.1s" fill="freeze"/> 
+</g>
+<g transform="translate(40,400)">
+<polyline id="hexagon" points="87,0 174,50 174,150 87,200 0,150 0,50 87,0" class="hexa" onclick="changeFill()"/>
+<animateTransform attributeName="transform" attributeType="XML" type="scale" from="0.3" to="0.1" additive="sum" begin="0.1s" dur="0.1s" fill="freeze"/> 
+</g>
+<g transform="translate(40,480)">
+<polyline id="hexagon" points="87,0 174,50 174,150 87,200 0,150 0,50 87,0" class="room" onclick="changeFill()"/>
+<animateTransform attributeName="transform" attributeType="XML" type="scale" from="0.3" to="0.1" additive="sum" begin="0.1s" dur="0.1s" fill="freeze"/> 
+</g>
+<g transform="translate(40,560)">
+<polyline id="hexagon" points="87,0 174,50 174,150 87,200 0,150 0,50 87,0" class="room" onclick="changeFill()"/>
+<animateTransform attributeName="transform" attributeType="XML" type="scale" from="0.3" to="0.1" additive="sum" begin="0.1s" dur="0.1s" fill="freeze"/> 
+</g>
+<g transform="translate(40,620)">
+<polyline id="hexagon" points="87,0 174,50 174,150 87,200 0,150 0,50 87,0" class="hexa" onclick="changeFill()"/>
+<animateTransform attributeName="transform" attributeType="XML" type="scale" from="0.3" to="0.1" additive="sum" begin="0.1s" dur="0.1s" fill="freeze"/> 
+</g>
+<g transform="translate(40,700)">
+<polyline id="hexagon" points="87,0 174,50 174,150 87,200 0,150 0,50 87,0" class="hexa" onclick="changeFill()"/>
+<animateTransform attributeName="transform" attributeType="XML" type="scale" from="0.3" to="0.1" additive="sum" begin="0.1s" dur="0.1s" fill="freeze"/> 
+</g>
+</g>
+ 
+
+</svg>
+
+
