@@ -2,6 +2,7 @@
 
 <script><![CDATA[
 
+
 }
 var click = false; object=""
 var x_obj = 0, y_obj = 0,x_trans = 0,y_tans = 0
@@ -45,7 +46,7 @@ prepprogrammed</text>
             fill-opacity:0.4;
             stroke:     #999;
             stroke-width:   3;
-            stroke-color: blue;
+            stroke-color:   blue;
         }
         .room:hover{
             fill:       red;
@@ -110,33 +111,41 @@ prepprogrammed</text>
 
     <polyline id="hexagon" points="87,0 174,50 174,150 87,200 0,150 0,50 87,0" class="room" onclick="changeFill()"/>
      
-    <g transform="translate(100,900)">
-<polyline id="hexagon" points="87,0 174,50 174,150 87,200 0,150 0,50 87,0" class="room" onclick="changeFill()"/>
-<animateTransform attributeName="transform" attributeType="XML" type="scale" from="0.1" to="0.8" additive="sum" begin="0.1s" dur="0.1s" fill="freeze"/> 
+    <g transform="translate(-130,700)">
+ <g transform="translate(100,260)">
+<polyline id="hexagon" points="87,0 174,50 174,150 87,200 0,150 0,50 87,0" class="hexa" onclick="changeFill()"/>
+<animateTransform attributeName="transform" attributeType="XML" type="scale" from="1" to="0.4" additive="sum" begin="0.1s" dur="0.1s" fill="freeze"/> 
 </g>
-    <g transform="translate(130,900)">
+<g transform="translate(160,260)">
+<polyline id="hexagon" points="87,0 174,50 174,150 87,200 0,150 0,50 87,0" class="room" onclick="changeFill()"/>
+<animateTransform attributeName="transform" attributeType="XML" type="scale" from="1" to="0.4" additive="sum" begin="0.1s" dur="0.1s" fill="freeze"/> 
+</g>
+<g transform="translate(210,260)">
 <polyline points="87,0 174,50 174,150 87,200 0,150 0,50 87,0" class="hexa" onclick="changeFill()"/>
-<animateTransform attributeName="transform" attributeType="XML" type="scale" from="0.1" to="0.8" additive="sum" begin="0.1s" dur="0.1s" fill="freeze"/> 
-</g> 
-    <g transform="translate(190,930)">
-<polyline id="hexagon" points="87,0 174,50 174,150 87,200 0,150 0,50 87,0" class="room" onclick="changeFill()"/>
-<animateTransform attributeName="transform" attributeType="XML" type="scale" from="0.1" to="0.8" additive="sum" begin="0.1s" dur="0.1s" fill="freeze"/> 
+<animateTransform attributeName="transform" attributeType="XML" type="scale" from="1" to="0.4" additive="sum" begin="0.1s" dur="0.1s" fill="freeze"/> 
 </g>
-    <g transform="translate(115,930)">
-<polyline id="hexagon" points="87,0 174,50 174,150 87,200 0,150 0,50 87,0" class="room" onclick="changeFill()"/>
-<animateTransform attributeName="transform" attributeType="XML" type="scale" from="0.1" to="0.8" additive="sum" begin="0.1s" dur="0.1s" fill="freeze"/> 
+<g transform="translate(270,260)">
+<polyline id="hexagon" points="87,0 174,50 174,150 87,200 0,150 0,50 87,0" class="hexa" onclick="changeFill()"/>
+<animateTransform attributeName="transform" attributeType="XML" type="scale" from="1" to="0.4" additive="sum" begin="0.1s" dur="0.1s" fill="freeze"/> 
 </g>
-    <g transform="translate(145,930)">
-<polyline id="hexagon" points="87,0 174,50 174,150 87,200 0,150 0,50 87,0" class="room" onclick="changeFill()"/>
-<animateTransform attributeName="transform" attributeType="XML" type="scale" from="0.1" to="0.8" additive="sum" begin="0.1s" dur="0.1s" fill="freeze"/> 
+<g transform="translate(280,260)">
+<polyline id="hexagon" points="87,0 174,50 174,150 87,200 0,150 0,50 87,0" class="hexa" onclick="changeFill()"/>
+<animateTransform attributeName="transform" attributeType="XML" type="scale" from="1" to="0.4" additive="sum" begin="0.1s" dur="0.1s" fill="freeze"/> 
 </g>
-    <g transform="translate(130,960)">
-<polyline id="hexagon" points="87,0 174,50 174,150 87,200 0,150 0,50 87,0" class="room" onclick="changeFill()"/>
-<animateTransform attributeName="transform" attributeType="XML" type="scale" from="0.1" to="0.8" additive="sum" begin="0.1s" dur="0.1s" fill="freeze"/> 
+<g transform="translate(175,230)">
+<polyline id="hexagon" points="87,0 174,50 174,150 87,200 0,150 0,50 87,0" class="hexa" onclick="changeFill()"/>
+<animateTransform attributeName="transform" attributeType="XML" type="scale" from="1" to="0.4" additive="sum" begin="0.1s" dur="0.1s" fill="freeze"/> 
 </g>
-    <g transform="translate(160, 960)">
+<g transform="translate(205,200)">
 <polyline id="hexagon" points="87,0 174,50 174,150 87,200 0,150 0,50 87,0" class="room" onclick="changeFill()"/>
-<animateTransform attributeName="transform" attributeType="XML" type="scale" from="0.1" to="0.8" additive="sum" begin="0.1s" dur="0.1s" fill="freeze"/> 
+<animateTransform attributeName="transform" attributeType="XML" type="scale" from="1" to="0.4" additive="sum" begin="0.1s" dur="0.1s" fill="freeze"/> 
+</g>
+<g transform="translate(265,200)">
+<polyline id="hexagon" points="87,0 174,50 174,150 87,200 0,150 0,50 87,0" class="room" onclick="changeFill()"/>
+<animateTransform attributeName="transform" attributeType="XML" type="scale" from="1" to="0.4" additive="sum" begin="0.1s" dur="0.1s" fill="freeze"/> 
+</g>
+
+
 </g>
     <rect
        class="room"
@@ -152,7 +161,29 @@ prepprogrammed</text>
        height="123"
        width="94"
        />
-     <ellipse cx="-316" cy="715" rx="30" ry="12" stroke="black" stroke-width="2px" style="fill:blue">
+
+<ellipse cx="-316" cy="715" rx="280" ry="4" stroke="black" stroke-width="2px" style="fill:red">
+<animateColor attributeName="fill" attributeType="CSS" from="blue" to="lime" begin="0.1s" dur="1s"  repeatCount="indefinite" />
+      <animateTransform attributeName="transform" attributeType="XML" type="rotate" from="0" to="45" begin="0.1s" dur="0.1s" fill="freeze"/> 
+      <animateMotion path="M  0 0 L 680 690" begin="0.1s" dur="0.3s" fill="freeze"/>
+</ellipse>
+<ellipse cx="340" cy="655" rx="280" ry="4" stroke="black" stroke-width="2px" style="fill:red">
+<animateColor attributeName="fill" attributeType="CSS" from="blue" to="lime" begin="0.1s" dur="1s"  repeatCount="indefinite" />
+      <animateTransform attributeName="transform" attributeType="XML" type="rotate" from="0" to="45" begin="0.1s" dur="0.1s" fill="freeze"/> 
+      <animateMotion path="M  0 0 L 280 290" begin="0.1s" dur="0.3s" fill="freeze"/>
+</ellipse>
+
+      <ellipse cx="-430" cy="380" rx="30" ry="12" stroke="black" stroke-width="2px" style="fill:blue">
+      </ellipse>
+     <ellipse cx="-316" cy="715" rx="280" ry="4" stroke="black" stroke-width="2px" style="fill:red">
+<animateColor attributeName="fill" attributeType="CSS" from="blue" to="lime" begin="0.1s" dur="1s"  repeatCount="indefinite" />
+      <animateTransform attributeName="transform" attributeType="XML" type="rotate" from="0" to="45" begin="0.1s" dur="0.1s" fill="freeze"/> 
+      <animateMotion path="M  0 0 L 480 290" begin="0.1s" dur="0.3s" fill="freeze"/>
+</ellipse>
+     <ellipse cx="-248" cy="785" rx="30" ry="12" stroke="black" stroke-width="2px" style="fill:purple">
+<animateColor attributeName="fill" attributeType="CSS" from="blue" to="lime" begin="1s" dur="6s"  repeatCount="indefinite" />
+</ellipse>
+    <ellipse cx="-148" cy="785" rx="30" ry="12" stroke="black" stroke-width="2px" style="fill:purple">
 <animateColor attributeName="fill" attributeType="CSS" from="blue" to="lime" begin="1s" dur="6s"  repeatCount="indefinite" />
 </ellipse>
     <rect
