@@ -47,7 +47,7 @@ prepprogrammed</text>
 <style
      id="style4">
         .room{
-            fill:       lightred;
+            fill:       red;
             fill-opacity:0.2;
             stroke:     #999;
             stroke-width:   3;
@@ -59,7 +59,7 @@ prepprogrammed</text>
         }
         .hexa{
             fill:       blue;
-            fill-opacity:0.1;
+            fill-opacity:0.4;
             stroke:     #999;
             stroke-width:   2;
         }
