@@ -22,7 +22,7 @@ functin clicked(evt)
 
 <text x="50" y="350">Test animation</text>
 
-<rect id="go" x="40" y="290" width="200" height="300" style="fill:green;fill-opacity:0.2"/>
+<rect id="go" x="40" y="290" width="200" height="600" style="fill:green;fill-opacity:0.2"/>
 
 
 <text x="20" y="480" font-size="15">Click on circle or rectangle and move it button pressed</text>
@@ -39,7 +39,7 @@ functin clicked(evt)
 <style
      id="style4">
         .room{
-            fill:       red;
+            fill:       bue;
             fill-opacity:0.2;
             stroke:     #999;
             stroke-width:   2;
@@ -72,7 +72,7 @@ functin clicked(evt)
        height="123"
        width="94"
        />
-     <ellipse cx="-316" cy="715" rx="30" ry="12" stroke="black" stroke-width="2px" style="fill:blue">
+     <ellipse cx="-316" cy="715" rx="60" ry="12" stroke="black" stroke-width="2px" style="fill:blue">
 <animateColor attributeName="fill" attributeType="CSS" from="blue" to="lime" begin="1s" dur="6s"  repeatCount="indefinite" />
 </ellipse>
     <rect
@@ -326,6 +326,16 @@ functin clicked(evt)
        width="94"
        id="rect3877"
         />
+     <rect
+       class="room"
+       y="91"
+       x="-496.99988"
+       height="123"
+       width="94"
+       id="rect3877"
+        />
+     
+     
   </g>
 
 </svg>
