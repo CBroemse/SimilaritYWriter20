@@ -335,7 +335,14 @@ functin clicked(evt)
        id="rect3877"
         />
      
-     
+     <rect
+       class="room"
+       y="968"
+       x="192.99988"
+       height="123"
+       width="94"
+       id="rect3877"
+        />
   </g>
 
 </svg>
