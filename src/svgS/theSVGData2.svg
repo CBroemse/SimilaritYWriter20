@@ -1,0 +1,494 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+"http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+
+<svg width="100%" height="100%" version="1.1"
+xmlns="http://www.w3.org/2000/svg">
+
+<rect id="rec2" x="40" y="10" width="30" height="30" style="fill:darkgray">
+</rect>
+<ellipse id="2" cx="55" cy="10" rx="9" ry="12" stroke="black" stroke-width="2px" style="fill:green">
+<animateColor attributeName="fill" attributeType="CSS" from="blue" to="lime" begin="1s" dur="6s"  repeatCount="indefinite" />
+</ellipse>
+
+<rect id="rec4" x="70" y="11" width="30" height="30" style="fill:lime">
+
+<animateColor attributeName="fill" attributeType="CSS" from="lime" to="red" begin="1s" dur="5s"  repeatCount="indefinite" />
+    <set attributeName="fill" attributeType="CSS" from="lime" to="lime" begin="5" dur="10s"  repeatCount="repeat" />
+    <set attributeName="fill" attributeType="CSS" from="lime" to="lime" begin="10" dur="15s"  fill="repeat" />
+</rect>
+
+<rect id="rec3" x="105" y="10" width="30" height="30" style="fill:lime">
+
+<animateColor attributeName="fill" attributeType="CSS" from="lime" to="red" begin="1s" dur="5s"  repeatCount="indefinite" />
+    <set attributeName="fill" attributeType="CSS" from="lime" to="lime" begin="5" dur="10s"  repeatCount="repeat" />
+    <set attributeName="fill" attributeType="CSS" from="lime" to="lime" begin="10" dur="15s"  fill="repeat" />
+</rect>
+<ellipse id="3" cx="55" cy="10" rx="9" ry="12" stroke="black" stroke-width="2px" style="fill:green">
+<animateColor attributeName="fill" attributeType="CSS" from="blue" to="lime" begin="1s" dur="6s"  repeatCount="indefinite" />
+</ellipse>
+
+<rect id="rec6" x="70" y="11" width="30" height="30" style="fill:lime">
+
+<animateColor attributeName="fill" attributeType="CSS" from="lime" to="red" begin="1s" dur="5s"  repeatCount="indefinite" />
+    <set attributeName="fill" attributeType="CSS" from="lime" to="lime" begin="5" dur="10s"  repeatCount="repeat" />
+    <set attributeName="fill" attributeType="CSS" from="lime" to="lime" begin="10" dur="15s"  fill="repeat" />
+</rect>
+
+<rect id="rec9" x="165" y="12" width="30" height="30" style="fill:darkgray">
+</rect>
+<ellipse id="9" cx="115" cy="12" rx="9" ry="12" stroke="black" stroke-width="2px" style="fill:green">
+<animateColor attributeName="fill" attributeType="CSS" from="blue" to="lime" begin="1s" dur="6s"  repeatCount="indefinite" />
+</ellipse>
+
+<rect id="rec4" x="105" y="10" width="30" height="30" style="fill:lime">
+
+<animateColor attributeName="fill" attributeType="CSS" from="lime" to="red" begin="1s" dur="5s"  repeatCount="indefinite" />
+    <set attributeName="fill" attributeType="CSS" from="lime" to="lime" begin="5" dur="10s"  repeatCount="repeat" />
+    <set attributeName="fill" attributeType="CSS" from="lime" to="lime" begin="10" dur="15s"  fill="repeat" />
+</rect>
+<ellipse id="4" cx="55" cy="10" rx="9" ry="12" stroke="black" stroke-width="2px" style="fill:green">
+<animateColor attributeName="fill" attributeType="CSS" from="blue" to="lime" begin="1s" dur="6s"  repeatCount="indefinite" />
+</ellipse>
+
+<rect id="rec8" x="135" y="11" width="30" height="30" style="fill:darkgray">
+</rect>
+<ellipse id="8" cx="85" cy="11" rx="9" ry="12" stroke="black" stroke-width="2px" style="fill:green">
+<animateColor attributeName="fill" attributeType="CSS" from="blue" to="lime" begin="1s" dur="6s"  repeatCount="indefinite" />
+</ellipse>
+
+<rect id="rec12" x="165" y="12" width="30" height="30" style="fill:lime">
+
+<animateColor attributeName="fill" attributeType="CSS" from="lime" to="red" begin="1s" dur="5s"  repeatCount="indefinite" />
+    <set attributeName="fill" attributeType="CSS" from="lime" to="lime" begin="5" dur="10s"  repeatCount="repeat" />
+    <set attributeName="fill" attributeType="CSS" from="lime" to="lime" begin="10" dur="15s"  fill="repeat" />
+</rect>
+<ellipse id="12" cx="115" cy="12" rx="9" ry="12" stroke="black" stroke-width="2px" style="fill:green">
+<animateColor attributeName="fill" attributeType="CSS" from="blue" to="lime" begin="1s" dur="6s"  repeatCount="indefinite" />
+</ellipse>
+
+<g> <rect id="rec16" x="205" y="13" width="30" height="30" style="fill:lime">
+
+<animateColor attributeName="fill" attributeType="CSS" from="lime" to="red" begin="1s" dur="5s"  repeatCount="indefinite" />
+    <set attributeName="fill" attributeType="CSS" from="lime" to="lime" begin="5" dur="10s"  repeatCount="repeat" />
+    <set attributeName="fill" attributeType="CSS" from="lime" to="lime" begin="10" dur="15s"  fill="repeat" />
+</rect>
+<ellipse id="16" cx="145" cy="13" rx="9" ry="12" stroke="black" stroke-width="2px" style="fill:green">
+<animateColor attributeName="fill" attributeType="CSS" from="blue" to="lime" begin="1s" dur="6s"  repeatCount="indefinite" />
+</ellipse>
+ </g>
+
+<rect id="rec16" x="295" y="13" width="30" height="30" style="fill:darkgray">
+</rect>
+<ellipse id="16" cx="145" cy="13" rx="9" ry="12" stroke="black" stroke-width="2px" style="fill:green">
+<animateColor attributeName="fill" attributeType="CSS" from="blue" to="lime" begin="1s" dur="6s"  repeatCount="indefinite" />
+</ellipse>
+
+<rect id="rec16" x="235" y="13" width="30" height="30" style="fill:lime">
+
+<animateColor attributeName="fill" attributeType="CSS" from="lime" to="red" begin="1s" dur="5s"  repeatCount="indefinite" />
+    <set attributeName="fill" attributeType="CSS" from="lime" to="lime" begin="5" dur="10s"  repeatCount="repeat" />
+    <set attributeName="fill" attributeType="CSS" from="lime" to="lime" begin="10" dur="15s"  fill="repeat" />
+</rect>
+<ellipse id="16" cx="145" cy="13" rx="9" ry="12" stroke="black" stroke-width="2px" style="fill:green">
+<animateColor attributeName="fill" attributeType="CSS" from="blue" to="lime" begin="1s" dur="6s"  repeatCount="indefinite" />
+</ellipse>
+
+<rect id="rec16" x="295" y="13" width="30" height="30" style="fill:darkgray">
+</rect>
+<ellipse id="16" cx="145" cy="13" rx="9" ry="12" stroke="black" stroke-width="2px" style="fill:green">
+<animateColor attributeName="fill" attributeType="CSS" from="blue" to="lime" begin="1s" dur="6s"  repeatCount="indefinite" />
+</ellipse>
+
+<g> <rect id="rec16" x="295" y="13" width="30" height="30" style="fill:lime">
+
+<animateColor attributeName="fill" attributeType="CSS" from="lime" to="red" begin="1s" dur="5s"  repeatCount="indefinite" />
+    <set attributeName="fill" attributeType="CSS" from="lime" to="lime" begin="5" dur="10s"  repeatCount="repeat" />
+    <set attributeName="fill" attributeType="CSS" from="lime" to="lime" begin="10" dur="15s"  fill="repeat" />
+</rect>
+<ellipse id="16" cx="145" cy="13" rx="9" ry="12" stroke="black" stroke-width="2px" style="fill:green">
+<animateColor attributeName="fill" attributeType="CSS" from="blue" to="lime" begin="1s" dur="6s"  repeatCount="indefinite" />
+</ellipse>
+ </g>
+
+<g transform="translate(100,0)">
+<rect id="rec16" x="130" y="13" width="30" height="30" style="fill:darkgray">
+</rect>
+
+ </g>
+
+<g> <rect id="rec20" x="235" y="14" width="30" height="30" style="fill:lime">
+
+<animateColor attributeName="fill" attributeType="CSS" from="lime" to="red" begin="1s" dur="5s"  repeatCount="indefinite" />
+    <set attributeName="fill" attributeType="CSS" from="lime" to="lime" begin="5" dur="10s"  repeatCount="repeat" />
+    <set attributeName="fill" attributeType="CSS" from="lime" to="lime" begin="10" dur="15s"  fill="repeat" />
+</rect>
+<ellipse id="20" cx="175" cy="14" rx="9" ry="12" stroke="black" stroke-width="2px" style="fill:green">
+<animateColor attributeName="fill" attributeType="CSS" from="blue" to="lime" begin="1s" dur="6s"  repeatCount="indefinite" />
+</ellipse>
+ </g>
+
+<rect id="rec20" x="325" y="14" width="30" height="30" style="fill:darkgray">
+</rect>
+<ellipse id="20" cx="175" cy="14" rx="9" ry="12" stroke="black" stroke-width="2px" style="fill:green">
+<animateColor attributeName="fill" attributeType="CSS" from="blue" to="lime" begin="1s" dur="6s"  repeatCount="indefinite" />
+</ellipse>
+
+<rect id="rec20" x="265" y="14" width="30" height="30" style="fill:lime">
+
+<animateColor attributeName="fill" attributeType="CSS" from="lime" to="red" begin="1s" dur="5s"  repeatCount="indefinite" />
+    <set attributeName="fill" attributeType="CSS" from="lime" to="lime" begin="5" dur="10s"  repeatCount="repeat" />
+    <set attributeName="fill" attributeType="CSS" from="lime" to="lime" begin="10" dur="15s"  fill="repeat" />
+</rect>
+<ellipse id="20" cx="175" cy="14" rx="9" ry="12" stroke="black" stroke-width="2px" style="fill:green">
+<animateColor attributeName="fill" attributeType="CSS" from="blue" to="lime" begin="1s" dur="6s"  repeatCount="indefinite" />
+</ellipse>
+
+<rect id="rec20" x="325" y="14" width="30" height="30" style="fill:darkgray">
+</rect>
+<ellipse id="20" cx="175" cy="14" rx="9" ry="12" stroke="black" stroke-width="2px" style="fill:green">
+<animateColor attributeName="fill" attributeType="CSS" from="blue" to="lime" begin="1s" dur="6s"  repeatCount="indefinite" />
+</ellipse>
+
+<g> <rect id="rec20" x="325" y="14" width="30" height="30" style="fill:lime">
+
+<animateColor attributeName="fill" attributeType="CSS" from="lime" to="red" begin="1s" dur="5s"  repeatCount="indefinite" />
+    <set attributeName="fill" attributeType="CSS" from="lime" to="lime" begin="5" dur="10s"  repeatCount="repeat" />
+    <set attributeName="fill" attributeType="CSS" from="lime" to="lime" begin="10" dur="15s"  fill="repeat" />
+</rect>
+<ellipse id="20" cx="175" cy="14" rx="9" ry="12" stroke="black" stroke-width="2px" style="fill:green">
+<animateColor attributeName="fill" attributeType="CSS" from="blue" to="lime" begin="1s" dur="6s"  repeatCount="indefinite" />
+</ellipse>
+ </g>
+
+<g transform="translate(100,0)">
+<rect id="rec20" x="160" y="14" width="30" height="30" style="fill:darkgray">
+</rect>
+
+ </g>
+
+<rect id="rec2" x="40" y="45" width="30" height="30" style="fill:darkgray">
+</rect>
+<ellipse id="2" cx="55" cy="45" rx="9" ry="12" stroke="black" stroke-width="2px" style="fill:green">
+<animateColor attributeName="fill" attributeType="CSS" from="blue" to="lime" begin="1s" dur="6s"  repeatCount="indefinite" />
+</ellipse>
+
+<rect id="rec4" x="70" y="46" width="30" height="30" style="fill:lime">
+
+<animateColor attributeName="fill" attributeType="CSS" from="lime" to="red" begin="1s" dur="5s"  repeatCount="indefinite" />
+    <set attributeName="fill" attributeType="CSS" from="lime" to="lime" begin="5" dur="10s"  repeatCount="repeat" />
+    <set attributeName="fill" attributeType="CSS" from="lime" to="lime" begin="10" dur="15s"  fill="repeat" />
+</rect>
+
+<rect id="rec3" x="105" y="45" width="30" height="30" style="fill:lime">
+
+<animateColor attributeName="fill" attributeType="CSS" from="lime" to="red" begin="1s" dur="5s"  repeatCount="indefinite" />
+    <set attributeName="fill" attributeType="CSS" from="lime" to="lime" begin="5" dur="10s"  repeatCount="repeat" />
+    <set attributeName="fill" attributeType="CSS" from="lime" to="lime" begin="10" dur="15s"  fill="repeat" />
+</rect>
+<ellipse id="3" cx="55" cy="45" rx="9" ry="12" stroke="black" stroke-width="2px" style="fill:green">
+<animateColor attributeName="fill" attributeType="CSS" from="blue" to="lime" begin="1s" dur="6s"  repeatCount="indefinite" />
+</ellipse>
+
+<rect id="rec6" x="70" y="46" width="30" height="30" style="fill:lime">
+
+<animateColor attributeName="fill" attributeType="CSS" from="lime" to="red" begin="1s" dur="5s"  repeatCount="indefinite" />
+    <set attributeName="fill" attributeType="CSS" from="lime" to="lime" begin="5" dur="10s"  repeatCount="repeat" />
+    <set attributeName="fill" attributeType="CSS" from="lime" to="lime" begin="10" dur="15s"  fill="repeat" />
+</rect>
+
+<rect id="rec9" x="165" y="47" width="30" height="30" style="fill:darkgray">
+</rect>
+<ellipse id="9" cx="115" cy="47" rx="9" ry="12" stroke="black" stroke-width="2px" style="fill:green">
+<animateColor attributeName="fill" attributeType="CSS" from="blue" to="lime" begin="1s" dur="6s"  repeatCount="indefinite" />
+</ellipse>
+
+<rect id="rec4" x="105" y="45" width="30" height="30" style="fill:lime">
+
+<animateColor attributeName="fill" attributeType="CSS" from="lime" to="red" begin="1s" dur="5s"  repeatCount="indefinite" />
+    <set attributeName="fill" attributeType="CSS" from="lime" to="lime" begin="5" dur="10s"  repeatCount="repeat" />
+    <set attributeName="fill" attributeType="CSS" from="lime" to="lime" begin="10" dur="15s"  fill="repeat" />
+</rect>
+<ellipse id="4" cx="55" cy="45" rx="9" ry="12" stroke="black" stroke-width="2px" style="fill:green">
+<animateColor attributeName="fill" attributeType="CSS" from="blue" to="lime" begin="1s" dur="6s"  repeatCount="indefinite" />
+</ellipse>
+
+<rect id="rec8" x="135" y="46" width="30" height="30" style="fill:darkgray">
+</rect>
+<ellipse id="8" cx="85" cy="46" rx="9" ry="12" stroke="black" stroke-width="2px" style="fill:green">
+<animateColor attributeName="fill" attributeType="CSS" from="blue" to="lime" begin="1s" dur="6s"  repeatCount="indefinite" />
+</ellipse>
+
+<rect id="rec12" x="165" y="47" width="30" height="30" style="fill:lime">
+
+<animateColor attributeName="fill" attributeType="CSS" from="lime" to="red" begin="1s" dur="5s"  repeatCount="indefinite" />
+    <set attributeName="fill" attributeType="CSS" from="lime" to="lime" begin="5" dur="10s"  repeatCount="repeat" />
+    <set attributeName="fill" attributeType="CSS" from="lime" to="lime" begin="10" dur="15s"  fill="repeat" />
+</rect>
+<ellipse id="12" cx="115" cy="47" rx="9" ry="12" stroke="black" stroke-width="2px" style="fill:green">
+<animateColor attributeName="fill" attributeType="CSS" from="blue" to="lime" begin="1s" dur="6s"  repeatCount="indefinite" />
+</ellipse>
+
+<g> <rect id="rec16" x="205" y="48" width="30" height="30" style="fill:lime">
+
+<animateColor attributeName="fill" attributeType="CSS" from="lime" to="red" begin="1s" dur="5s"  repeatCount="indefinite" />
+    <set attributeName="fill" attributeType="CSS" from="lime" to="lime" begin="5" dur="10s"  repeatCount="repeat" />
+    <set attributeName="fill" attributeType="CSS" from="lime" to="lime" begin="10" dur="15s"  fill="repeat" />
+</rect>
+<ellipse id="16" cx="145" cy="48" rx="9" ry="12" stroke="black" stroke-width="2px" style="fill:green">
+<animateColor attributeName="fill" attributeType="CSS" from="blue" to="lime" begin="1s" dur="6s"  repeatCount="indefinite" />
+</ellipse>
+ </g>
+
+<rect id="rec16" x="295" y="48" width="30" height="30" style="fill:darkgray">
+</rect>
+<ellipse id="16" cx="145" cy="48" rx="9" ry="12" stroke="black" stroke-width="2px" style="fill:green">
+<animateColor attributeName="fill" attributeType="CSS" from="blue" to="lime" begin="1s" dur="6s"  repeatCount="indefinite" />
+</ellipse>
+
+<rect id="rec16" x="235" y="48" width="30" height="30" style="fill:lime">
+
+<animateColor attributeName="fill" attributeType="CSS" from="lime" to="red" begin="1s" dur="5s"  repeatCount="indefinite" />
+    <set attributeName="fill" attributeType="CSS" from="lime" to="lime" begin="5" dur="10s"  repeatCount="repeat" />
+    <set attributeName="fill" attributeType="CSS" from="lime" to="lime" begin="10" dur="15s"  fill="repeat" />
+</rect>
+<ellipse id="16" cx="145" cy="48" rx="9" ry="12" stroke="black" stroke-width="2px" style="fill:green">
+<animateColor attributeName="fill" attributeType="CSS" from="blue" to="lime" begin="1s" dur="6s"  repeatCount="indefinite" />
+</ellipse>
+
+<rect id="rec16" x="295" y="48" width="30" height="30" style="fill:darkgray">
+</rect>
+<ellipse id="16" cx="145" cy="48" rx="9" ry="12" stroke="black" stroke-width="2px" style="fill:green">
+<animateColor attributeName="fill" attributeType="CSS" from="blue" to="lime" begin="1s" dur="6s"  repeatCount="indefinite" />
+</ellipse>
+
+<g> <rect id="rec16" x="295" y="48" width="30" height="30" style="fill:lime">
+
+<animateColor attributeName="fill" attributeType="CSS" from="lime" to="red" begin="1s" dur="5s"  repeatCount="indefinite" />
+    <set attributeName="fill" attributeType="CSS" from="lime" to="lime" begin="5" dur="10s"  repeatCount="repeat" />
+    <set attributeName="fill" attributeType="CSS" from="lime" to="lime" begin="10" dur="15s"  fill="repeat" />
+</rect>
+<ellipse id="16" cx="145" cy="48" rx="9" ry="12" stroke="black" stroke-width="2px" style="fill:green">
+<animateColor attributeName="fill" attributeType="CSS" from="blue" to="lime" begin="1s" dur="6s"  repeatCount="indefinite" />
+</ellipse>
+ </g>
+
+<g transform="translate(100,0)">
+<rect id="rec16" x="130" y="48" width="30" height="30" style="fill:darkgray">
+</rect>
+
+ </g>
+
+<g> <rect id="rec20" x="235" y="49" width="30" height="30" style="fill:lime">
+
+<animateColor attributeName="fill" attributeType="CSS" from="lime" to="red" begin="1s" dur="5s"  repeatCount="indefinite" />
+    <set attributeName="fill" attributeType="CSS" from="lime" to="lime" begin="5" dur="10s"  repeatCount="repeat" />
+    <set attributeName="fill" attributeType="CSS" from="lime" to="lime" begin="10" dur="15s"  fill="repeat" />
+</rect>
+<ellipse id="20" cx="175" cy="49" rx="9" ry="12" stroke="black" stroke-width="2px" style="fill:green">
+<animateColor attributeName="fill" attributeType="CSS" from="blue" to="lime" begin="1s" dur="6s"  repeatCount="indefinite" />
+</ellipse>
+ </g>
+
+<rect id="rec20" x="325" y="49" width="30" height="30" style="fill:darkgray">
+</rect>
+<ellipse id="20" cx="175" cy="49" rx="9" ry="12" stroke="black" stroke-width="2px" style="fill:green">
+<animateColor attributeName="fill" attributeType="CSS" from="blue" to="lime" begin="1s" dur="6s"  repeatCount="indefinite" />
+</ellipse>
+
+<rect id="rec20" x="265" y="49" width="30" height="30" style="fill:lime">
+
+<animateColor attributeName="fill" attributeType="CSS" from="lime" to="red" begin="1s" dur="5s"  repeatCount="indefinite" />
+    <set attributeName="fill" attributeType="CSS" from="lime" to="lime" begin="5" dur="10s"  repeatCount="repeat" />
+    <set attributeName="fill" attributeType="CSS" from="lime" to="lime" begin="10" dur="15s"  fill="repeat" />
+</rect>
+<ellipse id="20" cx="175" cy="49" rx="9" ry="12" stroke="black" stroke-width="2px" style="fill:green">
+<animateColor attributeName="fill" attributeType="CSS" from="blue" to="lime" begin="1s" dur="6s"  repeatCount="indefinite" />
+</ellipse>
+
+<rect id="rec20" x="325" y="49" width="30" height="30" style="fill:darkgray">
+</rect>
+<ellipse id="20" cx="175" cy="49" rx="9" ry="12" stroke="black" stroke-width="2px" style="fill:green">
+<animateColor attributeName="fill" attributeType="CSS" from="blue" to="lime" begin="1s" dur="6s"  repeatCount="indefinite" />
+</ellipse>
+
+<g> <rect id="rec20" x="325" y="49" width="30" height="30" style="fill:lime">
+
+<animateColor attributeName="fill" attributeType="CSS" from="lime" to="red" begin="1s" dur="5s"  repeatCount="indefinite" />
+    <set attributeName="fill" attributeType="CSS" from="lime" to="lime" begin="5" dur="10s"  repeatCount="repeat" />
+    <set attributeName="fill" attributeType="CSS" from="lime" to="lime" begin="10" dur="15s"  fill="repeat" />
+</rect>
+<ellipse id="20" cx="175" cy="49" rx="9" ry="12" stroke="black" stroke-width="2px" style="fill:green">
+<animateColor attributeName="fill" attributeType="CSS" from="blue" to="lime" begin="1s" dur="6s"  repeatCount="indefinite" />
+</ellipse>
+ </g>
+
+<g transform="translate(100,0)">
+<rect id="rec20" x="160" y="49" width="30" height="30" style="fill:darkgray">
+</rect>
+
+ </g>
+
+<rect id="rec2" x="40" y="80" width="30" height="30" style="fill:darkgray">
+</rect>
+<ellipse id="2" cx="55" cy="80" rx="9" ry="12" stroke="black" stroke-width="2px" style="fill:green">
+<animateColor attributeName="fill" attributeType="CSS" from="blue" to="lime" begin="1s" dur="6s"  repeatCount="indefinite" />
+</ellipse>
+
+<rect id="rec4" x="70" y="81" width="30" height="30" style="fill:lime">
+
+<animateColor attributeName="fill" attributeType="CSS" from="lime" to="red" begin="1s" dur="5s"  repeatCount="indefinite" />
+    <set attributeName="fill" attributeType="CSS" from="lime" to="lime" begin="5" dur="10s"  repeatCount="repeat" />
+    <set attributeName="fill" attributeType="CSS" from="lime" to="lime" begin="10" dur="15s"  fill="repeat" />
+</rect>
+
+<rect id="rec3" x="105" y="80" width="30" height="30" style="fill:lime">
+
+<animateColor attributeName="fill" attributeType="CSS" from="lime" to="red" begin="1s" dur="5s"  repeatCount="indefinite" />
+    <set attributeName="fill" attributeType="CSS" from="lime" to="lime" begin="5" dur="10s"  repeatCount="repeat" />
+    <set attributeName="fill" attributeType="CSS" from="lime" to="lime" begin="10" dur="15s"  fill="repeat" />
+</rect>
+<ellipse id="3" cx="55" cy="80" rx="9" ry="12" stroke="black" stroke-width="2px" style="fill:green">
+<animateColor attributeName="fill" attributeType="CSS" from="blue" to="lime" begin="1s" dur="6s"  repeatCount="indefinite" />
+</ellipse>
+
+<rect id="rec6" x="70" y="81" width="30" height="30" style="fill:lime">
+
+<animateColor attributeName="fill" attributeType="CSS" from="lime" to="red" begin="1s" dur="5s"  repeatCount="indefinite" />
+    <set attributeName="fill" attributeType="CSS" from="lime" to="lime" begin="5" dur="10s"  repeatCount="repeat" />
+    <set attributeName="fill" attributeType="CSS" from="lime" to="lime" begin="10" dur="15s"  fill="repeat" />
+</rect>
+
+<rect id="rec9" x="165" y="82" width="30" height="30" style="fill:darkgray">
+</rect>
+<ellipse id="9" cx="115" cy="82" rx="9" ry="12" stroke="black" stroke-width="2px" style="fill:green">
+<animateColor attributeName="fill" attributeType="CSS" from="blue" to="lime" begin="1s" dur="6s"  repeatCount="indefinite" />
+</ellipse>
+
+<rect id="rec4" x="105" y="80" width="30" height="30" style="fill:lime">
+
+<animateColor attributeName="fill" attributeType="CSS" from="lime" to="red" begin="1s" dur="5s"  repeatCount="indefinite" />
+    <set attributeName="fill" attributeType="CSS" from="lime" to="lime" begin="5" dur="10s"  repeatCount="repeat" />
+    <set attributeName="fill" attributeType="CSS" from="lime" to="lime" begin="10" dur="15s"  fill="repeat" />
+</rect>
+<ellipse id="4" cx="55" cy="80" rx="9" ry="12" stroke="black" stroke-width="2px" style="fill:green">
+<animateColor attributeName="fill" attributeType="CSS" from="blue" to="lime" begin="1s" dur="6s"  repeatCount="indefinite" />
+</ellipse>
+
+<rect id="rec8" x="135" y="81" width="30" height="30" style="fill:darkgray">
+</rect>
+<ellipse id="8" cx="85" cy="81" rx="9" ry="12" stroke="black" stroke-width="2px" style="fill:green">
+<animateColor attributeName="fill" attributeType="CSS" from="blue" to="lime" begin="1s" dur="6s"  repeatCount="indefinite" />
+</ellipse>
+
+<rect id="rec12" x="165" y="82" width="30" height="30" style="fill:lime">
+
+<animateColor attributeName="fill" attributeType="CSS" from="lime" to="red" begin="1s" dur="5s"  repeatCount="indefinite" />
+    <set attributeName="fill" attributeType="CSS" from="lime" to="lime" begin="5" dur="10s"  repeatCount="repeat" />
+    <set attributeName="fill" attributeType="CSS" from="lime" to="lime" begin="10" dur="15s"  fill="repeat" />
+</rect>
+<ellipse id="12" cx="115" cy="82" rx="9" ry="12" stroke="black" stroke-width="2px" style="fill:green">
+<animateColor attributeName="fill" attributeType="CSS" from="blue" to="lime" begin="1s" dur="6s"  repeatCount="indefinite" />
+</ellipse>
+
+<g> <rect id="rec16" x="205" y="83" width="30" height="30" style="fill:lime">
+
+<animateColor attributeName="fill" attributeType="CSS" from="lime" to="red" begin="1s" dur="5s"  repeatCount="indefinite" />
+    <set attributeName="fill" attributeType="CSS" from="lime" to="lime" begin="5" dur="10s"  repeatCount="repeat" />
+    <set attributeName="fill" attributeType="CSS" from="lime" to="lime" begin="10" dur="15s"  fill="repeat" />
+</rect>
+<ellipse id="16" cx="145" cy="83" rx="9" ry="12" stroke="black" stroke-width="2px" style="fill:green">
+<animateColor attributeName="fill" attributeType="CSS" from="blue" to="lime" begin="1s" dur="6s"  repeatCount="indefinite" />
+</ellipse>
+ </g>
+
+<rect id="rec16" x="295" y="83" width="30" height="30" style="fill:darkgray">
+</rect>
+<ellipse id="16" cx="145" cy="83" rx="9" ry="12" stroke="black" stroke-width="2px" style="fill:green">
+<animateColor attributeName="fill" attributeType="CSS" from="blue" to="lime" begin="1s" dur="6s"  repeatCount="indefinite" />
+</ellipse>
+
+<rect id="rec16" x="235" y="83" width="30" height="30" style="fill:lime">
+
+<animateColor attributeName="fill" attributeType="CSS" from="lime" to="red" begin="1s" dur="5s"  repeatCount="indefinite" />
+    <set attributeName="fill" attributeType="CSS" from="lime" to="lime" begin="5" dur="10s"  repeatCount="repeat" />
+    <set attributeName="fill" attributeType="CSS" from="lime" to="lime" begin="10" dur="15s"  fill="repeat" />
+</rect>
+<ellipse id="16" cx="145" cy="83" rx="9" ry="12" stroke="black" stroke-width="2px" style="fill:green">
+<animateColor attributeName="fill" attributeType="CSS" from="blue" to="lime" begin="1s" dur="6s"  repeatCount="indefinite" />
+</ellipse>
+
+<rect id="rec16" x="295" y="83" width="30" height="30" style="fill:darkgray">
+</rect>
+<ellipse id="16" cx="145" cy="83" rx="9" ry="12" stroke="black" stroke-width="2px" style="fill:green">
+<animateColor attributeName="fill" attributeType="CSS" from="blue" to="lime" begin="1s" dur="6s"  repeatCount="indefinite" />
+</ellipse>
+
+<g> <rect id="rec16" x="295" y="83" width="30" height="30" style="fill:lime">
+
+<animateColor attributeName="fill" attributeType="CSS" from="lime" to="red" begin="1s" dur="5s"  repeatCount="indefinite" />
+    <set attributeName="fill" attributeType="CSS" from="lime" to="lime" begin="5" dur="10s"  repeatCount="repeat" />
+    <set attributeName="fill" attributeType="CSS" from="lime" to="lime" begin="10" dur="15s"  fill="repeat" />
+</rect>
+<ellipse id="16" cx="145" cy="83" rx="9" ry="12" stroke="black" stroke-width="2px" style="fill:green">
+<animateColor attributeName="fill" attributeType="CSS" from="blue" to="lime" begin="1s" dur="6s"  repeatCount="indefinite" />
+</ellipse>
+ </g>
+
+<g transform="translate(100,0)">
+<rect id="rec16" x="130" y="83" width="30" height="30" style="fill:darkgray">
+</rect>
+
+ </g>
+
+<g> <rect id="rec20" x="235" y="84" width="30" height="30" style="fill:lime">
+
+<animateColor attributeName="fill" attributeType="CSS" from="lime" to="red" begin="1s" dur="5s"  repeatCount="indefinite" />
+    <set attributeName="fill" attributeType="CSS" from="lime" to="lime" begin="5" dur="10s"  repeatCount="repeat" />
+    <set attributeName="fill" attributeType="CSS" from="lime" to="lime" begin="10" dur="15s"  fill="repeat" />
+</rect>
+<ellipse id="20" cx="175" cy="84" rx="9" ry="12" stroke="black" stroke-width="2px" style="fill:green">
+<animateColor attributeName="fill" attributeType="CSS" from="blue" to="lime" begin="1s" dur="6s"  repeatCount="indefinite" />
+</ellipse>
+ </g>
+
+<rect id="rec20" x="325" y="84" width="30" height="30" style="fill:darkgray">
+</rect>
+<ellipse id="20" cx="175" cy="84" rx="9" ry="12" stroke="black" stroke-width="2px" style="fill:green">
+<animateColor attributeName="fill" attributeType="CSS" from="blue" to="lime" begin="1s" dur="6s"  repeatCount="indefinite" />
+</ellipse>
+
+<rect id="rec20" x="265" y="84" width="30" height="30" style="fill:lime">
+
+<animateColor attributeName="fill" attributeType="CSS" from="lime" to="red" begin="1s" dur="5s"  repeatCount="indefinite" />
+    <set attributeName="fill" attributeType="CSS" from="lime" to="lime" begin="5" dur="10s"  repeatCount="repeat" />
+    <set attributeName="fill" attributeType="CSS" from="lime" to="lime" begin="10" dur="15s"  fill="repeat" />
+</rect>
+<ellipse id="20" cx="175" cy="84" rx="9" ry="12" stroke="black" stroke-width="2px" style="fill:green">
+<animateColor attributeName="fill" attributeType="CSS" from="blue" to="lime" begin="1s" dur="6s"  repeatCount="indefinite" />
+</ellipse>
+
+<rect id="rec20" x="325" y="84" width="30" height="30" style="fill:darkgray">
+</rect>
+<ellipse id="20" cx="175" cy="84" rx="9" ry="12" stroke="black" stroke-width="2px" style="fill:green">
+<animateColor attributeName="fill" attributeType="CSS" from="blue" to="lime" begin="1s" dur="6s"  repeatCount="indefinite" />
+</ellipse>
+
+<g> <rect id="rec20" x="325" y="84" width="30" height="30" style="fill:lime">
+
+<animateColor attributeName="fill" attributeType="CSS" from="lime" to="red" begin="1s" dur="5s"  repeatCount="indefinite" />
+    <set attributeName="fill" attributeType="CSS" from="lime" to="lime" begin="5" dur="10s"  repeatCount="repeat" />
+    <set attributeName="fill" attributeType="CSS" from="lime" to="lime" begin="10" dur="15s"  fill="repeat" />
+</rect>
+<ellipse id="20" cx="175" cy="84" rx="9" ry="12" stroke="black" stroke-width="2px" style="fill:green">
+<animateColor attributeName="fill" attributeType="CSS" from="blue" to="lime" begin="1s" dur="6s"  repeatCount="indefinite" />
+</ellipse>
+ </g>
+
+<g transform="translate(100,0)">
+<rect id="rec20" x="160" y="84" width="30" height="30" style="fill:darkgray">
+</rect>
+
+ </g>
+
+</svg>

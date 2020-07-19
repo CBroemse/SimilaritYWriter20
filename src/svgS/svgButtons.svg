@@ -1,0 +1,333 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xml="http://www.w3.org/XML/1998/namespace" xmlns:xlink="http://www.w3.org/1999/xlink" id="root" xml:space="preserve" width="600" height="400" onload="OnLoadEvent(evt)">
+
+<script><![CDATA[
+
+
+
+
+
+
+
+}
+var click = false; object=""
+var x_obj = 0, y_obj = 0,x_trans = 0,y_tans = 0
+
+functin clicked(evt)
+{
+   click = true
+   object = 
+]]></script>
+
+
+
+<text x="50" y="350">Test animation</text>
+
+<rect id="go" x="40" y="290" width="200" height="300" style="fill:green;fill-opacity:0.2"/>
+
+
+<text x="20" y="480" font-size="15">Click on circle or rectangle and move it button pressed</text>
+
+
+
+<g>
+
+<text x="150" y="350">Test animatio2</text>
+
+<rect id="go" x="20" y="300" width="20" height="200" style="fill:red;fill-opacity:0.2"/>
+</g>
+
+<style
+     id="style4">
+        .room{
+            fill:       red;
+            fill-opacity:0.2;
+            stroke:     #999;
+            stroke-width:   2;
+        }
+        .room:hover{
+            fill:       green;
+            fill-opacity:0.2;
+        }
+    </style>
+  <g
+     transform="matrix(0.2823838,0.10225553,-0.2823838,0.10225553,420.923,74.495491)"
+     >
+    <rect
+       class="room"
+       y="835"
+       x="-696.99988"
+       height="123"
+       width="94"
+        />
+    <rect
+       class="room"
+       width="94"
+       height="123"
+       x="-221.99988"
+       y="711" />
+    <rect
+       class="room"
+       y="711"
+       x="-316.99988"
+       height="123"
+       width="94"
+       />
+     <ellipse cx="-316" cy="715" rx="30" ry="12" stroke="black" stroke-width="2px" style="fill:blue">
+<animateColor attributeName="fill" attributeType="CSS" from="blue" to="lime" begin="1s" dur="6s"  repeatCount="indefinite" />
+</ellipse>
+    <rect
+       class="room"
+       width="94"
+       height="123"
+       x="-411.99988"
+       y="711" />
+    <rect
+       class="room"
+       y="711"
+       x="-506.99988"
+       height="123"
+       width="94"
+        />
+    <rect
+       class="room"
+       width="94"
+       height="123"
+       x="-601.99988"
+       y="711" />
+    <rect
+       class="room"
+       y="711"
+       x="-696.99988"
+       height="123"
+       width="94"
+       
+       />
+    <rect
+       class="room"
+       width="94"
+       height="123"
+       x="-221.99988"
+       y="587" />
+    <rect
+       class="room" 
+       y="587"
+       x="-316.99988"
+       height="123"
+       width="94"
+       
+       />
+    <rect
+       
+       class="room"
+       width="94"
+       height="123"
+       x="-411.99988"
+       y="587" />
+    <rect
+       class="room"
+       y="587"
+       x="-506.99988"
+       height="123"
+       width="94"
+       
+        />
+    <rect
+       class="room"
+      
+       width="94"
+       height="123"
+       x="-601.99988"
+       y="587" />
+    <rect
+       class="room"
+       y="587"
+       x="-696.99988"
+       height="123"
+       width="94"
+       
+       />
+    <rect
+       
+       class="room"
+       width="94"
+       height="123"
+       x="-221.99988"
+       y="463" />
+    <rect
+       class="room"
+       y="463"
+       x="-316.99988"
+       height="123"
+       width="94"
+       
+      />
+    <rect
+       
+       class="room"
+       width="94"
+       height="123"
+       x="-411.99988"
+       y="463" />
+    <rect
+       class="room"
+       y="463"
+       x="-506.99988"
+       height="123"
+       width="94"
+       
+      />
+    <rect
+      
+       class="room"
+       width="94"
+       height="123"
+       x="-601.99988"
+       y="463" />
+    <rect
+       class="room"
+       y="463"
+       x="-696.99988"
+       height="123"
+       width="94"
+       
+        />
+    <rect
+       class="room"
+       id="rect3843"
+       width="94"
+       height="123"
+       x="-221.99988"
+       y="339" />
+    <rect
+       class="room"
+       y="339"
+       x="-316.99988"
+       height="123"
+       width="94"
+       
+       />
+    <rect
+       class="room"
+       id="rect3847"
+       width="94"
+       height="123"
+       x="-411.99988"
+       y="339" />
+    <rect
+       class="room"
+       y="339"
+       x="-506.99988"
+       height="123"
+       width="94"
+       id="rect3849"
+       />
+    <rect
+       class="room"
+       id="rect3851"
+       width="94"
+       height="123"
+       x="-601.99988"
+       y="339" />
+    <rect
+       class="room"
+       y="339"
+       x="-696.99988"
+       height="123"
+       width="94"
+       id="rect3853"
+        />
+    <rect
+       class="room"
+       id="rect3855"
+       width="94"
+       height="123"
+       x="-221.99988"
+       y="215" />
+    <rect
+       class="room"
+       y="215"
+       x="-316.99988"
+       height="123"
+       width="94"
+       id="rect3857"
+        />
+    <rect
+       class="room"
+       id="rect3859"
+       width="94"
+       height="123"
+       x="-411.99988"
+       y="215" />
+    <rect
+       class="room"
+       y="215"
+       x="-506.99988"
+       height="123"
+       width="94"
+       id="rect3861"
+       />
+    <rect
+       class="room"
+       id="rect3863"
+       width="94"
+       height="123"
+       x="-601.99988"
+       y="215" />
+    <rect 
+       class="room"
+       y="215"
+       x="-696.99988"
+       height="123"
+       width="94"
+       id="rect3865"
+       />
+    <rect
+       class="room"
+       id="rect3867"
+       width="94"
+       height="123"
+       x="-221.99988"
+       y="91" />
+    <rect
+       class="room"
+       y="91"
+       x="-316.99988"
+       height="123"
+       width="94"
+       id="rect3869"
+        />
+    <rect
+      class="room"
+       id="rect3871"
+       width="94"
+       height="123"
+       x="-411.99988"
+       y="91" />
+    <rect
+       class="room"
+       y="91"
+       x="-506.99988"
+       height="123"
+       width="94"
+       id="rect3873"
+        />
+    <rect
+       class="room"
+       id="rect3875"
+       width="94"
+       height="123"
+       x="-601.99988"
+       y="91" />
+    <rect
+       class="room"
+       y="91"
+       x="-696.99988"
+       height="123"
+       width="94"
+       id="rect3877"
+        />
+  </g>
+
+</svg>
+
+
