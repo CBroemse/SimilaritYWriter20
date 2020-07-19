@@ -22,7 +22,7 @@ functin clicked(evt)
 
 <text x="50" y="350">Test animation</text>
 
-<rect id="go" x="40" y="290" width="200" height="600" style="fill:green;fill-opacity:0.2"/>
+<rect id="go" x="40" y="290" width="200" height="600" style="fill:green;fill-opacity:0.5"/>
 
 
 <text x="20" y="480" font-size="15">Click on circle or rectangle and move it button pressed</text>
@@ -33,7 +33,7 @@ functin clicked(evt)
 
 <text x="150" y="350">Test animatio2</text>
 
-<rect id="go" x="20" y="300" width="20" height="200" style="fill:red;fill-opacity:0.2"/>
+<rect id="go" x="20" y="200" width="20" height="200" style="fill:red;fill-opacity:0.2"/>
 </g>
 
 <style
