@@ -39,10 +39,10 @@ prepprogrammed</text>
 <text x="50" y="150">hexagon plane</text>
 <text x="50" y="165">  adjustable area</text>
 <text x="50" y="240">Test animation</text>
-<text x="210" y="220" font-size="18" fill="lime" fill-opacity="0.4">cX : <tspan id="cX" fill="red" fill-opacity="0.6">0</tspan></text> 
-<text x="210" y="240" font-size="18" fill="blue" fill-opacity="0.4">cY : <tspan id="cY" fill="red" fill-opacity="0.6">0</tspan></text> 
-<text x="210" y="260" font-size="18" fill="lime" fill-opacity="0.4">scX : <tspan id="sX" fill="red" fill-opacity="0.6">0</tspan></text> 
-<text x="210" y="280" font-size="18"  fill="blue" fill-opacity="0.4">scY : <tspan id="sY" fill="red" fill-opacity="0.6">0</tspan></text> 
+<text x="210" y="210" font-size="18" fill="lime" fill-opacity="0.4">cy : <tspan id="cX" fill="red" fill-opacity="0.6">0</tspan></text> 
+<text x="210" y="230" font-size="18" fill="blue" fill-opacity="0.6">cy : <tspan id="cY" fill="red" fill-opacity="0.6">0</tspan></text> 
+<text x="210" y="250" font-size="18" fill="lime" fill-opacity="0.4">sx : <tspan id="sX" fill="red" fill-opacity="0.6">0</tspan></text> 
+<text x="210" y="270" font-size="18"  fill="blue" fill-opacity="0.6">sy : <tspan id="sY" fill="red" fill-opacity="0.6">0</tspan></text> 
 
 <rect id="go" x="20" y="350" width="300" height="650" style="fill:green;fill-opacity:0.2"/>
 
