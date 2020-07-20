@@ -7,11 +7,11 @@ function addButtons() {
 	
 	//labelSpace = createDiv("Number of boxes")
 	//labelSpace.position(30, 85)
-	//sliderSpace = createSlider(0.5, 1, 1 / space, 0.01);
-	//sliderSpace.position(20, 110);
-	//sliderSpace.input(function() {
-	//	space = 1 / sliderSpace.value()
-	//})
+	sliderSpace = createSlider(0.5, 1, 1 / space, 0.01);
+	sliderSpace.position(20, 110);
+	sliderSpace.input(function() {
+		space = 1 / sliderSpace.value()
+	})
 	
 
 	labelYw = createDiv("Y-Scale")
