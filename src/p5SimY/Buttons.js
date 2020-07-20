@@ -19,8 +19,6 @@ function addButtons() {
 	labelYw = createDiv("Y-Scale")
 	labelYw.position(30, 150)
 	inputYw = createInput();
-	inputYw.size(60, 20)
-	inputYw.value(0.1)
 	inputYw.position(30, 175);
 	inputYw.input(function() {
 		yw = inputYw.value()
