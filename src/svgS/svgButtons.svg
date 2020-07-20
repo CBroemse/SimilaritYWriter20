@@ -1,16 +1,31 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xml="http://www.w3.org/XML/1998/namespace" xmlns:xlink="http://www.w3.org/1999/xlink" id="root" xml:space="preserve" width="600" height="800" onload="OnLoadEvent(evt)">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xml="http://www.w3.org/XML/1998/namespace" xmlns:xlink="http://www.w3.org/1999/xlink" id="root" xml:space="preserve" width="600" height="800" onload="OnLoadEvent(evt)" onmousemove="get_coordo(evt)">
 
 <script><![CDATA[
+var compati = new Array(true,true,true,true,true,true)
+var comments = new Array(" "," "," "," "," "," ")
+var nb_comments = 6
 
-
-}
-var click = false; object=""
-var x_obj = 0, y_obj = 0,x_trans = 0,y_tans = 0
-
-functin clicked(evt)
+function write_compati(evt)
 {
-   click = true
-   object = 
+	svgdoc = evt.target.ownerDocument
+	for (var i = 0 ; i < nb_comments ; i ++)
+	{
+		if (compati[i])
+			svgdoc.getElementById("coche" + i.toString()).setAttributeNS(null, "stroke" , "blue")
+		else
+			svgdoc.getElementById("coche" + i.toString()).setAttributeNS(null, "stroke" , "none")
+		svgdoc.getElementById("comment" + i.toString()).firstChild.data = comments[i]
+	}
+}
+
+function get_coordo(evt)
+{
+	evt.target.ownerDocument.getElementById("cX").firstChild.data = evt.clientX
+	evt.target.ownerDocument.getElementById("cY").firstChild.data = evt.clientY
+	evt.target.ownerDocument.getElementById("sX").firstChild.data = evt.screenX
+	evt.target.ownerDocument.getElementById("sY").firstChild.data = evt.screenY
+}
+
 ]]></script>
 <script>
 
@@ -18,24 +33,27 @@ function changeFill() {
     document.getElementById("hexagon").style.fill = "rgb(" + Math.floor(255 * Math.random()) + ", " + Math.floor(255 * Math.random()) + ", " + Math.floor(255 * Math.random()) + ")";
 }
 </script>
-<text x="50" fill="lime" y="10">ptc 4 
+<text x="50" fill="green" y="10">ptc 4 
 values: 10 
 prepprogrammed</text>
-<text x="50" y="150" fill="blue" >hexagon plane</text>
-<text x="50" y="165" fill="yellow">  adjustable area</text>
-<text x="50" y="240" fill="green">Test animation</text>
+<text x="50" y="150">hexagon plane</text>
+<text x="50" y="165">  adjustable area</text>
+<text x="50" y="240">Test animation</text>
+<text x="230" y="240" font-size="18" fill="red" fill-opacity="0.2">clientX : <tspan id="cX" fill="blue" fill-opacity="0.2">0</tspan></text> 
+<text x="230" y="260" font-size="18" fill="red" fill-opacity="0.2">clientY : <tspan id="cY" fill="blue" fill-opacity="0.2">0</tspan></text> 
+<text x="230" y="280" font-size="18" fill="red" fill-opacity="0.2">screenX : <tspan id="sX" fill="blue" fill-opacity="0.2">0</tspan></text> 
+<text x="230" y="300" font-size="18"  fill="red" fill-opacity="0.2">screenY : <tspan id="sY" fill="blue" fill-opacity="0.2">0</tspan></text> 
 
 <rect id="go" x="20" y="350" width="300" height="650" style="fill:green;fill-opacity:0.2"/>
 
 <g>
-<text x="20" y="480" font-size="10" fill="yellow">[1.34566, 3.45663456 3.5566777]$nbsp
-  [4.6788,    3.985443,  4,3222456]   reduced to 2 x 3 </text>
+<text x="20" y="480" font-size="10"></text>
 
 </g>
 
 <g>
 
-<text x="150" y="350" fill="green" >Test animatio2</text>
+<text x="150" y="350">Test animatio2</text>
 
 
 </g>
@@ -163,12 +181,12 @@ prepprogrammed</text>
        width="94"
        />
 
-<ellipse cx="-316" cy="715" rx="280" ry="4" stroke="black" stroke-width="2px" style="fill:yellow" >
+<ellipse cx="-316" cy="715" rx="280" ry="4" stroke="black" stroke-width="2px" style="fill:red">
 <animateColor attributeName="fill" attributeType="CSS" from="blue" to="lime" begin="0.1s" dur="1s"  repeatCount="indefinite" />
       <animateTransform attributeName="transform" attributeType="XML" type="rotate" from="0" to="45" begin="0.1s" dur="0.1s" fill="freeze"/> 
       <animateMotion path="M  0 0 L 680 690" begin="0.1s" dur="0.3s" fill="freeze"/>
 </ellipse>
-<ellipse cx="340" cy="655" rx="280" ry="4" stroke="black" stroke-width="2px" style="fill:yellow" >
+<ellipse cx="340" cy="655" rx="280" ry="4" stroke="black" stroke-width="2px" style="fill:red">
 <animateColor attributeName="fill" attributeType="CSS" from="blue" to="lime" begin="0.1s" dur="1s"  repeatCount="indefinite" />
       <animateTransform attributeName="transform" attributeType="XML" type="rotate" from="0" to="45" begin="0.1s" dur="0.1s" fill="freeze"/> 
       <animateMotion path="M  0 0 L 280 290" begin="0.1s" dur="0.3s" fill="freeze"/>
@@ -176,7 +194,7 @@ prepprogrammed</text>
 
       <ellipse cx="-430" cy="380" rx="30" ry="12" stroke="black" stroke-width="2px" style="fill:blue">
       </ellipse>
-     <ellipse cx="-316" cy="715" rx="280" ry="4" stroke="black" stroke-width="2px" style="fill:yellow" >
+     <ellipse cx="-316" cy="715" rx="280" ry="4" stroke="black" stroke-width="2px" style="fill:red">
 <animateColor attributeName="fill" attributeType="CSS" from="blue" to="lime" begin="0.1s" dur="1s"  repeatCount="indefinite" />
       <animateTransform attributeName="transform" attributeType="XML" type="rotate" from="0" to="45" begin="0.1s" dur="0.1s" fill="freeze"/> 
       <animateMotion path="M  0 0 L 480 290" begin="0.1s" dur="0.3s" fill="freeze"/>
