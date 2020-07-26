@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>file-system</title>
+ <script src="file:///c:/stack/SimilaritYWriter20/src/p5SimY/p5.js"></script>
+  <script src="file:///c:/stack/SimilaritYWriter20/src/p5SimY/p5.dom.min.js"></script>
+  <script src="file:///c:/stack/SimilaritYWriter20/src/p5SimY/p5.sound.min.js"></script>
+ <script src="file:///c:/stack/SimilaritYWriter20/src/p5SimY/svgS/php.js"></script>
+
+  <link rel="stylesheet" type="text/css" href="file:///c:/stack/SimilaritYWriter20/src/p5SimY/style.css">
+
+    <meta http-equiv="refresh" content="30" charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: black;
+  font-family: Arial, Helvetica, sans-serif;
+   font-color: green;	
+}
+
+/* Style the header */
+.header {
+  background-color: black;
+  padding: 10px;
+  text-align: left;
+  font-size: 35px;
+  frameBorder: 0px;
+}
+
+/* Create three unequal columns that floats next to each other */
+.column {
+  float: left;
+  padding: 1px;
+ }
+
+/* Left and right column */
+.column.side {
+  }
+
+/* Middle column */
+.column.middle {
+  width: 50%;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Style the footer */
+.footer {
+  background-color: #f1f1f1;
+  padding: 10px;
+  text-align: center;
+}
+
+/* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
+@media (max-width: 600px) {
+  .column.side, .column.middle {
+    width: 100%;
+  }
+}
+
+a:link, a:visited {
+  background-color: #008CBA;
+  color: black;
+  border: 2px solid white;
+  padding: 2px 5px;
+  text-decoration: none;
+  display: inline-block;
+  width:5%;
+  font-size: 16px;
+  text-align:left;
+}
+
+a:hover, a:active {
+  background-color: #e7e7e7;
+  color: darkgreen;
+  font-size: 16px;
+}
+.img2 {
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  z-index: -1;
+}
+div.gallery {
+  margin: 5px;
+  border: 1px solid #ccc;
+  float: left;
+  width: 180px;
+}
+
+div.gallery:hover {
+  border: 1px solid #777;
+}
+
+div.gallery img {
+  width: 100%;
+  height: auto;
+}
+
+div.desc {
+  padding: 15px;
+  text-align: center;
+}
+
+/* The expanding image container */
+.container {
+  position: relative;
+  display: none;
+	  
+}
+/* Closable button inside the expanded image */
+.closebtn {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  color: white;
+  font-size: 35px;
+  cursor: pointer;
+}
+	.buttonM {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+.button2 {background-color: #008CBA;border-radius: 12px;} /* Blue */
+.button3 {background-color: #f44336;} /* Red */ 
+.button4 {background-color: #e7e7e7; color: black;} /* Gray */ 
+.button5 {background-color: #555555;} /* Black */
+
+       .storyTeller {
+  background-color: #1e1c1ecc;
+  color: lime;
+  border: 0px solid white;
+  padding: 2px 5px;
+  text-decoration: none;
+  display: inline-block;
+  width:100%;
+  font-size: 12px;
+  text-align:left;
+}
+
+</style>
+</head>
+<script>
+function myFunction(imgs) {
+  var expandImg = document.getElementById("expandedImg");
+  var imgText = document.getElementById("imgtext");
+  expandImg.src = imgs.src;
+  imgText.innerHTML = imgs.alt;
+  expandImg.parentElement.style.display = "block";
+}
+function RunExe2(){
+    var shell2 = new ActiveXObject("WScript.Shell");
+    var path2 = '"http://127.0.0.1:8023"';
+    shell2.run(path2,1,false);
+}
+function w3_open() {
+  document.getElementById("mySidebar").style.display = "block";
+}
+
+function w3_close() {
+  document.getElementById("mySidebar").style.display = "none";
+}
+</script>
+
+<body>
+<div class="row">
+<div class="column middle" name="odey" style="background-color:none;color:lime;">
+<a href="file:///c:/stack/SimilaritYWriter20/src/textS/indat23720/filesystem.html" style="border-radius: 12px; padding: 2px 5px;" target="iframe_c">back</a>
+<textarea name="message" class="storyTeller" rows ="43" cols="150">
+	<p>
+ptc2
+[[[6.228956228956228]],[[14.721723518850986]],[[3.5906642728904847]]]
+ptc4
+[[[0.6711409395973155],[0.45955882352941174],[0.0],[3.4834324553950724],[1.621160409556314],[0.7130124777183601],[0.3524229074889868],[2.723404255319149],[9.216589861751152e-2],[0.1855287569573284],[0.6505576208178439],[1.1054421768707483],[3.730017761989343],[0.35650623885918004],[6.134453781512605],[4.397537379067723],[3.6639857015192137],[1.085972850678733],[2.577777777777778],[1.046207497820401],[6.161971830985916],[0.44642857142857145],[0.7352941176470588],[2.5662959794696323],[4.258943781942079],[0.3508771929824561],[4.203323558162268],[4.206836108676599],[0.7964601769911503],[1.5775635407537247],[1.75],[2.343017806935333],[1.9301470588235292],[1.7070979335130276],[3.979678238780694],[2.5662959794696323],[1.7691659646166809],[8.23327615780446],[3.5587188612099645],[4.9689440993788825],[5.7885906040268456],[0.2544529262086514],[0.16849199663016007],[3.9433771486349847],[4.324801412180053],[0.37037037037037035],[4.240282685512367],[2.2104332449160036],[3.741496598639456],[0.0],[8.795074758135445e-2],[0.5089058524173028],[3.5555555555555554],[1.655933762649494],[2.829354553492484],[1.6778523489932886],[6.382978723404255],[0.9540329575021683],[3.9180765805877114],[1.41718334809566],[1.1226252158894645],[1.6695957820738137],[0.6398537477148081],[3.7500000000000004],[5.43970988213962],[2.831858407079646],[0.881057268722467],[0.5942275042444822],[8.817829457364342],[1.9498607242339834],[4.038630377524144],[9.165902841429881e-2],[3.472840605520926],[4.173764906303237],[3.2506415739948675],[5.16934046345811],[1.7351598173515983],[0.7079646017699115],[5.716723549488054],[2.7653880463871543],[1.8817204301075268],[3.971756398940865],[1.4746543778801844],[2.049910873440285],[3.9461883408071747],[0.8833922261484098],[2.3297491039426523],[0.9193054136874362],[1.8596787827557058],[1.8251681075888568],[2.680965147453083],[1.7495395948434624],[0.797872340425532],[2.787456445993031],[0.6505576208178439],[4.973821989528796],[1.5803336259877085],[1.690391459074733],[2.9962546816479403],[3.5906642728904847]],[[1.0506208213944603],[2.5089605734767026],[5.892700087950748],[9.17587085811385],[1.706484641638225],[1.9366197183098592],[5.906821963394343],[12.76595744680851],[8.67003367003367],[4.601769911504425],[2.0036429872495445],[2.751504729148753],[7.587382779198636],[0.970873786407767],[7.563025210084033],[5.3649956024626215],[5.489864864864865],[7.531380753138076],[11.911111111111111],[7.236268526591107],[8.348968105065666],[1.064773735581189],[4.340124003542959],[2.898550724637681],[8.629893238434164],[5.087719298245614],[6.318681318681318],[6.9787234042553195],[1.415929203539823],[9.903593339176162],[9.833333333333334],[6.073943661971831],[4.056437389770723],[4.216867469879518],[5.183946488294314],[8.428446005267778],[6.089193825042882],[8.547008547008547],[4.745166959578207],[5.555555555555555],[8.724832214765101],[3.9016115351993217],[3.628691983122363],[4.352030947775629],[4.7899159663865545],[4.609929078014185],[4.828797190517998],[2.4691358024691357],[3.741496598639456],[5.2276559865092755],[5.277044854881267],[11.167945439045182],[4.092071611253197],[8.699719363891488],[3.000882612533098],[5.704697986577181],[8.576480990274094],[4.509973980919341],[5.653382761816498],[1.41718334809566],[4.104803493449782],[4.92091388400703],[11.151736745886655],[5.521472392638037],[7.371225577264654],[3.768624014022787],[3.4863945578231292],[0.7582139848357203],[13.350125944584383],[4.921077065923863],[5.970149253731343],[4.302019315188762],[5.161854768153981],[5.45144804088586],[7.527801539777588],[7.558644656820157],[2.6244343891402715],[0.7964601769911503],[7.376362112321877],[5.956375838926174],[5.52200172562554],[7.640067911714771],[3.8669064748201443],[2.743362831858407],[7.8431372549019605],[1.4059753954305798],[2.5985663082437274],[3.0643513789581207],[7.861369399830938],[7.108549471661863],[2.854594112399643],[7.337883959044368],[4.846938775510204],[3.9330543933054396],[1.1937557392102847],[5.785123966942148],[3.800675675675676],[4.987102321582115],[3.173164097914778],[6.228956228956228]],[[10.521235521235521],[10.56985294117647],[7.009345794392524],[17.07731520815633],[16.296928327645052],[21.095152603231597],[18.47922192749779],[13.957446808510639],[9.76958525345622],[9.183673469387756],[8.425531914893616],[18.916595012897677],[13.745387453874539],[17.201426024955435],[16.30252100840336],[12.928759894459104],[7.864164432529044],[16.832579185520363],[15.466666666666667],[14.646904969485615],[9.507640067911716],[10.493273542600896],[10.555555555555555],[22.300263388937662],[17.081850533807827],[18.333333333333332],[8.904719501335707],[9.881061299176578],[13.27433628318584],[13.234005258545135],[22.666666666666668],[14.526710402999063],[7.874682472480948],[11.590296495956872],[14.373897707231041],[10.535557506584723],[20.497427101200685],[12.149532710280374],[8.394833948339484],[8.216619981325863],[16.778523489932887],[11.026293469041562],[22.953586497890296],[13.397548161120842],[16.50485436893204],[7.713754646840149],[8.763837638376383],[10.849909584086799],[21.42857142857143],[16.814946619217082],[17.678100263852244],[14.066496163682864],[12.71111111111111],[11.064891846921798],[3.342128408091469],[22.818791946308725],[9.694323144104803],[14.744145706851691],[9.545875810936053],[12.668463611859837],[9.956331877729259],[18.45342706502636],[12.157221206581353],[23.098330241187384],[11.697027804410356],[18.21493624772313],[11.71806167400881],[22.580645161290324],[15.988372093023255],[13.18477251624884],[15.100965759438102],[9.082568807339449],[9.59409594095941],[16.1839863713799],[19.58939264328486],[13.345864661654135],[3.324348607367475],[12.212389380530972],[9.592760180995475],[8.47457627118644],[14.611872146118722],[11.948529411764705],[8.23199251637044],[10.282074613284804],[8.851063829787234],[6.149732620320855],[21.594982078853047],[10.265811182401466],[21.048182586644124],[12.521008403361344],[9.825528007346188],[14.825046040515655],[12.689901697944594],[15.505226480836237],[12.546468401486988],[9.022556390977444],[13.432835820895521],[10.678733031674208],[4.98220640569395],[14.721723518850986]]]
+
+[[[6.228956228956228]],[[14.721723518850986]],[[3.5906642728904847]]]
+
+</textarea>
+<br><br>
+ </div>
+
+<div class="column middle" name="odey" style="background-color:none;color:lime;">
+<a href="pfeil" style="border-radius: 12px; padding: 2px 5px;" target="iframe_a">runKBASE</a>
+<textarea id="steno" class="storyTeller" rows="43" cols="150">
+	<p>
+
+StepI  1/4
+
+inner Haskell  'Colored_2_3_5_Counter20.hs'
+ and          'The AtoBPlotter'
+  
+              PhiMax
+	 is a sorting agorythm that uses the Simival function 
+	 that as I suspect , far after I worked with it
+	 is ( I hope Mr. Hohmann will be happy this statement:) 
+
+	 a point-axial symetric 2 dimensional 'absulute'function 
+
+	 or 
+         
+	   a point-axial symetric 2 dimensional 'absulute' sigmoid
+
+
+	   |                          x
+	   |               x      
+	   |          x    
+	   |       x
+	   |    x
+	   |  x
+	   |x_____________________
+           |
+	
+StepI  2/4
+
+in 'Colored_2_3_5_Counter20.hs'
+ and          'The AtoBPlotter'
+  
+capabiities of 'runKBASE`
+
+
+
+ offOn: Int, if==1 then run 'kArmTest5'
+ target : Int if==! thne ...
+ plot: Int , if==1 then writefile.wxm
+ addGH: Int ,if==! thne run 'kArmTrack5' -- without ghCheck
+ ghAff: String, add a string to a bonelist e.g "AAA"
+ n:Int ; io (n) in 'KArmt..
+ d: [[String]]  or a [bonelist]
+ get1: Int compare get1 to get1++get2
+ get2: Int compare get2 to get1++get2
+ get3: Int compare get3 to get3++get4
+ get4: Int compare get4 to get3++get4
+
+
+
+runKBASE offOn target plot addGH ghAdd n d get1 get2 get3 get4
+
+
+*>run
+
+
+*>let li=["AAABB","AAABAB","AAA","BBBAA"]
+
+
+*>let pi = Punkt "M" Nothing Nothing Nothing Nothing Nothing
+
+
+*>let myTest at = runKBase 2 [1,2] 12 at 2 li3 1 2 3 4
+
+
+</textarea>
+<br><br>
+ </div>
+
+
+ </div>
+ 
+</body></html>
