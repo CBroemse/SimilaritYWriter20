@@ -1,0 +1,38 @@
+Writing to Svg
+---------------
+
+A. storyTeller
+B. visiualize in the 'TheAtoBPlotter'
+          a) ptc -> yourRun.html 
+          b) Colored_2..Counter20.hs 
+            ( testversion "p5SimY/svgS/theSVGData2.svg")
+
+-------------------------------------
+B. 
+in TheAtoBPlotter:
+take over ptc functions or tsRAW
+
+inserted via 'svgplot'
+
+use
+ 'header
+  'textS/theSVGHeader.txt
+
+--------------------------------------
+A. 
+in Colored..Counter20.hs (cc20)
+
+STORYTELLER
+  write every txt to p5SimY/svgS/test03.html
+
+  in cc20 via 'textSvg'
+----------------------------------------
+
+
+library
+
+use button clicks
+file:///C:/Users/Watson/Documents/DynamicSystems/MageFormular/scriptgetKoordinate3.svg
+
+whole svg page
+file:///C:/Users/Watson/Documents/DynamicSystems/MageFormular/learnScript.svg

@@ -20,7 +20,8 @@ function changeFill() {
 
 </script>
 <text x="80" fill="green" y="10">content</text>
-<text x="80" y="50" fill="lime">intro</text>
+
+<g> <a href="file:///c:/stack/SimilaritYWriter20/src/p5SimY/svgS/test03.html" target="_blank"> <text x="80" y="50" fill="lime">intro</text></a> </g>
 <text x="80" y="100" fill="white">Haskell</text>
 <text x="80" y="150" fill="yellow">four lines of thought</text>
 <text x="100" y="170" fill ="yellow">StepI</text>
