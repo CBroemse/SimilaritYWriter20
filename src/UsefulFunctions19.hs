@@ -462,7 +462,7 @@ evalToWrite astrinG = if tzBool>0 then prsRoot++(head tz3)++(show tzInt)++"."++(
     prsInput = poc1 fst;
     prsRoot = poc1 snd;  
     tz0 = (map ord prsInput);
-    tz = (filter (>47) (filter (<57)  tz0));
+    tz = (filter (>47) (filter (<58)  tz0));
     tzExp = (map chr tz);
     tzBool = length tzExp;
     tzRootSource  = filter (==47); 

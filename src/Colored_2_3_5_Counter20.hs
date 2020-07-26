@@ -925,7 +925,7 @@ chainDistribute crit dipfade2 criterium pt = let provideVals = [show(map ord cri
                   --       in let wereWHat  = ((head(map ord crit))) `elemIndices` (map ord (unwords dipfade2)) 
                     --     in wereWHat --fodip4 --group aFiltNum --roces --cdMAP --parsE aFilt --(map head (map words((concat(head cdMAP)))))
 
-
+--tsRAW
 
 --------------------------------------------------------------------------------------------------------------------------------------
 --------------------------------------------------------------------------------------------------- ######################################### CONTROLS: PRINTING 
@@ -1391,8 +1391,231 @@ getRid x = let a = (map ord x)
            in c
 
 --------------------------------------------------------------------------
+-- legos: [String] ; html/svg/script buiding parts for svg  example1: svgStrings0
+-- wander where will rect go now just x (work in one line)
+-- anchor: (Double,Double) ;first starting value for plot (x,y)
+fofina anchor = do
+           let xX z = mieX z
+           let yY z = miY z
+ 
+           
+           aMonada <- forM [1..3] (\os -> do 
+                let conLongituda = if os ==1 then [1,2]
+                                   else if os==2 then [1..3]
+                                   else [1..5]
+                             --   let defaultSwitch = if os /= 1 && os /= 2 then 
+               -- the5th <- 
+                interna <- forM conLongituda (\as -> do
+                       let fogenID = dar as conLongituda
+                       let genID = fogenID*(1+(os-1))+as
+                       let xx = xX as
+                       let yy = yY as
+                       ocinquo <- forM [1..5] (\cn -> do
+
+                            let alD = if cn == 1 then   "<g> " ++ snd (aType 7 (xx+75) (yy) genID)++ ("</rect>\n")++(legos genID (xx+15) yy (colorList 1)) ++" </g>\n"
+
+                                      else if cn == 2 then  fst (aType 4 (xx+165) (yy) genID)++ ("</rect>\n")++(legos genID (xx+15) yy (colorList 1))
+
+ 
+                                      else if cn == 3 then  snd (aType 7 (xx+105) (yy) genID)++ ("</rect>\n")++(legos genID (xx+15) yy (colorList 1))
+                                      
+                                      else if cn == 4 then  fst (aType 4 (xx+165) (yy) genID)++ ("</rect>\n")++(legos genID (xx+15) yy (colorList 1))
+
+                                      else "<g> " ++ snd (aType 7 (xx+165) (yy) genID)++ ("</rect>\n")++(legos genID (xx+15) yy (colorList 1)) ++" </g>\n"
+
+                                    --  else  snd (aType 7 (xx+215) (yy) genID)++ ("</rect>\n")++(legos genID (xx+15) yy (colorList 1)) 
+                            return (alD))
+                            
+                       let moveOn =  fst (aType 4 (xx) (yy) genID)++ ("</rect>\n")
+                       --let moveOn2 =  fst (aType 4 (xx+75) (yy) genID)++ ("</rect>\n")++(legos genID (xx+75) yy (colorList 1))
+
+                       let the5th = ((unlines ocinquo) ++"<g transform=\"translate(100,0)\">\n" ++(moveOn)) ++"\n </g>\n"
+                       let altituda  = if os == 1 && even os==False && as == 1 then fst (aType 4 xx yy genID)++ "</rect>\n"++(legos genID (xx+15) yy (colorList 1)) 
+                                              else if os ==1  || even os == True && as == 2 then snd (aType 7 (xx) (yy) genID)++ ("</rect>\n") 
+                                              else if os ==2 && even os == False || as == 1 then snd (aType 7 (xx+65) (yy) genID)++ ("</rect>\n")++(legos genID (xx+15) yy (colorList 1)) 
+                                              else if os ==2 && even os == True || as == 2 then fst (aType 4 (xx+65) (yy) genID)++ ("</rect>\n")++(legos genID (xx+15) yy (colorList 1))  
+                                              else if os ==2 && even os == False || as == 3 then snd (aType 7 (xx+65) (yy) genID)++ ("</rect>\n")++(legos genID (xx+15) yy (colorList 1)) 
+
+                                              else (the5th) --snd (aType 7 (xx+155) (yy) genID)++ ("</rect>\n")
+                                            --  else the5th --snd (aType 7 (xx+135) (yy) genID)++ ("</rect>\n")
+
+                       
+                                           --else fst (aType 4 (xx+270) (yy) genID)++ ("</rect>\n") 
+                       return (altituda ))
+                return (interna))
+           return (aMonada)
+           (aMonada)
+     
+  where
+     dar is so = head$ ausw is so;
+     colorList c = dar c ["green","red","blue","darkgray","black","white","lime"];
+    -- rectAnimate = dar 1 legos; 
+    
+     wanderLust foAnc w  = foAnc + (dar w [30,60..]) --wander --  [30,60,90...  -- only xs ; where will go which of the 10 rect in each line
+     mieX w= wanderLust (fst anchor) w;
+     miY w = (snd anchor) +(dar w [0..]);
+     no1 id fox foY foColor= ("<rect id=\"rec"++show id++"\" x=\""++show( fox )++"\" y=\"" ++show(foY) ++"\" width=\"30\" height=\"30\" style=\"fill:"++foColor++"\">\n");
+     setterAni id fox foY c = [(no1 id fox foY (colorList c)),(svgStrings0)]; 
+     aType c fox foY id = ((no1 id fox foY (colorList c)), (unlines (setterAni id fox foY c))) ;-- c int chooe, w : x or y; 	
 
 
+headSvg = ("<?xml version=\"1.0\" standalone=\"no\"?>\n"++
+          "<!DOCTYPE svg PUBLIC \"-//W3C//DTD SVG 1.1//EN\"\n"++ 
+          "\"http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd\">\n\n"++
+          "<svg width=\"100%\" height=\"100%\" version=\"1.1\"\n"++
+          "xmlns=\"http://www.w3.org/2000/svg\">\n\n")
 
+svgStrings0 = ("<animateColor attributeName=\"fill\" attributeType=\"CSS\" from=\"lime\" to=\"red\" begin=\"1s\" dur=\"5s\"  repeatCount=\"indefinite\" />\n"++
+               "    <set attributeName=\"fill\" attributeType=\"CSS\" from=\"lime\" to=\"lime\" begin=\"5\" dur=\"10s\"  repeatCount=\"repeat\" />\n"++
+               "    <set attributeName=\"fill\" attributeType=\"CSS\" from=\"lime\" to=\"lime\" begin=\"10\" dur=\"15s\"  fill=\"repeat\" />")    
+
+svgStreamText inText = "<rect id=\"go\" x=\"20\" y=\"350\" width=\"300\" height=\"650\" style=\"fill:green;fill-opacity:0.2\"/>\n"++(inText)
+     
+finalmente = let capital = concat[(fofina (10,10)),(fofina (10,45)),(fofina(10,80))]  
+             in do 
+                   putStrLn (unlines$concat$capital)
+                   let aColored235 = (headSvg++(unlines$concat$capital)++"</svg>\n")
+                   writeFile "p5SimY/svgS/theSVGData2.svg" (aColored235)
+
+legos id cx cy col = ("<ellipse id=\""++show id++"\" cx=\""++ show cx ++"\" cy=\""++ show cy++"\" rx=\"9\" ry=\"12\" stroke=\"black\" stroke-width=\"2px\" style=\"fill:"++ col ++"\">\n"++
+                      "<animateColor attributeName=\"fill\" attributeType=\"CSS\" from=\"blue\" to=\"lime\" begin=\"1s\" dur=\"6s\"  repeatCount=\"indefinite\" />\n"++
+                      "</ellipse>\n")
+
+-- get screen posi "c:/stack/SimiaritYWriter20/src/textS/theSVGHeader.txt"
+textSvg = do 
+    atext <- readFile "c:/stack/SimilaritYWriter20/src/textS/story01.txt"
+    justSvg <- readFile"c:/stack/SimilaritYWriter20/src/p5SimY/svgS/storyTellerRAW.txt"
+   -- work Int->
+    let hadrian = length (lines atext)
+    let adbr f = (head$ausw f (lines atext))
+    let littleArrow = map adbr [1..hadrian]
+   -- work [String] -> descriptional notes
+    let fillTeller = (concat(take 192 (lines justSvg))) ++(atext) ++(concat (drop 196 (take 201 (lines justSvg))))
+    let cUrryfame txtcontent= ("<textarea name=\"message\" rows=\""++ show hadrian++"\" cols=\"50\">\n"++
+                    ""++txtcontent ++"\n</textarea>\n<br><br>\n\n")
+                       
+    putStrLn (show hadrian) --let workWith = (take 118 (lines buildSeen))
+    writeFile "textS/story01.html" fillTeller --(justSvg++"\n"++(svgStreamText ((cUrryfame(unlines littleArrow)) ))++"\n"++"</svg>\n")
+    putStrLn "wrote: textS/story01.html" 
+-------------------------------------------------------------
+--
+
+-------------------------------------------------------------
+-- data entry accessTo iframe_c
+-- t: Int; chooses textarea , set to have 2 textareas
+-- toWrite: String ; search word in Text area and possibe access points
+-- chAr : Char ; 'r' or 'w' or 'd'  ; read write or delete lines in filesystem
+iframe_c t toWrite chAr ko= iframe_cRAW t toWrite chAr ko
+
+--fiLe:String ;which file to read needed for saVe function
+--token: Int ; keep track of state of 'evaToWrit' 
+iframe_cRAW t toWrite chAr ko token= do
+    let setJump = if (read token)<=0 then 0 -- with evalToWrite make data closed pipe jump from 9 back to 0
+                  else (read token) -1
+
+    let buyTicket = if (read token) <= 0 then ("textS/indat23720/filesystem.txt")
+                    else (("textS/indat23720/filesystemDATA/filesystem")++(show setJump)++".html")
+
+    aRawHtmlTxt <- readFile (buyTicket)
+    let solo = length (lines aRawHtmlTxt)
+    let interSearch foToWrite = do
+              access <- forM [1..solo] (\so -> do
+              let pull = concat$ausw so (lines aRawHtmlTxt)
+              let aC = ((foToWrite)`elemIndices` (words pull))
+              let withLength = if length aC== 0 then 0 --["",""]
+                               else 1 --[(show so),","]
+              return (withLength))
+            --  putStrLn  (show access)
+              let serf = (1) `elemIndices` (access)
+           --   putStrLn (show serf)
+              return (serf)
+    let examplRAW1 t = head(ausw t (interSearch "<textarea"))  -- [195,225]
+    let examplRAW2 t = head(ausw t (interSearch "</textarea>"))
+    let exampl0 te k = ausw te [(examplRAW1 k),(examplRAW2 k)] -- switch textareas now 
+    let exampl t = [examplRAW1 t,examplRAW2 t]
+   
+    let typesafer n = let had1 =   (head$head$exampl t) --map ord (exampl))
+                      in let had2 = (head$last$exampl t) 
+                      in if n<(had1) then had1+1
+                         else if n >(had2) then had2-1
+                         else n 
+    let saferRaw t n foHtml = drop (typesafer t) (take (typesafer n) (lines foHtml))
+    let safer t n = saferRaw t n (aRawHtmlTxt)
+    let actual = (interSearch (toWrite)) -- head or last for boundaries
+
+    let sfrField = safer ((head$head$exampl t)+1) ((last$head$ exampl t)-1 )
+     -- g:String ; content to write to file++toktn++.txt
+     --
+    let theWrights g = do 
+                          filesystemDATA <- readFile (("textS/indat23720/filesystemDATA/filesystem")++(show setJump)++".html")
+                          (writeFile ("textS/indat23720/filesystemDATA/"++(evalToWrit ("filesystem"++token++".html"))) g)
+                          putStrLn ("wrote: "++ ("textS/indat23720/filesystemDATA/"++(evalToWrit ("filesystem"++token++".html")))) 
+  
+--safer (head$read$show$ exampl) (last$read$show$ exampl)             
+    let railOut = if chAr=="w" then safer ((head$head$exampl t)+1) ((last$head$exampl t)-1)
+                  else if chAr=="du" then sfrField\\ (safer ((head$head$exampl t)-1) ((head$head$actual)-1))-- "du" delete upwards
+                                     
+                  else if chAr=="dl" then sfrField \\ ((ausw ((head$head$actual)+1) (lines aRawHtmlTxt))) -- ( --"dl" delete line
+        
+                  else if chAr=="dd" then sfrField \\ ((safer (head$head$actual) (head$last$exampl t)))  --"dd" delete downwards
+                  else if chAr == "wu" then let step1 = (safer ((head$head$actual)-2) ((head$head$actual)-1))  --"wu" write insert ko upwards 
+                                            in lines ((unlines step1 )++ unlines ko ++(unlines(safer (head$head$actual) (head$last$exampl t)))) --((fst step1)) --lin
+                  else if chAr == "wd"  then let step1 = (safer ((head$head$exampl t)+1) ((head$head$actual)+1))  --"wd" write downwards until begin length input lines
+                                            in lines ((unlines step1 )++ unlines ko ++(unlines(safer ((head$head$actual)+2) (head$last$exampl t)))) 
+                              --     else if chAr ==[119 then safer --"wl" write line  
+                  else if chAr =="ra" then safer ((head$head$exampl t)+1) ((last$head$exampl t)-1)
+ --"ra" read all 
+                  else if chAr =="ru" then let step1 = (safer ((head$head$actual)-2) ((head$head$actual)-1))  --"ru" read, insert ko upwards 
+                                            in lines ((unlines step1 )++ unlines ko ++(unlines(safer (head$head$actual) (head$last$exampl t)))) --((fst step1)) --lin
+                  else if chAr =="rl" then safer ((head$head$exampl t)+1) ((last$head$exampl t)-1)
+                  else if chAr =="rd" then let step1 = (safer ((head$head$exampl t)+1) ((head$head$actual)+1))  --"rd" read downwards until begin length input lines
+                                           in lines ((unlines step1 )++ unlines ko ++(unlines(safer ((head$head$actual)+2) (head$last$exampl t)))) 
+
+     -- write after occurance e.g chAr=="wd4"  write AFTER ther 4th occourance of searched word (toWrite)
+                  else let getOccy = let no1 = evalToWrit (chAr++".ccc") 
+                                           in let no2 = map ord (fst (break (<='.') no1))
+                                           in map chr (filter (>47) (filter(<58) no2))
+                       in let step1 = (safer ((head$head$exampl t)+1) ((last$last$ actual)+1))  --"wd" write downwards until begin length input lines
+                       in lines ((unlines step1 )++ unlines ko ++(unlines(safer ((head$head$actual)+2) (head$last$exampl t))))  
+ 
+
+
+    let astation = lines ((unlines (safer 0 (head$head$exampl t)))  ++ (unlines railOut) ++ (unlines (safer (last$head$exampl t) solo)))
+    let railSystem =  ((unlines (take ((head$head$exampl t)+1) (lines aRawHtmlTxt)))  ++ (unlines railOut) ++ (unlines (drop ((head$last$exampl t)) (take solo (lines aRawHtmlTxt)))))
+
+    putStrLn (show (exampl t))  
+    putStrLn  (chAr++" to filesystem.html")
+    putStrLn  ("searched word: "++ show toWrite)  
+
+    putStrLn ("occourrance list"++show actual) 
+  --  putStrLn (unlines sfrField)
+    putStrLn (unlines(railOut))
+    let junctionSystem = if chAr == "du" || chAr=="dl"||chAr=="dd"||chAr=="wu"||chAr=="wd" || chAr =="wd2" then do
+                               theWrights railSystem
+                               
+                         else do 
+                               writeFile ("textS/indat23720/filesystem.html") (railSystem)
+                               putStrLn ("Just READ file system \"textS/indat23720/filesystem.html\"") 
+    junctionSystem
+    
+evalToWrit astrinG = if tzBool>0 then prsRoot++(head tz3)++(show tzInt)++"."++(last tz3)
+                     else prsRoot++(head tz3)++("1.")++(last tz3)
+     where
+    poc1 fOsnd = reverse( fOsnd(break (=='/') (reverse(astrinG))));--prevent '/' cause trouble
+    prsInput = poc1 fst;
+    prsRoot = poc1 snd;  
+    tz0 = (map ord prsInput);
+    tz = (filter (>47) (filter (<58)  tz0));
+    tzExp = (map chr tz);
+    tzBool = length tzExp;
+    tzRootSource  = filter (==47); 
+    tz1 = tz0 \\ tz;
+    tz2 = map (\c -> if c=='.' then ' '; else c);
+    tz3 = words (tz2 (map chr tz1));
+    tzInt = if tzBool==0 then 1
+            else if (read tzExp)<9 then (read tzExp)+1
+          --  else if (read tzExp)==9 then 0 
+
+            else 0 ;
 
 
