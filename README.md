@@ -23,6 +23,54 @@
                   *> let myTest at = runKBASE 2 [1,2] 1 2 at 2 (li3) 1 2 3 4
   ###### Just li
   ![alt tag](https://github.com/CBroemse/SimilaritYWriter20/blob/master/source/ptc4wittsatz1.png)
+  
+  #### Step I
+   
+  ###### a.
+  
+      this will be the main example being used throughout this program
+     
+     *> let li = ["AAABB","AABAB","AAA","BBBAA"]
+     *> let bonelist = li
+     *> let pi = Punkt "m" Nothing Nothing Nothing Nothing Nothing -- data type in kArmTrack5 could help error handling ??
+     
+     we compare all lines and atoms of the bonlist. To describe certain Types we wil use ' 
+
+            ':=' -- which is equivalent to '::' but ':=' /= '::' thus
+     
+  ###### save computation
+             write occourance list to Html via:
+             kArmTest5 addGh liT bonelist mofaList connectWrist dit dit2 mCommand crit
+             for variables see StepI below
+             e.g 
+    *TheAToBplotter>  kArmTest5 2 ["AHEy","AAABBAAABAB","AAABAB","BBB","AAABBBAA","BBBAA"] li 1 pi 1 1 [] "BBBB"
+            
+            -- imported to TheAToBPlotter from Colored_2_3_5_Counter20 as C.
+     C.kArmTest5 addGh li 1 pi 1 1 [] "AAA"    -- the last item "AAA" will be the test run
+  ###### main function 
+     runKBASE offOn target plot addGh ghAdd n d get1 get2 get3 get4 
+     
+               offOn: Int, if==1 then run 'kArmTrack5'
+               target: Int , if==1 then ....
+               plot: Int , if==1 then write file.wxm
+               addGH: Int , if==1 then run kArmTrack5 --display order without ghCheck
+                            else if ==2 then  run kArmTrack5 -- dispay order WITH ghCheck
+                            else dont run
+               ghAdd: String , add a string to a bonelist e.g "AAA"
+               n : Int ; io (n) in 'kArmTrack5'
+               d: [[String]] , [bonelist]
+               e.g main> let d = [["AAA","AAA","AAA","AAAB"],["AAABB","AAABAB","AAA","BBBAA"]]
+               
+               of a bonelist get an element
+               e.g main> get 1 ["AAABB","AAABAB","AAA","BBBAA"]
+                       > "AAABB"
+               get1: Int ,compare get1 to get1++get2 
+               get2: Int ,compare get2 to get1++get2 
+               get3: Int ,compare get3 to get3++get4
+               get4: Int ,compare get4 to get3++get4
+     
+
+
       
 ##### state of development
 
@@ -91,47 +139,8 @@
      tsRAW pt9c:= [1 (ptc9) 1)..100 (ptc9 100)]
         *>length(nub(concat(tsRAW ptc9)))
         *> 3
-               
-#### Step I
-   
-  ###### a.
-  
-      this will be the main example being used throughout this program
-     
-     *> let li = ["AAABB","AABAB","AAA","BBBAA"]
-     *> let bonelist = li
-     *> let pi = Punkt "m" Nothing Nothing Nothing Nothing Nothing -- data type in kArmTrack5 could help error handling ??
-     
-     we compare all lines and atoms of the bonlist. To describe certain Types we wil use ' 
-
-            ':=' -- which is equivalent to '::' but ':=' /= '::' thus
-     
-     
-     -- simiariYvalue network
-     kArmTest5 addGh li 1 pi 1 1 [] "AAA"    -- the last item "AAA" will be the test run
-     runKBASE offOn target plot addGh ghAdd n d get1 get2 get3 get4 
-               offOn: Int, if==1 then run 'kArmTrack5'
-               target: Int , if==1 then ....
-               plot: Int , if==1 then write file.wxm
-               addGH: Int , if==1 then run kArmTrack5 --display order without ghCheck
-                            else if ==2 then  run kArmTrack5 -- dispay order WITH ghCheck
-                            else dont run
-               ghAdd: String , add a string to a bonelist e.g "AAA"
-               n : Int ; io (n) in 'kArmTrack5'
-               d: [[String]] , [bonelist]
-               e.g main> let d = [["AAA","AAA","AAA","AAAB"],["AAABB","AAABAB","AAA","BBBAA"]]
-               
-               of a bonelist get an element
-               e.g main> get 1 ["AAABB","AAABAB","AAA","BBBAA"]
-                       > "AAABB"
-               get1: Int ,compare get1 to get1++get2 
-               get2: Int ,compare get2 to get1++get2 
-               get3: Int ,compare get3 to get3++get4
-               get4: Int ,compare get4 to get3++get4
-     
-
-
-There is an syntactic level and a conceptual level
+                    
+ ###### There is an syntactic level and a conceptual level
 
         =======================================================================================================================
                                   SYNTAX                  |             CONCEPT
