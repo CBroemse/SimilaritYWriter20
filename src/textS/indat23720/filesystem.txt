@@ -199,7 +199,7 @@ function w3_close() {
 
   let iframe_c t toWrite ko token = iframe_cRAW t toWrite chAr ko token 
 
-	*> iframe_c "WELCOME" "dd" [] "0"
+	*> iframe_c 1 1 "WELCOME" "dd" [] "0"
 	*> delete all downward from "Welcome" and write to file:
    	------------------------------------------------------------------------------------------
   i)	"du" delete upwards                                      |      all i) write to file                                  
@@ -229,11 +229,11 @@ inner Haskell  'Colored_2_3_5_Counter20.hs'
 	 is a sorting agorythm that uses the Simival function 
 	 that as I suspect , far after I worked with it
 	 is 
-	 a point-axial symetric 2 dimensional 'absulute'function 
+	 a point symetric 2 dimensional 'absolute'function 
 
 	 or 
          
-	   a point-axial symetric 2 dimensional 'absulute' sigmoid
+	   a point symetric 2 dimensional 'absolute' sigmoid
 
 
 	   |                          x
