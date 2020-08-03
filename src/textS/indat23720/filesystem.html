@@ -187,9 +187,13 @@ function w3_close() {
 	<p>WELCOME TO 'IFRAME_C'
        	a Haskell to Html file system
 
- iframe_c :: Int -> [Char] -> [Char] -> [String] -> [Char] -> IO ()
+ iframe_c
+  :: (Num p, Eq p) =>
+     Int -> p -> [Char] -> [Char] -> [String] -> String -> IO ()
 
     t      : Int    ; change filesystem.html left to right in index.html (not used set to 1)
+    t2     : Int     ; Int if==1 one will add new lines to 'token selected' html 1 0f 9
+                            else will drop fst list entry  'token selected' html 1 0f 9
     toWrite: String ; search this words e.g "StepI"
     chAr   : String ; do command 
     ko     : String ; data input
@@ -198,7 +202,7 @@ function w3_close() {
 
   let iframe_c t toWrite ko token = iframe_cRAW t toWrite chAr ko token 
 
-	*> iframe_c "WELCOME" "dd" [] "0"
+     e.g*> iframe_c 1 1 "WELCOME" "dd" [] "0"
 	*> delete all downward from "Welcome" and write to file:
    	------------------------------------------------------------------------------------------
   i)	"du" delete upwards                                      |      all i) write to file                                  
@@ -226,7 +230,7 @@ inner Haskell  'Colored_2_3_5_Counter20.hs'
   
               PhiMax
 	 is a sorting algorythm that uses the Simival function 
-	 that as I suspect , far after I worked with it
+	 that as I suspect , far after I worked with it is 
 	
 
 	 a point  dimensional 'absolute'function 
