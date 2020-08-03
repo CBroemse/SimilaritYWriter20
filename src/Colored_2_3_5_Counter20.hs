@@ -75,6 +75,8 @@ module Colored_2_3_5_Counter20 (
    -- naiveSim
     , kArmTest5 -- new Main
     , tsRAW 
+    , iframe_c -- write into storyTeller to html 
+    , iframe_cRAW -- 
       ) where
 
 import Data.List
@@ -505,7 +507,7 @@ kArmTest5 bonelist mofaList connectWrist dit dit2 mCommand crit= do
               let motherType3 foas r = map (mayer3 (head(ausw r (map show justIO)))) ([foas])
               putStrLn (unlines(checkflow [] (ausw 1 (motherType3 (justGene 3) (3)))))
               putStrLn (tester 4)
-           {-   putStrLn ((edR1 1 1) )-- ++ "     " ++ (edRGH 1 1))
+              putStrLn ((edR1 1 1) )-- ++ "     " ++ (edRGH 1 1))
               putStrLn ((edR1 1 2) )-- ++ "     " ++ (edRGH 1 2))
 
               putStrLn ((edR1 1 3) )-- ++ "      " ++ (edRGH 1 3))
@@ -550,7 +552,7 @@ kArmTest5 bonelist mofaList connectWrist dit dit2 mCommand crit= do
 
               putStrLn ((edR1 4 3) )-- ++ "       "  ++ (edRGH 4 3))
 
-              putStrLn ((edR1 4 4) )-- ++ "     " ++ (edRGH 4 4)) -}
+              putStrLn ((edR1 4 4) )-- ++ "     " ++ (edRGH 4 4)) 
 
             --  putStrLn ("                    " ++ (edRGH 4 5))
              -- putStrLn ("                    " ++ (edRGH 5 5))
@@ -1504,9 +1506,10 @@ textSvg = do
 -------------------------------------------------------------
 -- data entry accessTo iframe_c
 -- t: Int; chooses textarea , set to have 2 textareas
--- toWrite: String ; search word in Text area and possibe access points
+-- toWrite: String ; search word in Text area and possible access points
 -- chAr : Char ; 'r' or 'w' or 'd'  ; read write or delete lines in filesystem
-iframe_c t railW toWrite chAr ko= iframe_cRAW t railW toWrite chAr ko
+-- e.g> iframe_c 1 1 "<p>" "wd" [("ptc3\n")++(show (tsRAW ptc3))++"\n"] "4"
+iframe_c t railW toWrite chAr ko token= iframe_cRAW t railW toWrite chAr ko token
 
 -- railW: Int if==1 one will add new lines to 'token selected' html 1 0f 9
 --            else will drop fst list entry  'token selected' html 1 0f 9

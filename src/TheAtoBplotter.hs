@@ -30,6 +30,7 @@ import qualified Path2Val2 as HT
 import qualified FourierFieldCLASSIFIER as F
 import qualified WriteWXmaximaJuicy as M
 import qualified GHCguiNfunctions as G
+import qualified Colored_2_3_5_Counter20 as C
  
 --"primam sediem a niguem sidicari "
  --e.g *> runKRAW 1 1 [["AAA","BBB","CCC"],["DDD","FFF","HHH"]]
@@ -56,7 +57,7 @@ runKBASE offOn target plot addGh ghAdd n d get1 get2 get3 get4 = do
             wirs <- readFile ("HtmlS/foyourRun"++(show (dt+1))++".txt")
             return (wirs))
      --  nugget = map ord nuDoe
-     --  let gbb = map chr [nugget]
+     --  let gbb = map chr [nugget]  tsRAW
        let theListIV = (header++unwords writeAll++(G.screenInfo (map lines["which info"]) 1) ++"</body>\n"++"</html>\n")
        writeFile "HtmlS/yourRun.html" (theListIV) 
 
@@ -763,6 +764,9 @@ defSearchRAW offOn target plot addGh ghAdd pV1 pV2 pV3 pV4 pV5 pV6 ptc0Len ptc3L
 
 
 --addGh:Int ; 1 == add new line to a bonelist: ghCheck and write111111111
+-- e.g> let li = ["AAABB","AABAB","AAA","BBBAA"]
+--       let pi = Punkt "M" Nothing Nothing Nothing Nothing Nothing
+-- e.g>  kArmTest5 2 ["AAABB","AAABBAAABAB","AAABAB","AAA","AAABBBAA","BBBAA"] li 1 pi 1 1 [] "DD"
 kArmTest5 addGh liT bonelist mofaList connectWrist dit dit2 mCommand crit= do
      let allAcc foPun =  (checkflow [] [(foPun)])
  
@@ -1103,6 +1107,32 @@ kArmTest5 addGh liT bonelist mofaList connectWrist dit dit2 mCommand crit= do
               putStrLn (unlines(checkflow [] (ausw 1 (motherType3 (justGene 3) (3)))))
               putStrLn (tester 4)
               let addGH = if addGh == 2 then do
+                            let toFrame =  [(edR1 1 1)  ++ "     " ++ (edRGH 1 1)++"\n"++
+                                            (edR1 1 2)  ++ "     " ++ (edRGH 1 2)++"\n"++
+                                            (edR1 1 3)  ++ "      " ++ (edRGH 1 3)++"\n"++
+                                            (edR1 1 4)  ++ "      " ++ (edRGH 1 4)++"\n"++
+
+                                             "                    " ++ (edRGH 1 5)++"\n"++
+                                            (edR1 2 1)  ++ "     " ++ (edRGH 2 1)++"\n"++
+                                            (edR1 2 2)  ++ "     " ++ (edRGH 2 2)++"\n"++
+                                            (edR1 2 3)  ++ "      " ++ (edRGH 2 3)++"\n"++
+                                            (edR1 2 4)  ++ "      " ++ (edRGH 2 4)++"\n"++
+                                             "                    "++ (edRGH 2 5)++"\n"++
+                                            (edR1 3 1)  ++ "      " ++ (edRGH 3 1)++"\n"++
+                                            (edR1 3 2)  ++ "      " ++ (edRGH 3 2)++"\n"++
+                                            (edR1 3 3)  ++ "     " ++ (edRGH 3 3)++"\n"++
+                                            (edR1 3 4)  ++ "       " ++ (edRGH 3 4)++"\n"++
+                                             "                    " ++ (edRGH 3 5)++"\n"++ 
+                                            (edR1 4 1) ++"\n"++ -- ++ "      " ++ (edRGH 4 1))
+                                            (edR1 4 2) ++"\n"++ --  ++ "      " ++ (edRGH 4 2))
+                                            (edR1 4 3)  ++"\n"++ -- ++ "       "  ++ (edRGH 4 3))
+                                            (edR1 4 4) ++"\n"++ -- ++ "     " ++ (edRGH 4 4)) 
+                                            "                    " ++ (edRGH 5 5)]
+
+              --              runs <- forM [1] (\nr -> do
+                            C.iframe_c 1 2 "<p>" "wd" toFrame "3"
+                  --              return(gh))
+                    --        return runs
                             putStrLn ((edR1 1 1)  ++ "     " ++ (edRGH 1 1)) -- maybePu
                             putStrLn ((edR1 1 2)  ++ "     " ++ (edRGH 1 2))
                             putStrLn ((edR1 1 3)  ++ "      " ++ (edRGH 1 3))
@@ -1147,7 +1177,7 @@ kArmTest5 addGh liT bonelist mofaList connectWrist dit dit2 mCommand crit= do
                             putStrLn ((edR1 4 4) ) 
 
                           else
-                            (putStr"") 
+                            (putStrLn"") 
               putStrLn "Test map mother"
               addGH
  -- BELOW ALL taken out for deveopment but still valid 04-7-20
