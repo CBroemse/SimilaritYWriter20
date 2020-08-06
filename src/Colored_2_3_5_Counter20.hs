@@ -845,7 +845,7 @@ workptc9 ptc n = let be f = nub (ptc n) --([(ste1 f),(ste2 f),(ste3 f)])
     ste3 f = last (ptc f);  
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
---play programmer(Main.hs) : 
+-- programmer: 
 -- turn a 3d Pointcloud into 3 destinct 2d representations
 -- functions exported to main module:
 -- tsRAW -- take 100 and nub out (delete all occurances>1) 
@@ -867,7 +867,24 @@ rep2 r = map (\c -> if c==r then "0"; else c)
 getrep t = rep "1.0" (map show(daZip t))
 getrep2 s t = rep s (map show(daZip t))
 source line = (group((getrep line)));
+--------------------------------------------------------------------------------
+forTs r = tsRAW r
+ts2 r = (forTs r) 
+maxa2 t r =head$last$group$sort$concat$concat$ausw t (forTs r)
+ 
+picks2 t r = concat(concat(ausw t (transpose (ts2 r))))
+runM2 t r = take (length (picks2 t r)) (repeat (maxa2 t r))
+pp2 t r = concat$concat$ausw t (ts2 r)
+daZip2 t r = zipWith(/) (runM2 t r) (pp2 t r)
+qs2 t r= ( "1.0") `elemIndices` (map show (daZip2 t r))
+rep2B r = map (\c -> if c==r then "0"; else c)
+rep22B r = map (\c -> if c==r then "0"; else c)
 
+getrepB t r = rep2B "1.0" (map show(daZip2 t r))
+getrep2B s t r = rep2B s (map show(daZip2 t r))
+sourceB t line = (group((getrepB t line)))
+
+--------------------------------------------------------------------------------
 
 myMonad = do
       let metric r line = ausw r (group(sort(concat(concat(ausw line ts)))));
@@ -890,6 +907,32 @@ choosM t = (concat(concat(ausw t myMonad) ))
 build2d = nub(concat [fw1,fw2,fw3])
    where 
       frameW t g = transpose [(choosM t),(choosM g)];
+      fw1 = frameW 1 2;
+      fw2 = frameW 1 3;
+      fw3 = frameW 2 3;
+
+
+myMonad2 ptC= do
+      let metric r line = ausw r (group(sort(concat(concat(ausw line (ts2 ptC))))));
+      let dats r line = ausw r (group(getrepB line ptC))
+      let sol r line = length (concat(metric r line))
+      pin <- forM [1,2,3] (\pu -> do
+          let fosol = length (group(getrepB pu ptC)) 
+          checklin <- forM [1..(fosol)] (\chk -> do
+                 let maak = metric chk pu
+                 let retrun = if (map length (maak)) == [2] && (concat maak)/=[1.0,1.0] then [1.0,1.0]
+                              else (concat maak) --[(head (metric 1 line)),head(ausw 2 (metric 2 line)),["0","0"]]
+                 return(retrun))
+          let binder = ( (concat checklin))
+          --putStrLn checklin
+          return(checklin))
+          
+      (pin)      
+
+choosM2 t ptC = (concat(concat(ausw t (myMonad2 ptC)) ))
+build2d2 ptC = nub(concat [fw1,fw2,fw3])
+   where 
+      frameW t g = transpose [(choosM2 t ptC),(choosM2 g ptC)];
       fw1 = frameW 1 2;
       fw2 = frameW 1 3;
       fw3 = frameW 2 3;
