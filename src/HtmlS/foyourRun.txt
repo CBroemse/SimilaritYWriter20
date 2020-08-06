@@ -1,0 +1,28 @@
+                      </div>
+
+               <div class="row">
+<div class="column side" style="background-color:none; width: 10%;">
+
+<a href="file:///c://stack/SimilaritYWriter20/src/source/ptcDATA.txt" target="iframe_a">library           </a>
+<a href="file:///c:/stack/SimilaritYWriter20/src/p5SimY/action.html" target="iframe_a">Animate           </a>
+<a href="file:///c:/stack/SimilaritYWriter20/src/p5SimY/action.html" style="width:5%;" target="iframe_a">plot   ____under development2</a>
+
+
+</div>
+
+<div class="column middle" style="background-color:none;">
+<img src="file:///c:/stack/SimilaritYWriter20/src/source/liblabel.png" name="lib_b" alt= "[1.0025873221216042,1.0,1.0,11.994470257182124]
+[1.0,1.0024242424242422,27.24235294117647,1.0,1.0024242424242422]
+[50.49499332443258,50.49499332443258,1.0024783147459726,1.0024783147459726]
+=>(1.167*10^5*%i+2.772*10^5)^(1/3)+(4.489*10^3)/(1.167*10^5*%i+2.772*10^5)^(1/3)+69.18"
+ style="width:5%" onclick="myFunction(this);">
+<img src="file:///c:/stack/SimilaritYWriter20/src/source/ptc0blue.png" style="width:5%" alt="info ptc0" onclick="myFunction(this);">
+<img src="file:///c:/stack/SimilaritYWriter20/src/source/ptc2reduced.png" style="width:5%" alt="info ptc3" onclick="myFunction(this);">
+<img src="file:///c:/stack/SimilaritYWriter20/src/source/ptc3blue.png"  style="width:5%" alt="info ptc4" onclick="myFunction(this);">
+<img src="file:///c:/stack/SimilaritYWriter20/src/source/ptc4blue.png"  style="width:5%" alt="i" onclick="myFunction(this);">
+<img src="file:///c:/stack/SimilaritYWriter20/src/source/ptc5blue.png"  style="width:5%" alt="i" onclick="myFunction(this);">
+<img src="file:///c:/stack/SimilaritYWriter20/src/source/ptc6blue.png"  style="width:5%" alt="i" onclick="myFunction(this);">
+<img src="file:///c:/stack/SimilaritYWriter20/src/source/ptc7blue.png" style="width:5%" alt="i" onclick="myFunction(this);">
+<img src="file:///c:/stack/SimilaritYWriter20/src/source/ptc8blue.png" style="width:5%" alt="i9" onclick="myFunction(this);">
+</div>
+
