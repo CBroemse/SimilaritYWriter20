@@ -1,8 +1,8 @@
 -- this module provides:
 -- --------------------------------------
 -- III. library to plot wxmaxima graphs . functions to compare
---      a. two lines of boneist with each other.
---      b. compare a to periodic functions called pg1 functions
+--      a. two lines of bonelist with each other.
+--      b. compare a to periodic functions called pg functions
 --         e.g  pg1 x = sin x 
 
               --
@@ -35,14 +35,13 @@ import qualified Colored_2_3_5_Counter20 as C
 --"primam sediem a niguem sidicari "
  --e.g *> runKRAW 1 1 [["AAA","BBB","CCC"],["DDD","FFF","HHH"]]
  ----- #####################################################################
- -- TAKE FROM : four lines of bonelist
- --        with order : a  to b to c ( line1 to line1n2 to line 
+
 theDs f g = concat$ausw f ((concat g))
 -- df2 ttt offOn target plot addGh ghAdd n (theDs ttt d) (get1) (get2) (get3)  (get4) 1 (theDs ttt d)
 -- =  runKAXIOM offOn target plot addGh ghAdd n (theDs ttt d) (get1) (get2) (get3)  (get4) 1 (theDs ttt d)
 
 
--- toca : Int
+
 runKBASE offOn target plot addGh ghAdd n d get1 get2 get3 get4 = do
        allforIV <- forM [1..(length target)] (\four4 -> do
             let fg = runKAXIOM offOn target plot addGh ghAdd n (theDs four4 d) (get1) (get2) (get3) (get4) 1 (theDs four4 d) (four4) [(read(show four4))]
@@ -70,6 +69,8 @@ runKBASE offOn target plot addGh ghAdd n d get1 get2 get3 get4 = do
 
 -- 4-8-2020  ***************************************************************************updated write ptc buttons
 -- e.g let myTest at = runKAXIOM 1 [1,2] 2 2 at 2 (li3) 1 2 3 4 3 (head(ausw 1 li3))
+-- toca : Int ; give token to change length of pg  functions points n 
+--               write toHtml set to write index2.html via 'defSearch', under development
 runKAXIOM offOn target plot addGh ghAdd n d get1 get2 get3 get4 ht ulu bog toca=  do
    let ghd t de = ( (ausw t de))
    let leng= if length d >1 then ((length d) - 1)
@@ -97,7 +98,7 @@ runKAXIOM offOn target plot addGh ghAdd n d get1 get2 get3 get4 ht ulu bog toca=
 -- tsRAW  
 
         
--- program Variables:
+-- program variables:
 defSearch offOn target plot addGh ghAdd pV1 pV2 pV3 pV4 pV5 pV6 n bonelist pipebone ht forRunHtml htm toca = (defSearchRAW offOn target plot addGh ghAdd pV1 pV2 pV3 pV4 pV5 pV6 50 50 50 50 n bonelist pipebone ht forRunHtml htm) toca  
 --e.g> defSearchRAW "AAABB" "AAABBAAABAB" "AAABAB" "AAA" "AAABBBAA" "BBBAA" 1 1 1 1 1 li
 --
@@ -105,10 +106,9 @@ defSearch offOn target plot addGh ghAdd pV1 pV2 pV3 pV4 pV5 pV6 n bonelist pipeb
 defSearchRAW offOn target plot addGh ghAdd pV1 pV2 pV3 pV4 pV5 pV6 ptc0Len ptc3Len ptc3aLen ptc3bLen n bonelist pipebone ht forRunHtml htm toca= do
 
      --  let pi = fopi --Punkt "M" Nothing Nothing Nothing Nothing Nothing -- switch for io at bottom
-     --
-     --    PV: 
-
-     --                                                           PV1s  list a  | PV1s list b
+     --  ausw :: Int -> [a] -> [a]
+     --  ausw n k = drop (n-1) (taken n k)                                                      
+     --                                                     PV1s  list a  | PV1s list b
        let progVar1 = head(ausw htm pV1) --"ccccc" --"AAABB"  --  "AAABB"       |   "TTTT" 
        let progVar2 = head(ausw htm pV2) --"AAABBAABAB"
        let progVar3 = head (ausw htm pV3) --"A"--"AABAB"
@@ -622,6 +622,7 @@ defSearchRAW offOn target plot addGh ghAdd pV1 pV2 pV3 pV4 pV5 pV6 ptc0Len ptc3L
                                     subA = head (ausw 1 substituteAlt);
                                     thebase beat = G.foraPlot beat;
                           raplot 
+			   -- does not work on git-hub?
                           let sEEnplot = do
                                       godPlot <- forM [1..(length subA)] (\fa -> do
                                            let drinks = (concat (ausw fa subA)) -- e.g [[93.72586872586874,94.02573529411764,3.0303030303030303]]
@@ -1093,7 +1094,7 @@ kArmTest5 addGh liT bonelist mofaList connectWrist dit dit2 mCommand crit= do
                             (putStrLn"") 
               putStrLn "Test map mother"
               addGH
- -- BELOW ALL taken out for deveopment but still valid 04-7-20
+ -- BELOW ALL taken out for development but still valid 04-7-20
  {-
             --  putStrLn (unlines(sort(moreEdR1 1 )))
              -- putStrLn (unines(checkflow [mother] 
@@ -1319,11 +1320,11 @@ seven= ["    - - -  \n"++
 
 --------------------------------------------------------------------------
 -- Gaussian influenced - Aehnlichkeitswarscheinlichkeit
---- this function rates the similarity of two
--- Lists vergleicht Aehnlichkeit und gibt 
--- die Prozentzahl der einer stelle 
--- der beiden listen aus
---
+---this function rates the similarity of two
+-- lists. 
+-- gibt die Prozentzahl der Einerstelle 
+-- der beiden Listen aus
+
 foaehnli1 a b = (a-b)
 foaehnli2 a b = (b-a)
 --umrechnen in % mit a < b und b > a  
@@ -1344,12 +1345,14 @@ similaritYvalue li la = let a = la -- z.b. [11,12,34,44]
 
 
 
---
+-- data structure StepIV
 einTyp f = [((plugit f 2),(stelle2er f)),((plugit f 3),(stelle3er f)),((plugit f 5) ,(stelle5er f))] 
 
 einTyp2 f = [((plugit2 f 2),(stelle2er f)),((plugit2 f 3),(stelle3er f)),((plugit2 f 5) ,(stelle5er f))] 
 einTyp3 f g = [(plugit2 f g)]
 
+-- root needed to set path to folder
+-- change format for Linux
 root = "c:/stack/SimilaritYWriter20/"
 -- Global Variables
 xXAllWal = "textS/dininSpez1kompl1.txt"
@@ -1387,9 +1390,9 @@ innerAccessRAW on this = let convToBit = map ord this
 innerAccess on this = (innerAccessRAW on) this
 ----------------------------------------------------------------------
 -----------------------------------------------------------------------
---Fill AccesFuctions with Data
+--fill 'AccesFuctions' with data
 -- theName: String; Fill AccesFuctions with Data
--- set to shwo tracker1 see below
+-- set to show tracker1 see below
 nameACCESSFUNCTION on theName input= let whichAccesFunction = (innerAccess on theName)
                             in let theData = whichAccesFunction++" "++(unlines input)
                             in theData
@@ -1418,7 +1421,7 @@ checkType ffi = [(map length (group(sort(ffi)))), (ffi)]
 -----------------------------------------------------------------
 -----------------------------------------------------------------
 --list for accesFuncWX below
--- exportiert:  [(filtern b a),(filtern b c)]
+-- exports:  [(filtern b a),(filtern b c)]
 -- die (simulierten Vals, einen zweiten stream )
 -- DEFINE WX MAXIMA kann viele streams in einem
 -- Koordinatensystem plotten 
@@ -1437,7 +1440,7 @@ outPutMaxima333 goghi dipfa fodp1 fodp2 bob =
                 in [(filtern b a),(filtern b c),(filtern b d),(filtern b e)]
 -----------------------------------------------------------------
 -----------------------------------------------------------------
---- Extraordinary function chooses which AND howmany functions of the list above will be put in output
+--- Extraordinary function chooses which AND howmany functions of the list above will be put in the output
 -- l: [Int] ~ oder auch welche kombination von funktionen
 -- bob laenge val liste
 -- ghogi quelle1 simukieter val
