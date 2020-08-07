@@ -5,8 +5,8 @@
 --  I. a. compare all atoms of [String] called bonelist and order them due to similaritYvalue
 --     b. insert a new line (ghCheck) into a. do the same as above.
 -- II. an inherent data type 'Punkt' :: String -> Maybe String
---     that sall fit to I,III and IV. The data type , so far
---     is only connected to the plotting functions of below.
+--     that shall fit to I,III and IV. Does error handling , 
+--     can be search tree 
 -- III. library to plot wxmaxima graphs . functions to compare
 --      a. two lines of boneist with each other.
 --      b. compare a to periodic functions called pg1 functions
@@ -32,7 +32,7 @@
 
 
 
--- Monadic non-dterministic DATA tye 
+-- Monadic non-deterministic DATA tye 
 -- ----------------------------------
 -- e.g let ones = Punkt (nACC "tracker1" ["FindMovment","what"]) Nothing Nothing Nothing Nothing Nothing
 -- 
@@ -94,9 +94,9 @@ import qualified Path2Val2 as HT
 import qualified FourierFieldCLASSIFIER as F
 import qualified WriteWXmaximaJuicy as M
 import qualified GHCguiNfunctions as G
---import Hs2Buttons
+
 --
---     1. layer of concept: The Haskell string below is not easily understood 
+--     1. layer of concept: 
 --                          
 --inner lexicon :
 -- similaritYvalue :: (Fractional p, Ord p, Foldable t1, Foldable t2) => t2 p -> t1 p -> p
@@ -138,11 +138,8 @@ import qualified GHCguiNfunctions as G
  --  Fabrizio Romano Genovese
  --
  --        --   " Truth (Wahrheit) over certainty (Gewissheit)"
---                  (Illobrandt von Ludwiger)
---   " Lets start a framework that derives truth from certainty, 
---     based on truth"
----- \
----- /  truth -> certainty -> truth
+--                  (Illobrandt von Ludwiger 'Heim-theory')
+
 ---- glossary ideas:
 --     the colores := takes the a modified step of sieve of Eratosthens
 --                    2 - 3 - 5 and viusualizes structures 
