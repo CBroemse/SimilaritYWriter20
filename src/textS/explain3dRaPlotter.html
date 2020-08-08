@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>List for Step IV</title>
+ <script src="file:///c:/stack/SimilaritYWriter20/src/p5SimY/p5.js"></script>
+  <script src="file:///c:/stack/SimilaritYWriter20/src/p5SimY/p5.dom.min.js"></script>
+  <script src="file:///c:/stack/SimilaritYWriter20/src/p5SimY/p5.sound.min.js"></script>
+ <script src="file:///c:/stack/SimilaritYWriter20/src/p5SimY/svgS/php.js"></script>
+
+  <link rel="stylesheet" type="text/css" href="file:///c:/stack/SimilaritYWriter20/src/p5SimY/style.css">
+
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: black;
+  font-family: Arial, Helvetica, sans-serif;
+   font-color: green;	
+}
+
+.buttonM {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+.button2 {background-color: #008CBA;border-radius: 12px;} /* Blue */
+.button3 {background-color: #f44336;} /* Red */ 
+.button4 {background-color: #e7e7e7; color: black;} /* Gray */ 
+.button5 {background-color: #555555;} /* Black */
+
+       .storyTeller {
+  background-color: #1e1c1ecc;
+  color: lime;
+  border: 0px solid white;
+  padding: 2px 5px;
+  text-decoration: none;
+  display: inline-block;
+  width:100%;
+  font-size: 12px;
+  text-align:left;
+}
+
+</style>
+</head>
+<script>
+</script>
+
+<body>
+<a href="file:///c:/stack/SimilaritYWriter20/src/textS/story2.html" style="border-radius: 12px; padding: 2px 5px;" target="iframe_b">back</a>
+
+<a href="#steno" style="border-radius: 12px; padding: 2px 5px;" target="iframe_c">up</a>
+
+<textarea name="message" class="storyTeller" rows="43" cols="50">
+	<p>
+the 3d plotter
+inititated via 'TheAToBPlotter'
+
+p5SimY/
+in myOszilator.js :60
+// Draw the first set of lines
+	for(var x = balance(-1*lim); x < balance(lim)+space; x+=space){
+		beginShape()
+		for(var z = balance(-1*lim); z < balance(lim)+space; z+=space){
+			if(equation.length == 1){
+				plotEquation(equation, x, z)
+			}
+			else if(equation.length == 5){
+				plotPunkt(equation, x, z)
+			}
+			else if(equation.length == 6){
+				plotPolyline(equation, x, z)
+			}
+			else{
+				plotEllipse(equation, x, z)
+			}
+		}
+		endShape()
+
+when choosing functions of length == 5 will apply ptc function
+
+  using a keyboard 
+function keyPressed() {
+	switch (keyCode) {
+		case ENTER:
+			if (input.value() != "") {
+				equation = cleanEquation(input.value());
+			} else {
+				equation = ["y=0"]
+			}
+			break;
+		case UP_ARROW:
+			zoom(2)
+			break;
+		case DOWN_ARROW:
+			zoom(0.5)
+			break;
+		case 219:
+			space *= 1.5
+			break;
+		case 221:
+			space *= (2/3)
+			break;
+		case 163:			
+			break;
+	}
+}						       
+will change 3d plot 
+
+now set to ptc5 daZip 'TheAToBPlotter'	experimental				       
+</textarea>
+<br><br>
+  
+</body></html>
