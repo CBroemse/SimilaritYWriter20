@@ -145,14 +145,25 @@ div.desc {
 .button4 {background-color: #e7e7e7; color: black; padding: 2px 5px;} /* Gray */ 
 .button5 {background-color: #555555; padding: 2px 5px;} /* Black */
 .button6 {background-color: #008CBA;
-  color: black;
-  border: 2px solid white;
-  padding: 2px 5px;
-  text-decoration: none;
+   color: black;
+   border: 2px solid white;
+   padding: 2px 5px;
+   text-decoration: none;
   /*display: inline-block;*/
-  width:5%;
-  font-size: 16px;
-  text-align:center;}
+   width:5%;
+   font-size: 16px;
+   text-align:center;}
+.button7 {background-color: #4CAF50; /* Green */
+   border: none;
+   color: white;
+   padding: 5px 15px;
+   text-align: center;
+   text-decoration: none;
+   display: inline-block;
+   font-size: 16px;
+   margin: 4px 2px;
+   cursor: pointer;
+   border-radius: 12px;}	  
 
 
 .storyTeller {
@@ -205,9 +216,9 @@ function w4_close() {
 <body>
 
 <h2><img src="source/introHeaderG.png"  style="width:23%" onclick="myFunction(this);" <div class="w3-teal">
-  <button class="buttonM button1" onclick="w3_open()">?</button>
+  <button class="buttonM button7;" onclick="w3_open()">?</button>
  
-  <button onclick="w3_close()" class="w3-bar-item w3-large">Close &times;</button>
+  <button onclick="w3_close()" class="buttonM button2">Close &times;</button>
 <button class="buttonM button6;" href="source/courtesy.png" style="border-radius: 12px;" target="iframe_a">courtesy</button>
 	<button class="buttonM button6;" href="src/svgS/content.svg" style="border-radius: 12px;color: #d800c4" target="iframe_b">library</button>  
 	
