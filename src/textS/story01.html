@@ -95,7 +95,7 @@ https://github.com/CBroemse/csvToWx
 For sheer curiosity the idea is kept for further investigations.
 Within this 'csvToWx' also the relation to mq (magic 'quadrants' :) 
 is mentioned. To me they could represent an ordered state in the
-computational sence, I dont know if they actually are magic
+computational sense, I dont know if they actually are magic
 squares but the Fourier combined with magic-squares idea as shown
 has been carried further to this data-adventure.
 
@@ -118,7 +118,7 @@ which four Strings to compare of
 a list of Strings ([String] ) thus the input list
 called 'bonelist' and this four selected items must 
 match. (e.g I cannot get forth atom of a list length
-            and get a String result (Just a Maybe String) 
+3 and get a String result. (Just a Maybe String) 
 
 but of course within its boundaries we do
 not necessarily need another data type.
@@ -139,5 +139,29 @@ data type 'Punkt'
           Co.checkflow :: [Punkt -> Maybe Punkt] -> [Punkt] -> [[Char]]
 
 
+The reason to choose 5 'Maybe Punkt'
+structure and not another number is just a guess.
+Maybe any other number choice could be better 
+but I wanted model a six-dimensional 'something'
+to see if there are obvious differences to a 
+4 dimensional one. However in the wxmaxima plot 
+3x3 ; 4x4 ; 5x5 & 6x6 matrices are apllied
+to the data and plotted. Just the data type has at
+least 6 dimensions because of the String
+e.g 
 
+*> let pi = Punkt "m" Nothing Nothing Nothing Nothing Nothing
+
+a fully functional error-handler and/or search tree
+with the same type
+
+- define a structure that is called 'formation'
+  - which uploads functions into the main pipe and applies them to the data
+  - when buiding the final 'Punkt' structure these are different
+    computations that can be used with '[father,mother...' 
+   
+     -- to be used with pg-functions
+    formation :: [String] -> Punkt
+ *> formation e = Punkt "formation" (Just (basis2 1 e)) (Just (basis2 2 e)) (Just (basis2 3 e)) (Just (basis2 4 e)) (Just (basis2 5 e)) 
+  
       					</textarea><br><br> </div> </div></body></html>
