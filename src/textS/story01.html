@@ -4,16 +4,19 @@
             -----------
 A.  in Colored..Counter20.hs (cc20)
 
-STORYTELLER
+file-system
+------------
+  recorder:
   write every txt to p5SimY/svgS/test03.html
   in cc20 via 'textSvg' 
-         runKBASE                                   |  a.01 : the 'Abstract display' 
-                                                    |          in cc20 print 
-                                                    |capabilities of runKBASE    
+         runKBASE    
+The file system will update itself circa every 30 second.
+use 'iframe_c'
 
-recorder
----------
- manage the txt writing when to write 'textSvg'
+capabilities of runKBASE
+---------------------------
+src/TheAToBPlotter.hs
+ the main function 
  variables in  switches in 'runKBASE'
 				       
 purpose
@@ -57,4 +60,84 @@ gb :: Fractional b => [b]
 87.33567046450482
 
        and so on...
+
+WxMaxima
+----------
+src/TheAToBPlotter.hs && src/Colored_2_3_5_Counter.hs
+
+write pointclouds to file
+
+src/wxms/ullu1.wxm    &&  src/wxms/lala.wxm
+
+One being a pointcloud (ptc) that is connected 
+by 1 dimensional graphs.
+--compile the wxm file and explore
+The functions are ordered in a way that is possible to manually
+reduce the complexity of a given network by selecting
+in the gnu/wxmaxima plotter window.
+
+Right now the system is set to plot ptc4 
+but there are other ptc (ptc0..ptc8) ptc functions as well. 
+
+As explained above every simiVal
+function needs a pair of inputs but if we would like to compare
+more than 2 inputs with each other we need a selection that
+has a certain order. see 'source/ConceptPlotter.png'
+This is how the wxm-plotter works and how ptcs can be computed 
+for this program.
+
+Fourier
+---------
+The idea of overlaying periodic functions and applyineg them to
+a data set is desrcibed in  the github repository acsvToWx
+https://github.com/CBroemse/csvToWx
+
+For sheer curiosity the idea is kept for further investigations.
+Within this 'csvToWx' also the relation to mq (magic quadrats :) 
+is mentioned. To me they could represent an ordered state in the
+computational sence, I dont know if they actually are magic
+sqares but the fourier with magic-squares idea as shown
+has been carried further to this data-adventure.
+
+The different outcomes of choosing simple
+2 dimensional periodic functions like f(sin X) 
+to the 'fourier-PanmagicMq' functions is hinted at.
+
+The dimensionality of 'progVar' functions:
+'src/TheAToBPlotter.hs'
+
+is selected via the get1 .. get4 variables
+
+get1 :: Int
+
+main function
+runKBASE offOn target plot addGh ghAdd n d get1 get2 get3 get4 =
+
+so far the selection is limited to choosing
+which four Strings to compare of
+a list of Strings ([String] ) thus the input list
+called 'bonelist' and this four selected items must 
+match. (e.g I cannot get forth atom of a list length
+            and get a String result (Just a Maybe String) 
+
+but of course within its boundaries we do
+not necessarily need another data type.
+
+data type 'Punkt'
+-----------------
+
+*Main> :t Punkt
+           Punkt
+             :: String
+                -> Maybe Punkt
+                -> Maybe Punkt
+                -> Maybe Punkt
+                -> Maybe Punkt
+                -> Maybe Punkt
+                -> Punkt
+   Main> :t Co.checkflow
+          Co.checkflow :: [Punkt -> Maybe Punkt] -> [Punkt] -> [[Char]]
+
+
+
       					</textarea><br><br> </div> </div></body></html>
