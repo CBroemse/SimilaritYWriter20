@@ -264,15 +264,16 @@ see 'source/2at1d2at2d2at3d.png'
              / \        add5
             x   x
             |   |  
-            x---x---x 
- add3       |  /|    \  
- x--x       | / |     x
- |  |       |/  |    /
- x--x---x---x---x---x
-         \ /
-          x   add2
-          |
-          x	       
+ add3       x---x---x 
+ x--x       |  /|    \  
+ |  |\      | / |     x
+ |  | \     |/  |    /
+ x--x--x----x---x---x
+        \  /
+	 \/
+         x   add2
+         |
+         x	       
 --------------------------
 	     ???       add5
                      x--x--x
@@ -287,9 +288,10 @@ see 'source/2at1d2at2d2at3d.png'
           x   add2
           |
           x	       
-the first add2 seems to be an error,
+the first add2 ,
     then  add3 
-    then  add another 5 points 
+    then  add5
+the add functions as different steps in the 2_3_5_counter
 compile and plot the shortest path with wxmaxima
 'source/graphs.wxm'
 		
