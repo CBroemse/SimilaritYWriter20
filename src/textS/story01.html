@@ -27,27 +27,34 @@ similaritYvalue ::
         -- Defined at C:\stack\SimilaritYWriter20\src\Colored_2_3_5_Counter20.hs:1270:1	
 		
     prepare to read data 
-    the main function needs two variables each type String
+ the main function needs two variables each type String
 
-    e.g*> let simiVals gb1 gb2  = similaritYvalue gb1 gb2 
-    gb will be turned into the type Ord and then to Fractional
-    e.g*> let gb = map realToFrac (map ord "The")
-       *> :t gb
-       gb :: Fractional b => [b] 
-       *> let gb2 = map realToFrac (map ord "The")
-       *> simiVals gb gb2
-       0.0   
-       --as it turns out here "The" == "The" -> simiVal => 0.0
-       *> let foGb1 gb =  map realToFrac (map ord gb ) 
-       *> let foGb2 gb =  map realToFrac (map ord gb ) 
-       *> let simiVal gb1 fgb2 = similaritYvalue (foGb1 gb1) (foGb2 gb2)
-       *> simVal "The" "the"
-       9.968847352024921
-       -- the simiVal (similarity value) of the twp Strings
-       *> simiVal "the" "the world is everything"
-       85.93339176161263
-       *> simiVal "The" "the world is everything"
-       87.33567046450482
+e.g
+*> let simiVals gb1 gb2  = similaritYvalue gb1 gb2 
+ 
+ -- gb will be turned into the type Ord and then to Fractional
+*> let gb = map realToFrac (map ord "The")
+*> :t gb
+gb :: Fractional b => [b] 
+
+*> let gb2 = map realToFrac (map ord "The")
+*> simiVals gb gb2
+0.0   
+
+  -- as it turns out here "The" == "The" -> simiVal => 0.0
+
+*> let foGb1 gb =  map realToFrac (map ord gb ) 
+*> let foGb2 gb =  map realToFrac (map ord gb ) 
+*> let simiVal gb1 fgb2 = similaritYvalue (foGb1 gb1) (foGb2 gb2)
+*> simVal "The" "the"  -- :)  
+9.968847352024921
+
+  -- the simiVal (similarity value) of the twp Strings
+*> simiVal "the" "the world is everything"
+85.93339176161263
+
+*> simiVal "The" "the world is everything"
+87.33567046450482
 
        and so on...
       					</textarea><br><br> </div> </div></body></html>
