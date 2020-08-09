@@ -260,23 +260,35 @@ the main differences stems of three different sorting functions
 graphs
 ------
 see 'source/2at1d2at2d2at3d.png'
- 
-                      add 5
+              x   real graph
+             / \        add5
+            x   x
+            |   |  
+            x---x---x 
+ add3       |  /|    \  
+ x--x       | / |     x
+ |  |       |/  |    /
+ x--x---x---x---x---x
+         \ /
+          x   add2
+          |
+          x	       
+--------------------------
+	     ???       add5
                      x--x--x
                     /  /    \ 
                    x--x      x
                   /  / \    /
                  x--x---x--x
- x--x  add 3     | /|
+ x--x  add3     | /|
  |  |            |/ |
  x--x---x---x----x--x 
          \ /
-          x   add 2
+          x   add2
           |
           x	       
-
-the first add 2 seems to be an error,
-    then  add 3 
+the first add2 seems to be an error,
+    then  add3 
     then  add another 5 points 
 compile and plot the shortest path with wxmaxima
 'source/graphs.wxm'
