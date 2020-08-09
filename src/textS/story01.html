@@ -165,8 +165,29 @@ with the same type
   - when buiding the final 'Punkt' structure these are different
     computations that can be used with '[father,mother...' 
    
+in src/TheAToBPotter :684 in 'kArmTest5'
      -- to be used with pg-functions
     formation :: [String] -> Punkt
  *> formation e = Punkt "formation" (Just (basis2 1 e)) (Just (basis2 2 e)) (Just (basis2 3 e)) (Just (basis2 4 e)) (Just (basis2 5 e)) 
   
+Reduction
+----------
+To get out of the growing complexity and still
+being able to model the data type I settled for 
+a hexagonal structure the 'honeycomp' to hopefully
+get a little bit of information out of the
+data that could be plotted by wxmaxima or the 3dPlotter.
+The 'refresh' svg file is an example of an
+sorting alogorythm that lays out the honeycomp structures.
+Three coordinates points are placed on the edges
+of three equal sized hexagons
+The green hexagon (hex0) is defined to be the first
+point of a given phiMax value. Green will be 
+doubled in diameter but not in height and a second hexagon (hex1)
+will be drwan. We compute the difference between
+hex0 and hex1 using hex0 as a metric.
+(hex0 + 1/2 hex0) is the unit width.
+
+The overlaying area of three hexagons will be
+compared.
       					</textarea><br><br> </div> </div></body></html>
