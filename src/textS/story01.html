@@ -211,4 +211,74 @@ See 'source/2_3_5_1.png'
 The aim is to compare the previous 3 steps 
 with this visualization.
 What can be learned ?  still under development
+
+
+Architecture
+-------------
+the structuring of 'src/Colored_2_3_5_Counter.hs' 
+
+pg - functions  (pg1..pg6)
+     establishes the structure in the plot 
+     when choosing 2d such as sin(x) or cos(x) 
+     will yield simper output 
+     see 'source/sinCosCosSin2.png'
+    
+     vs 
+
+     see 'source/ptc4wittsatz1.png'
+e.g
+*> pg1 11
+8.107263813734254e-4
+
+now set to in 'src/TheAToBPlotter' 
+pg1 x = F.fourierMQ6NOPAN123 x 
+pg2 x = (F.fourierMQ5NOPAN123 x)
+pg3 x = (F.fourierMQ4NOPAN123 x)
+
+
+in 'open' ghc 
+*TheAToBPlotter> C.kArmTest5 -- (imported see above)
+
+compare to results of
+*TheAToBPlotter> kArmTest5 -- fill in variables
+
+
+Lit:
+e.g
+*> liT = ["AAABB","AABAB","AAA","BBBAA"]
+
+a list used in cc20 and TheAToBPlotter that collects 
+the selected progVars.
+
+poinclouds:
+the main differences stems of three different sorting functions
+
+'wohlGeorNet1' ..'wohlGeorNet'
+
+
+
+graphs
+------
+see 'source/2at1d2at2d2at3d.png'
+ 
+                               add 5
+                          x--x--x
+                         /  /    \ 
+                        x--x      x
+                       /  / \    /
+                      x--x---x--x
+      x--x  add 3     | /|
+      |  |            |/ |
+      x--x---x---x----x--x 
+              \ /
+               x      add 2
+               |
+               x	       
+
+the first add 2 seems to be an error,
+    then  add 3 
+    then  add another 5 points 
+compile and plot the shortest path with wxmaxima
+'source/graphs.wxm'
+		
 					</textarea><br><br> </div> </div></body></html>
