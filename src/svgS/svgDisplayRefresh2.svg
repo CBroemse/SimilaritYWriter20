@@ -1,0 +1,630 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xml="http://www.w3.org/XML/1998/namespace" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" id="root" xml:space="preserve" width="600" height="800" onload="OnLoadEvent(evt)" onmousemove="get_coordo(evt)">
+
+<script><![CDATA[
+var compati = new Array(true,true,true,true,true,true)
+var comments = new Array(" "," "," "," "," "," ")
+var nb_comments = 6
+
+function write_compati(evt)
+{
+	svgdoc = evt.target.ownerDocument
+	for (var i = 0 ; i < nb_comments ; i ++)
+	{
+		if (compati[i])
+			svgdoc.getElementById("coche" + i.toString()).setAttributeNS(null, "stroke" , "blue")
+		else
+			svgdoc.getElementById("coche" + i.toString()).setAttributeNS(null, "stroke" , "none")
+		svgdoc.getElementById("comment" + i.toString()).firstChild.data = comments[i]
+	}
+}
+
+function get_coordo(evt)
+{
+	evt.target.ownerDocument.getElementById("cX").firstChild.data = evt.clientX
+	evt.target.ownerDocument.getElementById("cY").firstChild.data = evt.clientY 
+	evt.target.ownerDocument.getElementById("sX").firstChild.data = evt.screenX
+	evt.target.ownerDocument.getElementById("sY").firstChild.data = evt.screenY
+}
+
+]]></script>
+<script>
+
+function changeFill() {
+    document.getElementById("hexagon").style.fill = "rgb(" + Math.floor(255 * Math.random()) + ", " + Math.floor(255 * Math.random()) + ", " + Math.floor(255 * Math.random()) + ")";
+}
+</script>
+<text x="50" fill="green" y="10">ptc 4 
+values: 10 
+refresh mode</text>
+<text x="50" y="50">Rotation screen</text>
+
+<text x="50" y="150">hexagon plane</text>
+<text x="50" y="165">  adjustable area</text>
+<text x="50" y="440">Test animation</text>
+<text x="230" y="240" font-size="18" fill="green" fill-opacity="0.4">clientX : <tspan id="cX" fill="red" fill-opacity="0.8">0</tspan></text> 
+<text x="230" y="260" font-size="18" fill="blue" fill-opacity="0.4">clientY : <tspan id="cY" fill="yellow" fill-opacity="0.8">0</tspan></text> 
+<text x="230" y="280" font-size="18" fill="green" fill-opacity="0.4">screenX : <tspan id="sX" fill="red" fill-opacity="0.8">0</tspan></text> 
+<text x="230" y="300" font-size="18"  fill="blue" fill-opacity="0.4">screenY : <tspan id="sY" fill="yellow" fill-opacity="0.8">0</tspan></text> 
+
+<rect id="go" x="20" y="350" width="300" height="650" style="fill:#1e1c1ecc;fill-opacity:0.2"/>
+
+<g>
+<text x="20" y="480" font-size="10"></text>
+</g>
+
+<g>
+
+<text x="150" y="350">Test animatio2</text>
+
+
+</g>
+
+<style
+     id="style4">
+        .room{
+            fill:       blue;
+            fill-opacity:0.4;
+            stroke:     #999;
+            stroke-width:   3;
+            stroke-color:   blue;
+        }
+        .room:hover{
+            fill:       orange;
+            fill-opacity:0.5;
+        }
+        .hexa{
+            fill:       red;
+            fill-opacity:0.4;
+            stroke:     #999;
+            stroke-width:   2;
+        }
+        .hexa:hover{
+            fill:       green;
+            fill-opacity:0.4;
+        }
+        .project{
+            fill:       lime;
+            fill-opacity:0.0;
+            stroke:     #999;
+            stroke-width:  0;
+            
+        }
+        .project:hover{
+            fill:       lime;
+            fill-opacity:0.4;
+        }
+        .check{
+            fill:       blue;
+            fill-opacity:0.3;
+            stroke:     #999;
+            stroke-width:  0;
+            
+        }
+        .check:hover{
+            fill:     lime;
+            fill-opacity:0.4;
+        }
+        .suite{
+            fill:       yellow;
+            fill-opacity:0.4;
+            stroke:     #999;
+            stroke-width:  0;
+            
+        }
+        .suite:hover{
+            fill:     orange;
+            fill-opacity:0.5;
+        }
+
+       
+
+
+
+    </style>
+<!-- the three honies -->
+ <g transform="translate(0,200)">
+
+<g transform="translate(115,173)">
+<polyline id="hexagon" points="87,0 174,50 174,150 87,200 0,150 0,50 87,0" class="room" onclick="changeFill()"/>
+<animateTransform attributeName="transform" attributeType="XML" type="scale" from="1" to="0.2" additive="sum" begin="0.1s" dur="0.1s" fill="freeze"/> 
+</g>
+<g transform="translate(100,200)">
+<polyline id="hexagon" points="87,0 174,50 174,150 87,200 0,150 0,50 87,0" class="room" onclick="changeFill()"/>
+<animateTransform attributeName="transform" attributeType="XML" type="scale" from="1" to="0.2" additive="sum" begin="0.1s" dur="0.1s" fill="freeze"/> 
+</g>
+<g transform="translate(130,200)">
+<polyline id="hexagon" points="87,0 174,50 174,150 87,200 0,150 0,50 87,0" class="room" onclick="changeFill()"/>
+<animateTransform attributeName="transform" attributeType="XML" type="scale" from="1" to="0.2" additive="sum" begin="0.1s" dur="0.1s" fill="freeze"/> 
+</g> 
+
+
+<!-- Two overlap -->
+<g transform="translate(100,30);rotate(90);" >
+	
+</g>
+
+<!-- the three honies b -->
+<g transform="translate(100,0)">
+
+<g transform="translate(115,173)">
+<polyline id="hexagon" points="87,0 174,50 174,150 87,200 0,150 0,50 87,0" class="room" onclick="changeFill()"/>
+<animateTransform attributeName="transform" attributeType="XML" type="scale" from="1" to="0.2" additive="sum" begin="0.1s" dur="0.1s" fill="freeze"/> 
+<animateMotion path="M  0 0 L 0 -10" begin="0.1s" dur="1s" fill="freeze"/>
+</g>
+
+<g transform="translate(100,200)" >
+<polyline id="hexagon" points="87,0 174,50 174,150 87,200 0,150 0,50 87,0" class="room" onclick="changeFill()"/>
+<animateTransform attributeName="transform" attributeType="XML" type="scale" from="1" to="0.2" additive="sum" begin="0.1s" dur="0.1s" fill="freeze"/> 
+<animateMotion path="M  0 0 L -11 8" begin="0.1s" dur="1s" fill="freeze"/>
+
+</g>
+
+<g 
+       id="g883">
+      <g
+         id="g876">
+        <path
+           style="opacity:1;fill:#00a502;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:3.77952766;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0"
+           d="m 345.80664,300.02539 -12.26367,7.08008 v 123.68555 l 18.44922,10.65234 12.26562,-7.08203 v -123.6836 z"
+           transform="scale(0.26458333)"
+           id="path821"
+           inkscape:connector-curvature="0" />
+        <g
+           transform="translate(0.25321135,0.14624236)"
+           id="g848">
+          <path
+             inkscape:connector-curvature="0"
+             id="path823"
+             transform="scale(0.26458333)"
+             d="m 440.65625,245.26367 -107.11328,61.8418 v 1.23047 l 16.42773,9.48437 107.11524,-61.84179 V 254.75 Z"
+             style="opacity:1;fill:#00a502;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:3.77952766;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0" />
+          <path
+             id="path821-5"
+             d="m 68.035642,65.837319 -3.526917,2.036053 28.087688,16.216584 3.52692,-2.03605 z"
+             style="opacity:1;fill:#00a502;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0"
+             inkscape:connector-curvature="0" />
+        </g>
+      </g>
+     <animateTransform attributeName="transform" attributeType="XML" type="scale" from="1" to="1" additive="sum" begin="0.1s" dur="0.1s" fill="freeze"/> 
+      <animateMotion path="M  100 3 L 40 130" begin="0.1s" dur="1s" fill="freeze"/>
+
+    </g>
+
+<g transform="translate(130,200)">
+<polyline id="hexagon" points="87,0 174,50 174,150 87,200 0,150 0,50 87,0" class="room" onclick="changeFill()"/>
+<animateTransform attributeName="transform" attributeType="XML" type="scale" from="1" to="0.2" additive="sum" begin="0.1s" dur="0.1s" fill="freeze"/> 
+<animateMotion path="M  0 0 L 11 8" begin="0.1s" dur="1s" fill="freeze"/>
+
+
+</g>
+
+</g>
+
+
+<!-- C..._2_3_5 as hexagon -->
+</g>
+ <g transform="translate(0,500)">
+ <g transform="translate(100,200)">
+<polyline id="hexagon" points="87,0 174,50 174,150 87,200 0,150 0,50 87,0" class="projectHex;" onclick="changeFill()"/>
+<animateTransform attributeName="transform" attributeType="XML" type="scale" from="1" to="0.2" additive="sum" begin="0.1s" dur="0.1s" fill="freeze"/> 
+</g>
+<g transform="translate(130,200)">
+<polyline id="hexagon" points="87,0 174,50 174,150 87,200 0,150 0,50 87,0" class="room" onclick="changeFill()"/>
+<animateTransform attributeName="transform" attributeType="XML" type="scale" from="1" to="0.2" additive="sum" begin="0.1s" dur="0.1s" fill="freeze"/> 
+</g>
+<g transform="translate(160,200)">
+<polyline points="87,0 174,50 174,150 87,200 0,150 0,50 87,0" class="hexa" onclick="changeFill()"/>
+<animateTransform attributeName="transform" attributeType="XML" type="scale" from="1" to="0.2" additive="sum" begin="0.1s" dur="0.1s" fill="freeze"/> 
+</g>
+<g transform="translate(190,200)">
+<polyline id="hexagon" points="87,0 174,50 174,150 87,200 0,150 0,50 87,0" class="hexa" onclick="changeFill()"/>
+<animateTransform attributeName="transform" attributeType="XML" type="scale" from="1" to="0.2" additive="sum" begin="0.1s" dur="0.1s" fill="freeze"/> 
+</g>
+<g transform="translate(220,200)">
+<polyline id="hexagon" points="87,0 174,50 174,150 87,200 0,150 0,50 87,0" class="hexa" onclick="changeFill()"/>
+<animateTransform attributeName="transform" attributeType="XML" type="scale" from="1" to="0.2" additive="sum" begin="0.1s" dur="0.1s" fill="freeze"/> 
+</g>
+<g transform="translate(115,170)">
+<polyline id="hexagon" points="87,0 174,50 174,150 87,200 0,150 0,50 87,0" class="hexa" onclick="changeFill()"/>
+<animateTransform attributeName="transform" attributeType="XML" type="scale" from="1" to="0.2" additive="sum" begin="0.1s" dur="0.1s" fill="freeze"/> 
+</g>
+<g transform="translate(145,170)">
+<polyline id="hexagon" points="87,0 174,50 174,150 87,200 0,150 0,50 87,0" class="room" onclick="changeFill()"/>
+<animateTransform attributeName="transform" attributeType="XML" type="scale" from="1" to="0.2" additive="sum" begin="0.1s" dur="0.1s" fill="freeze"/> 
+</g>
+<g transform="translate(175,170)">
+<polyline id="hexagon" points="87,0 174,50 174,150 87,200 0,150 0,50 87,0" class="room" onclick="changeFill()"/>
+<animateTransform attributeName="transform" attributeType="XML" type="scale" from="1" to="0.2" additive="sum" begin="0.1s" dur="0.1s" fill="freeze"/> 
+</g>
+<g transform="translate(130,140)">
+<polyline id="hexagon" points="87,0 174,50 174,150 87,200 0,150 0,50 87,0" class="hexa" onclick="changeFill()"/>
+<animateTransform attributeName="transform" attributeType="XML" type="scale" from="1" to="0.2" additive="sum" begin="0.1s" dur="0.1s" fill="freeze"/> 
+</g>
+<g transform="translate(160,140)">
+<polyline id="hexagon" points="87,0 174,50 174,150 87,200 0,150 0,50 87,0" class="hexa" onclick="changeFill()"/>
+<animateTransform attributeName="transform" attributeType="XML" type="scale" from="1" to="0.2" additive="sum" begin="0.1s" dur="0.1s" fill="freeze"/> 
+</g>
+</g>
+
+<g transform="translate(-70,750)">
+
+<g transform="translate(100,200)">
+<polyline id="hexagon" points="87,0 174,50 174,150 87,200 0,150 0,50 87,0" class="hexa" onclick="changeFill()"/>
+<animateTransform attributeName="transform" attributeType="XML" type="scale" from="1" to="0.5" additive="sum" begin="0.1s" dur="0.1s" fill="freeze"/> 
+</g>
+<g transform="translate(188,200)">
+<polyline id="hexagon" points="87,0 174,50 174,150 87,200 0,150 0,50 87,0" class="room" onclick="changeFill()"/>
+<animateTransform attributeName="transform" attributeType="XML" type="scale" from="1" to="0.5" additive="sum" begin="0.1s" dur="0.1s" fill="freeze"/> 
+</g>
+<g transform="translate(144,200)">
+<polyline points="87,0 174,50 174,150 87,200 0,150 0,50 87,0" class="hexa" onclick="changeFill()"/>
+<animateTransform attributeName="transform" attributeType="XML" type="scale" from="1" to="0.5" additive="sum" begin="0.1s" dur="0.1s" fill="freeze"/> 
+</g>
+</g>
+
+ <g transform="translate(-70,850)">
+
+<g transform="translate(100,200)">
+<polyline id="hexagon" points="87,0 174,50 174,150 87,200 0,150 0,50 87,0" class="room" onclick="changeFill()"/>
+<animateTransform attributeName="transform" attributeType="XML" type="scale" from="1" to="0.5" additive="sum" begin="0.1s" dur="0.1s" fill="freeze"/> 
+</g>
+<g transform="translate(188,200)">
+<polyline id="hexagon" points="87,0 174,50 174,150 87,200 0,150 0,50 87,0" class="room" onclick="changeFill()"/>
+<animateTransform attributeName="transform" attributeType="XML" type="scale" from="1" to="0.5" additive="sum" begin="0.1s" dur="0.1s" fill="freeze"/> 
+</g>
+<g transform="translate(276,200)">
+<polyline points="87,0 174,50 174,150 87,200 0,150 0,50 87,0" class="hexa" onclick="changeFill()"/>
+<animateTransform attributeName="transform" attributeType="XML" type="scale" from="1" to="0.5" additive="sum" begin="0.1s" dur="0.1s" fill="freeze"/> 
+</g>
+<g transform="translate(144,200)">
+<polyline id="hexagon" points="87,0 174,50 174,150 87,200 0,150 0,50 87,0" class="hexa" onclick="changeFill()"/>
+<animateTransform attributeName="transform" attributeType="XML" type="scale" from="1" to="0.5" additive="sum" begin="0.1s" dur="0.1s" fill="freeze"/> 
+</g>
+</g>
+  <g
+     transform="matrix(0.282383,0.10225553,-0.2823838,0.10225553,420.923,74.495491)"
+     >
+
+    <polyline id="hexagon" points="87,0 174,50 174,150 87,200 0,150 0,50 87,0" class="room" onclick="changeFill()"/>
+     
+    <g transform="translate(-430,370)">
+<g transform="translate(599,370)">
+<polyline id="hexagon" points="87,0 174,50 174,150 87,200 0,150 0,50 87,0" class="hexa" onclick="changeFill()"/>
+<animateTransform attributeName="transform" attributeType="XML" type="scale" from="1" to="3.1" additive="sum" begin="0.1s" dur="0.1s" fill="freeze"/> 
+<animateMotion path="M 25, 25 m -19.25, 0 a 19.25,19.25 0 1,0 37.5,0 a 1.25,19.25 0 1,0 -37.5,0" begin="1s" dur="5s"  repeatCount="5" />
+
+</g>
+<g transform="translate(150,370)">
+<polyline id="hexagon" points="87,0 174,50 174,150 87,200 0,150 0,50 87,0" class="suite" onclick="changeFill()"/>
+<animateTransform attributeName="transform" attributeType="XML" type="scale" from="1" to="3.1" additive="sum" begin="0.1s" dur="0.1s" fill="freeze"/> 
+</g>
+<g transform="translate(400,370)">
+<polyline id="hexagon" points="87,0 174,50 174,150 87,200 0,150 0,50 87,0" class="project" onclick="changeFill()"/>
+<animateTransform attributeName="transform" attributeType="XML" type="scale" from="1" to="3.1" additive="sum" begin="0.1s" dur="0.1s" fill="freeze"/> 
+<animate attributeType="CSS" attributeName="opacity" from="1" to="0" dur="13s" repeatCount="indefinite" /></g>
+
+<g transform="translate(388,-51)">
+<polyline id="hexagon" points="87,0 174,50 174,150 87,200 0,150 0,50 87,0" class="room" onclick="changeFill()"/>
+<animateTransform attributeName="transform" attributeType="XML" type="scale" from="1" to="3.1" additive="sum" begin="0.1s" dur="0.1s" fill="freeze"/> 
+</g>
+
+<g transform="translate(950,720)">
+<polyline id="hexagon" points="87,0 174,50 174,150 87,200 0,150 0,50 87,0" class="project" onclick="changeFill()"/>
+<animateTransform attributeName="transform" attributeType="XML" type="scale" from="1" to="3.1" additive="sum" begin="0.1s" dur="0.1s" fill="freeze"/> 
+</g>
+<g transform="translate(950,820)">
+<polyline id="hexagon" points="87,0 174,50 174,150 87,200 0,150 0,50 87,0" class="project" onclick="changeFill()"/>
+<animateTransform attributeName="transform" attributeType="XML" type="scale" from="1" to="3.1" additive="sum" begin="0.1s" dur="0.1s" fill="freeze"/> 
+</g>
+<g transform="translate(850,720)">
+<polyline id="hexagon" points="87,0 174,50 174,150 87,200 0,150 0,50 87,0" class="project" onclick="changeFill()"/>
+<animateTransform attributeName="transform" attributeType="XML" type="scale" from="1" to="3.1" additive="sum" begin="0.1s" dur="0.1s" fill="freeze"/> 
+</g>
+
+</g>
+<g>
+    <rect
+       class="room"
+       width="94"
+       height="123"
+       x="-221.99988"
+       y="711" />
+     
+    <rect
+       class="room"
+       y="711"
+       x="-316.99988"
+       height="123"
+       width="94"
+       />
+
+<ellipse cx="-316" cy="715" rx="590" ry="4" stroke="black" stroke-width="2px" style="fill:red">
+<animateColor attributeName="fill" attributeType="CSS" from="blue" to="lime" begin="0.1s" dur="1s"  repeatCount="indefinite" />
+      <animateTransform attributeName="transform" attributeType="XML" type="rotate" from="0" to="45" begin="0.1s" dur="0.1s" fill="freeze"/> 
+
+      <animateMotion path="M  0 0 L 860 879" begin="0.1s" dur="0.3s" fill="freeze"/>
+</ellipse>
+<ellipse cx="340" cy="655" rx="280" ry="4" stroke="black" stroke-width="2px" style="fill:red">
+<animateColor attributeName="fill" attributeType="CSS" from="blue" to="lime" begin="0.1s" dur="1s"  repeatCount="indefinite" />
+      <animateTransform attributeName="transform" attributeType="XML" type="rotate" from="0" to="45" begin="0.1s" dur="0.1s" fill="freeze"/> 
+      <animateMotion path="M  0 0 L 280 290" begin="0.1s" dur="0.3s" fill="freeze"/>
+</ellipse>
+
+      <ellipse cx="-430" cy="380" rx="30" ry="12" stroke="black" stroke-width="2px" style="fill:blue">
+      </ellipse>
+     <ellipse cx="-316" cy="715" rx="280" ry="4" stroke="black" stroke-width="2px" style="fill:red">
+<animateColor attributeName="fill" attributeType="CSS" from="blue" to="lime" begin="0.1s" dur="1s"  repeatCount="indefinite" />
+      <animateTransform attributeName="transform" attributeType="XML" type="rotate" from="0" to="45" begin="0.1s" dur="0.1s" fill="freeze"/> 
+      <animateMotion path="M  0 0 L 480 290" begin="0.1s" dur="0.3s" fill="freeze"/>
+</ellipse>
+     <ellipse cx="-248" cy="785" rx="30" ry="12" stroke="black" stroke-width="2px" style="fill:purple">
+<animateColor attributeName="fill" attributeType="CSS" from="blue" to="lime" begin="1s" dur="6s"  repeatCount="indefinite" />
+</ellipse>
+    <ellipse cx="-148" cy="785" rx="30" ry="12" stroke="black" stroke-width="2px" style="fill:purple">
+<animateColor attributeName="fill" attributeType="CSS" from="blue" to="lime" begin="1s" dur="6s"  repeatCount="indefinite" />
+</ellipse>
+ <animateTransform attributeName="transform" attributeType="XML" type="rotate" from="1" to="-360"  additive="sum" begin="13s" dur="5.0s" fill="freeze"/> 
+<animateTransform attributeName="transform" attributeType="XML" type="rotate" from="1" to="360"  additive="sum" begin="18s" dur="15.0s" repeatCount="3"/> 
+</g>
+<g transform="translate(500,600)">
+    <ellipse cx="-148" cy="785" rx="30" ry="12" stroke="black" stroke-width="2px" style="fill:purple">
+<animateColor attributeName="fill" attributeType="CSS" from="blue" to="lime" begin="1s" dur="6s"  repeatCount="indefinite" />
+</ellipse>
+<animateTransform attributeName="transform" attributeType="XML" type="rotate" from="1" to="360"  additive="sum" begin="128s" dur="15.0s" repeatCount="2"/> 
+<animateMotion path="M 100, 100 m -75, 0 a 75,75 0 1,0 150,0 a 75,75 0 1,0 -150,0" begin="1s" dur="5s"  repeatCount="indefinite" />
+</g>
+
+<g>
+    <rect
+       class="room"
+       width="94"
+       height="123"
+       x="-411.99988"
+       y="711" />
+    <rect
+       class="room"
+       y="711"
+       x="-506.99988"
+       height="123"
+       width="94"
+        />
+    <rect
+       class="room"
+       width="94"
+       height="123"
+       x="-601.99988"
+       y="711" />
+    
+    <rect
+       class="room"
+       width="94"
+       height="123"
+       x="-221.99988"
+       y="587" />
+    <rect
+       class="room" 
+       y="587"
+       x="-316.99988"
+       height="123"
+       width="94"
+       
+       />
+    <rect
+       
+       class="room"
+       width="94"
+       height="123"
+       x="-411.99988"
+       y="587" />
+    <rect
+       class="room"
+       y="587"
+       x="-506.99988"
+       height="123"
+       width="94"
+       
+        />
+    <rect
+       class="room"
+      
+       width="94"
+       height="123"
+       x="-601.99988"
+       y="587" />
+    <rect
+       class="room"
+       y="587"
+       x="-696.99988"
+       height="123"
+       width="94"
+       
+       />
+    <rect
+       
+       class="room"
+       width="94"
+       height="123"
+       x="-221.99988"
+       y="463" />
+    <rect
+       class="room"
+       y="463"
+       x="-316.99988"
+       height="123"
+       width="94"
+       
+      />
+    <rect
+       
+       class="room"
+       width="94"
+       height="123"
+       x="-411.99988"
+       y="463" />
+    <rect
+       class="room"
+       y="463"
+       x="-506.99988"
+       height="123"
+       width="94"
+       
+      />
+    <rect
+      
+       class="room"
+       width="94"
+       height="123"
+       x="-601.99988"
+       y="463" />
+    <rect
+       class="room"
+       y="463"
+       x="-696.99988"
+       height="123"
+       width="94"
+       
+        />
+    <rect
+       class="room"
+       id="rect3843"
+       width="94"
+       height="123"
+       x="-221.99988"
+       y="339" />
+    <rect
+       class="room"
+       y="339"
+       x="-316.99988"
+       height="123"
+       width="94"
+       
+       />
+    <rect
+       class="room"
+       id="rect3847"
+       width="94"
+       height="123"
+       x="-411.99988"
+       y="339" />
+    <rect
+       class="room"
+       y="339"
+       x="-506.99988"
+       height="123"
+       width="94"
+       id="rect3849"
+       />
+    <rect
+       class="room"
+       id="rect3851"
+       width="94"
+       height="123"
+       x="-601.99988"
+       y="339" />
+    <rect
+       class="room"
+       y="339"
+       x="-696.99988"
+       height="123"
+       width="94"
+       id="rect3853"
+        />
+    <rect
+       class="room"
+       id="rect3855"
+       width="94"
+       height="123"
+       x="-221.99988"
+       y="215" />
+    <rect
+       class="room"
+       y="215"
+       x="-316.99988"
+       height="123"
+       width="94"
+       id="rect3857"
+        />
+    <rect
+       class="room"
+       id="rect3859"
+       width="94"
+       height="123"
+       x="-411.99988"
+       y="215" />
+    <rect
+       class="room"
+       y="215"
+       x="-506.99988"
+       height="123"
+       width="94"
+       id="rect3861"
+       />
+    <rect
+       class="room"
+       id="rect3863"
+       width="94"
+       height="123"
+       x="-601.99988"
+       y="215" />
+    <rect 
+       class="room"
+       y="215"
+       x="-696.99988"
+       height="123"
+       width="94"
+       id="rect3865"
+       />
+    <rect
+       class="room"
+       id="rect3867"
+       width="94"
+       height="123"
+       x="-221.99988"
+       y="91" />
+    <rect
+       class="room"
+       y="91"
+       x="-316.99988"
+       height="123"
+       width="94"
+       id="rect3869"
+        />
+    <rect
+      class="room"
+       id="rect3871"
+       width="94"
+       height="123"
+       x="-411.99988"
+       y="91" />
+    <rect
+       class="room"
+       y="91"
+       x="-506.99988"
+       height="123"
+       width="94"
+       id="rect3873"
+        />
+    <rect
+       class="room"
+       id="rect3875"
+       width="94"
+       height="123"
+       x="-601.99988"
+       y="91" />
+    <rect
+       class="room"
+       y="91"
+       x="-696.99988"
+       height="123"
+       width="94"
+       id="rect3877"
+        />
+ <animateTransform attributeName="transform" attributeType="XML" type="rotate" from="1" to="45"  additive="sum" begin="3s" dur="5.0s" fill="freeze"/> 
+<animateTransform attributeName="transform" attributeType="XML" type="rotate" from="1" to="-45"  additive="sum" begin="30s" dur="5.0s" fill="freeze"/> 
+ </g>
+  </g>
+
+</svg>
+
+
