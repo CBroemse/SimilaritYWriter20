@@ -162,6 +162,86 @@ let mTest2 at = runKBASE 2 ["1","2"] 1 2 at 2 (li3) 1 2 3 5
 
 *> mTest2 "country"
 +> mTest2 "city"
+
+Posterior:
+Due to Grant Sanderson:
+"Hypothesis 
+   given 
+the evidence "
+
+Goal:  P(H|E)
+Prior: "Prior" -> P(H) = 1/21
+
+Bayes' theorem:
+¬A (not A)
+
+                    P(H)P(E|H)
+   P(H|E) =    ------------------------
+	       P(H)P(E|H) + P(¬H)P(E|¬H)
+
+
+
+Experiment: 
+*> let simiVals gb1 gb2  = similaritYvalue gb1 gb2
+*> let foGb1 gb =  map realToFrac (map ord gb )
+*> let foGb2 gb =  map realToFrac (map ord gb )
+*> let simiVal gb1 fgb2 = similaritYvalue (foGb1 gb1) (foGb2 gb2)
+
+ propoarbility tha the hypothesis works before any new evidence
+
+    p s s s s s
+    p s s s s s
+    p s s s s s
+    p s s s s s
+    p s s s s s
+  P(H)
+-----------------  
+  given:   li3
+*>let li3 = [li,li3]
+[[["person","Steve","shy","withdrawn","farmer"],
+["person","Steve","shy","withdrawn","librarian"]]]
+
+ ratio1:  progVar1 to progVar2  of li
+                
+          and
+
+	  progVar1 toprogVar3   of li2 as b
+
+ ratio2:  progVar3 to progVar5  of li
+          and
+	  progVar3 to progVar5 of li2  as b
+	  
+
+searched: ratio1
+
+*> let ratio1 = simiVal "person" "Steve"
+*>  ratio1
+21.71945701357466
+
+ratio1 = ratio1b
+
+
+*> let ratio2 = simiVal "withdrawn" "farmer"
+*> ratio2
+35.264227642276424
+
+*> let ratio2b = simiVal "withdrawn" "librarian"
+*> ratio2b
+3.658536585365854
+
+how are the sets related to each other
+*> let ratio1To2 =  simiVal (unwords(head(head li3))) (unwords(concat(last li3)))
+*> ratio1To2
+52.49092229484387
+
+similarity between "farmer" and librarian
+*> simiVal "farmer" "librarian"
+32.80590717299578
+
+to be continued
+
+link:
+https://www.youtube.com/watch?v=HZGCoVF3YvM&t=129s
 </textarea>
 <br><br>
   
