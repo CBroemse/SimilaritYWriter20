@@ -2,12 +2,15 @@
 <html lang="en">
 <head>
 <title>List for Step IV</title>
- <script src="file:///c:/stack/SimilaritYWriter20/src/p5SimY/p5.js"></script>
-  <script src="file:///c:/stack/SimilaritYWriter20/src/p5SimY/p5.dom.min.js"></script>
-  <script src="file:///c:/stack/SimilaritYWriter20/src/p5SimY/p5.sound.min.js"></script>
- <script src="file:///c:/stack/SimilaritYWriter20/src/p5SimY/svgS/php.js"></script>
- <script xmlns="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/1999/xhtml" xmlns:xml="http://www.w3.org/XML/1998/namespace" xmlns:xlink="http://www.w3.org/1999/xlink" id="root" xml:space="preserve" width="300" height="800" onload="OnLoadEvent(evt)"> </script>
-  <link rel="stylesheet" type="text/css" href="file:///c:/stack/SimilaritYWriter20/src/p5SimY/style.css">
+ <script src="src/p5SimY/p5.js"></script>
+  <script src="src/p5SimY/p5.dom.min.js"></script>
+  <script src="src/p5SimY/p5.sound.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="src/p5SimY/style.css">
+<script src="src/svgS/php.js"></script>
+ <script src="src/seenJS/lib/seen.min.js"></script>
+ <script src="src/seenJs/seen.js"></script>
+ <script src="http://cdnjs.cloudflare.com/ajax/libs/coffee-script/1.7.1/coffee-script.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="src/p5SimY/style.css">
 
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -24,7 +27,7 @@ body {
 
 /* Style the header */
 .header {
-  background-color: black;
+  background-color: white;
   padding: 10px;
   text-align: left;
   font-size: 35px;
@@ -74,9 +77,9 @@ a:link, a:visited {
   padding: 2px 5px;
   text-decoration: none;
   display: inline-block;
-  width:5%;
+  width:8%;
   font-size: 16px;
-  text-align:left;
+  text-align:center;
 }
 
 a:hover, a:active {
@@ -123,27 +126,47 @@ div.desc {
   top: 10px;
   right: 15px;
   color: white;
-  font-size: 35px;
+  font-size: 32px;
   cursor: pointer;
 }
-	.buttonM {
-  background-color: #4CAF50; /* Green */
-  border: none;
-  color: white;
-  padding: 15px 32px;
-  text-align: center;
+.buttonM {
+  background-color: #008CBA;
+  color: black;
+  border: 2px solid white;
+  padding: 2px 5px;
   text-decoration: none;
   display: inline-block;
+  width:5%;
   font-size: 16px;
-  margin: 4px 2px;
-  cursor: pointer;
+  text-align:center;
 }
-.button2 {background-color: #008CBA;border-radius: 12px;} /* Blue */
-.button3 {background-color: #f44336;} /* Red */ 
-.button4 {background-color: #e7e7e7; color: black;} /* Gray */ 
-.button5 {background-color: #555555;} /* Black */
+.button2 {background-color: #008CBA; padding: 2px 5px; border-radius: 12px;} /* Blue */
+.button3 {background-color: #f44336; padding: 2px 5px; border-radius: 12px;} /* Red */ 
+.button4 {background-color: #e7e7e7; color: black; padding: 2px 5px;} /* Gray */ 
+.button5 {background-color: #555555; padding: 2px 5px;} /* Black */
+.button6 {background-color: #008CBA;
+   color: black;
+   border: 2px solid white;
+   padding: 2px 5px;
+   text-decoration: none;
+  /*display: inline-block;*/
+   width:5%;
+   font-size: 16px;
+   text-align:center;}
+.button7 {background-color: #4CAF50; /* Green */
+   border: none;
+   color: white;
+   padding: 5px 15px;
+   text-align: center;
+   text-decoration: none;
+   display: inline-block;
+   font-size: 16px;
+   margin: 4px 2px;
+   cursor: pointer;
+   border-radius: 12px;}	  
 
-       .storyTeller {
+
+.storyTeller {
   background-color: #008CBA;
   color: lime;
   border: 2px solid white;
@@ -154,6 +177,7 @@ div.desc {
   font-size: 12px;
   text-align:left;
 }
+
 
 </style>
 </head>
@@ -178,7 +202,7 @@ function w3_open() {
 function w3_close() {
   document.getElementById("mySidebar").style.display = "none";
 }
-function w4_open() {
+	function w4_open() {
   document.getElementById("myfiles").style.display = "block";
 }
 
@@ -186,38 +210,43 @@ function w4_close() {
   document.getElementById("myfiles").style.display = "none";
 }
 
+
 </script>
 
 <body>
 
-<h2><img src="file:///c:/stack/SimilaritYWriter20/src/source/introHeaderG.png"  style="width:23%" onclick="myFunction(this);" <div class="w3-teal">
-  <button class="w3-button w3-teal w3-large" onclick="w3_open()">?</button>
+<h2><img src="source/introHeaderG.png"  style="width:23%" onclick="myFunction(this);" <div class="w3-teal">
+  <button class="buttonM button7" onclick="w3_open()">?</button>
  
-  <button onclick="w3_close()" class="w3-bar-item w3-large">Close &times;</button>
-<a href="file:///c:/stack/SimilaritYWriter20/src/source/courtesy.png" style="border-radius: 12px;" target="iframe_a">courtesy</a>
-	<a href="file:///c:/stack/SimilaritYWriter20/src/p5SimY/svgS/content.svg" style="border-radius: 12px;color: #d800c4" target="iframe_b">library</a>  
+  <button onclick="w3_close()" class="buttonM button2">close &times;</button>
+<a class="buttonM button6;" href="source/courtesy.png" style="border-radius: 12px;" target="iframe_a">courtesy</a>
+	<a class="buttonM button6;" href="src/svgS/content.svg" style="border-radius: 12px;color: #d800c4" target="iframe_b">library</a>  
 	
   </div></h2>
 
+<script src="src/p5SimY/openProces3.js"> </script>
 <div class="row">
  <div class="column middle" style="background-color:none;">
 	 
- <a href="file:///c:/stack/SimilaritYWriter20/src/p5SimY/svgS/content.svg" style="border-radius: 12px;" target="iframe_a">lib</a>
- <a href="file:///c:/stack/SimilaritYWriter20/src/textS/story01.html" style="border-radius: 12px;"  target="iframe_b">story</a>  
- <a href="file:///c:/stack/SimilaritYWriter20/src/textS/story01.html" style="border-radius: 12px;"  target="iframe_b">recorder</a>  
+ <a href="src/textS/workingExam1.html" style="border-radius: 12px;" target="iframe_a">lib</a>          
+ <a href="src/textS/story01.html" style="border-radius: 12px;"  target="iframe_a">story</a>  
+ <a href="src/textS/explain3dRaPlotter.html" style="border-radius: 12px;"  target="iframe_a">explain</a>  
 
- <a href="file:///c:/stack/SimilaritYWriter20/src/p5SimY/svgS/svgDisplayRefresh.html" style="border-radius: 12px;" target="iframe_a">refresh</a>  
-  <a href="file:///c:/stack/SimilaritYWriter20/src/p5SimY/svgS/a2_3_5_Cell.svg" style="border-radius: 12px;" target="iframe_b">Cell</a>  
- <a href="file:///c:/stack/SimilaritYWriter20/src/textS/workingExam1.html" style="border-radius: 12px;" target="iframe_c">examples</a>  
-<img src="file:///c:/stack/SimilaritYWriter20/src/source/ptc8reduced.png" style="width:5%" alt="[[93.72586872586874,94.02573529411764,93.92523364485982]]" onclick="myFunction(this);">  
-          <img src="file:///c:/stack/SimilaritYWriter20/src/source/ptc7reduced.png" style="width:5%" alt="[[93.72586872586874,94.02573529411764,93.92523364485982]]" alt="[93.72586872586874,94.02573529411764,3.03030303030303],
-[93.72586872586874,4.212860310421286,93.92523364485982],
+ <a href="src/svgS/svgDisplayRefresh.html" style="border-radius: 12px;" target="iframe_a">refresh</a>  
+ <a href="src/svgS/a2_3_5_Cell.svg" style="border-radius: 12px;" target="iframe_b">Cell</a>  
+ <a href="src/textS/workingExam1.html" style="border-radius: 12px;" target="iframe_c">examples</a>  
+	
+  <script src="src/seenJS/StackBlur.js"> </script>
+	<a href="src/p5SimY/perl.html" style="border-radius: 12px;" target="iframe_a">3Dptc</a>
+	<a href="src/textS/story2.html" style="border-radius: 12px;" target="iframe_a">plots</a>     
+<img src="source/ptc8label.png" style="width:5%" alt="[[93.72586872586874,94.02573529411764,93.92523364485982]]" onclick="myFunction(this);">  
+<img src="source/ptc7label.png" style="width:5%" alt="[93.72586872586874,94.02573529411764,3.03030303030303],[93.72586872586874,4.212860310421286,93.92523364485982],
 [3.683035714285714,94.02573529411764,93.92523364485982]" onclick="myFunction(this);">
-          <img src="file:///c:/stack/SimilaritYWriter20/src/source/ptc6green.png"  style="width:5%" onclick="myFunction(this);">
-          <img src="file:///c:/stack/SimilaritYWriter20/src/source/ptc5green.png"  style="width:5%" onclick="myFunction(this);">
-          <img src="file:///c:/stack/SimilaritYWriter20/src/source/ptc4blue.png"  style="width:5%" onclick="myFunction(this);">
-          <img src="file:///c:/stack/SimilaritYWriter20/src/source/ptc3red.png"  style="width:5%" onclick="myFunction(this);">
-          <img src="file:///c:/stack/SimilaritYWriter20/src/source/ptc2reduced.png" style="width:5%" onclick="myFunction(this);">
+          <img src="source/ptc6label.png"  style="width:5%" onclick="myFunction(this);">
+          <img src="source/ptc5label.png"  style="width:5%" onclick="myFunction(this);">
+          <img src="source/ptc4label.png"  style="width:5%" onclick="myFunction(this);">
+          <img src="source/ptc3label.png"  style="width:5%" onclick="myFunction(this);">
+          <img src="source/ptc2label.png" style="width:5%" onclick="myFunction(this);">
           <img src="source/ilabel.png" style="width:5%" onclick="myFunction(this);">
         </div>
  
@@ -227,9 +256,9 @@ function w4_close() {
 
 <div class="header" name="oben">
     <div class="w3-sidebar w3-bar-block w3-border-right" style="display:block,border:none;" id="mySidebar">
-	    <script src="file:///c:/stack/SimilaritYWriter20/src/p5SimY/seenJS/seen.js"> </script>
-   <iframe src="file:///c:/stack/SimilaritYWriter20/src/p5SimY/svgS/svgButtons.svg" name="iframe_a" style="border:none;background:#d1d00f6;" width="300px" height="550px"></iframe>
-   <iframe src="file:///c:/stack/SimilaritYWriter20/src/p5SimY/perl.html" name="iframe_b" style="border:none;background:#d1d00f6,frameBorder:0;" width="300px" height="550px"></iframe>
+	    
+   <iframe src="src/svgS/svgButtons.svg" name="iframe_a" style="border:none;background:#d1d00f6;frameBorder:0;" width="300px" height="550px"></iframe>
+   <iframe src="src/p5SimY/perl.html" name="iframe_b" style="border:none;background:#d1d00f6;frameBorder:0;" width="300px" height="550px"></iframe>
 </div>	
  
   <h2></h2>	
@@ -237,12 +266,13 @@ function w4_close() {
 
 
 <div class="row">
-  <div class="column side" style="background-color:none; width: 10%;">
+  <div class="column middle" style="background-color:none;">
 	  
-	  <a href="file:///c:/stack/SimilaritYWriter20/src/source/ptcDATA.txt" target="iframe_a">library           </a>
-         <a href="file:///c:/stack/SimilaritYWriter20/src/p5SimY/basic0.html" target="iframe_b">pyramid           </a>
-         <a href="file:///c:/stack/SimilaritYWriter20/src/p5SimY/action.html" target="iframe_b">Animate           </a>
-	 <a href="file:///c:/stack/SimilaritYWriter20/src/source/ptc4wittsatz1.png" target="iframe_a">__ plot:_The_world_is_everything</a> 
+	  <a class="buttonM button6" href="source/2_3_5_1.png" target="iframe_b">&nbsp;&nbsp;</a>
+         <a class="buttonM button5" href="src/p5SimY/basic0.html" target="iframe_b">&nbsp;&nbsp;</a>
+         <a class="buttonM button5" href="src/p5SimY/action.html" target="iframe_b">&nbsp;&nbsp;</a>
+	 <a href="src/svgS/svgDisplayRefresh2.svg" target="iframe_b">plot:_The_world_is_everything</a> 
  
 
-  </div> 
+  </div>  
+ </div> 
