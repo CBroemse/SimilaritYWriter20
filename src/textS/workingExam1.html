@@ -122,7 +122,7 @@ network that can read a certain list of [String]
 example2
 ---------
 
-There is the statistic propability of Steve
+There is the statistic probability of Steve
 being a farmer our an librarian.
 cd src/TheAToBPlotter.hs
 
@@ -136,7 +136,7 @@ cd src/TheAToBPlotter.hs
 
  
        ptc0 ptc2 ptc3 ptc5 ptc6 ptc8
-lenght  10   25   50   75   84   100
+length  10   25   50   75   84   100
 
 other plots
 M.writeWXCloudNODE (pop) (ptc2 5) (ptc3 5) (ptc4 5) (ptc5 5) (ptc6 5)
@@ -175,9 +175,9 @@ Prior: "Prior" -> P(H) = 1/21
 Bayes' theorem:
 ¬A (not A)
 
-                    P(H)P(E|H)
-   P(H|E) =    ------------------------
-	       P(H)P(E|H) + P(¬H)P(E|¬H)
+         P(H)P(E|H)
+P(H|E) = -------------------
+       P(H)P(E|H) + P(¬H)P(E|¬H)
 
 
 
@@ -187,7 +187,7 @@ Experiment:
 *> let foGb2 gb =  map realToFrac (map ord gb )
 *> let simiVal gb1 fgb2 = similaritYvalue (foGb1 gb1) (foGb2 gb2)
 
- propoarbility tha the hypothesis works before any new evidence
+ probability that the hypothesis works before any new evidence
 
     p s s s s s
     p s s s s s
@@ -238,11 +238,56 @@ similarity between "farmer" and librarian
 *> simiVal "farmer" "librarian"
 32.80590717299578
 
+
+
+which dimensionality has   P(H|E) 
+  of li3 ?
+
+
+ |xxxx| s s s s s s s s s     
+ |xxxx| s s s s s s s s s
+ |----| s s s s s s s s s
+ |pppp| s s s s s s s s s
+ |pppp| k k k k k k k k k 
+ |pppp| k k k k k k k k k
+
+
+lengthx 'x'  = 6 ; lengthx 'p' = 6 ;
+lengthx 's' = 9 ; lengthx 'k' = 9 
+
+lengthy 'x'  = 2 ; lengthy 'p' = 2 ;
+lengthy 's' = 4 ; lengthy 'k' = 2 ;
+
+
 to be continued
 
 link:
 https://www.youtube.com/watch?v=HZGCoVF3YvM&t=129s
 </textarea>
 <br><br>
-  
-</body></html>
+<a href= "https://en.wikipedia.org/wiki/Bayes%27_theorem#/media/File:Bayes_theorem_visualisation.svg" style="border-radius: 12px; padding: 2px 5px;" target="self">stanford?</a>
+<textarea>
+building on 'Koller and Friedman'
+
+explain to myself
+
+given :  
+         P(B|A) * P(A)
+P(A|B) = --------------
+	     P(B)
+
+binomial expansions ('Hohmann orWolfram')
+with Pascals_triangle
+
+???	     
+           +
+= ( P(A|B)   (PA|B) ) ^2 = (
+           -
+
+
+= ....
+       
+</textarea>
+<br><br>
+
+ </body></html>
