@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>List for Step IV</title>
+ <script src="src/p5SimY/p5.js"></script>
+  <script src="src/p5SimY/p5.dom.min.js"></script>
+  <script src="src/p5SimY/p5.sound.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="src/p5SimY/style.css">
+<script src="src/svgS/php.js"></script>
+ <script src="src/seenJS/lib/seen.min.js"></script>
+ <script src="src/seenJs/seen.js"></script>
+ <script src="http://cdnjs.cloudflare.com/ajax/libs/coffee-script/1.7.1/coffee-script.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="src/p5SimY/style.css">
+
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: white;
+  font-family: Arial, Helvetica, sans-serif;
+   font-color: green;	
+}
+
+/* Style the header */
+.header {
+  background-color: white;
+  padding: 10px;
+  text-align: left;
+  font-size: 35px;
+  frameBorder: 0px;
+}
+
+/* Create three unequal columns that floats next to each other */
+.column {
+  float: left;
+  padding: 1px;
+ }
+
+/* Left and right column */
+.column.side {
+  }
+
+/* Middle column */
+.column.middle {
+  width: 50%;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Style the footer */
+.footer {
+  background-color: white;
+  padding: 10px;
+  text-align: center;
+}
+
+/* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
+@media (max-width: 600px) {
+  .column.side, .column.middle {
+    width: 100%;
+  }
+}
+
+a:link, a:visited {
+  background-color: #008CBA;
+  color: black;
+  border: 2px solid white;
+  padding: 2px 5px;
+  text-decoration: none;
+  display: inline-block;
+  width:8%;
+  font-size: 16px;
+  text-align:center;
+}
+
+a:hover, a:active {
+  background-color: #e7e7e7;
+  color: darkgreen;
+  font-size: 16px;
+}
+.img2 {
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  z-index: -1;
+}
+div.gallery {
+  margin: 5px;
+  border: 1px solid #ccc;
+  float: left;
+  width: 180px;
+}
+
+div.gallery:hover {
+  border: 1px solid #777;
+}
+
+div.gallery img {
+  width: 100%;
+  height: auto;
+}
+
+div.desc {
+  padding: 15px;
+  text-align: center;
+}
+
+/* The expanding image container */
+.container {
+  position: relative;
+  display: none;
+	  
+}
+/* Closable button inside the expanded image */
+.closebtn {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  color: white;
+  font-size: 32px;
+  cursor: pointer;
+}
+.buttonM {
+  background-color: #008CBA;
+  color: black;
+  border: 2px solid white;
+  padding: 2px 5px;
+  text-decoration: none;
+  display: inline-block;
+  width:5%;
+  font-size: 16px;
+  text-align:center;
+}
+.button2 {background-color: #008CBA; padding: 2px 5px; border-radius: 12px;} /* Blue */
+.button3 {background-color: #f44336; padding: 2px 5px; border-radius: 12px;} /* Red */ 
+.button4 {background-color: #e7e7e7; color: black; padding: 2px 5px;} /* Gray */ 
+.button5 {background-color: #555555; padding: 2px 5px;} /* Black */
+.button6 {background-color: #008CBA;
+   color: black;
+   border: 2px solid white;
+   padding: 2px 5px;
+   text-decoration: none;
+  /*display: inline-block;*/
+   width:5%;
+   font-size: 16px;
+   text-align:center;}
+.button7 {background-color: #4CAF50; /* Green */
+   border: none;
+   color: white;
+   padding: 5px 15px;
+   text-align: center;
+   text-decoration: none;
+   display: inline-block;
+   font-size: 16px;
+   margin: 4px 2px;
+   cursor: pointer;
+   border-radius: 12px;}	  
+
+
+.storyTeller {
+  background-color: #008CBA;
+  color: lime;
+  border: 2px solid white;
+  padding: 2px 5px;
+  text-decoration: none;
+  display: inline-block;
+  width:100%;
+  font-size: 12px;
+  text-align:left;
+}
+
+
+</style>
+</head>
+<script>
+function myFunction(imgs) {
+  var expandImg = document.getElementById("expandedImg");
+  var imgText = document.getElementById("imgtext");
+  expandImg.src = imgs.src;
+  imgText.innerHTML = imgs.alt;
+  expandImg.parentElement.style.display = "block";
+}
+function RunExe2(){
+    var shell2 = new ActiveXObject("WScript.Shell");
+    var path2 = '"http://127.0.0.1:8023"';
+    shell2.run(path2,1,false);
+
+}
+function w3_open() {
+  document.getElementById("mySidebar").style.display = "block";
+}
+
+function w3_close() {
+  document.getElementById("mySidebar").style.display = "none";
+}
+	function w4_open() {
+  document.getElementById("myfiles").style.display = "block";
+}
+
+function w4_close() {
+  document.getElementById("myfiles").style.display = "none";
+}
+
+
+</script>
+
+<body>
+
+<h2><img src="source/introHeaderG.png"  style="width:23%" onclick="myFunction(this);" <div class="w3-teal">
+  <button class="buttonM button7" onclick="w3_open()">?</button>
+ 
+  <button onclick="w3_close()" class="buttonM button2">close &times;</button>
+<a class="buttonM button6;" href="source/courtesy.png" style="border-radius: 12px;" target="iframe_a">courtesy</a>
+	<a class="buttonM button6;" href="src/svgS/content.svg" style="border-radius: 12px;color: #d800c4" target="iframe_b">library</a>  
+	
+  </div></h2>
+
+<script src="src/p5SimY/openProces3.js"> </script>
+<div class="row">
+ <div class="column middle" style="background-color:none;">
+	 
+ <a href="src/textS/workingExam1.html" style="border-radius: 12px;" target="iframe_a">lib</a>          
+ <a href="src/textS/story01.html" style="border-radius: 12px;"  target="iframe_a">story</a>  
+ <a href="src/textS/explain3dRaPlotter.html" style="border-radius: 12px;"  target="iframe_a">explain</a>  
+
+ <a href="src/svgS/svgDisplayRefresh.html" style="border-radius: 12px;" target="iframe_a">refresh</a>  
+ <a href="src/svgS/a2_3_5_Cell.svg" style="border-radius: 12px;" target="iframe_b">Cell</a>  
+ <a href="src/textS/workingExam1.html" style="border-radius: 12px;" target="iframe_c">examples</a>  
+	
+  <script src="src/seenJS/StackBlur.js"> </script>
+	<a href="src/p5SimY/perl.html" style="border-radius: 12px;" target="iframe_a">3Dptc</a>
+	<a href="src/textS/story2.html" style="border-radius: 12px;" target="iframe_a">plots</a>     
+<img src="source/ptc8label.png" style="width:5%" alt="[[93.72586872586874,94.02573529411764,93.92523364485982]]" onclick="myFunction(this);">  
+<img src="source/ptc7label.png" style="width:5%" alt="[93.72586872586874,94.02573529411764,3.03030303030303],[93.72586872586874,4.212860310421286,93.92523364485982],
+[3.683035714285714,94.02573529411764,93.92523364485982]" onclick="myFunction(this);">
+          <img src="source/ptc6label.png"  style="width:5%" onclick="myFunction(this);">
+          <img src="source/ptc5label.png"  style="width:5%" onclick="myFunction(this);">
+          <img src="source/ptc4label.png"  style="width:5%" onclick="myFunction(this);">
+          <img src="source/ptc3label.png"  style="width:5%" onclick="myFunction(this);">
+          <img src="source/ptc2label.png" style="width:5%" onclick="myFunction(this);">
+          <img src="source/ilabel.png" style="width:5%" onclick="myFunction(this);">
+        </div>
+ 
+                   
+</div>
+
+
+<div class="header" name="oben">
+    <div class="w3-sidebar w3-bar-block w3-border-right" style="display:block,border:none;" id="mySidebar">
+	    
+   <iframe src="src/svgS/svgButtons.svg" name="iframe_a" style="border:none;background:#d1d00f6;frameBorder:0;" width="300px" height="550px"></iframe>
+   <iframe src="src/svgS/svgDisplayRefresh2.svg" name="iframe_b" style="border:none;background:#d1d00f6;frameBorder:0;" width="300px" height="550px"></iframe>
+</div>	
+ 
+  <h2></h2>	
+  </div>
+
+
+<div class="row">
+  <div class="column middle" style="background-color:none;">
+	  
+	  <a class="buttonM button6" href="source/2_3_5_1.png" target="iframe_b">&nbsp;&nbsp;</a>
+         <a class="buttonM button5" href="src/p5SimY/basic0.html" target="iframe_b">&nbsp;&nbsp;</a>
+         <a class="buttonM button5" href="src/p5SimY/action.html" target="iframe_b">&nbsp;&nbsp;</a>
+	 <a href="src/svgS/svgDisplayRefresh2.svg" target="iframe_b">plot:_The_world_is_everything</a> 
+ 
+
+  </div>  
+ </div> 
+                      </div>
+
+               <div class="row">
+<div class="column side" style="background-color:none; width: 10%;">
+
+<a href="file:///c:/stack/SimilaritYWriter20/src/source/ptcDATA.txt" target="iframe_a">library           </a>
+<a href="file:///c:/stack/SimilaritYWriter20/src/p5SimY/action.html" target="iframe_a">Animate           </a>
+<a href="file:///c:/stack/SimilaritYWriter20/src/p5SimY/action.html" style="width:5%;" target="iframe_a">plot   ____person person Steve shy shy farmer</a>
+
+
+</div>
+
+<div class="column middle" style="background-color:none;">
+<img src="file:///c:/stack/SimilaritYWriter20/src//source/liblabel.png" name="lib_b" alt= "[1.5527457684256563,13.816482582837725,1.1202595195798253]
+[]
+[]
+=>(1.167*10^5*%i+2.772*10^5)^(1/3)+(4.489*10^3)/(1.167*10^5*%i+2.772*10^5)^(1/3)+69.18"
+ style="width:5%" onclick="myFunction(this);">
+<img src="file:///c:/stack/SimilaritYWriter20/src/source/ptc0blue.png" style="width:5%" alt="info ptc0 points: 5 'daZip'-type: [1.5527457684256563,13.816482582837725,1.1202595195798253] reduced-2d: [[0.10615711252653928],[1.2359550561797752],[4.0462427745664735]] length: 5 [[[36.003861003861005,4.0462427745664735,49.90347490347491],[39.0625,1.2359550561797752,52.29779411764706],[38.0373831775701,7.888888888888889,51.49532710280374],[43.67034834324554,0.10615711252653928,55.90484282073067],[43.43003412969283,4.792332268370607,55.71672354948805]]]" onclick="myFunction(this);">
+<img src="file:///c:/stack/SimilaritYWriter20/src/source/ptc2blue.png" style="width:5%" alt="info ptc3points: 5 'daZip'-type: [1.0585210793074151,13.83611613904178,1.8464427849572957] reduced-2d: [[0.4489337822671156],[1.9889502762430937],[3.9548022598870056]] length: 5 [[[67.18146718146718,5.139664804469274,38.513513513513516],[68.75,1.9889502762430937,41.452205882352935],[68.22429906542057,3.9548022598870056,40.46728971962617],[71.11299915038234,4.439511653718091,45.879354290569246],[70.98976109215016,0.4489337822671156,45.648464163822524]]]" onclick="myFunction(this);">
+<img src="file:///c:/stack/SimilaritYWriter20/src/source/ptc3blue.png"  style="width:5%" alt="info ptc4points: 5 'daZip'-type: [25.445199660152934,16.254499111763344,1.6231283078577945] reduced-2d: [[0.0],[0.45955882352941174],[0.6711409395973155]] length: 5 [[[0.6711409395973155,1.0506208213944603,10.521235521235521],[0.45955882352941174,2.5089605734767026,10.56985294117647],[0.0,5.892700087950748,7.009345794392524],[3.4834324553950724,9.17587085811385,17.07731520815633],[1.621160409556314,1.706484641638225,16.296928327645052]]]" onclick="myFunction(this);">
+<img src="file:///c:/stack/SimilaritYWriter20/src/source/ptc4blue.png"  style="width:5%" alt="info ptc5 points: 1 'daZip'-type: [1.0,1.2775289575289577,6.325792593398227] reduced-2d: [[7.888888888888889],[39.0625],[49.90347490347491]] length: 1 [[[49.90347490347491,39.0625,7.888888888888889]]]" onclick="myFunction(this);">
+<img src="file:///c:/stack/SimilaritYWriter20/src/source/ptc5blue.png"  style="width:5%" alt="info ptc6 points: 1 'daZip'-type: [1.7850877192982455,1.0,17.383928571428573] reduced-2d: [[3.9548022598870056],[38.513513513513516],[68.75]] length: 1 [[[38.513513513513516,68.75,3.9548022598870056]]]" onclick="myFunction(this);">
+<img src="file:///c:/stack/SimilaritYWriter20/src/source/ptc6blue.png"  style="width:5%" alt="info ptc7 points: 1 'daZip'-type: [1.0,1.2775289575289577,1.3119586768235416] reduced-2d: [[38.0373831775701],[39.0625],[49.90347490347491]] length: 1 [[[49.90347490347491,39.0625,38.0373831775701]]]" onclick="myFunction(this);">
+<img src="file:///c:/stack/SimilaritYWriter20/src/source/ptc7blue.png" style="width:5%" alt="info ptc8 points: 1 'daZip'-type: [1.7850877192982455,1.0,1.0077054794520548] reduced-2d: [[38.513513513513516],[68.22429906542057],[68.75]] length: 1 [[[38.513513513513516,68.75,68.22429906542057]]]" onclick="myFunction(this);">
+<img src="file:///c:/stack/SimilaritYWriter20/src/source/ptc8blue.png" style="width:5%" alt="info ptc9 points: 1 'daZip'-type: [4.439265536723164,1.9883866917765225,1.0] reduced-2d: [[0.8908685968819599],[1.9889502762430937],[3.9548022598870056]] length: 1 [[[0.8908685968819599,1.9889502762430937,3.9548022598870056]]]" onclick="myFunction(this);">
+</div>
+
+                       </div>
+
+               <div class="row">
+<div class="column side" style="background-color:none; width: 10%;">
+
+<a href="file:///c:/stack/SimilaritYWriter20/src/source/ptcDATA.txt" target="iframe_a">library           </a>
+<a href="file:///c:/stack/SimilaritYWriter20/src/p5SimY/action.html" target="iframe_a">Animate           </a>
+<a href="file:///c:/stack/SimilaritYWriter20/src/p5SimY/action.html" style="width:5%;" target="iframe_a">plot   ____person person Steve shy shy librarian</a>
+
+
+</div>
+
+<div class="column middle" style="background-color:none;">
+<img src="file:///c:/stack/SimilaritYWriter20/src//source/liblabel.png" name="lib_b" alt= "[1.5661252168427693,13.935534213685475,1.12991239048811]
+[]
+[]
+=>(1.167*10^5*%i+2.772*10^5)^(1/3)+(4.489*10^3)/(1.167*10^5*%i+2.772*10^5)^(1/3)+69.18"
+ style="width:5%" onclick="myFunction(this);">
+<img src="file:///c:/stack/SimilaritYWriter20/src/source/ptc0blue.png" style="width:5%" alt="info ptc0 points: 20 'daZip'-type: [] reduced-2d: [[0.10615711252653928],[0.2145922746781116],[0.33296337402885684]] length: 20 [[[36.003861003861005,4.0462427745664735,49.90347490347491],[39.0625,1.2359550561797752,52.29779411764706],[38.0373831775701,7.888888888888889,51.49532710280374],[43.67034834324554,0.10615711252653928,55.90484282073067],[43.43003412969283,4.792332268370607,55.71672354948805],[40.48473967684021,5.414012738853503,53.41113105924596],[41.37931034482759,1.3667425968109341,54.11140583554376],[43.57446808510638,0.33296337402885684,55.829787234042556],[38.894009216589865,1.345291479820628,52.16589861751152],[38.49721706864564,7.450157397691501,51.855287569573285],[38.38289962825279,1.2263099219620959,51.76579925650558],[42.99226139294927,0.45248868778280543,55.37403267411865],[38.837638376383765,0.5611672278338945,52.12177121771218],[40.90909090909091,1.0101010101010102,53.74331550802139],[44.285714285714285,0.2145922746781116,56.38655462184874],[41.68865435356201,0.684931506849315,54.35356200527705],[40.75067024128686,1.342281879194631,53.61930294906166],[40.0,6.303418803418804,53.03167420814479],[41.06666666666667,6.485355648535564,53.86666666666667],[42.19703574542284,3.128371089536138,54.751525719267654]]]" onclick="myFunction(this);">
+<img src="file:///c:/stack/SimilaritYWriter20/src/source/ptc2blue.png" style="width:5%" alt="info ptc3points: 20 'daZip'-type: [] reduced-2d: [[0.447427293064877],[0.4489337822671156],[0.7909604519774012]] length: 20 [[[67.18146718146718,5.139664804469274,8.494208494208495],[68.75,1.9889502762430937,12.867647058823529],[68.22429906542057,3.9548022598870056,11.401869158878505],[71.11299915038234,4.439511653718091,19.45624468988955],[70.98976109215016,0.4489337822671156,19.112627986348123],[69.47935368043088,3.7988826815642462,14.901256732495511],[69.93810786914234,1.4573991031390134,16.180371352785144],[71.06382978723404,1.6816143497757847,19.319148936170212],[68.66359447004608,1.8973214285714284,12.626728110599078],[68.46011131725417,0.447427293064877,12.059369202226346],[68.40148698884758,3.278688524590164,11.895910780669146],[70.76526225279449,5.480984340044743,18.486672398968185],[68.63468634686348,0.7909604519774012,12.546125461254613],[69.69696969696969,3.7735849056603774,15.508021390374331],[71.42857142857143,1.2114537444933922,20.33613445378151],[70.0967458223395,12.527964205816556,16.62269129287599],[69.61572832886506,2.5727069351230427,15.281501340482574],[69.23076923076923,2.31023102310231,14.20814479638009],[69.77777777777777,6.741573033707865,15.733333333333333],[70.35745422842197,6.256742179072276,17.349607672188316]]]" onclick="myFunction(this);">
+<img src="file:///c:/stack/SimilaritYWriter20/src/source/ptc3blue.png"  style="width:5%" alt="info ptc4points: 20 'daZip'-type: [] reduced-2d: [[0.0],[9.216589861751152e-2],[0.1855287569573284]] length: 20 [[[0.6711409395973155,1.0506208213944603,10.521235521235521],[0.45955882352941174,2.5089605734767026,10.56985294117647],[0.0,5.892700087950748,7.009345794392524],[3.4834324553950724,9.17587085811385,17.07731520815633],[1.621160409556314,1.706484641638225,16.296928327645052],[0.7130124777183601,1.9366197183098592,21.095152603231597],[0.3524229074889868,5.906821963394343,18.47922192749779],[2.723404255319149,12.76595744680851,13.957446808510639],[9.216589861751152e-2,8.67003367003367,9.76958525345622],[0.1855287569573284,4.601769911504425,9.183673469387756],[0.6505576208178439,2.0036429872495445,8.425531914893616],[1.1054421768707483,2.751504729148753,18.916595012897677],[3.730017761989343,7.587382779198636,13.745387453874539],[0.35650623885918004,0.970873786407767,17.201426024955435],[6.134453781512605,7.563025210084033,16.30252100840336],[4.397537379067723,5.3649956024626215,12.928759894459104],[3.6639857015192137,5.489864864864865,7.864164432529044],[1.085972850678733,7.531380753138076,16.832579185520363],[2.577777777777778,11.911111111111111,15.466666666666667],[1.046207497820401,7.236268526591107,14.646904969485615]]]" onclick="myFunction(this);">
+<img src="file:///c:/stack/SimilaritYWriter20/src/source/ptc4blue.png"  style="width:5%" alt="info ptc5 points: 3 'daZip'-type: [] reduced-2d: [[1.2359550561797752],[1.0]] length: 3 [[[49.90347490347491,39.0625,7.888888888888889],[36.003861003861005,52.29779411764706,7.888888888888889],[36.003861003861005,1.2359550561797752,51.49532710280374]]]" onclick="myFunction(this);">
+<img src="file:///c:/stack/SimilaritYWriter20/src/source/ptc5reduced.png"  style="width:5%" alt="info ptc6 points: 3 'daZip'-type: [] reduced-2d: [[1.9889502762430937],[1.0],[8.494208494208495]] length: 3 [[[8.494208494208495,68.75,3.9548022598870056],[67.18146718146718,12.867647058823529,3.9548022598870056],[67.18146718146718,1.9889502762430937,11.401869158878505]]]" onclick="myFunction(this);">
+<img src="file:///c:/stack/SimilaritYWriter20/src/source/ptc6reduced.png"  style="width:5%" alt="info ptc7 points: 3 'daZip'-type: [] reduced-2d: [[1.0]] length: 3 [[[49.90347490347491,39.0625,38.0373831775701],[36.003861003861005,52.29779411764706,38.0373831775701],[36.003861003861005,39.0625,51.49532710280374]]]" onclick="myFunction(this);">
+<img src="file:///c:/stack/SimilaritYWriter20/src/source/ptc7reduced.png" style="width:5%" alt="info ptc8 points: 3 'daZip'-type: [] reduced-2d: [[8.494208494208495],[11.401869158878505],[12.867647058823529]] length: 3 [[[8.494208494208495,68.75,68.22429906542057],[67.18146718146718,12.867647058823529,68.22429906542057],[67.18146718146718,68.75,11.401869158878505]]]" onclick="myFunction(this);">
+<img src="file:///c:/stack/SimilaritYWriter20/src/source/ptc8reduced.png" style="width:5%" alt="info ptc9 points: 3 'daZip'-type: [] reduced-2d: [[1.5974440894568689],[1.0]] length: 3 [[[8.16542948038176,1.9889502762430937,3.9548022598870056],[5.139664804469274,6.937033084311634,3.9548022598870056],[5.139664804469274,1.9889502762430937,1.5974440894568689]]]" onclick="myFunction(this);">
+</div>
+
+<div class="column side" style="height:300px; width:30%">
+<div class="container" style="height:300px; width:30%">
+<span onclick="this.parentElement.style.display='none'" class="closebtn">&times;</span>
+<img id="expandedImg">
+<p>which info</p>
+<div id="imgtext"></div>
+</div>
+</div>
+
+ <div class="column side" style="height:50px; width:100%">
+         
+        <div class="container" style="height:50px; width:100%">
+
+          <span onclick="this.parentElement.style.display='none'" class="closebtn">&times;</span>
+          <img id="expandedImg">
+	  <p> <textarea name="message" class="storyTeller" rows="20" cols="20">
+               set to ptc4 
+               a glimpse at one underlaying geometry to write this 2_3_5_Writer
+               observations during configuring: 
+</textarea>
+<br><br>
+</p>
+	           <div id="imgtext"></div>
+</div>        
+                   
+</div>
+
+<img src="source/introHeader.png"  style="width:5%" onclick="myFunction(this);">
+<div class="row">
+ <div class="column middle" style="background-color:none;">
+
+ <button class="buttonM button7" onclick="w4_open()">file system</button>
+<a onclick="w4_close()" class="buttonM button2;">&times;</a> 
+ 
+<a href="src/textS/indat23720/filesystem.html" style="border-radius: 12px; padding: 2px 5px;" target="iframe_c">1</a>
+<a href="src/textS/indat23720/filesystemDATA/filesystem2.html" style="border-radius: 12px; padding: 2px 5px;" target="iframe_c">2</a>
+<a href="src/textS/indat23720/filesystemDATA/filesystem3.html"style="border-radius: 12px; padding: 2px 5px;" target="iframe_c">3</a>
+<a href="src/textS/indat23720/filesystemDATA/filesystem4.html" style="border-radius: 12px; padding: 2px 5px;" target="iframe_c">4</a>
+<a href="src/textS/indat23720/filesystemDATA/filesystem5.html" style="border-radius: 12px; padding: 2px 5px;" target="iframe_c">5</a>
+<a href="src/textS/indat23720/filesystemDATA/filesystem6.html"style="border-radius: 12px; padding: 2px 5px;" target="iframe_c">6</a>
+<a href="src/textS/indat23720/filesystemDATA/filesystem7.html" style="border-radius: 12px; padding: 2px 5px;" target="iframe_c">7</a>
+<a href="src/textS/indat23720/filesystemDATA/filesystem8.html" style="border-radius: 12px; padding: 2px 5px;" target="iframe_c">8</a>
+<a href="src/textS/indat23720/filesystemDATA/filesystem9.html" style="border-radius: 12px; padding: 2px 5px;" target="iframe_c">9</a>
+
+ </div>
+
+ <div class="w3-sidebar w3-bar-block w3-border-right"  id="myfiles">
+
+ <iframe src="src/textS/indat23720/filesystem.html" name="iframe_c" style="border:none;background:#d1d00f6;" width="100%" height="550px"></iframe>
+ </div>
+ 
+</div>
+
+
+
+
+</body>
+</html>
+
