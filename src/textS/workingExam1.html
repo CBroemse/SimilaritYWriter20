@@ -343,7 +343,9 @@ experiment2 case0
 
 s0 : range = chr32 .. chr
 
-assume all functions chr<32  are not considered
+assume all functions chr<32 &&
+		     chr<129
+        are not considered
 
     p0 (set: chr 32..
     p0  ..
@@ -362,7 +364,7 @@ and Haskell functions WITHOUT
   with  
      exception I.
  
-     s1 : range = [chr1 .. chr 31 ; chr 91 .. chr 96 ; chr>128]
+     s1 : range = [chr1 .. chr 31 ; chr 91 .. chr 96 ; chr<129]
 
 assume all functions chr<129  are considered
 
@@ -372,13 +374,53 @@ assume all functions chr<129  are considered
     p1  ..   chr 128 )
   P(H)1
 
+ ==>P1
 -------------------------------
 
+experiment2 case2
+----------------
+
+vowels
+(A,a) (E,e) (I,i) (O,o) (U,u)
+  (with or without '( , )' ?
+   would be sub-set of case1)
+
+set that is a (?'sub-set'?)
+of case0  WITHOUT 
+  chr 32 .. chr 123 && 
+  with
+     exception II.
+      the vowels WITHOUT Y 
+ 
+ s2 : range 
+[(chr65,chr 97) ; (chr 69, chr 101) ..
+   .. (chr 79, chr 117) ; chr<129]
+ Haskell representation
+
+ ord 'A' AND ord 'a'
+  65         97
+ the other vowels
+  69        101
+  73        105
+  79        111
+  85        117
+
+							 
+assume all functions chr<129  are considered
+
+    p2 (set: (chr 65, ..) ..
+    p2  ..WITHOUT  chr 32 .. chr 123 && 
+    p2  ..     with       exception II..
+    p2  ..   chr 128 )
+  P(H)2
+
+ ==>P2
+-------------------------------
 
 ------------------------------
 pick two lines that define
 the limes of:
-1. when to messure ( the boundary of when 
+1. when to measure ( the boundary of when 
     we would like to start comparing things to each other
     in the given example e.g I would like to compare
     "Steven" to the group "person"
@@ -396,9 +438,19 @@ the limes of:
 
 ----------------------------
 
-----------------------------							
-Calculate a group of gaussian curves that orders
-the given curves due to 'Normal distribution'.
+----------------------------
+ for every
+case of the experiment2			
+Calculate a group of Gaussian curves
+
+							
+  I the given curves due to 'Normal distribution'.
+
+  II. select the first set to compare to
+
+
+case0  at  char lever; vowel level; word level 							
+
 
 </textarea>
 <br><br>
