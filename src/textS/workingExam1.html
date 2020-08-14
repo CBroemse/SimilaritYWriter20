@@ -344,7 +344,7 @@ experiment2 case0
 s0 : range = chr32 .. chr
 
 assume all functions chr<32 &&
-		     chr<129
+		     chr>129
         are not considered
 
     p0 (set: chr 32..
@@ -423,8 +423,9 @@ the limes of:
 1. when to measure ( the boundary of when 
     we would like to start comparing things to each other
     in the given example e.g I would like to compare
-    "Steven" to the group "person"
-    a far low level is compare 'S' of Steven to P0
+    "Steve" to the group "person"
+    a far lower level to compare is:
+    'S' of Steven to P0
 2. where does hex1 start
 
        x--x--x
