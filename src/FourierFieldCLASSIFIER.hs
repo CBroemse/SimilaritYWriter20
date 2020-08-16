@@ -97,11 +97,14 @@ fopanfourier3MQ5  = [7,10,18,21,4]
 fopanfourier4MQ5 =  [23,1,9,12,15] 
 fopanfourier5MQ5  = [14,17,20,3,6]
 
-fopanfourier1MQ4 =  [1,7,10,13]
-fopanfourier2MQ4  = [11,1,1,6]
-fopanfourier3MQ4  = [5,2,1,8]
-fopanfourier4MQ4 =  [14,9,4,1] 
+fopanfourier1MQ4 =  [0,7,10,13]
+fopanfourier2MQ4  = [11,12,1,6]
+fopanfourier3MQ4  = [5,2,15,8]
+fopanfourier4MQ4 =  [14,9,4,3] 
 
+fopanfourier1MQ3 =  [7,2,3]
+fopanfourier2MQ3  = [0,4,8]
+fopanfourier3MQ3  = [5,6,1]
 
 chooseMQ n m = (drop (n-1)) (take n m)
 
