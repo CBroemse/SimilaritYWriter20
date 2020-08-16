@@ -410,7 +410,101 @@ assume all functions chr<129  are considered
   P(H)2
 
  ==>P2
+
+experiment2 case3
+-----------------
+ simple set
+ all small letters as a square matrix
+
+M1:
+ a b c d e 0
+ f g h i j 0
+ k l m n o 0
+ p q r s t 0
+ u v w x y 0
+ z 0 0 0 0 0
+
+M2:
+ a b c d e f
+ g h i j k l
+ m n o p q r
+ s t u v w x
+ y z 0 0 0 0 
+
+experiment2 case4
+-----------------
+ MQ3
+ magic quadrat
+
 -------------------------------
+*> let li3 = [[li,li2]]
+*> let myTest at = runKBASE 2 ["1","2"] 1 2 at 2 (li3) 1 2 3 4
+*> let li3 = [[li,li2]]
+*> let myTest at = runKBASE 2 ["1","2"] 1 2 at 2 (li3) 1 2 3 4
+*> let myTest at = runKBASE 2 ["1","2"] 1 2 at 2 (li3) 1 2 3 5
+*> let range201  c = chr c
+
+-- case0
+*> let foRange = [1..128]
+*> let rangeRAW  c = chr c
+*> let range   = map rangeRAW foRange
+*> range201
+" !\"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~\DEL\128"
+*> let case0 = range201
+
+
+
+
+
+--case1
+*> let foRang2a = [1..128] \\ [32..123]
+*> let foRange2 = sort (96 : ( 95 : ( 94 : ( 93 : ( 92 : ( 91 : foRang2a))))))
+*> foRange2
+[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,91,92,93,94,95,96,124,125,126,127,128]
+
+
+*> let range211   = map rangeRAW foRange2
+*> range211
+"\SOH\STX\ETX\EOT\ENQ\ACK\a\b\t\n\v\f\r\SO\SI\DLE\DC1\DC2\DC3\DC4\NAK\SYN\ETB\CAN\EM\SUB\ESC\FS\GS\RS\US[\\]^_`|}~\DEL\128"
+
+
+
+case2
+*> let forange221   = [[65,97],[69,101],[73,105],[79,111]]
+*> let range221   = map rangeRAW (concat forange221)
+
+*> let case2 = range221
+ -- a sqaure matrix
+ -- M1: (line1..line4)
+*> HT.avanti (lines "AaE0\neIi0\nOou0\nU000  ")
+AaE0
+eIi0
+OoU0
+u000
+ -- M2:(line1 ..line4)
+*> HT.avanti (lines "AaEe\nIiOo\nUu00\n0000  ")
+AaEe
+IiOo
+Uu00
+0000
+
+*1)   U: (M2: (line3)) - (M1 (line3)) = "U"
+*2)   I: M(U)+u+0 = "I"
+*3)   i: I+U+u= "i"
+*4)   e: U+I+1="e"  OR ((M1: line1) - (M2: line2))
+.
+.
+.
+------------------------------
+case3
+
+*> let foRange3 = ([1..128] \\ [1..96]) \\ [123..128]
+*> let range3   = map rangeRAW foRange
+*> range3
+"abcdefghijklmnopqrstuvwxyz"
+*> let case03 = range3
+
+
 
 ------------------------------
 pick two lines that define
@@ -449,6 +543,7 @@ case0  at  char lever; vowel level; word level
 sources:
 link:
 https://www.youtube.com/watch?v=HZGCoVF3YvM&t=129s
+ https://en.wikipedia.org/wiki/International_Phonetic_Alphabet
 							
 'Koller and Friedman'
 							
