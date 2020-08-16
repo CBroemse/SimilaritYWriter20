@@ -271,7 +271,7 @@ to be continued
 <br><br>
 <a href= "" style="border-radius: 12px; padding: 2px 5px;" target="_parent">ptc3 with cos</a>
 
-<a href= "https://en.wikipedia.org/wiki/Bayes%27_theorem#/media/File:Bayes_theorem_visualisation.svg" style="border-radius: 12px; padding: 2px 5px;" target="_self">stanford?</a>
+<a href= "https://en.wikipedia.org/wiki/Bayes%27_theorem#/media/File:Bayes_theorem_visualisation.svg" style="border-radius: 12px; padding: 2px 5px;" target="_self">CMG Lee</a>
 <br>
 
 <textarea name="message2" class="storyTeller" rows="43" cols="50">>
@@ -292,6 +292,8 @@ with Pascals_triangle
 
 
 = ....
+
+P()
        
 fst order
 ---------
@@ -504,9 +506,61 @@ case3
 "abcdefghijklmnopqrstuvwxyz"
 *> let case03 = range3
 
+ = P(B|A)*P(A)  = 26
+ 
+ "person" of range3 = 6/26
 
+ usedVowel -> P(B, given A) = "eo" = 2/2+3 = 2/5= 0.4
+
+ usedNOTVowel -> (PA, given B) = "prsn" = 4/6
+
+ NotusedVowel -> case3 \\ "person" 
+"abcdfghijklmqtuvwxyz"  = 20/26
+
+ NotusedNOTVowel = "aiu" = 3/26
+
+=>  B, given A :
+
+(usedVowel / (usedVowel+ usedNOTVowel))
+*
+(usedVowel+notusedVowel)/(usedVowel+notusedVowel+usedNotVowel+notusedNotVowel)
+
+ .
+ .
+ .
+    
 
 ------------------------------
+case4
+*> F.fopanfourier1MQ3
+*> F.fopanfourier2MQ3
+*> F.fopanfourier3MQ3
+
+*>let simValCase4 gb1 fgb2 = similaritYvalue (map realToFrac gb1) (foGb2 fgb2)
+*> simValCase4 F.fopanfourier1MQ3 "person"
+98.19004524886878
+*> simValCase4 F.fopanfourier2MQ3 "person"
+98.19004524886878
+*> simValCase4 F.fopanfourier3MQ3 "person"
+98.19004524886878
+*> simValCase4 F.fopanfourier3MQ3 "e"
+88.11881188118812
+*> simValCase4 F.fopanfourier3MQ3 "f"
+88.23529411764706
+
+=> MQ3 lines and collums have always the same reation to "person"
+*> simValCase4 (concat$[F.fopanfourier3MQ3,F.fopanfourier2MQ3,F.fopanfourier3MQ3]) "Steven"
+94.27662957074722
+*> simValCase4 (concat$[F.fopanfourier3MQ3,F.fopanfourier2MQ3]) "Steven"
+96.18441971383147
+*> simVal
+
+ => adding  more lines increases similarity
+ ---------------------------
+
+person: 
+
+
 pick two lines that define
 the limes of:
 1. when to measure ( the boundary of when 
@@ -515,6 +569,8 @@ the limes of:
     "Steve" to the group "person"
     a far lower level to compare is:
     'S' of Steven to P0
+    *>
+
 2. where does hex1 start
 
        x--x--x
