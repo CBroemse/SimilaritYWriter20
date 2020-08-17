@@ -274,6 +274,10 @@ to be continued
 <a href= "https://en.wikipedia.org/wiki/Bayes%27_theorem#/media/File:Bayes_theorem_visualisation.svg" style="border-radius: 12px; padding: 2px 5px;" target="_self">CMG Lee</a>
 <br>
 
+<a href= "https://www.grogono.com/magic/5x5.php" style="border-radius: 12px; padding: 2px 5px;" target="_parent">grogono</a>
+
+<br>
+
 <textarea name="message2" class="storyTeller" rows="43" cols="50">>
 
 given :  
@@ -418,7 +422,7 @@ experiment2 case3
  simple set
  all small letters as a square matrix
 
-M1:           order 5
+M1:           order 5/6
  a b c d e 0
  f g h i j 0
  k l m n o 0
@@ -437,7 +441,7 @@ M2:           order 6
 experiment2 case4
 -----------------
  MQ3
- magic quadrat
+ magic quadrant
 
 -------------------------------
 *> let li3 = [[li,li2]]
@@ -477,7 +481,7 @@ case2
 *> let range221   = map rangeRAW (concat forange221)
 
 *> let case2 = range221
- -- a sqaure matrix
+ -- a square matrix
  -- M1: (line1..line4)
 *> HT.avanti (lines "AaE0\neIi0\nOou0\nU000  ")
 AaE0
@@ -515,10 +519,10 @@ case3
 
  usedNOTVowel -> (PA, given B) = "prsn" = 4/6
 
- NotusedVowel -> case3 \\ "person" 
+ NotusedVowel&NotusednotVowel -> case3 \\ "person" 
 "abcdfghijklmqtuvwxyz"  = 20/26
 
- NotusedNOTVowel = "aiu" = 3/26
+ NotusedVowel = "aiu" = 3/26
 
 =>  B, given A :
 
@@ -549,19 +553,33 @@ case4
 *> simValCase4 F.fopanfourier3MQ3 "f"
 88.23529411764706
 
-=> MQ3 lines and collums have always the same reation to "person"
+=> MQ3 lines and collums have always the same relation to "person"
 *> simValCase4 (concat$[F.fopanfourier3MQ3,F.fopanfourier2MQ3,F.fopanfourier3MQ3]) "Steven"
 94.27662957074722
 *> simValCase4 (concat$[F.fopanfourier3MQ3,F.fopanfourier2MQ3]) "Steven"
 96.18441971383147
-*> simVal
+=> WITHOUT 'show' adding  more lines increases similarity
 
- => adding  more lines increases similarity
+*> simiVal (show$concat$[F.fopanfourier3MQ3]) "3x=-2"
+23.598130841121495
+
+=> otherwise not
  ---------------------------
 
-simiVal person MQ  : valid cathegory?
+ ways to increase similarity
+------------------------------
+simiVal "3x=-2"  MQ3
 
- a maqic quadrant's lines or collums
+role model
+*> simiVal (show$concat$[F.fopanfourier1MQ3]) "3x=-2"
+23.598130841121495
+example
+--------
+
+
+simiVal person MQ  : valid category?
+
+ a maqic quadrant's lines or columns
  always have the same relation to a 
  certain string
 
@@ -570,12 +588,12 @@ quadrant => Punkt "m" (five Maybe Punkt)
 mq functions count (most ordered)
 mq3
 ---
-existing 1 'merley reflections'
+existing 1 'mereley reflections'
 
 mq4
 ----
 Names for the Carpets.
-Their names correspond to the red squares - the "1"s. 
+Their names correspond to the the "1"s. 
 
 0011 0110 0101 0101 
 1100 1001 0101 1010 
@@ -621,7 +639,7 @@ mq3  mq4     mq5    mq6
            1    1
       1    .    :   1
  1    2    :    :   :
-      3    : or :   24
+           : or :   24
       3    :    :
         144  28800
 
@@ -635,13 +653,7 @@ mq3  mq4  mq5  mq6
            :  
            5 
 
-</textarea>
-<br><br>
-<a href= "https://www.grogono.com/magic/5x5.php" style="border-radius: 12px; padding: 2px 5px;" target="_parent">grogono</a>
 
-<br>
-
-<textarea name="message3" class="storyTeller" rows="43" cols="50">>
 
 pick two lines that define
 the limes of:
@@ -667,7 +679,7 @@ the limes of:
 ----------------------------
 
 ----------------------------
- for every
+for every
 case of the experiment2			
 Calculate a group of Gaussian curves
 
