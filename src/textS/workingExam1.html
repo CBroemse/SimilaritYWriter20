@@ -541,7 +541,7 @@ case4
 *> F.fopanfourier2MQ3
 *> F.fopanfourier3MQ3
 
-*>let simValCase4 gb1 fgb2 = similaritYvalue (map realToFrac gb1) (foGb2 fgb2)
+*>nlet simValCase4 gb1 fgb2 = similaritYvalue (map realToFrac gb1) (foGb2 fgb2)
 *> simValCase4 F.fopanfourier1MQ3 "person"
 98.19004524886878
 *> simValCase4 F.fopanfourier2MQ3 "person"
@@ -653,6 +653,36 @@ mq3  mq4  mq5  mq6
            :  
            5 
 
+destinction 
+------------
+*see Haskell lines
+ -- compare [Double] with each other
+let simValCase4 gb1 fgb2 = similaritYvalue (map realToFrac gb1) (foGb2 fgb2)
+
+*TheAtoBplotter> let functionalizeMQ3 n fstOsnd = F.fofourierRAW n fstOsnd [F.fopanfourier1MQ3,F.fopanfourier2MQ3,F.fopanfourier3MQ3]
+
+ -- still not good to destinct
+*> let fun3 n fstOSnd = functionalizeMQ3 n fstOsnd 
+*>functionalizeMQ3 1 1
+[7]
+*> functionalizeMQ3 1 2
+[2]
+*> functionalizeMQ3 1 3
+[3]
+
+function:
+
+*>let ffourierMQ3 x n fstOSnd = (sin (head (map realToFrac (fun3  n fstOSnd)))*x)
+
+-------------------------------------------
+transform MQ a transformation?
+*>let fourierMQ3 n fstOsnd =  (ffourierMQ3x n 1) + (ffourierMQ3 x n 2) + (ffourierMQ3 x n 3) 
+-------------------------------------------
+
+
+
+
+
 
 
 pick two lines that define
@@ -690,6 +720,23 @@ Calculate a group of Gaussian curves
 
 
 case0  at  char lever; vowel level; word level 							
+
+Haskell lines
+-------------
+about MQ's
+  the mq in pure format are always
+  in-distinctable if we compare single lines
+  of the same mq with each other						*> simValCase4 (F.fopanfourier3MQ3) F.fopanfourier2MQ3
+0.0
+*> simValCase4 (F.fopanfourier3MQ3) F.fopanfourier1MQ3
+0.0
+*> F.fopanfourier1MQ3
+[7,2,3]
+*> F.fopanfourier2MQ3
+[0,4,8]	
+*TheAtoBplotter> simValCase4 [7,2,3] [0,4,8]
+0.0
+
 sources:
 link:
 https://www.youtube.com/watch?v=HZGCoVF3YvM&t=129s
