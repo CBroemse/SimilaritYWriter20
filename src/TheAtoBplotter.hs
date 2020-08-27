@@ -32,19 +32,32 @@ import qualified WriteWXmaximaJuicy as M
 import qualified GHCguiNfunctions as G
 import qualified Colored_2_3_5_Counter20 as C
  
---"primam sediem a niguem sidicari "
- --e.g *> runKRAW 1 1 [["AAA","BBB","CCC"],["DDD","FFF","HHH"]]
+----------------------------------------------------------------------------
  ----- #####################################################################
+-- write your subroutine
+--  wxmWritetoken :: Int pass token to write various wxms in runKBASE
+--                       without being stuck at the same file
+--                       overwriting what was gain in the iteration
+--  lalas = wxmWritetoken 
+--  subroutine :: ptc ptc ptc ptc ptc ptc lalas ptc -> list -> [Double] 
+subroutinE = [[(C.ptc5 5),(C.ptc5 25),(C.ptc5 50),(C.ptc5 100),(C.ptc5 125),(C.ptc5 150),[[1]]],{-  a plaine 
+                -}[(C.ptc6 5),(C.ptc6 25),(C.ptc6 50),(C.ptc6 100),(C.ptc6 125),(C.ptc6 150),[[2]]],{- interesting
+                -}[(C.ptc7 5),(C.ptc7 25),(C.ptc7 50),(C.ptc7 100),(C.ptc7 125),(C.ptc7 150),[[3]]],{- half 'crown'
+                -}[(C.ptc8 5),(C.ptc8 25),(C.ptc8 50),(C.ptc8 100),(C.ptc8 125),(C.ptc8 150),[[4]]],{- similar to above
+                -}[(C.ptc9 5),(C.ptc9 25),(C.ptc9 50),(C.ptc9 100),(C.ptc9 125),(C.ptc9 150),[[5]]]]
+----------------------------------------------------------------------------
 
+
+-------------------------------------------------------------------------
 theDs f g = concat$ausw f ((concat g))
 -- df2 ttt offOn target plot addGh ghAdd n (theDs ttt d) (get1) (get2) (get3)  (get4) 1 (theDs ttt d)
 -- =  runKAXIOM offOn target plot addGh ghAdd n (theDs ttt d) (get1) (get2) (get3)  (get4) 1 (theDs ttt d)
 
 
 
-runKBASE offOn target plot addGh ghAdd n d get1 get2 get3 get4 = do
+runKBASE offOn target plot addGh ghAdd n d get1 get2 get3 get4 subroutineList= do
        allforIV <- forM [1..(length target)] (\four4 -> do
-            let fg = runKAXIOM offOn target plot addGh ghAdd n (theDs four4 d) (get1) (get2) (get3) (get4) 1 (theDs four4 d) (four4) [(read(show four4))]
+            let fg = runKAXIOM offOn target plot addGh ghAdd n (theDs four4 d) (get1) (get2) (get3) (get4) 1 (theDs four4 d) (four4) [(read(show four4))] (concat(tk four4 subroutineList))
             fg
             return (fg))
 
@@ -71,7 +84,7 @@ runKBASE offOn target plot addGh ghAdd n d get1 get2 get3 get4 = do
 -- e.g let myTest at = runKAXIOM 1 [1,2] 2 2 at 2 (li3) 1 2 3 4 3 (head(ausw 1 li3))
 -- toca : Int ; give token to change length of pg  functions points n 
 --               write toHtml set to write index2.html via 'defSearch', under development
-runKAXIOM offOn target plot addGh ghAdd n d get1 get2 get3 get4 ht ulu bog toca=  do
+runKAXIOM offOn target plot addGh ghAdd n d get1 get2 get3 get4 ht ulu bog toca subroutine=  do
    let ghd t de = ( (ausw t de))
    let leng= if length d >1 then ((length d) - 1)
              else 1
@@ -90,7 +103,7 @@ runKAXIOM offOn target plot addGh ghAdd n d get1 get2 get3 get4 ht ulu bog toca=
               let wL3 = (ausw get3 topass)
               let wL4 = (ausw get4 topass)
               let wL3n4 = (wL3++wL4)
-              let vanAllen = defSearch offOn d plot addGh ghAdd whichLine1 wL1n2 wL2 wL3 wL3n4 wL4 n ulu (ulu) ht (evalToWrite("foyourRun"++show bog++".txt")) ht toca
+              let vanAllen = defSearch offOn d plot addGh ghAdd whichLine1 wL1n2 wL2 wL3 wL3n4 wL4 n ulu (ulu) ht (evalToWrite("foyourRun"++show bog++".txt")) ht toca subroutine
               vanAllen
               return([vanAllen]))
           return(dooer)
@@ -99,11 +112,11 @@ runKAXIOM offOn target plot addGh ghAdd n d get1 get2 get3 get4 ht ulu bog toca=
 
         
 -- program variables:
-defSearch offOn target plot addGh ghAdd pV1 pV2 pV3 pV4 pV5 pV6 n bonelist pipebone ht forRunHtml htm toca = (defSearchRAW offOn target plot addGh ghAdd pV1 pV2 pV3 pV4 pV5 pV6 50 50 50 50 n bonelist pipebone ht forRunHtml htm) toca  
+defSearch offOn target plot addGh ghAdd pV1 pV2 pV3 pV4 pV5 pV6 n bonelist pipebone ht forRunHtml htm toca subroutine = (defSearchRAW offOn target plot addGh ghAdd pV1 pV2 pV3 pV4 pV5 pV6 50 50 50 50 n bonelist pipebone ht forRunHtml htm) toca subroutine 
 --e.g> defSearchRAW "AAABB" "AAABBAAABAB" "AAABAB" "AAA" "AAABBBAA" "BBBAA" 1 1 1 1 1 li
 --
 --pipebone: variable for runKBASE, n-(length target)-many, of a [bonelist]
-defSearchRAW offOn target plot addGh ghAdd pV1 pV2 pV3 pV4 pV5 pV6 ptc0Len ptc3Len ptc3aLen ptc3bLen n bonelist pipebone ht forRunHtml htm toca= do
+defSearchRAW offOn target plot addGh ghAdd pV1 pV2 pV3 pV4 pV5 pV6 ptc0Len ptc3Len ptc3aLen ptc3bLen n bonelist pipebone ht forRunHtml htm toca subroutine= do
 
      --  let pi = fopi --Punkt "M" Nothing Nothing Nothing Nothing Nothing -- switch for io at bottom
      --  ausw :: Int -> [a] -> [a]
@@ -501,12 +514,12 @@ defSearchRAW offOn target plot addGh ghAdd pV1 pV2 pV3 pV4 pV5 pV6 ptc0Len ptc3L
        let plotOn = if plot == 1 then do
                    putStrLn "readY to plot"
 
-      -- plot only one function to follow its course and change how many points to plot (track path !!!)***********************************
+      -- plot only one function to follow its course and change how many points to plot (track path !!!)***********************************WRITE WXMS
       --    *> let theOlmegs = ptcs = liT
       --  e.g> olmeg m = (head(ausw m liT))  
                    --M.writeWXCloudNODE (nub(ptc3 2)) (nub(ptc3 3)) (nub(ptc3 5)) (nub(ptc3 19)) (nub(ptc3 25)) (nub(ptc3 50)) -- similar to above      
                    --an idea space ptc5 ..ptc9 depend in bonlist 
-                   M.writeWXCloudNODE (nub(ptc9 5)) (nub(ptc9 25)) (nub(ptc9 50)) (nub(ptc9 100)) (nub(ptc9 125)) (nub(ptc0 5))  
+                   M.writeWXCloudNODEVer (head(tk 1 subroutine)) (head(tk 2 subroutine)) (head(tk 3 subroutine)) (head(tk 4 subroutine)) (head(tk 5 subroutine)) (head(tk 6 subroutine)) ([(tk 1 subroutine)])  -- (nub(ptc9 5)) (nub(ptc9 25)) (nub(ptc9 50)) (nub(ptc9 100)) (nub(ptc9 125)) (nub(ptc0 5))  
                    M.writeWXCloud4 (ptc2 5) (ptc2 25) (ptc2 50) (ptc4 5) (ptc4 25) (ptc4 50)
                    putStrLn "END plotter";
 

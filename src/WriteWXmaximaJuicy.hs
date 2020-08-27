@@ -2,6 +2,7 @@ module WriteWXmaximaJuicy (
      writeWXCloud4
    , aCloudPointNODE -- in use: write ullu.wxms writes seven files than start at fist again
    , writeWXCloudNODE  -- write lala.wxms to wxms folder being used
+   , writeWXCloudNODEVer -- version used in TheAtoBpotter mapped 
    , aCompleteWX
    , aCompleteWX3
    , aCompleteWX2 -- plot 2d 25_8_2020
@@ -237,6 +238,11 @@ aCloudPoint4 functionList ste3 ste4 ste5 ste6 ste7 =
 
 writeWXCloudNODE functionList ste3 ste4 ste5 ste6 ste7 = do
      writeFile (Ev.evalToWrite "wxms\\lala.wxm") (aCloudPointNODE functionList ste3 ste4 ste5 ste6 ste7)
+-- TheAtoBplotter version to write various wxms in on run 
+-- variable: lalas:: Int 
+--
+writeWXCloudNODEVer functionList ste3 ste4 ste5 ste6 ste7 lalas  = do
+     writeFile (Ev.evalToWrite "wxms\\"++ (show$concat$concat$lalas )) (aCloudPointNODE functionList ste3 ste4 ste5 ste6 ste7)
 
 aCloudPointNODE functionList ste3 ste4 ste5 ste6 ste7 = 
                      let ausw = length functionList

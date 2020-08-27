@@ -81,7 +81,10 @@ module Colored_2_3_5_Counter20 (
     , vb -- exampe 2d
     , vb2 -- working example
     , runK -- plot one li list with kArmTest5
-    ,range211 -- case1 all smal letters set 
+    , range211 -- experiment2 case1 all smal letters set 
+    , range -- experiment2 case 0
+    , vow0 -- a version of vowel function as square matrix M1 
+    , ptc0,ptc2,ptc3,ptc4,ptc5,ptc6,ptc7,ptc8,ptc9
       ) where
 
 import Data.List
@@ -187,9 +190,16 @@ foRange = [1..128]
 rangeRAW  c = chr c
 range   = map rangeRAW foRange
 -- case1
-foRang2a = [1..128] \\ [32..123]
+foRang2a = [1..128] \\ [32..123]  -- problmes with control set in computation
 foRange2 = sort (96 : ( 95 : ( 94 : ( 93 : ( 92 : ( 91 : foRang2a))))))
 range211   = map rangeRAW foRange2
+
+-- case2
+forange221   = [[65,97],[69,101],[73,105],[79,111]]
+range221   = map rangeRAW (concat forange221)
+
+-- test1 vowels
+vow0 =  (lines "AaE0\neIi0\nOou0\nU000")
 ------------------------------------------
 
 
