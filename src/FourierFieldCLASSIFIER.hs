@@ -113,6 +113,13 @@ fofourier6 n fstOsnd = fofourierRAW n fstOsnd [fofourier1MQ6 ,fofourier2MQ6 ,fof
 fofourier5 n fstOsnd = fofourierRAW n fstOsnd [fopanfourier1MQ5 ,fopanfourier2MQ5 ,fopanfourier3MQ5 ,fopanfourier4MQ5 ,fopanfourier5MQ5]
 fofourier4 n fstOsnd = fofourierRAW n fstOsnd [fopanfourier1MQ4 ,fopanfourier2MQ4 ,fopanfourier3MQ4 ,fopanfourier4MQ4 ]
 
+------------------------------------------
+-- active 28-8-2020 write WXmaxima 2d
+functionalizeMQ3 n fstOsnd = fofourierRAW n fstOsnd [fopanfourier1MQ3,fopanfourier2MQ3,fopanfourier3MQ3]
+fun3 n fstOSnd = functionalizeMQ3 n fstOSnd
+ffourierMQ3 x n fstOSnd = ((head (map realToFrac (fun3  n fstOSnd)))*x)
+fourierMQ3 n x =  show((sin(ffourierMQ3 x n 1) + (sin(ffourierMQ3 x n 2)) + (sin(ffourierMQ3 x n 3) )))
+------------------------------------------
 
 fourierRAW v = take v [1,2..]
 ffRAW5 n m fstOsnd = (chooseMQ m (concat( map (fofourier5 n) (fstOsnd))))

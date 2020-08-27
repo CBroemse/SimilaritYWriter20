@@ -3,7 +3,11 @@ module WriteWXmaximaJuicy (
    , aCloudPointNODE -- in use: write ullu.wxms writes seven files than start at fist again
    , writeWXCloudNODE  -- write lala.wxms to wxms folder being used
    , aCompleteWX
-   , aCompleteWX3) where
+   , aCompleteWX3
+   , aCompleteWX2 -- plot 2d 25_8_2020
+   , writeWXCloud2 -- plot 2d  " 
+
+  ) where
 
 import Data.Char
 import Data.List
@@ -90,8 +94,8 @@ aCompleteWX inputlist anfile y minx maxX =
 
 ---------------------------------------------------------------------------------------------------------------------------
 --
--- fuer dieDartelleung in WX werden weiter parameter benoetigt
--- Format Wievieldaten y -> String;
+-- to turn into WX severla more parameters are needed:
+-- format how much data y -> String;
 -- minx -> String;
 -- maxX; -> String
 -- inhouse 
@@ -267,7 +271,47 @@ aCloudPointNODE functionList ste3 ste4 ste5 ste6 ste7 =
     fodraw u = head(nnm u ["mycloud","mycloud2","mycloud3","mycloud4","mycloud5","mycloud6"]);
     drawList u = "m"++show u++":makelist(points ("++ (fodraw u) ++"));";
     aCons above = (lineStart ++ above ++"\n"++ lineEnd)
-
+							
+writeWXCloudNODE2 functionList valList n = do
+     writeFile (Ev.evalToWrite "wxms\\witty.wxm") (aCloudPointNODE2 functionList valList n)
+ 
+aCloudPointNODE2 functionList valList n = 
+                     let asw n = length (functionList n)
+                     in let vL = length valList    
+            --         short <- forM [1..ausw](\gh -> do
+              --              let sd = head(nnm gh (functionList))
+                --            let theCloud fg rt = "mycloud:points("++(show (fg rt))++")"
+                  --          let cons0 rt = (aCons (theCloud sd rt))
+                    --        return(cons0 gh ));
+                    -- in let source = concat (val functionList val)
+                    -- in let stash = do
+                     --in do
+                     in let geet f aval fs = (head(Ev.tk fs (f aval)))  
+                     in let mops f aval = map (geet f aval) [1..vL]
+                     in let theCloud f aval s = (aCons("mycloud"++show s++":("++(show (geet f functionList aval))++")"))
+                     in let vuz f aval = map (theCloud f aval) [1..vL]
+                     in let sd = vuz (return (functionList n)) n
+       --              let gett = geet ly valList
+         --            let aGons = theCloud gett
+                     in (beginN  ++ (concat sd) ++ (aCons drawAll) ++ (aCons ";")++ lineEnd)  
+               --                return (sd))                               
+             --        let cv = stevia 
+               --      in let rndCloud = "rndcloud:points(makelist([sin(t*%pi/10),cos(t*%pi/10),(t*%pi/(random(10)))],t,1,20))$" 
+                    -- let bh = (beginN  ++ (unlines (cv)) ++ (aCons drawAll) ++ (aCons ";")++ lineEnd)  
+                 --    cv
+                   --  return cv 
+       where 
+    aCloudVec = "[v1,v2,v3,v4]:[vector([0,0,1],[0.7,0,0]),vector([0,0,1],[0,0.7,0]),vector([0,0,1],[-0.7,0,0]),vector([0,0,1],[0,-0.7,0])];";
+    vecLabelTxt = "text:label([\"North\",0,1,1],[\"East\",1,0,1],[\"South\",0,-1,1],[\"West\",-1,0,1]);";
+    drawAll = "draw3d(\n"++
+              "      enhanced3d = [sin(j), j],\n"++
+              "      point_size = 0.2,\n"++
+              "      point_type = filled_circle,\n"++
+              "      points_joined = true,\n"++
+              "      (m1),m2,m3,m4,m5,m6) $;\n";
+    fodraw u = head(nnm u ["mycloud","mycloud2","mycloud3","mycloud4","mycloud5","mycloud6"]);
+    drawList u = "m"++show u++":makelist(points ("++ (fodraw u) ++"));";
+    aCons above = (lineStart ++ above ++"\n"++ lineEnd)
 
 
 

@@ -63,7 +63,7 @@ runKBASE offOn target plot addGh ghAdd n d get1 get2 get3 get4 = do
      --  let gbb = map chr [nugget]  tsRAW
        let theListIV = (header++unwords writeAll++(G.screenInfo (map lines["which info"]) 1) ++taiL)
        writeFile "HtmlS/yourRun.html" (theListIV) 
-       writeFile (root++"/index2.html") (theListIV)
+       writeFile (root++"/src/index2.html") (theListIV)
 
 
 
@@ -120,7 +120,7 @@ defSearchRAW offOn target plot addGh ghAdd pV1 pV2 pV3 pV4 pV5 pV6 ptc0Len ptc3L
        let pg1 x = F.fourierMQ6NOPAN123 x--(sin (read((head((formTest [father] (preX x) [show(sin (x))] (words(show(sin 2))))  ))))) -- (((([(formTest [mother] 1 [show(F.fourierMQ6NOPAN123 (realToFrac (show x)))] (words(show(sin (x)))))]  )))) -- head(ausw 1 [(F.fourierMQ6NOPAN123 x)]) 
        let pg2 x = (F.fourierMQ5NOPAN123 x)
        let pg3 x = (F.fourierMQ4NOPAN123 x)
-       let pg4 x = cos x --(F.fourierMQ4TRACE (x))
+       let pg4 x = (F.fourierMQ4TRACE (x)) -- cos x -- 14-8-2020
        let pg11 x = show x --show(F.fourierMQ6NOPAN123 x)
        let pg22 x = show x --show(F.fourierMQ5NOPAN123 x)
        let pg33 x = show x --show(F.fourierMQ4NOPAN123 x)
@@ -504,7 +504,9 @@ defSearchRAW offOn target plot addGh ghAdd pV1 pV2 pV3 pV4 pV5 pV6 ptc0Len ptc3L
       -- plot only one function to follow its course and change how many points to plot (track path !!!)***********************************
       --    *> let theOlmegs = ptcs = liT
       --  e.g> olmeg m = (head(ausw m liT))  
-                   M.writeWXCloudNODE (nub(ptc4 5)) (nub(ptc4 25)) (nub(ptc4 50)) (nub(ptc4 75)) (nub(ptc4 84)) (nub(ptc4 100)) -- similar to above 
+                   --M.writeWXCloudNODE (nub(ptc3 2)) (nub(ptc3 3)) (nub(ptc3 5)) (nub(ptc3 19)) (nub(ptc3 25)) (nub(ptc3 50)) -- similar to above      
+                   --an idea space ptc5 ..ptc9 depend in bonlist 
+                   M.writeWXCloudNODE (nub(ptc9 5)) (nub(ptc9 25)) (nub(ptc9 50)) (nub(ptc9 100)) (nub(ptc9 125)) (nub(ptc0 5))  
                    M.writeWXCloud4 (ptc2 5) (ptc2 25) (ptc2 50) (ptc4 5) (ptc4 25) (ptc4 50)
                    putStrLn "END plotter";
 
@@ -644,7 +646,7 @@ defSearchRAW offOn target plot addGh ghAdd pV1 pV2 pV3 pV4 pV5 pV6 ptc0Len ptc3L
                                       putStrLn "wrote p5SimYs/seenJs/simiYVals.html"
                                       --return(makRaport)
                                 where
-                                    substituteAlt = [(nub(ptc4 10)),(nub(ptc4 25)),(nub(ptc4 50)),(nub(ptc4 75)),(nub(ptc4 84)),(nub(ptc4 100))]; -- similar to above
+                                    substituteAlt = [(nub(ptc0 10)),(nub(ptc2 25)),(nub(ptc3 50)),(nub(ptc5 75)),(nub(ptc6 84)),(nub(ptc8 100))]; -- similar to above
                                     subA = head (ausw 1 substituteAlt);
                                     thebase beat = G.foraPlot beat;
                           sEEnplot         
@@ -1114,7 +1116,7 @@ kArmTest5 addGh liT bonelist mofaList connectWrist dit dit2 mCommand crit= do
 --
     -- a writer cant solve a problem "just list what is this writer program"
     -- from here we work our way back which functions are needed
-    -- even code that is a comment can sti have a function in syntax and concept 
+    -- even code that is a comment can still have a function in syntax and concept 
               let allFunctions selectFunc iO iO2 iO3 adds selectLine= do  putStrLn$unlines$head$ (return(allFUNC2 iO iO2 selectLine)) -- putStrLn "1" --GHC.selecTOR1 [(putStrLn (show((allFUNC iO iO2 iO3 adds selectLine)) ) )] --putStrLn "1"
                                                                        --   putStrLn$unlines$head$ (return(allFUNC2 iO iO2 selectLine))   
                     where
@@ -1502,6 +1504,7 @@ getRid x = let a = (map ord x)
            in c
 
 --------------------------------------------------------------------------
+
 
 
 

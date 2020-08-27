@@ -15,6 +15,8 @@ import System.Random
 --import qualified Data.Time as T
 import qualified UsefulFunctions19 as U
 import TheAtoBplotter
+--import GHCguiNfunctions as H
+--import Text.IPA
 ---------------------------------------------------------------
 -- GLOBAL VARIABLES
 overWrite = "1" --arun
@@ -70,7 +72,9 @@ fomain = do
   putStrLn ("the Rnd" ++ rnd) 
   stelsel <- getLine
   putStrLn "show output? 1==show it"
-  hideOu <- getLine  
+  hideOu <- getLine 
+
+    -- TheATOBplotter>  runKBASE 1 [1,1] 1 1 li2 1 2 3 4 
   let selectOR = do 
          let contrl = "1" -- set 
          if stelsel=="1" then do

@@ -76,7 +76,12 @@ module Colored_2_3_5_Counter20 (
     , kArmTest5 -- new Main
     , tsRAW 
     , iframe_c -- write into storyTeller to html 
-    , iframe_cRAW -- 
+    , iframe_cRAW --
+    , accesFuncWX33 -- active 28-8-2020 plot 2d
+    , vb -- exampe 2d
+    , vb2 -- working example
+    , runK -- plot one li list with kArmTest5
+    ,range211 -- case1 all smal letters set 
       ) where
 
 import Data.List
@@ -94,6 +99,8 @@ import qualified Path2Val2 as HT
 import qualified FourierFieldCLASSIFIER as F
 import qualified WriteWXmaximaJuicy as M
 import qualified GHCguiNfunctions as G
+
+--import "ipa.Text.IPA" as I
 
 --
 --     1. layer of concept: 
@@ -164,12 +171,26 @@ runK d = do
 progVarRAW t r = do 
     let df = head (ausw t r)
     df
-progVar1 = "A" --"AAABB" 
-progVar2 = "A" --"AAABBAABAB"
-progVar3 = "A" --"AABAB"
-progVar4 = "A" --"AAA"
-progVar5 = "A" -- "AAABBBAA"
-progVar6 = "A" -- "BBBAA"
+progVar1 = "AAABB" --range --"1" --range211 --"a" --"The world" --"AAABB" 
+progVar2 = "AAABB"++range --"AB" --range --"ab" --range --"ab" --"The world is everything" --"AAABBAABAB"
+progVar3 = range --"b" --range --"b" --"is everything" --"AABAB"
+progVar4 = "AAA" --"c" --range --"b" --tht is" -- find the "a" in wxms "that is" --"AAA"
+progVar5 = "AAABBBAA" --"cd" --range --"bc" --"tht is the cse" --"that is the case" --"AAABBBAA"
+progVar6 = "BBBAA" --"d" --range --"c" --"the cse" --"the case" --"BBBAA"
+
+-------------------------------------------
+--active 26-8-2020
+--a workwing example experiment 2 
+-- plot WXmaxima of 
+-- case0
+foRange = [1..128]
+rangeRAW  c = chr c
+range   = map rangeRAW foRange
+-- case1
+foRang2a = [1..128] \\ [32..123]
+foRange2 = sort (96 : ( 95 : ( 94 : ( 93 : ( 92 : ( 91 : foRang2a))))))
+range211   = map rangeRAW foRange2
+------------------------------------------
 
 
 kArmTest5 bonelist mofaList connectWrist dit dit2 mCommand crit= do
@@ -573,10 +594,10 @@ kArmTest5 bonelist mofaList connectWrist dit dit2 mCommand crit= do
              -- let pop = (ptc0  5)
               --M.writeWXCloudNODE (pop) (ptc2 5) (ptc3 5) (ptc4 5) (ptc5 5) (ptc6 5)
            --   M.writeWXCloudNODE (ptc3b 1) (ptc3b 2) (ptc3b 3) (ptc3b 4) (ptc3b 5) (ptc3b 6)
-           --   M.writeWXCloudNODE (ptc3 2) (ptc3 4) (ptc3 6) (ptc3 8) (ptc3 10) (ptc3 20)  -- nested graph ? 
-           --   M.writeWXCloudNODE (ptc2 5) (ptc2 25) (ptc2 50) (ptc4 100) (ptc4 125) (ptc4 150) -- ???
-           --   M.writeWXCloudNODE (ptc5 5) (ptc5 25) (ptc5 50) (ptc5 100) (ptc5 125) (ptc5 150) --  a plaine 
-           --   M.writeWXCloudNODE (ptc6 5) (ptc6 25) (ptc6 50) (ptc6 100) (ptc6 125) (ptc6 150) -- interesting
+           --   M.writeWXCloudNODE (ptc3 2) (ptc3 4) (ptc3 6) (ptc3 8) (ptc3 20) (ptc3 50)  -- nested graph ? 
+          --    M.writeWXCloudNODE (ptc2 5) (ptc2 25) (ptc2 50) (ptc2 100) (ptc2 125) (ptc2 150) -- ???
+          --    M.writeWXCloudNODE (ptc5 5) (ptc5 25) (ptc5 50) (ptc5 100) (ptc5 125) (ptc5 150) --  a plaine  CHANGEABLE with progVars
+         --     M.writeWXCloudNODE (ptc6 5) (ptc6 25) (ptc6 50) (ptc6 100) (ptc6 125) (ptc6 150) -- interesting
             --  M.writeWXCloudNODE (ptc7 5) (ptc7 25) (ptc7 50) (ptc7 100) (ptc7 125) (ptc7 150) -- half 'crown'
              -- M.writeWXCloudNODE (ptc8 5) (ptc8 25) (ptc8 50) (ptc8 100) (ptc8 125) (ptc8 150) -- similar to above
               M.writeWXCloudNODE (nub(ptc9 5)) (nub(ptc9 25)) (nub(ptc9 50)) (nub(ptc9 100)) (nub(ptc9 125)) (nub(ptc0 5))    -- similar to above 
@@ -584,7 +605,7 @@ kArmTest5 bonelist mofaList connectWrist dit dit2 mCommand crit= do
 
 --              M.writeWXCloudNODE (ptc2 5) (ptc2 15) (ptc2 25) (ptc4 2) (ptc4 3) (ptc4 5)
               M.writeWXCloud4 (ptc2 5) (ptc2 25) (ptc2 50) (ptc4 5) (ptc4 25) (ptc4 50)
-
+              
               putStrLn "Done" 
      (frame0 bonelist (mofaList) connectWrist dit dit2) 
 
@@ -1027,7 +1048,7 @@ pgFun x = x
 pointCloud01 n  = let toMap e = last((map (amatrix e) [1..50]))
                   in map toMap [1..n]
 -- based on wohlGeor3 -> constant-> any string -> aways same points depending on pg functions
-pointCloud02 n = drop (n-1) (map (amatrix2 n) [1..(realToFrac n)])
+pointCloud02 n =  (map (amatrix2 n) [1..(realToFrac n)])
 
 pointCloud03 n  = let toMap e = last((map ((theTrix 2) e) [1..50]))
                   in map toMap [1..n]
@@ -1041,7 +1062,7 @@ pointCloud03b n = let toMap e = last((map ((theTrix 6) e) [1..50]))
      --pg111 
     -- putStrLn (unlines(checkflow [father] (formation (pg1 1) 1)  ))
 ----------------------------------------------------------
-liT = ["A","A","A","A","A","A"] --["AAABB","AABAB","AAA","BBBAA"]
+liT = ["AAABB","AABAB","AAA","BBBAA"] --["A","A","A","A","A","A"] --["AAABB","AABAB","AAA","BBBAA"]
 
 --  DOMAIN:
 --  pointCoud1                    JustI or JustI and JustII or JustII -> (fst or fst/snd or snd Compare)
@@ -1374,23 +1395,30 @@ outPutMaxima333 goghi dipfa fodp1 fodp2 bob =
 -- l: [Int] ~ oder auch welche kombination von funktionen
 -- bob laenge val liste
 -- ghogi quelle1 simukieter val
--- dipfa quelle2 
+-- dipfa quelle2
+-- e-g> vb x =  accesFuncWX33 4 [(map pg44 [1..(x)])] [(map pg33 [1..(x)])] [(map pg22 [1..(x)])] [(map pg11 [1..(x)])]  [1..x] "100"
+
 accesFuncWX33 l goghi dipfa fodp1 fodp2 bob =
                   let aw1 n = concat(F.chooseMQ n (outPutMaxima333 goghi dipfa fodp1 fodp2 bob))
                   in let wielanGg  = [1..l]
                   in let aw2 = map aw1 wielanGg
                   in let foaw1 = show bob
-                  in let enExp a b sqale2 = (M.aCompleteWX3 a b foaw1 sqale2) -- diese display nach compiliren  vs aCompleteWX2 schreibt display in file     
+                  in let enExp a b sqale2 = (M.aCompleteWX2 a b foaw1 sqale2) -- diese display nach compiliren  vs aCompleteWX2 schreibt display in file     
                      --  in let aw3 =  ceiling (l/2)	
                   in let aw4 = wielanGg --([wielanGg ,[(l+1)..(l*2) ]])
                   in let aw5 = "0.0" 
-                  in let aw6 = "100"              
+                  in let aw6 = "1500"              
                   in enExp aw2 aw4 aw6 --enExp
 
 
 vb x = let as = accesFuncWX33 4 [(map pg44 [1..(x)])] [(map pg33 [1..(x)])] [(map pg22 [1..(x)])] [(map pg11 [1..(x)])]  [1..x] "100"
        in writeFile "tutu.wxm" as
-         
+
+
+vb2 x = let as = accesFuncWX33 4 [(map (F.fourierMQ3 1) [1..(x)])] [(map (F.fourierMQ3 2) [1..(x)])] [(map (F.fourierMQ3 3) [1..(x)])] [(map pg11 [1..(x)])]  [1..x] "1500"
+       in writeFile "tutu.wxm" as
+
+          
 scanChar :: Char -> Int
 
 scanChar c | '0' <= c && c <= '9' = fromEnum c - fromEnum '0'
@@ -1566,11 +1594,11 @@ iframe_cRAW t railW toWrite chAr ko token= do
     let solo = length (lines aRawHtmlTxt)
     let interSearch foToWrite = do
               access <- forM [1..solo] (\so -> do
-              let pull = concat$ausw so (lines aRawHtmlTxt)
-              let aC = ((foToWrite)`elemIndices` (words pull))
-              let withLength = if length aC== 0 then 0 --["",""]
-                               else 1 --[(show so),","]
-              return (withLength))
+                  let pull = (concat (ausw so (lines aRawHtmlTxt)))
+                  let aC = (foToWrite) `elemIndices` (words pull)
+                  let withLength = if (length aC)== 0 then 0 --["",""]
+                                   else 1 --[(show so),","]
+                  return (withLength))
             --  putStrLn  (show access)
               let serf = (1) `elemIndices` (access)
            --   putStrLn (show serf)
@@ -1578,7 +1606,7 @@ iframe_cRAW t railW toWrite chAr ko token= do
     let examplRAW1 t = head(ausw t (interSearch "<textarea"))  -- [195,225]
     let examplRAW2 t = head(ausw t (interSearch "</textarea>"))
     let exampl0 te k = ausw te [(examplRAW1 k),(examplRAW2 k)] -- switch textareas now 
-    let exampl t = [examplRAW1 t,examplRAW2 t]
+    let exampl t = [(examplRAW1 t),(examplRAW2 t)]
    
     let typesafer n = let had1 =   (head$head$exampl t) --map ord (exampl))
                       in let had2 = (head$last$exampl t) 
@@ -1659,5 +1687,7 @@ evalToWrit astrinG = if tzBool>0 then prsRoot++(head tz3)++(show tzInt)++"."++(l
           --  else if (read tzExp)==9 then 0 
 
             else 0 ;
+
+
 
 
