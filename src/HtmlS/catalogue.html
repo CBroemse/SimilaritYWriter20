@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>List for Step IV</title>
+ <script src="file:///c:/stack/SimilaritYWriter20/src/p5SimY/p5.js"></script>
+  <script src="file:///c:/stack/SimilaritYWriter20/src/p5SimY/p5.dom.min.js"></script>
+  <script src="file:///c:/stack/SimilaritYWriter20/src/p5SimY/p5.sound.min.js"></script>
+ <script src="file:///c:/stack/SimilaritYWriter20/src/p5SimY/svgS/php.js"></script>
+
+  <link rel="stylesheet" type="text/css" href="file:///c:/stack/SimilaritYWriter20/src/p5SimY/style.css">
+
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: black;
+  font-family: Arial, Helvetica, sans-serif;
+   font-color: green;	
+}
+
+.buttonM {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+.button2 {background-color: #008CBA;border-radius: 12px;} /* Blue */
+.button3 {background-color: #f44336;} /* Red */ 
+.button4 {background-color: #e7e7e7; color: black;} /* Gray */ 
+.button5 {background-color: #555555;} /* Black */
+
+       .storyTeller {
+  background-color: #1e1c1ecc;
+  color: lime;
+  border: 0px solid white;
+  padding: 2px 5px;
+  text-decoration: none;
+  display: inline-block;
+  width:100%;
+  font-size: 12px;
+  text-align:left;
+}
+
+</style>
+</head>
+<script>
+</script>
+
+<body>
+<a href="file:///c:/stack/SimilaritYWriter20/src/textS/story2.html" style="border-radius: 12px; padding: 2px 5px;" target="iframe_c">back</a>
+
+<a href="#smessage2" style="border-radius: 12px; padding: 2px 5px;" target="iframe_c">down</a>
+
+<textarea name="message" class="storyTeller" rows="43" cols="50">
+	<p>
+ catalogue
+
+ * a short overview (for more details see lib)
+ * links to plotted ptc examples
+
+</textarea>
+<br><br>
+<a href= "" style="border-radius: 12px; padding: 2px 5px;" target="_parent">ptc5 with ptc0</a>
+
+<a href= "https://en.wikipedia.org/wiki/Bayes%27_theorem#/media/File:Bayes_theorem_visualisation.svg" style="border-radius: 12px; padding: 2px 5px;" target="_self">CMG Lee</a>
+<br>
+
+<a href= "https://www.grogono.com/magic/5x5.php" style="border-radius: 12px; padding: 2px 5px;" target="_parent">grogono</a>
+
+<br>
+
+<textarea name="message2" class="storyTeller" rows="43" cols="50">>
+
+
+example2
+---------
+
+There is the statistic probability of Steve
+being a farmer our an librarian.
+cd src/TheAToBPlotter.hs
+
+
+*>let li = ["person","Steve","shy","withdrawn","farmer"]
+*>let li2 = ["person","Steve","shy","withdrawn","librarian"]
+
+*>let li3 = [[li,li2]]
+*>let myTest at = runKBASE 2 ["1","2"] 1 2 at 2 (li3) 1 2 3 4
+*> myTest "country"
+
+ 
+       ptc0 ptc2 ptc3 ptc5 ptc6 ptc8
+length  10   25   50   75   84   100
+
+only plots ptc5..ptc9 change with bonelist
+M.writeWXCloudNODE (ptc5 5) (ptc5 25) (ptc5 50) (ptc5 100) (ptc5 125) (ptc5 150) --  a plaine 
+M.writeWXCloudNODE (ptc6 5) (ptc6 25) (ptc6 50) (ptc6 100) (ptc6 125) (ptc6 150) -- interesting
+M.writeWXCloudNODE (ptc7 5) (ptc7 25) (ptc7 50) (ptc7 100) (ptc7 125) (ptc7 150) -- half 'crown'
+M.writeWXCloudNODE (ptc8 5) (ptc8 25) (ptc8 50) (ptc8 100) (ptc8 125) (ptc8 150) -- similar to above
+
+
+-- change order in progVars
+now relates the last atom to the others in both lines
+
+ I. li  ::  a  b  c    d(n)
+ II li2 ::  a  b  c    d(n)
+       
+let mTest2 at = runKBASE 2 ["1","2"] 1 2 at 2 (li3) 1 2 3 5
+
+*> mTest2 "country"
++> mTest2 "city"
+
+
+-- experiment: 
+*> let simiVals gb1 gb2  = similaritYvalue gb1 gb2
+*> let foGb1 gb =  map realToFrac (map ord gb )
+*> let foGb2 gb =  map realToFrac (map ord gb )
+*> let simiVal gb1 fgb2 = similaritYvalue (foGb1 gb1) (foGb2 gb2)
+
+
+*>let li3 = [li,li3]
+[[["person","Steve","shy","withdrawn","farmer"],
+["person","Steve","shy","withdrawn","librarian"]]]
+
+ ratio1:  progVar1 to progVar2  of li
+                
+          and
+
+	  progVar1 toprogVar3   of li2 as b
+
+ ratio2:  progVar3 to progVar5  of li
+          and
+	  progVar3 to progVar5 of li2  as b
+	  
+
+searched: ratio1
+
+*> let ratio1 = simiVal "person" "Steve"
+*>  ratio1
+21.71945701357466
+
+ratio1 = ratio1b
+
+
+
+ptc3 maxes out at 50 points and will only yield [] > 50 
+
+
+given :  
+
+         P(B|A) * P(A)
+P(A|B) = --------------
+	     P(B)
+
+binomial expansions
+with Pascals_triangle
+
+???	     
+           +
+= ( P(A|B)   (PA|B) ) ^2 = 
+           -
+
+
+= ....
+
+P()
+       
+fst order
+---------
+most basic set
+char and ord encoding of Haskell
+ 
+  range: (chr 48 ...chr 120)
+
+ -------------------
+ a group
+ execption I. : 
+*TheAtoBplotter> chr 91
+'['
+*TheAtoBplotter> chr 92
+'\\'
+*TheAtoBplotter> chr 93
+']'
+*TheAtoBplotter> chr 94
+'^'
+*TheAtoBplotter> chr 95
+'_'
+*TheAtoBplotter> chr 96
+'`'
+another factor that must be considered is
+*TheAtoBplotter> ord ' '
+32
+
+
+
+experiment2 case0
+----------------
+
+s0 : range = chr32 .. chr
+
+assume all functions chr<32 &&
+		     chr>129
+        are not considered
+
+    p0 (set: chr 32..
+    p0  ..
+    p0  ..
+    p0  ..   chr 128 -> on)
+  P(H)0
+     
+=> P0
+
+
+experiment2 case1
+----------------
+
+control set that are all mathematical
+and Haskell functions WITHOUT 
+  chr 32 .. chr 123 && 
+  with  
+     exception I.
+ 
+     s1 : range = [chr1 .. chr 31 ; chr 91 .. chr 96 ; chr<129]
+
+assume all functions chr<129  are considered
+
+    p1 (set: chr 1..
+    p1  ..WITHOUT  chr 32 .. chr 123 && 
+    p1  ..   with  exception I..
+    p1  ..   chr 128 )
+  P(H)1
+
+ ==>P1
+-------------------------------
+
+experiment2 case2
+----------------
+
+vowels
+(A,a) (E,e) (I,i) (O,o) (U,u)
+  (with or without '( , )' ?
+   would be sub-set of case1)
+
+set that is a (?'sub-set'?)
+of case0  WITHOUT 
+  chr 32 .. chr 123 && 
+  with
+     exception II.
+      the vowels WITHOUT Y 
+ 
+ s2 : range 
+[(chr65,chr 97) ; (chr 69, chr 101) ..
+   .. (chr 79, chr 117) ; chr<129]
+ Haskell representation
+
+ ord 'A' AND ord 'a'
+  65         97
+ the other vowels
+  69        101
+  73        105
+  79        111
+  85        117
+
+							 
+assume all functions chr<129  are considered
+
+    p2 (set: (chr 65, ..) ..
+    p2  ..WITHOUT  chr 32 .. chr 123 && 
+    p2  ..     with  exception II..
+    p2  ..   chr 128 )
+  P(H)2
+
+ ==>P2
+
+experiment2 case3
+-----------------
+ simple set
+ all small letters as a square matrix
+
+M1:           order 5/6
+ a b c d e 0
+ f g h i j 0
+ k l m n o 0
+ p q r s t 0
+ u v w x y 0
+ z 0 0 0 0 0
+
+M2:           order 6
+ a b c d e f
+ g h i j k l
+ m n o p q r
+ s t u v w x
+ y z 0 0 0 0 
+ 0 0 0 0 0 0
+
+experiment2 case4
+-----------------
+ MQ3
+ magic quadrant
+
+-------------------------------
+*> let li3 = [[li,li2]]
+*> let myTest at = runKBASE 2 ["1","2"] 1 2 at 2 (li3) 1 2 3 4
+*> let li3 = [[li,li2]]
+*> let myTest at = runKBASE 2 ["1","2"] 1 2 at 2 (li3) 1 2 3 4
+*> let myTest at = runKBASE 2 ["1","2"] 1 2 at 2 (li3) 1 2 3 5
+*> let range201  c = chr c
+
+-- case0
+*> let foRange = [1..128]
+*> let rangeRAW  c = chr c
+*> let range   = map rangeRAW foRange
+*> range201
+" !\"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~\DEL\128"
+*> let case0 = range201
+
+
+
+
+
+--case1
+*> let foRang2a = [1..128] \\ [32..123]
+*> let foRange2 = sort (96 : ( 95 : ( 94 : ( 93 : ( 92 : ( 91 : foRang2a))))))
+*> foRange2
+[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,91,92,93,94,95,96,124,125,126,127,128]
+
+
+*> let range211   = map rangeRAW foRange2
+*> range211
+"\SOH\STX\ETX\EOT\ENQ\ACK\a\b\t\n\v\f\r\SO\SI\DLE\DC1\DC2\DC3\DC4\NAK\SYN\ETB\CAN\EM\SUB\ESC\FS\GS\RS\US[\\]^_`|}~\DEL\128"
+
+
+
+case2
+*> let forange221   = [[65,97],[69,101],[73,105],[79,111]]
+*> let range221   = map rangeRAW (concat forange221)
+
+*> let case2 = range221
+ -- a square matrix
+ -- M1: (line1..line4)
+*> HT.avanti (lines "AaE0\neIi0\nOou0\nU000  ")
+AaE0
+eIi0
+OoU0
+u000
+ -- M2:(line1 ..line4)
+*> HT.avanti (lines "AaEe\nIiOo\nUu00\n0000  ")
+AaEe
+IiOo
+Uu00
+0000
+
+*1)   U: (M2: (line3)) - (M1 (line3)) = "U"
+*2)   I: M(U)+u+0 = "I"
+*3)   i: I+U+u= "i"
+*4)   e: U+I+1="e"  OR ((M1: line1) - (M2: line2))
+.
+.
+.
+------------------------------
+case3
+
+*> let foRange3 = ([1..128] \\ [1..96]) \\ [123..128]
+*> let range3   = map rangeRAW foRange
+*> range3
+"abcdefghijklmnopqrstuvwxyz"
+*> let case03 = range3
+
+ = P(B|A)*P(A)  = 26
+ 
+ "person" of range3 = 6/26
+
+ usedVowel -> P(B, given A) = "eo" = 2/2+3 = 2/5= 0.4
+
+ usedNOTVowel -> (PA, given B) = "prsn" = 4/6
+
+ NotusedVowel&NotusednotVowel -> case3 \\ "person" 
+"abcdfghijklmqtuvwxyz"  = 20/26
+
+ NotusedVowel = "aiu" = 3/26
+
+=>  B, given A :
+
+(usedVowel / (usedVowel+ usedNOTVowel))
+*
+(usedVowel+notusedVowel)/(usedVowel+notusedVowel+usedNotVowel+notusedNotVowel)
+
+ .
+ .
+ .
+    
+
+------------------------------
+case4
+*> F.fopanfourier1MQ3
+*> F.fopanfourier2MQ3
+*> F.fopanfourier3MQ3
+
+*>nlet simValCase4 gb1 fgb2 = similaritYvalue (map realToFrac gb1) (foGb2 fgb2)
+*> simValCase4 F.fopanfourier1MQ3 "person"
+98.19004524886878
+*> simValCase4 F.fopanfourier2MQ3 "person"
+98.19004524886878
+*> simValCase4 F.fopanfourier3MQ3 "person"
+98.19004524886878
+*> simValCase4 F.fopanfourier3MQ3 "e"
+88.11881188118812
+*> simValCase4 F.fopanfourier3MQ3 "f"
+88.23529411764706
+
+=> MQ3 lines and collums have always the same relation to "person"
+*> simValCase4 (concat$[F.fopanfourier3MQ3,F.fopanfourier2MQ3,F.fopanfourier3MQ3]) "Steven"
+94.27662957074722
+*> simValCase4 (concat$[F.fopanfourier3MQ3,F.fopanfourier2MQ3]) "Steven"
+96.18441971383147
+=> WITHOUT 'show' adding  more lines increases similarity
+
+*> simiVal (show$concat$[F.fopanfourier3MQ3]) "3x=-2"
+23.598130841121495
+
+=> otherwise not
+ ---------------------------
+
+
+role model
+----------
+*> simiVal (show$concat$[F.fopanfourier1MQ3]) "3x=-2"
+23.598130841121495
+
+an example
+2. where does hex1 start
+
+       x--x--x
+      /  /    \ 
+     x--x      x  hex1
+    /  / \    /
+   x--x---x--x
+   | /|  /
+   |/ | /    <--- hex0
+   x__x  
+
+----------------------------
+
+----------------------------
+for every
+case of the experiment2			
+Calculate a group of Gaussian curves
+
+							
+  I the given curves due to 'Normal distribution'.
+
+  II. select the first set to compare to
+
+
+
+</textarea>
+<br><br>
+
+ </body></html>
