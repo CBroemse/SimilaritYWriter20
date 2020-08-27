@@ -676,14 +676,38 @@ function:
 
 -------------------------------------------
 transform MQ a transformation?
-*>let fourierMQ3 x n =  (ffourierMQ3 x n 1) + (ffourierMQ3 x n 2) + (ffourierMQ3 x n 3) 
+*>let fourierMQ3 x n =  show (ffourierMQ3 x n 1) + (ffourierMQ3 x n 2) + (ffourierMQ3 x n 3) 
 -------------------------------------------
 
 
+plot 2d
+let vb2 x = accesFuncWX33 4 [(map (fourierMQ3 1) [1..(x)])] [(map (fourierMQ3 2) [1..(x)])] [(map (fourierMQ3 3) [1..(x)])] ]  [1..x] "100"
 
+catlouge
+--------
+a collection of all examples given above in
+'wanted poster' form.
 
+- ptc0
 
+- ptc2..ptc9
 
+- reaction with ptc5..ptc9
+
+fun fact
+-------
+
+coordinates of 'fourierMQ3' (1279) 
+ -> (1279 , 0.530152)
+
+let the441 = 1.7258699871441  
+let the547 = 1.72548593249547 (with -0.530270 )
+
+let the744 = 1.725485932017744  (with -0.530270 ) 
+
+a formula
+      -(x*(-0.530270)/pi ))  / ( e / the744) 
+      
 
 pick two lines that define
 the limes of:
