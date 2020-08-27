@@ -67,7 +67,7 @@ check if there is a </text>
  * include a timer or watch</text>
 
 
-<image href="source/wit2.png"  x="10" y="50"  fill-opacity="0.8"/>
+<image href="wit2.png"  x="10" y="50"  fill-opacity="0.8"/>
 
 <text x="50" y="150">hexagon plane</text>
 <text x="50" y="165">  adjustable area</text>
