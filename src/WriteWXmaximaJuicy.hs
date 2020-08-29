@@ -242,7 +242,7 @@ writeWXCloudNODE functionList ste3 ste4 ste5 ste6 ste7 = do
 -- variable: lalas:: Int 
 --
 writeWXCloudNODEVer functionList ste3 ste4 ste5 ste6 ste7 lalas  = do
-     writeFile (Ev.evalToWrite "wxms\\"++ (show$concat$concat$lalas )) (aCloudPointNODE functionList ste3 ste4 ste5 ste6 ste7)
+     writeFile (Ev.evalToWrite "wxms\\lala"++ (last lalas )++".wxm") (aCloudPointNODE functionList ste3 ste4 ste5 ste6 ste7)
 
 aCloudPointNODE functionList ste3 ste4 ste5 ste6 ste7 = 
                      let ausw = length functionList

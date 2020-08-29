@@ -143,7 +143,7 @@ takeMY x y z = (mits y) (hits z)
 --Nimmt zeile aus String
 --x: Int ; y:String
 takerleiN x y = drop (x -1)(take x (lines y))
-tk x y = takerleiN x y
+tk x y =  concat$ drop (x -1)(take x y)
 
 -- a monad in steno
 fhackbart some = do(return (do[([some])])) 

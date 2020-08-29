@@ -35,16 +35,16 @@ import qualified Colored_2_3_5_Counter20 as C
 ----------------------------------------------------------------------------
  ----- #####################################################################
 -- write your subroutine
---  wxmWritetoken :: Int pass token to write various wxms in runKBASE
+--  wxmWritetoken :: Int, pass a token to write various wxms in runKBASE
 --                       without being stuck at the same file
---                       overwriting what was gain in the iteration
+--                       overwriting what was gained in the iteration
 --  lalas = wxmWritetoken 
---  subroutine :: ptc ptc ptc ptc ptc ptc lalas ptc -> list -> [Double] 
-subroutinE = [[(C.ptc5 5),(C.ptc5 25),(C.ptc5 50),(C.ptc5 100),(C.ptc5 125),(C.ptc5 150),[[1]]],{-  a plaine 
-                -}[(C.ptc6 5),(C.ptc6 25),(C.ptc6 50),(C.ptc6 100),(C.ptc6 125),(C.ptc6 150),[[2]]],{- interesting
-                -}[(C.ptc7 5),(C.ptc7 25),(C.ptc7 50),(C.ptc7 100),(C.ptc7 125),(C.ptc7 150),[[3]]],{- half 'crown'
-                -}[(C.ptc8 5),(C.ptc8 25),(C.ptc8 50),(C.ptc8 100),(C.ptc8 125),(C.ptc8 150),[[4]]],{- similar to above
-                -}[(C.ptc9 5),(C.ptc9 25),(C.ptc9 50),(C.ptc9 100),(C.ptc9 125),(C.ptc9 150),[[5]]]]
+--  subroutine :: ptc ptc ptc ptc ptc ptc lalas -> list -> [Double] 
+subroutinE = [[(C.ptc5 5),(C.ptc5 25),(C.ptc5 50),(C.ptc5 100),(C.ptc5 125),(C.ptc5 150),[[1.0]]],{-  a plaine 
+                -}[(C.ptc6 5),(C.ptc6 25),(C.ptc6 50),(C.ptc6 100),(C.ptc6 125),(C.ptc6 150),[[2.0]]],{- interesting
+                -}[(C.ptc7 5),(C.ptc7 25),(C.ptc7 50),(C.ptc7 100),(C.ptc7 125),(C.ptc7 150),[[3.0]]],{- half 'crown'
+                -}[(C.ptc8 5),(C.ptc8 25),(C.ptc8 50),(C.ptc8 100),(C.ptc8 125),(C.ptc8 150),[[4.0]]],{- similar to above
+                -}[(C.ptc9 5),(C.ptc9 25),(C.ptc9 50),(C.ptc9 100),(C.ptc9 125),(C.ptc9 150),[[5.0]]]]
 ----------------------------------------------------------------------------
 
 
@@ -57,7 +57,7 @@ theDs f g = concat$ausw f ((concat g))
 
 runKBASE offOn target plot addGh ghAdd n d get1 get2 get3 get4 subroutineList= do
        allforIV <- forM [1..(length target)] (\four4 -> do
-            let fg = runKAXIOM offOn target plot addGh ghAdd n (theDs four4 d) (get1) (get2) (get3) (get4) 1 (theDs four4 d) (four4) [(read(show four4))] (concat(tk four4 subroutineList))
+            let fg = runKAXIOM offOn target plot addGh ghAdd n (theDs four4 d) (get1) (get2) (get3) (get4) 1 (theDs four4 d) (four4) [(read(show four4))] ((tk four4 subroutineList))
             fg
             return (fg))
 
@@ -519,7 +519,8 @@ defSearchRAW offOn target plot addGh ghAdd pV1 pV2 pV3 pV4 pV5 pV6 ptc0Len ptc3L
       --  e.g> olmeg m = (head(ausw m liT))  
                    --M.writeWXCloudNODE (nub(ptc3 2)) (nub(ptc3 3)) (nub(ptc3 5)) (nub(ptc3 19)) (nub(ptc3 25)) (nub(ptc3 50)) -- similar to above      
                    --an idea space ptc5 ..ptc9 depend in bonlist 
-                   M.writeWXCloudNODEVer (head(tk 1 subroutine)) (head(tk 2 subroutine)) (head(tk 3 subroutine)) (head(tk 4 subroutine)) (head(tk 5 subroutine)) (head(tk 6 subroutine)) ([(tk 1 subroutine)])  -- (nub(ptc9 5)) (nub(ptc9 25)) (nub(ptc9 50)) (nub(ptc9 100)) (nub(ptc9 125)) (nub(ptc0 5))  
+                   let concon t = concat$concat t
+                   M.writeWXCloudNODE ((tk 1 (subroutine))) ((tk 2 (subroutine))) ((tk 3 (subroutine))) ((tk 4 (subroutine))) ((tk 5 (subroutine))) ((tk 6 (subroutine))) -- (words(show((tk 7 (subroutine)))))  -- (nub(ptc9 5)) (nub(ptc9 25)) (nub(ptc9 50)) (nub(ptc9 100)) (nub(ptc9 125)) (nub(ptc0 5))  
                    M.writeWXCloud4 (ptc2 5) (ptc2 25) (ptc2 50) (ptc4 5) (ptc4 25) (ptc4 50)
                    putStrLn "END plotter";
 
