@@ -75,34 +75,29 @@ check if there is a </text>
 <image href="ptclibrary/wit2Case1bigNsmalLetNosquarematrixptc5.png" x="10" y="500"  fill-opacity="0.8"/>
 <text x="50" y="490" font-size="18"  fill="green" fill-opacity="0.8"> ptc5; AaBbCcDdEe FfGgHhIiJj... -> pv1:AaBbCcDdEeFfGg pv2:AaBbCc.. pv3:HhIiJj... </text>
 
-<image href="ptclibrary/wit2Example1ptc6.png"  x="10" y="850"  fill-opacity="0.8"/>
-<text x="50" y="850" font-size="18"  fill="green" fill-opacity="0.8"> ptc6; AAABB AABAB AAA BBBAA -> pv1:AAABB pv2:AAABBAABAB pv3:AABAB pv4:AAA pv5:AAABBBAA pv6:BBBAA </text>
+<image href="ptclibrary/wit2Case1bigLetNosquarematrixptc5.png" x="10" y="910"  fill-opacity="0.8"/>
+<text x="50" y="880" font-size="18"  fill="green" fill-opacity="0.8"> ptc5; ABCDE FGHIJKLMN OPQRST UVWXYZ -> pv1:ABCDEFG pv2:ABC.. pv3:HIJ... </text>
+<text x="50" y="1300" font-size="18"  fill="green" fill-opacity="0.8"> ptc5; abcdefg hijklmn opqrst uvwxyz -> pv1:abcdefg pv2:abcdefghijklmn pv3:hij... </text>
+<text x="50" y="1320" font-size="18"  fill="green" fill-opacity="0.8">        yields the samae as above</text>
 
-<image href="ptclibrary/wit2Example1bignsmallLettersGroups1ptc6.png"  x="10" y="1250"  fill-opacity="0.8"/>
-<text x="50" y="1250" font-size="18"  fill="green" fill-opacity="0.8"> ptc6; AAAaaBBbb AAaaBbAaBb AAAaaa BBBbbbAAaa -> pv1:AAAaaBBbb pv2:AAAaaaBBbb... </text>
+<image href="ptclibrary/wit2Example1smalLetptc5.png"  x="10" y="1340"  fill-opacity="0.8"/>
+<text x="50" y="1340" font-size="18"  fill="green" fill-opacity="0.8"> ptc5; Example1 all small letters</text>
 
-<image href="ptclibrary/wit2Case1smalLetNosquarematrixptc6.png"  x="10" y="1650"  fill-opacity="0.8"/>
-<text x="50" y="1635" font-size="18"  fill="green" fill-opacity="0.8"> ptc6; Case1 all small letters</text>
 
-<text x="50" y="1655" font-size="18"  fill="green" fill-opacity="0.8"> ptc6; abcdefg hijklmn opqrst uvwxyz -> pv1:abcdefg pv2:abcdefghijklmn pv3:hij... </text>
+<image href="ptclibrary/wit2Example1bignsmallLettersGroups1ptc5.png"  x="10" y="1740"  fill-opacity="0.8"/>
+<text x="50" y="1720" font-size="18"  fill="green" fill-opacity="0.8"> ptc5; AAAaaBBbb AAaaBbAaBb AAAaaa BBBbbbAAaa -> pv1:AAAaaBBbb pv2:AAAaaaBBbb... </text>
 
-<image href="ptclibrary/wit2Case1bigLetNosquarematrixptc6.png"  x="10" y="2050"  fill-opacity="0.8"/>
-<text x="50" y="2050" font-size="18"  fill="green" fill-opacity="0.8"> ptc6; ABCDE FGHIJKLMN OPQRST UVWXYZ -> pv1:ABCDEFG pv2:ABC.. pv3:HIJ... </text>
 
-<image href="ptclibrary/wit2Case1bigNsmalLetNosquarematrixptc6.png"  x="10" y="2450"  fill-opacity="0.8"/>
-<text x="50" y="2450" font-size="18"  fill="green" fill-opacity="0.8"> ptc6; AaBbCcDdEe FfGgHhIiJj... -> pv1:AaBbCcDdEeFfGg pv2:AaBbCc.. pv3:HhIiJj... </text>
+<image href="ptclibrary/wit2Example1bigLetptc5.png"  x="10" y="2160"  fill-opacity="0.8"/>
+<text x="50" y="2140" font-size="18"  fill="green" fill-opacity="0.8"> ptc5; AAABB AABAB AAA BBBAA -> pv1:AAABB pv2:AA.. pv3:AABA... </text>
 
-<text x="50" y="2840" font-size="18"  fill="green" fill-opacity="0.8">Test+: mix in arythmetic operator+ in 2 3 5 7 rythm, find a nice hexagon that fits ?</text>
+<image href="ptclibrary/example1bigNsmalLetptc5Operator+.png"  x="10" y="2620"  fill-opacity="0.8"/>
+<text x="50" y="2580" font-size="18"  fill="green" fill-opacity="0.8">Test+: mix in arythmetic operator+ in 2 3 5 7 rythm, find a nice hexagon that fits ?</text>
 
-<image href="ptclibrary/wit2Case1bigNsmalLetNosquarematrixptc6Operator+.png"  x="10" y="2850"  fill-opacity="0.8"/>
-<text x="50" y="2860" font-size="18"  fill="green" fill-opacity="0.8"> ptc6; Aa+BbCcDdEe FfGgHhI+iJj... -> pv1:Aa+BbCcDdEeFfGg pv2:Aa+BbCc.. pv3:HhI+iJj... </text>
+<text x="50" y="2600" font-size="18"  fill="green" fill-opacity="0.8"> ptc5;Aa+BbCcDdEe FfGgHhI+iJj... -> pv1:Aa+BbCcDdEeFfGg pv2:Aa+BbCc.. pv3:HhI+iJj... </text>
 
-<text x="50" y="3260" font-size="18"  fill="green" fill-opacity="0.8"> ptc6; Aa+BbCcDdEe ... -> pv1:Aa+BbCcDdEeFfGg pv4:OoPpQqRrSsTt..  </text>
-<text x="50" y="3280" font-size="18"  fill="green" fill-opacity="0.8"> pv1 ..pv3 as Test+ pv4 ..pv6 without operator+ yields the same as above</text>
-<text x="50" y="3320" font-size="18"  fill="green" fill-opacity="0.8"> pv1 ..pv4 as Test+ pv5 ..pv6 without operator+ yields something different</text>
 
-<image href="ptclibrary/wit2Case1bigNsmalLetNosquarematrixptc6Operator+1to4.png"  x="10" y="3330"  fill-opacity="0.8"/>
-
+<text x="50" y="3020" font-size="18"  fill="green" fill-opacity="0.8">  pv1 ..pv3 as Test+ pv4 ..pv6 without operator+ yields the same as above</text>
 
 <text x="50" y="150">hexagon plane</text>
 <text x="50" y="165">  adjustable area</text>
