@@ -174,12 +174,12 @@ runK d = do
 progVarRAW t r = do 
     let df = head (ausw t r)
     df
-progVar1 = "AAABB" --range --"1" --range211 --"a" --"The world" --"AAABB" 
-progVar2 = "AAABB"++range --"AB" --range --"ab" --range --"ab" --"The world is everything" --"AAABBAABAB"
-progVar3 = range --"b" --range --"b" --"is everything" --"AABAB"
-progVar4 = "AAA" --"c" --range --"b" --tht is" -- find the "a" in wxms "that is" --"AAA"
-progVar5 = "AAABBBAA" --"cd" --range --"bc" --"tht is the cse" --"that is the case" --"AAABBBAA"
-progVar6 = "BBBAA" --"d" --range --"c" --"the cse" --"the case" --"BBBAA"
+progVar1 = "Aa+BbCcDdEeFfGg" --"abcdefg" --"AAAaaaBBbb" --"Aa" --"Cesar" --"AAABB" --range --"1" --range211 --"a" --"The world" --"AAABB" 
+progVar2 = "Aa+BbCcDdEeFfGgHhI+iJhKkLlMmNn" --"abcdefghijklmn" --"AAAaaaBBbbAAaaBbAaBb" --"AaEe" --"CeaserDelight" --"AAABB"++range --"AB" --range --"ab" --range --"ab" --"The world is everything" --"AAABBAABAB"
+progVar3 = "HhI+iJjKkLlMmNn" --"hijklmn" --"AAAaaaBbAaBb" --"Ee" --"Deight" --range --"b" --range --"b" --"is everything" --"AABAB"
+progVar4 = "OoPpQ+qRrSsTt" --"opqrst" --"AAAaaa" --"Ii" --"Elf" --"AAA" --"c" --range --"b" --tht is" -- find the "a" in wxms "that is" --"AAA"
+progVar5 = "OoPpQ+qRrSsTtUuVvWwX+xYyZz" --"opqrstuvwxyz" --"AAAaaaBBBbbbAAaa" --"IiOo" --"ElfFool" --"AAABBBAA" --"cd" --range --"bc" --"tht is the cse" --"that is the case" --"AAABBBAA"
+progVar6 = "UuVvWwX+xYyZz" --"uvwxyz" --"Oo" --"Fool" --"BBBAA" --"d" --range --"c" --"the cse" --"the case" --"BBBAA"
 
 -------------------------------------------
 --active 26-8-2020
@@ -610,7 +610,7 @@ kArmTest5 bonelist mofaList connectWrist dit dit2 mCommand crit= do
          --     M.writeWXCloudNODE (ptc6 5) (ptc6 25) (ptc6 50) (ptc6 100) (ptc6 125) (ptc6 150) -- interesting
             --  M.writeWXCloudNODE (ptc7 5) (ptc7 25) (ptc7 50) (ptc7 100) (ptc7 125) (ptc7 150) -- half 'crown'
              -- M.writeWXCloudNODE (ptc8 5) (ptc8 25) (ptc8 50) (ptc8 100) (ptc8 125) (ptc8 150) -- similar to above
-              M.writeWXCloudNODE (nub(ptc9 5)) (nub(ptc9 25)) (nub(ptc9 50)) (nub(ptc9 100)) (nub(ptc9 125)) (nub(ptc0 5))    -- similar to above 
+              M.writeWXCloudNODE (nub(ptc6 5)) (nub(ptc6 25)) (nub(ptc6 50)) (nub(ptc6 100)) (nub(ptc6 125)) (nub(ptc6 5))    -- similar to above 
            --   M.writeWXCloudNODE (ptc0 5) (ptc0 25) (ptc0 50) (ptc0 100) (ptc0 125) (ptc0 150) -- ???
 
 --              M.writeWXCloudNODE (ptc2 5) (ptc2 15) (ptc2 25) (ptc4 2) (ptc4 3) (ptc4 5)
