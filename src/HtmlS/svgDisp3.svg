@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xml="http://www.w3.org/XML/1998/namespace" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:dc="http://purl.org/dc/elements/1.1/"
-   xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" id="root" xml:space="preserve" width="700" height="2200" onload="OnLoadEvent(evt)" onmousemove="get_coordo(evt)">
+   xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" id="root" xml:space="preserve" width="700" height="3400" onload="OnLoadEvent(evt)" onmousemove="get_coordo(evt)">
 
 <script><![CDATA[
 var compati = new Array(true,true,true,true,true,true)
@@ -83,6 +83,12 @@ check if there is a </text>
 <text x="50" y="1635" font-size="18"  fill="green" fill-opacity="0.8"> ptc6; Case1 all small letters</text>
 
 <text x="50" y="1655" font-size="18"  fill="green" fill-opacity="0.8"> ptc6; abcdefg hijklmn opqrst uvwxyz -> pv1:abcdefg pv2:abcdefghijklmn pv3:hij... </text>
+
+<image href="ptclibrary/wit2Case1bigLetNosquarematrixptc6.png"  x="10" y="2050"  fill-opacity="0.8"/>
+<text x="50" y="2050" font-size="18"  fill="green" fill-opacity="0.8"> ptc6; ABCDE FGHIJKLMN OPQRST UVWXYZ -> pv1:ABCDEFG pv2:ABC.. pv3:HIJ... </text>
+
+<image href="ptclibrary/wit2Case1bigNsmalLetNosquarematrixptc6.png"  x="10" y="2450"  fill-opacity="0.8"/>
+<text x="50" y="2450" font-size="18"  fill="green" fill-opacity="0.8"> ptc6; AaBbCcDdEe FfGgHhIiJj... -> pv1:AaBbCcDdEeFfGg pv2:AaBbCc.. pv3:HhIiJj... </text>
 
 
 <text x="50" y="150">hexagon plane</text>
