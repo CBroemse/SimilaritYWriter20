@@ -1,0 +1,96 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 17.10.1 ] */
+/* [wxMaxima: input   start ] */
+;
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+mycloud:([[49.32432432432433,55.05514705882353,2.280501710376283]]);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+mycloud2:([[49.32432432432433,55.05514705882353,2.280501710376283],[52.7992277992278,51.74632352941176,2.280501710376283],[52.7992277992278,5.678233438485805,50.93457943925234]]);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+mycloud3:([[49.32432432432433,55.05514705882353,2.280501710376283],[52.7992277992278,51.74632352941176,2.280501710376283],[52.7992277992278,5.678233438485805,50.93457943925234],[0.11389521640091117,55.05514705882353,50.93457943925234],[0.11389521640091117,51.74632352941176,54.29906542056075]]);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+mycloud4:([[49.32432432432433,55.05514705882353,2.280501710376283],[52.7992277992278,51.74632352941176,2.280501710376283],[52.7992277992278,5.678233438485805,50.93457943925234],[0.11389521640091117,55.05514705882353,50.93457943925234],[0.11389521640091117,51.74632352941176,54.29906542056075],[49.32432432432433,5.678233438485805,54.29906542056075],[52.7992277992278,55.05514705882353,2.280501710376283]]);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+mycloud5:([[49.32432432432433,55.05514705882353,2.280501710376283],[52.7992277992278,51.74632352941176,2.280501710376283],[52.7992277992278,5.678233438485805,50.93457943925234],[0.11389521640091117,55.05514705882353,50.93457943925234],[0.11389521640091117,51.74632352941176,54.29906542056075],[49.32432432432433,5.678233438485805,54.29906542056075],[52.7992277992278,55.05514705882353,2.280501710376283]]);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+mycloud6:([[49.32432432432433,55.05514705882353,2.280501710376283]]);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+[v1,v2,v3,v4]:[vector([0,0,1],[0.7,0,0]),vector([0,0,1],[0,0.7,0]),vector([0,0,1],[-0.7,0,0]),vector([0,0,1],[0,-0.7,0])];
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+text:label(["North",0,1,1],["East",1,0,1],["South",0,-1,1],["West",-1,0,1]);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+m1:makelist(points (mycloud));
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+m2:makelist(points (mycloud2));
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+m3:makelist(points (mycloud3));
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+m4:makelist(points (mycloud4));
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+m5:makelist(points (mycloud5));
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+m6:makelist(points (mycloud6));
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+draw3d(
+      enhanced3d = [sin(j), j],
+      point_size = 0.2,
+      point_type = filled_circle,
+      points_joined = true,
+      (m1),m2,m3,m4,m5,m6) $;
+
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+;
+/* [wxMaxima: input   end   ] */
+
+
+
+/* Maxima can't load/batch files which end with a comment! */
+"Created with wxMaxima"$
