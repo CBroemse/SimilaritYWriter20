@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xml="http://www.w3.org/XML/1998/namespace" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:dc="http://purl.org/dc/elements/1.1/"
-   xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" id="root" xml:space="preserve" width="700" height="3700" onload="OnLoadEvent(evt)" onmousemove="get_coordo(evt)">
+   xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" id="root" xml:space="preserve" width="700" height="4900" onload="OnLoadEvent(evt)" onmousemove="get_coordo(evt)">
 
 <script><![CDATA[
 var compati = new Array(true,true,true,true,true,true)
@@ -98,6 +98,17 @@ check if there is a </text>
 
 
 <text x="50" y="3020" font-size="18"  fill="green" fill-opacity="0.8">  pv1 ..pv3 as Test+ pv4 ..pv6 without operator+ yields the same as above</text>
+
+<text x="50" y="3040" font-size="18"  fill="green" fill-opacity="0.8"> the vowels no-Y , no square matrix -> pv1: Aa pv2: AaEe .. pv6: Oo </text>
+<image href="ptclibrary/wit2Case2bigNsmalLetNoSquarematrixptc5.png"  x="10" y="3060"  fill-opacity="0.8"/>
+<text x="50" y="3440" font-size="18"  fill="green" fill-opacity="0.8"> the vowels no-Y , no square matrix -> yield the same as above</text>
+
+<text x="50" y="3460" font-size="18"  fill="green" fill-opacity="0.8">below, same vowels other persective of ptc5 note the doubled lines </text>
+<image href="ptclibrary/wit2vowelsNoY.png"  x="10" y="3460"  fill-opacity="0.8"/>
+
+<text x="50" y="3840" font-size="18"  fill="green" fill-opacity="0.8">vowels no-Y, square 4x4 matrix; pv1:AaE0 pv2:eIi0 pv3:Oou0  ..pv6: u000 </text>
+<image href="ptclibrary/wit2Case2bigNsmalsquarematrix4x4ptc5.png"  x="10" y="3860"  fill-opacity="0.8"/>
+
 
 <text x="50" y="150">hexagon plane</text>
 <text x="50" y="165">  adjustable area</text>
