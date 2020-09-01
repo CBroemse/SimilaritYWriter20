@@ -182,7 +182,7 @@ wit2Case3alphabetNoDoublepv2pv5zerossquarematrix6x6ptc5.png
 <polyline id="hexagon" points="87,0 174,50 174,150 87,200 0,150 0,50 87,0" class="room" onclick="changeFill()"/>
 </g>
 <g transform="translate(78,7620)" >
-<polyline id="hexagon" points="87,0 174,50 174,150 87,200 0,150 0,50 87,0" class="room" onclick="changeFill()"/>
+<polyline id="hexagon" points="87,0 174,50 174,150 87,200 0,150 0,50 87,0" class="project" onclick="changeFill()"/>
 </g>
 
 <text x="50" y="7540" font-size="18"  fill="blue" fill-opacity="0.8">file: wit2Case3alphabetDoublepv2pv5squarematrix6x6ptc5Nobackground.png</text>
@@ -474,6 +474,9 @@ wit2Case3alphabetNoDoublepv2pv5zerossquarematrix6x6ptc5.png
 </g>
 
 </g>
+/* 1-9-2020 added case for ptc5 overview
+  role model on how to transform to 58 / 135 degree to ? ....
+  when changing up the file dont delete this paragraph */
 <g>
     <rect
        class="room"
@@ -489,6 +492,22 @@ wit2Case3alphabetNoDoublepv2pv5zerossquarematrix6x6ptc5.png
        height="123"
        width="94"
        />
+  <g transform="translate(29250,29900)" >
+<polyline id="hexagon" points="87,0 174,50 174,150 87,200 0,150 0,50 87,0" class="hexa" onclick="changeFill()"/>
+</g>
+ <g transform="translate(29150,30000)" >
+<polyline id="hexagon" points="87,0 174,50 174,150 87,200 0,150 0,50 87,0" class="room" onclick="changeFill()"/>
+</g>
+ <g transform="translate(37500,38530)" >
+<polyline id="hexagon" points="87,0 174,50 174,150 87,200 0,150 0,50 87,0" class="hexa" onclick="changeFill()"/>
+</g>
+ <g transform="translate(37600,38530)" >
+<polyline id="hexagon" points="87,0 174,50 174,150 87,200 0,150 0,50 87,0" class="room" onclick="changeFill()"/>
+</g>
+ <g transform="translate(37600,38430)" >
+<polyline id="hexagon" points="87,0 174,50 174,150 87,200 0,150 0,50 87,0" class="room" onclick="changeFill()"/>
+</g>
+
 
 <ellipse cx="-316" cy="715" rx="590" ry="4" stroke="black" stroke-width="2px" style="fill:green">
 <animateColor attributeName="fill" attributeType="CSS" from="blue" to="lime" begin="0.1s" dur="1s"  repeatCount="indefinite" />
