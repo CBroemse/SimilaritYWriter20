@@ -100,7 +100,7 @@ check if there is a </text>
 <text x="50" y="3020" font-size="18"  fill="green" fill-opacity="0.8">  pv1 ..pv3 as Test+ pv4 ..pv6 without operator+ yields the same as above</text>
 
 <text x="50" y="3040" font-size="18"  fill="green" fill-opacity="0.8"> the vowels no-Y , no square matrix -> pv1: Aa pv2: AaEe .. pv6: Oo </text>
-<image href="ptclibrary/wit2Case2bigNsmalLetNoSquarematrixptc5.png"  x="10" y="3060"  fill-opacity="0.8"/>
+<image href="ptclibrary/wit2Case2bigNsmalLetNosquarematrixptc5.png"  x="10" y="3060"  fill-opacity="0.8"/>
 <text x="50" y="3440" font-size="18"  fill="green" fill-opacity="0.8"> the vowels no-Y , no square matrix -> yield the same as above</text>
 
 <text x="50" y="3460" font-size="18"  fill="green" fill-opacity="0.8">below, same vowels other perspective of ptc6! note the doubled lines </text>
@@ -124,6 +124,28 @@ check if there is a </text>
 
 <image href="ptclibrary/wit2Case2vowelsDoublepv2pv4run2Nosquarematrixptc5.png"  x="10" y="4760"  fill-opacity="0.8"/>
 <image href="ptclibrary/wit2Case2vowelsDoublepv2pv4run1Nosquarematrixptc5.png"  x="10" y="5160"  fill-opacity="0.8"/>
+
+<text x="50" y="5580" font-size="18"  fill="green" fill-opacity="0.8">run3: vowels with-Y, square 5x5 matrix; added zeros, no pv2 pv5 double </text>
+<text x="50" y="5600" font-size="18"  fill="blue" fill-opacity="0.8">pv1: AaEe0 </text>
+<text x="50" y="5620" font-size="18"  fill="blue" fill-opacity="0.8">pv2: AaEeI</text>
+<text x="50" y="5640" font-size="18"  fill="blue" fill-opacity="0.8">pv3: i0000</text>
+<text x="50" y="5660" font-size="18"  fill="blue" fill-opacity="0.8">pv4: OoUu0</text>
+<text x="50" y="5680" font-size="18"  fill="blue" fill-opacity="0.8">pv5: OoU0Y</text>
+<text x="50" y="5700" font-size="18"  fill="blue" fill-opacity="0.8">pv6: y0000 </text>
+
+
+<text x="50" y="5720" font-size="18"  fill="yellow" fill-opacity="0.8">
+in Wxmaxima plot , the change between this and the upper run1 and 2 will only appear with ptc5 (100) check length list in 'lib'  </text>
+<text x="50" y="5740" font-size="18"  fill="purple" fill-opacity="0.8">the 3 button leads to a different vector the</text>
+
+<text x="50" y="5760" font-size="18"  fill="purple" fill-opacity="0.8">red upper most on the right side a vector is named,</text>
+<text x="50" y="5780" font-size="18"  fill="purple" fill-opacity="0.8">all vectors in this context, so far depend on ptc5:</text>
+
+<text x="50" y="5800" font-size="18"  fill="red" fill-opacity="0.8"> sqr5rightTop (ptc5) = sqrt5rT </text>
+
+<text x="50" y="5820" font-size="18"  fill="green" fill-opacity="0.8">
+file: lala1Examples/wit2Case2vowelspv2pv4run3squarematrixptc5.wxm </text>
+
 
 
 <text x="50" y="150">hexagon plane</text>
