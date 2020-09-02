@@ -66,17 +66,27 @@ body {
  catalogue
 
  * a short overview (for more details see lib)
+		
+ * catalogue of various ptc functions 		
+		
  * links to plotted ptc examples
+
+		
+		
+
+		
 		
 Mq-functions:
 --------------
 The mq functions are based on the principle of overlaying
 periodic functions with each other. They could be applied to data way up stream
 beforehand. 
- data  ->  mq functions -> (kArmTrack5) -> ptcs -> wohlGeor functions -> output (String) -> plot
+		
+    data  ->  mq functions -> (kArmTrack5) -> ptcs -> wohlGeor functions -> output (String) -> plot
 
 experiment2 tests a more down stream approach 
- data -> -> (kArmTrack5) -> ptcs -> MQ FUNCTIONS -> wohlGeor functions -> output (String) -> plot
+		
+    data -> -> (kArmTrack5) -> ptcs -> MQ FUNCTIONS -> wohlGeor functions -> output (String) -> plot
 
 *>let functionalizeMQ3 n fstOsnd = F.fofourierRAW n fstOsnd [F.fopanfourier1MQ3,F.fopanfourier2MQ3,F.fopanfourier3MQ3]
 
@@ -94,10 +104,13 @@ function:
 *>let ffourierMQ3 x n fstOSnd = (sin (head (map realToFrac (fun3  n fstOSnd)))*x)
 
 -------------------------------------------
-transform MQ -> wohlGeor function -> pv1 ..pv6 -> output [String] -> plot
+ptc -> transform MQ -> wohlGeor function -> pv1 ..pv6 -> output [String] -> plot
+		
 *>let fourierMQ3 x n =  show (ffourierMQ3 x n 1) + (ffourierMQ3 x n 2) + (ffourierMQ3 x n 3) 
--------------------------------------------	pv1: 
+-------------------------------------------	
+	pv1: fourier 1 1 
 
+		
 </textarea>
 <br><br>
 <a href= "" style="border-radius: 12px; padding: 2px 5px;" target="_parent">ptc5 with ptc0</a>
