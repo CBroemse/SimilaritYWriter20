@@ -88,21 +88,21 @@ experiment2 tests a more down stream approach
 		
     data -> -> (kArmTrack5) -> ptcs -> MQ FUNCTIONS -> wohlGeor functions -> output (String) -> plot
 
-*>let functionalizeMQ3 n fstOsnd = F.fofourierRAW n fstOsnd [F.fopanfourier1MQ3,F.fopanfourier2MQ3,F.fopanfourier3MQ3]
+-- case4
+-- write a destictable MQ function 
+-- without pv functions 
+-- import from FourierCLASSIFIERS
+functionalizeMQ3 n fstOsnd = F.fofourierRAW n fstOsnd [F.fopanfourier1MQ3,F.fopanfourier2MQ3,F.fopanfourier3MQ3]
+fun3 n fstOSnd = functionalizeMQ3 n fstOSnd 
+ffourierMQ3 x n fstOSnd = (sin (head (map realToFrac (fun3  n fstOSnd)))*x)
+fourierMQ3 x n =   (ffourierMQ3 x n 1) + (ffourierMQ3 x n 2) + (ffourierMQ3 x n 3)
+mapFour w r =  (fourierMQ3 r) w
+tussenStap  r z = last $ map (mapFour r) [1..z]
+fotestExp2MQ w r = (tussenStap r w)
+preptestExp2MQ r = map (fotestExp2MQ r ) [1..3]
+testExp2MQ r = map preptestExp2MQ [1..r]
 
- -- still not good to destinct
-*> let fun3 n fstOSnd = functionalizeMQ3 n fstOsnd 
-*>functionalizeMQ3 1 1
-[7]
-*> functionalizeMQ3 1 2
-[2]
-*> functionalizeMQ3 1 3
-[3]
-
-function:
-
-*>let ffourierMQ3 x n fstOSnd = (sin (head (map realToFrac (fun3  n fstOSnd)))*x)
-
+with pv functions
 -------------------------------------------
 ptc -> transform MQ -> wohlGeor function -> pv1 ..pv6 -> output [String] -> plot
 		
