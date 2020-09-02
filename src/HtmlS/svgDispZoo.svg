@@ -35,46 +35,32 @@ function changeFill() {
 }
 </script>
 <g>
-<text x="50" fill="green" y="10">ptc 4 
-values: 10 
-refresh mode</text>
-</g>
-<g>
-<text x="50" y="90"  fill="yellow" fill-opacity="0.8" >screen:
- Obsverve the ptc functions in 2d </text>
-<text x="50" y="110"  fill="yellow" fill-opacity="0.8"> and transform to 3d. </text>
-
-<animate attributeType="CSS" attributeName="opacity" 
-from="1" to="0" begin="10s" dur="0.2s" fill="freeze" />
-
-</g>
-<g>
 	
-/* text what to do */
-<text x="50" y="480"  fill="green" fill-opacity="0.8" >screen:
- Obsverve the ptc functions in 2d </text>
-<text x="50" y="500"  fill="green" fill-opacity="0.8"> and transform to 3d.
-check if there is a </text>
-<text x="50" y="520"  fill="green" fill-opacity="0.8" >
- * relation to the function 'daZip' </text>
-<text x="50" y="540"  fill="green" fill-opacity="0.8">
- * there should be 1d graphs  </text>
-<text x="50" y="560"  fill="green" fill-opacity="0.8">   connecting the vertices (points) </text>
-<text x="50" y="580"  fill="green" fill-opacity="0.8">   how can that be achievd and how </text>
-<text x="50" y="600" fill="green" > does that pay out in </text>
-<text x="50" y="620"  fill="green" fill-opacity="0.8">   the transformation? </text>
-<text x="50" y="640"  fill="green" fill-opacity="0.8" >
- * include a timer or watch</text>
 
 
-<image href="ptclibrary/wit2Case1bigNsmalLetNosquarematrixptc5Operator+1to4.png"  x="10" y="50"  fill-opacity="0.8"/>
-<text x="50" y="50" font-size="18"  fill="green" fill-opacity="0.8">PTC5 pv1 ..pv4 as Test+ pv5 ..pv6 without operator+ </text>
-<text x="50" y="70" font-size="18"  fill="green" fill-opacity="0.8"> ptc5; Aa+BbCcDdEe FfGgHhI+iJj... -> pv1:Aa+BbCcDdEeFfGg pv2:Aa+BbCc.. pv3:HhI+iJj... </text>
-<text x="50" y="90" font-size="18"  fill="green" fill-opacity="0.8">yields the same as above </text>
+<image href="ptclibrary/combisPtcsNoTussenstap3789.png"  x="10" y="50"  fill-opacity="0.8"/>
+<text x="50" y="30" font-size="18"  fill="green" fill-opacity="0.8">COMBINATIONS: (ptc3 5) (ptc7 25) (ptc8 150)...  </text>
+<text x="50" y="50" font-size="18"  fill="green" fill-opacity="0.8"> ... (ptc9 100) (ptc7 125) (ptc3 50) </text>
+<text x="50" y="205" font-size="18"  fill="green" fill-opacity="0.8">same as below </text>
 
-<image href="ptclibrary/wit2Case1bigNsmalLetNosquarematrixptc5.png" x="10" y="500"  fill-opacity="0.8"/>
-<text x="50" y="490" font-size="18"  fill="green" fill-opacity="0.8"> ptc5; AaBbCcDdEe FfGgHhIiJj... -> pv1:AaBbCcDdEeFfGg pv2:AaBbCc.. pv3:HhIiJj... </text>
+<text x="50" y="320" font-size="18"  fill="green" fill-opacity="0.8">COMBINATIONS: (ptc3 5) (ptc7 25) (ptc8 150)... </text>
+<text x="50" y="340" font-size="18"  fill="red" fill-opacity="0.8"> ..(ptc9 100) (ptc7 125) (ptc3 50),line4 error but runs</text>
+<text x="50" y="360" font-size="18"  fill="green" fill-opacity="0.8"> progVar1 = show(tussenStap 1 1) </text>
+<text x="50" y="380" font-size="18"  fill="green" fill-opacity="0.8"> progVar2 = (show (tussenStap 1 1))++(show(tussenStap 1 2))  </text>
+<text x="50" y="400" font-size="18"  fill="green" fill-opacity="0.8"> progVar3 = (show(tussenStap 1 2)) </text>
+<text x="50" y="420" font-size="18"  fill="green" fill-opacity="0.8"> progVar4 = (show(tussenStap 1 3)) </text>
+<text x="50" y="440" font-size="18"  fill="green" fill-opacity="0.8"> progVar5 = (show (tussenStap 1 3))++(show(tussenStap 1 4)) </text>
+<text x="50" y="460" font-size="18"  fill="green" fill-opacity="0.8"> progVar6 = (show(tussenStap 1 4)) </text>
+<text x="50" y="480" font-size="18"  fill="red" fill-opacity="0.8"> note! tussenStap 4 4 should yield an error</text>
+<text x="50" y="500" font-size="18"  fill="red" fill-opacity="0.8"> but s.th. takes over, review code </text>
+<text x="50" y="520" font-size="18"  fill="blue" fill-opacity="0.8">file: ptclibrary/combisPtcsNoTussenstap3789otherperspective.png </text>
+<image href="ptclibrary/combisPtcsNoTussenstap3789otherperspective.png"  x="10" y="540"  fill-opacity="0.8"/>
 
+<text x="50" y="790" font-size="18"  fill="red" fill-opacity="0.8"> but s.th. takes over, review code </text>
+<text x="50" y="810" font-size="18"  fill="blue" fill-opacity="0.8">file: ptclibrary/combisPtcsNoTussenstap3789.png </text>
+<image href="ptclibrary/combisPtcsNoTussenstap3789.png"  x="10" y="830"  fill-opacity="0.8"/>
+
+<!--
 <image href="ptclibrary/wit2Case1bigLetNosquarematrixptc5.png" x="10" y="910"  fill-opacity="0.8"/>
 <text x="50" y="880" font-size="18"  fill="green" fill-opacity="0.8"> ptc5; ABCDE FGHIJKLMN OPQRST UVWXYZ -> pv1:ABCDEFG pv2:ABC.. pv3:HIJ... </text>
 <text x="50" y="1300" font-size="18"  fill="green" fill-opacity="0.8"> ptc5; abcdefg hijklmn opqrst uvwxyz -> pv1:abcdefg pv2:abcdefghijklmn pv3:hij... </text>
@@ -149,7 +135,7 @@ e.g use z-axis intersection sqrt5rT to track changes</text>
 file: lala1Examples/wit2Case2vowelspv2pv4run3squarematrixptc5.wxm </text>
 <image href="ptclibrary/wit2Case2vowelsDoublepv2pv4run3Nosquarematrixptc5.png"  x="10" y="5846"  fill-opacity="0.8"/>
 
-<!-- experiment2 case3  -->
+/* experiment2 case3  */
 <text x="50" y="6280" font-size="18"  fill="green" fill-opacity="0.8">
 experiment2 case3 </text>
 <text x="50" y="6300" font-size="18"  fill="green" fill-opacity="0.8">ptc5 case3: alphabet, square 6x6 matrix; added zeros, no pv2 pv5 double </text>
@@ -224,7 +210,6 @@ mq3withPVRautenJustLine1.png
 <text x="50" y="9540" font-size="18"  fill="red" fill-opacity="0.8"> but miracoulously ptc5 takes over, review code </text>
 <text x="50" y="9560" font-size="18"  fill="blue" fill-opacity="0.8">file: ptclibrary/mq3withPVRautenLine1to4.png </text>
 <image href="ptclibrary/mq3withPVRautenLine1to4.png"  x="10" y="9580"  fill-opacity="0.8"/>
-
 
 
 <text x="50" y="150">hexagon plane</text>
@@ -309,7 +294,7 @@ mq3withPVRautenJustLine1.png
 
 
     </style>
-<!-- the three honies -->
+/* the three honies */
  <g transform="translate(0,200)">
 
 <g transform="translate(115,173)">
@@ -326,12 +311,12 @@ mq3withPVRautenJustLine1.png
 </g> 
 
 
-<!-- Two overlap -->
+/* Two overlap */
 <g transform="translate(100,30);rotate(90);" >
 	
 </g>
 
-<!-- the three honies b -->
+/* the three honies b */
 <g transform="translate(100,0)">
 
 <g transform="translate(115,173)">
@@ -389,7 +374,7 @@ mq3withPVRautenJustLine1.png
 </g>
 
 
-<!-- C..._2_3_5 as hexagon -->
+/* C..._2_3_5 as hexagon */
 </g>
  <g transform="translate(0,500)">
  <g transform="translate(100,200)">
@@ -577,9 +562,13 @@ mq3withPVRautenJustLine1.png
  <animateTransform attributeName="transform" attributeType="XML" type="rotate" from="1" to="-360"  additive="sum" begin="43s" dur="5.0s" fill="freeze"/> 
 <animateTransform attributeName="transform" attributeType="XML" type="rotate" from="1" to="360"  additive="sum" begin="58s" dur="15.0s" repeatCount="1"/> 
 </g>
+
+
 /* go automate add layer to animate 3d svg plot 
 a Haskell function will write and automate the layer adding
 which way does initiate the animation set on timer or just on click or hover? */
+
+
 <g transform="translate(500,600)">
 <g>
     <ellipse cx="-148" cy="785" rx="30" ry="12" stroke="black" stroke-width="2px" style="fill:purple">
@@ -846,6 +835,7 @@ which way does initiate the animation set on timer or just on click or hover? */
  <animateTransform attributeName="transform" attributeType="XML" type="rotate" from="1" to="45"  additive="sum" begin="0.1" dur="0.1s" fill="freeze"/> 
 <animateTransform attributeName="transform" attributeType="XML" type="rotate" from="1" to="-45"  additive="sum" begin="40s" dur="2.0s" fill="freeze"/> 
  </g>
+-->
   </g>
 
 </svg>
