@@ -192,8 +192,8 @@ wit2Case3alphabetNoDoublepv2pv5zerossquarematrix6x6ptc5.png
 
 <text x="50" y="8400" font-size="18"  fill="red" fill-opacity="0.8">MQ3 general case linear, transpose (>2) otherwise error)</text>
 <text x="50" y="8420" font-size="18"  fill="green" fill-opacity="0.8"> mix linear and transpose in one plot</text>
-<text x="50" y="8440" font-size="18"  fill="green" fill-opacity="0.8">M.writeWXCloudNODE (testExp2MQ 1) ((testExp2MQ 2)) (transpose (testExp2MQ 3)) (testExp2MQ 4)... </text>
-<text x="50" y="8460" font-size="18"  fill="green" fill-opacity="0.8"> ... (transpose(testExp2MQ 5)) (transpose (testExp2MQ 6))...</text>
+<text x="50" y="8440" font-size="18"  fill="green" fill-opacity="0.8">M.writeWXCloudNODE (testExp2MQ 1) ((testExp2MQ 2))...</text>
+<text x="50" y="8460" font-size="18"  fill="green" fill-opacity="0.8"> ... (transpose (testExp2MQ 3)) (testExp2MQ 4)...</text>
 <text x="50" y="8480" font-size="18"  fill="green" fill-opacity="0.8"> ... (transpose(testExp2MQ 5)) (transpose (testExp2MQ 6)) </text>
 
 
