@@ -59,6 +59,7 @@ body {
 <body>
 <a href="svgDisp3.svg" style="border-radius: 12px; padding: 2px 5px;" target="iframe_b">ptc6</a>
 <a href="svgDisp4.svg" style="border-radius: 12px; padding: 2px 5px;" target="iframe_b">ptc5</a>
+<a href="svgDispZoo.svg" style="border-radius: 12px; padding: 2px 5px;" target="iframe_b">combinations</a>	
 <a href="#smessage2" style="border-radius: 12px; padding: 2px 5px;" target="iframe_c">down</a>
 
 <textarea name="message" class="storyTeller" rows="43" cols="50">
@@ -108,7 +109,13 @@ ptc -> transform MQ -> wohlGeor function -> pv1 ..pv6 -> output [String] -> plot
 		
 *>let fourierMQ3 x n =  show (ffourierMQ3 x n 1) + (ffourierMQ3 x n 2) + (ffourierMQ3 x n 3) 
 -------------------------------------------	
-	pv1: fourier 1 1 
+	pv1: show(tussenStap 1 1) 
+        pV2: (show (tussenStap 1 1))++(show(tussenStap 1 2)) 
+        pV3: (show(tussenStap 1 2)) 
+        pV4: (show(tussenStap 1 3)) 
+        pV5: (show (tussenStap 1 3))++(show(tussenStap 1 4)) 
+        pV6: (show(tussenStap 1 4)) 
+
 
 		
 </textarea>
