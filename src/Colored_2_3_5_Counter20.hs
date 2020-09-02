@@ -174,12 +174,12 @@ runK d = do
 progVarRAW t r = do 
     let df = head (ausw t r)
     df
-progVar1 = "Aa+BbCcDdEeFfGg" --"abcdefg" --"AAAaaaBBbb" --"Aa" --"Cesar" --"AAABB" --range --"1" --range211 --"a" --"The world" --"AAABB" 
-progVar2 = "Aa+BbCcDdEeFfGgHhI+iJhKkLlMmNn" --"abcdefghijklmn" --"AAAaaaBBbbAAaaBbAaBb" --"AaEe" --"CeaserDelight" --"AAABB"++range --"AB" --range --"ab" --range --"ab" --"The world is everything" --"AAABBAABAB"
-progVar3 = "HhI+iJjKkLlMmNn" --"hijklmn" --"AAAaaaBbAaBb" --"Ee" --"Deight" --range --"b" --range --"b" --"is everything" --"AABAB"
-progVar4 = "OoPpQ+qRrSsTt" --"opqrst" --"AAAaaa" --"Ii" --"Elf" --"AAA" --"c" --range --"b" --tht is" -- find the "a" in wxms "that is" --"AAA"
-progVar5 = "OoPpQ+qRrSsTtUuVvWwX+xYyZz" --"opqrstuvwxyz" --"AAAaaaBBBbbbAAaa" --"IiOo" --"ElfFool" --"AAABBBAA" --"cd" --range --"bc" --"tht is the cse" --"that is the case" --"AAABBBAA"
-progVar6 = "UuVvWwX+xYyZz" --"uvwxyz" --"Oo" --"Fool" --"BBBAA" --"d" --range --"c" --"the cse" --"the case" --"BBBAA"
+progVar1 = "abcdef" --"abcde0" --"AaEe0" --"AaEe" --"Aa" --"Cesar" --"AAABB" --range --"1" --range211 --"a" --"The world" --"AAABB" 
+progVar2 = "abcdefghijkl" --"fghij0" --"AaEeI" --"AaEeIi000" --"AaEe" --"CeaserDelight" --"AAABB"++range --"AB" --range --"ab" --range --"ab" --"The world is everything" --"AAABBAABAB"
+progVar3 = "mnopqr" --"klmno0" --"i0000" --"Ee" --"Deight" --range --"b" --range --"b" --"is everything" --"AABAB"
+progVar4 = "stuvwx" --"pqrst0" --"OoUu0" --"OoUu" --"Ii" --"Elf" --"AAA" --"c" --range --"b" --tht is" -- find the "a" in wxms "that is" --"AAA"
+progVar5 = "yz0000000000" --"uvwxy0" --"OoUuY" --"OoUuYy000" --"AAAaaaBBBbbbA+Aaa" --"IiOo" --"ElfFool" --"AAABBBAA" --"cd" --range --"bc" --"tht is the cse" --"that is the case" --"AAABBBAA"
+progVar6 = "000000" --"z00000" --"y0000" --"y000" -- "BBBbbbA+Aaa" --"uvwxyz" --"uvwxyz" --"Oo" --"Fool" --"BBBAA" --"d" --range --"c" --"the cse" --"the case" --"BBBAA"
 
 -------------------------------------------
 --active 26-8-2020
@@ -200,6 +200,21 @@ range221   = map rangeRAW (concat forange221)
 
 -- test1 vowels
 vow0 =  (lines "AaE0\neIi0\nOou0\nU000")
+
+
+-- case4
+-- write a destictable MQ function 
+-- without pv functions 
+-- import from FourierCLASSIFIERS
+functionalizeMQ3 n fstOsnd = F.fofourierRAW n fstOsnd [F.fopanfourier1MQ3,F.fopanfourier2MQ3,F.fopanfourier3MQ3]
+fun3 n fstOSnd = functionalizeMQ3 n fstOSnd 
+ffourierMQ3 x n fstOSnd = (sin (head (map realToFrac (fun3  n fstOSnd)))*x)
+fourierMQ3 x n =   (ffourierMQ3 x n 1) + (ffourierMQ3 x n 2) + (ffourierMQ3 x n 3)
+mapFour w r =  (fourierMQ3 r) w
+tussenStap  r z = last $ map (mapFour r) [1..z]
+fotestExp2MQ w r = (tussenStap r w)
+preptestExp2MQ r = map (fotestExp2MQ r ) [1..3]
+testExp2MQ r = map preptestExp2MQ [1..r]
 ------------------------------------------
 
 
@@ -605,12 +620,13 @@ kArmTest5 bonelist mofaList connectWrist dit dit2 mCommand crit= do
               --M.writeWXCloudNODE (pop) (ptc2 5) (ptc3 5) (ptc4 5) (ptc5 5) (ptc6 5)
            --   M.writeWXCloudNODE (ptc3b 1) (ptc3b 2) (ptc3b 3) (ptc3b 4) (ptc3b 5) (ptc3b 6)
            --   M.writeWXCloudNODE (ptc3 2) (ptc3 4) (ptc3 6) (ptc3 8) (ptc3 20) (ptc3 50)  -- nested graph ? 
-          --    M.writeWXCloudNODE (ptc2 5) (ptc2 25) (ptc2 50) (ptc2 100) (ptc2 125) (ptc2 150) -- ???
-          --    M.writeWXCloudNODE (ptc5 5) (ptc5 25) (ptc5 50) (ptc5 100) (ptc5 125) (ptc5 150) --  a plaine  CHANGEABLE with progVars
+          --    M.writeWXCloudNODE (ptc2 5) (ptc2 25) (ptc2 50) (ptc2 100) (ptc2 125) (ptc2 150) -- ??? 
+              M.writeWXCloudNODE (ptc3 5) (ptc7 25) (ptc8 150) (ptc9 100) (ptc7 125) (ptc3 50) --  a plaine  CHANGEABLE with progVars
+              M.writeWXCloudNODE (testExp2MQ 5) (testExp2MQ 25) (testExp2MQ 30) (testExp2MQ 100) (testExp2MQ 125) (testExp2MQ 130) --(ptc7 25) (ptc8 150) (ptc9 100) (ptc7 125) (ptc3 50)
          --     M.writeWXCloudNODE (ptc6 5) (ptc6 25) (ptc6 50) (ptc6 100) (ptc6 125) (ptc6 150) -- interesting
             --  M.writeWXCloudNODE (ptc7 5) (ptc7 25) (ptc7 50) (ptc7 100) (ptc7 125) (ptc7 150) -- half 'crown'
              -- M.writeWXCloudNODE (ptc8 5) (ptc8 25) (ptc8 50) (ptc8 100) (ptc8 125) (ptc8 150) -- similar to above
-              M.writeWXCloudNODE (nub(ptc6 5)) (nub(ptc6 25)) (nub(ptc6 50)) (nub(ptc6 100)) (nub(ptc6 125)) (nub(ptc6 5))    -- similar to above 
+           --   M.writeWXCloudNODE (nub(ptc6 5)) (nub(ptc6 25)) (nub(ptc6 50)) (nub(ptc6 100)) (nub(ptc6 125)) (nub(ptc6 5))    -- similar to above 
            --   M.writeWXCloudNODE (ptc0 5) (ptc0 25) (ptc0 50) (ptc0 100) (ptc0 125) (ptc0 150) -- ???
 
 --              M.writeWXCloudNODE (ptc2 5) (ptc2 15) (ptc2 25) (ptc4 2) (ptc4 3) (ptc4 5)
