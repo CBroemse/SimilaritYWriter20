@@ -221,7 +221,7 @@ mq3withPVRautenJustLine1.png
 <text x="50" y="9480" font-size="18"  fill="green" fill-opacity="0.8"> progVar5 = (show (tussenStap 3 3))++(show(tussenStap 3 4)) </text>
 <text x="50" y="9500" font-size="18"  fill="green" fill-opacity="0.8"> progVar6 = (show(tussenStap 3 4)) </text>
 <text x="50" y="9520" font-size="18"  fill="red" fill-opacity="0.8"> note! tussenStap 4 4 should yield an error</text>
-<text x="50" y="9540" font-size="18"  fill="red" fill-opacity="0.8"> but miracoulously ptc5 takes over, review code </text>
+<text x="50" y="9540" font-size="18"  fill="red" fill-opacity="0.8"> choose Int>4  </text>
 <text x="50" y="9560" font-size="18"  fill="blue" fill-opacity="0.8">file: ptclibrary/mq3withPVRautenLine1to4.png </text>
 <image href="ptclibrary/mq3withPVRautenLine1to4.png"  x="10" y="9580"  fill-opacity="0.8"/>
 
