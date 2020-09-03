@@ -1,0 +1,852 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xml="http://www.w3.org/XML/1998/namespace" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" id="root" xml:space="preserve" width="700" height="10000" onload="OnLoadEvent(evt)" onmousemove="get_coordo(evt)">
+
+<script><![CDATA[
+var compati = new Array(true,true,true,true,true,true)
+var comments = new Array(" "," "," "," "," "," ")
+var nb_comments = 6
+
+function write_compati(evt)
+{
+	svgdoc = evt.target.ownerDocument
+	for (var i = 0 ; i < nb_comments ; i ++)
+	{
+		if (compati[i])
+			svgdoc.getElementById("coche" + i.toString()).setAttributeNS(null, "stroke" , "blue")
+		else
+			svgdoc.getElementById("coche" + i.toString()).setAttributeNS(null, "stroke" , "none")
+		svgdoc.getElementById("comment" + i.toString()).firstChild.data = comments[i]
+	}
+}
+
+function get_coordo(evt)
+{
+	evt.target.ownerDocument.getElementById("cX").firstChild.data = evt.clientX
+	evt.target.ownerDocument.getElementById("cY").firstChild.data = evt.clientY 
+	evt.target.ownerDocument.getElementById("sX").firstChild.data = evt.screenX
+	evt.target.ownerDocument.getElementById("sY").firstChild.data = evt.screenY
+}
+
+]]></script>
+<script>
+
+function changeFill() {
+    document.getElementById("hexagon").style.fill = "rgb(" + Math.floor(255 * Math.random()) + ", " + Math.floor(255 * Math.random()) + ", " + Math.floor(255 * Math.random()) + ")";
+}
+</script>
+<g>
+<text x="50" fill="green" y="10">ptc 4 
+values: 10 
+refresh mode</text>
+</g>
+<g>
+<text x="50" y="90"  fill="yellow" fill-opacity="0.8" >screen:
+ Obsverve the ptc functions in 2d </text>
+<text x="50" y="110"  fill="yellow" fill-opacity="0.8"> and transform to 3d. </text>
+
+<animate attributeType="CSS" attributeName="opacity" 
+from="1" to="0" begin="10s" dur="0.2s" fill="freeze" />
+
+</g>
+<g>
+	
+/* text what to do */
+<text x="50" y="480"  fill="green" fill-opacity="0.8" >screen:
+ Obsverve the ptc functions in 2d </text>
+<text x="50" y="500"  fill="green" fill-opacity="0.8"> and transform to 3d.
+check if there is a </text>
+<text x="50" y="520"  fill="green" fill-opacity="0.8" >
+ * relation to the function 'daZip' </text>
+<text x="50" y="540"  fill="green" fill-opacity="0.8">
+ * there should be 1d graphs  </text>
+<text x="50" y="560"  fill="green" fill-opacity="0.8">   connecting the vertices (points) </text>
+<text x="50" y="580"  fill="green" fill-opacity="0.8">   how can that be achievd and how </text>
+<text x="50" y="600" fill="green" > does that pay out in </text>
+<text x="50" y="620"  fill="green" fill-opacity="0.8">   the transformation? </text>
+<text x="50" y="640"  fill="green" fill-opacity="0.8" >
+ * include a timer or watch</text>
+
+
+<image href="ptclibrary/wit2Case1bigNsmalLetNosquarematrixptc7Operator+1to4.png"  x="10" y="50"  fill-opacity="0.8"/>
+<text x="50" y="50" font-size="18"  fill="green" fill-opacity="0.8">PTC5 pv1 ..pv4 as Test+ pv5 ..pv6 without operator+ </text>
+<text x="50" y="70" font-size="18"  fill="green" fill-opacity="0.8"> ptc5; Aa+BbCcDdEe FfGgHhI+iJj... -> pv1:Aa+BbCcDdEeFfGg pv2:Aa+BbCc.. pv3:HhI+iJj... </text>
+<text x="50" y="90" font-size="18"  fill="green" fill-opacity="0.8">yields the same as above </text>
+
+<image href="ptclibrary/wit2Case1bigNsmalLetNosquarematrixptc7.png" x="10" y="500"  fill-opacity="0.8"/>
+<text x="50" y="490" font-size="18"  fill="green" fill-opacity="0.8"> ptc5; AaBbCcDdEe FfGgHhIiJj... -> pv1:AaBbCcDdEeFfGg pv2:AaBbCc.. pv3:HhIiJj... </text>
+
+<image href="ptclibrary/wit2Case1bigLetNosquarematrixptc7.png" x="10" y="910"  fill-opacity="0.8"/>
+<text x="50" y="880" font-size="18"  fill="green" fill-opacity="0.8"> ptc5; ABCDE FGHIJKLMN OPQRST UVWXYZ -> pv1:ABCDEFG pv2:ABC.. pv3:HIJ... </text>
+<text x="50" y="1300" font-size="18"  fill="green" fill-opacity="0.8"> ptc5; abcdefg hijklmn opqrst uvwxyz -> pv1:abcdefg pv2:abcdefghijklmn pv3:hij... </text>
+<text x="50" y="1320" font-size="18"  fill="green" fill-opacity="0.8">        yields the samae as above</text>
+
+<image href="ptclibrary/wit2Example1smalLetptc7.png"  x="10" y="1340"  fill-opacity="0.8"/>
+<text x="50" y="1340" font-size="18"  fill="green" fill-opacity="0.8"> ptc5; Example1 all small letters</text>
+
+
+<image href="ptclibrary/wit2Example1bignsmallLettersGroups1ptc7.png"  x="10" y="1740"  fill-opacity="0.8"/>
+<text x="50" y="1720" font-size="18"  fill="green" fill-opacity="0.8"> ptc5; AAAaaBBbb AAaaBbAaBb AAAaaa BBBbbbAAaa -> pv1:AAAaaBBbb pv2:AAAaaaBBbb... </text>
+
+
+<image href="ptclibrary/wit2Example1bigLetptc7.png"  x="10" y="2160"  fill-opacity="0.8"/>
+<text x="50" y="2140" font-size="18"  fill="green" fill-opacity="0.8"> ptc5; AAABB AABAB AAA BBBAA -> pv1:AAABB pv2:AA.. pv3:AABA... </text>
+
+<image href="ptclibrary/example1bigNsmalLetptc5Operator+.png"  x="10" y="2620"  fill-opacity="0.8"/>
+<text x="50" y="2580" font-size="18"  fill="green" fill-opacity="0.8">Test+: mix in arythmetic operator+ in 2 3 5 7 rythm, find a nice hexagon that fits ?</text>
+
+<text x="50" y="2600" font-size="18"  fill="green" fill-opacity="0.8"> ptc5;Aa+BbCcDdEe FfGgHhI+iJj... -> pv1:Aa+BbCcDdEeFfGg pv2:Aa+BbCc.. pv3:HhI+iJj... </text>
+
+
+<text x="50" y="3020" font-size="18"  fill="green" fill-opacity="0.8">  pv1 ..pv3 as Test+ pv4 ..pv6 without operator+ yields the same as above</text>
+
+<text x="50" y="3040" font-size="18"  fill="green" fill-opacity="0.8"> the vowels no-Y , no square matrix -> pv1: Aa pv2: AaEe .. pv6: Oo </text>
+<image href="ptclibrary/wit2Case2bigNsmalLetNosquarematrixptc7.png"  x="10" y="3060"  fill-opacity="0.8"/>
+<text x="50" y="3440" font-size="18"  fill="green" fill-opacity="0.8"> the vowels no-Y , no square matrix -> yield the same as above</text>
+
+<text x="50" y="3460" font-size="18"  fill="green" fill-opacity="0.8">below, same vowels other perspective of ptc6! note the doubled lines </text>
+<image href="ptclibrary/wit2vowelsNoY.png"  x="10" y="3460"  fill-opacity="0.8"/>
+
+<text x="50" y="3860" font-size="18"  fill="green" fill-opacity="0.8">vowels no-Y, square 4x4 matrix; pv1:AaE0 pv2:eIi0 pv3:Oou0  ..pv6: u000 </text>
+<image href="ptclibrary/wit2Case2bigNsmalsquarematrix4x4ptc7.png"  x="10" y="3860"  fill-opacity="0.8"/>
+
+<text x="50" y="4260" font-size="18"  fill="green" fill-opacity="0.8">vowels with-Y, irregular matrix, double pv2 pv4; </text>
+
+<text x="50" y="4280" font-size="18"  fill="green" fill-opacity="0.8">
+  pv1:AaEeI pv2:AaEeIi000 pv3:i000  pv4: OoU0  pv5: OoU0uYy0  pv6: uYy0 </text>
+<text x="50" y="4300" font-size="18"  fill="green" fill-opacity="0.8">vowels no Y, irregular matrix, double pv2 pv4; yield the same </text>
+
+<image href="ptclibrary/wit2Case2vowelsDoublepv2pv4Nosquarematrixptc7.png"  x="10" y="4305"  fill-opacity="0.8"/>
+
+<text x="50" y="4720" font-size="18"  fill="green" fill-opacity="0.8">run1: vowels with-Y, irregular matrix, double pv2 pv4; added zeros </text>
+<text x="50" y="4740" font-size="18"  fill="green" fill-opacity="0.8">
+  pv1:AaEe pv2:AaEeIi000 pv3:i000  pv4: OoUu  pv5: OoU0Yy000  pv6: y000 </text>
+
+
+<image href="ptclibrary/wit2Case2vowelsDoublepv2pv4run2Nosquarematrixptc7.png"  x="10" y="4760"  fill-opacity="0.8"/>
+<image href="ptclibrary/wit2Case2vowelsDoublepv2pv4run1Nosquarematrixptc7.png"  x="10" y="5160"  fill-opacity="0.8"/>
+
+<text x="50" y="5580" font-size="18"  fill="green" fill-opacity="0.8">run3: vowels with-Y, square 5x5 matrix; added zeros, no pv2 pv5 double </text>
+<text x="50" y="5600" font-size="18"  fill="blue" fill-opacity="0.8">pv1: AaEe0 </text>
+<text x="50" y="5620" font-size="18"  fill="blue" fill-opacity="0.8">pv2: AaEeI</text>
+<text x="50" y="5640" font-size="18"  fill="blue" fill-opacity="0.8">pv3: i0000</text>
+<text x="50" y="5660" font-size="18"  fill="blue" fill-opacity="0.8">pv4: OoUu0</text>
+<text x="50" y="5680" font-size="18"  fill="blue" fill-opacity="0.8">pv5: OoU0Y</text>
+<text x="50" y="5700" font-size="18"  fill="blue" fill-opacity="0.8">pv6: y0000 </text>
+
+
+<text x="50" y="5720" font-size="18"  fill="yellow" fill-opacity="0.8">
+in Wxmaxima plot , the change between this and the upper run1 and 2 will only appear with ptc5 (100) check length list in 'lib'  </text>
+<text x="50" y="5740" font-size="18"  fill="purple" fill-opacity="0.8">the 3 button leads to a different vector the</text>
+
+<text x="50" y="5760" font-size="18"  fill="purple" fill-opacity="0.8">red upper most on the right side a vector is named,</text>
+<text x="50" y="5780" font-size="18"  fill="purple" fill-opacity="0.8">all vectors in this context, so far depend on ptc5:</text>
+
+<text x="50" y="5800" font-size="18"  fill="red" fill-opacity="0.8"> sqr5rightTop (ptc5) = sqrt5rT </text>
+<text x="50" y="5820" font-size="18"  fill="yellow" fill-opacity="0.8">
+e.g use z-axis intersection sqrt5rT to track changes</text>
+
+<text x="50" y="5840" font-size="18"  fill="green" fill-opacity="0.8">
+file: lala1Examples/wit2Case2vowelspv2pv4run3squarematrixptc7.wxm </text>
+<image href="ptclibrary/wit2Case2vowelsDoublepv2pv4run3Nosquarematrixptc5.png"  x="10" y="5846"  fill-opacity="0.8"/>
+
+<!-- experiment2 case3  -->
+<text x="50" y="6280" font-size="18"  fill="green" fill-opacity="0.8">
+experiment2 case3 </text>
+<text x="50" y="6300" font-size="18"  fill="green" fill-opacity="0.8">ptc5 case3: alphabet, square 6x6 matrix; added zeros, no pv2 pv5 double </text>
+<text x="50" y="6320" font-size="18"  fill="blue" fill-opacity="0.8">pv1: a b c d e 0 </text>
+<text x="50" y="6340" font-size="18"  fill="blue" fill-opacity="0.8">pv2: f g h i j 0</text>
+<text x="50" y="6360" font-size="18"  fill="blue" fill-opacity="0.8">pv3: k l m n o 0</text>
+<text x="50" y="6380" font-size="18"  fill="blue" fill-opacity="0.8">pv4: p q r s t 0</text>
+<text x="50" y="6400" font-size="18"  fill="blue" fill-opacity="0.8">pv5: u v w x y 0</text>
+<text x="50" y="6420" font-size="18"  fill="blue" fill-opacity="0.8">pv6: z 0 0 0 0 0 </text>
+<text x="50" y="6440" font-size="18"  fill="blue" fill-opacity="0.8">file: ptclibrary/wit2Case3alphabetNoDoublepv2pv5squarematrix6x6ptc7.png </text>
+<image href="ptclibrary/wit2Case3alphabetNoDoublepv2pv5squarematrix6x6ptc5.png"  x="10" y="6460"  fill-opacity="0.8"/>
+
+<text x="50" y="6900" font-size="18"  fill="green" fill-opacity="0.8">
+experiment2 case3 </text>
+<text x="50" y="6920" font-size="18"  fill="green" fill-opacity="0.8">ptc5 case3: alphabet, square 6x6 matrix; added zeros, no pv2 pv5 double </text>
+<text x="50" y="6940" font-size="18"  fill="blue" fill-opacity="0.8">pv1: a b c d e f </text>
+<text x="50" y="6960" font-size="18"  fill="blue" fill-opacity="0.8">pv2: g h i j k l</text>
+<text x="50" y="6980" font-size="18"  fill="blue" fill-opacity="0.8">pv3: m n o p q r</text>
+<text x="50" y="7000" font-size="18"  fill="blue" fill-opacity="0.8">pv4: s t u v w x</text>
+<text x="50" y="7020" font-size="18"  fill="blue" fill-opacity="0.8">pv5: y z 0 0 0 0</text>
+<text x="50" y="7040" font-size="18"  fill="blue" fill-opacity="0.8">pv6: 0 0 0 0 0 0 </text>
+<text x="50" y="7060" font-size="18"  fill="blue" fill-opacity="0.8">
+wit2Case3alphabetNoDoublepv2pv5zerossquarematrix6x6ptc7.png
+ </text>
+<image href="ptclibrary/wit2Case3alphabetNoDoublepv2pv5zerossquarematrix6x6ptc7.png"  x="10" y="7080"  fill-opacity="0.8"/>
+
+<text x="50" y="7500" font-size="18"  fill="green" fill-opacity="0.8">ptc5 case3: alphabet, square 6x6 matrix; added zeros, pv2 pv5 double -> subtile difference to above</text>
+<text x="50" y="7520" font-size="18"  fill="green" fill-opacity="0.8">placed some polygons  </text>
+<g transform="translate(28,7620)" >
+<polyline id="hexagon" points="87,0 174,50 174,150 87,200 0,150 0,50 87,0" class="room" onclick="changeFill()"/>
+</g>
+<g transform="translate(78,7620)" >
+<polyline id="hexagon" points="87,0 174,50 174,150 87,200 0,150 0,50 87,0" class="project" onclick="changeFill()"/>
+</g>
+
+<text x="50" y="7540" font-size="18"  fill="blue" fill-opacity="0.8">file: wit2Case3alphabetDoublepv2pv5squarematrix6x6ptc7Nobackground.png</text>
+<text x="50" y="7560" font-size="18"  fill="green" fill-opacity="0.8">orbits of:</text>
+<text x="50" y="7580" font-size="18"  fill="red" fill-opacity="0.8">sqrt5rT</text>
+<image href="ptclibrary/wit2Case3alphabetDoublepv2pv5squarematrix6x6ptc7Nobackground.png"  x="10" y="7700"  fill-opacity="0.8"/>
+
+<text x="50" y="8400" font-size="18"  fill="red" fill-opacity="0.8">MQ3 general case linear, transpose (>2) otherwise error)</text>
+<text x="50" y="8420" font-size="18"  fill="green" fill-opacity="0.8"> mix linear and transpose in one plot</text>
+<text x="50" y="8440" font-size="18"  fill="green" fill-opacity="0.8">M.writeWXCloudNODE (testExp2MQ 1) ((testExp2MQ 2))...</text>
+<text x="50" y="8460" font-size="18"  fill="green" fill-opacity="0.8"> ... (transpose (testExp2MQ 3)) (testExp2MQ 4)...</text>
+<text x="50" y="8480" font-size="18"  fill="green" fill-opacity="0.8"> ... (transpose(testExp2MQ 5)) (transpose (testExp2MQ 6)) </text>
+
+
+<text x="50" y="8500" font-size="18"  fill="blue" fill-opacity="0.8">file: ptclibrary/mq3NoPVLinear.png</text>
+<image href="ptclibrary/mq3NoPVLinear.png"  x="10" y="8480"  fill-opacity="0.8"/>
+
+<text x="50" y="8920" font-size="18"  fill="red" fill-opacity="0.8">MQ3 1..4, just line1</text>
+<text x="50" y="8940" font-size="18"  fill="green" fill-opacity="0.8"> progVar1 = show(tussenStap 1 1) </text>
+<text x="50" y="8960" font-size="18"  fill="green" fill-opacity="0.8"> progVar2 = (show (tussenStap 1 1))++(show(tussenStap 1 2))  </text>
+<text x="50" y="8980" font-size="18"  fill="green" fill-opacity="0.8"> progVar3 = (show(tussenStap 1 2)) </text>
+<text x="50" y="9000" font-size="18"  fill="green" fill-opacity="0.8"> progVar4 = (show(tussenStap 1 3)) </text>
+<text x="50" y="9020" font-size="18"  fill="green" fill-opacity="0.8"> progVar5 = (show (tussenStap 1 3))++(show(tussenStap 1 4)) </text>
+<text x="50" y="9040" font-size="18"  fill="green" fill-opacity="0.8"> progVar6 = (show(tussenStap 1 4)) </text>
+<text x="50" y="9060" font-size="18"  fill="blue" fill-opacity="0.8">file: ptclibrary/mq3withPVRautenJustLine1.png</text>
+<image href="ptclibrary/mq3withPVRautenJustLine1.png"  x="10" y="9080"  fill-opacity="0.8"/>
+
+
+<text x="50" y="9380" font-size="18"  fill="red" fill-opacity="0.8">MQ3 1..4, line4 error but runs</text>
+<text x="50" y="9400" font-size="18"  fill="green" fill-opacity="0.8"> progVar1 = show(tussenStap 1 1) </text>
+<text x="50" y="9420" font-size="18"  fill="green" fill-opacity="0.8"> progVar2 = (show (tussenStap 1 1))++(show(tussenStap 2 2))  </text>
+<text x="50" y="9440" font-size="18"  fill="green" fill-opacity="0.8"> progVar3 = (show(tussenStap 2 2)) </text>
+<text x="50" y="9460" font-size="18"  fill="green" fill-opacity="0.8"> progVar4 = (show(tussenStap 3 3)) </text>
+<text x="50" y="9480" font-size="18"  fill="green" fill-opacity="0.8"> progVar5 = (show (tussenStap 3 3))++(show(tussenStap 3 4)) </text>
+<text x="50" y="9500" font-size="18"  fill="green" fill-opacity="0.8"> progVar6 = (show(tussenStap 3 4)) </text>
+<text x="50" y="9520" font-size="18"  fill="red" fill-opacity="0.8"> note! tussenStap 4 4 should yield an error</text>
+<text x="50" y="9540" font-size="18"  fill="red" fill-opacity="0.8"> choose Int>4  </text>
+<text x="50" y="9560" font-size="18"  fill="blue" fill-opacity="0.8">file: ptclibrary/mq3withTussenstapLine1to3ptc7.png </text>
+<image href="ptclibrary/mq3withTussenstapLine1to3ptc7.png"  x="10" y="9580"  fill-opacity="0.8"/>
+
+
+
+<text x="50" y="150">hexagon plane</text>
+<text x="50" y="165">  adjustable area</text>
+<text x="50" y="440">Test animation</text>
+<text x="230" y="40" font-size="18" fill="green" fill-opacity="0.4">clientX : <tspan id="cX" fill="red" fill-opacity="0.8">0</tspan></text> 
+<text x="230" y="60" font-size="18" fill="blue" fill-opacity="0.4">clientY : <tspan id="cY" fill="yellow" fill-opacity="0.8">0</tspan></text> 
+<text x="230" y="80" font-size="18" fill="green" fill-opacity="0.4">screenX : <tspan id="sX" fill="red" fill-opacity="0.8">0</tspan></text> 
+<text x="230" y="100" font-size="18"  fill="blue" fill-opacity="0.4">screenY : <tspan id="sY" fill="yellow" fill-opacity="0.8">0</tspan></text> 
+
+<rect id="go" x="20" y="350" width="300" height="650" style="fill:#1e1c1ecc;fill-opacity:0.2"/>
+</g>
+
+
+
+<g>
+
+<text x="150" y="350">Test animatio2</text>
+
+
+</g>
+
+<style
+     id="style4">
+        .room{
+            fill:      #c830d8e7;
+            fill-opacity:0.4;
+            stroke:     #999;
+            stroke-width:   3;
+            stroke-color:   blue;
+        }
+        .room:hover{
+            fill:       #30d8c4e7;
+            fill-opacity:0.5;
+        }
+        .hexa{
+            fill:      yellow;
+            fill-opacity:0.4;
+            stroke:     #999;
+            stroke-width:   2;
+        }
+        .hexa:hover{
+            fill:       green;
+            fill-opacity:0.4;
+        }
+        .project{
+            fill:       lime;
+            fill-opacity:0.0;
+            stroke:     #999;
+            stroke-width:  0;
+            
+        }
+        .project:hover{
+            fill:       lime;
+            fill-opacity:0.4;
+        }
+        .check{
+            fill:       blue;
+            fill-opacity:0.3;
+            stroke:     #999;
+            stroke-width:  0;
+            
+        }
+        .check:hover{
+            fill:     lime;
+            fill-opacity:0.4;
+        }
+        .suite{
+            fill:      #37ebd1e7;
+            fill-opacity:0.4;
+            stroke:     #999;
+            stroke-width:  0;
+            
+        }
+        .suite:hover{
+            fill:     orange;
+            fill-opacity:0.5;
+        }
+
+       
+
+
+
+    </style>
+<!-- the three honies -->
+ <g transform="translate(0,200)">
+
+<g transform="translate(115,173)">
+<polyline id="hexagon" points="87,0 174,50 174,150 87,200 0,150 0,50 87,0" class="room" onclick="changeFill()"/>
+<animateTransform attributeName="transform" attributeType="XML" type="scale" from="1" to="0.2" additive="sum" begin="0.1s" dur="0.1s" fill="freeze"/> 
+</g>
+<g transform="translate(100,200)">
+<polyline id="hexagon" points="87,0 174,50 174,150 87,200 0,150 0,50 87,0" class="room" onclick="changeFill()"/>
+<animateTransform attributeName="transform" attributeType="XML" type="scale" from="1" to="0.2" additive="sum" begin="0.1s" dur="0.1s" fill="freeze"/> 
+</g>
+<g transform="translate(130,200)">
+<polyline id="hexagon" points="87,0 174,50 174,150 87,200 0,150 0,50 87,0" class="room" onclick="changeFill()"/>
+<animateTransform attributeName="transform" attributeType="XML" type="scale" from="1" to="0.2" additive="sum" begin="0.1s" dur="0.1s" fill="freeze"/> 
+</g> 
+
+
+<!-- Two overlap -->
+<g transform="translate(100,30);rotate(90);" >
+	
+</g>
+
+<!-- the three honies b -->
+<g transform="translate(100,0)">
+
+<g transform="translate(115,173)">
+<polyline id="hexagon" points="87,0 174,50 174,150 87,200 0,150 0,50 87,0" class="room" onclick="changeFill()"/>
+<animateTransform attributeName="transform" attributeType="XML" type="scale" from="1" to="0.2" additive="sum" begin="0.1s" dur="0.1s" fill="freeze"/> 
+<animateMotion path="M  0 0 L 0 -10" begin="0.1s" dur="1s" fill="freeze"/>
+</g>
+
+<g transform="translate(100,200)" >
+<polyline id="hexagon" points="87,0 174,50 174,150 87,200 0,150 0,50 87,0" class="room" onclick="changeFill()"/>
+<animateTransform attributeName="transform" attributeType="XML" type="scale" from="1" to="0.2" additive="sum" begin="0.1s" dur="0.1s" fill="freeze"/> 
+<animateMotion path="M  0 0 L -11 8" begin="0.1s" dur="1s" fill="freeze"/>
+
+</g>
+
+<g 
+       id="g883">
+      <g
+         id="g876">
+        <path
+           style="opacity:1;fill:#00a502;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:3.77952766;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0"
+           d="m 345.80664,300.02539 -12.26367,7.08008 v 123.68555 l 18.44922,10.65234 12.26562,-7.08203 v -123.6836 z"
+           transform="scale(0.26458333)"
+           id="path821"
+           inkscape:connector-curvature="0" />
+        <g
+           transform="translate(0.25321135,0.14624236)"
+           id="g848">
+          <path
+             inkscape:connector-curvature="0"
+             id="path823"
+             transform="scale(0.26458333)"
+             d="m 440.65625,245.26367 -107.11328,61.8418 v 1.23047 l 16.42773,9.48437 107.11524,-61.84179 V 254.75 Z"
+             style="opacity:1;fill:#00a502;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:3.77952766;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0" />
+          <path
+             id="path821-5"
+             d="m 68.035642,65.837319 -3.526917,2.036053 28.087688,16.216584 3.52692,-2.03605 z"
+             style="opacity:1;fill:#00a502;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0"
+             inkscape:connector-curvature="0" />
+        </g>
+      </g>
+     <animateTransform attributeName="transform" attributeType="XML" type="scale" from="1" to="1" additive="sum" begin="0.1s" dur="0.1s" fill="freeze"/> 
+      <animateMotion path="M  100 3 L 40 130" begin="0.1s" dur="1s" fill="freeze"/>
+
+    </g>
+
+<g transform="translate(130,200)">
+<polyline id="hexagon" points="87,0 174,50 174,150 87,200 0,150 0,50 87,0" class="room" onclick="changeFill()"/>
+<animateTransform attributeName="transform" attributeType="XML" type="scale" from="1" to="0.2" additive="sum" begin="0.1s" dur="0.1s" fill="freeze"/> 
+<animateMotion path="M  0 0 L 11 8" begin="0.1s" dur="1s" fill="freeze"/>
+
+
+</g>
+
+</g>
+
+
+<!-- C..._2_3_5 as hexagon -->
+</g>
+ <g transform="translate(0,500)">
+ <g transform="translate(100,200)">
+<polyline id="hexagon" points="87,0 174,50 174,150 87,200 0,150 0,50 87,0" class="projectHex;" onclick="changeFill()"/>
+<animateTransform attributeName="transform" attributeType="XML" type="scale" from="1" to="0.2" additive="sum" begin="0.1s" dur="0.1s" fill="freeze"/> 
+</g>
+<g transform="translate(130,200)">
+<polyline id="hexagon" points="87,0 174,50 174,150 87,200 0,150 0,50 87,0" class="room" onclick="changeFill()"/>
+<animateTransform attributeName="transform" attributeType="XML" type="scale" from="1" to="0.2" additive="sum" begin="0.1s" dur="0.1s" fill="freeze"/> 
+</g>
+<g transform="translate(160,200)">
+<polyline points="87,0 174,50 174,150 87,200 0,150 0,50 87,0" class="hexa" onclick="changeFill()"/>
+<animateTransform attributeName="transform" attributeType="XML" type="scale" from="1" to="0.2" additive="sum" begin="0.1s" dur="0.1s" fill="freeze"/> 
+</g>
+<g transform="translate(190,200)">
+<polyline id="hexagon" points="87,0 174,50 174,150 87,200 0,150 0,50 87,0" class="hexa" onclick="changeFill()"/>
+<animateTransform attributeName="transform" attributeType="XML" type="scale" from="1" to="0.2" additive="sum" begin="0.1s" dur="0.1s" fill="freeze"/> 
+</g>
+<g transform="translate(220,200)">
+<polyline id="hexagon" points="87,0 174,50 174,150 87,200 0,150 0,50 87,0" class="hexa" onclick="changeFill()"/>
+<animateTransform attributeName="transform" attributeType="XML" type="scale" from="1" to="0.2" additive="sum" begin="0.1s" dur="0.1s" fill="freeze"/> 
+</g>
+<g transform="translate(115,170)">
+<polyline id="hexagon" points="87,0 174,50 174,150 87,200 0,150 0,50 87,0" class="hexa" onclick="changeFill()"/>
+<animateTransform attributeName="transform" attributeType="XML" type="scale" from="1" to="0.2" additive="sum" begin="0.1s" dur="0.1s" fill="freeze"/> 
+</g>
+<g transform="translate(145,170)">
+<polyline id="hexagon" points="87,0 174,50 174,150 87,200 0,150 0,50 87,0" class="room" onclick="changeFill()"/>
+<animateTransform attributeName="transform" attributeType="XML" type="scale" from="1" to="0.2" additive="sum" begin="0.1s" dur="0.1s" fill="freeze"/> 
+</g>
+<g transform="translate(175,170)">
+<polyline id="hexagon" points="87,0 174,50 174,150 87,200 0,150 0,50 87,0" class="room" onclick="changeFill()"/>
+<animateTransform attributeName="transform" attributeType="XML" type="scale" from="1" to="0.2" additive="sum" begin="0.1s" dur="0.1s" fill="freeze"/> 
+</g>
+<g transform="translate(130,140)">
+<polyline id="hexagon" points="87,0 174,50 174,150 87,200 0,150 0,50 87,0" class="hexa" onclick="changeFill()"/>
+<animateTransform attributeName="transform" attributeType="XML" type="scale" from="1" to="0.2" additive="sum" begin="0.1s" dur="0.1s" fill="freeze"/> 
+</g>
+<g transform="translate(160,140)">
+<polyline id="hexagon" points="87,0 174,50 174,150 87,200 0,150 0,50 87,0" class="hexa" onclick="changeFill()"/>
+<animateTransform attributeName="transform" attributeType="XML" type="scale" from="1" to="0.2" additive="sum" begin="0.1s" dur="0.1s" fill="freeze"/> 
+</g>
+</g>
+
+<g transform="translate(-70,750)">
+
+<g transform="translate(100,200)">
+<polyline id="hexagon" points="87,0 174,50 174,150 87,200 0,150 0,50 87,0" class="hexa" onclick="changeFill()"/>
+<animateTransform attributeName="transform" attributeType="XML" type="scale" from="1" to="0.5" additive="sum" begin="0.1s" dur="0.1s" fill="freeze"/> 
+</g>
+<g transform="translate(188,200)">
+<polyline id="hexagon" points="87,0 174,50 174,150 87,200 0,150 0,50 87,0" class="room" onclick="changeFill()"/>
+<animateTransform attributeName="transform" attributeType="XML" type="scale" from="1" to="0.5" additive="sum" begin="0.1s" dur="0.1s" fill="freeze"/> 
+</g>
+<g transform="translate(144,200)">
+<polyline points="87,0 174,50 174,150 87,200 0,150 0,50 87,0" class="hexa" onclick="changeFill()"/>
+<animateTransform attributeName="transform" attributeType="XML" type="scale" from="1" to="0.5" additive="sum" begin="0.1s" dur="0.1s" fill="freeze"/> 
+</g>
+</g>
+
+ <g transform="translate(-70,850)">
+
+<g transform="translate(100,200)">
+<polyline id="hexagon" points="87,0 174,50 174,150 87,200 0,150 0,50 87,0" class="room" onclick="changeFill()"/>
+<animateTransform attributeName="transform" attributeType="XML" type="scale" from="1" to="0.5" additive="sum" begin="0.1s" dur="0.1s" fill="freeze"/> 
+</g>
+<g transform="translate(188,200)">
+<polyline id="hexagon" points="87,0 174,50 174,150 87,200 0,150 0,50 87,0" class="room" onclick="changeFill()"/>
+<animateTransform attributeName="transform" attributeType="XML" type="scale" from="1" to="0.5" additive="sum" begin="0.1s" dur="0.1s" fill="freeze"/> 
+</g>
+<g transform="translate(276,200)">
+<polyline points="87,0 174,50 174,150 87,200 0,150 0,50 87,0" class="hexa" onclick="changeFill()"/>
+<animateTransform attributeName="transform" attributeType="XML" type="scale" from="1" to="0.5" additive="sum" begin="0.1s" dur="0.1s" fill="freeze"/> 
+</g>
+<g transform="translate(144,200)">
+<polyline id="hexagon" points="87,0 174,50 174,150 87,200 0,150 0,50 87,0" class="hexa" onclick="changeFill()"/>
+<animateTransform attributeName="transform" attributeType="XML" type="scale" from="1" to="0.5" additive="sum" begin="0.1s" dur="0.1s" fill="freeze"/> 
+</g>
+</g>
+  <g
+     transform="matrix(0.282383,0.10225553,-0.2823838,0.10225553,420.923,74.495491)"
+     >
+
+    <polyline id="hexagon" points="87,0 174,50 174,150 87,200 0,150 0,50 87,0" class="room" onclick="changeFill()"/>
+     
+    <g transform="translate(-430,370)">
+<g transform="translate(599,370)">
+<polyline id="hexagon" points="87,0 174,50 174,150 87,200 0,150 0,50 87,0" class="hexa" onclick="changeFill()"/>
+<animateTransform attributeName="transform" attributeType="XML" type="scale" from="1" to="3.1" additive="sum" begin="0.1s" dur="0.1s" fill="freeze"/> 
+<animateMotion path="M 25, 25 m -19.25, 0 a 19.25,19.25 0 1,0 37.5,0 a 1.25,19.25 0 1,0 -37.5,0" begin="1s" dur="5s"  repeatCount="5" />
+
+</g>
+<g transform="translate(150,370)">
+<polyline id="hexagon" points="87,0 174,50 174,150 87,200 0,150 0,50 87,0" class="suite" onclick="changeFill()"/>
+<animateTransform attributeName="transform" attributeType="XML" type="scale" from="1" to="3.1" additive="sum" begin="0.1s" dur="0.1s" fill="freeze"/> 
+</g>
+<g transform="translate(400,370)">
+<polyline id="hexagon" points="87,0 174,50 174,150 87,200 0,150 0,50 87,0" class="project" onclick="changeFill()"/>
+<animateTransform attributeName="transform" attributeType="XML" type="scale" from="1" to="3.1" additive="sum" begin="0.1s" dur="0.1s" fill="freeze"/> 
+<animate attributeType="CSS" attributeName="opacity" from="1" to="0" dur="13s" repeatCount="indefinite" /></g>
+
+<g transform="translate(388,-51)">
+<polyline id="hexagon" points="87,0 174,50 174,150 87,200 0,150 0,50 87,0" class="room" onclick="changeFill()"/>
+<animateTransform attributeName="transform" attributeType="XML" type="scale" from="1" to="3.1" additive="sum" begin="0.1s" dur="0.1s" fill="freeze"/> 
+</g>
+
+<g transform="translate(950,720)">
+<polyline id="hexagon" points="87,0 174,50 174,150 87,200 0,150 0,50 87,0" class="project" onclick="changeFill()"/>
+<animateTransform attributeName="transform" attributeType="XML" type="scale" from="1" to="3.1" additive="sum" begin="0.1s" dur="0.1s" fill="freeze"/> 
+</g>
+<g transform="translate(950,820)">
+<polyline id="hexagon" points="87,0 174,50 174,150 87,200 0,150 0,50 87,0" class="project" onclick="changeFill()"/>
+<animateTransform attributeName="transform" attributeType="XML" type="scale" from="1" to="3.1" additive="sum" begin="0.1s" dur="0.1s" fill="freeze"/> 
+</g>
+<g transform="translate(850,720)">
+<polyline id="hexagon" points="87,0 174,50 174,150 87,200 0,150 0,50 87,0" class="project" onclick="changeFill()"/>
+<animateTransform attributeName="transform" attributeType="XML" type="scale" from="1" to="3.1" additive="sum" begin="0.1s" dur="0.1s" fill="freeze"/> 
+</g>
+
+</g>
+/* 1-9-2020 added case for ptc5 overview
+  role model on how to transform to 58 / 135 degree to ? ....
+  when changing up the file dont delete this paragraph */
+<g>
+    <rect
+       class="room"
+       width="94"
+       height="123"
+       x="-221.99988"
+       y="711" />
+     
+    <rect
+       class="room"
+       y="711"
+       x="-316.99988"
+       height="123"
+       width="94"
+       />
+  <g transform="translate(29250,29900)" >
+<polyline id="hexagon" points="87,0 174,50 174,150 87,200 0,150 0,50 87,0" class="hexa" onclick="changeFill()"/>
+</g>
+ <g transform="translate(29150,30000)" >
+<polyline id="hexagon" points="87,0 174,50 174,150 87,200 0,150 0,50 87,0" class="room" onclick="changeFill()"/>
+</g>
+ <g transform="translate(37500,38530)" >
+<polyline id="hexagon" points="87,0 174,50 174,150 87,200 0,150 0,50 87,0" class="hexa" onclick="changeFill()"/>
+</g>
+ <g transform="translate(37600,38530)" >
+<polyline id="hexagon" points="87,0 174,50 174,150 87,200 0,150 0,50 87,0" class="room" onclick="changeFill()"/>
+</g>
+ <g transform="translate(37600,38430)" >
+<polyline id="hexagon" points="87,0 174,50 174,150 87,200 0,150 0,50 87,0" class="room" onclick="changeFill()"/>
+</g>
+
+
+<ellipse cx="-316" cy="715" rx="590" ry="4" stroke="black" stroke-width="2px" style="fill:green">
+<animateColor attributeName="fill" attributeType="CSS" from="blue" to="lime" begin="0.1s" dur="1s"  repeatCount="indefinite" />
+      <animateTransform attributeName="transform" attributeType="XML" type="rotate" from="0" to="45" begin="0.1s" dur="0.1s" fill="freeze"/> 
+
+      <animateMotion path="M  0 0 L 860 879" begin="0.1s" dur="0.3s" fill="freeze"/>
+</ellipse>
+<ellipse cx="340" cy="655" rx="280" ry="4" stroke="black" stroke-width="2px" style="fill:green">
+<animateColor attributeName="fill" attributeType="CSS" from="blue" to="lime" begin="0.1s" dur="1s"  repeatCount="indefinite" />
+      <animateTransform attributeName="transform" attributeType="XML" type="rotate" from="0" to="45" begin="0.1s" dur="0.1s" fill="freeze"/> 
+      <animateMotion path="M  0 0 L 280 290" begin="0.1s" dur="0.3s" fill="freeze"/>
+</ellipse>
+
+      <ellipse cx="-430" cy="380" rx="30" ry="12" stroke="black" stroke-width="2px" style="fill:blue">
+      </ellipse>
+     <ellipse cx="-316" cy="715" rx="280" ry="4" stroke="black" stroke-width="2px" style="fill:green">
+<animateColor attributeName="fill" attributeType="CSS" from="blue" to="lime" begin="0.1s" dur="1s"  repeatCount="indefinite" />
+      <animateTransform attributeName="transform" attributeType="XML" type="rotate" from="0" to="45" begin="0.1s" dur="0.1s" fill="freeze"/> 
+      <animateMotion path="M  0 0 L 480 290" begin="0.1s" dur="0.3s" fill="freeze"/>
+</ellipse>
+     <ellipse cx="-248" cy="785" rx="30" ry="12" stroke="black" stroke-width="2px" style="fill:purple">
+<animateColor attributeName="fill" attributeType="CSS" from="blue" to="lime" begin="1s" dur="6s"  repeatCount="indefinite" />
+</ellipse>
+    <ellipse cx="-148" cy="785" rx="30" ry="12" stroke="black" stroke-width="2px" style="fill:purple">
+<animateColor attributeName="fill" attributeType="CSS" from="blue" to="lime" begin="1s" dur="6s"  repeatCount="indefinite" />
+</ellipse>
+<animateTransform attributeName="transform" attributeType="XML" type="rotate" from="1" to="45"  additive="sum" begin="2s" dur="2.0s" fill="freeze"/> 
+<animateTransform attributeName="transform" attributeType="XML" type="rotate" from="1" to="-45"  additive="sum" begin="10s" dur="2.0s" fill="freeze"/> 
+
+
+ <animateTransform attributeName="transform" attributeType="XML" type="rotate" from="1" to="-360"  additive="sum" begin="43s" dur="5.0s" fill="freeze"/> 
+<animateTransform attributeName="transform" attributeType="XML" type="rotate" from="1" to="360"  additive="sum" begin="58s" dur="15.0s" repeatCount="1"/> 
+</g>
+/* go automate add layer to animate 3d svg plot 
+a Haskell function will write and automate the layer adding
+which way does initiate the animation set on timer or just on click or hover? */
+<g transform="translate(500,600)">
+<g>
+    <ellipse cx="-148" cy="785" rx="30" ry="12" stroke="black" stroke-width="2px" style="fill:purple">
+<animateColor attributeName="fill" attributeType="CSS" from="blue" to="lime" begin="1s" dur="6s"  repeatCount="indefinite" />
+</ellipse>
+<animateTransform attributeName="transform" attributeType="XML" type="rotate" from="1" to="360"  additive="sum" begin="128s" dur="15.0s" repeatCount="2"/> 
+<animateMotion path="M 100, 100 m -75, 0 a 75,75 0 1,0 150,0 a 75,75 0 1,0 -150,0" begin="1s" dur="5s"  repeatCount="indefinite" />
+</g>
+<g>
+    <ellipse cx="-148" cy="785" rx="30" ry="12" stroke="black" stroke-width="2px" style="fill:purple">
+<animateColor attributeName="fill" attributeType="CSS" from="blue" to="lime" begin="1s" dur="6s"  repeatCount="indefinite" />
+</ellipse>
+<animateTransform attributeName="transform" attributeType="XML" type="rotate" from="-360" to="-1"  additive="sum" begin="128s" dur="11.0s" repeatCount="2"/> 
+<animateMotion path="M -400, -600 m -75, 0 a 75,75 0 1,0 150,0 a 75,75 0 1,0 -150,0" begin="1s" dur="2s"  repeatCount="indefinite" />
+</g>
+
+</g>
+
+<g>
+    <rect
+       class="room"
+       width="94"
+       height="123"
+       x="-411.99988"
+       y="711" />
+    <rect
+       class="room"
+       y="711"
+       x="-506.99988"
+       height="123"
+       width="94"
+        />
+    <rect
+       class="room"
+       width="94"
+       height="123"
+       x="-601.99988"
+       y="711" />
+    
+    <rect
+       class="room"
+       width="94"
+       height="123"
+       x="-221.99988"
+       y="587" />
+    <rect
+       class="room" 
+       y="587"
+       x="-316.99988"
+       height="123"
+       width="94"
+       
+       />
+    <rect
+       
+       class="room"
+       width="94"
+       height="123"
+       x="-411.99988"
+       y="587" />
+    <rect
+       class="room"
+       y="587"
+       x="-506.99988"
+       height="123"
+       width="94"
+       
+        />
+    <rect
+       class="room"
+      
+       width="94"
+       height="123"
+       x="-601.99988"
+       y="587" />
+    <rect
+       class="room"
+       y="587"
+       x="-696.99988"
+       height="123"
+       width="94"
+       
+       />
+    <rect
+       
+       class="room"
+       width="94"
+       height="123"
+       x="-221.99988"
+       y="463" />
+    <rect
+       class="room"
+       y="463"
+       x="-316.99988"
+       height="123"
+       width="94"
+       
+      />
+    <rect
+       
+       class="room"
+       width="94"
+       height="123"
+       x="-411.99988"
+       y="463" />
+    <rect
+       class="room"
+       y="463"
+       x="-506.99988"
+       height="123"
+       width="94"
+       
+      />
+    <rect
+      
+       class="room"
+       width="94"
+       height="123"
+       x="-601.99988"
+       y="463" />
+    <rect
+       class="room"
+       y="463"
+       x="-696.99988"
+       height="123"
+       width="94"
+       
+        />
+    <rect
+       class="room"
+       id="rect3843"
+       width="94"
+       height="123"
+       x="-221.99988"
+       y="339" />
+    <rect
+       class="room"
+       y="339"
+       x="-316.99988"
+       height="123"
+       width="94"
+       
+       />
+    <rect
+       class="room"
+       id="rect3847"
+       width="94"
+       height="123"
+       x="-411.99988"
+       y="339" />
+    <rect
+       class="room"
+       y="339"
+       x="-506.99988"
+       height="123"
+       width="94"
+       id="rect3849"
+       />
+    <rect
+       class="room"
+       id="rect3851"
+       width="94"
+       height="123"
+       x="-601.99988"
+       y="339" />
+    <rect
+       class="room"
+       y="339"
+       x="-696.99988"
+       height="123"
+       width="94"
+       id="rect3853"
+        />
+    <rect
+       class="room"
+       id="rect3855"
+       width="94"
+       height="123"
+       x="-221.99988"
+       y="215" />
+    <rect
+       class="room"
+       y="215"
+       x="-316.99988"
+       height="123"
+       width="94"
+       id="rect3857"
+        />
+    <rect
+       class="room"
+       id="rect3859"
+       width="94"
+       height="123"
+       x="-411.99988"
+       y="215" />
+    <rect
+       class="room"
+       y="215"
+       x="-506.99988"
+       height="123"
+       width="94"
+       id="rect3861"
+       />
+    <rect
+       class="room"
+       id="rect3863"
+       width="94"
+       height="123"
+       x="-601.99988"
+       y="215" />
+    <rect 
+       class="room"
+       y="215"
+       x="-696.99988"
+       height="123"
+       width="94"
+       id="rect3865"
+       />
+    <rect
+       class="room"
+       id="rect3867"
+       width="94"
+       height="123"
+       x="-221.99988"
+       y="91" />
+    <rect
+       class="room"
+       y="91"
+       x="-316.99988"
+       height="123"	
+       width="94"
+       id="rect3869"
+        />
+    <rect
+      class="room"
+       id="rect3871"
+       width="94"
+       height="123"
+       x="-411.99988"
+       y="91" />
+    <rect
+       class="room"
+       y="91"
+       x="-506.99988"
+       height="123"
+       width="94"
+       id="rect3873"
+        />
+    <rect
+       class="room"
+       id="rect3875"
+       width="94"
+       height="123"
+       x="-601.99988"
+       y="91" />
+    <rect
+       class="room"
+       y="91"
+       x="-696.99988"
+       height="123"
+       width="94"
+       id="rect3877"
+        />
+ <animateTransform attributeName="transform" attributeType="XML" type="rotate" from="1" to="45"  additive="sum" begin="0.1" dur="0.1s" fill="freeze"/> 
+<animateTransform attributeName="transform" attributeType="XML" type="rotate" from="1" to="-45"  additive="sum" begin="40s" dur="2.0s" fill="freeze"/> 
+ </g>
+  </g>
+
+</svg>
+
+
+

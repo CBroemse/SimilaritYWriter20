@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xml="http://www.w3.org/XML/1998/namespace" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:dc="http://purl.org/dc/elements/1.1/"
-   xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" id="root" xml:space="preserve" width="700" height="3700" onload="OnLoadEvent(evt)" onmousemove="get_coordo(evt)">
+   xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" id="root" xml:space="preserve" width="700" height="10000" onload="OnLoadEvent(evt)" onmousemove="get_coordo(evt)">
 
 <script><![CDATA[
 var compati = new Array(true,true,true,true,true,true)
@@ -100,6 +100,29 @@ check if there is a </text>
 <text x="50" y="3320" font-size="18"  fill="green" fill-opacity="0.8"> pv1 ..pv4 as Test+ pv5 ..pv6 without operator+ yields something different</text>
 
 <image href="ptclibrary/wit2Case1bigNsmalLetNosquarematrixptc6Operator+1to4.png"  x="10" y="3330"  fill-opacity="0.8"/>
+
+<text x="50" y="8920" font-size="18"  fill="red" fill-opacity="0.8">MQ3 1..4, just line1</text>
+<text x="50" y="8940" font-size="18"  fill="green" fill-opacity="0.8"> progVar1 = show(tussenStap 1 1) </text>
+<text x="50" y="8960" font-size="18"  fill="green" fill-opacity="0.8"> progVar2 = (show (tussenStap 1 1))++(show(tussenStap 1 2))  </text>
+<text x="50" y="8980" font-size="18"  fill="green" fill-opacity="0.8"> progVar3 = (show(tussenStap 1 2)) </text>
+<text x="50" y="9000" font-size="18"  fill="green" fill-opacity="0.8"> progVar4 = (show(tussenStap 1 3)) </text>
+<text x="50" y="9020" font-size="18"  fill="green" fill-opacity="0.8"> progVar5 = (show (tussenStap 1 3))++(show(tussenStap 1 4)) </text>
+<text x="50" y="9040" font-size="18"  fill="green" fill-opacity="0.8"> progVar6 = (show(tussenStap 1 4)) </text>
+<text x="50" y="9060" font-size="18"  fill="blue" fill-opacity="0.8">file: ptclibrary/mq3withTussenstapLine1ptc6.png</text>
+<image href="ptclibrary/mq3withTussenstapLine1ptc6.png"  x="10" y="9080"  fill-opacity="0.8"/>
+
+
+<text x="50" y="9380" font-size="18"  fill="red" fill-opacity="0.8">MQ3 1..4, line4 error but runs</text>
+<text x="50" y="9400" font-size="18"  fill="green" fill-opacity="0.8"> progVar1 = show(tussenStap 1 1) </text>
+<text x="50" y="9420" font-size="18"  fill="green" fill-opacity="0.8"> progVar2 = (show (tussenStap 1 1))++(show(tussenStap 2 2))  </text>
+<text x="50" y="9440" font-size="18"  fill="green" fill-opacity="0.8"> progVar3 = (show(tussenStap 2 2)) </text>
+<text x="50" y="9460" font-size="18"  fill="green" fill-opacity="0.8"> progVar4 = (show(tussenStap 3 3)) </text>
+<text x="50" y="9480" font-size="18"  fill="green" fill-opacity="0.8"> progVar5 = (show (tussenStap 3 3))++(show(tussenStap 3 4)) </text>
+<text x="50" y="9500" font-size="18"  fill="green" fill-opacity="0.8"> progVar6 = (show(tussenStap 3 4)) </text>
+<text x="50" y="9520" font-size="18"  fill="red" fill-opacity="0.8"> note! tussenStap 4 4 should yield an error</text>
+<text x="50" y="9540" font-size="18"  fill="red" fill-opacity="0.8"> choose Int>4  </text>
+<text x="50" y="9560" font-size="18"  fill="blue" fill-opacity="0.8">file: ptclibrary/mq3withTussenstapLine1to3ptc6.png </text>
+<image href="ptclibrary/mq3withTussenstapLine1to3ptc6.png"  x="10" y="9580"  fill-opacity="0.8"/>
 
 
 <text x="50" y="150">hexagon plane</text>
