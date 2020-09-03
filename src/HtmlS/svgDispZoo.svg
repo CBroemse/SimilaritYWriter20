@@ -46,19 +46,33 @@ function changeFill() {
 <text x="50" y="320" font-size="18"  fill="green" fill-opacity="0.8">COMBINATIONS: (ptc3 5) (ptc7 25) (ptc8 150)... </text>
 <text x="50" y="340" font-size="18"  fill="green" fill-opacity="0.8"> ..(ptc9 100) (ptc7 125) (ptc3 50), line4 error but runs</text>
 <text x="50" y="360" font-size="18"  fill="green" fill-opacity="0.8"> progVar1 = show(tussenStap 1 1) </text>
-<text x="50" y="380" font-size="18"  fill="green" fill-opacity="0.8"> progVar2 = (show (tussenStap 1 1))++(show(tussenStap 2 2))  </text>
-<text x="50" y="400" font-size="18"  fill="green" fill-opacity="0.8"> progVar3 = (show(tussenStap 2 2)) </text>
-<text x="50" y="420" font-size="18"  fill="green" fill-opacity="0.8"> progVar4 = (show(tussenStap 3 3)) </text>
-<text x="50" y="440" font-size="18"  fill="green" fill-opacity="0.8"> progVar5 = (show (tussenStap 3 3))++(show(tussenStap 4 4)) </text>
-<text x="50" y="460" font-size="18"  fill="green" fill-opacity="0.8"> progVar6 = (show(tussenStap 4 4)) </text>
-<text x="50" y="480" font-size="18"  fill="red" fill-opacity="0.8"> note! tussenStap 4 4 should yield an error</text>
-<text x="50" y="500" font-size="18"  fill="red" fill-opacity="0.8"> but s.th. takes over, review code </text>
+<text x="50" y="380" font-size="18"  fill="green" fill-opacity="0.8"> progVar2 = (show (tussenStap 1 1))++(show(tussenStap 1 2))  </text>
+<text x="50" y="400" font-size="18"  fill="green" fill-opacity="0.8"> progVar3 = (show(tussenStap 1 2)) </text>
+<text x="50" y="420" font-size="18"  fill="green" fill-opacity="0.8"> progVar4 = (show(tussenStap 1 3)) </text>
+<text x="50" y="440" font-size="18"  fill="green" fill-opacity="0.8"> progVar5 = (show (tussenStap 1 3))++(show(tussenStap 1 4)) </text>
+<text x="50" y="460" font-size="18"  fill="green" fill-opacity="0.8"> progVar6 = (show(tussenStap 1 4)) </text>
+<text x="50" y="480" font-size="18"  fill="red" fill-opacity="0.8"> note! all line1 function</text>
+<text x="50" y="500" font-size="18"  fill="red" fill-opacity="0.8"> with varieng n which point of a ptc </text>
 <text x="50" y="520" font-size="18"  fill="blue" fill-opacity="0.8">file: ptclibrary/combisPtcsWithTussenstap3789otherperspective.png </text>
 <image href="ptclibrary/combisPtcsWithTussenstap3789otherperspective.png"  x="10" y="540"  fill-opacity="0.8"/>
 
-<text x="50" y="790" font-size="18"  fill="red" fill-opacity="0.8"> but s.th. takes over, review code </text>
+<text x="50" y="790" font-size="18"  fill="red" fill-opacity="0.8"> as above all Mq3 line 1 function </text>
 <text x="50" y="810" font-size="18"  fill="blue" fill-opacity="0.8">file: ptclibrary/combisPtcsWithTussenstap3789.png </text>
 <image href="ptclibrary/combisPtcsWithTussenstap3789.png"  x="10" y="830"  fill-opacity="0.8"/>
+
+<text x="50" y="1130" font-size="18"  fill="green" fill-opacity="0.8">COMBINATIONS: (ptc3 5) (ptc7 25) (ptc8 150)...  </text>
+<text x="50" y="1150" font-size="18"  fill="green" fill-opacity="0.8"> ... (ptc9 100) (ptc7 125) (ptc3 50) </text>
+<text x="50" y="1170" font-size="18"  fill="green" fill-opacity="0.8">with tussen.. ,line 1,  n 1..4  </text>
+<text x="50" y="1190" font-size="18"  fill="green" fill-opacity="0.8"> progVar1 = show(tussenStap 1 1) </text>
+<text x="50" y="1210" font-size="18"  fill="green" fill-opacity="0.8"> progVar2 = (show (tussenStap 1 1))++(show(tussenStap 2 2))  </text>
+<text x="50" y="1230" font-size="18"  fill="green" fill-opacity="0.8"> progVar3 = (show(tussenStap 2 2)) </text>
+<text x="50" y="1250" font-size="18"  fill="green" fill-opacity="0.8"> progVar4 = (show(tussenStap 3 3)) </text>
+<text x="50" y="1270" font-size="18"  fill="green" fill-opacity="0.8"> progVar5 = (show (tussenStap 3 3))++(show(tussenStap 4 4)) </text>
+<text x="50" y="1290" font-size="18"  fill="green" fill-opacity="0.8"> progVar6 = (show(tussenStap 4 4)) </text>
+<text x="50" y="1310" font-size="18"  fill="red" fill-opacity="0.8"> note! all line1 function</text>
+<text x="50" y="1330" font-size="18"  fill="red" fill-opacity="0.8"> with varieng n which point of a ptc </text>
+<text x="50" y="1350" font-size="18"  fill="blue" fill-opacity="0.8">file: ptclibrary/combisPtcsWithTussenstap3789N1to4.png </text>
+<image href="ptclibrary/combisPtcsWithTussenstap3789N1to4.png"  x="10" y="1370"  fill-opacity="0.8"/>
 
 <!--
 <image href="ptclibrary/wit2Case1bigLetNosquarematrixptc5.png" x="10" y="910"  fill-opacity="0.8"/>
