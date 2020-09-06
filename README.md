@@ -14,7 +14,7 @@
  open folder ../src/wxms  ; compile lala2.wxm  -> plot 
   
    
- visiualize a syntactic topology of the string:
+ visiualize a syntactic 'Char'-type based topology of the string:
   1.The world is everything that is the case.∗
   
     b)
