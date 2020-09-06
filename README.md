@@ -2,8 +2,8 @@
 
 ##### visiualize your network or your name 
      
-    prepare the path to use 2 main module
-    a) src/Colored_2_3_5Counter20.hs
+    prepare the path to use 2 main modules
+    a) src/Colored_2_3_5_Counter20.hs
     b) src/TheAtoBplotter.hs
     *Main>root
     *Main>/c:/stack/SimilaritYWriter20/src/
