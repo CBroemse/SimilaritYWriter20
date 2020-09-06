@@ -68,28 +68,28 @@ check if there is a </text>
 
 
 <image href="ptclibrary/wit2Case1bigNsmalLetNosquarematrixptc7Operator+1to4.png"  x="10" y="50"  fill-opacity="0.8"/>
-<text x="50" y="50" font-size="18"  fill="green" fill-opacity="0.8">PTC5 pv1 ..pv4 as Test+ pv5 ..pv6 without operator+ </text>
-<text x="50" y="70" font-size="18"  fill="green" fill-opacity="0.8"> ptc5; Aa+BbCcDdEe FfGgHhI+iJj... -> pv1:Aa+BbCcDdEeFfGg pv2:Aa+BbCc.. pv3:HhI+iJj... </text>
+<text x="50" y="50" font-size="18"  fill="green" fill-opacity="0.8">PTC7 pv1 ..pv4 as Test+ pv5 ..pv6 without operator+ </text>
+<text x="50" y="70" font-size="18"  fill="green" fill-opacity="0.8"> ptc7; Aa+BbCcDdEe FfGgHhI+iJj... -> pv1:Aa+BbCcDdEeFfGg pv2:Aa+BbCc.. pv3:HhI+iJj... </text>
 <text x="50" y="90" font-size="18"  fill="green" fill-opacity="0.8">yields the same as above </text>
 
 <image href="ptclibrary/wit2Case1bigNsmalLetNosquarematrixptc7.png" x="10" y="500"  fill-opacity="0.8"/>
-<text x="50" y="490" font-size="18"  fill="green" fill-opacity="0.8"> ptc5; AaBbCcDdEe FfGgHhIiJj... -> pv1:AaBbCcDdEeFfGg pv2:AaBbCc.. pv3:HhIiJj... </text>
+<text x="50" y="490" font-size="18"  fill="green" fill-opacity="0.8"> ptc7; AaBbCcDdEe FfGgHhIiJj... -> pv1:AaBbCcDdEeFfGg pv2:AaBbCc.. pv3:HhIiJj... </text>
 
 <image href="ptclibrary/wit2Case1bigLetNosquarematrixptc7.png" x="10" y="910"  fill-opacity="0.8"/>
-<text x="50" y="880" font-size="18"  fill="green" fill-opacity="0.8"> ptc5; ABCDE FGHIJKLMN OPQRST UVWXYZ -> pv1:ABCDEFG pv2:ABC.. pv3:HIJ... </text>
-<text x="50" y="1300" font-size="18"  fill="green" fill-opacity="0.8"> ptc5; abcdefg hijklmn opqrst uvwxyz -> pv1:abcdefg pv2:abcdefghijklmn pv3:hij... </text>
+<text x="50" y="880" font-size="18"  fill="green" fill-opacity="0.8"> ptc7; ABCDE FGHIJKLMN OPQRST UVWXYZ -> pv1:ABCDEFG pv2:ABC.. pv3:HIJ... </text>
+<text x="50" y="1300" font-size="18"  fill="green" fill-opacity="0.8"> ptc7; abcdefg hijklmn opqrst uvwxyz -> pv1:abcdefg pv2:abcdefghijklmn pv3:hij... </text>
 <text x="50" y="1320" font-size="18"  fill="green" fill-opacity="0.8">        yields the samae as above</text>
 
 <image href="ptclibrary/wit2Example1smalLetptc7.png"  x="10" y="1340"  fill-opacity="0.8"/>
-<text x="50" y="1340" font-size="18"  fill="green" fill-opacity="0.8"> ptc5; Example1 all small letters</text>
+<text x="50" y="1340" font-size="18"  fill="green" fill-opacity="0.8"> ptc7; Example1 all small letters</text>
 
 
 <image href="ptclibrary/wit2Example1bignsmallLettersGroups1ptc7.png"  x="10" y="1740"  fill-opacity="0.8"/>
-<text x="50" y="1720" font-size="18"  fill="green" fill-opacity="0.8"> ptc5; AAAaaBBbb AAaaBbAaBb AAAaaa BBBbbbAAaa -> pv1:AAAaaBBbb pv2:AAAaaaBBbb... </text>
+<text x="50" y="1720" font-size="18"  fill="green" fill-opacity="0.8"> ptc7; AAAaaBBbb AAaaBbAaBb AAAaaa BBBbbbAAaa -> pv1:AAAaaBBbb pv2:AAAaaaBBbb... </text>
 
 
 <image href="ptclibrary/wit2Example1bigLetptc7.png"  x="10" y="2160"  fill-opacity="0.8"/>
-<text x="50" y="2140" font-size="18"  fill="green" fill-opacity="0.8"> ptc5; AAABB AABAB AAA BBBAA -> pv1:AAABB pv2:AA.. pv3:AABA... </text>
+<text x="50" y="2140" font-size="18"  fill="green" fill-opacity="0.8"> ptc7; AAABB AABAB AAA BBBAA -> pv1:AAABB pv2:AA.. pv3:AABA... </text>
 
 <image href="ptclibrary/example1bigNsmalLetptc5Operator+.png"  x="10" y="2620"  fill-opacity="0.8"/>
 <text x="50" y="2580" font-size="18"  fill="green" fill-opacity="0.8">Test+: mix in arythmetic operator+ in 2 3 5 7 rythm, find a nice hexagon that fits ?</text>
@@ -125,7 +125,7 @@ check if there is a </text>
 <image href="ptclibrary/wit2Case2vowelsDoublepv2pv4run2Nosquarematrixptc7.png"  x="10" y="4760"  fill-opacity="0.8"/>
 <image href="ptclibrary/wit2Case2vowelsDoublepv2pv4run1Nosquarematrixptc7.png"  x="10" y="5160"  fill-opacity="0.8"/>
 
-<text x="50" y="5580" font-size="18"  fill="green" fill-opacity="0.8">run3: vowels with-Y, square 5x5 matrix; added zeros, no pv2 pv5 double </text>
+<text x="50" y="5580" font-size="18"  fill="green" fill-opacity="0.8">ptc7 run3: vowels with-Y, square 5x5 matrix; added zeros, no pv2 pv5 double </text>
 <text x="50" y="5600" font-size="18"  fill="blue" fill-opacity="0.8">pv1: AaEe0 </text>
 <text x="50" y="5620" font-size="18"  fill="blue" fill-opacity="0.8">pv2: AaEeI</text>
 <text x="50" y="5640" font-size="18"  fill="blue" fill-opacity="0.8">pv3: i0000</text>
@@ -147,12 +147,12 @@ e.g use z-axis intersection sqrt5rT to track changes</text>
 
 <text x="50" y="5840" font-size="18"  fill="green" fill-opacity="0.8">
 file: lala1Examples/wit2Case2vowelspv2pv4run3squarematrixptc7.wxm </text>
-<image href="ptclibrary/wit2Case2vowelsDoublepv2pv4run3Nosquarematrixptc5.png"  x="10" y="5846"  fill-opacity="0.8"/>
+<image href="ptclibrary/wit2Case2vowelsDoublepv2pv4run3Nosquarematrixptc7.png"  x="10" y="5846"  fill-opacity="0.8"/>
 
 <!-- experiment2 case3  -->
 <text x="50" y="6280" font-size="18"  fill="green" fill-opacity="0.8">
 experiment2 case3 </text>
-<text x="50" y="6300" font-size="18"  fill="green" fill-opacity="0.8">ptc5 case3: alphabet, square 6x6 matrix; added zeros, no pv2 pv5 double </text>
+<text x="50" y="6300" font-size="18"  fill="green" fill-opacity="0.8">ptc7 case3: alphabet, square 6x6 matrix; added zeros, no pv2 pv5 double </text>
 <text x="50" y="6320" font-size="18"  fill="blue" fill-opacity="0.8">pv1: a b c d e 0 </text>
 <text x="50" y="6340" font-size="18"  fill="blue" fill-opacity="0.8">pv2: f g h i j 0</text>
 <text x="50" y="6360" font-size="18"  fill="blue" fill-opacity="0.8">pv3: k l m n o 0</text>
@@ -160,11 +160,11 @@ experiment2 case3 </text>
 <text x="50" y="6400" font-size="18"  fill="blue" fill-opacity="0.8">pv5: u v w x y 0</text>
 <text x="50" y="6420" font-size="18"  fill="blue" fill-opacity="0.8">pv6: z 0 0 0 0 0 </text>
 <text x="50" y="6440" font-size="18"  fill="blue" fill-opacity="0.8">file: ptclibrary/wit2Case3alphabetNoDoublepv2pv5squarematrix6x6ptc7.png </text>
-<image href="ptclibrary/wit2Case3alphabetNoDoublepv2pv5squarematrix6x6ptc5.png"  x="10" y="6460"  fill-opacity="0.8"/>
+<image href="ptclibrary/wit2Case3alphabetNoDoublepv2pv5squarematrix6x6ptc7.png"  x="10" y="6460"  fill-opacity="0.8"/>
 
 <text x="50" y="6900" font-size="18"  fill="green" fill-opacity="0.8">
 experiment2 case3 </text>
-<text x="50" y="6920" font-size="18"  fill="green" fill-opacity="0.8">ptc5 case3: alphabet, square 6x6 matrix; added zeros, no pv2 pv5 double </text>
+<text x="50" y="6920" font-size="18"  fill="green" fill-opacity="0.8">ptc7 case3: alphabet, square 6x6 matrix; added zeros, no pv2 pv5 double </text>
 <text x="50" y="6940" font-size="18"  fill="blue" fill-opacity="0.8">pv1: a b c d e f </text>
 <text x="50" y="6960" font-size="18"  fill="blue" fill-opacity="0.8">pv2: g h i j k l</text>
 <text x="50" y="6980" font-size="18"  fill="blue" fill-opacity="0.8">pv3: m n o p q r</text>
@@ -176,7 +176,7 @@ wit2Case3alphabetNoDoublepv2pv5zerossquarematrix6x6ptc7.png
  </text>
 <image href="ptclibrary/wit2Case3alphabetNoDoublepv2pv5zerossquarematrix6x6ptc7.png"  x="10" y="7080"  fill-opacity="0.8"/>
 
-<text x="50" y="7500" font-size="18"  fill="green" fill-opacity="0.8">ptc5 case3: alphabet, square 6x6 matrix; added zeros, pv2 pv5 double -> subtile difference to above</text>
+<text x="50" y="7500" font-size="18"  fill="green" fill-opacity="0.8">ptc7 case3: alphabet, square 6x6 matrix; added zeros, pv2 pv5 double -> subtile difference to above</text>
 <text x="50" y="7520" font-size="18"  fill="green" fill-opacity="0.8">placed some polygons  </text>
 <g transform="translate(28,7620)" >
 <polyline id="hexagon" points="87,0 174,50 174,150 87,200 0,150 0,50 87,0" class="room" onclick="changeFill()"/>

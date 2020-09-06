@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xml="http://www.w3.org/XML/1998/namespace" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:dc="http://purl.org/dc/elements/1.1/"
-   xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" id="root" xml:space="preserve" width="700" height="10000" onload="OnLoadEvent(evt)" onmousemove="get_coordo(evt)">
+   xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" id="root" xml:space="preserve" width="700" height="10400" onload="OnLoadEvent(evt)" onmousemove="get_coordo(evt)">
 
 <script><![CDATA[
 var compati = new Array(true,true,true,true,true,true)
@@ -101,28 +101,134 @@ check if there is a </text>
 
 <image href="ptclibrary/wit2Case1bigNsmalLetNosquarematrixptc6Operator+1to4.png"  x="10" y="3330"  fill-opacity="0.8"/>
 
-<text x="50" y="8920" font-size="18"  fill="red" fill-opacity="0.8">MQ3 1..4, just line1</text>
-<text x="50" y="8940" font-size="18"  fill="green" fill-opacity="0.8"> progVar1 = show(tussenStap 1 1) </text>
-<text x="50" y="8960" font-size="18"  fill="green" fill-opacity="0.8"> progVar2 = (show (tussenStap 1 1))++(show(tussenStap 1 2))  </text>
-<text x="50" y="8980" font-size="18"  fill="green" fill-opacity="0.8"> progVar3 = (show(tussenStap 1 2)) </text>
-<text x="50" y="9000" font-size="18"  fill="green" fill-opacity="0.8"> progVar4 = (show(tussenStap 1 3)) </text>
-<text x="50" y="9020" font-size="18"  fill="green" fill-opacity="0.8"> progVar5 = (show (tussenStap 1 3))++(show(tussenStap 1 4)) </text>
-<text x="50" y="9040" font-size="18"  fill="green" fill-opacity="0.8"> progVar6 = (show(tussenStap 1 4)) </text>
-<text x="50" y="9060" font-size="18"  fill="blue" fill-opacity="0.8">file: ptclibrary/mq3withTussenstapLine1ptc6.png</text>
-<image href="ptclibrary/mq3withTussenstapLine1ptc6.png"  x="10" y="9080"  fill-opacity="0.8"/>
 
 
-<text x="50" y="9380" font-size="18"  fill="red" fill-opacity="0.8">MQ3 1..4, line4 error but runs</text>
-<text x="50" y="9400" font-size="18"  fill="green" fill-opacity="0.8"> progVar1 = show(tussenStap 1 1) </text>
-<text x="50" y="9420" font-size="18"  fill="green" fill-opacity="0.8"> progVar2 = (show (tussenStap 1 1))++(show(tussenStap 2 2))  </text>
-<text x="50" y="9440" font-size="18"  fill="green" fill-opacity="0.8"> progVar3 = (show(tussenStap 2 2)) </text>
-<text x="50" y="9460" font-size="18"  fill="green" fill-opacity="0.8"> progVar4 = (show(tussenStap 3 3)) </text>
-<text x="50" y="9480" font-size="18"  fill="green" fill-opacity="0.8"> progVar5 = (show (tussenStap 3 3))++(show(tussenStap 3 4)) </text>
-<text x="50" y="9500" font-size="18"  fill="green" fill-opacity="0.8"> progVar6 = (show(tussenStap 3 4)) </text>
-<text x="50" y="9520" font-size="18"  fill="red" fill-opacity="0.8"> note! tussenStap 4 4 should yield an error</text>
-<text x="50" y="9540" font-size="18"  fill="red" fill-opacity="0.8"> choose Int>4  </text>
-<text x="50" y="9560" font-size="18"  fill="blue" fill-opacity="0.8">file: ptclibrary/mq3withTussenstapLine1to3ptc6.png </text>
-<image href="ptclibrary/mq3withTussenstapLine1to3ptc6.png"  x="10" y="9580"  fill-opacity="0.8"/>
+<text x="50" y="3340" font-size="18"  fill="green" fill-opacity="0.8"> the vowels no-Y , no square matrix -> pv1: Aa pv2: AaEe .. pv6: Oo </text>
+<image href="ptclibrary/wit2Case2bigNsmalLetNosquarematrixptc6.png"  x="10" y="3360"  fill-opacity="0.8"/>
+<text x="50" y="3740" font-size="18"  fill="green" fill-opacity="0.8"> the vowels no-Y , no square matrix -> yield the same as above</text>
+
+<text x="50" y="3760" font-size="18"  fill="green" fill-opacity="0.8">below, same vowels other perspective of ptc6! note the doubled lines </text>
+<image href="ptclibrary/wit2vowelsNoY.png"  x="10" y="3760"  fill-opacity="0.8"/>
+
+<text x="50" y="4160" font-size="18"  fill="green" fill-opacity="0.8">vowels no-Y, square 4x4 matrix; pv1:AaE0 pv2:eIi0 pv3:Oou0  ..pv6: u000 </text>
+<image href="ptclibrary/wit2Case2bigNsmalsquarematrix4x4ptc6.png"  x="10" y="3860"  fill-opacity="0.8"/>
+
+<text x="50" y="4560" font-size="18"  fill="green" fill-opacity="0.8">vowels with-Y, irregular matrix, double pv2 pv4; </text>
+
+<text x="50" y="4580" font-size="18"  fill="green" fill-opacity="0.8">
+  pv1:AaEeI pv2:AaEeIi000 pv3:i000  pv4: OoU0  pv5: OoU0uYy0  pv6: uYy0 </text>
+<text x="50" y="4600" font-size="18"  fill="green" fill-opacity="0.8">vowels no Y, irregular matrix, double pv2 pv4; yield the same </text>
+
+<image href="ptclibrary/wit2Case2vowelsDoublepv2pv4Nosquarematrixptc6.png"  x="10" y="4305"  fill-opacity="0.8"/>
+
+<text x="50" y="5020" font-size="18"  fill="green" fill-opacity="0.8">run1: vowels with-Y, irregular matrix, double pv2 pv4; added zeros </text>
+<text x="50" y="5040" font-size="18"  fill="green" fill-opacity="0.8">
+  pv1:AaEe pv2:AaEeIi000 pv3:i000  pv4: OoUu  pv5: OoU0Yy000  pv6: y000 </text>
+
+
+<image href="ptclibrary/wit2Case2vowelsDoublepv2pv4run2Nosquarematrixptc6.png"  x="10" y="5060"  fill-opacity="0.8"/>
+<image href="ptclibrary/wit2Case2vowelsDoublepv2pv4run1Nosquarematrixptc6.png"  x="10" y="5460"  fill-opacity="0.8"/>
+
+<text x="50" y="5880" font-size="18"  fill="green" fill-opacity="0.8">run3: vowels with-Y, square 5x5 matrix; added zeros, no pv2 pv5 double </text>
+<text x="50" y="5900" font-size="18"  fill="blue" fill-opacity="0.8">pv1: AaEe0 </text>
+<text x="50" y="5920" font-size="18"  fill="blue" fill-opacity="0.8">pv2: AaEeI</text>
+<text x="50" y="5940" font-size="18"  fill="blue" fill-opacity="0.8">pv3: i0000</text>
+<text x="50" y="5960" font-size="18"  fill="blue" fill-opacity="0.8">pv4: OoUu0</text>
+<text x="50" y="5980" font-size="18"  fill="blue" fill-opacity="0.8">pv5: OoU0Y</text>
+<text x="50" y="6000" font-size="18"  fill="blue" fill-opacity="0.8">pv6: y0000 </text>
+
+
+<text x="50" y="6020" font-size="18"  fill="yellow" fill-opacity="0.8">
+in Wxmaxima plot , the change between this and the upper run1 and 2 will only appear with ptc8 (100) check length list in 'lib'  </text>
+<text x="50" y="6040" font-size="18"  fill="purple" fill-opacity="0.8">the 3 button leads to a different vector the</text>
+
+<text x="50" y="6060" font-size="18"  fill="purple" fill-opacity="0.8">red upper most on the right side a vector is named,</text>
+<text x="50" y="6080" font-size="18"  fill="purple" fill-opacity="0.8">all vectors in this context, so far depend on ptc6:</text>
+
+<text x="50" y="6100" font-size="18"  fill="red" fill-opacity="0.8"> sqr5rightTop (ptc5) = sqrt5rT </text>
+<text x="50" y="6120" font-size="18"  fill="yellow" fill-opacity="0.8">
+e.g use z-axis intersection sqrt5rT to track changes</text>
+
+<text x="50" y="6140" font-size="18"  fill="green" fill-opacity="0.8">
+file: lala1Examples/wit2Case2vowelspv2pv4run3squarematrixptc6.wxm </text>
+<image href="ptclibrary/wit2Case2vowelsDoublepv2pv4run3Nosquarematrixptc6.png"  x="10" y="6146"  fill-opacity="0.8"/>
+
+<!-- experiment2 case3  -->
+<text x="50" y="6580" font-size="18"  fill="green" fill-opacity="0.8">
+experiment2 case3 </text>
+<text x="50" y="6600" font-size="18"  fill="green" fill-opacity="0.8">ptc6 case3: alphabet, square 6x6 matrix; added zeros, no pv2 pv5 double </text>
+<text x="50" y="6620" font-size="18"  fill="blue" fill-opacity="0.8">pv1: a b c d e 0 </text>
+<text x="50" y="6640" font-size="18"  fill="blue" fill-opacity="0.8">pv2: f g h i j 0</text>
+<text x="50" y="6660" font-size="18"  fill="blue" fill-opacity="0.8">pv3: k l m n o 0</text>
+<text x="50" y="6680" font-size="18"  fill="blue" fill-opacity="0.8">pv4: p q r s t 0</text>
+<text x="50" y="6700" font-size="18"  fill="blue" fill-opacity="0.8">pv5: u v w x y 0</text>
+<text x="50" y="6720" font-size="18"  fill="blue" fill-opacity="0.8">pv6: z 0 0 0 0 0 </text>
+<text x="50" y="6740" font-size="18"  fill="blue" fill-opacity="0.8">file: ptclibrary/wit2Case3alphabetNoDoublepv2pv5squarematrix6x6ptc6.png </text>
+<image href="ptclibrary/wit2Case3alphabetNoDoublepv2pv5squarematrix6x6ptc6.png"  x="10" y="6760"  fill-opacity="0.8"/>
+
+<text x="50" y="7200" font-size="18"  fill="green" fill-opacity="0.8">
+experiment2 case3 </text>
+<text x="50" y="7220" font-size="18"  fill="green" fill-opacity="0.8">ptc6 case3: alphabet, square 6x6 matrix; added zeros, no pv2 pv5 double </text>
+<text x="50" y="7240" font-size="18"  fill="blue" fill-opacity="0.8">pv1: a b c d e f </text>
+<text x="50" y="7260" font-size="18"  fill="blue" fill-opacity="0.8">pv2: g h i j k l</text>
+<text x="50" y="7280" font-size="18"  fill="blue" fill-opacity="0.8">pv3: m n o p q r</text>
+<text x="50" y="7300" font-size="18"  fill="blue" fill-opacity="0.8">pv4: s t u v w x</text>
+<text x="50" y="7320" font-size="18"  fill="blue" fill-opacity="0.8">pv5: y z 0 0 0 0</text>
+<text x="50" y="7340" font-size="18"  fill="blue" fill-opacity="0.8">pv6: 0 0 0 0 0 0 </text>
+<text x="50" y="7360" font-size="18"  fill="blue" fill-opacity="0.8">
+wit2Case3alphabetNoDoublepv2pv5zerossquarematrix6x6ptc6.png
+ </text>
+<image href="ptclibrary/wit2Case3alphabetNoDoublepv2pv5zerossquarematrix6x6ptc6.png"  x="10" y="7380"  fill-opacity="0.8"/>
+
+<text x="50" y="7800" font-size="18"  fill="green" fill-opacity="0.8">ptc6 case3: alphabet, square 6x6 matrix; added zeros, pv2 pv5 double -> subtile difference to above</text>
+<text x="50" y="7820" font-size="18"  fill="green" fill-opacity="0.8">placed some polygons  </text>
+<g transform="translate(28,7920)" >
+<polyline id="hexagon" points="87,0 174,50 174,150 87,200 0,150 0,50 87,0" class="room" onclick="changeFill()"/>
+</g>
+<g transform="translate(78,7920)" >
+<polyline id="hexagon" points="87,0 174,50 174,150 87,200 0,150 0,50 87,0" class="project" onclick="changeFill()"/>
+</g>
+
+<text x="50" y="7840" font-size="18"  fill="blue" fill-opacity="0.8">file: wit2Case3alphabetDoublepv2pv5squarematrix6x6ptc6Nobackground.png</text>
+<text x="50" y="7860" font-size="18"  fill="green" fill-opacity="0.8">orbits of:</text>
+<text x="50" y="7880" font-size="18"  fill="red" fill-opacity="0.8">sqrt5rT</text>
+<image href="ptclibrary/wit2Case3alphabetDoublepv2pv5squarematrix6x6ptc8Nobackground.png"  x="10" y="8000"  fill-opacity="0.8"/>
+
+<text x="50" y="8700" font-size="18"  fill="red" fill-opacity="0.8">MQ3 general case linear, transpose (>2) otherwise error)</text>
+<text x="50" y="8720" font-size="18"  fill="green" fill-opacity="0.8"> mix linear and transpose in one plot</text>
+<text x="50" y="8740" font-size="18"  fill="green" fill-opacity="0.8">M.writeWXCloudNODE (testExp2MQ 1) ((testExp2MQ 2))...</text>
+<text x="50" y="8760" font-size="18"  fill="green" fill-opacity="0.8"> ... (transpose (testExp2MQ 3)) (testExp2MQ 4)...</text>
+<text x="50" y="8780" font-size="18"  fill="green" fill-opacity="0.8"> ... (transpose(testExp2MQ 5)) (transpose (testExp2MQ 6)) </text>
+
+mq3withPVRautenJustLine1.png
+
+<text x="50" y="8800" font-size="18"  fill="blue" fill-opacity="0.8">file: ptclibrary/mq3NoPVLinear.png</text>
+<image href="ptclibrary/mq3NoPVLinear.png"  x="10" y="8780"  fill-opacity="0.8"/>
+
+
+
+<text x="50" y="9220" font-size="18"  fill="red" fill-opacity="0.8">MQ3 1..4, just line1</text>
+<text x="50" y="9240" font-size="18"  fill="green" fill-opacity="0.8"> progVar1 = show(tussenStap 1 1) </text>
+<text x="50" y="9260" font-size="18"  fill="green" fill-opacity="0.8"> progVar2 = (show (tussenStap 1 1))++(show(tussenStap 1 2))  </text>
+<text x="50" y="9280" font-size="18"  fill="green" fill-opacity="0.8"> progVar3 = (show(tussenStap 1 2)) </text>
+<text x="50" y="9300" font-size="18"  fill="green" fill-opacity="0.8"> progVar4 = (show(tussenStap 1 3)) </text>
+<text x="50" y="9320" font-size="18"  fill="green" fill-opacity="0.8"> progVar5 = (show (tussenStap 1 3))++(show(tussenStap 1 4)) </text>
+<text x="50" y="9340" font-size="18"  fill="green" fill-opacity="0.8"> progVar6 = (show(tussenStap 1 4)) </text>
+<text x="50" y="9360" font-size="18"  fill="blue" fill-opacity="0.8">file: ptclibrary/mq3withTussenstapLine1ptc6.png</text>
+<image href="ptclibrary/mq3withTussenstapLine1ptc6.png"  x="10" y="9380"  fill-opacity="0.8"/>
+
+
+<text x="50" y="9680" font-size="18"  fill="red" fill-opacity="0.8">MQ3 1..4, line4 error but runs</text>
+<text x="50" y="9700" font-size="18"  fill="green" fill-opacity="0.8"> progVar1 = show(tussenStap 1 1) </text>
+<text x="50" y="9720" font-size="18"  fill="green" fill-opacity="0.8"> progVar2 = (show (tussenStap 1 1))++(show(tussenStap 2 2))  </text>
+<text x="50" y="9740" font-size="18"  fill="green" fill-opacity="0.8"> progVar3 = (show(tussenStap 2 2)) </text>
+<text x="50" y="9760" font-size="18"  fill="green" fill-opacity="0.8"> progVar4 = (show(tussenStap 3 3)) </text>
+<text x="50" y="9780" font-size="18"  fill="green" fill-opacity="0.8"> progVar5 = (show (tussenStap 3 3))++(show(tussenStap 3 4)) </text>
+<text x="50" y="9800" font-size="18"  fill="green" fill-opacity="0.8"> progVar6 = (show(tussenStap 3 4)) </text>
+<text x="50" y="9820" font-size="18"  fill="red" fill-opacity="0.8"> note! tussenStap 4 4 should yield an error</text>
+<text x="50" y="9840" font-size="18"  fill="red" fill-opacity="0.8"> choose Int>4  </text>
+<text x="50" y="9860" font-size="18"  fill="blue" fill-opacity="0.8">file: ptclibrary/mq3withTussenstapLine1to3ptc6.png </text>
+<image href="ptclibrary/mq3withTussenstapLine1to3ptc6.png"  x="10" y="9880"  fill-opacity="0.8"/>
 
 
 <text x="50" y="150">hexagon plane</text>

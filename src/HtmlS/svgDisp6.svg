@@ -152,7 +152,7 @@ file: lala1Examples/wit2Case2vowelspv2pv4run3squarematrixptc8.wxm </text>
 <!-- experiment2 case3  -->
 <text x="50" y="6280" font-size="18"  fill="green" fill-opacity="0.8">
 experiment2 case3 </text>
-<text x="50" y="6300" font-size="18"  fill="green" fill-opacity="0.8">ptc5 case3: alphabet, square 6x6 matrix; added zeros, no pv2 pv5 double </text>
+<text x="50" y="6300" font-size="18"  fill="green" fill-opacity="0.8">ptc8 case3: alphabet, square 6x6 matrix; added zeros, no pv2 pv5 double </text>
 <text x="50" y="6320" font-size="18"  fill="blue" fill-opacity="0.8">pv1: a b c d e 0 </text>
 <text x="50" y="6340" font-size="18"  fill="blue" fill-opacity="0.8">pv2: f g h i j 0</text>
 <text x="50" y="6360" font-size="18"  fill="blue" fill-opacity="0.8">pv3: k l m n o 0</text>
@@ -164,7 +164,7 @@ experiment2 case3 </text>
 
 <text x="50" y="6900" font-size="18"  fill="green" fill-opacity="0.8">
 experiment2 case3 </text>
-<text x="50" y="6920" font-size="18"  fill="green" fill-opacity="0.8">ptc5 case3: alphabet, square 6x6 matrix; added zeros, no pv2 pv5 double </text>
+<text x="50" y="6920" font-size="18"  fill="green" fill-opacity="0.8">ptc8 case3: alphabet, square 6x6 matrix; added zeros, no pv2 pv5 double </text>
 <text x="50" y="6940" font-size="18"  fill="blue" fill-opacity="0.8">pv1: a b c d e f </text>
 <text x="50" y="6960" font-size="18"  fill="blue" fill-opacity="0.8">pv2: g h i j k l</text>
 <text x="50" y="6980" font-size="18"  fill="blue" fill-opacity="0.8">pv3: m n o p q r</text>
@@ -176,7 +176,7 @@ wit2Case3alphabetNoDoublepv2pv5zerossquarematrix6x6ptc8.png
  </text>
 <image href="ptclibrary/wit2Case3alphabetNoDoublepv2pv5zerossquarematrix6x6ptc8.png"  x="10" y="7080"  fill-opacity="0.8"/>
 
-<text x="50" y="7500" font-size="18"  fill="green" fill-opacity="0.8">ptc5 case3: alphabet, square 6x6 matrix; added zeros, pv2 pv5 double -> subtile difference to above</text>
+<text x="50" y="7500" font-size="18"  fill="green" fill-opacity="0.8">ptc8 case3: alphabet, square 6x6 matrix; added zeros, pv2 pv5 double -> subtile difference to above</text>
 <text x="50" y="7520" font-size="18"  fill="green" fill-opacity="0.8">placed some polygons  </text>
 <g transform="translate(28,7620)" >
 <polyline id="hexagon" points="87,0 174,50 174,150 87,200 0,150 0,50 87,0" class="room" onclick="changeFill()"/>
