@@ -14,8 +14,8 @@
  open folder ../src/wxms  ; compile lala2.wxm  -> plot 
   
    
- visiualize a syntactic 'Char'-type based topology of the string:
-  1.The world is everything that is the case.∗
+ visiualize a syntactic 'Char'-type based topology of the sentence:
+  1.The world is everything that is the case.∗ -> sentence -> [String] -> [[String]]
   
     b)
     Colored_2_3_..*> let li = ["The","world","is","everything"]
