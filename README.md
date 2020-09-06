@@ -2,20 +2,33 @@
 
 ##### visiualize your network or your name 
      
-    setup the path to write htmls 
+    prepare the path to use 2 main module
+    a) src/Colored_2_3_5Counter20.hs
+    b) src/TheAtoBplotter.hs
     *Main>root
     *Main>/c:/stack/SimilaritYWriter20/src/
     *Main>:t root
     *Main>:i root
-    do...
+    Change the function 'root' to your system 
     
- open folder ../src/wxms
-   compile lala2.wxm 
-   ....img
+ open folder ../src/wxms  ; compile lala2.wxm  -> plot 
+  
    
- lets have some fun
+ visiualize a syntactic topology of the string:
   1.The world is everything that is the case.∗
-     
+  
+    b)
+    Colored_2_3_..*> let li = ["The","world","is","everything"]
+                  *> let li2 = ["that","is","the","case."]
+                  *> let li3 = [[li1,li2]]
+  
+                  *> let myTestA at = kArmTest5 at 1 pi 1 1 [] "AAA"
+                  *> myTestA li  -- write "src/wxms/lala1.wxm -> plot string 
+
+   There are 5 variable functions ( ptc5,ptc6,ptc7,ptc8,ptc9) which yield different 
+   related graphs. (see 'How things are compared')
+   
+    b)
     TheAtoBplotter*> let li = ["The","world","is","everything"]
                   *> let li2 = ["that","is","the","case."]
                   *> let li3 = [[li1,li2]]
@@ -248,7 +261,7 @@ where   a a a a = line1 ; b b b b = line2 ... x x x x = line n
                                          ,progVar4
 ![alt tag](https://github.com/CBroemse/SimilaritYWriter20/blob/master/source/conceptPlotter.png)
 
-how things are compared
+###### How things are compared
 
        pointCloud01
  
