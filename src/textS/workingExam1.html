@@ -173,11 +173,11 @@ Goal:  P(H|E)
 Prior: "Prior" -> P(H) = 1/21
 
 Bayes' theorem:
-¬A (not A)
+Â¬A (not A)
 
          P(H)P(E|H)
 P(H|E) = -------------------
-       P(H)P(E|H) + P(¬H)P(E|¬H)
+       P(H)P(E|H) + P(Â¬H)P(E|Â¬H)
 
 
 
@@ -769,6 +769,29 @@ https://www.youtube.com/watch?v=HZGCoVF3YvM&t=129s
 'Koller and Friedman'
 							
 
+	   
+Experiment3
+see catalogue zoo 'quirky example'
+*Colored_2_3_5_Counter20> let ert r = tk r (ptc6 250)
+*> let xS r = head (ert r)
+*> let yS r = last (drop 1 (take 2 (ert r)))
+*> let zS r = last (ert r)
+*> let maXxS = map xS [1..100]
+*> let maXyS r = map yS [1..100]
+*> let maXzS r = map zS [1..100]
+*> whereTo e r = e `elemIndices` r
+	   
+-- engage Punkt data type 
+-- with the intention to plug in any function f(x)
+-- and select any x with m
+*> let basis22 foAL m = maybePu (head (ausw m foAL ))
+*e.g> basis22 (map show (ptc6 105)) 5
+ => ...   --shows line 5 of ptc6
+	   
+-- store data in String because there are only 5 other spots left
+-- when reading a longer list that wont help thus store in Punkt "String"
+basisPunkt foAL r = maybePu (show(checkflow [] [((basis22 foAL r))]))
+   
 </textarea>
 <br><br>
 
