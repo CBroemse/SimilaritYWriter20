@@ -790,8 +790,13 @@ see catalogue zoo 'quirky example'
 	   
 -- store data in String because there are only 5 other spots left
 -- when reading a longer list that wont help thus store in Punkt "String"
-basisPunkt foAL r = maybePu (show(checkflow [] [((basis22 foAL r))]))
-   
+*> let basisPunkt foAL r = maybePu (show(checkflow [] [((basis22 foAL r))]))
+
+-- plug 'basisPunkt' into this test below best to be mapped via e
+*> let fmrTEST3 io e e2 forLine =  checkflow  io [(Punkt  (head(checkflow [] [(basis4 e2 forLine)])) {- ...
+	        ... -} (Just (basis2 e 1 )) (Just (basis2 e 3 )) (Just (basis2 e 4 )) {- ...
+	        ... -} (Just (basis2 e 5 )) (Just (basis2 e 6))) ]
+
 </textarea>
 <br><br>
 
