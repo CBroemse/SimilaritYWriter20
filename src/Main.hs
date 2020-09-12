@@ -234,3 +234,24 @@ basisPunkt foAL r = U.maybePu (show(checkflow [] [((basis22 foAL r))]))
 -- plug 'basisPunkt' into this test below best to be mapped via e
 fmrTEST3 io e e2 forLine =  checkflow  io [(Punkt  (head(checkflow [] [(basis4 e2 forLine)]))(Just (basis2 e 1 )) (Just (basis2 e 3 )) (Just (basis2 e 4 ))(Just (basis2 e 5 )) (Just (basis2 e 6))) ]
 
+-- make a function that is a [(Maybe Punkt)]-> that by itself is the definiton of
+-- mother :: Punkt -> Maybe Punkt 
+-- this function below shall lead to => a motherTYPE that is depending on the type of simiyritYvalue
+foAdecide2 foA = let boa rt t = (Just (U.maybePu2 rt t)) --let whereBreak = chainDistribute crit bonelist crit (lines "1")
+                 in let mapMaybePun k = let ste1 k rt = (boa (head(Co.ausw k rt))) ((Just (U.maybePu (head (Co.ausw k rt)))) ) 
+                                        in ste1 k foA -- e.g foA = ["vb","vb2","vb3"]
+                 in let preMoa = length foA
+                 in let eindelijk = do (map mapMaybePun [1..preMoa]) 
+                 in 
+                 if foA==[] then Nothing
+                 else let chssd i = U.maybePu2 (head(Co.ausw i foA))  (((boa (head(Co.ausw i foA)) (head(Co.ausw i eindelijk)))))  
+                      in Just (show[(chssd 1)])
+
+iDF z = U.tk z ["AaEe0","AaEeI","i0000","OoUu0","OoU0Y","y0000"]
+lP z = U.tk z ["0*x + y + 0*z = 3","0*x + y + 0*z = 33*x + 0 + 0*z = 6","3*x + 0 + 0*z = 6","0*x + 0*y + z = 2","0*x + 0*y + z = 2x + y + z = 11","x + y + z = 11"]
+choosDomain ff z = do 
+             if ff == 1 then iDF z
+             else lP z
+
+
+
