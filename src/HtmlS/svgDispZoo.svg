@@ -74,19 +74,21 @@ function changeFill() {
 <text x="50" y="1350" font-size="18"  fill="blue" fill-opacity="0.8">file: ptclibrary/combisPtcsWithTussenstap3789N1to4.png </text>
 <image href="ptclibrary/combisPtcsWithTussenstap3789N1to4.png"  x="10" y="1370"  fill-opacity="0.8"/>
 
-<text x="50" y="1630" font-size="18"  fill="green" fill-opacity="0.8">quirky example: (ptc6 5) (ptc6 25) (ptc6 150)...  </text>
-<text x="50" y="1650" font-size="18"  fill="green" fill-opacity="0.8"> ... (ptc6 100) (ptc6 125) (ptc6 50) </text>
-<text x="50" y="1670" font-size="18"  fill="green" fill-opacity="0.8">with tussen.. ,line 1 to 3 ,  n 1..4  </text>
-<text x="50" y="1690" font-size="18"  fill="green" fill-opacity="0.8"> progVar1 = "0*x + y + 0*z = 3" </text>
-<text x="50" y="1710" font-size="18"  fill="green" fill-opacity="0.8"> progVar2 = "0*x + y + 0*z = 33*x + 0 + 0*z = 6"  </text>
-<text x="50" y="1730" font-size="18"  fill="green" fill-opacity="0.8"> progVar3 = "3*x + 0 + 0*z = 6" </text>
-<text x="50" y="1750" font-size="18"  fill="green" fill-opacity="0.8"> progVar4 = "0*x + 0*y + z = 2 </text>
-<text x="50" y="1770" font-size="18"  fill="green" fill-opacity="0.8"> progVar5 = "0*x + 0*y + z = 2x + y + z = 11" </text>
-<text x="50" y="1790" font-size="18"  fill="green" fill-opacity="0.8"> progVar6 = "x + y + z = 11" </text>
-<text x="50" y="1810" font-size="18"  fill="red" fill-opacity="0.8"> note! a 3x3 matrix function</text>
-<text x="50" y="1830" font-size="18"  fill="red" fill-opacity="0.8"> with varieng n which point of a ptc6 </text>
-<text x="50" y="1850" font-size="18"  fill="blue" fill-opacity="0.8">file: ptclibrary/Experiment3description1.png </text>
-<image href="ptclibrary/Experiment3description1.png"  x="10" y="1870"  fill-opacity="0.8"/>
+<text x="50" y="1630" font-size="18"  fill="green" fill-opacity="0.8">Experiment 3  </text>
+<text x="50" y="1650" font-size="18"  fill="green" fill-opacity="0.8">quirky example: (ptc6 5) (ptc6 25) (ptc6 150)...  </text>
+<text x="50" y="1670" font-size="18"  fill="green" fill-opacity="0.8"> ... (ptc6 100) (ptc6 125) (ptc6 50) </text>
+<text x="50" y="1690" font-size="18"  fill="green" fill-opacity="0.8">with double pv2 pv5   </text>
+<text x="50" y="1710" font-size="18"  fill="green" fill-opacity="0.8"> progVar1 = "0*x + y + 0*z = 3" </text>
+<text x="50" y="1730" font-size="18"  fill="green" fill-opacity="0.8"> progVar2 = "0*x + y + 0*z = 33*x + 0 + 0*z = 6"  </text>
+<text x="50" y="1750" font-size="18"  fill="green" fill-opacity="0.8"> progVar3 = "3*x + 0 + 0*z = 6" </text>
+<text x="50" y="1770" font-size="18"  fill="green" fill-opacity="0.8"> progVar4 = "0*x + 0*y + z = 2 </text>
+<text x="50" y="1790" font-size="18"  fill="green" fill-opacity="0.8"> progVar5 = "0*x + 0*y + z = 2x + y + z = 11" </text>
+<text x="50" y="1810" font-size="18"  fill="green" fill-opacity="0.8"> progVar6 = "x + y + z = 11" </text>
+<text x="50" y="1830" font-size="18"  fill="red" fill-opacity="0.8"> note! a 3x3 matrix function</text>
+<text x="50" y="1850" font-size="18"  fill="red" fill-opacity="0.8"> with varieng n which point of a ptc6 </text>
+<text x="50" y="1870" font-size="18"  fill="blue" fill-opacity="0.8">file: ptclibrary/Experiment3description1.png </text>
+<text x="15" y="1970" font-size="18"  fill="green" fill-opacity="0.8"> pg4 = cos (x)   vs  pg4 = sin (x) </text>
+<image href="ptclibrary/Experiment3description1.png"  x="10" y="1890"  fill-opacity="0.8"/>
 
 
 <!--
