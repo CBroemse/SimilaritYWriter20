@@ -796,7 +796,7 @@ see catalogue zoo 'quirky example'
 *> let fmrTEST3 io e e2 forLine =  checkflow  io [(Punkt  (head(checkflow [] [(basis4 e2 forLine)])) {- ...
 	        ... -} (Just (basis2 e 1 )) (Just (basis2 e 3 )) (Just (basis2 e 4 )) {- ...
 	        ... -} (Just (basis2 e 5 )) (Just (basis2 e 6))) ]
-*e.g>let fmrTEST3 io e e2 forLine =  checkflow  io [(Punkt  (head(checkflow [] [(basis4 e2 forLine)]))(Just (basis2 e 1 )) (Just (basis2 e 3 )) (Just (basis2 e 4 ))(Just (basis2 e 5 )) (Just (basis2 e 6))) ]
+*e.g>let fmrTEST3 io e e2 forLine =  checkflow  io [(Punkt  (head(checkflow [] [(basisPunkt e2 forLine)]))(Just (basis22 e 1 )) (Just (basis22 e 3 )) (Just (basis22 e 4 ))(Just (basis22 e 5 )) (Just (basis22 e 6))) ]
 
 -- a group of functions that shall a [(Maybe Punkt)]-> that by itself is the definiton of
 -- mother :: Punkt -> Maybe Punkt 
