@@ -208,17 +208,29 @@ foautInp2 autoInput solong globalVar aTxT = do
                    return ())
            return()
 
--- auto read a list analysis
---wiggleInput = length wiggler
---wiggler: [[Char]] 
---foWiggle wiggler= do
-  -- let tak e = ausw e wiggler 
 
---PLAYING PRGORAMMER
---
--- testing ptc functions:
---  one first appoach just changing on variable
---  progVar1.
---
---  1. use the choosM function. 
-   
+
+-- 12-9-2020 Experiment3 
+ert r = U.tk r (Co.ptc6 250)  
+xS r = head (ert r)
+yS r = last (drop 1 (take 2 (ert r)))
+zS r = last (ert r)
+maXxS = map xS [1..100]
+maXyS r = map yS [1..100]
+maXzS r = map zS [1..100]
+whereTo e r = e `elemIndices` r
+	   
+-- engage Punkt data type 
+-- with the intention to plug in any function f(x)
+-- and select any x with m
+basis22 foAL m = U.maybePu (head (Co.ausw m foAL ))
+-- *e.g>basis22 (map show (ptc6 105)) 5
+ -- => ...   --shows line 5 of ptc6
+	   
+-- store data in String because there are only 5 other spots left
+-- when reading a longer list that wont help thus store in Punkt "String"
+basisPunkt foAL r = U.maybePu (show(checkflow [] [((basis22 foAL r))]))
+
+-- plug 'basisPunkt' into this test below best to be mapped via e
+fmrTEST3 io e e2 forLine =  checkflow  io [(Punkt  (head(checkflow [] [(basis4 e2 forLine)]))(Just (basis2 e 1 )) (Just (basis2 e 3 )) (Just (basis2 e 4 ))(Just (basis2 e 5 )) (Just (basis2 e 6))) ]
+

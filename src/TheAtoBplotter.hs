@@ -6,13 +6,16 @@
 --         e.g  pg1 x = sin x 
 
               --
-
+--root
 module TheAtoBplotter (
     
       defSearch  -- enter pg functions and progVars
     , defSearchRAW  
     --, runKRAW  -- like below but set to pick 4 variables of a bonelist
-    --, runKBASE -- enter a [li,li..], decide to plot, choose search for a bonelist 
+    --, runKBASE -- enter a [li,li..], decide to plot, choose search for a bonelist
+     , basis2 -- added 12-9-2020 within experiment3 use for Punkt type 
+     , basis4 -- as above with different output
+     , checkflow -- as above could be imported to main from Colored..Writer20.hs as well 
      ) where
 
 import Data.List
@@ -40,11 +43,12 @@ import qualified Colored_2_3_5_Counter20 as C
 --                       overwriting what was gained in the iteration
 --  lalas = wxmWritetoken 
 --  subroutine :: ptc ptc ptc ptc ptc ptc lalas -> list -> [Double] 
-subroutinE = [[(C.ptc5 5),(C.ptc5 25),(C.ptc5 50),(C.ptc5 100),(C.ptc5 125),(C.ptc5 150),[[1.0]]],{-  a plaine 
+subroutinE = [[(C.ptc6 5),(C.ptc6 25),(C.ptc6 50),(C.ptc6 100),(C.ptc6 125),(C.ptc6 150),[[1.0]]],{-
+             -}[(C.ptc6 5),(C.ptc6 25),(C.ptc6 50),(C.ptc6 100),(C.ptc6 125),(C.ptc6 150),[[2.0]]] ]   {--,{-  a plaine 
                 -}[(C.ptc6 5),(C.ptc6 25),(C.ptc6 50),(C.ptc6 100),(C.ptc6 125),(C.ptc6 150),[[2.0]]],{- interesting
                 -}[(C.ptc7 5),(C.ptc7 25),(C.ptc7 50),(C.ptc7 100),(C.ptc7 125),(C.ptc7 150),[[3.0]]],{- half 'crown'
                 -}[(C.ptc8 5),(C.ptc8 25),(C.ptc8 50),(C.ptc8 100),(C.ptc8 125),(C.ptc8 150),[[4.0]]],{- similar to above
-                -}[(C.ptc9 5),(C.ptc9 25),(C.ptc9 50),(C.ptc9 100),(C.ptc9 125),(C.ptc9 150),[[5.0]]]]
+                -}[(C.ptc9 5),(C.ptc9 25),(C.ptc9 50),(C.ptc9 100),(C.ptc9 125),(C.ptc9 150),[[5.0]]]] -}
 ----------------------------------------------------------------------------
 
 
@@ -78,7 +82,50 @@ runKBASE offOn target plot addGh ghAdd n d get1 get2 get3 get4 subroutineList= d
        writeFile "HtmlS/yourRun.html" (theListIV) 
        writeFile (root++"/src/index2.html") (theListIV)
 
+-----------------------------------------------------------
 
+-----------------------------------------------------------
+-- 12-9-2020
+-- function below is based an 'runKBASE' above
+-- experiment 3 compare two bonlists with each other
+-- let one list be the solution domain 
+-- let another be the snytactic domain
+--
+-- e.g> runEXP3 2 ["1","2"] 1 2 at 2 (li3) ht 1 2 3 4
+-- connected to ht if ht == 3 then run Experiment3  
+-- domain a) determine how to apply LP to IDF
+--           y' = xz(IDF) + - xz (LP)
+--           I) let xz' = (maximum maXxS(IDF )) - (maximum maXyS (LP)) 
+runEXP3 offOn target plot addGh ghAdd n d get1 get2 get3 get4 ht subroutineList= do
+       let iDF z = tk z ["AaEe0","AaEeI","i0000","OoUu0","OoU0Y","y0000"]
+       let lP z = tk z ["0*x + y + 0*z = 3","0*x + y + 0*z = 33*x + 0 + 0*z = 6","3*x + 0 + 0*z = 6","0*x + 0*y + z = 2","0*x + 0*y + z = 2x + y + z = 11","x + y + z = 11"]
+       let choosDomain ff z = do 
+                   if ff == 1 then iDF z
+                   else lP z
+       allforIV <- forM [1..(length target)] (\four4 -> do
+            -- first loop is 'IDF' second one is 'LP'
+            let fg = runKAXIOM offOn target plot addGh ghAdd n (theDs four4 d) (get1) (get2) (get3) (get4) ht (theDs four4 d) (four4) [(read(show four4))] ((tk four4 subroutineList))
+            fg
+            return (fg))
+
+       header <- readFile "HtmlS/allRowsHeader2.txt"
+       taiL <- readFile "HtmlS/allRowsTail2.txt"
+
+   --    let whichopen =  if clicks==0 then 7
+     --                   else if clicks<7 then (tzExp)-1
+       --                 else 1
+--   wirs <- readFile ("HtmlS/foyourRun"++show whichopen++".txt")
+  -- wirs2 <- readFile ("HtmlS/foyourRun"++show (whichopen)++".txt")
+       writeAll <- forM [1..(length target)] (\dt -> do
+            wirs <- readFile ("HtmlS/foyourRun"++(show (dt+1))++".txt")
+            return (wirs))
+     --  nugget = map ord nuDoe
+     --  let gbb = map chr [nugget]  tsRAW
+       let theListIV = (header++unwords writeAll++(G.screenInfo (map lines["which info"]) 1) ++taiL)
+       writeFile "HtmlS/yourRun.html" (theListIV) 
+       writeFile (root++"/src/index2.html") (theListIV)
+------------------------------------------------------------
+------------------------------------------------------------
 
 -- 4-8-2020  ***************************************************************************updated write ptc buttons
 -- e.g let myTest at = runKAXIOM 1 [1,2] 2 2 at 2 (li3) 1 2 3 4 3 (head(ausw 1 li3))
@@ -561,7 +608,8 @@ defSearchRAW offOn target plot addGh ghAdd pV1 pV2 pV3 pV4 pV5 pV6 ptc0Len ptc3L
              --    let inser n b = ausw b ([map show (ptc0 (n)),map show (ptc2 (n)),map show (ptc3 (n)),map show (ptc4 (n)),map show (ptc5 (n)),map show (ptc6 (n)),map show(ptc7 (n)),map show(ptc8 (n)),map show(ptc9 (n))]) 
                --  return(inser n nu))  
           ---  return(cD) i
-          --
+
+ -- a length variable related to complexity of the resulting graph
        let tsR dr = length$nub$concat$tsRAW dr 
        let ts0 = tsR ptc0 --length (nub( ptc0 10)) 
        let ts2 = tsR ptc2 --length (nub( ptc2 25)) 
@@ -676,10 +724,64 @@ defSearchRAW offOn target plot addGh ghAdd pV1 pV2 pV3 pV4 pV5 pV6 ptc0Len ptc3L
                      let theListIV = header++(unlines foPeace)++ "</body>\n"++"</html>\n"
                      --writeFile "HtmlS/yourRun.html" (theListIV)
                      putStrLn (unlines foPeace)
-                     writeFile  ("HtmlS/"++(forRunHtml)) (unlines$foPeace) 
-                  
-                 else 
+                     writeFile  ("HtmlS/"++(forRunHtml)) (unlines$foPeace)
+ ---------------------------------------------------------------------------------------------------------------------------------------------------------
+ -------------- ###########################################################################################             EXPERIMENT 3
+    -- added 12-9-2020 a solution domain LP and a syntacial domain IDF are related to each other
+    --          with y''  
+                 else if ht == 3 then do
+                     putStrLn "Experiment 3"
+                     let ert r = tk r (C.ptc6 250)
+                     let xS r = head (ert r)  
+                     let yS r = last (drop 1 (take 2 (ert r))) 
+                     let zS r = last (ert r) 
+                     let maXxS = map xS [1..100]   
+                     let maXyS = map yS [1..100]
+                     let maXzS = map zS [1..100]        
+        -- engage Punkt data type 
+        -- with the intention to plug in any function f(x)
+        -- and select any x with m
+                     let basis22 foAL m = maybePu (head (ausw m foAL ))
+                     let fmrTEST3 io e e2 forLine =  checkflow  io [(Punkt  (head(checkflow [] [(basis4 e2 forLine)]))(Just (basis2 e 1 )) (Just (basis2 e 3 )) (Just (basis2 e 4 ))(Just (basis2 e 5 )) (Just (basis2 e 6))) ]
+        -- based on role model 
+   -- e.g
+    --
+                     let foAdecide2 foA = let boa rt t = (Just (maybePu2 rt t)) --let whereBreak = chainDistribute crit bonelist crit (lines "1")
+                          in let mapMaybePun k = let ste1 k rt = (boa (head(ausw k rt))) ((Just (maybePu (head (ausw k rt)))) ) 
+                                                 in ste1 k foA -- e.g foA = ["vb","vb2","vb3"]
+                          in let preMoa = length foA
+                          in let eindelijk = do (map mapMaybePun [1..preMoa]) 
+                          in 
+                          if foA==[] then Nothing
+                          else let chssd i = maybePu2 (head(ausw i foA))  (((boa (head(ausw i foA)) (head(ausw i eindelijk)))))  
+                               in Just (show[(chssd 1)])
+                     let infoSt pt pt2 = ("points: "++ pt ++ "\n 'daZip'-type: " ++(show (daZip (head toca) pt2))++"\n reduced-2d: "++ (show (build2d pt2)) ++" length: "++ show (length$concat$tsRAW pt2) ++ "\n" ++ show(tsRAW pt2)) 
                      
+                     let foalt = map words [("info ptc0\n"++ ((infoSt (show ts0) (ptc0)) )),("info ptc2\n"++ infoSt (show ts2) (ptc2) ),("info ptc3"++ infoSt (show ts3) (ptc3) ),("info ptc4"++ infoSt (show ts4) (ptc4) ),("info ptc5\n"++ infoSt (show ts5) (ptc5) ),("info ptc6\n"++ infoSt (show ts6) (ptc6) ),("info ptc7\n"++ infoSt (show ts7) (ptc7) ),("info ptc8\n"++ infoSt (show ts8) (ptc8) ),("info ptc9\n"++ infoSt (show ts9) (ptc9) )]  
+                     ptcButoons <- forM [1..9] (\btn -> do
+                                
+                                let seleD = head(ausw btn stril)
+                                --let seleD = show((realToFrac foseleD)/3)
+                                let rightPtc = if btn == 1  then btn - 1
+                                               else btn
+
+                                --chooslabel <- forM [1] (\wbt -> do  
+                                let gh = if seleD ==3 then ["ptc"++show (rightPtc)++"reduced.png"]
+                                         else if seleD ==6 then ["ptc"++show (rightPtc)++"green.png"]
+                                         else if seleD == 30 then ["ptc"++show (rightPtc)++"red.png"]
+                                         else ["ptc"++show (rightPtc)++"blue.png"]
+                                
+                                --         return (df))
+                                --let altText = do stril 
+                                return(gh))  
+
+                     let exP3 =  (G.fobase progVar1 progVar2 progVar3 progVar4 progVar5 progVar6 daZip1 daZip2 daZip3 textAA (ptcButoons) (foalt))
+                     return (exP3)
+                     putStrLn "quirky done"
+--------------------------------------------------------------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------------------------------------------------------------
+                 else do 
+                     putStrLn "alternate output: set NO HTML and NO Experiment via variable ht"
                      putStrLn (unwords(return("")))
 
        (writeHtmlIn target wHtml (show(daZip 1 ptc0)) (show(daZip 2 ptc0)) (show(daZip 3 ptc0))  "Time?") 
@@ -1111,7 +1213,7 @@ kArmTest5 addGh liT bonelist mofaList connectWrist dit dit2 mCommand crit= do
               putStrLn "Test map mother"
               addGH
  -- BELOW ALL taken out for development but still valid 04-7-20
- {-
+ 
             --  putStrLn (unlines(sort(moreEdR1 1 )))
              -- putStrLn (unines(checkflow [mother] 
           --    putStrLn (mapMo 1 1)
@@ -1205,10 +1307,12 @@ kArmTest5 addGh liT bonelist mofaList connectWrist dit dit2 mCommand crit= do
               (allFunctions 3 [] [] [] "" 1)
               (allFunctions 3 [mother] [mother] [] "" 2)
               (allFunctions 3 [mother] [mother] [] "" 3)
-              --(allFunctions 3 [mother] [father] [] "" 4)
-
+              (allFunctions 3 [mother] [father] [] "" 3)
+              (allFunctions 1 [mother] [mother] [] ""  2)
+             -- (allFunctions 2 [] [] [] ""  1)
+             -- (allFunctions 2 [] [] [] ""  2)
               putStrLn "Done" 
-                  -}
+                  
      (frame0 bonelist (mofaList) connectWrist dit dit2) 
 
 
