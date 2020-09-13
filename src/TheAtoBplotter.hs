@@ -83,6 +83,59 @@ runKBASE offOn target plot addGh ghAdd n d get1 get2 get3 get4 subroutineList= d
        writeFile (root++"/src/index2.html") (theListIV)
 
 -----------------------------------------------------------
+experiment3RAW offOn target plot addGh ghAdd n d get1 get2 get3 get4 subroutineList= do
+       allforIV <- forM [1..(length subroutineList)] (\four4 -> do
+            let fg = runKAXIOM offOn target plot addGh ghAdd n (theDs four4 d) (get1) (get2) (get3) (get4) 1 (theDs four4 d) (four4) [(read(show four4))] ((tk four4 subroutineList))
+            fg
+            return (fg))
+       return allforIV
+
+-- d: [[String]] a list of bonelist or li 
+experiment3RAW2 addGh ghAdd n d subroutineList = experiment3RAW 2 [1..(length subroutineList)] 2 addGh ghAdd n d 1 2 3 4 subroutineList
+experiment3 ghAdd d = experiment3RAW2 1 ghAdd 1 d subroutinE
+-- set with subroutin list length 2
+-- *e.g> experiment3 "ttt" [li2]
+-- see if section in runKAxiom :777 'experiment3 'can be deleted !?
+-- function below has better properties ?
+experiment3RAW22 ghAdd d subroutineList = do
+   -- givens:
+       let pi2 = Punkt "m" Nothing Nothing Nothing Nothing Nothing
+       let ert r = tk r (C.ptc6 250)
+       let xS r = head (ert r)  
+       let yS r = last (drop 1 (take 2 (ert r))) 
+       let zS r = last (ert r) 
+       let maXxS = map xS [1..100]   
+       let maXyS = map yS [1..100]
+       let maXzS = map zS [1..100]     
+       exp3Fractional <- forM [1..(length subroutineList)] (\four4 -> do
+                     let exP3 =  runEXP3 (head(ausw four4 d)) pi2 "AAA" --kWORK --(G.fobase progVar1 progVar2 progVar3 progVar4 progVar5 progVar6 daZip1 daZip2 daZip3 textAA (ptcButoons) (foalt))
+                     return (exP3))
+       let exp3Frac = concat$concat$exp3Fractional
+       exp3IntfoChar <- forM [1..(length subroutineList)] (\four4 -> do
+
+                     let comp1 = runEXP3Char pi2 ghAdd
+                     let comp2 = (zipWith (+) [1,1,1,1] (runEXP3Char pi2 ghAdd))
+                     let comp3 = let mis t z = z - t
+                                 in (map (mis 1) (runEXP3Char pi2 ghAdd))
+                     let thecombs = [comp1,comp2,comp3]
+                     return (thecombs))
+       let exp3Intfo = concat$exp3IntfoChar 
+       let maxX = maximum maXxS
+       let maxY = maximum maXyS
+       let maxZ = maximum maXzS
+     -- 'quirky example'
+       let calcAlgoExperiment3 =  fiveXfive 1
+            where
+               bOn = exp3Frac;
+               twoXtwo = [(10,maxY),(10,15),(0,15),(0,maxY)];
+               fo3y = (maxY - (maxY- (maxX-11)));
+               threeXthree = [(maxX,maxY), (maxX, fo3y),(11,fo3y),(11,maxY)];
+               varX x = (maxX- ( (maxX-10)- (x))); 
+               fiveXfive x = [((varX x),maxY), ((varX x), 0),(0,25),((varX x),25)];
+
+       let cE3 = calcAlgoExperiment3
+       
+       cE3 --exp3Frac
 -----------------------------------------------------------
 -- 12-9-2020
 -- function below is based an 'runKBASE' above
@@ -94,28 +147,52 @@ runKBASE offOn target plot addGh ghAdd n d get1 get2 get3 get4 subroutineList= d
 -- connected to ht if ht == 3 then run Experiment3  
 -- domain a) determine how to apply LP to IDF
 --           y' = xz(IDF) + - xz (LP)
---           I) let xz' = (maximum maXxS(IDF )) - (maximum maXyS (LP)) 
+--           I) let xz' = (maximum maXxS(IDF )) - (maximum maXyS (LP))
 runEXP3 li pi ghAdd = do
        -- domain2 syntax
-       let iDF = ["AaEe0","AaEeI","i0000","OoUu0","OoU0Y","y0000"]
+       let iDF = li --["AaEe0","AaEeI","i0000","OoUu0","OoU0Y","y0000"]
        -- domain1 solution
        let lP = ["0*x + y + 0*z = 3","0*x + y + 0*z = 33*x + 0 + 0*z = 6","3*x + 0 + 0*z = 6","0*x + 0*y + z = 2","0*x + 0*y + z = 2x + y + z = 11","x + y + z = 11"]
-       let choosDomain ff = do 
-                   if ff == 1 then iDF 
-                   else lP 
+       let choosDomain ff =  if ff == 1 then iDF 
+                             else lP 
        let chD ff  = choosDomain ff 
-       allforIV <- forM [1..2] (\four4 -> do
+       allforIV <- forM [1] (\four4 -> do
             -- first loop is 'IDF' second one is 'LP'
-            let fg = kArmWORK 1 (chD four4) li 1 pi 1 1 [] ghAdd --(runKAXIOM offOn target plot addGh ghAdd n (theDs four4 d) (get1) (get2) (get3) (get4) 3 (theDs four4 d) (four4) [(read(show four4))] ((tk four4 subroutineList)))
+            let de e r = head $ ausw e r 
+            let foaLi e =  de e (chD four4)
+            let aLi = [(foaLi 1),(foaLi 3),(foaLi 4),(foaLi 6)]  
+            let fg = kArmWORK 2 (chD four4) aLi 1 pi 1 1 [] ghAdd --(runKAXIOM offOn target plot addGh ghAdd n (theDs four4 d) (get1) (get2) (get3) (get4) 3 (theDs four4 d) (four4) [(read(show four4))] ((tk four4 subroutineList)))
 
-            do fg     
+            fg     
             return (fg))
 
        -- apply an agorythm
-       let beforeAlgo  = head$ head $allforIV
-       let beforewithGH = head $last $ head $ allforIV
+       let beforeAlgo  = allforIV
+       --let beforewithGH = head $last $ head $ allforIV
        (return (beforeAlgo))
 ------------------------------------------------------------
+runEXP3Char pi ghAdd = 
+       -- domain2 syntax
+       let asun = (runEXP3 ["AaEe0","AaEeI","i0000","OoUu0","OoU0Y","y0000"] pi ghAdd)
+       in let toChar = map round $ head$ (head asun)
+       in toChar
+-- ["AaEe0","AaEeI","i0000","OoUu0","OoU0Y","y0000"]
+       -- domain1 solution
+       --let choosDomain ff =  if ff == 1 then iDF 
+      --                       else lP 
+      -- let chD ff  = choosDomain ff 
+     --  allforIV <- forM [1,2] (\four4 -> do
+            -- first loop is 'IDF' second one is 'LP'
+       --     let fg = chD four4 --runEXP3 (chD four4) pi ghAdd --kArmWORK 2 (pv1to6) (chD four4) 1 pi 1 1 [] ghAdd --(runKAXIOM offOn target plot addGh ghAdd n (theDs four4 d) (get1) (get2) (get3) (get4) 3 (theDs four4 d) (four4) [(read(show four4))] ((tk four4 subroutineList)))
+
+         --   return (fg))
+       --return (iDF)
+       --return (lP)
+       -- apply an agorythm
+       --let beforeAlgo  = show allforIV
+       --let beforewithGH = head $last $ head $ allforIV
+       --(return (beforeAlgo))
+
 ------------------------------------------------------------
 
 -- 4-8-2020  ***************************************************************************updated write ptc buttons
@@ -150,7 +227,7 @@ runKAXIOM offOn target plot addGh ghAdd n d get1 get2 get3 get4 ht ulu bog toca 
 
         
 -- program variables:
-defSearch offOn target plot addGh ghAdd pV1 pV2 pV3 pV4 pV5 pV6 n bonelist pipebone ht forRunHtml htm toca subroutine = (defSearchRAW offOn target plot addGh ghAdd pV1 pV2 pV3 pV4 pV5 pV6 50 50 50 50 n bonelist pipebone ht forRunHtml htm) toca subroutine 
+defSearch offOn target plot addGh ghAdd pV1 pV2 pV3 pV4 pV5 pV6 n bonelist pipebone ht forRunHtml htm toca subroutine = defSearchRAW offOn target plot addGh ghAdd pV1 pV2 pV3 pV4 pV5 pV6 50 50 50 50 n bonelist pipebone ht forRunHtml htm toca subroutine 
 --e.g> defSearchRAW "AAABB" "AAABBAAABAB" "AAABAB" "AAA" "AAABBBAA" "BBBAA" 1 1 1 1 1 li
 --
 --pipebone: variable for runKBASE, n-(length target)-many, of a [bonelist]
@@ -558,7 +635,7 @@ defSearchRAW offOn target plot addGh ghAdd pV1 pV2 pV3 pV4 pV5 pV6 ptc0Len ptc3L
                    --M.writeWXCloudNODE (nub(ptc3 2)) (nub(ptc3 3)) (nub(ptc3 5)) (nub(ptc3 19)) (nub(ptc3 25)) (nub(ptc3 50)) -- similar to above      
                    --an idea space ptc5 ..ptc9 depend in bonlist 
                    let concon t = concat$concat t
-                   M.writeWXCloudNODE ((tk 1 (subroutine))) ((tk 2 (subroutine))) ((tk 3 (subroutine))) ((tk 4 (subroutine))) ((tk 5 (subroutine))) ((tk 6 (subroutine))) -- (words(show((tk 7 (subroutine)))))  -- (nub(ptc9 5)) (nub(ptc9 25)) (nub(ptc9 50)) (nub(ptc9 100)) (nub(ptc9 125)) (nub(ptc0 5))  
+                   M.writeWXCloudNODE (nub(tk 1 (concat subroutine))) (nub(tk 2 (concat subroutine))) (nub(tk 3 (concat subroutine))) (nub (tk 4 (concat subroutine))) (nub(tk 5 (concat subroutine))) (nub (tk 6 (concat subroutine))) -- (words(show((tk 7 (subroutine)))))  -- (nub(ptc9 5)) (nub(ptc9 25)) (nub(ptc9 50)) (nub(ptc9 100)) (nub(ptc9 125)) (nub(ptc0 5))  
                    M.writeWXCloud4 (ptc2 5) (ptc2 25) (ptc2 50) (ptc4 5) (ptc4 25) (ptc4 50)
                    putStrLn "END plotter";
 
@@ -624,7 +701,7 @@ defSearchRAW offOn target plot addGh ghAdd pV1 pV2 pV3 pV4 pV5 pV6 ptc0Len ptc3L
        -- daZip: a 2d representation of a 3d cloud 
 --picks pt0 pt2 pt3 pt4 pt5 pt6 pt7 pt8 pt9 = [pt0,pt2,pt3,pt4,pt5,pt6,pt7,pt8,pt9] --daZip
        let writeHtmlIn target ht daZip1 daZip2 daZip3 textAA = do
-                 if ht==1 then do
+                 if ht==1 && plot ==1 then do
                      let foBase = (length target)
                   --   let prem2 n = length$nub$group$ausw n fotsRAW
                     -- let prem3 d n = map length$group$nub$ausw n d
@@ -716,13 +793,15 @@ defSearchRAW offOn target plot addGh ghAdd pV1 pV2 pV3 pV4 pV5 pV6 ptc0Len ptc3L
                      --writeFile "HtmlS/yourRun.html" (theListIV)
                      putStrLn (unlines foPeace)
                      writeFile  ("HtmlS/"++(forRunHtml)) (unlines$foPeace)
- ---------------------------------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------------------------------------------------------------
+                 ---------------------------------------------------------------------------------------------------------------------------------------------------------
  -------------- ###########################################################################################             EXPERIMENT 3
     -- added 12-9-2020 a solution domain LP and a syntacial domain IDF are related to each other
     --          with y''  
-                 else if ht == 3 then do
+                 else if ht == 1 && plot==2 then do
                      putStrLn "Experiment 3"
-                     let ert r = tk r (C.ptc6 250)
+                     let ert r = tk r (ptc6 250)
                      let xS r = head (ert r)  
                      let yS r = last (drop 1 (take 2 (ert r))) 
                      let zS r = last (ert r) 
@@ -786,22 +865,26 @@ defSearchRAW offOn target plot addGh ghAdd pV1 pV2 pV3 pV4 pV5 pV6 ptc0Len ptc3L
                                 putStrLn (show makeWORK )
                                 return())  
                               -}
-                     let exP3 =  runEXP3 liT pi ghAdd --kWORK --(G.fobase progVar1 progVar2 progVar3 progVar4 progVar5 progVar6 daZip1 daZip2 daZip3 textAA (ptcButoons) (foalt))
+                     let exP3 =  runEXP3 [progVar1,progVar2,progVar3,progVar4,progVar5,progVar6] pi "AAA" --kWORK --(G.fobase progVar1 progVar2 progVar3 progVar4 progVar5 progVar6 daZip1 daZip2 daZip3 textAA (ptcButoons) (foalt))
+                     let comp1 = (runEXP3Char pi ghAdd)
+                     let comp2 = (zipWith (+) [1,1,1,1] (runEXP3Char pi ghAdd))
+                     let comp3 = let mis t z = z - t
+                                 in (map (mis 1) (runEXP3Char pi ghAdd))
+                     let thecombs = [comp1,comp2,comp3]
                      return (exP3)
-                     
-                     putStrLn (show exP3) --"quirky done"
---------------------------------------------------------------------------------------------------------------------------------------------------------
----------------------------------------------------------------------------------------------------------------------------------------------------------
+                    
+                     putStrLn ((show thecombs) ++"," ++(show exP3))
+       --return (cd n)          
+                                  --putStrLn "1"
+     --  let chuckList x = [(ptc0 x),(ptc2 x),(ptc3 x)]
+      -- print (concat(chuckList n))
+
                  else do 
                      putStrLn "alternate output: set NO HTML and NO Experiment via variable ht"
                      putStrLn (unwords(return("")))
 
-       (writeHtmlIn target wHtml (show(daZip 1 ptc0)) (show(daZip 2 ptc0)) (show(daZip 3 ptc0))  "Time?") 
-       --return (cd n)          
-                                  --putStrLn "1"-}
-     --  let chuckList x = [(ptc0 x),(ptc2 x),(ptc3 x)]
-      -- print (concat(chuckList n))
-
+       (writeHtmlIn target wHtml (show(daZip 1 ptc0)) (show(daZip 2 ptc0)) (show(daZip 3 ptc0))  "Time?")
+        
 ----------------------------------------------------------------------------------------------
 
 
@@ -1701,7 +1784,8 @@ kArmWORK addGh liT bonelist mofaList connectWrist dit dit2 mCommand crit= do
   --            putStrLn (unlines(allFUNC2NEW [mother] [mother] (1) (4)))
   --
    -- outcome1 : a [fractional]
-              [(map snd randPunktList),withGHcheck ] 
+              (map fst randPunktList) 
+             -- (last(map snd randPunktList))  
            --   withGHcheck 
            --   putStrLn "1" --(foFuncPairNEW 1 1) 
                   
