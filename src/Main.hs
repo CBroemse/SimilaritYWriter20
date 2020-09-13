@@ -232,7 +232,7 @@ basis22 foAL m = U.maybePu (head (Co.ausw m foAL ))
 basisPunkt foAL r = U.maybePu (show(checkflow [] [((basis22 foAL r))]))
 
 -- plug 'basisPunkt' into this test below best to be mapped via e
-fmrTEST3 io e e2 forLine =  checkflow  io [(Punkt  (head(checkflow [] [(basis4 e2 forLine)]))(Just (basis2 e 1 )) (Just (basis2 e 3 )) (Just (basis2 e 4 ))(Just (basis2 e 5 )) (Just (basis2 e 6))) ]
+fmrTEST3 io e e2 forLine =  checkflow  io [(Punkt  (head(checkflow [] [(basisPunkt e2 forLine)]))(Just (basis22 e 1 )) (Just (basis22 e 3 )) (Just (basis22 e 4 ))(Just (basis22 e 5 )) (Just (basis22 e 6))) ]
 
 --old:
 -- make a function that is a [(Maybe Punkt)]-> that by itself is the definiton of
@@ -256,10 +256,14 @@ foAdecide2 foA = let boa rt t = (Just (U.maybePu2 rt t)) --let whereBreak = chai
                       in Just (show[(chssd 1)])
 
 -- the 'Maybe String' is turned to a 'Maybe Punkt' that has an error handler
--- mayerPunkt :: IO(int) String -> Maybe String -> Maybe Punkt -> 
+-- mayerPunkt :: IO(int) String -> Maybe String -> Maybe Punkt ->
+-- *e.g> mayerPunkt (show (Co.ausw 8 (Co.ptc6 100)) ) ["1"]
+-- *> ... =>  show the 8th line of ptc6 taken 100 
 mayerPunkt r foa = if (foa) == [] then U.maybePu "empty"
                    else U.maybePu2 (r) (Just(U.maybePu ((show [(foAdecide2 (foa))]))))
 
+-- the functions avaiable in KArmWORK
+--(ausw selectFunc [(fst (expoMum forLine)),show(fst ranPL),show(fst sorEM),show(fst (fmrTEST3 io forLine (head forLine) (head forLine)))])
 
 iDF z = U.tk z ["AaEe0","AaEeI","i0000","OoUu0","OoU0Y","y0000"]
 lP z = U.tk z ["0*x + y + 0*z = 3","0*x + y + 0*z = 33*x + 0 + 0*z = 6","3*x + 0 + 0*z = 6","0*x + 0*y + z = 2","0*x + 0*y + z = 2x + y + z = 11","x + y + z = 11"]
