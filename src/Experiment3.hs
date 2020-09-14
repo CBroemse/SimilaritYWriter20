@@ -1,12 +1,65 @@
 -- this module provides:
 -- --------------------------------------
--- III. library to plot wxmaxima graphs . functions to compare
---      a. two lines of bonelist with each other.
---      b. compare a to periodic functions called pg functions
---         e.g  pg1 x = sin x 
+-- EXPERIMENT 3 
+-- - P(B) given AStigmatic 
+-- A= the occoring and non ocurring Chars of an ideal
+--  However the solution depends on various As.
+--  A : One based on an seemingly ordered Char list 
+--  A' :Another based on the 'quirky example'
+--      functions :
+--  *TheAtoBplotter> let li3 =  ["0xy0z=3","0xy0z=33x00z=6","3x00z=6","0x0yz=2","0x0yz=2xyz=11","xyz=11"]
+--     -- with the solution (y=3,x=2,z=2)
+--
+-- A 3rd double collum C added in 
+-- via a C' in 2d or in 3d with C to visualize
+-- a general C where BgivenA 'CgeneralBgivenA'            
+--
+-- concept                                                  A _____B
+-- -------                                                   /     \
+--            |      B      |    not B  |    C .. ----\  A' /       \  not
+-- Astigmatic | 'aBgivenA'  |           |              \    \       /  B
+-- -- ----------------------------------------         /     \____ /
+-- not stigm- |                                   ----/      C'    C'
+-- -- matic   |                                                \  /
+--                                                              C
+--
+-- syntax
+-- -------                                                             
+-- build upon case 3 of experiment2
+-- add all number digits to the solution space
+-- *TheAtoBplotter> map chr (([48..128] \\ [58..96] ) \\ [123..128])
+-- *> "0123456789abcdefghijklmnopqrstuvwxyz"
+--  = P(B|A)*P(A)  = 36
+--  add '=' to above
+--  TheAtoBplotter> map chr (sort (61 : (([48..128] \\ [58..96] ) \\ [123..128])))
+--  *> "0123456789=abcdefghijklmnopqrstuvwxyz" 
+--  --  = P(B|A)*P(A)  = 37
 
-              --
---root
+-- exam3.1
+-- head li = "0xy0z=3"
+--  relate to A: 
+-- "0xy0z=3" of li3 = 6/37
+-- relate to A'
+--  what is the most effective way to describe '3rd double collum' ?  { C ;  C' ; (not C)}
+--
+--  Test   crit1: Make any messurable example
+--              premise pos
+--                There is a way to generalize from Bayes to a C
+--                which can be coherently described through a series of transformations
+--                of a group of ptc functions that is effectivly different than 
+--                one described by a series of transformations  that use
+--                random number generator (luck).
+--              premise neg 
+--                messure more data does not always lead to find a solution.
+
+--         crit2: Use Haskell to messure runtime to combute a solution ?
+--             premise pos: shorter compute time -> Maybe No luck -> better Algorythm 
+--             premise neg: by coincidence the random number generator had a lucky
+--                          streak and hit a sequnece that generally matches
+--                          everything within normal statistical distribution.
+--                          (and no way to plot it ;)      
+--
+-- *write your root function 
 module TheAtoBplotter (
     
       defSearch  -- enter pg functions and progVars
@@ -81,6 +134,376 @@ runKBASE offOn target plot addGh ghAdd n d get1 get2 get3 get4 subroutineList= d
        let theListIV = (header++unwords writeAll++(G.screenInfo (map lines["which info"]) 1) ++taiL)
        writeFile "HtmlS/yourRun.html" (theListIV) 
        writeFile (root++"/src/index2.html") (theListIV)
+
+-----------------------------------------------------------
+experiment3RAW offOn target plot addGh ghAdd n d get1 get2 get3 get4 subroutineList= do
+       allforIV <- forM [1..(length subroutineList)] (\four4 -> do
+            let fg = runKAXIOM offOn target plot addGh ghAdd n (theDs four4 d) (get1) (get2) (get3) (get4) 1 (theDs four4 d) (four4) [(read(show four4))] ((tk four4 subroutineList))
+            fg
+            return (fg))
+       return allforIV
+
+-- d: [[String]] a list of bonelist or li 
+experiment3RAW2 addGh ghAdd n d subroutineList = experiment3RAW 2 [1..(length subroutineList)] 2 addGh ghAdd n d 1 2 3 4 subroutineList
+
+-- filter everthing smaller char 43 = '+' , '*',' ' ... -------------------------########################################## prep any bonelist for reading
+-- thus can be fully processed as li list chars < 43 lead to error
+-- *e.g>  readAnyTh (C.progLiT)
+readAnyRAW foLiT t = let stapa t = map chr (filter (>43) (map ord (head$ausw t foLiT)))
+                     in stapa t
+
+readAnyTh foLiT = map (readAnyRAW foLiT) [1..6]
+
+-- set with subroutin list length 2
+-- *e.g> experiment3 "ttt" [li2]
+experiment3 ghAdd d = experiment3RAW2 1 ghAdd 1 d subroutinE
+-- see if section in runKAxiom :777 'experiment3 'can be deleted !?
+-- function below has better properties ?
+-- -- *e.g> experiment3RAW22 "DF" li2 subroutinE C.ptc7 li2
+-----------------------------------------------------------------------------------------------
+
+-- guess something to add to First + -
+-- xperiment3RAW22 "DF" li2 subroutinE C.ptc7 li2
+-- *> map ord (head(head(experiment3RAW22 "DFDF" li2 subroutinE C.ptc7 [li3])))
+-- *> [20,27,20,20]
+experiment3RAW22 ghAdd d subroutineList foPtc foLi = do
+   -- givens:
+       let pi2 = Punkt "m" Nothing Nothing Nothing Nothing Nothing
+       let ert r = tk r (foPtc 250)
+       let xS r = head (ert r)  
+       let yS r = last (drop 1 (take 2 (ert r))) 
+       let zS r = last (ert r) 
+       let maXxS = map xS [1..100]   
+       let maXyS = map yS [1..100]
+       let maXzS = map zS [1..100]   
+       let moreReads = do   
+            exp3Fractional <- forM [1..(length subroutineList)] (\four4 -> do
+                  let exP3 =  runEXP3 (head(ausw four4 d)) pi2 "AAA" --kWORK --(G.fobase progVar1 progVar2 progVar3 progVar4 progVar5 progVar6 daZip1 daZip2 daZip3 textAA (ptcButoons) (foalt))
+                  return (exP3))
+            let exp3Frac = concat$concat$exp3Fractional
+            exp3IntfoChar <- forM [1] (\four4 -> do
+
+                     let comp1 = runEXP3Char pi2 ghAdd (head (ausw four4 foLi))
+                     let comp2 = (zipWith (+) [1,1,1,1] (runEXP3Char pi2 ghAdd (head (ausw four4 foLi))))
+                     let comp3 = let mis t z = z - t
+                                 in (map (mis 1) (runEXP3Char pi2 ghAdd (head (ausw four4 foLi))))
+                     let thecombs = [comp1,comp2,comp3]
+                     return ([comp1,comp2,comp3]))-- (thecombs))
+            let exp3Intfo t = head $ ausw t $ concat$exp3IntfoChar 
+            let maxX = maximum maXxS
+            let maxY = maximum maXyS
+            let maxZ = maximum maXzS
+     -- 'quirky example'
+            let calcAlgoExperiment3 =  twoXtwo --fiveXfive 1
+                  where
+                   bOn = exp3Frac;
+                   twoXtwo = [(10,maxY),(10,15),(0,15),(0,maxY)];
+                   fo3y = (maxY - (maxY- (maxX-11)));
+                   threeXthree = [(maxX,maxY), (maxX, fo3y),(11,fo3y),(11,maxY)];
+                   varX x = (maxX- ( (maxX-10)- (x))); 
+                   fiveXfive x = [((varX x),25), ((varX x), 0),(0,0),((varX x),25)];
+
+            let cE3 = calcAlgoExperiment3
+            let foRunner gb1 gb2 = let foGb1 gb =  map realToFrac (map ord gb )
+                                   in let foGb2 gb =  map realToFrac (map ord gb )
+                                   in  similaritYvalue (foGb1 gb1) (foGb2 gb2)
+            let ptcToInt m = let loadInBlank = map (\c -> if c=='.' then ' '; else c)  
+                             in let myTruncate = read$head$words$loadInBlank m
+                             in myTruncate
+            aRunner <- forM [1..3] (\aRon -> do
+                     let bsp = map chr (exp3Intfo aRon)
+                     return (bsp))
+            -- map chr ((exp3Intfo))
+    --   show (aRunner ) -- show cE3 --exp3Frac
+      -- return (aRunner )
+      -- show (take 1 exp3Intfo)
+       --exp3IntfoChar
+            return aRunner
+       moreReads 
+     --  show (aRunner 1)
+    --   show (aRunner 2)
+    --   show (aRunner 3)
+     --  show (aRunner 4)
+     --  show (aRunner 5)
+------------------------------------------------------------
+--similar to above shall be iterated
+experiment3RAW23 ghAdd d subroutineList foPtc foLi gb1 gb2 = do
+   -- givens:
+       let pi2 = Punkt "m" Nothing Nothing Nothing Nothing Nothing
+       let ert r = tk r (foPtc 250)
+       let xS r = head (ert r)  
+       let yS r = last (drop 1 (take 2 (ert r))) 
+       let zS r = last (ert r) 
+       let maXxS = map xS [1..100]   
+       let maXyS = map yS [1..100]
+       let maXzS = map zS [1..100]   
+       let moreReads = do   
+            exp3Fractional <- forM [1..(length subroutineList)] (\four4 -> do
+                  let exP3 =  runEXP3 (head(ausw four4 d)) pi2 "AAA" --kWORK --(G.fobase progVar1 progVar2 progVar3 progVar4 progVar5 progVar6 daZip1 daZip2 daZip3 textAA (ptcButoons) (foalt))
+                  return (exP3))
+            let exp3Frac = concat$concat$exp3Fractional
+            exp3IntfoChar <- forM [1] (\four4 -> do
+
+                     let comp1 = runEXP3Char pi2 ghAdd (head (ausw four4 foLi))
+                     let comp2 = (zipWith (+) [1,1,1,1] (runEXP3Char pi2 ghAdd (head (ausw four4 foLi))))
+                     let comp3 = let mis t z = z - t
+                                 in (map (mis 1) (runEXP3Char pi2 ghAdd (head (ausw four4 foLi))))
+                     let thecombs = [comp1,comp2,comp3]
+                     return ([comp1,comp2,comp3]))-- (thecombs))
+            let exp3Intfo t = head $ ausw t $ concat$exp3IntfoChar 
+            let maxX = maximum maXxS
+            let maxY = maximum maXyS
+            let maxZ = maximum maXzS
+     -- 'quirky example'
+            let calcAlgoExperiment3 =  twoXtwo --fiveXfive 1
+                  where
+                   bOn = exp3Frac;
+                   twoXtwo = [(10,maxY),(10,15),(0,15),(0,maxY)];
+                   fo3y = (maxY - (maxY- (maxX-11)));
+                   threeXthree = [(maxX,maxY), (maxX, fo3y),(11,fo3y),(11,maxY)];
+                   varX x = (maxX- ( (maxX-10)- (x))); 
+                   fiveXfive x = [((varX x),25), ((varX x), 0),(0,0),((varX x),25)];
+
+            let cE3 = calcAlgoExperiment3
+            let foRunner fogb1 fogb2 = let foGb1 gb =  map realToFrac (map ord gb )
+                                       in let foGb2 gb =  map realToFrac (map ord gb )
+                                       in  similaritYvalue (foGb1 fogb1) (foGb2 fogb2)
+            let ptcToInt m = let loadInBlank = map (\c -> if c=='.' then ' '; else c)  
+                             in let myTruncate = read$head$words$loadInBlank m
+                             in myTruncate
+            aRunner <- forM [1..3] (\aRon -> do
+                     let bsp = map chr (exp3Intfo aRon)
+                     return (bsp))
+            let se =  if  (foRunner gb1 gb2) < 10.0 then foRunner gb1 gb2 --aRunner --map chr ((exp3Intfo)) --show$ "2" --foRunner (ptcToInt maxX) (ptcToInt maxY)
+                      else foRunner gb1 gb2 --aRunner --show $ "3" -- zufallsBasic1 10 (ptcToInt maxX) 1
+            -- map chr ((exp3Intfo))
+    --   show (aRunner ) -- show cE3 --exp3Frac
+      -- return (aRunner )
+      -- show (take 1 exp3Intfo)
+       --exp3IntfoChar
+            return aRunner --se
+       moreReads
+
+-- search in string ap3 
+-- the letter that is at 
+-- position t of ap
+-- *TheAtoBplotter> focommmB li "AABB" "AVFGB" 3
+--               *> [4]
+focommmB ap ap3 t = let atSpot ap ap3 t = (head (ausw t ap)) `elemIndices` (ap3)
+                    in atSpot ap ap3 t
+buildPrior r = let buildA r = readAnyTh r
+               in head$ last (experiment3RAW22 "DF" [buildA r] subroutinE C.ptc7 [buildA r]) 
+
+commmB r ap ap3 t = let buildA r = readAnyTh r
+           in let aprior = head$ last (experiment3RAW22 "DF" [buildA r] subroutinE C.ptc7 [buildA r]) 
+           in let atSpot ap ap3 t = (head (ausw t (map ord ap))) `elemIndices` (map ord ap3)
+           in let aprior4 gb1 gb2 = head$ last (experiment3RAW23 "DF" [(buildA r)] subroutinE C.ptc7 [buildA r] gb1 gb2)
+           in let testIterate ap = atSpot ap (aprior4 aprior "fp")
+           in atSpot ap ap3 t--aprior
+-----------------------------------------------------------------
+-- P(B) given AStigmatic 
+-- A= the occoring and non ocurring Chars of an ideal
+--  However the solution depends on various As.
+--  A : One based on an seemingly ordered Char list 
+--  A' :Another based on the 'quirky example'
+--      functions :
+--  *TheAtoBplotter> let li3 =  ["0xy0z=3","0xy0z=33x00z=6","3x00z=6","0x0yz=2","0x0yz=2xyz=11","xyz=11"]
+--     -- with the solution (y=3,x=2,z=2)
+--
+-- A 3rd double collum C added in 
+-- via a C' in 2d or in 3d with C to visualize
+-- a general C where BgivenA 'CgeneralBgivenA'            
+--
+-- concept                                                  A _____B
+-- -------                                                   /     \
+--            |      B      |    not B  |    C .. ----\  A' /       \  not
+-- Astigmatic | 'aBgivenA'  |           |              \    \       /  B
+-- -- ----------------------------------------         /     \____ /
+-- not stigm- |                                   ----/      C'    C'
+-- -- matic   |                                                \  /
+--                                                              C
+--
+-- syntax
+-- -------                                                             
+-- build upon case 3 of experiment2
+-- add all number digits to the solution space
+-- *TheAtoBplotter> map chr (([48..128] \\ [58..96] ) \\ [123..128])
+-- *> "0123456789abcdefghijklmnopqrstuvwxyz"
+--  = P(B|A)*P(A)  = 36
+--  add '=' to above
+--  TheAtoBplotter> map chr (sort (61 : (([48..128] \\ [58..96] ) \\ [123..128])))
+--  *> "0123456789=abcdefghijklmnopqrstuvwxyz" 
+--  --  = P(B|A)*P(A)  = 37
+
+-- exam3.1
+-- head li = "0xy0z=3"
+--  relate to A: 
+-- "0xy0z=3" of li3 = 6/37
+-- relate to A'
+--  what is the most effective way to describe '3rd double collum' ?  { C ;  C' ; (not C)}
+--
+--  Test   crit1: Make any messurable example
+--              premise pos
+--                There is a way to generalize from Bayes to a C
+--                which can be coherently described through a series of transformations
+--                of a group of ptc functions that is effectivly different than 
+--                one described by a series of transformations  that use
+--                random number generator (luck).
+--              premise neg 
+--                messure more data does not always lead to find a solution.
+
+--         crit2: Use Haskell to messure runtime to combute a solution ?
+--             premise pos: shorter compute time -> Maybe No luck -> better Algorythm 
+--             premise neg: by coincidence the random number generator had a lucky
+--                          streak and hit a sequnece that generally matches
+--                          everything within normal statistical distribution.
+--                          (and no way to plot it ;)             
+--       --
+--
+{-
+ usedVowel -> P(B, given A) = "eo" = 2/2+3 = 2/5= 0.4
+
+ usedNOTVowel -> (PA, given B) = "prsn" = 4/6
+
+ NotusedVowel&NotusednotVowel -> case3 \\ "person" 
+"abcdfghijklmqtuvwxyz"  = 20/26
+
+ NotusedVowel = "aiu" = 3/26
+
+=>  B, given A :
+
+(usedVowel / (usedVowel+ usedNOTVowel))
+*
+(usedVowel+notusedVowel)/(usedVowel+notusedVowel+usedNotVowel+notusedNotVowel)
+-}
+--
+-- I. after first + - try 
+--    map ord a -> ord a -> map show a -> [String] -> map ord a -> [Int] 
+--    continoue from above:
+adda li3 = map ord (head(head(experiment3RAW22 "DFDF" [li3] subroutinE C.ptc7 [li3])))
+addaInt li3 = (unwords(map show (adda li3)))
+
+--II. add minimal changes a random list variance 5
+note li l3 =  zipWith (+) (map ord (take 4 (head li))) (map ord (head l3))
+not2 li l3 =  zipWith (-) (map ord (take 4 (head li))) (map ord (head l3))
+longRun variance t = head $ zufallsBasic1 1 variance t
+-- *> urso li li3
+-- *> [[134,136,84,83],..always the same forM in urso below (100)
+-- *> urso li3 li
+-- *>[[-134,-136,-84,-83]... always the same forM in urso below (100)
+-- *> urso li3 li3
+-- *> [[0,0,0,0]... always the same forM in urso below (100)
+urso l l2 = do 
+        longW <- forM [1..100] (\pluMin -> do
+                 let foDit = longRun 2 pluMin
+                 -- randomyl add or subtract form  BgivenA list 
+                 let ditODat fl1 fl2 = head $ ausw foDit[(comparEB fl1 fl2),(comparEB2 fl1 fl2)]
+                 let calC fl1 fl2 = ditODat [(aBgivenA fl1 )] (fl2)
+                 return (foDit)) --(ditODat l l2))
+                 -- randomly add or substract 5
+                          --   lenDepend <- forM
+        return longW
+rekenen r li = ( ( longRun 80 r)+48) --comparEB (head(ausw r ([li]))) (map show [1..( ( longRun 80 r)+48)])
+-- we can run a list of the length 10.000 and see which letters of a solution occure.
+--   1. Asumption1 all Chars in the solution will occure with
+--            given all Chars from 48 .. until 128 
+--                    WITHOUT
+--                     
+inActie = do
+    -- theGh = focommmB
+    putStrLn "like does"
+-- put CONSTRAINT On NOTES do come back to experiment3RAW22 
+--  inspect 2x2 3x3 5x5 to follow instructions
+--
+--  lay it out to play it out
+--  every solution is a String every Char of this [Char]
+--  fills a space of soltions e.g of
+----------------------------------------------------
+aBgivenA li =  ((buildPrior li))
+comparEB li li3 = zipWith (+) (map ord (aBgivenA li)) (map ord (aBgivenA li3)) 
+comparEB2 li li3 = zipWith (-) (map ord (aBgivenA li)) (map ord (aBgivenA li3))
+-- check  
+--focommmB li3 li 1
+foCom li li3 l = (focommmB (comparEB li li3) (comparEB2 li li3) l )
+conStraint1 r t = if r < 48 && r > 128 then do t
+                  else r
+{-
+does li l2= do 
+           -- run a foCom search 
+     let gh = [[],[]]
+     let courseTowards = if (length$concat$gh) == 0 
+                    then do
+                   
+                    let tab r = conStraint1 (longRun 5 r) (head(head(head (ausw r (urso li l2)))))
+                    let fgt ri = (urso ri l2)
+                    --let bugg = take 5 (iterate fgt [1)
+                    let dfre r = map ord (head (ausw r li)) 
+                    map tab [1..20]
+                   -- map rekenen [1] 
+               else  [4] --aBgivenA li 
+     return courseTowards                          
+        -}
+allB = readAnyTh C.progLiT
+-----------------------------------------------------------
+
+-----------------------------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------------------------
+-- 12-9-2020
+-- function below is based an 'runKBASE' above
+-- experiment 3 compare two bonlists with each other
+-- let one list be the solution domain 
+-- let another be the snytactic domain
+--
+-- e.g> runEXP3 li pi ghAdd
+-- connected to ht if ht == 3 then run Experiment3  
+-- domain a) determine how to apply LP to IDF
+--           y' = xz(IDF) + - xz (LP)
+--           I) let xz' = (maximum maXxS(IDF )) - (maximum maXyS (LP))
+runEXP3 li pi ghAdd = do
+       -- domain2 syntax
+       let iDF = li --["AaEe0","AaEeI","i0000","OoUu0","OoU0Y","y0000"]
+       -- domain1 solution
+       let lP = ["0*x + y + 0*z = 3","0*x + y + 0*z = 33*x + 0 + 0*z = 6","3*x + 0 + 0*z = 6","0*x + 0*y + z = 2","0*x + 0*y + z = 2x + y + z = 11","x + y + z = 11"]
+       let choosDomain ff =  if ff == 1 then iDF 
+                             else lP 
+       let chD ff  = choosDomain ff 
+       allforIV <- forM [1] (\four4 -> do
+            -- first loop is 'IDF' second one is 'LP'
+            let de e r = head $ ausw e r 
+            let foaLi e =  de e (chD four4)
+            let aLi = [(foaLi 1),(foaLi 3),(foaLi 4),(foaLi 6)]  
+            let fg = kArmWORK 2 (chD four4) aLi 1 pi 1 1 [] ghAdd --(runKAXIOM offOn target plot addGh ghAdd n (theDs four4 d) (get1) (get2) (get3) (get4) 3 (theDs four4 d) (four4) [(read(show four4))] ((tk four4 subroutineList)))
+
+            fg     
+            return (fg))
+
+       -- apply an agorythm
+       let beforeAlgo  = allforIV
+       --let beforewithGH = head $last $ head $ allforIV
+       (return (beforeAlgo))
+------------------------------------------------------------
+runEXP3Char pi ghAdd li = 
+       -- domain2 syntax
+       let asun = (runEXP3 li pi ghAdd)
+       in let toChar = map round $ head$ (head asun)
+       in toChar
+-- ["AaEe0","AaEeI","i0000","OoUu0","OoU0Y","y0000"]
+       -- domain1 solution
+       --let choosDomain ff =  if ff == 1 then iDF 
+      --                       else lP 
+      -- let chD ff  = choosDomain ff 
+     --  allforIV <- forM [1,2] (\four4 -> do
+            -- first loop is 'IDF' second one is 'LP'
+       --     let fg = chD four4 --runEXP3 (chD four4) pi ghAdd --kArmWORK 2 (pv1to6) (chD four4) 1 pi 1 1 [] ghAdd --(runKAXIOM offOn target plot addGh ghAdd n (theDs four4 d) (get1) (get2) (get3) (get4) 3 (theDs four4 d) (four4) [(read(show four4))] ((tk four4 subroutineList)))
+
+         --   return (fg))
+       --return (iDF)
+       --return (lP)
+       -- apply an agorythm
+       --let beforeAlgo  = show allforIV
+       --let beforewithGH = head $last $ head $ allforIV
+       --(return (beforeAlgo))
 
 ------------------------------------------------------------
 
@@ -690,7 +1113,84 @@ defSearchRAW offOn target plot addGh ghAdd pV1 pV2 pV3 pV4 pV5 pV6 ptc0Len ptc3L
     --          with y''  
                  else if ht == 1 && plot==2 then do
                      putStrLn "Experiment 3"
-                                          
+                     let ert r = tk r (ptc6 250)
+                     let xS r = head (ert r)  
+                     let yS r = last (drop 1 (take 2 (ert r))) 
+                     let zS r = last (ert r) 
+                     let maXxS = map xS [1..100]   
+                     let maXyS = map yS [1..100]
+                     let maXzS = map zS [1..100]        
+        -- engage Punkt data type 
+        -- with the intention to plug in any function f(x)
+        -- and select any x with m
+                     let basis22 foAL m = maybePu (head (ausw m foAL ))
+                     let fmrTEST3 io e e2 forLine =  checkflow  io [(Punkt  (head(checkflow [] [(basis4 e2 forLine)]))(Just (basis2 e 1 )) (Just (basis2 e 3 )) (Just (basis2 e 4 ))(Just (basis2 e 5 )) (Just (basis2 e 6))) ]
+        -- based on role model 
+   -- e.g
+    --
+                     let foAdecide2 foA = let boa rt t = (Just (maybePu2 rt t)) --let whereBreak = chainDistribute crit bonelist crit (lines "1")
+                          in let mapMaybePun k = let ste1 k rt = (boa (head(ausw k rt))) ((Just (maybePu (head (ausw k rt)))) ) 
+                                                 in ste1 k foA -- e.g foA = ["vb","vb2","vb3"]
+                          in let preMoa = length foA
+                          in let eindelijk = do (map mapMaybePun [1..preMoa]) 
+                          in 
+                          if foA==[] then Nothing
+                          else let chssd i = maybePu2 (head(ausw i foA))  (((boa (head(ausw i foA)) (head(ausw i eindelijk)))))  
+                               in Just (show[(chssd 1)])
+                     {-let infoSt pt pt2 = ("points: "++ pt ++ "\n 'daZip'-type: " ++(show (daZip (head toca) pt2))++"\n reduced-2d: "++ (show (build2d pt2)) ++" length: "++ show (length$concat$tsRAW pt2) ++ "\n" ++ show(tsRAW pt2)) 
+                     
+                     let foalt = map words [("info ptc0\n"++ ((infoSt (show ts0) (ptc0)) )),("info ptc2\n"++ infoSt (show ts2) (ptc2) ),("info ptc3"++ infoSt (show ts3) (ptc3) ),("info ptc4"++ infoSt (show ts4) (ptc4) ),("info ptc5\n"++ infoSt (show ts5) (ptc5) ),("info ptc6\n"++ infoSt (show ts6) (ptc6) ),("info ptc7\n"++ infoSt (show ts7) (ptc7) ),("info ptc8\n"++ infoSt (show ts8) (ptc8) ),("info ptc9\n"++ infoSt (show ts9) (ptc9) )]  
+                     ptcButoons <- forM [1..9] (\btn -> do
+                                
+                                let seleD = head(ausw btn stril)
+                                --let seleD = show((realToFrac foseleD)/3)
+                                let rightPtc = if btn == 1  then btn - 1
+                                               else btn
+
+                                --chooslabel <- forM [1] (\wbt -> do  
+                                let gh = if seleD ==3 then ["ptc"++show (rightPtc)++"reduced.png"]
+                                         else if seleD ==6 then ["ptc"++show (rightPtc)++"green.png"]
+                                         else if seleD == 30 then ["ptc"++show (rightPtc)++"red.png"]
+                                         else ["ptc"++show (rightPtc)++"blue.png"]
+                                
+                                --         return (df))
+                                --let altText = do stril 
+                                return(gh))  
+                    -- let li = (unlines [pV1,pV3,pV4,pV6])
+                     let pi = Punkt "MM" Nothing Nothing Nothing Nothing Nothing
+         -- build to be called as iteration of simiVal functions and phiMax rating 
+                     kWORK <- forM [1] (\btn -> do
+                                let makeWORK = kArmWORK addGh liT bonelist 1 pi 1 1 [] ghAdd    
+                          --      let seleD = head(ausw btn stril)
+                                --let seleD = show((realToFrac foseleD)/3)
+                            --    let rightPtc = if btn == 1  then btn - 1
+                                     --          else btn
+
+                                --chooslabel <- forM [1] (\wbt -> do  
+                              --  let gh = if seleD ==3 then ["ptc"++show (rightPtc)++"reduced.png"]
+                                --         else if seleD ==6 then ["ptc"++show (rightPtc)++"green.png"]
+                                  --       else if seleD == 30 then ["ptc"++show (rightPtc)++"red.png"]
+                                    --     else ["ptc"++show (rightPtc)++"blue.png"]
+                                
+                                --         return (df))
+                                --let altText = do stril
+                                putStrLn (show makeWORK )
+                                return())  
+                              -}
+                     let exP3 =  (experiment3RAW22 "ttt" [liT] subroutinE ptc6 [liT]) --runEXP3 [progVar1,progVar2,progVar3,progVar4,progVar5,progVar6] pi "AAA" --kWORK --(G.fobase progVar1 progVar2 progVar3 progVar4 progVar5 progVar6 daZip1 daZip2 daZip3 textAA (ptcButoons) (foalt))
+            --         let comp1 = (runEXP3Char pi ghAdd)
+              --       let comp2 = (zipWith (+) [1,1,1,1] (runEXP3Char pi ghAdd))
+                --     let comp3 = let mis t z = z - t
+                  --               in (map (mis 1) (runEXP3Char pi ghAdd))
+                    -- let thecombs = [comp1,comp2,comp3]
+                     return (exP3)
+                    
+                     do (putStrLn$show$head$exP3)
+       --return (cd n)          
+                                  --putStrLn "1"
+     --  let chuckList x = [(ptc0 x),(ptc2 x),(ptc3 x)]
+      -- print (concat(chuckList n))
+
                  else do 
                      putStrLn "alternate output: set NO HTML and NO Experiment via variable ht"
                      putStrLn (unwords(return("")))

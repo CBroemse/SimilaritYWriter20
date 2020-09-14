@@ -27,7 +27,9 @@ module UsefulFunctions19 (
     --    , innerAccessRAW
         , tk -- ==ausw
         , checkFo
-        , evalToWrite) where
+        , evalToWrite
+        , takeMY -- 'lay it out to pay it out'
+         ) where
      --   , nameACCESSFUNCTION ) where
 -- always color sceME 'delek'
 
@@ -46,6 +48,7 @@ import DataTypePunkt
 
 replaceE = map (\c -> if c=='e' then '1'; else c)
 replaceColon = map (\c -> if c==',' then ' '; else c)
+
 
 add :: [String] -> IO ()  
 add [fileName, todoItem] = appendFile fileName (todoItem ++ "\n")  
