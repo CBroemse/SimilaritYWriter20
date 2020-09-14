@@ -52,7 +52,7 @@
 --              premise neg 
 --                messure more data does not always lead to find a solution.
 
---         crit2: Use Haskell to messure runtime to combute a solution ?
+--         crit2: Use Haskell to messure runtime to comp	ute a solution ?
 --             premise pos: shorter compute time -> Maybe No luck -> better Algorythm 
 --             premise neg: by coincidence the random number generator had a lucky
 --                          streak and hit a sequnece that generally matches
@@ -337,9 +337,10 @@ commmB ap ap3 t = -- let buildA r = readAnyTh r
 -- *> "0123456789abcdefghijklmnopqrstuvwxyz"
 --  = P(B|A)*P(A)  = 36
 --  add '=' to above
---  TheAtoBplotter> map chr (sort (61 : (([48..128] \\ [58..96] ) \\ [123..128])))
+--  TheAtoBplotter> theA = map chr (sort (61 : (([48..128] \\ [58..96] ) \\ [123..128])))
 --  *> "0123456789=abcdefghijklmnopqrstuvwxyz" 
 --  --  = P(B|A)*P(A)  = 37
+theAChars = map chr (sort (61 : (([48..128] \\ [58..96] ) \\ [123..128])))
 
 -- exam3.1
 -- head li = "0xy0z=3"
@@ -389,10 +390,47 @@ commmB ap ap3 t = -- let buildA r = readAnyTh r
 
 -- special chain destribution (Cd)
 easyCd wo k = sort$group k >>= (findinCd wo)
+--------------------------------------
+-- bound to A of 'ist' via the Syntax via commmB
+-- ist :: [Char] , is a guess  
+-- Experiment3> foStrCd "wer" "r" 3
+-- [1]  -- where is 'r' in 'wer' look ONLY at occurance position 3 (spot 3) 
 foStrCd wo ist das =  commmB  wo ist das
 findinCd wo ist = (map (foStrCd wo ist) [1..(length ist)])
---whereTO
+-- reflexive function show me where B in A =>
+qw wo r = (foStrCd "werr" wo r)
+qw3 t e = map (qw e) [1..(length t)]
+-- => where is B in A
+--          is B in A'
+--          is B in C'
+-------------------------------------------------------------------------------------------------------------------A's ?
+theASyntax = theAChars -- solve reation to Char encoding in Haskell
+---- A' source for an A' 'quirky example' without errors
+-- solution (y=3,x=6,z=2) == A'' ?!
+-------------------------------------------------------------------------------------------------------------------A' nand/nor A'' ?
+li4 =  ["0xy0z=3","0xy0z=3x00z=6","x00z=6","0x0yz=2","0x0yz=2xyz=11","xyz=11"]
+theA' = head li4
 
+
+theB -- of commmB
+
+theASolveBonelist -- solve relation to whole of li4 ( a bonelist) 
+-- C' = defined by at least one SimiVal boundry e.g below 0.4         
+-- C' = overlaying hex A and C
+
+-- types of A's
+-- -------------
+--   to solve from different A's 
+--   one way to solve from is  reflexive qw3
+--       qw3 l1 l2 =>  where is l1 in l2
+--                 or  where is l2 in l1 
+--    where is the prior in the latter ?
+-- e.g *Experiment3> qw3 "wer" "rw"
+-- [[1],[],[0]]
+-- *Experiment3> qw3 "wer" "wer"
+-- [[0],[1],[2]]
+--
+--  secondly just see occurance 
 --
 -- I. after first + - try 
 --    map ord a -> ord a -> map show a -> [String] -> map ord a -> [Int] 
