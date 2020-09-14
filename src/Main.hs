@@ -256,7 +256,7 @@ foAdecide2 foA = let boa rt t = (Just (U.maybePu2 rt t)) --let whereBreak = chai
                       in Just (show[(chssd 1)])
 
 -- the 'Maybe String' is turned to a 'Maybe Punkt' that has an error handler
--- mayerPunkt :: IO(int) String -> Maybe String -> Maybe Punkt ->
+-- mayerPunkt :: IO(int) String -> Maybe String -> Punkt ->
 -- *e.g> mayerPunkt (show (Co.ausw 8 (Co.ptc6 100)) ) ["1"]
 -- *> ... =>  show the 8th line of ptc6 taken 100 
 mayerPunkt r foa = if (foa) == [] then U.maybePu "empty"
@@ -270,6 +270,11 @@ lP z = U.tk z ["0*x + y + 0*z = 3","0*x + y + 0*z = 33*x + 0 + 0*z = 6","3*x + 0
 choosDomain ff z = do 
              if ff == 1 then iDF z
              else lP z
+
+
+foGb1 gb =  map realToFrac (map ord gb )
+foGb2 gb =  map realToFrac (map ord gb )
+simiVal gb1 gb2 = Co.similaritYvalue (foGb1 gb1) (foGb2 gb2)
 
 
 

@@ -85,6 +85,7 @@ module Colored_2_3_5_Counter20 (
     , range -- experiment2 case 0 daZip
     , vow0 -- a version of vowel function as square matrix M1
     , ausw  
+    , progLiT -- export some Prog Vars to TheAtoB.." and Main 
     , ptc0,ptc2,ptc3,ptc4,ptc5,ptc6,ptc7,ptc8,ptc9
       ) where
 
@@ -181,6 +182,7 @@ progVar4 = "0*x + 0*y + z = 2" --"OoUu0" --"pqrst0" --"stuvwx" --"mnopqr" --(sho
 progVar5 = "0*x + 0*y + z = 2x + y + z = 11" --"OoU0Y" --"uvwxy0" --"yz0000" --"mnopqrstuvwx" --(show (tussenStap 1 3))++(show(tussenStap 1 4)) -- "yz0000000000" --"uvwxy0" --"OoUuY" --"OoUuYy000" --"AAAaaaBBBbbbA+Aaa" --"IiOo" --"ElfFool" --"AAABBBAA" --"cd" --range --"bc" --"tht is the cse" --"that is the case" --"AAABBBAA"
 progVar6 = "x + y + z = 11" --"y0000" --"z00000" --"000000" --"yz0000" --(show(tussenStap 1 4)) --"000000" --"z00000" --"y0000" --"y000" -- "BBBbbbA+Aaa" --"uvwxyz" --"uvwxyz" --"Oo" --"Fool" --"BBBAA" --"d" --range --"c" --"the cse" --"the case" --"BBBAA"
 
+progLiT = [progVar1,progVar2,progVar3,progVar4,progVar5,progVar6]
 -------------------------------------------
 --active 26-8-2020
 --a workwing example experiment 2 

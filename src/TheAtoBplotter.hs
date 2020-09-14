@@ -92,51 +92,222 @@ experiment3RAW offOn target plot addGh ghAdd n d get1 get2 get3 get4 subroutineL
 
 -- d: [[String]] a list of bonelist or li 
 experiment3RAW2 addGh ghAdd n d subroutineList = experiment3RAW 2 [1..(length subroutineList)] 2 addGh ghAdd n d 1 2 3 4 subroutineList
-experiment3 ghAdd d = experiment3RAW2 1 ghAdd 1 d subroutinE
+
+-- filter everthing smaller char 43 = '+' , '*',' ' ... -------------------------########################################## prep any bonelist for reading
+-- thus can be fully processed as li list chars < 43 lead to error
+-- *e.g>  readAnyTh (C.progLiT)
+readAnyRAW foLiT t = let stapa t = map chr (filter (>43) (map ord (head$ausw t foLiT)))
+                     in stapa t
+
+readAnyTh foLiT = map (readAnyRAW foLiT) [1..6]
+
 -- set with subroutin list length 2
 -- *e.g> experiment3 "ttt" [li2]
+experiment3 ghAdd d = experiment3RAW2 1 ghAdd 1 d subroutinE
 -- see if section in runKAxiom :777 'experiment3 'can be deleted !?
 -- function below has better properties ?
-experiment3RAW22 ghAdd d subroutineList = do
+-- -- *e.g> experiment3RAW22 "DF" li2 subroutinE C.ptc7 li2
+-----------------------------------------------------------------------------------------------
+
+-- guess something to add to First + -
+-- xperiment3RAW22 "DF" li2 subroutinE C.ptc7 li2
+-- *> map ord (head(head(experiment3RAW22 "DFDF" li2 subroutinE C.ptc7 [li3])))
+-- *> [20,27,20,20]
+experiment3RAW22 ghAdd d subroutineList foPtc foLi = do
    -- givens:
        let pi2 = Punkt "m" Nothing Nothing Nothing Nothing Nothing
-       let ert r = tk r (C.ptc6 250)
+       let ert r = tk r (foPtc 250)
        let xS r = head (ert r)  
        let yS r = last (drop 1 (take 2 (ert r))) 
        let zS r = last (ert r) 
        let maXxS = map xS [1..100]   
        let maXyS = map yS [1..100]
-       let maXzS = map zS [1..100]     
-       exp3Fractional <- forM [1..(length subroutineList)] (\four4 -> do
-                     let exP3 =  runEXP3 (head(ausw four4 d)) pi2 "AAA" --kWORK --(G.fobase progVar1 progVar2 progVar3 progVar4 progVar5 progVar6 daZip1 daZip2 daZip3 textAA (ptcButoons) (foalt))
-                     return (exP3))
-       let exp3Frac = concat$concat$exp3Fractional
-       exp3IntfoChar <- forM [1..(length subroutineList)] (\four4 -> do
+       let maXzS = map zS [1..100]   
+       let moreReads = do   
+            exp3Fractional <- forM [1..(length subroutineList)] (\four4 -> do
+                  let exP3 =  runEXP3 (head(ausw four4 d)) pi2 "AAA" --kWORK --(G.fobase progVar1 progVar2 progVar3 progVar4 progVar5 progVar6 daZip1 daZip2 daZip3 textAA (ptcButoons) (foalt))
+                  return (exP3))
+            let exp3Frac = concat$concat$exp3Fractional
+            exp3IntfoChar <- forM [1] (\four4 -> do
 
-                     let comp1 = runEXP3Char pi2 ghAdd
-                     let comp2 = (zipWith (+) [1,1,1,1] (runEXP3Char pi2 ghAdd))
+                     let comp1 = runEXP3Char pi2 ghAdd (head (ausw four4 foLi))
+                     let comp2 = (zipWith (+) [1,1,1,1] (runEXP3Char pi2 ghAdd (head (ausw four4 foLi))))
                      let comp3 = let mis t z = z - t
-                                 in (map (mis 1) (runEXP3Char pi2 ghAdd))
+                                 in (map (mis 1) (runEXP3Char pi2 ghAdd (head (ausw four4 foLi))))
                      let thecombs = [comp1,comp2,comp3]
-                     return (thecombs))
-       let exp3Intfo = concat$exp3IntfoChar 
-       let maxX = maximum maXxS
-       let maxY = maximum maXyS
-       let maxZ = maximum maXzS
+                     return ([comp1,comp2,comp3]))-- (thecombs))
+            let exp3Intfo t = head $ ausw t $ concat$exp3IntfoChar 
+            let maxX = maximum maXxS
+            let maxY = maximum maXyS
+            let maxZ = maximum maXzS
      -- 'quirky example'
-       let calcAlgoExperiment3 =  fiveXfive 1
-            where
-               bOn = exp3Frac;
-               twoXtwo = [(10,maxY),(10,15),(0,15),(0,maxY)];
-               fo3y = (maxY - (maxY- (maxX-11)));
-               threeXthree = [(maxX,maxY), (maxX, fo3y),(11,fo3y),(11,maxY)];
-               varX x = (maxX- ( (maxX-10)- (x))); 
-               fiveXfive x = [((varX x),maxY), ((varX x), 0),(0,25),((varX x),25)];
+            let calcAlgoExperiment3 =  twoXtwo --fiveXfive 1
+                  where
+                   bOn = exp3Frac;
+                   twoXtwo = [(10,maxY),(10,15),(0,15),(0,maxY)];
+                   fo3y = (maxY - (maxY- (maxX-11)));
+                   threeXthree = [(maxX,maxY), (maxX, fo3y),(11,fo3y),(11,maxY)];
+                   varX x = (maxX- ( (maxX-10)- (x))); 
+                   fiveXfive x = [((varX x),25), ((varX x), 0),(0,0),((varX x),25)];
 
-       let cE3 = calcAlgoExperiment3
-       
-       cE3 --exp3Frac
+            let cE3 = calcAlgoExperiment3
+            let foRunner gb1 gb2 = let foGb1 gb =  map realToFrac (map ord gb )
+                                   in let foGb2 gb =  map realToFrac (map ord gb )
+                                   in  similaritYvalue (foGb1 gb1) (foGb2 gb2)
+            let ptcToInt m = let loadInBlank = map (\c -> if c=='.' then ' '; else c)  
+                             in let myTruncate = read$head$words$loadInBlank m
+                             in myTruncate
+            aRunner <- forM [1..3] (\aRon -> do
+                     let bsp = map chr (exp3Intfo aRon)
+                     return (bsp))
+            -- map chr ((exp3Intfo))
+    --   show (aRunner ) -- show cE3 --exp3Frac
+      -- return (aRunner )
+      -- show (take 1 exp3Intfo)
+       --exp3IntfoChar
+            return aRunner
+       moreReads 
+     --  show (aRunner 1)
+    --   show (aRunner 2)
+    --   show (aRunner 3)
+     --  show (aRunner 4)
+     --  show (aRunner 5)
+------------------------------------------------------------
+--similar to above shall be iterated
+experiment3RAW23 ghAdd d subroutineList foPtc foLi gb1 gb2 = do
+   -- givens:
+       let pi2 = Punkt "m" Nothing Nothing Nothing Nothing Nothing
+       let ert r = tk r (foPtc 250)
+       let xS r = head (ert r)  
+       let yS r = last (drop 1 (take 2 (ert r))) 
+       let zS r = last (ert r) 
+       let maXxS = map xS [1..100]   
+       let maXyS = map yS [1..100]
+       let maXzS = map zS [1..100]   
+       let moreReads = do   
+            exp3Fractional <- forM [1..(length subroutineList)] (\four4 -> do
+                  let exP3 =  runEXP3 (head(ausw four4 d)) pi2 "AAA" --kWORK --(G.fobase progVar1 progVar2 progVar3 progVar4 progVar5 progVar6 daZip1 daZip2 daZip3 textAA (ptcButoons) (foalt))
+                  return (exP3))
+            let exp3Frac = concat$concat$exp3Fractional
+            exp3IntfoChar <- forM [1] (\four4 -> do
+
+                     let comp1 = runEXP3Char pi2 ghAdd (head (ausw four4 foLi))
+                     let comp2 = (zipWith (+) [1,1,1,1] (runEXP3Char pi2 ghAdd (head (ausw four4 foLi))))
+                     let comp3 = let mis t z = z - t
+                                 in (map (mis 1) (runEXP3Char pi2 ghAdd (head (ausw four4 foLi))))
+                     let thecombs = [comp1,comp2,comp3]
+                     return ([comp1,comp2,comp3]))-- (thecombs))
+            let exp3Intfo t = head $ ausw t $ concat$exp3IntfoChar 
+            let maxX = maximum maXxS
+            let maxY = maximum maXyS
+            let maxZ = maximum maXzS
+     -- 'quirky example'
+            let calcAlgoExperiment3 =  twoXtwo --fiveXfive 1
+                  where
+                   bOn = exp3Frac;
+                   twoXtwo = [(10,maxY),(10,15),(0,15),(0,maxY)];
+                   fo3y = (maxY - (maxY- (maxX-11)));
+                   threeXthree = [(maxX,maxY), (maxX, fo3y),(11,fo3y),(11,maxY)];
+                   varX x = (maxX- ( (maxX-10)- (x))); 
+                   fiveXfive x = [((varX x),25), ((varX x), 0),(0,0),((varX x),25)];
+
+            let cE3 = calcAlgoExperiment3
+            let foRunner fogb1 fogb2 = let foGb1 gb =  map realToFrac (map ord gb )
+                                       in let foGb2 gb =  map realToFrac (map ord gb )
+                                       in  similaritYvalue (foGb1 fogb1) (foGb2 fogb2)
+            let ptcToInt m = let loadInBlank = map (\c -> if c=='.' then ' '; else c)  
+                             in let myTruncate = read$head$words$loadInBlank m
+                             in myTruncate
+            aRunner <- forM [1..3] (\aRon -> do
+                     let bsp = map chr (exp3Intfo aRon)
+                     return (bsp))
+            let se =  if  (foRunner gb1 gb2) < 10.0 then foRunner gb1 gb2 --aRunner --map chr ((exp3Intfo)) --show$ "2" --foRunner (ptcToInt maxX) (ptcToInt maxY)
+                      else foRunner gb1 gb2 --aRunner --show $ "3" -- zufallsBasic1 10 (ptcToInt maxX) 1
+            -- map chr ((exp3Intfo))
+    --   show (aRunner ) -- show cE3 --exp3Frac
+      -- return (aRunner )
+      -- show (take 1 exp3Intfo)
+       --exp3IntfoChar
+            return aRunner --se
+       moreReads
+
+-- search in string ap3 
+-- the letter that is at 
+-- position t of ap
+-- *TheAtoBplotter> focommmB li "AABB" "AVFGB" 3
+--               *> [4]
+focommmB ap ap3 t = let atSpot ap ap3 t = (head (ausw t ap)) `elemIndices` (ap3)
+                    in atSpot ap ap3 t
+buildPrior r = let buildA r = readAnyTh r
+               in head$ last (experiment3RAW22 "DF" [buildA r] subroutinE C.ptc7 [buildA r]) 
+
+commmB r ap ap3 t = let buildA r = readAnyTh r
+           in let aprior = head$ last (experiment3RAW22 "DF" [buildA r] subroutinE C.ptc7 [buildA r]) 
+           in let atSpot ap ap3 t = (head (ausw t (map ord ap))) `elemIndices` (map ord ap3)
+           in let aprior4 gb1 gb2 = head$ last (experiment3RAW23 "DF" [(buildA r)] subroutinE C.ptc7 [buildA r] gb1 gb2)
+           in let testIterate ap = atSpot ap (aprior4 aprior "fp")
+           in atSpot ap ap3 t--aprior
+-----------------------------------------------------------------
+-- P(B) given AStigmatic 
+-- A= the occoring and non ocurring Chars of an ideal
+--            |      B      |    not B
+-- Astigmatic | 'aBgivenA'  |            
+-- ----------------------------------------
+-- not stigm- |
+-- matic      |
+--
+-- I. after first + - try 
+--    map ord a -> ord a -> map show a -> [String] -> map ord a -> [Int] 
+--    continoue from above:
+adda li3 = map ord (head(head(experiment3RAW22 "DFDF" [li3] subroutinE C.ptc7 [li3])))
+addaInt li3 = (unwords(map show (adda li3)))
+
+--II. add minimal changes a random list variance 5
+note li l3 =  zipWith (+) (map ord (take 4 (head li))) (map ord (head l3))
+not2 li l3 =  zipWith (-) (map ord (take 4 (head li))) (map ord (head l3))
+
+----------------------------------------------------
+aBgivenA li =  ((buildPrior li))
+comparEB li li3 = zipWith (+) (map ord (aBgivenA li)) (map ord (aBgivenA li3)) 
+comparEB2 li li3 = zipWith (-) (map ord (aBgivenA li)) (map ord (aBgivenA li3))
+-- check  
+--focommmB li3 li 1
+foCom li li3 l = (focommmB (comparEB li li3) (comparEB2 li li3) l )
+conStraint1 r t = if r < 48 && r > 128 then do t
+                  else r
+
+does li l2= do 
+     let longRun variance t = head $ zufallsBasic1 1 variance t 
+      -- run a foCom search 
+     let gh = [[],[]]
+     let courseTowards = if (length$concat$gh) == 0 
+                    then do
+                    let urso l l2 = do 
+                         longW <- forM [1..100] (\pluMin -> do
+                             let foDit = longRun 2 pluMin
+                 -- randomyl add or subtract form  BgivenA list 
+                             let ditODat fl1 fl2 = head $ ausw foDit[(comparEB fl1 fl2),(comparEB2 fl1 fl2)]
+                             let calC fl1 fl2 = ditODat [(aBgivenA fl1 )] (fl2)
+                             return (ditODat l l2))
+                 -- randomly add or substract 5
+                          --   lenDepend <- forM
+                         return longW
+                    let tab r = conStraint1 (longRun 5 r) (head(head(head (ausw r (urso li l2)))))
+                    let fgt ri = (urso ri l2)
+                    --let bugg = take 5 (iterate fgt [1)
+                    let dfre r = map ord (head (ausw r li)) 
+                    let rekenen r= comparEB (head(ausw r ([li]))) (map show [1..( ( longRun 80 r)+48)])
+                    -- map tab [1..20]
+                    map rekenen [1] 
+               else [ [4]] --aBgivenA li 
+     return courseTowards                          
+
+allB = readAnyTh C.progLiT
 -----------------------------------------------------------
+
+-----------------------------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------------------------
 -- 12-9-2020
 -- function below is based an 'runKBASE' above
 -- experiment 3 compare two bonlists with each other
@@ -171,9 +342,9 @@ runEXP3 li pi ghAdd = do
        --let beforewithGH = head $last $ head $ allforIV
        (return (beforeAlgo))
 ------------------------------------------------------------
-runEXP3Char pi ghAdd = 
+runEXP3Char pi ghAdd li = 
        -- domain2 syntax
-       let asun = (runEXP3 ["AaEe0","AaEeI","i0000","OoUu0","OoU0Y","y0000"] pi ghAdd)
+       let asun = (runEXP3 li pi ghAdd)
        in let toChar = map round $ head$ (head asun)
        in toChar
 -- ["AaEe0","AaEeI","i0000","OoUu0","OoU0Y","y0000"]
@@ -865,15 +1036,15 @@ defSearchRAW offOn target plot addGh ghAdd pV1 pV2 pV3 pV4 pV5 pV6 ptc0Len ptc3L
                                 putStrLn (show makeWORK )
                                 return())  
                               -}
-                     let exP3 =  runEXP3 [progVar1,progVar2,progVar3,progVar4,progVar5,progVar6] pi "AAA" --kWORK --(G.fobase progVar1 progVar2 progVar3 progVar4 progVar5 progVar6 daZip1 daZip2 daZip3 textAA (ptcButoons) (foalt))
-                     let comp1 = (runEXP3Char pi ghAdd)
-                     let comp2 = (zipWith (+) [1,1,1,1] (runEXP3Char pi ghAdd))
-                     let comp3 = let mis t z = z - t
-                                 in (map (mis 1) (runEXP3Char pi ghAdd))
-                     let thecombs = [comp1,comp2,comp3]
+                     let exP3 =  (experiment3RAW22 "ttt" [liT] subroutinE ptc6 [liT]) --runEXP3 [progVar1,progVar2,progVar3,progVar4,progVar5,progVar6] pi "AAA" --kWORK --(G.fobase progVar1 progVar2 progVar3 progVar4 progVar5 progVar6 daZip1 daZip2 daZip3 textAA (ptcButoons) (foalt))
+            --         let comp1 = (runEXP3Char pi ghAdd)
+              --       let comp2 = (zipWith (+) [1,1,1,1] (runEXP3Char pi ghAdd))
+                --     let comp3 = let mis t z = z - t
+                  --               in (map (mis 1) (runEXP3Char pi ghAdd))
+                    -- let thecombs = [comp1,comp2,comp3]
                      return (exP3)
                     
-                     putStrLn ((show thecombs) ++"," ++(show exP3))
+                     do (putStrLn$show$head$exP3)
        --return (cd n)          
                                   --putStrLn "1"
      --  let chuckList x = [(ptc0 x),(ptc2 x),(ptc3 x)]
