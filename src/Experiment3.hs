@@ -392,17 +392,26 @@ theAChars = map chr (sort (61 : (([48..128] \\ [58..96] ) \\ [123..128])))
 easyCd wo k = sort$group k >>= (findinCd wo)
 --------------------------------------
 -- bound to A of 'ist' via the Syntax via commmB
+-- wo  :: [Char], can be B of astigmatic
+--                    or A + - change (sum, change a little)
+--
+--   =>propose, 'wo' can be everything EXCEPT not A of Haskell Char encoding !?  
+--
 -- ist :: [Char] , is a guess  
 -- Experiment3> foStrCd "wer" "r" 3
 -- [1]  -- where is 'r' in 'wer' look ONLY at occurance position 3 (spot 3) 
 foStrCd wo ist das =  commmB  wo ist das
 findinCd wo ist = (map (foStrCd wo ist) [1..(length ist)])
 -- reflexive function show me where B in A =>
-qw wo r = (foStrCd "werr" wo r)
-qw3 t e = map (qw e) [1..(length t)]
--- => where is B in A
---          is B in A'
---          is B in C'
+qw wo ist r = (foStrCd wo ist r)
+-- qw3 ready to map for different ist's(guesses)
+qw3 guess wo t = map (qw wo guess) [1..(length t)]
+--   solve where is B in A
+--               is B in A'
+--               is B in C'
+-- qw4: map to different domain A to A' or A' to (not B) ...
+qw4 guess guesses wo  = map (qw wo guess) [1..(length guesses)]
+
 -------------------------------------------------------------------------------------------------------------------A's ?
 theASyntax = theAChars -- solve reation to Char encoding in Haskell
 ---- A' source for an A' 'quirky example' without errors
@@ -412,9 +421,9 @@ li4 =  ["0xy0z=3","0xy0z=3x00z=6","x00z=6","0x0yz=2","0x0yz=2xyz=11","xyz=11"]
 theA' = head li4
 
 
-theB -- of commmB
+--theB -- of commmB
 
-theASolveBonelist -- solve relation to whole of li4 ( a bonelist) 
+--theASolveBonelist -- solve relation to whole of li4 ( a bonelist) 
 -- C' = defined by at least one SimiVal boundry e.g below 0.4         
 -- C' = overlaying hex A and C
 
