@@ -66,7 +66,7 @@
   
 --
 -- *write your root function 
-module TheAtoBplotter (
+module Experiment3 (
     
       defSearch  -- enter pg functions and progVars
     , defSearchRAW  
@@ -300,11 +300,11 @@ focommmB ap ap3 t = let atSpot ap ap3 t = (head (ausw t ap)) `elemIndices` (ap3)
 buildPrior r = let buildA r = readAnyTh r
                in head$ last (experiment3RAW22 "DF" [buildA r] subroutinE C.ptc7 [buildA r]) 
 
-commmB r ap ap3 t = let buildA r = readAnyTh r
-           in let aprior = head$ last (experiment3RAW22 "DF" [buildA r] subroutinE C.ptc7 [buildA r]) 
-           in let atSpot ap ap3 t = (head (ausw t (map ord ap))) `elemIndices` (map ord ap3)
-           in let aprior4 gb1 gb2 = head$ last (experiment3RAW23 "DF" [(buildA r)] subroutinE C.ptc7 [buildA r] gb1 gb2)
-           in let testIterate ap = atSpot ap (aprior4 aprior "fp")
+commmB ap ap3 t = -- let buildA r = readAnyTh r
+         --  in let aprior = head$ last (experiment3RAW22 "DF" [buildA r] subroutinE C.ptc7 [buildA r]) 
+           let atSpot ap ap3 t = (head (ausw t (map ord ap))) `elemIndices` (map ord ap3)
+          -- in let aprior4 gb1 gb2 = head$ last (experiment3RAW23 "DF" [(buildA r)] subroutinE C.ptc7 [buildA r] gb1 gb2)
+          -- in let testIterate ap = atSpot ap (aprior4 aprior "fp")
            in atSpot ap ap3 t--aprior
 -----------------------------------------------------------------
 -- P(B) given AStigmatic 
@@ -365,7 +365,8 @@ commmB r ap ap3 t = let buildA r = readAnyTh r
 --                          everything within normal statistical distribution.
 --                          (and no way to plot it ;)             
 --       --
---         crit3: ???
+--         crit3: When introducing C do a special 'chain destribution'
+--                that is A chain destributed in A'. 
 --
 --         crit4: How does the difference in li3 (with error) and li4 = (li3 without error)
 --                look in ptc6 ptc7 ptc8 and ptc9 like? 
@@ -385,6 +386,13 @@ commmB r ap ap3 t = let buildA r = readAnyTh r
 *
 (usedVowel+notusedVowel)/(usedVowel+notusedVowel+usedNotVowel+notusedNotVowel)
 -}
+
+-- special chain destribution (Cd)
+easyCd wo k = sort$group k >>= (findinCd wo)
+foStrCd wo ist das =  commmB  wo ist das
+findinCd wo ist = (map (foStrCd wo ist) [1..(length ist)])
+--whereTO
+
 --
 -- I. after first + - try 
 --    map ord a -> ord a -> map show a -> [String] -> map ord a -> [Int] 
