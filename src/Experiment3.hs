@@ -57,7 +57,13 @@
 --             premise neg: by coincidence the random number generator had a lucky
 --                          streak and hit a sequnece that generally matches
 --                          everything within normal statistical distribution.
---                          (and no way to plot it ;)      
+--                          (and no way to plot it ;)    
+--
+--         crit3: ???
+--
+--         crit4: How does the difference in li3 (with error) and li4 = (li3 without error)
+--                look in ptc6 ptc7 ptc8 and ptc9 like? 
+  
 --
 -- *write your root function 
 module TheAtoBplotter (
@@ -309,8 +315,8 @@ commmB r ap ap3 t = let buildA r = readAnyTh r
 --      functions :
 --  *TheAtoBplotter> let li3 =  ["0xy0z=3","0xy0z=33x00z=6","3x00z=6","0x0yz=2","0x0yz=2xyz=11","xyz=11"]
 --     -- with the solution (y=3,x=2,z=2)
---
--- A 3rd double collum C added in 
+-- (find the error in li3)
+-- A 3rd double collulm C added in 
 -- via a C' in 2d or in 3d with C to visualize
 -- a general C where BgivenA 'CgeneralBgivenA'            
 --
@@ -359,7 +365,10 @@ commmB r ap ap3 t = let buildA r = readAnyTh r
 --                          everything within normal statistical distribution.
 --                          (and no way to plot it ;)             
 --       --
+--         crit3: ???
 --
+--         crit4: How does the difference in li3 (with error) and li4 = (li3 without error)
+--                look in ptc6 ptc7 ptc8 and ptc9 like? 
 {-
  usedVowel -> P(B, given A) = "eo" = 2/2+3 = 2/5= 0.4
 
