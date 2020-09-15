@@ -401,19 +401,47 @@ easyCd wo k = sort$group k >>= (findinCd wo)
 -- Experiment3> foStrCd "wer" "r" 3
 -- [1]  -- where is 'r' in 'wer' look ONLY at occurance position 3 (spot 3) 
 foStrCd wo ist das =  commmB  wo ist das
-findinCd wo ist = (map (foStrCd wo ist) [1..(length ist)])
+findinCdRAW wo ist = (map (foStrCd wo ist) [1..(length ist)])
+findinCd wo ist = (findinCdRAW wo ist)
 -- reflexive function show me where B in A =>
 qw wo ist r = (foStrCd wo ist r)
 -- qw3 ready to map for different ist's(guesses)
-qw3 guess wo t = map (qw wo guess) [1..(length t)]
+-- domain: higher domain of this program
+--         if 'domain' = "" then no restrictions
+--         else see below
+-- guess(wo): must be (length wo) >= (length t)  --------otherwise error 
+-- t    : must be (length t) <=  (length wo) 
+--        determines length of ANY domain EXCEPTION theAChar
+--
+--        no matter if qw3 is used wo is always 
+--          B of astigmatic  
+--   OR     B of (    "      + not aticmatic ) 
+--   ... always the higher domain 
+--
+--       with regard to 't'
+--
+--choose a cell or row or collum always wo > ist 
+-- wo-domain   higher domain of ist-domain
+-- concept Cd               
+--                                                          
+--                collum I       collumII                 wo ______ist   
+--            --------------------------                    /      \    
+--    row I   |      B      |    not B  |    C .. --\  wo  /        \ 
+-- Astigmatic | '  cell I   |   cell II |            \  |  \        / ist 
+-- -- ----------------------------------------       / \|/  \______/    
+--   row II   |     B       |    not B  |         --/  C'of wo     C' of ist
+-- not stigm- |   cell III  |   cell IV |                     \  /
+-- - matic    --------------------------                        C  
+
+-- --------
+qw3 domain guess t = map (qw guess domain) [1..(length t)]
 --   solve where is B in A
 --               is B in A'
 --               is B in C'
--- qw4: map to different domain A to A' or A' to (not B) ...
-qw4 guess guesses wo  = map (qw wo guess) [1..(length guesses)]
+
 
 -------------------------------------------------------------------------------------------------------------------A's ?
-theASyntax = theAChars -- solve reation to Char encoding in Haskell
+theASyntax = theAChars -- solve relation to Char encoding in Haskell
 ---- A' source for an A' 'quirky example' without errors
 -- solution (y=3,x=6,z=2) == A'' ?!
 -------------------------------------------------------------------------------------------------------------------A' nand/nor A'' ?
@@ -421,8 +449,67 @@ li4 =  ["0xy0z=3","0xy0z=3x00z=6","x00z=6","0x0yz=2","0x0yz=2xyz=11","xyz=11"]
 theA' = head li4
 
 
---theB -- of commmB
+--theB's -- of commmB
+------------------------------------ ##################################################################### B's
+-- we can run a list of the length n and see which letters of a solution occure.
+--   1. Asumption1 all Chars in the solution will occure with
+--            given all Chars from 48 .. until 128 
+--                    WITHOUT...
 
+--guess based on 'quirky example'
+-- based on variable li2
+theB' li2 li3= (head(head(experiment3RAW22 "DFDGGGF" li2 subroutinE C.ptc7 [li3]))) 
+
+-- choose 4 variables as to build pv functions
+-- progVar1 = "0*x + y + 0*z = 3"
+--progVar2 = "0*x + y + 0*z = 33*x + 0 + 0*z = 6"
+--progVar3 = "3*x + 0 + 0*z = 6"
+--progVar4 = "0*x + 0*y + z = 2
+--progVar5 = "0*x + 0*y + z = 2x + y + z = 11"
+--progVar6 = "x + y + z = 11"
+--
+--progVar1 = "0*x + y + 0*z = 3"
+--progVar2 = "0*x + y + 0*z = 33*x + 0 + 0*z = 6"
+--progVar3 = "3*x + 0 + 0*z = 6"
+--progVar4 = "0*x + 0*y + z = 2
+--progVar5 = "0*x + 0*y + z = 2x + y + z = 11"
+--progVar6 = "x + y + z = 11"
+-- *Experiment3> (head((experiment3RAW22 "DFDGGGF" [li4] subroutinE C.ptc7 [li])))
+--["\154\163hg","\155\164ih","\153\162gf"]
+theBQuirky li4 li = (head((experiment3RAW22 "DFDGGGF" [li4] subroutinE C.ptc7 [li])))
+
+-- put CONSTRAINT On NOTES -> do come back to experiment3RAW22 
+--  inspect 2x2 3x3 5x5 to follow instructions
+--
+--  lay it out to play it out
+--  every solution is a String every Char of this [Char]
+--  fills a space of soltions e.g of
+
+
+                  
+inActie pv1 pv2 pv3 pv4 = do
+    -- theGh = focommmB
+    putStrLn "like does"
+  where
+    pop e y = head $ (ausw e y); 
+    quadCd w = pop w (map readAnyTh [pv1,pv2,pv3,pv4]);
+    makePvs pv1 pv2 pv3 pv4 = [(quadCd 1),(quadCd 1)++(quadCd 2),(quadCd 2),(quadCd 3),(quadCd 3)++(quadCd 4),(quadCd 4)];
+    iterateLi l = pop l (makePvs pv1 pv2 pv3 pv4);
+-- e.g *> (head((experiment3RAW22 "DFDGGGF" li2 subroutinE C.ptc7 [li])))
+-- ["\154\163hg","\155\164ih","\153\162gf"]
+    theBeesRAW foLiter =  (experiment3RAW22 "DFDGGGF" [li4] subroutinE C.ptc7 [foLiter]) ; -- suibtile differences 
+
+--simVALS
+--------
+-- to be mapped with Iterations and or li          --change between diferent projections
+-- depend on fixed variable -- stir which domain to compare to what ....
+-- wtih length 1 maps agains
+-- does kArmWORK run that simiVals 
+-- e.g *> simVALS pi "WE" li
+--     *>[[[20.490367775831874,26.761023580752717,20.175131348511385,20.450764570705708]],
+simVALS foPunkt ghAdd foli = runEXP3 foPunkt foli ghAdd
+
+ 
 --theASolveBonelist -- solve relation to whole of li4 ( a bonelist) 
 -- C' = defined by at least one SimiVal boundry e.g below 0.4         
 -- C' = overlaying hex A and C
@@ -468,20 +555,6 @@ urso l l2 = do
                           --   lenDepend <- forM
         return longW
 rekenen r li = ( ( longRun 80 r)+48) --comparEB (head(ausw r ([li]))) (map show [1..( ( longRun 80 r)+48)])
--- we can run a list of the length 10.000 and see which letters of a solution occure.
---   1. Asumption1 all Chars in the solution will occure with
---            given all Chars from 48 .. until 128 
---                    WITHOUT
---                     
-inActie = do
-    -- theGh = focommmB
-    putStrLn "like does"
--- put CONSTRAINT On NOTES do come back to experiment3RAW22 
---  inspect 2x2 3x3 5x5 to follow instructions
---
---  lay it out to play it out
---  every solution is a String every Char of this [Char]
---  fills a space of soltions e.g of
 ----------------------------------------------------
 aBgivenA li =  ((buildPrior li))
 comparEB li li3 = zipWith (+) (map ord (aBgivenA li)) (map ord (aBgivenA li3)) 
