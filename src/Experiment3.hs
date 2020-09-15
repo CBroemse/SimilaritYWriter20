@@ -497,7 +497,12 @@ inActie pv1 pv2 pv3 pv4 = do
     iterateLi l = pop l (makePvs pv1 pv2 pv3 pv4);
 -- e.g *> (head((experiment3RAW22 "DFDGGGF" li2 subroutinE C.ptc7 [li])))
 -- ["\154\163hg","\155\164ih","\153\162gf"]
-    theBeesRAW foLiter =  (experiment3RAW22 "DFDGGGF" [li4] subroutinE C.ptc7 [foLiter]) ; -- suibtile differences 
+-- run 'calcB' until a certain boundry with simVal 
+    calcB's foLiter =  (experiment3RAW22 "DFDGGGF" [li4] subroutinE C.ptc7 [foLiter]) ; -- subitile differences nand iterate
+    simVal foPunkt ghAdd foli = simVALS foPunkt ghAdd foli;
+  -- qw3 
+    chngDomain domain guess t = map (qw guess domain) [1..(length t)] ;
+
 
 --simVALS
 --------
@@ -588,6 +593,11 @@ allB = readAnyTh C.progLiT
 -----------------------------------------------------------------------------------------------
 -- 12-9-2020
 -- function below is based an 'runKBASE' above
+-- calling fst (kArmWORK...)
+-- => compare internal SimiVals of aLi
+-- or calling snd (kArmWORK ...) 
+-- => compare every String of aLi 
+--    to an external String ghAdd 
 -- experiment 3 compare two bonlists with each other
 -- let one list be the solution domain 
 -- let another be the snytactic domain
@@ -597,6 +607,28 @@ allB = readAnyTh C.progLiT
 -- domain a) determine how to apply LP to IDF
 --           y' = xz(IDF) + - xz (LP)
 --           I) let xz' = (maximum maXxS(IDF )) - (maximum maXyS (LP))
+--rabbithole: pi
+-- runEXP with fst -> [Fractional] a pointer , with pre-selection criteria
+--        with snd -> [[Fractional]] needs pointer with selection
+--  try: pi can handle the selection
+checkFoGo g = if (length g) == 0 then ""
+            else "MOTHER MODE: on"  
+-- foAli: String the name of this Punkt
+baas foA foAli  =  (unwords(checkflow [] [(Punkt foAli foA foA foA foA foA)] ))
+-- start domain change
+-- g: a Punkt name ...
+-- t: String , to make a command
+-- iOE: to be plugged into runEXP3 
+--      do the action decide to 
+--   compare li to itself, internal
+--   or li to an String ,external
+ 
+startDchange g t iOE = let piToBinary = baas Nothing t  
+                       in if g == t then fst iOE --fst internal or external
+                          else snd iOE
+
+triggerWord g = startDchange g "intern" (1,2)
+
 runEXP3 li pi ghAdd = do
        -- domain2 syntax
        let iDF = li --["AaEe0","AaEeI","i0000","OoUu0","OoU0Y","y0000"]
@@ -609,14 +641,20 @@ runEXP3 li pi ghAdd = do
             -- first loop is 'IDF' second one is 'LP'
             let de e r = head $ ausw e r 
             let foaLi e =  de e (chD four4)
-            let aLi = [(foaLi 1),(foaLi 3),(foaLi 4),(foaLi 6)]  
-            let fg = kArmWORK 2 (chD four4) aLi 1 pi 1 1 [] ghAdd --(runKAXIOM offOn target plot addGh ghAdd n (theDs four4 d) (get1) (get2) (get3) (get4) 3 (theDs four4 d) (four4) [(read(show four4))] ((tk four4 subroutineList)))
+            let aLi = [(foaLi 1),(foaLi 3),(foaLi 4),(foaLi 6)] 
+            --let prepComp g = startDchange g (1,2)
+                -- compare internaly
+            --let plugChoose = triggerWord pi  
+            let fg = let allFor = (kArmWORK 2 (chD four4) aLi 1 pi 1 1 [] ghAdd) --(runKAXIOM offOn target plot addGh ghAdd n (theDs four4 d) (get1) (get2) (get3) (get4) 3 (theDs four4 d) (four4) [(read(show four4))] ((tk four4 subroutineList)))
+                     in  if (triggerWord (filter (/=' ') (head(checkflow [] [pi])))) == 1 then (fst allFor)
+                         else (concat (snd allFor))
 
             fg     
             return (fg))
 
        -- apply an agorythm
-       let beforeAlgo  = allforIV
+       let beforeAlgo  = allforIV -- if (triggerWord (unlines(checkflow [] [pi]))) == 1 then (map fst allforIV)
+                       --  else ((map snd allforIV))
        --let beforewithGH = head $last $ head $ allforIV
        (return (beforeAlgo))
 ------------------------------------------------------------
@@ -625,6 +663,7 @@ runEXP3Char pi ghAdd li =
        let asun = (runEXP3 li pi ghAdd)
        in let toChar = map round $ head$ (head asun)
        in toChar
+
 -- ["AaEe0","AaEeI","i0000","OoUu0","OoU0Y","y0000"]
        -- domain1 solution
        --let choosDomain ff =  if ff == 1 then iDF 
@@ -2233,7 +2272,8 @@ kArmWORK addGh liT bonelist mofaList connectWrist dit dit2 mCommand crit= do
   --            putStrLn (unlines(allFUNC2NEW [mother] [mother] (1) (4)))
   --
    -- outcome1 : a [fractional]
-              (map fst randPunktList) 
+              --(map fst randPunktList)
+              ((map fst randPunktList),(randPunktList3) )
              -- (last(map snd randPunktList))  
            --   withGHcheck 
            --   putStrLn "1" --(foFuncPairNEW 1 1) 
