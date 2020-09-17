@@ -440,6 +440,7 @@ qw3 domain guess t = map (qw guess domain) [1..(length t)]
 --               is B in C'
 
 
+
 -------------------------------------------------------------------------------------------------------------------A's ?
 theASyntax = theAChars -- solve relation to Char encoding in Haskell
 ---- A' source for an A' 'quirky example' without errors
@@ -485,10 +486,16 @@ theBQuirky li4 li = (head((experiment3RAW22 "DFDGGGF" [li4] subroutinE C.ptc7 [l
 --  every solution is a String every Char of this [Char]
 --  fills a space of soltions e.g of
 
-
+-- *Experiment3> triggerWord "cell" "cell11"
+-- "2"
+-- *> triggerWord "cell" "cell"
+-- "0"
+-- *> triggerWord "cell123" "cell"
+-- "cell"
                   
 inActie pv1 pv2 pv3 pv4 = do
-    -- theGh = focommmB
+       --  let turnlisttoHexa = do 
+        --        toend <- forM [
     putStrLn "like does"
   where
     pop e y = head $ (ausw e y); 
@@ -502,8 +509,74 @@ inActie pv1 pv2 pv3 pv4 = do
     simVal foPunkt ghAdd foli = simVALS foPunkt ghAdd foli;
   -- qw3 
     chngDomain domain guess t = map (qw guess domain) [1..(length t)] ;
+    readPunktChar g = startDchange g "intern" (1,2) ; -- if fst trigger word == 1 then internal
+                 -- else external 
+------------------------------------------------------------------
+    quadToHexPointID aToC bToC = triggerWord aToC bToC;
+  -- throw in random number generator to generate chars
+    randomChars r = ( ( longRun 80 r)+48); 
+-- a general C where BgivenA 'CgeneralBgivenA'            
+--
+-- concept                                                  
+-- -- -------    
+--  the rod to hold the carrot
+--  to drag us to where we should go ! 
+--      A _____B
+--       /     \
+--  BA' /       \  not
+-- A |  \       /  B
+-- -- ---\____ /
+-- not stiC'    C'
+-- -- mati\  /
+--         C
+---------------------------------------------------------------
 
+-----------------------------------------------------------
+--  CELL functions
+--  readCell c >>=   
 
+replaceDot = map (\c -> if c=='.' then ' '; else c)
+replaceEmpty = map (\c -> if c==' ' then ','; else c)
+
+readCell c = [replaceDot c] >>= replaceEmpty
+-- zip by deleting all double occurcances A sigmatic or B
+-- or even all others A not and not B
+-- *Experiment3> nub((readCell (unwords (take 3 (iterate evalToWrite "cell")))))
+--"cel,12" 
+zipCellRAW ct = nub((readCell (unwords (take 3 (iterate evalToCounter ct)))))
+zipCell = zipCellRAW "cell"
+
+buildCell r = "cell" ++ (tk r (map show [1..5]))
+-- ################################################################################################ to be plugged into trigger Point !!!!!!!!!!!!!! 16.9.2020
+--    when going back
+--      B    <---    C
+cellType ct =  fst(charFilterInt(evalToWrite ct ))  
+-- take length found in string build String 'ct' with variable length    
+-- turn ct's into [String] 
+iterCT ct = take (snd(charFilterInt ct)) (iterate cellType ct )-- e.g  take 4 (iterate cellType "cell44")
+aleph ed = map iterCT ed
+--pipeStringToHigherD = if qw3 w e r == aleph ed 
+--rekenen
+-- e.g*> takeMY 7 3 [1,2,34]
+runCellRAW n wantedList solution= let stap1RAW countN wantedList solution = takeMY countN wantedList solution
+            in let lengther daLength = length (head $ ausw 1 daLength)  
+            in let stap1 countN = lengther (stap1RAW countN wantedList solution)
+            in let foLen2 = (lengther (stap1RAW (n+1) wantedList solution))
+            in let peelCondi = if ((stap1)n+1) == foLen2  then (stap1RAW (n+1) wantedList solution ) 
+                               else []
+            in if (peelCondi /=[]) == True then (rekenen (n+1))
+               else rekenen n
+-- to be maped with n 
+runCell wantedList solution n = (head (ausw wantedList solution)) `elemIndices` [runCellRAW n wantedList solution]
+--   
+--  e.g*> (map (runCell n [1,66,34,99,0]) [1..100])
+--  
+organelleFind solution n = (map (runCell n solution) [1..100])
+
+-- solutions of B in A and A ------------------------######################################### locate SOLUTIONS A HERE
+organelleSearch solution = map (organelleFind solution) [1..(length solution)]
+
+--oranelleGETsolution =  
 --simVALS
 --------
 -- to be mapped with Iterations and or li          --change between diferent projections
@@ -542,7 +615,6 @@ addaInt li3 = (unwords(map show (adda li3)))
 --II. add minimal changes a random list variance 5
 note li l3 =  zipWith (+) (map ord (take 4 (head li))) (map ord (head l3))
 not2 li l3 =  zipWith (-) (map ord (take 4 (head li))) (map ord (head l3))
-longRun variance t = head $ zufallsBasic1 1 variance t
 -- *> urso li li3
 -- *> [[134,136,84,83],..always the same forM in urso below (100)
 -- *> urso li3 li
@@ -559,8 +631,18 @@ urso l l2 = do
                  -- randomly add or substract 5
                           --   lenDepend <- forM
         return longW
-rekenen r li = ( ( longRun 80 r)+48) --comparEB (head(ausw r ([li]))) (map show [1..( ( longRun 80 r)+48)])
+-----------------------------------------------------
+
+--------------------------------------------------------------------------
+-- RANDOM number generators
+
+longRun variance t = head $ zufallsBasic1 1 variance t
+-- variance 'from' Int 'to' Int n-many steps
+rekenenRAW to from n =  ( ( longRun to n)+from) 
+rekenen r = (rekenenRAW 80 48 r) --comparEB (head(ausw r ([li]))) (map show [1..( ( longRun 80 r)+48)])
 ----------------------------------------------------
+
+-------------------------------------------------------------------------
 aBgivenA li =  ((buildPrior li))
 comparEB li li3 = zipWith (+) (map ord (aBgivenA li)) (map ord (aBgivenA li3)) 
 comparEB2 li li3 = zipWith (-) (map ord (aBgivenA li)) (map ord (aBgivenA li3))
@@ -627,8 +709,36 @@ startDchange g t iOE = let piToBinary = baas Nothing t
                        in if g == t then fst iOE --fst internal or external
                           else snd iOE
 
-triggerWord g = startDchange g "intern" (1,2)
 
+
+triggerWord g domain = if domain == "intern" then show(stC1 g )
+                       else if domain == domain then (stC2 g domain) -- "cell" 
+                       else show(stC1 g)
+     where
+         
+        stC1 g = (startDchange g "intern" (1,2));
+   -- get an in from idea name ("cell" ++ (show token))
+   -- this prep step depends on another A'' set 
+   -- pv1: a b c d e f
+   -- pv2: g h i j k l
+   -- pv3: m n o p q r
+   -- pv4: s t u v w x________________  
+   --                 |missing 'y z' |
+   --                 | and   '='    |
+   --                 |              |
+   --                 |______________|
+   -- y :: a..z \\ (z-1)
+        fromCell = map chr [48..57];
+        toHaal toInt =  charFilterInt toInt;
+        condI numP   = if (fst (toHaal numP ))== "cell" && (snd (toHaal numP)) >= 0 then (toHaal numP)
+                       else if (numP) == ("cell3") then (numP,(snd(charFilterInt numP)))
+
+                       else ((unlines(checkflow [mother] [(maybePu "CELL")])) , 0 ) ;
+        stC2 g numP = startDchange g  (fst(condI numP)) (show(snd(condI numP)),(fst(condI numP)));
+------------------------------------------------------
+
+------------------------------------------------------
+-- SIMIVAL RUNS for  'Quirky example'
 runEXP3 li pi ghAdd = do
        -- domain2 syntax
        let iDF = li --["AaEe0","AaEeI","i0000","OoUu0","OoU0Y","y0000"]
@@ -646,7 +756,7 @@ runEXP3 li pi ghAdd = do
                 -- compare internaly
             --let plugChoose = triggerWord pi  
             let fg = let allFor = (kArmWORK 2 (chD four4) aLi 1 pi 1 1 [] ghAdd) --(runKAXIOM offOn target plot addGh ghAdd n (theDs four4 d) (get1) (get2) (get3) (get4) 3 (theDs four4 d) (four4) [(read(show four4))] ((tk four4 subroutineList)))
-                     in  if (triggerWord (filter (/=' ') (head(checkflow [] [pi])))) == 1 then (fst allFor)
+                     in  if (triggerWord (filter (/=' ') (head(checkflow [] [pi]))) "intern" ) == "1" then (fst allFor)
                          else (concat (snd allFor))
 
             fg     

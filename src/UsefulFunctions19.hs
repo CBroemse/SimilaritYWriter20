@@ -28,7 +28,9 @@ module UsefulFunctions19 (
         , tk -- ==ausw
         , checkFo
         , evalToWrite
+        , evalToCounter -- as above but breaks at 10
         , takeMY -- 'lay it out to pay it out'
+        , charFilterInt -- filter Ints out of a Char, just 1 digit
          ) where
      --   , nameACCESSFUNCTION ) where
 -- always color sceME 'delek'
@@ -252,7 +254,11 @@ fnACCRAW2 foCon cou = if unPoint == ("\"notM\"") then fst cou
              unPoint = (show(head(words(unwords(checkflowU [] foCon ))))) ;
 
 checkFo g = if (length g) == 0 then ""
-            else "MOTHER MODE: on"  
+            else "MOTHER MODE: on" 
+
+
+-- prog data arcitectures with Punkt
+ 
 
 -----------------------------------------------------------------------------
 
@@ -458,7 +464,8 @@ gaussVerTeilung h g x e = ((fogAussVerteilung h g )*(foefactor h x e))
 --  e.g "aname1.txt" -> "aname2.txt"
 --  used in time depending random file writing in 'dit' 
 --aString:Sting ; the sourceFile
-evalToWrite astrinG = if tzBool>0 then prsRoot++(head tz3)++(show tzInt)++"."++(last tz3)
+--beak9 : Int , e.g 9 if pointer reaches 9 start at 1 again
+evalToWriteRAW astrinG break9 = if tzBool>0 then prsRoot++(head tz3)++(show tzInt)++"."++(last tz3)
                       else prsRoot++(head tz3)++("1.")++(last tz3)
      where
     poc1 fOsnd = reverse( fOsnd(break (=='/') (reverse(astrinG))));--prevent '/' cause trouble
@@ -473,7 +480,33 @@ evalToWrite astrinG = if tzBool>0 then prsRoot++(head tz3)++(show tzInt)++"."++(
     tz2 = map (\c -> if c=='.' then ' '; else c);
     tz3 = words (tz2 (map chr tz1));
     tzInt = if tzBool==0 then 1
-            else if (read tzExp)<9 then (read tzExp)+1
+            else if (read tzExp)<break9 then (read tzExp)+1
+            else 1 ;
+
+
+evalToWrite astrinG = evalToWriteRAW astrinG 9
+evalToCounter aString = evalToWriteRAW aString 11
+-- to be mapped in triggerword 'Experiment3.hs' 
+-- e.g *> let cellType ct =  fst(charFilterInt(evalToWrite ct ))
+-- *> take 4 (iterate cellType "cell44")
+-- *> ["cell44","cell","cell","cell"]  
+-- => check the type the String "cell44" and retrieve the Int out of it
+charFilterInt astrinG = if tzBool>0 then ((head tz3),(tzInt))
+                      else ((head tz3),0)
+     where
+    poc1 fOsnd = reverse( fOsnd(break (=='/') (reverse(astrinG))));--prevent '/' cause trouble
+    prsInput = poc1 fst;
+    prsRoot = poc1 snd;  
+    tz0 = (map ord prsInput);
+    tz = (filter (>47) (filter (<58)  tz0));
+    tzExp = (map chr tz);
+    tzBool = length tzExp;
+    tzRootSource  = filter (==47); 
+    tz1 = tz0 \\ tz;
+    tz2 = map (\c -> if c=='.' then ' '; else c);
+    tz3 = words (tz2 (map chr tz1));
+    tzInt = if tzBool==0 then 1
+            else if (read tzExp)<9 then (read tzExp)+0
             else 1 ;
 
 
