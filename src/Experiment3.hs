@@ -570,13 +570,38 @@ runCellRAW n wantedList solution= let stap1RAW countN wantedList solution = take
 runCell wantedList solution n = (head (ausw wantedList solution)) `elemIndices` [runCellRAW n wantedList solution]
 --   
 --  e.g*> (map (runCell n [1,66,34,99,0]) [1..100])
---  
+runCellRnd want sol n = runCellRAW n want sol
 organelleFind solution n = (map (runCell n solution) [1..100])
 
--- solutions of B in A and A ------------------------######################################### locate SOLUTIONS A HERE
-organelleSearch solution = map (organelleFind solution) [1..(length solution)]
-
+-- solutions of B in A and A' in [0]  ------------------------######################################### locate SOLUTIONS A HERE
+organelleSearch solution = map (organelleFind solution) [1..(length solution)] -- solution depending of length guess
+oglleLocateSolu wanted solution nIdeal = let findSol sol want = map length (organelleFind sol want)
+                  in let findposis want sol foN = foN `elemIndices` (findSol sol want)
+                  in let mapUp want = map (findposis want solution) [1..(length solution)]
+                  in let aMaptool e = ausw e (map (runCellRnd wanted solution) [1..10]) -- switching variable to be mapped 
+                  in let getposis = map aMaptool [1..(length (organelleFind solution wanted))]
+                  in getposis -- mapUp wanted --getposis --solution wanted nIdeal  
 --oranelleGETsolution =  
+--
+-- Three streams in and out of cells
+-- ---------------------------------
+--  1   in ----> the solution -----> B -----> out
+--      inpSolStream = solution 
+--  2      ----> the Zero space ---> [[0]] -----> out
+--               indicate the position of all solutions 
+--               OF THIS B in A 
+cellStream2 solution = organelleSearch solution      
+--  3     -----> randomGuesses ---> Maybe not B ---> continue search
+--                             ---> Maybe B ------> solution after search
+--                             ---> Maybe ( not b) && Not A ---> continue search or change the solution 
+--               restricted search
+cellStream3 =  (oglleLocateSolu 4 [55,66,77,88,99,56,78,9,88,77,75,112,112] 9)
+--               unrestricted search with  
+ogR n = (runCellRnd 1 [55,66,77,88,99] n)
+cellStream3N = map ogR [1..51]
+{- connect to EXTERNAL via triggerWords' last state domain must be changed .........................  -}        
+cellStream3EXT = " like does"  
+--
 --simVALS
 --------
 -- to be mapped with Iterations and or li          --change between diferent projections
