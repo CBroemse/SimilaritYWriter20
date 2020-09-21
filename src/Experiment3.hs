@@ -1,13 +1,13 @@
 -- this module provides:
 -- --------------------------------------
 -- EXPERIMENT 3 
--- - P(B) given AStigmatic 
 -- A= the occoring and non ocurring Chars of an ideal
 --  However the solution depends on various As.
---  A : One based on an seemingly ordered Char list 
+--  A : One based on the ordered Char list 
 --  A' :Another based on the 'quirky example'
 --      functions :
---  *TheAtoBplotter> let li3 =  ["0xy0z=3","0xy0z=33x00z=6","3x00z=6","0x0yz=2","0x0yz=2xyz=11","xyz=11"]
+--
+--  *Experiment3> let li4 =  ["0xy0z=3","0xy0z=3x0y0z=6","x0y0z=6","0x0yz=2","0x0yz=2xyz=11","xyz=11"]
 --     -- with the solution (y=3,x=2,z=2)
 --
 -- A 3rd double collum C added in 
@@ -52,7 +52,7 @@
 --              premise neg 
 --                messure more data does not always lead to find a solution.
 
---         crit2: Use Haskell to messure runtime to comp	ute a solution ?
+--         crit2: Use Haskell to messure runtime to compute a solution ?
 --             premise pos: shorter compute time -> Maybe No luck -> better Algorythm 
 --             premise neg: by coincidence the random number generator had a lucky
 --                          streak and hit a sequnece that generally matches
@@ -446,7 +446,7 @@ theASyntax = theAChars -- solve relation to Char encoding in Haskell
 ---- A' source for an A' 'quirky example' without errors
 -- solution (y=3,x=6,z=2) == A'' ?!
 -------------------------------------------------------------------------------------------------------------------A' nand/nor A'' ?
-li4 =  ["0xy0z=3","0xy0z=3x00z=6","x00z=6","0x0yz=2","0x0yz=2xyz=11","xyz=11"]
+li4 =  ["0xy0z=3","0xy0z=3x0y0z=6","x0y0z=6","0x0yz=2","0x0yz=2xyz=11","xyz=11"]
 theA' = head li4
 
 
@@ -492,11 +492,41 @@ theBQuirky li4 li = (head((experiment3RAW22 "DFDGGGF" [li4] subroutinE C.ptc7 [l
 -- "0"
 -- *> triggerWord "cell123" "cell"
 -- "cell"
+--for matches in 'elemIndices' via
+-- focommB, commB, runCell,oglleLocateSolu
+--
+--      derive the position of matches e.g 
+--      in oglleLocateSolu wanted solution nIdeal =>       
+--  3     -----> randomGuesses ---> Maybe not B ---> continue search
+--                             ---> Maybe B ------> solution after search
+--                             ---> Maybe ( not b) && Not A ---> continue search or change the solution 
                   
 inActie pv1 pv2 pv3 pv4 = do
+          let cookieForOn foAL m =  maybePu (head (ausw m foAL ))
+   -- kArmWork need list length 4 , a Punkt-type that can hold data to represent
+   -- the inherent structure of 
+       --   let onDefault foAL m = Punkt cookieForOn foAL m pv1 pv2 pv3 pv
+          let setAAxiom = theAChars
+         
+     --     endlessSubly <- forM [1..37]
+          let seeChr =  qw "werdd" "rdddw" 3  -- just there not used (jtnu)
        --  let turnlisttoHexa = do 
         --        toend <- forM [
-    putStrLn "like does"
+          let seperateIntandChar = aleph [head li4] -- Just Num Chars- > Int only works on Int in String 
+          let mainRandomLine foli4 n = cellStream3 foli4 n
+           -- generate 10 different 'random lines' length 100 
+           -- f set to 49 to 128
+          let runRandomLin foli4 = nub(map (cellStream3 foli4)[1,2,536,537,538,1073,1074,1075,1076,1610,1611,1613])
+          
+          let showZeroSpace expanS solution t = cellStream2 expanS solution t
+          let solutionInRandom expanS solution t= cellStream1 expanS solution t
+          let solSpace foli4 expanS s = goldTray foli4 expanS s -- = map poolB (concat$concat$concat$ausw s (allLi4 expanS))
+          let sol100result foli4 expanS = poolBandNotB foli4 expanS
+          let map100 foli4 t = tbeMapped foli4 t -- = map chr (poolBandNotB t)
+          let suggest foli4 pi n =  expressAinA foli4 pi n -- compare result to li4
+          let withOutZero foli4 pi n =  expressAsinA foli4 pi n -- compare to same result without zeros
+          let drawXYZ foli4 pi n = likelyhood foli4 n  -- get an Int out of the result n	
+          putStrLn "like does"
   where
     pop e y = head $ (ausw e y); 
     quadCd w = pop w (map readAnyTh [pv1,pv2,pv3,pv4]);
@@ -514,7 +544,37 @@ inActie pv1 pv2 pv3 pv4 = do
 ------------------------------------------------------------------
     quadToHexPointID aToC bToC = triggerWord aToC bToC;
   -- throw in random number generator to generate chars
-    randomChars r = ( ( longRun 80 r)+48); 
+    randomChars r = ( ( longRun 80 r)+48);
+    -- parse action , add a function via 'foCalc'
+    oftheDomains n wantedList solution foCalc= countABCs n wantedList solution foCalc; 
+ -- Punkt data architecture --------------------------------------
+ -- r=li4 ; li4 ::  [[Char]] - > the given solution of domain A and not stigmatic
+ -- B (A) of w atom 2 of r  
+    bn foAL m =  maybePu (head (ausw m foAL ))
+ -- store data in String because there are only 5 other spots left
+ -- when reading a longer list that wont help thus store in Punkt "String"
+    punktNewB foAL r =  maybePu (show(checkflow [] [((bn foAL r))]));  -- like basis22
+    -- plug 'punktNewBPunkt' into this test below best to be mapped via e
+    fmrTEST3 io e e2 forLine =  checkflow  io [(Punkt  (head(checkflow [] [(punktNewB e2 forLine)]))(Just (bn e 1 )) (Just (bn e 3 )) (Just (bn e 4 ))(Just (bn e 5 )) (Just (bn e 6))) ]
+
+    -- these functions below shall lead to => a mother:TYPE that is depending on the type of simiyritYvalue
+	   -- to plug any value into 'Maybe Punkt' we need a 'Maybe String'
+--	   *>:t foAdecide2 (map show (Co.ptc6 100))
+--	   *>foAdecide2 (map fshow (Co.ptc6 100)) :: Maybe String
+    foAdecide2 foA = let boa rt t = (Just (maybePu2 rt t)) --let whereBreak = chainDistribute crit bonelist crit (lines "1")
+                 in let mapMaybePun k = let ste1 k rt = (boa (head(ausw k rt))) ((Just (maybePu (head (ausw k rt)))) ) 
+                                        in ste1 k foA -- e.g foA = ["vb","vb2","vb3"]
+                 in let preMoa = length foA
+                 in let eindelijk = do (map mapMaybePun [1..preMoa]) 
+                 in 
+                 if foA==[] then Nothing
+                 else let chssd i = maybePu2 (head(ausw i foA))  (((boa (head(ausw i foA)) (head(ausw i eindelijk)))))  
+                      in Just (show[(chssd 1)]);
+-- -- a group of functions that shall a [(Maybe Punkt)]-> that by itself is the definiton of
+-- mother :: Punkt -> Maybe Punkt
+ 
+
+ 
 -- a general C where BgivenA 'CgeneralBgivenA'            
 --
 -- concept                                                  
@@ -531,8 +591,9 @@ inActie pv1 pv2 pv3 pv4 = do
 --         C
 ---------------------------------------------------------------
 
------------------------------------------------------------
---  CELL functions
+---------------------------------------------------------------------------
+--  CELL FUNCTIONS
+--  functions used in all cell streams 1..3
 --  readCell c >>=   
 
 replaceDot = map (\c -> if c=='.' then ' '; else c)
@@ -550,7 +611,9 @@ buildCell r = "cell" ++ (tk r (map show [1..5]))
 -- ################################################################################################ to be plugged into trigger Point !!!!!!!!!!!!!! 16.9.2020
 --    when going back
 --      B    <---    C
-cellType ct =  fst(charFilterInt(evalToWrite ct ))  
+cellType ct =  fst(charFilterInt(evalToWrite ct )) 
+cellInt ct =   snd(charFilterInt(evalToWrite ct )) 
+
 -- take length found in string build String 'ct' with variable length    
 -- turn ct's into [String] 
 iterCT ct = take (snd(charFilterInt ct)) (iterate cellType ct )-- e.g  take 4 (iterate cellType "cell44")
@@ -558,49 +621,97 @@ aleph ed = map iterCT ed
 --pipeStringToHigherD = if qw3 w e r == aleph ed 
 --rekenen
 -- e.g*> takeMY 7 3 [1,2,34]
-runCellRAW n wantedList solution= let stap1RAW countN wantedList solution = takeMY countN wantedList solution
+--
+-- parse action 
+countABCs n wantedList solution foCalc = let stap1RAW countN wantedList solution = takeMY countN wantedList solution
             in let lengther daLength = length (head $ ausw 1 daLength)  
             in let stap1 countN = lengther (stap1RAW countN wantedList solution)
             in let foLen2 = (lengther (stap1RAW (n+1) wantedList solution))
             in let peelCondi = if ((stap1)n+1) == foLen2  then (stap1RAW (n+1) wantedList solution ) 
                                else []
-            in if (peelCondi /=[]) == True then (rekenen (n+1))
-               else rekenen n
--- to be maped with n 
-runCell wantedList solution n = (head (ausw wantedList solution)) `elemIndices` [runCellRAW n wantedList solution]
+            in if (peelCondi /=[]) == True then (foCalc (n+1))
+               else foCalc n
+
+runCellRAW n wantedList solution = countABCs n wantedList solution (rekenen)
 --   
 --  e.g*> (map (runCell n [1,66,34,99,0]) [1..100])
 runCellRnd want sol n = runCellRAW n want sol
-organelleFind solution n = (map (runCell n solution) [1..100])
+
+runLists wantedist= let a= 100*wantedist
+                    in [a..(a+100)] 
+-- expandS +1 give 100 new random numbers
+organelleFind expanS solution n = (map (runCell n solution) (runLists expanS))
 
 -- solutions of B in A and A' in [0]  ------------------------######################################### locate SOLUTIONS A HERE
-organelleSearch solution = map (organelleFind solution) [1..(length solution)] -- solution depending of length guess
-oglleLocateSolu wanted solution nIdeal = let findSol sol want = map length (organelleFind sol want)
+organelleSearch expanS solution = map (organelleFind expanS solution) [1..(length solution)] -- solution depending of length guess
+oglleLocateSolu expanS solution nIdeal = let findSol sol want = map length (organelleFind expanS sol want)
                   in let findposis want sol foN = foN `elemIndices` (findSol sol want)
                   in let mapUp want = map (findposis want solution) [1..(length solution)]
-                  in let aMaptool e = ausw e (map (runCellRnd wanted solution) [1..10]) -- switching variable to be mapped 
-                  in let getposis = map aMaptool [1..(length (organelleFind solution wanted))]
-                  in getposis -- mapUp wanted --getposis --solution wanted nIdeal  
+                  in map mapUp [1..6] -- getposis -- mapUp wanted --getposis --solution wanted nIdeal  
 --oranelleGETsolution =  
---
--- Three streams in and out of cells
--- ---------------------------------
+
+---------------------------------------------------------------------------------------------------
+-- Three streams in and out of cells -----------------------------------------------------------
+-- --------------------------------------------------------------------------------------------
+-- --------------------------------------------------------------------------------------------
+-- SOLUTIONS B, not b, A ,astigmatic -----------------------------------------------------
+-- ---------------------------------------------------------------------------------------
 --  1   in ----> the solution -----> B -----> out
 --      inpSolStream = solution 
+cellStream1 expanS solu t =  (oglleLocateSolu expanS (map ord (head(ausw t solu))) 421)
+poolB foli4 a = map ord (ausw a (concat foli4 ))  -- add solution here!!!
+poolnotB foli4 a n =  (ausw a (cellStream3 foli4 n))  -- add solution here!!!
+
+allLi4 foli4 expanS = map (cellStream1 expanS foli4) [1..6]
+goldTray foli4 expanS s = map (poolB foli4) (concat$concat$concat$ausw s (allLi4 foli4 expanS))
+poolBandNotB foli4 expanS=  concat$ concat(map (goldTray foli4 expanS) [1..(length foli4)])
+tbeMapped foli4 t = map chr (poolBandNotB foli4 t)
 --  2      ----> the Zero space ---> [[0]] -----> out
 --               indicate the position of all solutions 
---               OF THIS B in A 
-cellStream2 solution = organelleSearch solution      
---  3     -----> randomGuesses ---> Maybe not B ---> continue search
---                             ---> Maybe B ------> solution after search
---                             ---> Maybe ( not b) && Not A ---> continue search or change the solution 
---               restricted search
-cellStream3 =  (oglleLocateSolu 4 [55,66,77,88,99,56,78,9,88,77,75,112,112] 9)
---               unrestricted search with  
-ogR n = (runCellRnd 1 [55,66,77,88,99] n)
-cellStream3N = map ogR [1..51]
-{- connect to EXTERNAL via triggerWords' last state domain must be changed .........................  -}        
-cellStream3EXT = " like does"  
+--               OF THIS B in A
+-- 1 -> 10 , 2 -> 100 n>2 needs 1000 aso. otherwie error 
+-- e.g*> rek2 2 
+-- *> "zz6zz6zz6zz6zz6zz6"
+bAndNotB foli4 n = filter(/='0') (head (ausw n (nub$ map (tbeMapped foli4) [1..100])))
+likelyhood foli4 n = let step1 =  ((bAndNotB foli4 n))
+                     in let step2 = nub$reverse$sort step1
+                     in if (length step2) == 1 then take 1 step1 
+                        else show ( cellInt (nub$reverse$(sort (bAndNotB foli4 n)))-1) 
+-- which String n of a [String] (As) does resemble 'bAndNotB' most ?
+--
+expressAsinA foli4 pi n = nub$concat$(cellStream3EXT pi ((bAndNotB foli4 n)))
+-- which String n of a [String] (As) does resemble the solution most ?
+-- *Experiment3> nub$concat$(cellStream3EXT pi (rek2 1))
+-- *> [68.0648769574944,67.89709172259508,68.12080536912752,70.80536912751678]
+-- => 6 is part of the solution of (head li4)
+-- needs v variables in solution to work. eg "e2" works
+--  "2" doesnt
+expressAinA foli4 pi n = nub$concat$(cellStream3EXT pi (likelyhood foli4 n) )
+-------------------------------------------------------------------------------------------
+--NULL SPACE : cellStream2
+-- via organelleFind , organelleSearch , oglleLocate
+-- runCell -> one of above -> solutions B in A ->  cellStream1
+-- to be maped with n 
+runCell wantedList solution n = (head (ausw wantedList solution)) `elemIndices` [runCellRAW n wantedList solution]
+
+-- expanS: Int which pv function to see 1..max (sqrt [(Int range)^2] ) -- must be N > -1 	
+-- (Int range -9223372036854775808..9223372036854775807)
+-- the null-space is used in 'runCelllRAW','runCell' at the moment.
+--  runCell -> organelleFind 
+cellStream2 expanS solution t = organelleSearch expanS (map ord (head(ausw t solution)))
+---------------------------------------------------------------------------------
+--RANDOM LINE : cellStream3 
+--  unrestricted search with  
+ogR solu n = (runCellRnd 1 solu n)
+-- every n generates a new list +100
+cellStream3 solu n= map (ogR solu) (runLists n)
+{- connect to EXTERNAL via triggerWord' last state domain must be changed .........................  -}   
+-- pi: Punkt , if intern switches intern 
+--             else extern
+--e.g> 
+--pi: Punkt "extern" ...; guess String e.g "ddd"
+cellStream3EXT pi guess = nub $ concat$ (runEXP3 li4 pi guess)  -- => simvals
+
 --
 --simVALS
 --------
@@ -668,6 +779,7 @@ rekenen r = (rekenenRAW 80 48 r) --comparEB (head(ausw r ([li]))) (map show [1..
 ----------------------------------------------------
 
 -------------------------------------------------------------------------
+-- calculate Ints for String -> [Char]-> [Ord]-> add or substract
 aBgivenA li =  ((buildPrior li))
 comparEB li li3 = zipWith (+) (map ord (aBgivenA li)) (map ord (aBgivenA li3)) 
 comparEB2 li li3 = zipWith (-) (map ord (aBgivenA li)) (map ord (aBgivenA li3))
@@ -695,8 +807,8 @@ does li l2= do
 allB = readAnyTh C.progLiT
 -----------------------------------------------------------
 
------------------------------------------------------------------------------------------------
 
+-----------------------------------------------------------------------------------------------
 -----------------------------------------------------------------------------------------------
 -- 12-9-2020
 -- function below is based an 'runKBASE' above
@@ -729,18 +841,19 @@ baas foA foAli  =  (unwords(checkflow [] [(Punkt foAli foA foA foA foA foA)] ))
 --      do the action decide to 
 --   compare li to itself, internal
 --   or li to an String ,external
- 
+-----------------------------------------------
+
+---------------------------------------------------------------
+--access intern or extern via Punkt ..."intern" ...
+--
 startDchange g t iOE = let piToBinary = baas Nothing t  
                        in if g == t then fst iOE --fst internal or external
                           else snd iOE
-
-
 
 triggerWord g domain = if domain == "intern" then show(stC1 g )
                        else if domain == domain then (stC2 g domain) -- "cell" 
                        else show(stC1 g)
      where
-         
         stC1 g = (startDchange g "intern" (1,2));
    -- get an in from idea name ("cell" ++ (show token))
    -- this prep step depends on another A'' set 
