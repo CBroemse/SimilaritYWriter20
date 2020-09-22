@@ -427,7 +427,7 @@ qw wo ist r = (foStrCd wo ist r)
 --                collum I       collumII                 wo ______ist   
 --            --------------------------                    /      \    
 --    row I   |      B      |    not B  |    C .. --\  wo  /        \ 
--- Astigmatic | '  cell I   |   cell II |            \  |  \        / ist 
+--        A   | '  cell I   |   cell II |            \  |  \        / ist 
 -- -- ----------------------------------------       / \|/  \______/    
 --   row II   |     B       |    not B  |         --/  C'of wo     C' of ist
 -- not stigm- |   cell III  |   cell IV |                     \  /
@@ -500,7 +500,7 @@ theBQuirky li4 li = (head((experiment3RAW22 "DFDGGGF" [li4] subroutinE C.ptc7 [l
 --  3     -----> randomGuesses ---> Maybe not B ---> continue search
 --                             ---> Maybe B ------> solution after search
 --                             ---> Maybe ( not b) && Not A ---> continue search or change the solution 
-                  
+-- e.g*> (inActie ["0xy0z=3"] ["x0y0z=6"] ["0x0yz=2"] ["xyz=11"])                  
 inActie pv1 pv2 pv3 pv4 = do
           let cookieForOn foAL m =  maybePu (head (ausw m foAL ))
    -- kArmWork need list length 4 , a Punkt-type that can hold data to represent
@@ -510,9 +510,8 @@ inActie pv1 pv2 pv3 pv4 = do
          
      --     endlessSubly <- forM [1..37]
           let seeChr =  qw "werdd" "rdddw" 3  -- just there not used (jtnu)
-       --  let turnlisttoHexa = do 
-        --        toend <- forM [
-          let seperateIntandChar = aleph [head li4] -- Just Num Chars- > Int only works on Int in String 
+       
+          let seperateIntandChar foli4 = aleph [head foli4] -- Just Num Chars- > Int only works on Int in String 
           let mainRandomLine foli4 n = cellStream3 foli4 n
            -- generate 10 different 'random lines' length 100 
            -- f set to 49 to 128
@@ -521,12 +520,39 @@ inActie pv1 pv2 pv3 pv4 = do
           let showZeroSpace expanS solution t = cellStream2 expanS solution t
           let solutionInRandom expanS solution t= cellStream1 expanS solution t
           let solSpace foli4 expanS s = goldTray foli4 expanS s -- = map poolB (concat$concat$concat$ausw s (allLi4 expanS))
-          let sol100result foli4 expanS = poolBandNotB foli4 expanS
+          -- e.g*> likelyhood li4 2
+          let sol100result foli4 expanS = poolBandNotB foli4 expanS -- search solutions set to max 2 
           let map100 foli4 t = tbeMapped foli4 t -- = map chr (poolBandNotB t)
           let suggest foli4 pi n =  expressAinA foli4 pi n -- compare result to li4
           let withOutZero foli4 pi n =  expressAsinA foli4 pi n -- compare to same result without zeros
           let drawXYZ foli4 pi n = likelyhood foli4 n  -- get an Int out of the result n	
           putStrLn "like does"
+          let solution = li4
+         -- let wantedList = li4 --1
+       
+         -- let n= 1 
+          newRekenen <- forM [1..10] (\rk -> do 
+                   let forekenen2 foli4 = head$ ausw rk (runRandomLin foli4)
+                   let fok2 = forekenen2 li4  -- length 100
+                   rekenen2 <- forM [1] (\fk2 -> do   
+                         let rekenCalc fofk2 = head$ ausw fofk2 fok2  -- one random Int  
+                         let runCellRAW = countABCs 1 fk2 solution (rekenCalc)  
+                         {-let runCell2 wantedList solution = do 
+                                foRunC <- forM [1..6] (\fR -> do 
+                                    let runCellL = (head(ausw 1 (map ord (head (ausw fR solution))))) `elemIndices` [(rekenCalc fR)]
+                                   
+                                    return (runCellL))
+                                
+                                return (foRunC) 
+                         let klapper n = map (runCell2 (map ord (head$ausw 1 wantedList)) ((ausw 1 solution) )) (runCell2 wantedList solution) -}
+                         return(runCellRAW)) --(runCell2 solution wantedList)) 
+                   return (rekenen2))
+          putStrLn "suggested 'A'" 
+          putStrLn (show ( map chr $concat$newRekenen)) 
+                  
+          --  let turnlisttoHexa = do 
+        --        toend <- forM [ --rekeneni -- runCell
+
   where
     pop e y = head $ (ausw e y); 
     quadCd w = pop w (map readAnyTh [pv1,pv2,pv3,pv4]);
@@ -631,7 +657,7 @@ countABCs n wantedList solution foCalc = let stap1RAW countN wantedList solution
                                else []
             in if (peelCondi /=[]) == True then (foCalc (n+1))
                else foCalc n
-
+-- generate one random Int based on 'rekenen'  
 runCellRAW n wantedList solution = countABCs n wantedList solution (rekenen)
 --   
 --  e.g*> (map (runCell n [1,66,34,99,0]) [1..100])
@@ -657,19 +683,19 @@ oglleLocateSolu expanS solution nIdeal = let findSol sol want = map length (orga
 -- SOLUTIONS B, not b, A ,astigmatic -----------------------------------------------------
 -- ---------------------------------------------------------------------------------------
 --  1   in ----> the solution -----> B -----> out
---      inpSolStream = solution 
+--  cellStream1: 
 cellStream1 expanS solu t =  (oglleLocateSolu expanS (map ord (head(ausw t solu))) 421)
 poolB foli4 a = map ord (ausw a (concat foli4 ))  -- add solution here!!!
 poolnotB foli4 a n =  (ausw a (cellStream3 foli4 n))  -- add solution here!!!
 
-allLi4 foli4 expanS = map (cellStream1 expanS foli4) [1..6]
+allLi4 foli4 expanS = map (cellStream1 expanS foli4) [1..6] -- length of a [pv] == 6
 goldTray foli4 expanS s = map (poolB foli4) (concat$concat$concat$ausw s (allLi4 foli4 expanS))
 poolBandNotB foli4 expanS=  concat$ concat(map (goldTray foli4 expanS) [1..(length foli4)])
 tbeMapped foli4 t = map chr (poolBandNotB foli4 t)
 --  2      ----> the Zero space ---> [[0]] -----> out
 --               indicate the position of all solutions 
 --               OF THIS B in A
--- 1 -> 10 , 2 -> 100 n>2 needs 1000 aso. otherwie error 
+-- 1 -> 10 , 2 -> 100 n>2 needs 1000 aso. otherwise error 
 -- e.g*> rek2 2 
 -- *> "zz6zz6zz6zz6zz6zz6"
 bAndNotB foli4 n = filter(/='0') (head (ausw n (nub$ map (tbeMapped foli4) [1..100])))
@@ -900,7 +926,7 @@ runEXP3 li pi ghAdd = do
             fg     
             return (fg))
 
-       -- apply an agorythm
+       -- apply an algorythm
        let beforeAlgo  = allforIV -- if (triggerWord (unlines(checkflow [] [pi]))) == 1 then (map fst allforIV)
                        --  else ((map snd allforIV))
        --let beforewithGH = head $last $ head $ allforIV
