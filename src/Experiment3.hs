@@ -534,21 +534,23 @@ inActie pv1 pv2 pv3 pv4 = do
           newRekenen <- forM [1..10] (\rk -> do 
                    let forekenen2 foli4 = head$ ausw rk (runRandomLin foli4)
                    let fok2 = forekenen2 li4  -- length 100
-                   rekenen2 <- forM [1] (\fk2 -> do   
-                         let rekenCalc fofk2 = head$ ausw fofk2 fok2  -- one random Int  
-                         let runCellRAW = countABCs 1 fk2 solution (rekenCalc)  
-                         {-let runCell2 wantedList solution = do 
-                                foRunC <- forM [1..6] (\fR -> do 
-                                    let runCellL = (head(ausw 1 (map ord (head (ausw fR solution))))) `elemIndices` [(rekenCalc fR)]
-                                   
-                                    return (runCellL))
+                   --return (fok2))
+                   rekenen2 <- forM [1..100] (\fk2 -> do   
+                       let rekenCalc fofk2 = head$ ausw fofk2 fok2  -- one random Int  
+                       let runCellRAW = countABCs 1 fk2 solution (rekenCalc)  
+                    --   let runCellL = (head(ausw 1 (map ord (head (ausw fR solution))))) `elemIndices` [(rekenCalc fR)]
+                       foRunC <- forM [1..6] (\fR -> do 
+                               let runCellL = (head (ausw fR (concat solution))) `elemIndices` (map chr fok2)
                                 
-                                return (foRunC) 
-                         let klapper n = map (runCell2 (map ord (head$ausw 1 wantedList)) ((ausw 1 solution) )) (runCell2 wantedList solution) -}
-                         return(runCellRAW)) --(runCell2 solution wantedList)) 
-                   return (rekenen2))
+                               return (runCellL))
+                       let agoldTray = foRunC --map (runCellL fk2) foRunC         
+
+                       --let klapper n = map (runCell2 (map ord (head$ausw 1 wantedList)) ((ausw 1 solution) )) (runCell2 wantedList solution) 
+                       return(foRunC)) --(runCell2 solution wantedList)) 
+                   return (nub rekenen2)) --(fok2))
+          return(newRekenen)
           putStrLn "suggested 'A'" 
-          putStrLn (show ( map chr $concat$newRekenen)) 
+          putStrLn (show newRekenen) 
                   
           --  let turnlisttoHexa = do 
         --        toend <- forM [ --rekeneni -- runCell
