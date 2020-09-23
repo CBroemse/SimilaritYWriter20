@@ -529,29 +529,76 @@ inActie pv1 pv2 pv3 pv4 = do
           putStrLn "like does"
           let solution = li4
          -- let wantedList = li4 --1
-       
+          let newCellStream1 expanS sol fol100 nIdeal = let findSol sol want = map length fol100 --(organelleFind expanS sol want)
+                  in let findposis want sol foN = foN `elemIndices` (findSol sol want)
+                  in let mapUp want = map (findposis want sol) [1..(length sol)]
+                  in map mapUp [1..6]
+         -- the tbMapped
+          let ofsix exp fol100 expanS = map (newCellStream1 expanS (map ord (head(ausw exp li4))) fol100) [1..6]
+        --  let 
          -- let n= 1 
           newRekenen <- forM [1..10] (\rk -> do 
                    let forekenen2 foli4 = head$ ausw rk (runRandomLin foli4)
-                   let fok2 = forekenen2 li4  -- length 100
-                   --return (fok2))
-                   rekenen2 <- forM [1..100] (\fk2 -> do   
-                       let rekenCalc fofk2 = head$ ausw fofk2 fok2  -- one random Int  
-                       let runCellRAW = countABCs 1 fk2 solution (rekenCalc)  
-                    --   let runCellL = (head(ausw 1 (map ord (head (ausw fR solution))))) `elemIndices` [(rekenCalc fR)]
-                       foRunC <- forM [1..6] (\fR -> do 
-                               let runCellL = (head (ausw fR (concat solution))) `elemIndices` (map chr fok2)
-                                
-                               return (runCellL))
-                       let agoldTray = foRunC --map (runCellL fk2) foRunC         
+                   let fok2 = (forekenen2 li4)  -- length 100
+                   let bnNotB2 = tbeMapped li4 (head(ausw rk [1,2,537,538,1073,1074,1075,1610,1611,1613]))
+                   let oprep n =  ((ausw n (nub bnNotB2)))
+                   let feed6 = (ausw rk bnNotB2)
+                   let likelyhood2 n = let step1 =  ((oprep n))
+                               in let step2 = nub$reverse$sort step1
+                               in if (length step2) == 1 then take 1 step1 
+                                  else show ( cellInt (nub$reverse$(sort (oprep n)))-1) 
+                   withsix <- forM [1..6] (\ws -> do
+                          let foliSearch = head (ausw ws li4) 
+                          links <- forM [1..(length feed6)] (\fi -> do
+                                 let fromB2 = head (ausw fi feed6)
+                                 let inIt = fromB2 `elemIndices` foliSearch
+                                -- agetter <- forM [1..(init)] (\ok -> do
+                      --                let lwasd k = head(ausw k (ausw ws li4))
+                        --              let kd = head(ausw 1 (lwasd ok))
+                          --            let jk = map lwasd (map ord kd)
+                            --          return (jk))
+                              --   let getAction = map agetter inIt
+                                 return (inIt))
+                          let gather1 =  ausw 1 (concat links)
 
-                       --let klapper n = map (runCell2 (map ord (head$ausw 1 wantedList)) ((ausw 1 solution) )) (runCell2 wantedList solution) 
-                       return(foRunC)) --(runCell2 solution wantedList)) 
-                   return (nub rekenen2)) --(fok2))
-          return(newRekenen)
+                          let gather2 =  ausw 2 (concat links)
+                          let gather3 =  ausw 3 (concat links)
+                          let gather = [gather1,gather2,gather3]
+                        --  let getfromLi = (ausw  foliSearch-- (ausw (head gather1) foliSearch)
+                          return(links))
+                   
+                   
+                   return (withsix))
+
+                   
+          return (newRekenen) --(mao)
+          let mao = concat$concat $ ausw 3 (((newRekenen)))
           putStrLn "suggested 'A'" 
           putStrLn (show newRekenen) 
-                  
+       --   putStrLn (show (newCellStream1 1 (map ord (head(ausw 1 li4))) 1))
+          putStrLn "continue Here !!!!" 
+          putStrLn (show mao)
+        --  putStrLn (show (ofsix 1 1 ))
+     {-     putStrLn "ofsix2" 
+          putStrLn (show (ofsix 2 1 ))
+          putStrLn "ofsix3" 
+          putStrLn (show (ofsix 1 2 ))
+          putStrLn "ofsix4" 
+          putStrLn (show (ofsix 3 1 ))
+          putStrLn "ofsix5" 
+          putStrLn (show (ofsix 2 2 ))
+          putStrLn "ofsix6" 
+          putStrLn (show (ofsix 1 6 ))
+          putStrLn "ofsix7" 
+          putStrLn (show (ofsix 7 2 ))
+          putStrLn "ofsix8" 
+          putStrLn (show (ofsix 376 2 ))
+ -}
+
+
+
+
+
           --  let turnlisttoHexa = do 
         --        toend <- forM [ --rekeneni -- runCell
 
