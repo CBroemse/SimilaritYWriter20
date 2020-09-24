@@ -73,6 +73,7 @@ body {
  revealed itself as a by-product. The following
  four functions only depend on similarity values
  which is the starting point of the ptc functions
+ as well.
 
  the result is ONLY dealing with strings that must 
  contain numbers otherwise leads to an error
@@ -85,7 +86,7 @@ I.
 -- *Experiment3> let li6 = ["1b*00=3","AAA=3BAABAB","A4A=5BAB","A5=7AA","AA5=A7BBBAA","B2BBAA"] 
  => will work in the 'inActie' main function of 'Experiment3.hs'
 
--- whereas li7 below wont becsaue the last atom 
+-- whereas li7 below wont because the last atom 
 -- is missing a number digit
 -- *> let li7 = ["1b*00=3","AAA=3BAABAB","A4A=5BAB","A5=7AA","AA5=A7BBBAA","BBBAA"] 
 
@@ -146,7 +147,7 @@ likelyhood foli4 n = let step1 =  ((bAndNotB foli4 n))
 --NULL SPACE : cellStream2
 -- via organelleFind , organelleSearch , oglleLocate
 -- runCell -> one of above -> solutions B in A ->  cellStream1
--- to be maped with n 
+-- to be mapped with n 
 runCell wantedList solution n = (head (ausw wantedList solution)) `elemIndices` [runCellRAW n wantedList solution]
 
 -- expanS: Int which pv function to see 1..max (sqrt [(Int range)^2] ) -- must be N > -1 	
@@ -171,7 +172,10 @@ cellStream3EXT foli4 pi guess = nub $ concat$ (runEXP3 foli4 pi guess)  -- => si
 
 
 TRIGGERWORD---------------------------------------------
-
+the triggerword function uses the Punkt data type with
+two established words so far:
+"intern"
+"cell" 
 </textarea>
 <br><br>
 <a href= "" style="border-radius: 12px; padding: 2px 5px;" target="_parent">ptc3 with cos</a>
@@ -218,12 +222,12 @@ numbers in strings
 *Experiment3> let li6 = ["1b*00=3","AAA=3BAABAB","A4A=5BAB","A5=7AA","AA5=A7BBBAA","B2BBAA"] 
  => will work in the 'inActie' main function of 'Experiment3.hs'
 
--- whereas li7 below wont becaue the last atom 
+-- whereas li7 below wont because the last atom 
 -- is missing a number digit
 *> let li7 = ["1b*00=3","AAA=3BAABAB","A4A=5BAB","A5=7AA","AA5=A7BBBAA","BBBAA"] 
 
 -- WITHOUT ptc function r
--- randomy guess and find
+-- randomly guess and find
 -- solutions based on the
 -- 'solution' variable (e.g li5)
 -- pv variabes (the first 4 ) not being used
@@ -246,8 +250,10 @@ older approach need li list length 5  to work
 *> myTest "country"
 
 Experiment 3, without ptc approach
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 if ptc dont work at least we have an iterative process
-without the whole framework provided 
+without the whole framework provided
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 A in | B and notB |
 'poolBandNotB'
