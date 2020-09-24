@@ -114,6 +114,64 @@ III./IV.
    compare with guess 
    let pi = Punkt "extern" ...
 
+---------------------------------------------------------------------------------------------------
+-- Three streams in and out of cells -----------------------------------------------------------
+-- --------------------------------------------------------------------------------------------
+-- --------------------------------------------------------------------------------------------
+-- SOLUTIONS B, not b, A ,astigmatic -----------------------------------------------------
+-- ---------------------------------------------------------------------------------------
+--  1   in ----> the solution -----> B -----> out
+--  cellStream1: 
+cellStream1 expanS solu t =  (oglleLocateSolu expanS (map ord (head(ausw t solu))) 421)
+poolB foli4 a = map ord (ausw a (concat foli4 ))  -- add solution here!!!
+poolnotB foli4 a n =  (ausw a (cellStream3 foli4 n))  -- add solution here!!!
+
+allLi4 foli4 expanS = map (cellStream1 expanS foli4) [1..6] -- length of a [pv] == 6
+goldTray foli4 expanS s = map (poolB foli4) (concat$concat$concat$ausw s (allLi4 foli4 expanS))
+poolBandNotB foli4 expanS=  concat$ concat(map (goldTray foli4 expanS) [1..(length foli4)])
+tbeMapped foli4 t = map chr (poolBandNotB foli4 t)
+--  2      ----> the Zero space ---> [[0]] -----> out
+--               indicate the position of all solutions 
+--               OF THIS B in A
+-- 1 -> 10 , 2 -> 100 n>2 needs 1000 aso. otherwise error 
+-- e.g*> rek2 2 
+-- *> "zz6zz6zz6zz6zz6zz6"
+bAndNotB foli4 n = filter(/='0') (head (ausw n (nub$ map (tbeMapped foli4) [1..100])))
+likelyhood foli4 n = let step1 =  ((bAndNotB foli4 n))
+                     in let step2 = nub$reverse$sort step1
+                     in if (length step2) == 1 then take 1 step1 
+                        else show ( cellInt (nub$reverse$(sort (bAndNotB foli4 n)))-1) 
+
+-------------------------------------------------------------------------------------------
+--NULL SPACE : cellStream2
+-- via organelleFind , organelleSearch , oglleLocate
+-- runCell -> one of above -> solutions B in A ->  cellStream1
+-- to be maped with n 
+runCell wantedList solution n = (head (ausw wantedList solution)) `elemIndices` [runCellRAW n wantedList solution]
+
+-- expanS: Int which pv function to see 1..max (sqrt [(Int range)^2] ) -- must be N > -1 	
+-- (Int range -9223372036854775808..9223372036854775807)
+-- the null-space is used in 'runCelllRAW','runCell' at the moment.
+--  runCell -> organelleFind 
+cellStream2 expanS solution t = organelleSearch expanS (map ord (head(ausw t solution)))
+
+
+---------------------------------------------------------------------------------
+--RANDOM LINE : cellStream3 
+--  unrestricted search with  
+ogR solu n = (runCellRnd 1 solu n)
+-- every n generates a new list +100
+cellStream3 solu n= map (ogR solu) (runLists n)
+{- connect to EXTERNAL via triggerWord' last state domain must be changed .........................  -}   
+-- pi: Punkt , if intern switches intern 
+--             else extern
+--e.g> 
+--pi: Punkt "extern" ...; guess String e.g "ddd"
+cellStream3EXT foli4 pi guess = nub $ concat$ (runEXP3 foli4 pi guess)  -- => simvals
+
+
+TRIGGERWORD---------------------------------------------
+
 </textarea>
 <br><br>
 <a href= "" style="border-radius: 12px; padding: 2px 5px;" target="_parent">ptc3 with cos</a>
