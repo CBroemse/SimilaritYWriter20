@@ -93,7 +93,226 @@ import qualified FourierFieldCLASSIFIER as F
 import qualified WriteWXmaximaJuicy as M
 import qualified GHCguiNfunctions as G
 import qualified Colored_2_3_5_Counter20 as C
+
+
+--I.
+ -- Experiment3 randomly guessing solutions
+-- B in A via
+-- e.g
+-- *Experiment3> (inActie ["0xy0z=3"] ["x0y0z=6"] ["0x0yz=2"] ["xyz=11"] li5)
+-- *Experiment3> let li6 = ["1b*00=3","AAA=3BAABAB","A4A=5BAB","A5=7AA","AA5=A7BBBAA","B2BBAA"] 
+-- => will work in the 'inActie' main function of 'Experiment3.hs'
+
+-- whereas li7 below wont becsaue the last atom 
+-- is missing a number digit
+-- *> let li7 = ["1b*00=3","AAA=3BAABAB","A4A=5BAB","A5=7AA","AA5=A7BBBAA","BBBAA"] 
+
+--II.
+-- also generate "infinetly"  many solutions
+-- *Experiment3> poolBandNotB li4 1111111
+--  [61,121,120,61,121,120,61,121,120,61,121,120,61,121,120,61,121,120]
+--
+--  *Experiment3> map chr (poolBandNotB li4 1111111)
+-- "=yx=yx=yx=yx=yx=yx
+
+--III./IV.
+-- li4                                    with zeros                without zeros
+-- compare to bonelist to solution 1   expressAinA li5 pi 1    expressAsinA li5 pi 1
+--                     to solution 2   expressAinA li5 pi 2    expressAsinA li5 pi 2
+
+--  *Experiment3> expressAsinA li4 pi 2
+-- [48.51138353765324,48.78048780487805,48.421052631578945,43.67816091954023]     
+
+--  *Experiment3> expressAinA li4 pi 1
+-- [90.54290718038528,90.59233449477351,90.52631578947368,89.65517241379311]
+--
+                
+inActie pv1 pv2 pv3 pv4 solution = do
+          timE 
+          let cookieForOn foAL m =  maybePu (head (ausw m foAL ))
+   -- kArmWork need list length 4 , a Punkt-type that can hold data to represent
+   -- the inherent structure of 
+       --   let onDefault foAL m = Punkt cookieForOn foAL m pv1 pv2 pv3 pv
+          let setAAxiom = theAChars
+         
+     --     endlessSubly <- forM [1..37]
+          let seeChr =  qw "werdd" "rdddw" 3  -- just there not used (jtnu)
+       
+          let seperateIntandChar foli4 = aleph [head foli4] -- Just Num Chars- > Int only works on Int in String 
+          let mainRandomLine foli4 n = cellStream3 foli4 n
+           -- generate 10 different 'random lines' length 100 
+           -- f set to 49 to 128
+          let runRandomLin foli4 = nub(map (cellStream3 foli4)[1,2,536,537,538,1073,1074,1075,1076,1610,1611,1613])
+          
+          let showZeroSpace expanS solution t = cellStream2 expanS solution t
+          let solutionInRandom expanS solution t= cellStream1 expanS solution t
+          let solSpace foli4 expanS s = goldTray foli4 expanS s -- = map poolB (concat$concat$concat$ausw s (allLi4 expanS))
+          -- e.g*> likelyhood li4 2
+          let sol100result foli4 expanS = poolBandNotB foli4 expanS -- search solutions set to max 2 
+          let map100 foli4 t = tbeMapped foli4 t -- = map chr (poolBandNotB t)
+          let suggest foli4 pi n =  expressAinA foli4 pi n -- compare result to li4
+          let withOutZero foli4 pi n =  expressAsinA foli4 pi n -- compare to same result without zeros
+         -- get two solutions B in A n>2 will lead to an error
+          let drawXYZ foli4 pi n = likelyhood foli4 n  -- get an Int out of the result n	
+          putStrLn "like does"
+         -- let wantedList = li4 --1
+          let newCellStream1 expanS sol fol100 nIdeal = let findSol sol want = map length fol100 --(organelleFind expanS sol want)
+                  in let findposis want sol foN = foN `elemIndices` (findSol sol want)
+                  in let mapUp want = map (findposis want sol) [1..(length sol)]
+                  in map mapUp [1..6]
+         -- the tbMapped
+       --   let ofsix exp fol100 expanS = map (newCellStream1 expanS (map ord (head(ausw exp li4))) fol100) [1..6]
+        --  let 
+         -- let n= 1 
+          newRekenen <- forM [1..10] (\rk -> do 
+                   let forekenen2 foli4 = head$ ausw rk (runRandomLin foli4)
+                   let fok2 = (forekenen2 solution)  -- length 100
+                   let bnNotB2 = tbeMapped solution (head(ausw rk [1,2,537,538,1073,1074,1075,1610,1611,1613]))
+--------------------------------------------------------------------------------------------------------
+-- various suggested solutions
+                   let oprep n =  ((ausw n (nub bnNotB2)))
+                   let feed6 = (ausw rk bnNotB2)
+       -- give 2 good guesses n>2 will lead to error
+                   let likelyhood2 n = let step1 =  ((oprep n))
+                               in let step2 = nub$reverse$sort step1
+                               in if (length step2) == 1 then take 1 step1 
+                                  else show ( cellInt (nub$reverse$(sort (oprep n)))-1) 
+--------------------------------------------------------------------------------------------------------
+--mark positions of guesses
+                   withsix <- forM [1..6] (\ws -> do
+                          let foliSearch = head (ausw ws solution)
+                          let fromBNNotB = ausw rk bnNotB2 -- ["zz6zz6zz6zz6zz6zz6","001001001001001001",... -> [zz6zz6...] 
+                          links <- forM [1..(length fromBNNotB)] (\fi -> do
+                                 let fromB2 = head (ausw fi fromBNNotB)
+                                 let inIt = fromB2 `elemIndices` foliSearch
+                                -- agetter <- forM [1..(init)] (\ok -> do
+                      --                let lwasd k = head(ausw k (ausw ws li4))
+                        --              let kd = head(ausw 1 (lwasd ok))
+                          --            let jk = map lwasd (map ord kd)
+                            --          return (jk))
+                              --   let getAction = map agetter inIt
+                                 return (inIt))
+                          let gather1 =  ausw 1 (concat links)
+
+                          let gather2 =  ausw 2 (concat links)
+                          let gather3 =  ausw 3 (concat links)
+                          let gather = [gather1,gather2,gather3]
+                        --  let getfromLi = (ausw  foliSearch-- (ausw (head gather1) foliSearch)
+                          return(links))
+                   
+                   
+                   return (bnNotB2)) --(withsix)) --(bnNotB2)) --(withsix)) --(feed6)) --bnNotB2)) --(withsix)) --(oprep rk)) --(feed6)) --(likelyhood2 3)) --(withsix))
+
+                   
+          return (newRekenen) --(mao)
+    
+          let mao m= head $ ausw m (((newRekenen)))
+          let innerList m t = ord(head$ausw t (mao m))
+          let getSolus m = do 
+              chgAble <- forM [1..6] (\cg -> do
+                 let varingLength = (length (mao m))
+                 vL <- forM [1..varingLength] (\fvL -> do
+  --[  [[[4]],[[4,11]],[[4]],[[4]],[[4,9]],[[2]]]...]  -> 	
+                     let ofthat f = (ausw f (mao m))
+                     let getAboveAtom =  length (ofthat fvL)
+                     let fromSolution = head $ausw cg solution
+                     parsE <- forM [1..getAboveAtom] (\pr -> do 
+                            let oft1 = head$ ausw 1 (ofthat fvL)
+                            let ghr r = r + 1
+                            let finde = map ghr (oft1 `elemIndices` fromSolution)
+                            let oft2 =  ausw ((head finde)+1) fromSolution
+                            let togth ttg = let step1 = if ttg == [] then "+"
+                                                        else  ttg --head oft2  
+                                            in  ausw (head finde) (togth fromSolution)
+                            return( finde))
+                     return (nub$concat$parsE)) --(ofthat fvL)) --(togth))
+                 return( concat vL))
+              return(nub chgAble)
+
+          let mao2 t = show (map nub (concat(ausw 1 ( getSolus t))) ) 
+          putStrLn "suggested 'A'" 
+          putStrLn (show newRekenen) 
+       --   putStrLn (show (newCellStream1 1 (map ord (head(ausw 1 li4))) 1))
+          putStrLn "continue Here !!!!" 
+          putStrLn (show (head(ausw 2 (mao 1))))
+          putStrLn (show ( nub (getSolus 1)))
+          putStrLn ""
+          HT.avanti (map mao2 [1..10])
+           
+          let calcTime = timE 
+          putStrLn "Need calc differenc for computing time"
+          calcTime
+         -- putStrLn (show (length (getSolus 1)))
+        --  putStrLn (show (ofsix 1 1 ))
+     {-     putStrLn "ofsix2" 
+          putStrLn (show (ofsix 2 1 ))
+          putStrLn "ofsix3" 
+          putStrLn (show (ofsix 1 2 ))
+          putStrLn "ofsix4" 
+          putStrLn (show (ofsix 3 1 ))
+          putStrLn "ofsix5" 
+          putStrLn (show (ofsix 2 2 ))
+          putStrLn "ofsix6" 
+          putStrLn (show (ofsix 1 6 ))
+          putStrLn "ofsix7" 
+          putStrLn (show (ofsix 7 2 ))
+          putStrLn "ofsix8" 
+          putStrLn (show (ofsix 376 2 ))
+ -}
+
+
+
+
+
+          --  let turnlisttoHexa = do 
+        --        toend <- forM [ --rekeneni -- runCell
+
+  where
+    pop e y = head $ (ausw e y); 
+    quadCd w = pop w (map readAnyTh [pv1,pv2,pv3,pv4]);
+    makePvs pv1 pv2 pv3 pv4 = [(quadCd 1),(quadCd 1)++(quadCd 2),(quadCd 2),(quadCd 3),(quadCd 3)++(quadCd 4),(quadCd 4)];
+    iterateLi l = pop l (makePvs pv1 pv2 pv3 pv4);
+-- e.g *> (head((experiment3RAW22 "DFDGGGF" li2 subroutinE C.ptc7 [li])))
+-- ["\154\163hg","\155\164ih","\153\162gf"]
+-- run 'calcB' until a certain boundry with simVal 
+    calcB's foLiter =  (experiment3RAW22 "DFDGGGF" [solution] subroutinE C.ptc7 [foLiter]) ; -- subitile differences nand iterate
+    simVal foPunkt ghAdd foli = simVALS foPunkt ghAdd foli;
+  -- qw3 
+    chngDomain domain guess t = map (qw guess domain) [1..(length t)] ;
+    readPunktChar g = startDchange g "intern" (1,2) ; -- if fst trigger word == 1 then internal
+                 -- else external 
+------------------------------------------------------------------
+    quadToHexPointID aToC bToC = triggerWord aToC bToC;
+  -- throw in random number generator to generate chars
+    randomChars r = ( ( longRun 80 r)+48);
+    -- parse action , add a function via 'foCalc'
+    oftheDomains n wantedList solution foCalc= countABCs n wantedList solution foCalc; 
+ -- Punkt data architecture --------------------------------------
+ -- r=li4 ; li4 ::  [[Char]] - > the given solution of domain A and not stigmatic
+ -- B (A) of w atom 2 of r  
+    bn foAL m =  maybePu (head (ausw m foAL ))
+ -- store data in String because there are only 5 other spots left
+ -- when reading a longer list that wont help thus store in Punkt "String"
+    punktNewB foAL r =  maybePu (show(checkflow [] [((bn foAL r))]));  -- like basis22
+    -- plug 'punktNewBPunkt' into this test below best to be mapped via e
+    fmrTEST3 io e e2 forLine =  checkflow  io [(Punkt  (head(checkflow [] [(punktNewB e2 forLine)]))(Just (bn e 1 )) (Just (bn e 3 )) (Just (bn e 4 ))(Just (bn e 5 )) (Just (bn e 6))) ]
+
+    -- these functions below shall lead to => a mother:TYPE that is depending on the type of simiyritYvalue
+	   -- to plug any value into 'Maybe Punkt' we need a 'Maybe String'
+--	   *>:t foAdecide2 (map show (Co.ptc6 100))
+--	   *>foAdecide2 (map fshow (Co.ptc6 100)) :: Maybe String
+    foAdecide2 foA = let boa rt t = (Just (maybePu2 rt t)) --let whereBreak = chainDistribute crit bonelist crit (lines "1")
+                 in let mapMaybePun k = let ste1 k rt = (boa (head(ausw k rt))) ((Just (maybePu (head (ausw k rt)))) ) 
+                                        in ste1 k foA -- e.g foA = ["vb","vb2","vb3"]
+                 in let preMoa = length foA
+                 in let eindelijk = do (map mapMaybePun [1..preMoa]) 
+                 in 
+                 if foA==[] then Nothing
+                 else let chssd i = maybePu2 (head(ausw i foA))  (((boa (head(ausw i foA)) (head(ausw i eindelijk)))))  
+                      in Just (show[(chssd 1)]);
+-------------------------------------------------------------------------------------------------------------------------------------------------------
  
+-- PART II using the ptc functions as described in Experiment3 
 ----------------------------------------------------------------------------
  ----- #####################################################################
 -- write your subroutine
@@ -116,7 +335,7 @@ theDs f g = concat$ausw f ((concat g))
 -- df2 ttt offOn target plot addGh ghAdd n (theDs ttt d) (get1) (get2) (get3)  (get4) 1 (theDs ttt d)
 -- =  runKAXIOM offOn target plot addGh ghAdd n (theDs ttt d) (get1) (get2) (get3)  (get4) 1 (theDs ttt d)
 
-
+-- e.g>runKBASE 1 [1,2] 1 2 "AAA" 1 (li3) 1 2 3 4 subroutinE
 
 runKBASE offOn target plot addGh ghAdd n d get1 get2 get3 get4 subroutineList= do
        allforIV <- forM [1..(length target)] (\four4 -> do
@@ -482,7 +701,6 @@ theBQuirky li4 li = (head((experiment3RAW22 "DFDGGGF" [li4] subroutinE C.ptc7 [l
 -- put CONSTRAINT On NOTES -> do come back to experiment3RAW22 
 --  inspect 2x2 3x3 5x5 to follow instructions
 --
---  lay it out to play it out
 --  every solution is a String every Char of this [Char]
 --  fills a space of soltions e.g of
 
@@ -501,150 +719,6 @@ theBQuirky li4 li = (head((experiment3RAW22 "DFDGGGF" [li4] subroutinE C.ptc7 [l
 --                             ---> Maybe B ------> solution after search
 --                             ---> Maybe ( not b) && Not A ---> continue search or change the solution 
 -- e.g*> (inActie ["0xy0z=3"] ["x0y0z=6"] ["0x0yz=2"] ["xyz=11"])                  
-inActie pv1 pv2 pv3 pv4 = do
-          let cookieForOn foAL m =  maybePu (head (ausw m foAL ))
-   -- kArmWork need list length 4 , a Punkt-type that can hold data to represent
-   -- the inherent structure of 
-       --   let onDefault foAL m = Punkt cookieForOn foAL m pv1 pv2 pv3 pv
-          let setAAxiom = theAChars
-         
-     --     endlessSubly <- forM [1..37]
-          let seeChr =  qw "werdd" "rdddw" 3  -- just there not used (jtnu)
-       
-          let seperateIntandChar foli4 = aleph [head foli4] -- Just Num Chars- > Int only works on Int in String 
-          let mainRandomLine foli4 n = cellStream3 foli4 n
-           -- generate 10 different 'random lines' length 100 
-           -- f set to 49 to 128
-          let runRandomLin foli4 = nub(map (cellStream3 foli4)[1,2,536,537,538,1073,1074,1075,1076,1610,1611,1613])
-          
-          let showZeroSpace expanS solution t = cellStream2 expanS solution t
-          let solutionInRandom expanS solution t= cellStream1 expanS solution t
-          let solSpace foli4 expanS s = goldTray foli4 expanS s -- = map poolB (concat$concat$concat$ausw s (allLi4 expanS))
-          -- e.g*> likelyhood li4 2
-          let sol100result foli4 expanS = poolBandNotB foli4 expanS -- search solutions set to max 2 
-          let map100 foli4 t = tbeMapped foli4 t -- = map chr (poolBandNotB t)
-          let suggest foli4 pi n =  expressAinA foli4 pi n -- compare result to li4
-          let withOutZero foli4 pi n =  expressAsinA foli4 pi n -- compare to same result without zeros
-          let drawXYZ foli4 pi n = likelyhood foli4 n  -- get an Int out of the result n	
-          putStrLn "like does"
-          let solution = li4
-         -- let wantedList = li4 --1
-          let newCellStream1 expanS sol fol100 nIdeal = let findSol sol want = map length fol100 --(organelleFind expanS sol want)
-                  in let findposis want sol foN = foN `elemIndices` (findSol sol want)
-                  in let mapUp want = map (findposis want sol) [1..(length sol)]
-                  in map mapUp [1..6]
-         -- the tbMapped
-          let ofsix exp fol100 expanS = map (newCellStream1 expanS (map ord (head(ausw exp li4))) fol100) [1..6]
-        --  let 
-         -- let n= 1 
-          newRekenen <- forM [1..10] (\rk -> do 
-                   let forekenen2 foli4 = head$ ausw rk (runRandomLin foli4)
-                   let fok2 = (forekenen2 li4)  -- length 100
-                   let bnNotB2 = tbeMapped li4 (head(ausw rk [1,2,537,538,1073,1074,1075,1610,1611,1613]))
-                   let oprep n =  ((ausw n (nub bnNotB2)))
-                   let feed6 = (ausw rk bnNotB2)
-                   let likelyhood2 n = let step1 =  ((oprep n))
-                               in let step2 = nub$reverse$sort step1
-                               in if (length step2) == 1 then take 1 step1 
-                                  else show ( cellInt (nub$reverse$(sort (oprep n)))-1) 
-                   withsix <- forM [1..6] (\ws -> do
-                          let foliSearch = head (ausw ws li4) 
-                          links <- forM [1..(length feed6)] (\fi -> do
-                                 let fromB2 = head (ausw fi feed6)
-                                 let inIt = fromB2 `elemIndices` foliSearch
-                                -- agetter <- forM [1..(init)] (\ok -> do
-                      --                let lwasd k = head(ausw k (ausw ws li4))
-                        --              let kd = head(ausw 1 (lwasd ok))
-                          --            let jk = map lwasd (map ord kd)
-                            --          return (jk))
-                              --   let getAction = map agetter inIt
-                                 return (inIt))
-                          let gather1 =  ausw 1 (concat links)
-
-                          let gather2 =  ausw 2 (concat links)
-                          let gather3 =  ausw 3 (concat links)
-                          let gather = [gather1,gather2,gather3]
-                        --  let getfromLi = (ausw  foliSearch-- (ausw (head gather1) foliSearch)
-                          return(links))
-                   
-                   
-                   return (withsix))
-
-                   
-          return (newRekenen) --(mao)
-          let mao = concat$concat $ ausw 3 (((newRekenen)))
-          putStrLn "suggested 'A'" 
-          putStrLn (show newRekenen) 
-       --   putStrLn (show (newCellStream1 1 (map ord (head(ausw 1 li4))) 1))
-          putStrLn "continue Here !!!!" 
-          putStrLn (show mao)
-        --  putStrLn (show (ofsix 1 1 ))
-     {-     putStrLn "ofsix2" 
-          putStrLn (show (ofsix 2 1 ))
-          putStrLn "ofsix3" 
-          putStrLn (show (ofsix 1 2 ))
-          putStrLn "ofsix4" 
-          putStrLn (show (ofsix 3 1 ))
-          putStrLn "ofsix5" 
-          putStrLn (show (ofsix 2 2 ))
-          putStrLn "ofsix6" 
-          putStrLn (show (ofsix 1 6 ))
-          putStrLn "ofsix7" 
-          putStrLn (show (ofsix 7 2 ))
-          putStrLn "ofsix8" 
-          putStrLn (show (ofsix 376 2 ))
- -}
-
-
-
-
-
-          --  let turnlisttoHexa = do 
-        --        toend <- forM [ --rekeneni -- runCell
-
-  where
-    pop e y = head $ (ausw e y); 
-    quadCd w = pop w (map readAnyTh [pv1,pv2,pv3,pv4]);
-    makePvs pv1 pv2 pv3 pv4 = [(quadCd 1),(quadCd 1)++(quadCd 2),(quadCd 2),(quadCd 3),(quadCd 3)++(quadCd 4),(quadCd 4)];
-    iterateLi l = pop l (makePvs pv1 pv2 pv3 pv4);
--- e.g *> (head((experiment3RAW22 "DFDGGGF" li2 subroutinE C.ptc7 [li])))
--- ["\154\163hg","\155\164ih","\153\162gf"]
--- run 'calcB' until a certain boundry with simVal 
-    calcB's foLiter =  (experiment3RAW22 "DFDGGGF" [li4] subroutinE C.ptc7 [foLiter]) ; -- subitile differences nand iterate
-    simVal foPunkt ghAdd foli = simVALS foPunkt ghAdd foli;
-  -- qw3 
-    chngDomain domain guess t = map (qw guess domain) [1..(length t)] ;
-    readPunktChar g = startDchange g "intern" (1,2) ; -- if fst trigger word == 1 then internal
-                 -- else external 
-------------------------------------------------------------------
-    quadToHexPointID aToC bToC = triggerWord aToC bToC;
-  -- throw in random number generator to generate chars
-    randomChars r = ( ( longRun 80 r)+48);
-    -- parse action , add a function via 'foCalc'
-    oftheDomains n wantedList solution foCalc= countABCs n wantedList solution foCalc; 
- -- Punkt data architecture --------------------------------------
- -- r=li4 ; li4 ::  [[Char]] - > the given solution of domain A and not stigmatic
- -- B (A) of w atom 2 of r  
-    bn foAL m =  maybePu (head (ausw m foAL ))
- -- store data in String because there are only 5 other spots left
- -- when reading a longer list that wont help thus store in Punkt "String"
-    punktNewB foAL r =  maybePu (show(checkflow [] [((bn foAL r))]));  -- like basis22
-    -- plug 'punktNewBPunkt' into this test below best to be mapped via e
-    fmrTEST3 io e e2 forLine =  checkflow  io [(Punkt  (head(checkflow [] [(punktNewB e2 forLine)]))(Just (bn e 1 )) (Just (bn e 3 )) (Just (bn e 4 ))(Just (bn e 5 )) (Just (bn e 6))) ]
-
-    -- these functions below shall lead to => a mother:TYPE that is depending on the type of simiyritYvalue
-	   -- to plug any value into 'Maybe Punkt' we need a 'Maybe String'
---	   *>:t foAdecide2 (map show (Co.ptc6 100))
---	   *>foAdecide2 (map fshow (Co.ptc6 100)) :: Maybe String
-    foAdecide2 foA = let boa rt t = (Just (maybePu2 rt t)) --let whereBreak = chainDistribute crit bonelist crit (lines "1")
-                 in let mapMaybePun k = let ste1 k rt = (boa (head(ausw k rt))) ((Just (maybePu (head (ausw k rt)))) ) 
-                                        in ste1 k foA -- e.g foA = ["vb","vb2","vb3"]
-                 in let preMoa = length foA
-                 in let eindelijk = do (map mapMaybePun [1..preMoa]) 
-                 in 
-                 if foA==[] then Nothing
-                 else let chssd i = maybePu2 (head(ausw i foA))  (((boa (head(ausw i foA)) (head(ausw i eindelijk)))))  
-                      in Just (show[(chssd 1)]);
 -- -- a group of functions that shall a [(Maybe Punkt)]-> that by itself is the definiton of
 -- mother :: Punkt -> Maybe Punkt
  
@@ -754,14 +828,14 @@ likelyhood foli4 n = let step1 =  ((bAndNotB foli4 n))
                         else show ( cellInt (nub$reverse$(sort (bAndNotB foli4 n)))-1) 
 -- which String n of a [String] (As) does resemble 'bAndNotB' most ?
 --
-expressAsinA foli4 pi n = nub$concat$(cellStream3EXT pi ((bAndNotB foli4 n)))
+expressAsinA foli4 pi n = nub$concat$(cellStream3EXT foli4 pi ((bAndNotB foli4 n)))
 -- which String n of a [String] (As) does resemble the solution most ?
 -- *Experiment3> nub$concat$(cellStream3EXT pi (rek2 1))
 -- *> [68.0648769574944,67.89709172259508,68.12080536912752,70.80536912751678]
 -- => 6 is part of the solution of (head li4)
 -- needs v variables in solution to work. eg "e2" works
 --  "2" doesnt
-expressAinA foli4 pi n = nub$concat$(cellStream3EXT pi (likelyhood foli4 n) )
+expressAinA foli4 pi n = nub$concat$(cellStream3EXT foli4 pi (likelyhood foli4 n) )
 -------------------------------------------------------------------------------------------
 --NULL SPACE : cellStream2
 -- via organelleFind , organelleSearch , oglleLocate
@@ -785,7 +859,7 @@ cellStream3 solu n= map (ogR solu) (runLists n)
 --             else extern
 --e.g> 
 --pi: Punkt "extern" ...; guess String e.g "ddd"
-cellStream3EXT pi guess = nub $ concat$ (runEXP3 li4 pi guess)  -- => simvals
+cellStream3EXT foli4 pi guess = nub $ concat$ (runEXP3 foli4 pi guess)  -- => simvals
 
 --
 --simVALS

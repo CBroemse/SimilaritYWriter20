@@ -31,6 +31,10 @@ module UsefulFunctions19 (
         , evalToCounter -- as above but breaks at 10
         , takeMY -- 'lay it out to pay it out'
         , charFilterInt -- filter Ints out of a Char, just 1 digit
+        , time
+        , getCurrentTime
+        , diffDays 
+        , timE
          ) where
      --   , nameACCESSFUNCTION ) where
 -- always color sceME 'delek'
@@ -84,6 +88,11 @@ time = do
       n = christmasDay `diffDays` utctDay myTime
   putStrLn $ "Only " ++ show n ++ " days to go until Christmas!"
 
+timE = do
+  
+  myTime <- getCurrentTime
+  putStrLn $ "point in time " ++ show myTime
+ 
 -----------------------------------
 -- x = how man 2 take
 -- y = which function 2 iterate
