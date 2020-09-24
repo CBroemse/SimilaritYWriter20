@@ -173,11 +173,11 @@ Goal:  P(H|E)
 Prior: "Prior" -> P(H) = 1/21
 
 Bayes' theorem:
-Â¬A (not A)
+¬A (not A)
 
          P(H)P(E|H)
 P(H|E) = -------------------
-       P(H)P(E|H) + P(Â¬H)P(E|Â¬H)
+       P(H)P(E|H) + P(¬H)P(E|¬H)
 
 
 
@@ -770,57 +770,8 @@ https://www.youtube.com/watch?v=HZGCoVF3YvM&t=129s
 							
 
 	   
-Experiment3
-see catalogue zoo 'quirky example'
-*Colored_2_3_5_Counter20> let ert r = tk r (ptc6 250)
-*> let xS r = head (ert r)
-*> let yS r = last (drop 1 (take 2 (ert r)))
-*> let zS r = last (ert r)
-*> let maXxS = map xS [1..100]
-*> let maXyS r = map yS [1..100]
-*> let maXzS r = map zS [1..100]
-*> whereTo e r = e `elemIndices` r
-	   
--- engage Punkt data type 
--- with the intention to plug in any function f(x)
--- and select any x with m
-*> let basis22 foAL m = maybePu (head (ausw m foAL ))
-*e.g> basis22 (map show (ptc6 105)) 5
- => ...   --shows line 5 of ptc6
-	   
--- store data in String because there are only 5 other spots left
--- when reading a longer list that wont help thus store in Punkt "String"
-*> let basisPunkt foAL r = maybePu (show(checkflow [] [((basis22 foAL r))]))
-
--- plug 'basisPunkt' into this test below best to be mapped via e
-*> let fmrTEST3 io e e2 forLine =  checkflow  io [(Punkt  (head(checkflow [] [(basis4 e2 forLine)])) {- ...
-	        ... -} (Just (basis2 e 1 )) (Just (basis2 e 3 )) (Just (basis2 e 4 )) {- ...
-	        ... -} (Just (basis2 e 5 )) (Just (basis2 e 6))) ]
-*e.g>let fmrTEST3 io e e2 forLine =  checkflow  io [(Punkt  (head(checkflow [] [(basisPunkt e2 forLine)]))(Just (basis22 e 1 )) (Just (basis22 e 3 )) (Just (basis22 e 4 ))(Just (basis22 e 5 )) (Just (basis22 e 6))) ]
-
--- a group of functions that shall a [(Maybe Punkt)]-> that by itself is the definiton of
--- mother :: Punkt -> Maybe Punkt 
--- these functions below shall lead to => a motherTYPE that is depending on the type of simiyritYvalue
-	   -- to plug any value into 'Maybe Punkt' we need a 'Maybe String'
-	   *>:t foAdecide2 (map show (Co.ptc6 100))
-	   *>foAdecide2 (map fshow (Co.ptc6 100)) :: Maybe String
-	   
-foAdecide2 foA = let boa rt t = (Just (U.maybePu2 rt t)) --let whereBreak = chainDistribute crit bonelist crit (lines "1")
-                 in let mapMaybePun k = let ste1 k rt = (boa (head(Co.ausw k rt))) ((Just (U.maybePu (head (Co.ausw k rt)))) ) 
-                                        in ste1 k foA -- e.g foA = ["vb","vb2","vb3"]
-                 in let preMoa = length foA
-                 in let eindelijk = do (map mapMaybePun [1..preMoa]) 
-                 in 
-                 if foA==[] then Nothing
-                 else let chssd i = U.maybePu2 (head(Co.ausw i foA))  (((boa (head(Co.ausw i foA)) (head(Co.ausw i eindelijk)))))  
-                      in Just (show[(chssd 1)])
-
--- the 'Maybe String' is turned to a 'Maybe Punkt' that has an error handler
---> mayerPunkt :: IO(int) String -> Maybe String -> Maybe Punkt -> 
-mayerPunkt r foa = if (foa) == [] then maybePu "empty"
-                   else maybePu2 (r) (Just(maybePu ((show [(foAdecide2 (foa))]))))
-
 </textarea>
 <br><br>
 
  </body></html>
+

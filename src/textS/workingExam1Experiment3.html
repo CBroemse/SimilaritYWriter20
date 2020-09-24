@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>List for Step IV</title>
+ <script src="file:///c:/stack/SimilaritYWriter20/src/p5SimY/p5.js"></script>
+  <script src="file:///c:/stack/SimilaritYWriter20/src/p5SimY/p5.dom.min.js"></script>
+  <script src="file:///c:/stack/SimilaritYWriter20/src/p5SimY/p5.sound.min.js"></script>
+ <script src="file:///c:/stack/SimilaritYWriter20/src/p5SimY/svgS/php.js"></script>
+
+  <link rel="stylesheet" type="text/css" href="file:///c:/stack/SimilaritYWriter20/src/p5SimY/style.css">
+
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: black;
+  font-family: Arial, Helvetica, sans-serif;
+   font-color: green;	
+}
+
+.buttonM {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+.button2 {background-color: #008CBA;border-radius: 12px;} /* Blue */
+.button3 {background-color: #f44336;} /* Red */ 
+.button4 {background-color: #e7e7e7; color: black;} /* Gray */ 
+.button5 {background-color: #555555;} /* Black */
+
+       .storyTeller {
+  background-color: #1e1c1ecc;
+  color: lime;
+  border: 0px solid white;
+  padding: 2px 5px;
+  text-decoration: none;
+  display: inline-block;
+  width:100%;
+  font-size: 12px;
+  text-align:left;
+}
+
+</style>
+</head>
+<script>
+</script>
+
+<body>
+<a href="file:///c:/stack/SimilaritYWriter20/src/textS/story2.html" style="border-radius: 12px; padding: 2px 5px;" target="iframe_c">back</a>
+
+<a href="#smessage2" style="border-radius: 12px; padding: 2px 5px;" target="iframe_c">down</a>
+
+<textarea name="message" class="storyTeller" rows="43" cols="50">
+	<p>
+***********************************
+ working example: latest finds (24-9-2020)
+
+ 'Experiment3.hs'
+
+ besides all graphics and illustrations that all try to 
+ make use of the 'ptc' functions another concept
+ revealed itself as a by-product. The following
+ four functions only depend on similarity values
+ which is the starting point of the ptc functions
+
+ the result is ONLY dealing with strings that must 
+ contain numbers otherwise leads to an error
+
+I.
+ -- Experiment3 randomly guessing solutions
+-- B in A via
+-- e.g
+-- *Experiment3> (inActie ["0xy0z=3"] ["x0y0z=6"] ["0x0yz=2"] ["xyz=11"] li5)
+-- *Experiment3> let li6 = ["1b*00=3","AAA=3BAABAB","A4A=5BAB","A5=7AA","AA5=A7BBBAA","B2BBAA"] 
+ => will work in the 'inActie' main function of 'Experiment3.hs'
+
+-- whereas li7 below wont becsaue the last atom 
+-- is missing a number digit
+-- *> let li7 = ["1b*00=3","AAA=3BAABAB","A4A=5BAB","A5=7AA","AA5=A7BBBAA","BBBAA"] 
+
+II.
+-- also generate "infinetly"  many solutions
+-- *Experiment3> poolBandNotB li4 1111111
+--  [61,121,120,61,121,120,61,121,120,61,121,120,61,121,120,61,121,120]
+--
+--  *Experiment3> map chr (poolBandNotB li4 1111111)
+-- "=yx=yx=yx=yx=yx=yx
+"
+III./IV.
+-- li4                                    with zeros                without zeros
+-- compare to bonelist to solution 1   expressAinA li5 pi 1    expressAsinA li5 pi 1
+--                     to solution 2   expressAinA li5 pi 2    expressAsinA li5 pi 2
+
+--  *Experiment3> expressAsinA li4 pi 2
+-- [48.51138353765324,48.78048780487805,48.421052631578945,43.67816091954023]     
+
+--  *Experiment3> expressAinA li4 pi 1
+-- [90.54290718038528,90.59233449477351,90.52631578947368,89.65517241379311]
+--
+
+
+</textarea>
+<br><br>
+<a href= "" style="border-radius: 12px; padding: 2px 5px;" target="_parent">ptc3 with cos</a>
+
+<a href= "https://en.wikipedia.org/wiki/Bayes%27_theorem#/media/File:Bayes_theorem_visualisation.svg" style="border-radius: 12px; padding: 2px 5px;" target="_self">CMG Lee</a>
+<br>
+
+<a href= "https://www.grogono.com/magic/5x5.php" style="border-radius: 12px; padding: 2px 5px;" target="_parent">grogono</a>
+
+<br>
+
+<textarea name="message2" class="storyTeller" rows="43" cols="50">>
+
+given :  
+
+         P(B|A) * P(A)
+P(A|B) = --------------
+	     P(B)
+
+binomial expansions
+with Pascals_triangle
+
+???	     
+           +
+= ( P(A|B)   (PA|B) ) ^2 = 
+           -
+
+
+= ....
+
+P()
+       
+				
+
+	   
+Experiment3
+
+outcomes bofore final results:
+What started out to be a sorting algorythm turned 
+into a function that filters numbers out of strings.
+
+in contrast to previous examples only works with
+numbers in strings
+*Experiment3> let li6 = ["1b*00=3","AAA=3BAABAB","A4A=5BAB","A5=7AA","AA5=A7BBBAA","B2BBAA"] 
+ => will work in the 'inActie' main function of 'Experiment3.hs'
+
+-- whereas li7 below wont becaue the last atom 
+-- is missing a number digit
+*> let li7 = ["1b*00=3","AAA=3BAABAB","A4A=5BAB","A5=7AA","AA5=A7BBBAA","BBBAA"] 
+
+-- WITHOUT ptc function r
+-- randomy guess and find
+-- solutions based on the
+-- 'solution' variable (e.g li5)
+-- pv variabes (the first 4 ) not being used
+-- but ready to be plugged into data types below
+*Experiment3> (inActie ["0xy0z=3"] ["x0y0z=6"] ["0x0yz=2"] ["xyz=11"] li5)
+ => - ten different suggestions based on 
+      'zufallBasic1' a random generator
+
+   - one line un-nubbed 
+   - ten random solutions positions for each of the six atoms
+     of a li list
+
+=> 
+older approach need li list length 5  to work
+*>let li = ["person","Steve","shy","withdrawn","farmer","book"]
+*>let li2 = ["person","Steve","shy","withdrawn","librarian","booky"]
+
+*>let li3 = [[li,li2]]
+*>let myTest at = runKBASE 2 ["1","2"] 1 2 at 2 (li3) 1 2 3 4
+*> myTest "country"
+
+Experiment 3, without ptc approach
+if ptc dont work at least we have an iterative process
+without the whole framework provided 
+
+A in | B and notB |
+'poolBandNotB'
+=> give n many guesses 
+e.g *> map chr (poolBandNotB li5 1729)
+ *> "AABBBAABBA7B7AABBBB7ABABB". 
+
+the propability of the pool of above 
+being at which position of one of
+four pv functions         pv1         pv2         pv3        pv4
+
+P(goldTray) = (inActie ["0xy0z=3"] ["x0y0z=6"] ["0x0yz=2"] ["xyz=11"] li5)
+
+if pvs and li5 of above match up we have them even ready 
+to be turned into Punkt format. which is only used
+so far to change functions applied to fill a 'goldtray'
+
+e.g*> let pi = Punkt "extern" Nothing Nothing Nothing Nothing Nothing
+-- with "extern" the given propability of
+  a solution B in an underlyaing solution space A -> P(B in A)
+
+
+
+see catalogue zoo 'quirky example'
+*Colored_2_3_5_Counter20> let ert r = tk r (ptc6 250)
+*> let xS r = head (ert r)
+*> let yS r = last (drop 1 (take 2 (ert r)))
+*> let zS r = last (ert r)
+*> let maXxS = map xS [1..100]
+*> let maXyS r = map yS [1..100]
+*> let maXzS r = map zS [1..100]
+*> whereTo e r = e `elemIndices` r
+	   
+-- engage Punkt data type 
+-- with the intention to plug in any function f(x)
+-- and select any x with m
+*> let basis22 foAL m = maybePu (head (ausw m foAL ))
+*e.g> basis22 (map show (ptc6 105)) 5
+ => ...   --shows line 5 of ptc6
+	   
+-- store data in String because there are only 5 other spots left
+-- when reading a longer list that wont help thus store in Punkt "String"
+*> let basisPunkt foAL r = maybePu (show(checkflow [] [((basis22 foAL r))]))
+
+-- plug 'basisPunkt' into this test below best to be mapped via e
+*> let fmrTEST3 io e e2 forLine =  checkflow  io [(Punkt  (head(checkflow [] [(basis4 e2 forLine)])) {- ...
+	        ... -} (Just (basis2 e 1 )) (Just (basis2 e 3 )) (Just (basis2 e 4 )) {- ...
+	        ... -} (Just (basis2 e 5 )) (Just (basis2 e 6))) ]
+*e.g>let fmrTEST3 io e e2 forLine =  checkflow  io [(Punkt  (head(checkflow [] [(basisPunkt e2 forLine)]))(Just (basis22 e 1 )) (Just (basis22 e 3 )) (Just (basis22 e 4 ))(Just (basis22 e 5 )) (Just (basis22 e 6))) ]
+
+-- a group of functions that shall a [(Maybe Punkt)]-> that by itself is the definiton of
+-- mother :: Punkt -> Maybe Punkt 
+-- these functions below shall lead to => a motherTYPE that is depending on the type of simiyritYvalue
+	   -- to plug any value into 'Maybe Punkt' we need a 'Maybe String'
+	   *>:t foAdecide2 (map show (Co.ptc6 100))
+	   *>foAdecide2 (map fshow (Co.ptc6 100)) :: Maybe String
+	   
+foAdecide2 foA = let boa rt t = (Just (U.maybePu2 rt t)) --let whereBreak = chainDistribute crit bonelist crit (lines "1")
+                 in let mapMaybePun k = let ste1 k rt = (boa (head(Co.ausw k rt))) ((Just (U.maybePu (head (Co.ausw k rt)))) ) 
+                                        in ste1 k foA -- e.g foA = ["vb","vb2","vb3"]
+                 in let preMoa = length foA
+                 in let eindelijk = do (map mapMaybePun [1..preMoa]) 
+                 in 
+                 if foA==[] then Nothing
+                 else let chssd i = U.maybePu2 (head(Co.ausw i foA))  (((boa (head(Co.ausw i foA)) (head(Co.ausw i eindelijk)))))  
+                      in Just (show[(chssd 1)])
+
+-- the 'Maybe String' is turned to a 'Maybe Punkt' that has an error handler
+--> mayerPunkt :: IO(int) String -> Maybe String -> Maybe Punkt -> 
+mayerPunkt r foa = if (foa) == [] then maybePu "empty"
+                   else maybePu2 (r) (Just(maybePu ((show [(foAdecide2 (foa))]))))
+
+</textarea>
+<br><br>
+
+ </body></html>
+
