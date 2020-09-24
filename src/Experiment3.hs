@@ -101,12 +101,28 @@ import qualified Colored_2_3_5_Counter20 as C
 -- e.g
 -- *Experiment3> (inActie ["0xy0z=3"] ["x0y0z=6"] ["0x0yz=2"] ["xyz=11"] li5)
 -- *Experiment3> let li6 = ["1b*00=3","AAA=3BAABAB","A4A=5BAB","A5=7AA","AA5=A7BBBAA","B2BBAA"] 
+li6 = ["1b*00=3","AAA=3BAABAB","A4A=5BAB","A5=7AA","AA5=A7BBBAA","B2BBAA"] 
 -- => will work in the 'inActie' main function of 'Experiment3.hs'
 
 -- whereas li7 below wont becsaue the last atom 
 -- is missing a number digit
--- *> let li7 = ["1b*00=3","AAA=3BAABAB","A4A=5BAB","A5=7AA","AA5=A7BBBAA","BBBAA"] 
-
+-- *> let li7 = ["1b*00=3","AAA=3BAABAB","A4A=5BAB","A5=7AA","AA5=A7BBBAA","BBBAA"]
+-- LI list must have 
+-- 
+-- the result is ONLY dealing with strings that must 
+-- contain:
+--      - numbers otherwise leads to an error
+--      - sufficient numbers in overall li input
+--      - an equal sign '='
+--      - letters
+-- =>  e.g "A3=sd4A"  -- will work
+--        "A=sdA"    -- wont
+--	"AsdA"     -- wont
+--	"AAA=sd1A"   
+-- WITH ABOVE AND one side of the '=' length>3 will
+-- ALWAYS WORK
+ 
+li8 = ["1A00=1","ADs=D1","AB=A1BBBBB","A1AA=AAA1","A1=1AAA","A=1sss"]
 --II.
 -- also generate "infinetly"  many solutions
 -- *Experiment3> poolBandNotB li4 1111111
@@ -519,12 +535,20 @@ focommmB ap ap3 t = let atSpot ap ap3 t = (head (ausw t ap)) `elemIndices` (ap3)
 buildPrior r = let buildA r = readAnyTh r
                in head$ last (experiment3RAW22 "DF" [buildA r] subroutinE C.ptc7 [buildA r]) 
 
-commmB ap ap3 t = -- let buildA r = readAnyTh r
+commmB ap ap3 t = let buildA r = readAnyTh r
          --  in let aprior = head$ last (experiment3RAW22 "DF" [buildA r] subroutinE C.ptc7 [buildA r]) 
-           let atSpot ap ap3 t = (head (ausw t (map ord ap))) `elemIndices` (map ord ap3)
-          -- in let aprior4 gb1 gb2 = head$ last (experiment3RAW23 "DF" [(buildA r)] subroutinE C.ptc7 [buildA r] gb1 gb2)
+           in let atSpot ap ap3 t = (head (ausw t (map ord ap))) `elemIndices` (map ord ap3)
+           in let aprior4 gb1 gb2 r = head$ last (experiment3RAW23 "DF" [(buildA r)] subroutinE C.ptc7 [buildA r] gb1 gb2)
           -- in let testIterate ap = atSpot ap (aprior4 aprior "fp")
            in atSpot ap ap3 t--aprior
+
+commmB2 ap ap3 t = let buildA r = readAnyTh r
+         --  in let aprior = head$ last (experiment3RAW22 "DF" [buildA r] subroutinE C.ptc7 [buildA r]) 
+           in let atSpot ap ap3 t = (head (ausw t (map ord ap))) `elemIndices` (map ord ap3)
+           in let aprior4 gb1 gb2 r = head$ last (experiment3RAW23 "DF" [(buildA r)] subroutinE C.ptc7 [buildA r] gb1 gb2)
+          -- in let testIterate ap = atSpot ap (aprior4 aprior "fp")
+           in aprior4 ap ap3 t--aprior
+
 -----------------------------------------------------------------
 -- P(B) given AStigmatic 
 -- A= the occoring and non ocurring Chars of an ideal
