@@ -76,9 +76,19 @@ body {
  as well.
 
  the result is ONLY dealing with strings that must 
- contain numbers otherwise leads to an error
+ contain:
+      - numbers otherwise leads to an error
+      - sufficient numbers in overall li input
+      - an equal sign '='
+      - letters
+=>  e.g "A3=sd4A"  -- will work
+        "A=sdA"    -- wont
+	"AsdA"     -- wont
+	"AAA=sd1A"   -- with one side 
+	 of the '=' length>3 will
+	 always work.
 
-I.
+I.    
  -- Experiment3 randomly guessing solutions
 -- B in A via
 -- e.g
