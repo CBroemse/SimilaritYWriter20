@@ -256,33 +256,9 @@ inActie pv1 pv2 pv3 pv4 solution = do
           HT.avanti (map mao2 [1..10])
            
           let calcTime = timE 
-          putStrLn "Need calc differenc for computing time"
+          putStrLn "Need calc difference for computing time"
           calcTime
-         -- putStrLn (show (length (getSolus 1)))
-        --  putStrLn (show (ofsix 1 1 ))
-     {-     putStrLn "ofsix2" 
-          putStrLn (show (ofsix 2 1 ))
-          putStrLn "ofsix3" 
-          putStrLn (show (ofsix 1 2 ))
-          putStrLn "ofsix4" 
-          putStrLn (show (ofsix 3 1 ))
-          putStrLn "ofsix5" 
-          putStrLn (show (ofsix 2 2 ))
-          putStrLn "ofsix6" 
-          putStrLn (show (ofsix 1 6 ))
-          putStrLn "ofsix7" 
-          putStrLn (show (ofsix 7 2 ))
-          putStrLn "ofsix8" 
-          putStrLn (show (ofsix 376 2 ))
- -}
-
-
-
-
-
-          --  let turnlisttoHexa = do 
-        --        toend <- forM [ --rekeneni -- runCell
-
+       
   where
     pop e y = head $ (ausw e y); 
     quadCd w = pop w (map readAnyTh [pv1,pv2,pv3,pv4]);
