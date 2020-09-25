@@ -384,7 +384,52 @@ experiment3 ghAdd d = experiment3RAW2 1 ghAdd 1 d subroutinE
 -- function below has better properties ?
 -- -- *e.g> experiment3RAW22 "DF" li2 subroutinE C.ptc7 li2
 -----------------------------------------------------------------------------------------------
+-- start getting 2x2 3x3 5x5 coordinate pairs in
+-- experiment3RAW11 "DF" li2 subroutinE C.ptc7 li2
+-- *> 
+-- nforCalc: Int to be fed into 5x5 to clacuate coordinate pairs
+-- fopi: Punkt see differences internal pi2 is to generate Chars via 'runEXP3Char'
+experiment3RAW11 ghAdd d subroutineList foPtc foLi nforCalc fopi= do
+   -- givens:
+       let pi2 = Punkt "extern" Nothing Nothing Nothing Nothing Nothing
+       let ert r = tk r (foPtc 250)
+       let xS r = head (ert r)  
+       let yS r = last (drop 1 (take 2 (ert r))) 
+       let zS r = last (ert r) 
+       let maXxS = map xS [1..100]   
+       let maXyS = map yS [1..100]
+       let maXzS = map zS [1..100]   
+       let moreReads = do   
+            exp3Fractional <- forM [1..(length subroutineList)] (\four4 -> do
+                  let exP3 =  runEXP3 (head(ausw four4 d)) fopi ghAdd --kWORK --(G.fobase progVar1 progVar2 progVar3 progVar4 progVar5 progVar6 daZip1 daZip2 daZip3 textAA (ptcButoons) (foalt))
+                  return (exP3))
+            let exp3Frac = concat$concat$exp3Fractional
 
+            let maxX = maximum maXxS
+            let maxY = maximum maXyS
+            let maxZ = maximum maXzS
+     -- 'quirky example'
+            let calcAlgoExperiment3 =  [twoXtwo,threeXthree,(fiveXfive nforCalc)] --fiveXfive 1
+                  where
+                   bOn = exp3Frac;
+                   twoXtwo = [(10,maxY),(10,15),(0,15),(0,maxY)];
+                   fo3y = (maxY - (maxY- (maxX-11)));
+                   threeXthree = [(maxX,maxY), (maxX, fo3y),(11,fo3y),(11,maxY)];
+                   varX x = (maxX- ( (maxX-10)- (x))); 
+                   fiveXfive x = [((varX x),25), ((varX x), 0),(0,0),((varX x),25)];
+
+            let cE3 = calcAlgoExperiment3
+            let foRunner gb1 gb2 = let foGb1 gb =  map realToFrac (map ord gb )
+                                   in let foGb2 gb =  map realToFrac (map ord gb )
+                                   in  similaritYvalue (foGb1 gb1) (foGb2 gb2)
+            let ptcToInt m = let loadInBlank = map (\c -> if c=='.' then ' '; else c)  
+                             in let myTruncate = read$head$words$loadInBlank m
+                             in myTruncate
+            return cE3 --aRunner
+       moreReads 
+--------------------------------------------
+
+------------------------------------------------------------------------------
 -- guess something to add to First + -
 -- experiment3RAW22 "DF" li2 subroutinE C.ptc7 li2
 -- *> map ord (head(head(experiment3RAW22 "DFDF" li2 subroutinE C.ptc7 [li3])))
@@ -1018,6 +1063,9 @@ runEXP3 li pi ghAdd = do
        --let beforewithGH = head $last $ head $ allforIV
        (return (beforeAlgo))
 ------------------------------------------------------------
+-- needs not "intern" to genearate new Char guesses by
+-- adding chars to ghAdd
+-- pi: Punkt , ghAdd: String ; li: the source [String ]
 runEXP3Char pi ghAdd li = 
        -- domain2 syntax
        let asun = (runEXP3 li pi ghAdd)
