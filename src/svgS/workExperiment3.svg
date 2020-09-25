@@ -88,7 +88,7 @@
      inkscape:pageshadow="2"
      inkscape:zoom="0.7"
      inkscape:cx="263.58093"
-     inkscape:cy="682.78854"
+     inkscape:cy="39.136553"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -12404,28 +12404,28 @@
          x="86.862602"
          style="font-style:normal;font-weight:normal;font-size:2.82222223px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#501616;fill-opacity:0.4;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
          xml:space="preserve"><tspan
-           style="fill:#501616;fill-opacity:0.4;stroke-width:0.26458332px"
+           style="fill:#008000;fill-opacity:0.4;stroke-width:0.26458332px"
            y="171.65059"
            x="86.862602"
            id="tspan162245"
            sodipodi:role="line">The thing to the right is a try</tspan><tspan
            id="tspan162249"
-           style="fill:#501616;fill-opacity:0.4;stroke-width:0.26458332px"
+           style="fill:#008000;fill-opacity:0.4;stroke-width:0.26458332px"
            y="175.17836"
            x="86.862602"
            sodipodi:role="line">for a topologic representation of</tspan><tspan
            id="tspan162251"
-           style="fill:#501616;fill-opacity:0.4;stroke-width:0.26458332px"
+           style="fill:#008000;fill-opacity:0.4;stroke-width:0.26458332px"
            y="178.70615"
            x="86.862602"
            sodipodi:role="line">3x3 matrix showing the x=2;y=3;</tspan><tspan
            id="tspan162253"
-           style="fill:#501616;fill-opacity:0.4;stroke-width:0.26458332px"
+           style="fill:#008000;fill-opacity:0.4;stroke-width:0.26458332px"
            y="182.23392"
            x="86.862602"
            sodipodi:role="line">z=2</tspan><tspan
            id="tspan13957"
-           style="fill:#501616;fill-opacity:0.4;stroke-width:0.26458332px"
+           style="fill:#008000;fill-opacity:0.4;stroke-width:0.26458332px"
            y="185.7617"
            x="86.862602"
            sodipodi:role="line">length 50         length: 50         length: 100</tspan></text>
@@ -17538,7 +17538,7 @@
       </g>
       <text
          xml:space="preserve"
-         style="font-style:normal;font-weight:normal;font-size:2.82222223px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#501616;fill-opacity:0.4;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         style="font-style:normal;font-weight:normal;font-size:2.82222223px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#00ff00;fill-opacity:0.4;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;"
          x="87.664413"
          y="207.19743"
          id="text13971"><tspan
@@ -17546,31 +17546,31 @@
            id="tspan13961"
            x="87.664413"
            y="207.19743"
-           style="fill:#501616;fill-opacity:0.4;stroke-width:0.26458332px">The difference between above and below </tspan><tspan
+           style="fill:#00ff00;fill-opacity:0.4;stroke-width:0.26458332px;">The difference between above and below </tspan><tspan
            sodipodi:role="line"
            x="87.664413"
            y="210.7252"
-           style="fill:#501616;fill-opacity:0.4;stroke-width:0.26458332px"
+           style="fill:#00ff00;fill-opacity:0.4;stroke-width:0.26458332px;"
            id="tspan13963">is a complexer graph due to occurance of </tspan><tspan
            id="tspan13973"
            sodipodi:role="line"
            x="87.664413"
            y="214.25299"
-           style="fill:#501616;fill-opacity:0.4;stroke-width:0.26458332px">&quot;6&quot; as z</tspan><tspan
+           style="fill:#00ff00;fill-opacity:0.4;stroke-width:0.26458332px;">&quot;6&quot; as z</tspan><tspan
            sodipodi:role="line"
            x="87.664413"
            y="217.78076"
-           style="fill:#501616;fill-opacity:0.4;stroke-width:0.26458332px"
+           style="fill:#00ff00;fill-opacity:0.4;stroke-width:0.26458332px;"
            id="tspan13965">3x3 matrix showing the x=2;y=3;</tspan><tspan
            sodipodi:role="line"
            x="87.664413"
            y="221.30855"
-           style="fill:#501616;fill-opacity:0.4;stroke-width:0.26458332px"
+           style="fill:#00ff00;fill-opacity:0.4;stroke-width:0.26458332px;"
            id="tspan13967">z=6</tspan><tspan
            sodipodi:role="line"
            x="87.664413"
            y="224.83632"
-           style="fill:#501616;fill-opacity:0.4;stroke-width:0.26458332px"
+           style="fill:#00ff00;fill-opacity:0.4;stroke-width:0.26458332px;"
            id="tspan13969">length 50         length: 50         length: 100</tspan></text>
       <g
          transform="matrix(0.28388549,0,0,0.28388549,56.187214,152.58382)"
@@ -23620,5 +23620,15 @@
            inkscape:connector-curvature="0" />
       </g>
     </g>
-  </g>
+    <flowRoot
+       xml:space="preserve"
+       id="flowRoot44403"
+       style="fill:black;stroke:none;stroke-opacity:1;stroke-width:1px;stroke-linejoin:miter;stroke-linecap:butt;fill-opacity:1;font-family:sans-serif;font-style:normal;font-weight:normal;font-size:10.66666667px;line-height:125%;letter-spacing:0px;word-spacing:0px"><flowRegion
+         id="flowRegion44405"><rect
+           id="rect44407"
+           width="209.10968"
+           height="112.83957"
+           x="66.009567"
+           y="1185.1833" /></flowRegion><flowPara
+         id="flowPara44409"></flowPara></flowRoot>  </g>
 </svg>
