@@ -22781,14 +22781,6 @@
        inkscape:connector-curvature="0"
        sodipodi:nodetypes="cccc" />
     <path
-       style="opacity:1;fill:#48dc55;fill-opacity:0.4;fill-rule:nonzero;stroke:#00df98;stroke-width:0.26806912;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       inkscape:transform-center-x="-4.0567586"
-       inkscape:transform-center-y="-9.6051604"
-       d="m 105.48513,77.204966 -0.13363,-17.33587 3.95871,7.22147 z"
-       id="path29190"
-       inkscape:connector-curvature="0"
-       sodipodi:nodetypes="cccc" />
-    <path
        sodipodi:nodetypes="cccccc"
        inkscape:connector-curvature="0"
        id="path29212"
@@ -22884,11 +22876,11 @@
          x="24.321527"
          y="72.009628"
          style="fill:#00ff00;stroke-width:0.26458332px"
-         id="tspan42649">                          'method due to Harry Bradley MIT'</tspan><tspan
+         id="tspan42649">                          'method due to Paul Busschop (1799-1877'</tspan><tspan
          sodipodi:role="line"
          x="24.321527"
          y="75.537407"
          style="fill:#00ff00;stroke-width:0.26458332px"
-         id="tspan42651">                          this called 'Bradley' transformation</tspan></text>
+         id="tspan42651">                          thus called 'Busschop' transformation</tspan></text>
   </g>
 </svg>
