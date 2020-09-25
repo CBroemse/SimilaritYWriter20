@@ -142,6 +142,12 @@ li8 = ["1A00=1","ADs=D1","AB=A1BBBBB","A1AA=AAA1","A1=1AAA","A=1sss"]
 --  *Experiment3> expressAinA li4 pi 1
 -- [90.54290718038528,90.59233449477351,90.52631578947368,89.65517241379311]
 --
+-- => change from comparing a row of a li list with its own atoms 
+--   let pi = Punkt "intern" Nothing Nothing Nothing Nothing Nothing
+--   OR 
+--   compare with guess 
+--   let pi = Punkt "extern" Nothing Nothing Nothing Nothing Nothing
+
                 
 inActie pv1 pv2 pv3 pv4 solution = do
           timE 
@@ -380,7 +386,7 @@ experiment3 ghAdd d = experiment3RAW2 1 ghAdd 1 d subroutinE
 -----------------------------------------------------------------------------------------------
 
 -- guess something to add to First + -
--- xperiment3RAW22 "DF" li2 subroutinE C.ptc7 li2
+-- experiment3RAW22 "DF" li2 subroutinE C.ptc7 li2
 -- *> map ord (head(head(experiment3RAW22 "DFDF" li2 subroutinE C.ptc7 [li3])))
 -- *> [20,27,20,20]
 experiment3RAW22 ghAdd d subroutineList foPtc foLi = do
@@ -435,7 +441,7 @@ experiment3RAW22 ghAdd d subroutineList foPtc foLi = do
       -- return (aRunner )
       -- show (take 1 exp3Intfo)
        --exp3IntfoChar
-            return aRunner
+            return cE3 --aRunner
        moreReads 
      --  show (aRunner 1)
     --   show (aRunner 2)
@@ -891,31 +897,6 @@ simVALS foPunkt ghAdd foli = runEXP3 foPunkt foli ghAdd
 --
 --  secondly just see occurance 
 --
--- I. after first + - try 
---    map ord a -> ord a -> map show a -> [String] -> map ord a -> [Int] 
---    continoue from above:
-adda li3 = map ord (head(head(experiment3RAW22 "DFDF" [li3] subroutinE C.ptc7 [li3])))
-addaInt li3 = (unwords(map show (adda li3)))
-
---II. add minimal changes a random list variance 5
-note li l3 =  zipWith (+) (map ord (take 4 (head li))) (map ord (head l3))
-not2 li l3 =  zipWith (-) (map ord (take 4 (head li))) (map ord (head l3))
--- *> urso li li3
--- *> [[134,136,84,83],..always the same forM in urso below (100)
--- *> urso li3 li
--- *>[[-134,-136,-84,-83]... always the same forM in urso below (100)
--- *> urso li3 li3
--- *> [[0,0,0,0]... always the same forM in urso below (100)
-urso l l2 = do 
-        longW <- forM [1..100] (\pluMin -> do
-                 let foDit = longRun 2 pluMin
-                 -- randomyl add or subtract form  BgivenA list 
-                 let ditODat fl1 fl2 = head $ ausw foDit[(comparEB fl1 fl2),(comparEB2 fl1 fl2)]
-                 let calC fl1 fl2 = ditODat [(aBgivenA fl1 )] (fl2)
-                 return (foDit)) --(ditODat l l2))
-                 -- randomly add or substract 5
-                          --   lenDepend <- forM
-        return longW
 -----------------------------------------------------
 
 --------------------------------------------------------------------------
@@ -930,29 +911,6 @@ rekenen r = (rekenenRAW 80 48 r) --comparEB (head(ausw r ([li]))) (map show [1..
 -------------------------------------------------------------------------
 -- calculate Ints for String -> [Char]-> [Ord]-> add or substract
 aBgivenA li =  ((buildPrior li))
-comparEB li li3 = zipWith (+) (map ord (aBgivenA li)) (map ord (aBgivenA li3)) 
-comparEB2 li li3 = zipWith (-) (map ord (aBgivenA li)) (map ord (aBgivenA li3))
--- check  
---focommmB li3 li 1
-foCom li li3 l = (focommmB (comparEB li li3) (comparEB2 li li3) l )
-conStraint1 r t = if r < 48 && r > 128 then do t
-                  else r
-{-
-does li l2= do 
-           -- run a foCom search 
-     let gh = [[],[]]
-     let courseTowards = if (length$concat$gh) == 0 
-                    then do
-                   
-                    let tab r = conStraint1 (longRun 5 r) (head(head(head (ausw r (urso li l2)))))
-                    let fgt ri = (urso ri l2)
-                    --let bugg = take 5 (iterate fgt [1)
-                    let dfre r = map ord (head (ausw r li)) 
-                    map tab [1..20]
-                   -- map rekenen [1] 
-               else  [4] --aBgivenA li 
-     return courseTowards                          
-        -}
 allB = readAnyTh C.progLiT
 -----------------------------------------------------------
 
@@ -999,7 +957,8 @@ startDchange g t iOE = let piToBinary = baas Nothing t
                        in if g == t then fst iOE --fst internal or external
                           else snd iOE
 
-triggerWord g domain = if domain == "intern" then show(stC1 g )
+triggerWord g domain = triggerWordRAW g domain "cell"
+triggerWordRAW g domain focell = if domain == "intern" then show(stC1 g )
                        else if domain == domain then (stC2 g domain) -- "cell" 
                        else show(stC1 g)
      where
@@ -1017,11 +976,12 @@ triggerWord g domain = if domain == "intern" then show(stC1 g )
    -- y :: a..z \\ (z-1)
         fromCell = map chr [48..57];
         toHaal toInt =  charFilterInt toInt;
-        condI numP   = if (fst (toHaal numP ))== "cell" && (snd (toHaal numP)) >= 0 then (toHaal numP)
-                       else if (numP) == ("cell3") then (numP,(snd(charFilterInt numP)))
-
+        condI numP   = if (fst (toHaal numP ))== focell && (snd (toHaal numP)) >= 0 then (toHaal numP)
+                       else if (numP) == (focell++"3") then (numP,(snd(charFilterInt numP)))
                        else ((unlines(checkflow [mother] [(maybePu "CELL")])) , 0 ) ;
         stC2 g numP = startDchange g  (fst(condI numP)) (show(snd(condI numP)),(fst(condI numP)));
+
+--conVerge
 ------------------------------------------------------
 
 ------------------------------------------------------
@@ -1043,7 +1003,10 @@ runEXP3 li pi ghAdd = do
                 -- compare internaly
             --let plugChoose = triggerWord pi  
             let fg = let allFor = (kArmWORK 2 (chD four4) aLi 1 pi 1 1 [] ghAdd) --(runKAXIOM offOn target plot addGh ghAdd n (theDs four4 d) (get1) (get2) (get3) (get4) 3 (theDs four4 d) (four4) [(read(show four4))] ((tk four4 subroutineList)))
+                     in let toHaal =  charFilterInt ghAdd;
                      in  if (triggerWord (filter (/=' ') (head(checkflow [] [pi]))) "intern" ) == "1" then (fst allFor)
+                         else if (triggerWord (filter (/=' ') (head(checkflow [] [pi]))) "cell" )  == "1" then (map read [(triggerWord "cell" "cell3")]) -- snd (ghAdd,(snd(charFilterInt ghAdd)))
+
                          else (concat (snd allFor))
 
             fg     
