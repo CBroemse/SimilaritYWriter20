@@ -11,8 +11,8 @@
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    width="210mm"
-   height="697mm"
-   viewBox="0 0 210 697"
+   height="297mm"
+   viewBox="0 0 210 297"
    version="1.1"
    id="svg33508"
    inkscape:version="0.92.2 (5c3e80d, 2017-08-06)"
@@ -120,7 +120,7 @@
      inkscape:pageshadow="2"
      inkscape:zoom="3.7834632"
      inkscape:cx="141.57809"
-     inkscape:cy="319.76604"
+     inkscape:cy="125.70851"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -147,7 +147,7 @@
      id="layer1">
     <text
        xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:2.82222223px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#00d455;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;"
+       style="font-style:normal;font-weight:normal;font-size:2.82222223px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#00d455;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
        x="17.838007"
        y="252.71695"
        id="text52381"><tspan
@@ -155,76 +155,76 @@
          id="tspan52379"
          x="17.838007"
          y="252.71695"
-         style="stroke-width:0.26458332px;fill:#00d455;fill-opacity:1;">a = sin (alpha) * c                                  </tspan><tspan
+         style="fill:#00d455;fill-opacity:1;stroke-width:0.26458332px">a = sin (alpha) * c                                  </tspan><tspan
          sodipodi:role="line"
          x="17.838007"
          y="256.24472"
-         style="stroke-width:0.26458332px;fill:#00d455;fill-opacity:1;"
+         style="fill:#00d455;fill-opacity:1;stroke-width:0.26458332px"
          id="tspan62496">a''=(y of Cq) </tspan><tspan
          sodipodi:role="line"
          x="17.838007"
          y="259.77249"
-         style="stroke-width:0.26458332px;fill:#00d455;fill-opacity:1;"
+         style="fill:#00d455;fill-opacity:1;stroke-width:0.26458332px"
          id="tspan55752">b''=sqrt[((y of Aq)- (y of Bq))²+(y of B)²]                      </tspan><tspan
          sodipodi:role="line"
          x="17.838007"
          y="263.30029"
-         style="stroke-width:0.26458332px;fill:#00d455;fill-opacity:1;"
+         style="fill:#00d455;fill-opacity:1;stroke-width:0.26458332px"
          id="tspan55754">c'' = hyp k + hyp p  </tspan><tspan
          sodipodi:role="line"
          x="17.838007"
          y="266.82806"
-         style="stroke-width:0.26458332px;fill:#00d455;fill-opacity:1;"
+         style="fill:#00d455;fill-opacity:1;stroke-width:0.26458332px"
          id="tspan73766">bpB = (y of B) - akC                                                          </tspan><tspan
          sodipodi:role="line"
          x="17.838007"
          y="270.35583"
-         style="stroke-width:0.26458332px;fill:#00d455;fill-opacity:1;"
-         id="tspan62494">akC=a - bpB                                                                           </tspan><tspan
+         style="fill:#00d455;fill-opacity:1;stroke-width:0.26458332px"
+         id="tspan62494">akC=a' - bpB                                                                           </tspan><tspan
          sodipodi:role="line"
          x="17.838007"
          y="273.88361"
-         style="stroke-width:0.26458332px;fill:#00d455;fill-opacity:1;"
+         style="fill:#00d455;fill-opacity:1;stroke-width:0.26458332px"
          id="tspan54633">         A                      triangle k  kA</tspan><tspan
          sodipodi:role="line"
          x="17.838007"
          y="277.41141"
-         style="stroke-width:0.26458332px;fill:#00d455;fill-opacity:1;"
+         style="fill:#00d455;fill-opacity:1;stroke-width:0.26458332px"
          id="tspan62500">      ckC                                       kB        kC</tspan><tspan
          sodipodi:role="line"
          x="17.838007"
          y="280.93918"
-         style="stroke-width:0.26458332px;fill:#00d455;fill-opacity:1;"
+         style="fill:#00d455;fill-opacity:1;stroke-width:0.26458332px"
          id="tspan62502">                 II              triangle p pA        pC      </tspan><tspan
          sodipodi:role="line"
          x="17.838007"
          y="284.46695"
-         style="stroke-width:0.26458332px;fill:#00d455;fill-opacity:1;"
+         style="fill:#00d455;fill-opacity:1;stroke-width:0.26458332px"
          id="tspan62504">III                             </tspan><tspan
          sodipodi:role="line"
          x="17.838007"
          y="287.99472"
-         style="stroke-width:0.26458332px;fill:#00d455;fill-opacity:1;"
+         style="fill:#00d455;fill-opacity:1;stroke-width:0.26458332px"
          id="tspan62506">                    C                                      pB  </tspan><tspan
          sodipodi:role="line"
          x="17.838007"
          y="291.52249"
-         style="stroke-width:0.26458332px;fill:#00d455;fill-opacity:1;"
+         style="fill:#00d455;fill-opacity:1;stroke-width:0.26458332px"
          id="tspan62508">         B                                    k</tspan><tspan
          sodipodi:role="line"
          x="17.838007"
          y="295.05029"
-         style="stroke-width:0.26458332px;fill:#00d455;fill-opacity:1;"
+         style="fill:#00d455;fill-opacity:1;stroke-width:0.26458332px"
          id="tspan62510">               IV                                  </tspan><tspan
          sodipodi:role="line"
          x="17.838007"
          y="298.57806"
-         style="stroke-width:0.26458332px;fill:#00d455;fill-opacity:1;"
+         style="fill:#00d455;fill-opacity:1;stroke-width:0.26458332px"
          id="tspan73760">     V                                          I     p</tspan><tspan
          sodipodi:role="line"
          x="17.838007"
          y="302.10583"
-         style="stroke-width:0.26458332px;fill:#00d455;fill-opacity:1;"
+         style="fill:#00d455;fill-opacity:1;stroke-width:0.26458332px"
          id="tspan62512">     </tspan></text>
     <path
        sodipodi:nodetypes="cccc"
