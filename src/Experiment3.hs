@@ -409,7 +409,7 @@ experiment3RAW11 ghAdd d subroutineList foPtc foLi nforCalc fopi= do
             let maxY = maximum maXyS
             let maxZ = maximum maXzS
      -- 'quirky example'
-            let calcAlgoExperiment3 =  [twoXtwo,threeXthree,(fiveXfive nforCalc)] --fiveXfive 1
+            let calcAlgoExperiment3 =  mAscent twoXtwo 1 --map getOutX twoXtwo --[twoXtwo,threeXthree,(fiveXfive nforCalc)] --fiveXfive 1
                   where
                    bOn = exp3Frac;
                    twoXtwo = [(10,maxY),(10,15),(0,15),(0,maxY)];
@@ -417,6 +417,24 @@ experiment3RAW11 ghAdd d subroutineList foPtc foLi nforCalc fopi= do
                    threeXthree = [(maxX,maxY), (maxX, fo3y),(11,fo3y),(11,maxY)];
                    varX x = (maxX- ( (maxX-10)- (x))); 
                    fiveXfive x = [((varX x),25), ((varX x), 0),(0,0),((varX x),25)];
+                   getOutX t = fst t;
+                   getOutY t = snd t; 
+                   hex2x2 = [(10, maxY),(0,15),(0,0)];
+                   -- searched a' alpha c = (sin alpha) * c;
+                   mAscent ins which = let step1 t r = head$ausw r t
+                             in let fomapS = (length ins) 
+                             in let mapS = map (step1 ins) [1..(fomapS)]
+                             in let xxxS = ausw which mapS --getOutX mapS
+                             in let yyyS = ausw (which +1) mapS --getOutY mapS 
+                             in xxxS -- yyyS -xxxS;  --(y2 - y1) / x2 -x1)  -- (y2-y1)/(x2-x1)
+                   foa'' r = (head(ausw r hex2x2)) ;
+                   a''= (foa'' 3)  -- y pf Cq is the y coordinate of Point C(3) of towXtwo
+                   yAof2x2 = getOutY (foa'' 1) -- a of 2x2 = (y of Aq) 
+                   yBof2x2 = getOutY (foa'' 2) ; 
+                   b'' = sqrt (( (yAof2x2 - yBof2x2)^2) + yBof2x2^2);
+                   c'' forA =  sqrt (yAof2x2 ^2 + forA ^2) -- (yAof2x2 - yBof2x2);
+                   bBp = yBof2x2 ;-- side b o f triangle p
+               --    cCk =  -- side c of triangle c 
 
             let cE3 = calcAlgoExperiment3
             let foRunner gb1 gb2 = let foGb1 gb =  map realToFrac (map ord gb )
@@ -425,7 +443,7 @@ experiment3RAW11 ghAdd d subroutineList foPtc foLi nforCalc fopi= do
             let ptcToInt m = let loadInBlank = map (\c -> if c=='.' then ' '; else c)  
                              in let myTruncate = read$head$words$loadInBlank m
                              in myTruncate
-            return cE3 --aRunner
+            return (cE3) --ptcToInt nforCalc )--cE3 --aRunner
        moreReads 
 --------------------------------------------
 
