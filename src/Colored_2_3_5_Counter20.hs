@@ -1489,7 +1489,8 @@ getRid x = let a = (map ord x)
            in let c = b 
            in c
 
---------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------
+-- WRITE STEP IV SVG (under development) 29-09-2020 ------------------------------------------------------------------
 -- legos: [String] ; html/svg/script buiding parts for svg  example1: svgStrings0
 -- wander where will rect go now just x (work in one line)
 -- anchor: (Double,Double) ;first starting value for plot (x,y)
@@ -1580,6 +1581,58 @@ legos id cx cy col = ("<ellipse id=\""++show id++"\" cx=\""++ show cx ++"\" cy=\
                       "<animateColor attributeName=\"fill\" attributeType=\"CSS\" from=\"blue\" to=\"lime\" begin=\"1s\" dur=\"6s\"  repeatCount=\"indefinite\" />\n"++
                       "</ellipse>\n")
 
+-- bradleyFin = 
+------------------------------------------------------------------------------------- End write StepiV under development
+--
+--------------------------------------------------------------------------------------------------------------------------
+-- coordinate point for SVG display  
+foBrad = [[(16,99),(42,109),(70,117),(96,128),(124,137),(148,148)],{- y=0 first front left-}
+         [(183,134),(160,126),(131,116),(105,106),(79,97),(52,86)], {- y = 1 snd from front-} 
+         [(85,74),(112,83),(139,93),(166,102),(192,112),(216,122)],
+         [(120,62),(147,70),(174,81),(201,91),(228,100),(252,109)],
+         [(154,48),(182,58),(209,69),(235,77),(263,87),(287,96)],
+         [(190,35),(270,66),(216,46),(245,55),(298,75),(322,83)]]
+--bradleyTransform =  
+-- similar to above but WRITE hexagons ............................. 29-09-2020 ------------------------------------------------------------------
+-- legos: [String] ; html/svg/script buiding parts for svg  example1: svgStrings0
+-- wander where will rect go now just x (work in one line)
+-- anchor: (Double,Double) ;first starting value for plot (x,y)
+fofina2	 anchor = do
+           exp3Header <- readFile "textS/Experiment3Header.txt"
+           exp3Tail <- readFile "textS/Experiment3Tail.txt"
+           let el cx cy rx ry foCol=  ("<ellipse cx=\""++cx++"\" cy=\""++cy++"\" rx=\""++rx++"\" ry=\""++ry++"\" stroke=\"black\" stroke-width=\"2px\" style=\"fill:"++foCol++"\">\n"++ "</ellipse>\n")
+
+           layerNO <- forM [1,2] (\ly -> do 
+                let plugCol = colorList ly 
+                aMonada <- forM [1..6] (\os -> do 
+                let conLongituda =  (tk os foBrad)
+                innRead <- forM [1..6] (\cs -> do 
+                     let gtFst = show$fst$head$ausw cs conLongituda
+                     let gtSnd = show$snd$head$ausw cs conLongituda
+                     let inPlug = el gtFst gtSnd (unwords( map fst$dotSize ly)) (unwords(map snd$dotSize ly)) (concat plugCol)
+                     return (inPlug))
+                return(innRead))
+    -- should be set to 200 or move whole field
+                
+                let zooSvg = (mapField ly)++(concat aMonada)++(words ("</g>\n</g>\n"))
+                return(zooSvg))
+           let zooSvg = exp3Header++ (unwords$concat$ layerNO)++exp3Tail
+           writeFile "zooSvg.svg" (zooSvg)                            
+          -- putStrLn (show aMonada)
+           putStrLn "transformed to hexagon"
+               
+  where
+     dar is so =  ausw is so;
+     colorList c = dar c ["lightblue","lime","blue","darkgray","black","white","lime"];
+     dotSize d = dar d [("5","7"),("10","12"),("5","7")];
+     fieldPosi fp = (" <g transform=\"translate(0,"++ fp ++")\">\n<g>\n");
+     mapField d = ausw d $ map fieldPosi ["0","200"];
+
+    -- rectAnimate = dar 1 legos; 
+    
+-------------------------------------------------------------------------------------
+
+-------------------------------------------------------------------------------------
 -- get screen posi "c:/stack/SimiaritYWriter20/src/textS/theSVGHeader.txt"
 textSvg = do 
     atext <- readFile "c:/stack/SimilaritYWriter20/src/textS/story01.txt"
@@ -1718,4 +1771,4 @@ evalToWrit astrinG = if tzBool>0 then prsRoot++(head tz3)++(show tzInt)++"."++(l
 
 
 
-
+-- basis
