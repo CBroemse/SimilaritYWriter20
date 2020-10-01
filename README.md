@@ -95,7 +95,97 @@
                   *> let li2 = ["that","is","the","case."]
                   *> let li3 = [[li1,li2]]
   
-                  *> let myTest at = runKBASE 2 [1,2] 1 2 at 2 (li3) 1 2 3 4
+                  *> let myTest at = runKBASE 2 [1,2] 1 2 at 2 (li3) 1 2 3 4given :  
+
+         P(B|A) * P(A)
+P(A|B) = --------------
+	     P(B)
+
+binomial expansions
+with Pascals_triangle
+
+???	     
+           +
+= ( P(A|B)   (PA|B) ) ^2 = 
+           -
+
+
+= ....
+
+P()
+  
+ ###### bstract Experiment3
+
+outcomes before final results:
+What started out to be a sorting algorythm turned 
+into a function that filters numbers out of strings.
+
+in contrast to previous examples only works with
+numbers in strings
+
+    *Experiment3> let li6 = ["1b*00=3","AAA=3BAABAB","A4A=5BAB","A5=7AA","AA5=A7BBBAA","B2BBAA"] 
+ => will work in the 'inActie' main function of 'Experiment3.hs'
+
+ whereas li7 below wont because the last atom 
+ is missing a number digit
+ 
+    *> let li7 = ["1b*00=3","AAA=3BAABAB","A4A=5BAB","A5=7AA","AA5=A7BBBAA","BBBAA"] 
+
+ WITHOUT ptc function r
+ randomly guess and find
+ solutions based on the
+ 'solution' variable (e.g li5)
+ pv variabes (the first 4 ) not being used
+ but ready to be plugged into data types below
+ 
+    *Experiment3> (inActie ["0xy0z=3"] ["x0y0z=6"] ["0x0yz=2"] ["xyz=11"] li5)
+ => - ten different suggestions based on 
+      'zufallBasic1' a random generator
+   - one line un-nubbed 
+   - ten random solutions positions for each of the six atoms
+     of a li list
+ 
+ older approach need li list length 5  to work
+ 
+    *>let li = ["person","Steve","shy","withdrawn","farmer","book"]
+    *>let li2 = ["person","Steve","shy","withdrawn","librarian","booky"]
+
+    *>let li3 = [[li,li2]]
+    *>let myTest at = runKBASE 2 ["1","2"] 1 2 at 2 (li3) 1 2 3 4
+    *> myTest "country"
+
+###### Experiment 3, without ptc approach
+premise:
+if ptc dont work at least we have an iterative process
+without the whole framework provided
+
+
+A in | B and notB |
+'poolBandNotB'
+=> give n many guesses 
+
+    e.g *> map chr (poolBandNotB li5 1729)
+    *> "AABBBAABBA7B7AABBBB7ABABB". 
+
+the propability of the pool of above 
+being at which position of one of
+four pv functions         pv1         pv2         pv3        pv4
+
+    P(goldTray) = (inActie ["0xy0z=3"] ["x0y0z=6"] ["0x0yz=2"] ["xyz=11"] li5)
+
+if pvs and li5 of above match up we have them even ready 
+to be turned into Punkt format. which is only used
+so far to change functions applied to fill a 'goldtray'
+
+    e.g*> let pi = Punkt "extern" Nothing Nothing Nothing Nothing Nothing
+
+  with "extern" the given propability of
+  a solution B in an underlyaing solution space A -> P(B in A)
+
+		  
+		  
+		  
+		  
   ###### Just li
   ![alt tag](https://github.com/CBroemse/SimilaritYWriter20/blob/master/source/ptc4wittsatz1.png)
   
