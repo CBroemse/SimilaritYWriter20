@@ -411,9 +411,9 @@ experiment3RAW11 ghAdd d subroutineList foPtc foLi nforCalc fopi= do
      -- 'quirky example'
             let calcAlgoExperiment3 =  let triangle_' =  [(b',c'),(b',0),(0,0)]
                                        in let triangle_'' = [(b',c'),(0,0),(0,a')]
-                                       in let triangle_k m = [(b',c'),(b',a'),((aAk m),a')]
+                                       in let triangle_k m = [(b',c'),(b',a'),(b,a')]
                                      --  in let triangle_p = 
-                                       in mAscent triangle_'' 1 --map getOutX twoXtwo --[twoXtwo,threeXthree,(fiveXfive nforCalc)] --fiveXfive 1
+                                       in triangle_k 1 --map getOutX twoXtwo --[twoXtwo,threeXthree,(fiveXfive nforCalc)] --fiveXfive 1
                   where
                    bOn = exp3Frac;
                    twoXtwo = [(10,maxY),(10,15),(0,15),(0,maxY)];
@@ -439,7 +439,6 @@ experiment3RAW11 ghAdd d subroutineList foPtc foLi nforCalc fopi= do
                    foc'' r m = (head(ausw r (fiveXfive m))) ;
                    a''= (getOutY (foa'' 3));  -- y pf Cq is the y coordinate of Point C(3) of towXtwo
                    pointCk m = (( a''),(m*a''+ 0));
-                    
                    xAqof2x2 = getOutX (foa'' 1); -- x of A quadrant of 2x2 
                    yAqof2x2 = getOutY (foa'' 1); -- a of 2x2 = (y of Aq) 
                    yBqof2x2 = getOutY (foa'' 2) ;
@@ -455,7 +454,11 @@ experiment3RAW11 ghAdd d subroutineList foPtc foLi nforCalc fopi= do
                    cCk = yAqof2x2 - yBqof2x2; 
                    alpha = a'/b';
                    a = (sin alpha)* c;
-                      
+                   cosAlpha = ((a'^2)/(-2*b'*c)) - ((b'^2)/(-2*b'*c)) -((c^2)/(-2*b'*c));
+                  -- get b with b' of above
+                   cosBeta = (cos 90);
+                 -- + 1 due to offset of whole wxm data
+                   b = ((((((-1)* a)) + (((-1)*c)) - (sqrt(2*a*c**cosBeta)))/10)-1)*(-1);
                    
                   -- aAk = sin
               -- +###############################     cCk = fofina to be continue here !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1 -- side c of triangle c #############################
