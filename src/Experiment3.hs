@@ -409,12 +409,16 @@ experiment3RAW11 ghAdd d subroutineList foPtc foLi nforCalc fopi= do
             let maxY = maximum maXyS
             let maxZ = maximum maXzS
      -- 'quirky example'
-            let calcAlgoExperiment3 = b'' --[( mAscent twoXtwo 5),( mAscent twoXtwo 3)] --map getOutX twoXtwo --[twoXtwo,threeXthree,(fiveXfive nforCalc)] --fiveXfive 1
+            let calcAlgoExperiment3 =  let triangle_' =  [(b',c'),(b',0),(0,0)]
+                                       in let triangle_'' = [(b',c'),(0,0),(0,a')]
+                                       in let triangle_k m = [(b',c'),(b',a'),((aAk m),a')]
+                                     --  in let triangle_p = 
+                                       in mAscent triangle_'' 1 --map getOutX twoXtwo --[twoXtwo,threeXthree,(fiveXfive nforCalc)] --fiveXfive 1
                   where
                    bOn = exp3Frac;
                    twoXtwo = [(10,maxY),(10,15),(0,15),(0,maxY)];
                    fo3y = (maxY - (maxY- (maxX-11)));
-                   threeXthree = [(maxX,maxY), (maxX, fo3y),(11,fo3y),(11,maxY)];
+                   threeXthree = [(maxX,maxY), (maxX, 15),(11,fo3y),(11,maxY)];
                    varX x = (maxX- ( (maxX-10)- (x))); 
                    fiveXfive x = [((varX x),25), ((varX x), 0),(0,0),((varX x),25)];
                    getOutX t = fst t;
@@ -424,25 +428,45 @@ experiment3RAW11 ghAdd d subroutineList foPtc foLi nforCalc fopi= do
                    mAscent ins which = let step1 t r = head$ausw r t
                              in let fomapS = (length ins) 
                              in let mapS = map (step1 ins) [1..(fomapS)]
-                             in let xxxS = ausw which mapS --getOutX mapS
-                             in let yyyS = ausw (which +1) mapS --getOutY mapS 
-                             in xxxS -- yyyS -xxxS;  --(y2 - y1) / x2 -x1)  -- (y2-y1)/(x2-x1)
+                             in let x1S = getOutX$head (ausw which mapS) --getOutX mapS
+                             in let y1S = getOutY$head (ausw which mapS) --getOutX mapS
+                             in let x2S = getOutX$head (ausw (which +1) mapS) 
+                             in let y2S = getOutY$head (ausw (which +1) mapS) --getOutY mapS 
+                             in let calc_m = (y2S - y1S) / (x2S -x1S)  -- (y2-y1)/(x2-x1)
+                             in sqrt (x1S^2+y1S^2)
                    foa'' r = (head(ausw r hex2x2)) ;
-                   a''= (foa'' 3)  -- y pf Cq is the y coordinate of Point C(3) of towXtwo
-                   yAqof2x2 = getOutY (foa'' 1) -- a of 2x2 = (y of Aq) 
-                   yBqof2x2 = getOutY (foa'' 2) ; 
-                   b'' = sqrt (( (yAqof2x2 - yBqof2x2)^2) + yBqof2x2^2);
-                   c'' forA =  sqrt (yAqof2x2 ^2 + forA ^2) -- (yAof2x2 - yBof2x2);
-                   bBp = yBqof2x2 ;-- side b o f triangle p
+                   fob'' r = (head(ausw r threeXthree)) ;
+                   foc'' r m = (head(ausw r (fiveXfive m))) ;
+                   a''= (getOutY (foa'' 3));  -- y pf Cq is the y coordinate of Point C(3) of towXtwo
+                   pointCk m = (( a''),(m*a''+ 0));
+                    
+                   xAqof2x2 = getOutX (foa'' 1); -- x of A quadrant of 2x2 
+                   yAqof2x2 = getOutY (foa'' 1); -- a of 2x2 = (y of Aq) 
+                   yBqof2x2 = getOutY (foa'' 2) ;
+                   xBqof3x3 = getOutX (fob'' 3) ;
+                   a' = yBqof2x2;
+                   b' = xAqof2x2;
+                   c' = c;
+                   c =  yAqof2x2;
+                   b'' = sqrt (( (xAqof2x2 - yBqof2x2)^2) + yBqof2x2^2);
+                   c''= xAqof2x2; -- (yAof2x2 - yBof2x2);
+                   aAk m = xBqof3x3  -- + (b' - (getOutY (foa'' 1 )));
+                   bBp m = xAqof2x2 - (aAk m); --  ;-- side b o f triangle p
+                   cCk = yAqof2x2 - yBqof2x2; 
+                   alpha = a'/b';
+                   a = (sin alpha)* c;
+                      
+                   
+                  -- aAk = sin
               -- +###############################     cCk = fofina to be continue here !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1 -- side c of triangle c #############################
 
             let cE3 = calcAlgoExperiment3
-            let foRunner gb1 gb2 = let foGb1 gb =  map realToFrac (map ord gb )
-                                   in let foGb2 gb =  map realToFrac (map ord gb )
-                                   in  similaritYvalue (foGb1 gb1) (foGb2 gb2)
-            let ptcToInt m = let loadInBlank = map (\c -> if c=='.' then ' '; else c)  
-                             in let myTruncate = read$head$words$loadInBlank m
-                             in myTruncate
+         --   let foRunner gb1 gb2 = let foGb1 gb =  map realToFrac (map ord gb )
+           --                        in let foGb2 gb =  map realToFrac (map ord gb )
+             --                      in  similaritYvalue (foGb1 gb1) (foGb2 gb2)
+        --    let ptcToInt m = let loadInBlank = map (\c -> if c=='.' then ' '; else c)  
+          --                   in let myTruncate = read$head$words$loadInBlank m
+            --                 in myTruncate
             return (cE3) --ptcToInt nforCalc )--cE3 --aRunner
        moreReads 
 --------------------------------------------
