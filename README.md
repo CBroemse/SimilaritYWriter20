@@ -28,7 +28,69 @@
    There are 5 variable functions ( ptc5,ptc6,ptc7,ptc8,ptc9) which yield different 
    related graphs. (see 'How things are compared')
    
-    b)
+ #### b)'Experiment3.hs'
+
+ Besides of all graphics and illustrations that all  
+ make use of the 'ptc' functions another concept
+ revealed itself as a by-product. The following
+ four functions only depend on similarity values
+ which is the starting point of the ptc functions
+ as well.
+
+ the result is ONLY dealing with strings that must 
+ contain:
+      - numbers otherwise leads to an error
+      - sufficient numbers in overall li input
+      - an equal sign '='
+      - letters
+       
+    =>  e.g "A3=sd4A"  -- will work
+        "A=sdA"    -- wont
+	   "AsdA"     -- wont
+	   "AAA=sd1A"   -- with one side 
+	   of the '=' length>3 will
+	   always work.
+
+##### I.  Experiment3 randomly guessing solutions
+ B in A via
+ e.g
+
+    *Experiment3> (inActie ["0xy0z=3"] ["x0y0z=6"] ["0x0yz=2"] ["xyz=11"] li5)
+    *Experiment3> let li6 = ["1b*00=3","AAA=3BAABAB","A4A=5BAB","A5=7AA","AA5=A7BBBAA","B2BBAA"] 
+ => will work in the 'inActie' main function of 'Experiment3.hs'
+
+ whereas li7 below wont because the last atom 
+ is missing a number digit
+
+    *> let li7 = ["1b*00=3","AAA=3BAABAB","A4A=5BAB","A5=7AA","AA5=A7BBBAA","BBBAA"] 
+
+##### II. generate "infinetly"  many solutions
+
+    *Experiment3> poolBandNotB li4 1111111
+      [61,121,120,61,121,120,61,121,120,61,121,120,61,121,120,61,121,120]
+
+    *Experiment3> map chr (poolBandNotB li4 1111111)
+     "=yx=yx=yx=yx=yx=yx"
+
+##### III./IV. compare to bonelist to solution
+ li4                                    with zeros                without zeros
+ compare to bonelist to solution 1   expressAinA li5 pi 1    expressAsinA li5 pi 1
+                     to solution 2   expressAinA li5 pi 2    expressAsinA li5 pi 2
+
+    *Experiment3> expressAsinA li4 pi 2
+    [48.51138353765324,48.78048780487805,48.421052631578945,43.67816091954023]     
+
+    *Experiment3> expressAinA li4 pi 1
+    [90.54290718038528,90.59233449477351,90.52631578947368,89.65517241379311]
+
+ => change from comparing a row of a li list with its own atoms 
+ 
+    let pi = Punkt "intern" Nothing Nothing Nothing Nothing Nothing
+
+ OR 
+ compare with guess 
+   
+    let pi = Punkt "extern" Nothing Nothing Nothing Nothing Nothing
     TheAtoBplotter*> let li = ["The","world","is","everything"]
                   *> let li2 = ["that","is","the","case."]
                   *> let li3 = [[li1,li2]]
