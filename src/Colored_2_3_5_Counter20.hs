@@ -87,6 +87,10 @@ module Colored_2_3_5_Counter20 (
     , ausw  
     , progLiT -- export some Prog Vars to TheAtoB.." and Main 
     , ptc0,ptc2,ptc3,ptc4,ptc5,ptc6,ptc7,ptc8,ptc9
+    , fofina2 -- write ptc of wxm to svg  -- 01-10-2020
+    , foBrad -- according to this metric change above coordinate points
+    , egTriangle -- a test triange
+    , aHexa
       ) where
 
 import Data.List
@@ -1592,11 +1596,22 @@ foBrad = [[(16,99),(42,109),(70,117),(96,128),(124,137),(148,148)],{- y=0 first 
          [(120,62),(147,70),(174,81),(201,91),(228,100),(252,109)],
          [(154,48),(182,58),(209,69),(235,77),(263,87),(287,96)],
          [(190,35),(270,66),(216,46),(245,55),(298,75),(322,83)]]
+
+aHexa =  [[(70,117)],{- y=0 first front left-}
+         [(183,134),(52,86)], {- y = 1 snd from front-} 
+         [(154,48),(287,96)],
+         [(216,46)]]
+
+
 --bradleyTransform =  
 -- similar to above but WRITE hexagons ............................. 29-09-2020 ------------------------------------------------------------------
 -- legos: [String] ; html/svg/script buiding parts for svg  example1: svgStrings0
 -- wander where will rect go now just x (work in one line)
--- anchor: (Double,Double) ;first starting value for plot (x,y)
+-- anchor: [(Double,Double)] ;first starting value for plot (x,y)
+-- variable list length e.g from a triangle to plot
+egTriangle = [[(10.0,26.470588235294116),(10.0,15.0),(6.636306217783966,15.0)]]
+-- will work with both 'foBrad' or 'egTriangle' 
+--
 fofina2	 anchor = do
            exp3Header <- readFile "textS/Experiment3Header.txt"
            exp3Tail <- readFile "textS/Experiment3Tail.txt"
@@ -1604,12 +1619,14 @@ fofina2	 anchor = do
 
            layerNO <- forM [1,2] (\ly -> do 
                 let plugCol = colorList ly 
-                aMonada <- forM [1..6] (\os -> do 
-                let conLongituda =  (tk os foBrad)
-                innRead <- forM [1..6] (\cs -> do 
+                aMonada <- forM [1..(length anchor)] (\os -> do 
+                let conLongituda =  (tk os anchor)
+                let readMore = if length anchor == 1 then 1 
+                               else (length conLongituda)
+                innRead <- forM [1..(length conLongituda)] (\cs -> do 
                      let gtFst = show$fst$head$ausw cs conLongituda
                      let gtSnd = show$snd$head$ausw cs conLongituda
-                     let inPlug = el gtFst gtSnd (unwords( map fst$dotSize ly)) (unwords(map snd$dotSize ly)) (concat plugCol)
+                     let inPlug = el gtFst gtSnd (unwords( map fst$dotSize ly)) (unwords(map snd$dotSize ly)) (concat plugCol)                    
                      return (inPlug))
                 return(innRead))
     -- should be set to 200 or move whole field

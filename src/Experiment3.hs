@@ -408,12 +408,15 @@ experiment3RAW11 ghAdd d subroutineList foPtc foLi nforCalc fopi= do
             let maxX = maximum maXxS
             let maxY = maximum maXyS
             let maxZ = maximum maXzS
-     -- 'quirky example'
+     -- 'quirky example'  --
             let calcAlgoExperiment3 =  let triangle_' =  [(b',c'),(b',0),(0,0)]
                                        in let triangle_'' = [(b',c'),(0,0),(0,a')]
                                        in let triangle_k m = [(b',c'),(b',a'),(b,a')]
                                      --  in let triangle_p = 
-                                       in triangle_k 1 --map getOutX twoXtwo --[twoXtwo,threeXthree,(fiveXfive nforCalc)] --fiveXfive 1
+                                       in let wriSVG ank = C.fofina2 ank
+                                       in let testField = C.foBrad 
+                                       in let testHex = C.aHexa
+                                       in wriSVG testHex --triangle_k 1 --map getOutX twoXtwo --[twoXtwo,threeXthree,(fiveXfive nforCalc)] --fiveXfive 1
                   where
                    bOn = exp3Frac;
                    twoXtwo = [(10,maxY),(10,15),(0,15),(0,maxY)];
