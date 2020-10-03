@@ -38,7 +38,9 @@ module UsefulFunctions19 (
         , formelNormWahr -- statistical destribution to calc metric for ptc plot in svg
         , form2 -- based on this  
         , zui -- 
-        , minkowskiAdd --(lister2 KAAnsatz19) a list selector to buid a tensor 
+        , minkowskiAdd --(lister2 KAAnsatz19) a list selector to buid a tensor
+        , minkowskiAdd2 -- apply a list of functions to the outcome of above 
+        , maxMy 
          ) where
      --   , nameACCESSFUNCTION ) where
 -- always color sceME 'delek'
@@ -169,6 +171,95 @@ minkowskiAdd val crit dipfa = let a=  maxMy val crit dipfa
                   --  in let e = drop 4 (take 5 d)
                     in let f = map round (map (*100) d)
                     in f
+----------------------------------------------------------------------
+-- To be plugged in another function that has an own metric or (maps a list)
+--  in this used in  ??? fofina2 in Col*> or experiment3RAW11 in Exp*3> ????????????????????????????
+-- -- prepare data to do (head$head $nub$foptc 10) 
+           --  by (head$head $nub$foptc val)  
+--
+--TASK -  in 'Experiment3.hs' :1623 fofina2 write trianlges with ptc values to forBrad metric
+--      using minkowskiAdd2 apply list of functions to outcome of minkowskiAdd
+--      'Colored..Counter' fofina2 writes svg file and triangles of Bradley transformation
+--
+--
+--      foMAx: String e.g "2.8" -> gauss ceiling ->  "2.9" 
+--      => for each line of x or y run this function seperatly and not as pairs
+--         and find the corresponding value x or y in a given A 
+--         we will run an 'elemIndices' to find a B of A  with foptc as limit
+--         A: a minkowskiAdd list ([Int]) that represents A stigmatic 
+--            and not stigmatic 
+--         B: the first two digits of an occouring max x or y value a metric determined
+--            by the ptc functions 
+--            via e.g Col*>  ((nub$ptc6 10)) -- 
+--               .... -- => [[x,y,z]] a list of lists 
+--                          x y z coordinate points
+--
+--atom: Double e.g 22.28 any value x or y of any list of pairs with varieng length 
+--e.g Col*> minkowskiAdd2  10.0 "1" ["2.9","2.8","0.01"] "2.81" (((ptc6 ))) 22.28  ------------UNDER DEVELOPMENT 03-10-2020 
+minkowskiAdd2 val crit dipfa foMax foptc = 
+                    --let foMax = concat (mximum dipfa)
+                    let a=  maxMy val crit dipfa
+                    in let b = (read a)
+                    in let a2 = (read (minMy val crit dipfa))
+                    in let c = ((b)-0.01)
+                    in let d = [(b),(c)..(a2)]
+                  --  in let e = drop 4 (take 5 d)
+                    in let f = map round (map (*100) d)
+           -- prepare data to do (head$head $nub$foptc 10) 
+           --  by (head$head $nub$foptc val) ; below  
+                    in let rekenMe = ceiling(realToFrac (head$head$nub$foptc val)*100) -- just get same ptc values to claculate with
+                    in let rekenNorm = floor(realToFrac (head$head$nub$foptc val)*100) -- floor; help find value in mink add
+                    in let makEven = ((floor(realToFrac (head$head$nub$foptc val)*1)) * 100) 
+                    in let anchorInt =   (minkowskiAdd 1 "1" ["0.0",foMax,"0.01"]) 
+                    in let anchor = map show (minkowskiAdd 1 "1" ["0.0",foMax,"0.01"]) -- map show (f)
+                    in do 
+                    layerNO <- forM [1] (\ly -> do 
+                      --  let plugCol = colorList ly 
+                        aMonada <- forM (map read anchor) (\os -> do -- ..(length anchor)] (\os -> do 
+                        let conLongituda =  (tk os anchor)
+                        let readMore = if length anchor == 1 then 1 
+                                       else (length conLongituda)
+                        innRead <- forM [1] (\cs -> do -- ..(length conLongituda)] (\cs -> do
+                   -- feed minkowskiAdd to various functions 
+                   --        val = 1 not used , crit "1" must be contained in dipfa otherwise error
+                   --        dipfa ; the min and the max value of a given 2d field 
+                             let goONot = tk os (map show (minkowskiAdd 1 "1" ["0.0",foMax,"0.01"]))
+                             let gtFst = goONot --head$tk cs$words$show ( (conLongituda))
+                          --   let gtSnd = show$snd$head$tk cs conLongituda
+                            -- let inPlug = el gtFst gtSnd (unwords( map fst$dotSize ly)) (unwords(map snd$dotSize ly)) (concat plugCol)                    
+                             return (gtFst)) --(inPlug))
+                        return(innRead))
+    -- should be set to 200 or move whole field
+                        let findIndex = (unlines$concat aMonada)
+
+                        let zooSvg = unwords$concat$aMonada -- (mapField ly)++unwords(concat( concat aMonada))++(("</g>\n</g>\n"))
+                        return(zooSvg))
+                    return layerNO
+                    let aSpectrum  = let toCalc = (take 3 (show rekenNorm)) -- rekenNorm
+                                     in let findCalc = (read toCalc) `elemIndices` anchorInt 
+                                     in show findCalc --[layerNO] -- findCalc
+                                         --in let abs2 = (rekenMe-((head$head$foptc 10)*100))
+                                         --let run = number / 
+                                        -- in abs1 -- if abs1 < ((head$head$foptc 10)*100) then  abs1
+                                           -- else abs2
+
+                   -- putStrLn (unwords(layerNO))
+           --         putStrLn (show rekenMe) 
+             --       putStrLn (show rekenNorm)
+               --     putStrLn (show makEven)
+                 --   putStrLn (show(aSpectrum)) --(unwords(concat aSpectrum))
+       -- => export: max limit A , normal level B, first two digits B, location B in given minkowskiAdd 
+                    [show rekenMe,show rekenNorm,show makEven,( aSpectrum)]
+
+
+     where
+    -- dar is so =  tk is so;
+   --  colorList c = dar c ["lightblue","lime","blue","darkgray","black","white","lime"];
+   --  dotSize d = dar d [("5","7"),("10","12"),("5","7")];
+     fieldPosi fp = (" <g transform=\"translate(0,"++ fp ++")\">\n<g>\n");
+     mapField d = tk d $ map fieldPosi ["0","200"];
+
+
 
 -- Formel zurBerechnung der proz Wahrscheinlichkeit
 -- laesst Raum fuer offene Proznte, d,h, die liste der 

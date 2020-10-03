@@ -1611,7 +1611,7 @@ aHexa =  [[(70,117)],{- y=0 first front left-}
 -- variable list length e.g from a triangle to plot
 egTriangle = [[(10.0,26.470588235294116),(10.0,15.0),(6.636306217783966,15.0)]]
 
---metricChoose minX maxX minY maxY g v = ((length g)/ v )
+--metricChoose minX maxX minY maxY g v = (maxX/maxBradley)*maxX
 -- will work with both 'foBrad' or 'egTriangle' 
 --
 fofina2	 anchor = do
@@ -1622,7 +1622,6 @@ fofina2	 anchor = do
          -- mind the empty spaces determine shape
          --  3 triangle or 6 hexagon and so on.
            let graphs all = "<polyline id=\"hexagon\" points=\""++ all ++"\" class=\"hexa\" onclick=\"changeFill()\"/>"
-
            layerNO <- forM [1,2] (\ly -> do 
                 let plugCol = colorList ly 
                 aMonada <- forM [1..(length anchor)] (\os -> do 
@@ -1644,13 +1643,42 @@ fofina2	 anchor = do
            let dropZet =  map tail$ reverse anchor2 --drop 2 $ map reverse anchor2 --(map show $map reverse(map (drop 1 )(map reverse anchor2)))              -- should be set to 200 or move whole field
            let fopol =  unwords (map (filter (/=']')) (map (filter (/='[')) (map show dropZet)))  
            let polyLine = graphs fopol    
-           let zooSvg = ((words("<g transform=\"translate(0,200)\">\n"++"<g>\n"))++(words ("</g>\n</g>\n")))
+           let zooSvg2 = ((words("<g transform=\"translate(0,200)\">\n"++"<g>\n"))++(words ("</g>\n</g>\n")))
            let zooSvg = exp3Header++ (unwords$concat$ layerNO)++(polyLine)++exp3Tail
+
+----------------------------------------------------
+           let droZ = [(dropZet)]
+           minkowskiNO <- forM [1] (\ly -> do 
+                --let plugCol = colorList ly 
+                withM <- forM [1..(length droZ)] (\os -> do 
+                let getPairPtc =  (tk os dropZet)
+                innRead <- forM [1..2] (\cs -> do 
+                     -- read coordinate points could have dropped x or y instead
+                     let readXorY = "1" 
+                     let bn = words (take 5 $ show $ head (ausw cs getPairPtc))
+                     let clean =  words((filter (/='[') (unwords bn)))
+                     let more =  words((filter (/=',') (unwords clean)))
+                                     --else head(tk cs getPairPtc)
+                     let findElemB = ((minkowskiAdd2  10.0 "1" ["2.9","2.8","0.01"] (unlines more) ptc6 )) 
+
+                     --let gtFst = (readXorY cs) --head$ausw cs getPairPtc
+                    -- let gtSnd = show$snd$head$ausw cs getPairPtc
+                 --    let inPlug = el gtFst gtSnd (unwords( map fst$dotSize ly)) (unwords(map snd$dotSize ly)) (concat plugCol)                    
+                     return (map show more )) -- (findElemB))
+                return(innRead))
+    -- should be set to 200 or move whole field
+                 
+                let minko = withM --(mapField ly)++(map show (concat withM))++(words ("</g>\n</g>\n"))
+                return(minko))
+        
+
            writeFile "zooSvg.svg" (zooSvg)                            
           -- putStrLn (show aMonada)
            putStrLn "transformed to hexagon"
            putStrLn (polyLine)
-           putStrLn (unwords (map show dropZet))    
+           putStrLn (unwords (map show dropZet))
+           putStrLn (show anchor2)
+           putStrLn (unwords$concat$concat$concat$minkowskiNO)     
   where
      dar is so =  ausw is so;
      colorList c = dar c ["lightblue","lime","blue","darkgray","black","white","lime"];
