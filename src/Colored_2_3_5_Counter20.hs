@@ -1655,16 +1655,33 @@ fofina2	 anchor = do
                 innRead <- forM [1..2] (\cs -> do 
                      -- read coordinate points could have dropped x or y instead
                      let readXorY = "1" 
-                     let bn = words (take 5 $ show $ head (ausw cs getPairPtc))
-                     let clean =  words((filter (/='[') (unwords bn)))
-                     let more =  words((filter (/=',') (unwords clean)))
+                     let bn i = words (take i $ show $ head (ausw cs getPairPtc))
+                     let clean i=  words((filter (/='[') (unwords (bn i))))
+                     let moreRAW i=  words((filter (/=',') (unwords (clean i))))
+                     let more = moreRAW 5
+                     --let pWCThing = map read more
                                      --else head(tk cs getPairPtc)
+                     let fitMore = map ord (unlines more) 
+                     let filT   = let wehhere =  (46 `elemIndices` fitMore) -- where is the '.' 
+                                  in zipWith (+) [1..(length wehhere)] wehhere --map (tk t ) wehhere 
+                     let digiTs = let xHead = head (unwords$map show filT) 
+                                  in let yHead = last (unwords$map show filT) 
+                                  in if xHead == '4' then 
+                                                     let partPlus =words (take 4 $ show $ head (ausw cs getPairPtc))
+                                                     in (take 5 (show (head (ausw cs getPairPtc) *100)))     
+
+                                      else if xHead == '3' then 
+                                                     let partPlus =words (take 6 $ show $ head (ausw cs getPairPtc))
+                                                     in (take 5 (show (head (ausw cs getPairPtc) *100)))     
+                                      else  "0"++(take 4 (show (head (ausw cs getPairPtc) *1)))  
+               -- '''''''''''''''''########################################################################i for different 
+               --            
                      let findElemB = ((minkowskiAdd2  10.0 "1" ["2.9","2.8","0.01"] (unlines more) ptc6 )) 
 
                      --let gtFst = (readXorY cs) --head$ausw cs getPairPtc
                     -- let gtSnd = show$snd$head$ausw cs getPairPtc
                  --    let inPlug = el gtFst gtSnd (unwords( map fst$dotSize ly)) (unwords(map snd$dotSize ly)) (concat plugCol)                    
-                     return (map show more )) -- (findElemB))
+                     return (map show filT )) -- (findElemB))
                 return(innRead))
     -- should be set to 200 or move whole field
                  
@@ -1678,7 +1695,11 @@ fofina2	 anchor = do
            putStrLn (polyLine)
            putStrLn (unwords (map show dropZet))
            putStrLn (show anchor2)
-           putStrLn (unwords$concat$concat$concat$minkowskiNO)     
+           putStrLn (unwords$concat$concat$concat$minkowskiNO) 
+           let digiTs = let xHead = head (unwords$concat$concat$concat$minkowskiNO) 
+                        in let yHead = last (unwords$concat$concat$concat$minkowskiNO) 
+                        in xHead --if xHead == 3 then 
+           putStrLn ([digiTs])   
   where
      dar is so =  ausw is so;
      colorList c = dar c ["lightblue","lime","blue","darkgray","black","white","lime"];
