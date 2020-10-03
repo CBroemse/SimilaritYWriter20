@@ -408,6 +408,7 @@ experiment3RAW11 ghAdd d subroutineList foPtc foLi nforCalc fopi= do
             let maxX = maximum maXxS
             let maxY = maximum maXyS
             let maxZ = maximum maXzS
+            let minS = [(minimum maXxS),(minimum maXyS),(minimum maXzS)]
      -- 'quirky example'  --
             let calcAlgoExperiment3 =  let triangle_' =  [(b',c'),(b',0),(0,0)]
                                        in let triangle_'' = [(b',c'),(0,0),(0,a')]
@@ -416,7 +417,26 @@ experiment3RAW11 ghAdd d subroutineList foPtc foLi nforCalc fopi= do
                                        in let wriSVG ank = C.fofina2 ank
                                        in let testField = C.foBrad 
                                        in let testHex = C.aHexa
-                                       in wriSVG testHex --triangle_k 1 --map getOutX twoXtwo --[twoXtwo,threeXthree,(fiveXfive nforCalc)] --fiveXfive 1
+                                       in let punktFit = do 
+                                                     let prepA = [[maxX,maxY,maxY], minS] -- wriSVG testHex --triangle_k 1 --map getOutX twoXtwo --[twoXtwo,threeXthree,(fiveXfive nforCalc)] --fiveXfive 1
+                                                     polyLine <- forM [1,2] (\ly -> do  -- any geometric shape higher than 1 
+                                                                   let plugCol = colorList ly 
+                                                                   aMonada <- forM [1..(length anchor)] (\os -> do 
+                                                                   let conLongituda =  (tk os anchor)
+                                                                   let readMore = if length anchor == 1 then 1 
+                                                                                  else (length conLongituda)
+                                                                   innRead <- forM [1..(length conLongituda)] (\cs -> do 
+                                                                          let gtFst = show$fst$head$ausw cs conLongituda
+                                                                          let gtSnd = show$snd$head$ausw cs conLongituda
+                                                                          let inPlug = graphs ((unwords( map fst$dotSize ly))++" "++(unwords(map snd$dotSize ly)))                    
+                                                                          return (inPlug))
+                                                                    return (innRead))
+                                                                    return (aMonada))
+                                                     return polyLine
+                                       return punktFit
+                                       --in punktFit 
+                                       in wriSVG testHex
+
                   where
                    bOn = exp3Frac;
                    twoXtwo = [(10,maxY),(10,15),(0,15),(0,maxY)];

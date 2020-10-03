@@ -35,6 +35,10 @@ module UsefulFunctions19 (
         , getCurrentTime
         , diffDays 
         , timE
+        , formelNormWahr -- statistical destribution to calc metric for ptc plot in svg
+        , form2 -- based on this  
+        , zui -- 
+        , minkowskiAdd --(lister2 KAAnsatz19) a list selector to buid a tensor 
          ) where
      --   , nameACCESSFUNCTION ) where
 -- always color sceME 'delek'
@@ -136,8 +140,63 @@ unPair x = let a = map ord x
            in back
 ----------------------------------------------
 
+----------------------------------------------------------
+--statistical destribution -- 
+-- zui)++ "  Ist das Vorkommen der Zahlen im Spektrum von min nach Max")
+zui dipfa= map length (group (concat (sort (concat dipfa))))
+
+maxMy val crit dipfa = (maximum (dropWhile (\(val) -> val < crit ) ( dipfa)))
+minMy val crit dipfa = (minimum (dropWhile (\(val) -> val < crit ) ( dipfa)))
+-- to build a tensor we connect to a list generator
+-- dipfa: [String] ; 
+-- *C..> minkowskiAdd  1 "1" ["","2","1"]
+--   [200,199,..100]
+-- *C..> minkowskiAdd  1 "1" ["","2","0.1"]
+--   [200,199,..100,99..10]
+-- *C..> minkowskiAdd  1 "1" ["","2","0.01"]
+--   [200,199,..100,99..10,9..1]
+-- *C..> minkowskiAdd  1 "1" ["","2","0.001"]
+--   [200,199,..100,99..10,9..1,0]  -- equals
+-- *C..> minkowskiAdd  1 "1" ["","2","0.0"]
+--   [200,199,..100,99..10,9..,1,0]
 
 
+minkowskiAdd val crit dipfa = let a=  maxMy val crit dipfa
+                    in let b = (read a)
+                    in let a2 = (read (minMy val crit dipfa))
+                    in let c = ((b)-0.01)
+                    in let d = [(b),(c)..(a2)]
+                  --  in let e = drop 4 (take 5 d)
+                    in let f = map round (map (*100) d)
+                    in f
+
+-- Formel zurBerechnung der proz Wahrscheinlichkeit
+-- laesst Raum fuer offene Proznte, d,h, die liste der 
+-- Normwahrscheinlichkeit wird immer unter 100% bleiben 
+-- problem k	leine Wahrscheinlichkeiten unter 1% werden 
+-- nichtmehr erfasst; 
+-- -> begrenzt den Zufalls generator , schraenkt die bandbreite
+-- d.h das Spektrum der simulierten vals ein 
+-- eine loesung: der io string wird  multipliziert
+form t c z = (100/(t+(2*c)))* z
+
+-- Formel fuer NORMALE Wahrscheinlichkeit
+-- wird getested um Verhalten im Memory2 in hinblick auf 
+-- bessere simulierte vals
+-- -> gibt volles Spektrum der simul val an volle Bandbreite
+form2 t c z = 100/(t* (c/c)*(1/z))
+
+-- set to form2 : full bandwidth of prior data set
+-- *C..> formelNormWahr  25 999999999 "" [["20.00"],["10.00"],["20.00"],["30.00"],["00.01"]]
+-- "100.0" -- verify all selected values for the tensor add up to the desired percentage
+formelNormWahr dr val crit dipfa = let a1 = let dieZeut = (sum (zui dipfa))
+                                            in show dieZeut 
+                                   in let a2 = show (length (minkowskiAdd val crit (concat dipfa)))
+                                   in let b1 i ii iii = show (form2 i ii iii)
+                        --  in let b2 = b1 (a1 a2 (head a3)) 
+                          
+                                   in a2 --b1 (read a1) (read a2) dr --[[a1],[a2],a3] 
+   
 ----------------------------------------------
 --___________________________________________
 -- take x lists of the length y of a [Int]

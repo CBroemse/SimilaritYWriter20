@@ -1591,7 +1591,7 @@ legos id cx cy col = ("<ellipse id=\""++show id++"\" cx=\""++ show cx ++"\" cy=\
 --------------------------------------------------------------------------------------------------------------------------
 -- coordinate point for SVG display  
 foBrad = [[(16,99),(42,109),(70,117),(96,128),(124,137),(148,148)],{- y=0 first front left-}
-         [(183,134),(160,126),(131,116),(105,106),(79,97),(52,86)], {- y = 1 snd from front-} 
+         [(52,86),(79,97),(105,106),(131,116),(160,126),(183,134)], {- y = 1 snd from front-} 
          [(85,74),(112,83),(139,93),(166,102),(192,112),(216,122)],
          [(120,62),(147,70),(174,81),(201,91),(228,100),(252,109)],
          [(154,48),(182,58),(209,69),(235,77),(263,87),(287,96)],
@@ -1610,12 +1610,18 @@ aHexa =  [[(70,117)],{- y=0 first front left-}
 -- anchor: [(Double,Double)] ;first starting value for plot (x,y)
 -- variable list length e.g from a triangle to plot
 egTriangle = [[(10.0,26.470588235294116),(10.0,15.0),(6.636306217783966,15.0)]]
+
+--metricChoose minX maxX minY maxY g v = ((length g)/ v )
 -- will work with both 'foBrad' or 'egTriangle' 
 --
 fofina2	 anchor = do
            exp3Header <- readFile "textS/Experiment3Header.txt"
            exp3Tail <- readFile "textS/Experiment3Tail.txt"
            let el cx cy rx ry foCol=  ("<ellipse cx=\""++cx++"\" cy=\""++cy++"\" rx=\""++rx++"\" ry=\""++ry++"\" stroke=\"black\" stroke-width=\"2px\" style=\"fill:"++foCol++"\">\n"++ "</ellipse>\n")
+         -- all:String ; "87,0 174,50 174,150 87,200 0,150 0,50 87,0"
+         -- mind the empty spaces determine shape
+         --  3 triangle or 6 hexagon and so on.
+           let graphs all = "<polyline id=\"hexagon\" points=\""++ all ++"\" class=\"hexa\" onclick=\"changeFill()\"/>"
 
            layerNO <- forM [1,2] (\ly -> do 
                 let plugCol = colorList ly 
@@ -1630,14 +1636,21 @@ fofina2	 anchor = do
                      return (inPlug))
                 return(innRead))
     -- should be set to 200 or move whole field
-                
+                 
                 let zooSvg = (mapField ly)++(concat aMonada)++(words ("</g>\n</g>\n"))
                 return(zooSvg))
-           let zooSvg = exp3Header++ (unwords$concat$ layerNO)++exp3Tail
+           let anchor2 =  nub(ptc6 10)
+        -- turn ptc into 2d drop z coordinate for now
+           let dropZet =  map tail$ reverse anchor2 --drop 2 $ map reverse anchor2 --(map show $map reverse(map (drop 1 )(map reverse anchor2)))              -- should be set to 200 or move whole field
+           let fopol =  unwords (map (filter (/=']')) (map (filter (/='[')) (map show dropZet)))  
+           let polyLine = graphs fopol    
+           let zooSvg = ((words("<g transform=\"translate(0,200)\">\n"++"<g>\n"))++(words ("</g>\n</g>\n")))
+           let zooSvg = exp3Header++ (unwords$concat$ layerNO)++(polyLine)++exp3Tail
            writeFile "zooSvg.svg" (zooSvg)                            
           -- putStrLn (show aMonada)
            putStrLn "transformed to hexagon"
-               
+           putStrLn (polyLine)
+           putStrLn (unwords (map show dropZet))    
   where
      dar is so =  ausw is so;
      colorList c = dar c ["lightblue","lime","blue","darkgray","black","white","lime"];
