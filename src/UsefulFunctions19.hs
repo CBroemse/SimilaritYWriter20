@@ -267,27 +267,31 @@ minkowskiAdd2 val crit dipfa foMax foptc =
   -- forBrad: [[(Double,Double)]] coordinate points used in metric for svg Experiment3
   -- rowMumber: Int ; export the foBrad coordinates
   -- fstOsnd : function ; by fst do for X by snd do for Y of ONE pair of  coordinates
+  -- foXorY : a coordinate value x or y of a ptc function
+  --      e.g   "26.470588235294116"
+  -- forMinkAdd : needs 'formatted data'
+  --      e.g  "2.647"	
   -- -------------------------------------------------------------
   -- e.g Colored...*> (lengthXY (ptc6 )  [foBrad] 1 0 snd)
   -- --------------------------------------------------------------
   -- *> [([16,42,70,96,124,148],16.0,132,1.32,281,236,0.45)]
   -- ------------------------------------------------------------- 
   --   => bradX: the X OR Y coordinates of a selected row 
-  --              which is the metric for an svg plot
+  --             which is the metric for an svg plot
   --   => toSvgInt: Enter a reasonable value ( 0..999.99)
-  --                transforms value into bradX; a x-or-y-metric 
-  --                by log n * (x or y) + coordinate point on screen
+  --              transforms value into bradX; a x-or-y-metric 
+  --              by log n * (x or y) + coordinate point on screen
   --   => in example above 'aPunkt' is 'n' = 0 which leads
   --             with 'rowNumber' = 1 (of 5 possible rows of 'foBradly') 
   --             to y (via 'snd') at coordinate 0 
-  --             of a vector 
-  --             transformed into 'toSvgInt' to be plotted in svg  
-lengthXY foptc forBrad rowNumber aPunkt fstOsnd = let foBound = "26.470588235294116" -- map maximum (transpose(foptc 10)) -- max X coordinate
+  --   => of a vector : 'aPunkt' = 0   
+  --             transformed into 'toSvgInt' coordinate = 0 
+  --             to be plotted in svg  
+lengthXY foptc forBrad rowNumber aPunkt fstOsnd foXorY forMinkAdd = let foBound = foXorY --"26.470588235294116" -- map maximum (transpose(foptc 10)) -- max X coordinate
 -- => head [22.77992277992278,26.470588235294116,25.233644859813086]
-                  in let forFofina2 = "2.81" -- run fofina2 and get this result plug it into 
       -- a minkowskiAdd2 list 
-                  in let minkActioRaw = ((minkowskiAdd2  9.0 "1" ["1.9","1.8","0.01"] "2.81" (foptc )))
-                  in let ofMinkList = (minkowskiAdd  "9.0" "1" ["1.9","2.81","0.01"] )
+                  in let minkActioRaw = ((minkowskiAdd2  9.0 "1" ["1.9","1.8","0.01"] forMinkAdd (foptc )))
+                  in let ofMinkList = (minkowskiAdd  "9.0" "1" ["1.9",forMinkAdd,"0.01"] )
                   in let findCoordinate = let rawform =  ((map scanChar(show (last minkActioRaw)))) -- veryfies maximum is first
                                           in let stepke = (filter (>=0) (rawform ) )
                                           in let myLog = [1,10,100,1000,10000,100000,1000000]

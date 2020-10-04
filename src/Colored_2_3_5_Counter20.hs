@@ -1614,38 +1614,16 @@ egTriangle = [[(10.0,26.470588235294116),(10.0,15.0),(6.636306217783966,15.0)]]
 --metricChoose minX maxX minY maxY g v = (maxX/maxBradley)*maxX
 -- will work with both 'foBrad' or 'egTriangle' 
 --
-fofina2	 anchor = do
-           exp3Header <- readFile "textS/Experiment3Header.txt"
-           exp3Tail <- readFile "textS/Experiment3Tail.txt"
-           let el cx cy rx ry foCol=  ("<ellipse cx=\""++cx++"\" cy=\""++cy++"\" rx=\""++rx++"\" ry=\""++ry++"\" stroke=\"black\" stroke-width=\"2px\" style=\"fill:"++foCol++"\">\n"++ "</ellipse>\n")
-         -- all:String ; "87,0 174,50 174,150 87,200 0,150 0,50 87,0"
-         -- mind the empty spaces determine shape
-         --  3 triangle or 6 hexagon and so on.
-           let graphs all = "<polyline id=\"hexagon\" points=\""++ all ++"\" class=\"hexa\" onclick=\"changeFill()\"/>"
-           layerNO <- forM [1,2] (\ly -> do 
-                let plugCol = colorList ly 
-                aMonada <- forM [1..(length anchor)] (\os -> do 
-                let conLongituda =  (tk os anchor)
-                let readMore = if length anchor == 1 then 1 
-                               else (length conLongituda)
-                innRead <- forM [1..(length conLongituda)] (\cs -> do 
-                     let gtFst = show$fst$head$ausw cs conLongituda
-                     let gtSnd = show$snd$head$ausw cs conLongituda
-                     let inPlug = el gtFst gtSnd (unwords( map fst$dotSize ly)) (unwords(map snd$dotSize ly)) (concat plugCol)                    
-                     return (inPlug))
-                return(innRead))
-    -- should be set to 200 or move whole field
-                 
-                let zooSvg = (mapField ly)++(concat aMonada)++(words ("</g>\n</g>\n"))
-                return(zooSvg))
-           let anchor2 =  nub(ptc6 10)
+tensorExp3 r = do
+           let go r =  (map realToFrac (map fst (head(ausw r foBrad))))
+           let anchor2 = [go r] -- nub(ptc6 10)
         -- turn ptc into 2d drop z coordinate for now
-           let dropZet =  map tail$ reverse anchor2 --drop 2 $ map reverse anchor2 --(map show $map reverse(map (drop 1 )(map reverse anchor2)))              -- should be set to 200 or move whole field
-           let fopol =  unwords (map (filter (/=']')) (map (filter (/='[')) (map show dropZet)))  
+           let dropZet =   ausw 1 anchor2 --drop 2 $ map reverse anchor2 --(map show $map reverse(map (drop 1 )(map reverse anchor2)))              -- should be set to 200 or move whole field
+           let fopol =  unwords (map (filter (/=']')) (map (filter (/='[')) (map show dropZet))) 
+           let graphs all = "<polyline id=\"hexagon\" points=\""++ all ++"\" class=\"hexa\" onclick=\"changeFill()\"/>"
+ 
            let polyLine = graphs fopol    
-           let zooSvg2 = ((words("<g transform=\"translate(0,200)\">\n"++"<g>\n"))++(words ("</g>\n</g>\n")))
-           let zooSvg = exp3Header++ (unwords$concat$ layerNO)++(polyLine)++exp3Tail
-
+           
 ----------------------------------------------------
            let droZ = [(dropZet)]
            minkowskiNO <- forM [1] (\ly -> do 
@@ -1678,17 +1656,64 @@ fofina2	 anchor = do
                --           length of digits of a minkowskiAdd list change log value of digit   
                      let findElemB = ((minkowskiAdd2  10.0 "1" ["2.9","2.8","0.01"] ( digiTs) ptc6 )) 
                      let sqaushDown = show$ head findElemB
-                     let infoBar =  (lengthXY (ptc6 )  [foBrad] 1 0 fst)
+                     let runSnd = if cs == 1 then fst 
+                                  else snd 
+                     let infoBar =  (lengthXY (ptc6 )  [foBrad] 1 0 runSnd getPairPtc digiTs)
                      --let gtFst = (readXorY cs) --head$ausw cs getPairPtc
                     -- let gtSnd = show$snd$head$ausw cs getPairPtc
                  --    let inPlug = el gtFst gtSnd (unwords( map fst$dotSize ly)) (unwords(map snd$dotSize ly)) (concat plugCol)                    
-                     return (digiTs) ) --(findElemB)) --(digiTs)) --(map show filT )) -- (findElemB))
+                     return (infoBar) ) --(findElemB)) --(digiTs)) --(map show filT )) -- (findElemB))
                 return(innRead))
     -- should be set to 200 or move whole field
                  
                 let minko = withM --(mapField ly)++(map show (concat withM))++(words ("</g>\n</g>\n"))
                 return(minko))
-        
+          -- putStrLn (unwords$concat$concat$concat$minkowskiNO)
+          --  get X value show its position in list A 
+          --  A: e.g Col*> ((minkowskiAdd  9.0 "1" ["1.9","2.81","0.01"] ))
+          --   [281,280..2,1]
+           let digiTs = let xHead = show(concat$concat$concat$minkowskiNO) 
+                      --  in let yHead = (unwords$last$concat$concat$minkowskiNO) 
+                        in xHead --yHead --xHead --if xHead == 3 then 
+           putStrLn (digiTs)   
+        ------------------------------------- 
+
+fofina2	 anchor = do
+           exp3Header <- readFile "textS/Experiment3Header.txt"
+           exp3Tail <- readFile "textS/Experiment3Tail.txt"
+           
+           let anchor2 =  nub(ptc6 10)
+        -- turn ptc into 2d drop z coordinate for now
+           let dropZet =  map tail$ reverse anchor2 --drop 2 $ map reverse anchor2 --(map show $map reverse(map (drop 1 )(map reverse anchor2)))              -- should be set to 200 or move whole field
+           let fopol =  unwords (map (filter (/=']')) (map (filter (/='[')) (map show dropZet))) 
+           let graphs all = "<polyline id=\"hexagon\" points=\""++ all ++"\" class=\"hexa\" onclick=\"changeFill()\"/>"
+ 
+           let polyLine = graphs fopol    
+           
+        --write to svg
+           let el cx cy rx ry foCol=  ("<ellipse cx=\""++cx++"\" cy=\""++cy++"\" rx=\""++rx++"\" ry=\""++ry++"\" stroke=\"black\" stroke-width=\"2px\" style=\"fill:"++foCol++"\">\n"++ "</ellipse>\n")
+         -- all:String ; "87,0 174,50 174,150 87,200 0,150 0,50 87,0"
+         -- mind the empty spaces determine shape
+         --  3 triangle or 6 hexagon and so on.
+           
+           layerNO <- forM [1,2] (\ly -> do 
+                let plugCol = colorList ly 
+                aMonada <- forM [1..(length anchor)] (\os -> do 
+                let conLongituda =  (tk os anchor)
+                let readMore = if length anchor == 1 then 1 
+                               else (length conLongituda)
+                innRead <- forM [1..(length conLongituda)] (\cs -> do 
+                     let gtFst = show$fst$head$ausw cs conLongituda
+                     let gtSnd = show$snd$head$ausw cs conLongituda
+                     let inPlug = el gtFst gtSnd (unwords( map fst$dotSize ly)) (unwords(map snd$dotSize ly)) (concat plugCol)                    
+                     return (inPlug))
+                return(innRead))
+    -- should be set to 200 or move whole field
+                 
+                let zooSvg = (mapField ly)++(concat aMonada)++(words ("</g>\n</g>\n"))
+                return(zooSvg))
+           let zooSvg2 = ((words("<g transform=\"translate(0,200)\">\n"++"<g>\n"))++(words ("</g>\n</g>\n")))
+           let zooSvg = exp3Header++ (unwords$concat$ layerNO)++(polyLine)++exp3Tail
 
            writeFile "zooSvg.svg" (zooSvg)                            
           -- putStrLn (show aMonada)
@@ -1696,14 +1721,7 @@ fofina2	 anchor = do
            putStrLn (polyLine)
            putStrLn (unwords (map show dropZet))
            putStrLn (show anchor2)
-          -- putStrLn (unwords$concat$concat$concat$minkowskiNO)
-          --  get X value show its position in list A 
-          --  A: e.g Col*> ((minkowskiAdd  9.0 "1" ["1.9","2.81","0.01"] ))
-          --   [281,280..2,1]
-           let digiTs = let xHead = (unlines$concat$concat$minkowskiNO) 
-                      --  in let yHead = (unwords$last$concat$concat$minkowskiNO) 
-                        in xHead --yHead --xHead --if xHead == 3 then 
-           putStrLn (digiTs)   
+          
   where
      dar is so =  ausw is so;
      colorList c = dar c ["lightblue","lime","blue","darkgray","black","white","lime"];
