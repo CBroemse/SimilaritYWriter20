@@ -1652,7 +1652,7 @@ fofina2	 anchor = do
                 --let plugCol = colorList ly 
                 withM <- forM [1..(length droZ)] (\os -> do 
                 let getPairPtc =  (tk os dropZet)
-                innRead <- forM [1..2] (\cs -> do 
+                innRead <- forM [1,2] (\cs -> do 
                      -- read coordinate points could have dropped x or y instead
                      let readXorY = "1" 
                      let bn i = words (take i $ show $ head (ausw cs getPairPtc))
@@ -1668,7 +1668,7 @@ fofina2	 anchor = do
                                   in let yHead = last (unwords$map show filT) 
                                   in if xHead == '4' then 
                                                      let partPlus =words (take 4 $ show $ head (ausw cs getPairPtc))
-                                                     in (take 5 (show (head (ausw cs getPairPtc) *100)))     
+                                                     in (take 5 (show (head (ausw cs getPairPtc) *1)))     
 
                                       else if xHead == '3' then 
                                                      let partPlus =words (take 6 $ show $ head (ausw cs getPairPtc))
@@ -1676,12 +1676,12 @@ fofina2	 anchor = do
                                       else  (take 5 (show (head (ausw cs getPairPtc) *0.1)))  
                -- '''''''''''''''''########################################################################i for different 
                --           length of digits of a minkowskiAdd list change log value of digit   
-                     let findElemB = ((minkowskiAdd2  10.0 "1" ["2.9","2.8","0.01"] (unlines more) ptc6 )) 
-
+                     let findElemB = ((minkowskiAdd2  10.0 "1" ["2.9","2.8","0.01"] ( digiTs) ptc6 )) 
+                     let sqaushDown = show$ head findElemB
                      --let gtFst = (readXorY cs) --head$ausw cs getPairPtc
                     -- let gtSnd = show$snd$head$ausw cs getPairPtc
                  --    let inPlug = el gtFst gtSnd (unwords( map fst$dotSize ly)) (unwords(map snd$dotSize ly)) (concat plugCol)                    
-                     return (digiTs)) --(map show filT )) -- (findElemB))
+                     return (digiTs) ) --(findElemB)) --(digiTs)) --(map show filT )) -- (findElemB))
                 return(innRead))
     -- should be set to 200 or move whole field
                  
@@ -1695,10 +1695,13 @@ fofina2	 anchor = do
            putStrLn (polyLine)
            putStrLn (unwords (map show dropZet))
            putStrLn (show anchor2)
-          -- putStrLn (unwords$concat$concat$concat$minkowskiNO) 
+          -- putStrLn (unwords$concat$concat$concat$minkowskiNO)
+          --  get X value show its position in list A 
+          --  A: e.g Col*> ((minkowskiAdd  9.0 "1" ["1.9","2.81","0.01"] ))
+          --   [281,280..2,1]
            let digiTs = let xHead = (unlines$concat$concat$minkowskiNO) 
-                      --  in let yHead = last (unwords$concat$concat$concat$minkowskiNO) 
-                        in xHead --if xHead == 3 then 
+                      --  in let yHead = (unwords$last$concat$concat$minkowskiNO) 
+                        in xHead --yHead --xHead --if xHead == 3 then 
            putStrLn (digiTs)   
   where
      dar is so =  ausw is so;

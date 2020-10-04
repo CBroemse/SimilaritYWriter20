@@ -40,7 +40,8 @@ module UsefulFunctions19 (
         , zui -- 
         , minkowskiAdd --(lister2 KAAnsatz19) a list selector to buid a tensor
         , minkowskiAdd2 -- apply a list of functions to the outcome of above 
-        , maxMy 
+        , maxMy
+        , lengthX  
          ) where
      --   , nameACCESSFUNCTION ) where
 -- always color sceME 'delek'
@@ -195,7 +196,8 @@ minkowskiAdd val crit dipfa = let a=  maxMy val crit dipfa
 --                          x y z coordinate points
 --
 --atom: Double e.g 22.28 any value x or y of any list of pairs with varieng length 
---e.g Col*> minkowskiAdd2  10.0 "1" ["2.9","2.8","0.01"] "2.81" (((ptc6 ))) 22.28  ------------UNDER DEVELOPMENT 03-10-2020 
+--e.g Col*> minkowskiAdd2  10.0 "1" ["2.9","2.8","0.01"] "2.81" (((ptc6 ))) 22.28  ------------UNDER DEVELOPMENT 03-10-2020
+-- wrap selected value of ptc values in [[]]  
 minkowskiAdd2 val crit dipfa foMax foptc = 
                     --let foMax = concat (mximum dipfa)
                     let a=  maxMy val crit dipfa
@@ -237,7 +239,7 @@ minkowskiAdd2 val crit dipfa foMax foptc =
                     return layerNO
                     let aSpectrum  = let toCalc = (take 3 (show rekenNorm)) -- rekenNorm
                                      in let findCalc = (read toCalc) `elemIndices` anchorInt 
-                                     in show findCalc --[layerNO] -- findCalc
+                                     in show (head findCalc) --[layerNO] -- findCalc
                                          --in let abs2 = (rekenMe-((head$head$foptc 10)*100))
                                          --let run = number / 
                                         -- in abs1 -- if abs1 < ((head$head$foptc 10)*100) then  abs1
@@ -259,8 +261,23 @@ minkowskiAdd2 val crit dipfa foMax foptc =
      fieldPosi fp = (" <g transform=\"translate(0,"++ fp ++")\">\n<g>\n");
      mapField d = tk d $ map fieldPosi ["0","200"];
 
-
-
+  -- extend x by one for plot boundary X
+lengthX foptc   = let foBound = "26.470588235294116" -- map maximum (transpose(foptc 10)) -- max X coordinate
+-- => head [22.77992277992278,26.470588235294116,25.233644859813086]
+                  in let forFofina2 = "2.81" -- run fofina2 and get this result plug it into 
+      -- a minkowskiAdd2 list 
+                  in let minkActioRaw = ((minkowskiAdd2  9.0 "1" ["1.9","1.8","0.01"] "2.81" (foptc )))
+                  in let ofMinkList = (minkowskiAdd  "9.0" "1" ["1.9","2.81","0.01"] )
+                  in let findCoordinate = let rawform =  ((map scanChar(show (last minkActioRaw)))) -- veryfies maximum is first
+                                          in let stepke = (filter (>=0) (rawform ) )
+                                          in let myLog = [1,10,100,1000,10000,100000,1000000]
+                                          in let tobuild = reverse(take (length stepke) myLog)
+                                          in let to10erSystem = sum(zipWith (*) tobuild stepke)
+                                          in to10erSystem
+        -- outcome 'ofMinkList' or finds location of coordinate smaller than  (max X) or smaller (max Y)  
+                --  in let minkTake = tk findCoordinate ofMinkList
+                  --in let byThisMetric = (minkIntStep/6) -- 228 <- 2278 <- 22.779 <- maxX of (ptc6 10)
+                  in findCoordinate --minkIntStep --byThisMetric
 -- Formel zurBerechnung der proz Wahrscheinlichkeit
 -- laesst Raum fuer offene Proznte, d,h, die liste der 
 -- Normwahrscheinlichkeit wird immer unter 100% bleiben 
