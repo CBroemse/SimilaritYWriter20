@@ -41,7 +41,7 @@ module UsefulFunctions19 (
         , minkowskiAdd --(lister2 KAAnsatz19) a list selector to buid a tensor
         , minkowskiAdd2 -- apply a list of functions to the outcome of above 
         , maxMy
-        , lengthX  
+        , lengthXY 
          ) where
      --   , nameACCESSFUNCTION ) where
 -- always color sceME 'delek'
@@ -261,8 +261,28 @@ minkowskiAdd2 val crit dipfa foMax foptc =
      fieldPosi fp = (" <g transform=\"translate(0,"++ fp ++")\">\n<g>\n");
      mapField d = tk d $ map fieldPosi ["0","200"];
 
+-----------------------------------------------------------------------------------------------
   -- extend x by one for plot boundary X
-lengthX foptc   = let foBound = "26.470588235294116" -- map maximum (transpose(foptc 10)) -- max X coordinate
+  -- foptc: function a; apply any ptc function 
+  -- forBrad: [[(Double,Double)]] coordinate points used in metric for svg Experiment3
+  -- rowMumber: Int ; export the foBrad coordinates
+  -- fstOsnd : function ; by fst do for X by snd do for Y of ONE pair of  coordinates
+  -- -------------------------------------------------------------
+  -- e.g Colored...*> (lengthXY (ptc6 )  [foBrad] 1 0 snd)
+  -- --------------------------------------------------------------
+  -- *> [([16,42,70,96,124,148],16.0,132,1.32,281,236,0.45)]
+  -- ------------------------------------------------------------- 
+  --   => bradX: the X OR Y coordinates of a selected row 
+  --              which is the metric for an svg plot
+  --   => toSvgInt: Enter a reasonable value ( 0..999.99)
+  --                transforms value into bradX; a x-or-y-metric 
+  --                by log n * (x or y) + coordinate point on screen
+  --   => in example above 'aPunkt' is 'n' = 0 which leads
+  --             with 'rowNumber' = 1 (of 5 possible rows of 'foBradly') 
+  --             to y (via 'snd') at coordinate 0 
+  --             of a vector 
+  --             transformed into 'toSvgInt' to be plotted in svg  
+lengthXY foptc forBrad rowNumber aPunkt fstOsnd = let foBound = "26.470588235294116" -- map maximum (transpose(foptc 10)) -- max X coordinate
 -- => head [22.77992277992278,26.470588235294116,25.233644859813086]
                   in let forFofina2 = "2.81" -- run fofina2 and get this result plug it into 
       -- a minkowskiAdd2 list 
@@ -275,9 +295,42 @@ lengthX foptc   = let foBound = "26.470588235294116" -- map maximum (transpose(f
                                           in let to10erSystem = sum(zipWith (*) tobuild stepke)
                                           in to10erSystem
         -- outcome 'ofMinkList' or finds location of coordinate smaller than  (max X) or smaller (max Y)  
-                --  in let minkTake = tk findCoordinate ofMinkList
-                  --in let byThisMetric = (minkIntStep/6) -- 228 <- 2278 <- 22.779 <- maxX of (ptc6 10)
-                  in findCoordinate --minkIntStep --byThisMetric
+                  in let minkTake = drop (findCoordinate-1) (take (findCoordinate) ofMinkList)
+                  in let byThisMetricRAW = ((realToFrac(head ofMinkList)) / 6) -- 228 <- 2278 <- 22.779 <- maxX of (ptc6 10)
+                  in let byThisMetric = ceiling byThisMetricRAW
+                  in let foFindPunkt = floor byThisMetricRAW
+            -- get x's out of foBrad per line 
+                  in let ofBradLine  =   ( tk rowNumber (concat((forBrad)))) -- [(190,35),(270,66),(216,46),(245,55),(298,75),(322,83)]
+                  
+                  in let bradX =  ( (map fstOsnd ofBradLine)) --[190,270,216,245,298,322]
+                  in let goBrad p= drop (p-1) (take p bradX)
+                  in let ratio = (last bradX) - (head bradX) -- 132
+                  in let calcRat = ((realToFrac ratio) / 100)  -- 1.32
+   -----------------------------------------------------------------------------------
+   -- keep track of which part of minkowskiAdd list is worked on
+   --  not used yet !!!!!!!!!!!!!! 
+                  in let getOfRatRAW k p = drop (k) (take p ofMinkList)
+                  in let getOfRat = getOfRatRAW (foFindPunkt*(rowNumber-1)) (foFindPunkt*rowNumber)  -- pool every line of minkowskiAdd that has been changed
+                  in let seeRat = head getOfRat 
+                  in let seeEnd = last getOfRat 
+                  in let calcMinkListRat = ((realToFrac (seeRat - seeEnd)) /100)   
+                  in let bradY = (map snd ofBradLine)
+   ------------------------------------------------------------------------------------
+                  in let toSvgInt = (aPunkt / calcRat) + (realToFrac (head bradX))
+                  in [(bradX,toSvgInt,ratio,calcRat,seeRat,seeEnd,calcMinkListRat)]
+                {-    do 
+                     let go = take findCoordinate [1,2,3]--minkIntStep --byThisMetric
+                     putStrLn "yo"
+                     putStrLn  (show (ofBradLine))
+                     putStrLn (show bradX) 
+                     putStrLn (show ratio)
+                     putStrLn (show calcRat) -- used: any value * calcRat = coordinate in svg 
+                     putStrLn (show toSvgInt) 
+                     putStrLn (show foFindPunkt) -- track minkowskiAdd list here not being used yet
+                     putStrLn (show getOfRat) 
+                     putStrLn (show seeRat)
+                     putStrLn (show seeEnd)
+                     putStrLn (show calcMinkListRat)-}
 -- Formel zurBerechnung der proz Wahrscheinlichkeit
 -- laesst Raum fuer offene Proznte, d,h, die liste der 
 -- Normwahrscheinlichkeit wird immer unter 100% bleiben 

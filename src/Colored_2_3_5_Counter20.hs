@@ -1678,6 +1678,7 @@ fofina2	 anchor = do
                --           length of digits of a minkowskiAdd list change log value of digit   
                      let findElemB = ((minkowskiAdd2  10.0 "1" ["2.9","2.8","0.01"] ( digiTs) ptc6 )) 
                      let sqaushDown = show$ head findElemB
+                     let infoBar =  (lengthXY (ptc6 )  [foBrad] 1 0 fst)
                      --let gtFst = (readXorY cs) --head$ausw cs getPairPtc
                     -- let gtSnd = show$snd$head$ausw cs getPairPtc
                  --    let inPlug = el gtFst gtSnd (unwords( map fst$dotSize ly)) (unwords(map snd$dotSize ly)) (concat plugCol)                    
