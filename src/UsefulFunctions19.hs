@@ -186,7 +186,7 @@ minkowskiAdd val crit dipfa = let a=  maxMy val crit dipfa
 --      foMAx: String e.g "2.8" -> gauss ceiling ->  "2.9" 
 --      => for each line of x or y run this function seperatly and not as pairs
 --         and find the corresponding value x or y in a given A 
---         we will run an 'elemIndices' to find a B of A  with foptc as limit
+--         we will run an 'elemIndices' to find a B of A  with foptc+0.1 as limit
 --         A: a minkowskiAdd list ([Int]) that represents A stigmatic 
 --            and not stigmatic 
 --         B: the first two digits of an occouring max x or y value a metric determined
@@ -198,7 +198,7 @@ minkowskiAdd val crit dipfa = let a=  maxMy val crit dipfa
 --atom: Double e.g 22.28 any value x or y of any list of pairs with varieng length 
 --e.g Col*> minkowskiAdd2  10.0 "1" ["2.9","2.8","0.01"] "2.81" (((ptc6 ))) 22.28  ------------UNDER DEVELOPMENT 03-10-2020
 -- wrap selected value of ptc values in [[]]  
-minkowskiAdd2 val crit dipfa foMax foptc = 
+minkowskiAdd2 val crit dipfa foMax foptc atom line = 
                     --let foMax = concat (mximum dipfa)
                     let a=  maxMy val crit dipfa
                     in let b = (read a)
@@ -209,15 +209,15 @@ minkowskiAdd2 val crit dipfa foMax foptc =
                     in let f = map round (map (*100) d)
            -- prepare data to do (head$head $nub$foptc 10) 
            --  by (head$head $nub$foptc val) ; below  
-                    in let rekenMe = ceiling(realToFrac (head$head$nub$foptc val)*100) -- just get same ptc values to claculate with
-                    in let rekenNorm = floor(realToFrac (head$head$nub$foptc val)*100) -- floor; help find value in mink add
-                    in let makEven = ((floor(realToFrac (head$head$nub$foptc val)*1)) * 100) 
+                    in let rekenMe = ceiling(realToFrac (head$drop (atom-1)$ take atom $head$drop (line-1) $ take line $foptc val)*100) -- just get same ptc values to claculate with
+                    in let rekenNorm = floor(realToFrac (head$drop (atom-1)$ take atom $head$drop (line-1) $ take line $foptc val)*100) -- floor; help find value in mink add
+                    in let makEven = ((floor(realToFrac (head$drop (atom-1)$ take atom $head$drop (line-1) $ take line $foptc val)*1)) * 100) 
                     in let anchorInt =   (minkowskiAdd 1 "1" ["0.0",foMax,"0.01"]) 
                     in let anchor = map show (minkowskiAdd 1 "1" ["0.0",foMax,"0.01"]) -- map show (f)
                     in do 
                     layerNO <- forM [1] (\ly -> do 
                       --  let plugCol = colorList ly 
-                        aMonada <- forM (map read anchor) (\os -> do -- ..(length anchor)] (\os -> do 
+                        aMonada <- forM ([1..(length anchor)]) (\os -> do -- ..(length anchor)] (\os -> do 
                         let conLongituda =  (tk os anchor)
                         let readMore = if length anchor == 1 then 1 
                                        else (length conLongituda)
@@ -287,10 +287,10 @@ minkowskiAdd2 val crit dipfa foMax foptc =
   --   => of a vector : 'aPunkt' = 0   
   --             transformed into 'toSvgInt' coordinate = 0 
   --             to be plotted in svg  
-lengthXY foptc forBrad rowNumber aPunkt fstOsnd foXorY forMinkAdd = let foBound = foXorY --"26.470588235294116" -- map maximum (transpose(foptc 10)) -- max X coordinate
+lengthXY foptc forBrad rowNumber aPunkt fstOsnd foXorY forMinkAdd atom line = let foBound = foXorY --"26.470588235294116" -- map maximum (transpose(foptc 10)) -- max X coordinate
 -- => head [22.77992277992278,26.470588235294116,25.233644859813086]
       -- a minkowskiAdd2 list 
-                  in let minkActioRaw = ((minkowskiAdd2  9.0 "1" ["1.9","1.8","0.01"] forMinkAdd (foptc )))
+                  in let minkActioRaw = ((minkowskiAdd2  9.0 "1" ["1.9","1.8","0.01"] forMinkAdd (foptc ) atom line ))
                   in let ofMinkList = (minkowskiAdd  "9.0" "1" ["1.9",forMinkAdd,"0.01"] )
                   in let findCoordinate = let rawform =  ((map scanChar(show (last minkActioRaw)))) -- veryfies maximum is first
                                           in let stepke = (filter (>=0) (rawform ) )

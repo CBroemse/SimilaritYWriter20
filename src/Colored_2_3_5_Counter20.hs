@@ -1614,8 +1614,8 @@ egTriangle = [[(10.0,26.470588235294116),(10.0,15.0),(6.636306217783966,15.0)]]
 --metricChoose minX maxX minY maxY g v = (maxX/maxBradley)*maxX
 -- will work with both 'foBrad' or 'egTriangle' 
 --
-tensorExp3 r = do
-           let go r =  (map realToFrac (map fst (head(ausw r foBrad))))
+tensorExp3 r forFoBrad input = do
+           let go r =  (map realToFrac (map fst (head(ausw r forFoBrad))))
            let anchor2 = [go r] -- nub(ptc6 10)
         -- turn ptc into 2d drop z coordinate for now
            let dropZet =   ausw 1 anchor2 --drop 2 $ map reverse anchor2 --(map show $map reverse(map (drop 1 )(map reverse anchor2)))              -- should be set to 200 or move whole field
@@ -1628,9 +1628,10 @@ tensorExp3 r = do
            let droZ = [(dropZet)]
            minkowskiNO <- forM [1] (\ly -> do 
                 --let plugCol = colorList ly 
-                withM <- forM [1..(length droZ)] (\os -> do 
+                withM <- forM [1..(length dropZet)] (\os -> do 
                 let getPairPtc =  (tk os dropZet)
-                innRead <- forM [1,2] (\cs -> do 
+                let autoLeng = length getPairPtc
+                innRead <- forM [1..2] (\cs -> do 
                      -- read coordinate points could have dropped x or y instead
                      let readXorY = "1" 
                      let bn i = words (take i $ show $ head (ausw cs getPairPtc))
@@ -1641,7 +1642,7 @@ tensorExp3 r = do
                                      --else head(tk cs getPairPtc)
                      let fitMore = map ord (unlines more) 
                      let filT   = let wehhere =  (46 `elemIndices` fitMore) -- where is the '.' 
-                                  in zipWith (+) [1..(length wehhere)] wehhere --map (tk t ) wehhere 
+                                  in zipWith (+) [1..2] wehhere --map (tk t ) wehhere 
                      let digiTs = let xHead = head (unwords$map show filT) 
                                   in let yHead = last (unwords$map show filT) 
                                   in if xHead == '4' then 
@@ -1654,11 +1655,11 @@ tensorExp3 r = do
                                       else  (take 5 (show (head (ausw cs getPairPtc) *0.1)))  
                -- '''''''''''''''''########################################################################i for different 
                --           length of digits of a minkowskiAdd list change log value of digit   
-                     let findElemB = ((minkowskiAdd2  10.0 "1" ["2.9","2.8","0.01"] ( digiTs) ptc6 )) 
+                     let findElemB = ((minkowskiAdd2  10.0 "1" ["2.9","2.8","0.01"] ( digiTs) ptc6 1 1)) 
                      let sqaushDown = show$ head findElemB
                      let runSnd = if cs == 1 then fst 
                                   else snd 
-                     let infoBar =  (lengthXY (ptc6 )  [foBrad] 1 0 runSnd getPairPtc digiTs)
+                     let infoBar =  (lengthXY (ptc6 )  [foBrad] os input runSnd getPairPtc digiTs 1 1) 
                      --let gtFst = (readXorY cs) --head$ausw cs getPairPtc
                     -- let gtSnd = show$snd$head$ausw cs getPairPtc
                  --    let inPlug = el gtFst gtSnd (unwords( map fst$dotSize ly)) (unwords(map snd$dotSize ly)) (concat plugCol)                    
@@ -1672,8 +1673,8 @@ tensorExp3 r = do
           --  get X value show its position in list A 
           --  A: e.g Col*> ((minkowskiAdd  9.0 "1" ["1.9","2.81","0.01"] ))
           --   [281,280..2,1]
-           let digiTs = let xHead = show(concat$concat$concat$minkowskiNO) 
-                      --  in let yHead = (unwords$last$concat$concat$minkowskiNO) 
+           let digiTs = let xHead = show( (concat$concat$concat$minkowskiNO)) 
+                       -- in let yHead = (unwords$last$concat$concat$minkowskiNO) 
                         in xHead --yHead --xHead --if xHead == 3 then 
            putStrLn (digiTs)   
         ------------------------------------- 
