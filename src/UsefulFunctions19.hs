@@ -196,7 +196,7 @@ minkowskiAdd val crit dipfa = let a=  maxMy val crit dipfa
 --                          x y z coordinate points
 --
 --atom: Double e.g 22.28 any value x or y of any list of pairs with varieng length 
---e.g Col*> minkowskiAdd2  10.0 "1" ["2.9","2.8","0.01"] "2.81" (((ptc6 ))) 22.28  ------------UNDER DEVELOPMENT 03-10-2020
+--e.g Col*> minkowskiAdd2  10.0 "1" ["2.9","2.8","0.01"] "2.81" (((ptc6 ))) 1 1  ------------UNDER DEVELOPMENT 03-10-2020
 -- wrap selected value of ptc values in [[]]  
 minkowskiAdd2 val crit dipfa foMax foptc atom line = 
                     --let foMax = concat (mximum dipfa)
@@ -209,9 +209,9 @@ minkowskiAdd2 val crit dipfa foMax foptc atom line =
                     in let f = map round (map (*100) d)
            -- prepare data to do (head$head $nub$foptc 10) 
            --  by (head$head $nub$foptc val) ; below  
-                    in let rekenMe = ceiling(realToFrac (head$drop (atom-1)$ take atom $head$drop (line-1) $ take line $foptc val)*100) -- just get same ptc values to claculate with
-                    in let rekenNorm = floor(realToFrac (head$drop (atom-1)$ take atom $head$drop (line-1) $ take line $foptc val)*100) -- floor; help find value in mink add
-                    in let makEven = ((floor(realToFrac (head$drop (atom-1)$ take atom $head$drop (line-1) $ take line $foptc val)*1)) * 100) 
+                    in let rekenMe = ceiling(realToFrac (head$drop (atom-1)$ take atom $head$drop (line-1) $ take line$nub$foptc val)*100) -- just get same ptc values to claculate with
+                    in let rekenNorm = floor(realToFrac (head$drop (atom-1)$ take atom $head$drop (line-1) $ take line$nub$foptc val)*100) -- floor; help find value in mink add
+                    in let makEven = ((floor(realToFrac (head$drop (atom-1)$ take atom $head$drop (line-1) $ take line$nub$foptc val)*1)) * 100) 
                     in let anchorInt =   (minkowskiAdd 1 "1" ["0.0",foMax,"0.01"]) 
                     in let anchor = map show (minkowskiAdd 1 "1" ["0.0",foMax,"0.01"]) -- map show (f)
                     in do 
@@ -272,7 +272,7 @@ minkowskiAdd2 val crit dipfa foMax foptc atom line =
   -- forMinkAdd : needs 'formatted data'
   --      e.g  "2.647"	
   -- -------------------------------------------------------------
-  -- e.g Colored...*> (lengthXY (ptc6 )  [foBrad] 1 0 snd)
+  -- e.g Colored...*> (lengthXY (ptc6 )  [foBrad] 1 0 snd  "26.470588235294116" "2.647"	1 1)
   -- --------------------------------------------------------------
   -- *> [([16,42,70,96,124,148],16.0,132,1.32,281,236,0.45)]
   -- ------------------------------------------------------------- 
@@ -321,7 +321,7 @@ lengthXY foptc forBrad rowNumber aPunkt fstOsnd foXorY forMinkAdd atom line = le
                   in let bradY = (map snd ofBradLine)
    ------------------------------------------------------------------------------------
                   in let toSvgInt = (aPunkt / calcRat) + (realToFrac (head bradX))
-                  in [(bradX,toSvgInt,ratio,calcRat,seeRat,seeEnd,calcMinkListRat)]
+                  in [toSvgInt] --,ratio,calcRat,seeRat,seeEnd,calcMinkListRat]
                 {-    do 
                      let go = take findCoordinate [1,2,3]--minkIntStep --byThisMetric
                      putStrLn "yo"

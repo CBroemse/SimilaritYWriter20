@@ -1614,9 +1614,10 @@ egTriangle = [[(10.0,26.470588235294116),(10.0,15.0),(6.636306217783966,15.0)]]
 --metricChoose minX maxX minY maxY g v = (maxX/maxBradley)*maxX
 -- will work with both 'foBrad' or 'egTriangle' 
 --
-tensorExp3 r forFoBrad input = do
-           let go r =  (map realToFrac (map fst (head(ausw r forFoBrad))))
-           let anchor2 = [go r] -- nub(ptc6 10)
+tensorExp3 r forFoBrad input fstOSnd = do
+           let goPtc = head$ausw r (transpose (ptc6 10))
+           let go  =  goPtc --(map realToFrac (map fst (head(ausw r forFoBrad))))
+           let anchor2 = [go] -- nub(ptc6 10)
         -- turn ptc into 2d drop z coordinate for now
            let dropZet =   ausw 1 anchor2 --drop 2 $ map reverse anchor2 --(map show $map reverse(map (drop 1 )(map reverse anchor2)))              -- should be set to 200 or move whole field
            let fopol =  unwords (map (filter (/=']')) (map (filter (/='[')) (map show dropZet))) 
@@ -1625,13 +1626,13 @@ tensorExp3 r forFoBrad input = do
            let polyLine = graphs fopol    
            
 ----------------------------------------------------
-           let droZ = [(dropZet)]
+           let droZ = (dropZet)
            minkowskiNO <- forM [1] (\ly -> do 
                 --let plugCol = colorList ly 
-                withM <- forM [1..(length dropZet)] (\os -> do 
-                let getPairPtc =  (tk os dropZet)
+                withM <- forM [1] (\os -> do 
+                let getPairPtc =  (tk os droZ)
                 let autoLeng = length getPairPtc
-                innRead <- forM [1..2] (\cs -> do 
+                innRead <- forM [1] (\cs -> do 
                      -- read coordinate points could have dropped x or y instead
                      let readXorY = "1" 
                      let bn i = words (take i $ show $ head (ausw cs getPairPtc))
@@ -1644,10 +1645,10 @@ tensorExp3 r forFoBrad input = do
                      let filT   = let wehhere =  (46 `elemIndices` fitMore) -- where is the '.' 
                                   in zipWith (+) [1..2] wehhere --map (tk t ) wehhere 
                      let digiTs = let xHead = head (unwords$map show filT) 
-                                  in let yHead = last (unwords$map show filT) 
+                                  in let yHead = last(drop (cs-1) (take cs (unwords$map show filT))) 
                                   in if xHead == '4' then 
                                                      let partPlus =words (take 4 $ show $ head (ausw cs getPairPtc))
-                                                     in (take 5 (show (head (ausw cs getPairPtc) *1)))     
+                                                     in (take 5 (show (head (ausw cs getPairPtc) *0.1)))     
 
                                       else if xHead == '3' then 
                                                      let partPlus =words (take 6 $ show $ head (ausw cs getPairPtc))
@@ -1655,15 +1656,15 @@ tensorExp3 r forFoBrad input = do
                                       else  (take 5 (show (head (ausw cs getPairPtc) *0.1)))  
                -- '''''''''''''''''########################################################################i for different 
                --           length of digits of a minkowskiAdd list change log value of digit   
-                     let findElemB = ((minkowskiAdd2  10.0 "1" ["2.9","2.8","0.01"] ( digiTs) ptc6 1 1)) 
-                     let sqaushDown = show$ head findElemB
+                     let findElemB = ((minkowskiAdd2  10.0 "1" ["2.9","2.8","0.01"] (digiTs) ptc6 1 1)) 
+                   --  let sqaushDown = show$ head findElemB
                      let runSnd = if cs == 1 then fst 
                                   else snd 
-                     let infoBar =  (lengthXY (ptc6 )  [foBrad] os input runSnd getPairPtc digiTs 1 1) 
+                     let infoBar =  (lengthXY (ptc6 ) [foBrad] r input fstOSnd getPairPtc digiTs 1 1) 
                      --let gtFst = (readXorY cs) --head$ausw cs getPairPtc
                     -- let gtSnd = show$snd$head$ausw cs getPairPtc
                  --    let inPlug = el gtFst gtSnd (unwords( map fst$dotSize ly)) (unwords(map snd$dotSize ly)) (concat plugCol)                    
-                     return (infoBar) ) --(findElemB)) --(digiTs)) --(map show filT )) -- (findElemB))
+                     return (infoBar)) --(findElemB)) --(digiTs)) --(digiTs)) --(map show filT )) -- (findElemB))
                 return(innRead))
     -- should be set to 200 or move whole field
                  
@@ -1673,7 +1674,7 @@ tensorExp3 r forFoBrad input = do
           --  get X value show its position in list A 
           --  A: e.g Col*> ((minkowskiAdd  9.0 "1" ["1.9","2.81","0.01"] ))
           --   [281,280..2,1]
-           let digiTs = let xHead = show( (concat$concat$concat$minkowskiNO)) 
+           let digiTs = let xHead = show(concat( concat(concat$minkowskiNO))) 
                        -- in let yHead = (unwords$last$concat$concat$minkowskiNO) 
                         in xHead --yHead --xHead --if xHead == 3 then 
            putStrLn (digiTs)   
@@ -1682,10 +1683,12 @@ tensorExp3 r forFoBrad input = do
 fofina2	 anchor = do
            exp3Header <- readFile "textS/Experiment3Header.txt"
            exp3Tail <- readFile "textS/Experiment3Tail.txt"
-           
-           let anchor2 =  nub(ptc6 10)
+           let anchor0 = nub$ptc6 10
+           let anchor1 = [(map maximum(transpose(ptc6 10)))]
+           let anchor2 =  group$nub$sort$concat (ptc6 10) --[(map minimum(transpose(ptc6 10)))]
+           let anchor3 = [(map minimum(transpose(ptc6 10)))]
         -- turn ptc into 2d drop z coordinate for now
-           let dropZet =  map tail$ reverse anchor2 --drop 2 $ map reverse anchor2 --(map show $map reverse(map (drop 1 )(map reverse anchor2)))              -- should be set to 200 or move whole field
+           let dropZet =  map tail$ reverse anchor0 --drop 2 $ map reverse anchor2 --(map show $map reverse(map (drop 1 )(map reverse anchor2)))              -- should be set to 200 or move whole field
            let fopol =  unwords (map (filter (/=']')) (map (filter (/='[')) (map show dropZet))) 
            let graphs all = "<polyline id=\"hexagon\" points=\""++ all ++"\" class=\"hexa\" onclick=\"changeFill()\"/>"
  
@@ -1721,7 +1724,9 @@ fofina2	 anchor = do
            putStrLn "transformed to hexagon"
            putStrLn (polyLine)
            putStrLn (unwords (map show dropZet))
-           putStrLn (show anchor2)
+           putStrLn (show anchor0)
+           putStrLn ((show anchor2)++" spectrum")
+           putStrLn  ((show anchor3)++" missing medians")  
           
   where
      dar is so =  ausw is so;
