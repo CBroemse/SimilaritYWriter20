@@ -262,20 +262,34 @@ minkowskiAdd2 val crit dipfa foMax foptc atom line =
      mapField d = tk d $ map fieldPosi ["0","200"];
 
 -----------------------------------------------------------------------------------------------
-  -- extend x by one for plot boundary X
-  -- foptc: function a; apply any ptc function 
-  -- forBrad: [[(Double,Double)]] coordinate points used in metric for svg Experiment3
-  -- rowMumber: Int ; export the foBrad coordinates
-  -- fstOsnd : function ; by fst do for X by snd do for Y of ONE pair of  coordinates
-  -- foXorY : a coordinate value x or y of a ptc function
+-- CALCULATE: get METRIC: e.g 'foBrad' ((Colored..Counter20.hs') 
+-- select line with  'rowMumber': Int ; export the foBrad coordinates
+-- then 
+-- add  given vector 'aPunkt' : Int ; via fst or snd select x or y 
+--                                    the vector naturally must be within 
+--                                       boundaries:
+--                                         0..max x of ptc
+--                                       and
+--                                         0..max y of ptc
+--      in example below set to zero so the result will
+--      be the corrosponding axes x and y 
+--      thus    ... fst ... => x + distance 'aPunkt' -> if 'aPunkt' == 0 then x-axis 
+--                            else distance of parallel over x-axis 
+--              ... snd ... => y + distance 'aPunkt' -> if 'aPunkt' == 0 then y-axis
+--                           else distance of parallel over y-axis
+  -- extend x or y  by 0.01 for plot boundary X Y
+  --    foptc: function a; apply any ptc function 
+  --    forBrad:  [[(Double,Double)]] coordinate points used in metric for svg Experiment3
+   --   fstOsnd : function ; by fst do for X by snd do for Y of ONE pair of  coordinates
+  --    foXorY :  a coordinate value x or y of a ptc function
   --      e.g   "26.470588235294116"
-  -- forMinkAdd : needs 'formatted data'
+  --    forMinkAdd : needs 'formatted data'
   --      e.g  "2.647"	
   -- -------------------------------------------------------------
   -- e.g Colored...*> (lengthXY (ptc6 )  [foBrad] 1 0 snd  "26.470588235294116" "2.647"	1 1)
   -- --------------------------------------------------------------
-  -- *> [([16,42,70,96,124,148],16.0,132,1.32,281,236,0.45)]
-  -- ------------------------------------------------------------- 
+  -- *> [99.0]
+  -- -- ------------------------------------------------------------- 
   --   => bradX: the X OR Y coordinates of a selected row 
   --             which is the metric for an svg plot
   --   => toSvgInt: Enter a reasonable value ( 0..999.99)

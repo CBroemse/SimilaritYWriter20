@@ -1726,7 +1726,8 @@ fofina2	 anchor = do
            putStrLn (unwords (map show dropZet))
            putStrLn (show anchor0)
            putStrLn ((show anchor2)++" spectrum")
-           putStrLn  ((show anchor3)++" missing medians")  
+           putStrLn  ((show anchor3)++" missing medians")
+           putStrLn  ((show anchor1)++" the maxima")  
           
   where
      dar is so =  ausw is so;
