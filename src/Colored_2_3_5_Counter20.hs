@@ -1613,7 +1613,28 @@ egTriangle = [[(10.0,26.470588235294116),(10.0,15.0),(6.636306217783966,15.0)]]
 
 --metricChoose minX maxX minY maxY g v = (maxX/maxBradley)*maxX
 -- will work with both 'foBrad' or 'egTriangle' 
+---------------------------------------------------------------------------------------------------------------------------------------------------
+-- CALCULATE: X or Y values for any value                                                             05-10-2020
+-- -- add  given vector 'aPunkt' : Int ; via fst or snd select x or y 
+--                                    the vector naturally must be within 
+--                                       boundaries:
+--                                         0..max x of ptc
+--                                       and
+--                                         0..max y of ptc
+--      in example below set to zero so the result will
+--      be the corrosponding axes x and y 
+--      thus    ... fst ... => x + distance 'aPunkt' -> if 'aPunkt' == 0 then x-axis 
+--                            else distance of parallel over x-axis 
+--              ... snd ... => y + distance 'aPunkt' -> if 'aPunkt' == 0 then y-axis
+--                           else distance of parallel over y-axis
+-- extend x or y  by 0.01 for plot boundary X Y
+-- e.g *Col..> (tensorExp3 1 foBrad 13 fst)
+-- [25.848484848484848] 
 --
+-- => the x coordinate via 'fst'
+--    of a line 'r' of 'foBrad' [[(Double,Double)]]
+--    which is the coordinate plan for this metric
+--    with this all shapes shall be plotted in 'fofina2' below. 
 tensorExp3 r forFoBrad input fstOSnd = do
            let goPtc = head$ausw r (transpose (ptc6 10))
            let go  =  goPtc --(map realToFrac (map fst (head(ausw r forFoBrad))))
@@ -1622,10 +1643,7 @@ tensorExp3 r forFoBrad input fstOSnd = do
            let dropZet =   ausw 1 anchor2 --drop 2 $ map reverse anchor2 --(map show $map reverse(map (drop 1 )(map reverse anchor2)))              -- should be set to 200 or move whole field
            let fopol =  unwords (map (filter (/=']')) (map (filter (/='[')) (map show dropZet))) 
            let graphs all = "<polyline id=\"hexagon\" points=\""++ all ++"\" class=\"hexa\" onclick=\"changeFill()\"/>"
- 
            let polyLine = graphs fopol    
-           
-----------------------------------------------------
            let droZ = (dropZet)
            minkowskiNO <- forM [1] (\ly -> do 
                 --let plugCol = colorList ly 
@@ -1639,8 +1657,6 @@ tensorExp3 r forFoBrad input fstOSnd = do
                      let clean i=  words((filter (/='[') (unwords (bn i))))
                      let moreRAW i=  words((filter (/=',') (unwords (clean i))))
                      let more = moreRAW 5
-                     --let pWCThing = map read more
-                                     --else head(tk cs getPairPtc)
                      let fitMore = map ord (unlines more) 
                      let filT   = let wehhere =  (46 `elemIndices` fitMore) -- where is the '.' 
                                   in zipWith (+) [1..2] wehhere --map (tk t ) wehhere 
@@ -1661,25 +1677,18 @@ tensorExp3 r forFoBrad input fstOSnd = do
                      let runSnd = if cs == 1 then fst 
                                   else snd 
                      let infoBar =  (lengthXY (ptc6 ) [foBrad] r input fstOSnd getPairPtc digiTs 1 1) 
-                     --let gtFst = (readXorY cs) --head$ausw cs getPairPtc
-                    -- let gtSnd = show$snd$head$ausw cs getPairPtc
-                 --    let inPlug = el gtFst gtSnd (unwords( map fst$dotSize ly)) (unwords(map snd$dotSize ly)) (concat plugCol)                    
                      return (infoBar)) --(findElemB)) --(digiTs)) --(digiTs)) --(map show filT )) -- (findElemB))
                 return(innRead))
-    -- should be set to 200 or move whole field
-                 
                 let minko = withM --(mapField ly)++(map show (concat withM))++(words ("</g>\n</g>\n"))
                 return(minko))
-          -- putStrLn (unwords$concat$concat$concat$minkowskiNO)
-          --  get X value show its position in list A 
-          --  A: e.g Col*> ((minkowskiAdd  9.0 "1" ["1.9","2.81","0.01"] ))
-          --   [281,280..2,1]
            let digiTs = let xHead = show(concat( concat(concat$minkowskiNO))) 
                        -- in let yHead = (unwords$last$concat$concat$minkowskiNO) 
                         in xHead --yHead --xHead --if xHead == 3 then 
            putStrLn (digiTs)   
         ------------------------------------- 
 
+-- Write SVG "src/zooSvg.svg" 
+-- e.g *> fofina2 foBrad
 fofina2	 anchor = do
            exp3Header <- readFile "textS/Experiment3Header.txt"
            exp3Tail <- readFile "textS/Experiment3Tail.txt"
@@ -1737,8 +1746,9 @@ fofina2	 anchor = do
      mapField d = ausw d $ map fieldPosi ["0","200"];
 
     -- rectAnimate = dar 1 legos; 
-    
--------------------------------------------------------------------------------------
+                                                                                                 -- END write TENSOREXP3 $ FOFINA2
+                                                                                                 -- a tensor with svg plot 
+----------------------------------------------------------------------------------------------------------------------------------------
 
 -------------------------------------------------------------------------------------
 -- get screen posi "c:/stack/SimiaritYWriter20/src/textS/theSVGHeader.txt"
