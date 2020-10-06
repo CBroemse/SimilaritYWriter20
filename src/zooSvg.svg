@@ -167,17 +167,17 @@ secondly just highight point needed </text>
 </ellipse>
  <ellipse cx="148" cy="148" rx="5" ry="7" stroke="black" stroke-width="2px" style="fill:lightblue">
 </ellipse>
- <ellipse cx="183" cy="134" rx="5" ry="7" stroke="black" stroke-width="2px" style="fill:lightblue">
-</ellipse>
- <ellipse cx="160" cy="126" rx="5" ry="7" stroke="black" stroke-width="2px" style="fill:lightblue">
-</ellipse>
- <ellipse cx="131" cy="116" rx="5" ry="7" stroke="black" stroke-width="2px" style="fill:lightblue">
-</ellipse>
- <ellipse cx="105" cy="106" rx="5" ry="7" stroke="black" stroke-width="2px" style="fill:lightblue">
+ <ellipse cx="52" cy="86" rx="5" ry="7" stroke="black" stroke-width="2px" style="fill:lightblue">
 </ellipse>
  <ellipse cx="79" cy="97" rx="5" ry="7" stroke="black" stroke-width="2px" style="fill:lightblue">
 </ellipse>
- <ellipse cx="52" cy="86" rx="5" ry="7" stroke="black" stroke-width="2px" style="fill:lightblue">
+ <ellipse cx="105" cy="106" rx="5" ry="7" stroke="black" stroke-width="2px" style="fill:lightblue">
+</ellipse>
+ <ellipse cx="131" cy="116" rx="5" ry="7" stroke="black" stroke-width="2px" style="fill:lightblue">
+</ellipse>
+ <ellipse cx="160" cy="126" rx="5" ry="7" stroke="black" stroke-width="2px" style="fill:lightblue">
+</ellipse>
+ <ellipse cx="183" cy="134" rx="5" ry="7" stroke="black" stroke-width="2px" style="fill:lightblue">
 </ellipse>
  <ellipse cx="85" cy="74" rx="5" ry="7" stroke="black" stroke-width="2px" style="fill:lightblue">
 </ellipse>
@@ -241,17 +241,17 @@ secondly just highight point needed </text>
 </ellipse>
  <ellipse cx="148" cy="148" rx="10" ry="12" stroke="black" stroke-width="2px" style="fill:lime">
 </ellipse>
- <ellipse cx="183" cy="134" rx="10" ry="12" stroke="black" stroke-width="2px" style="fill:lime">
-</ellipse>
- <ellipse cx="160" cy="126" rx="10" ry="12" stroke="black" stroke-width="2px" style="fill:lime">
-</ellipse>
- <ellipse cx="131" cy="116" rx="10" ry="12" stroke="black" stroke-width="2px" style="fill:lime">
-</ellipse>
- <ellipse cx="105" cy="106" rx="10" ry="12" stroke="black" stroke-width="2px" style="fill:lime">
+ <ellipse cx="52" cy="86" rx="10" ry="12" stroke="black" stroke-width="2px" style="fill:lime">
 </ellipse>
  <ellipse cx="79" cy="97" rx="10" ry="12" stroke="black" stroke-width="2px" style="fill:lime">
 </ellipse>
- <ellipse cx="52" cy="86" rx="10" ry="12" stroke="black" stroke-width="2px" style="fill:lime">
+ <ellipse cx="105" cy="106" rx="10" ry="12" stroke="black" stroke-width="2px" style="fill:lime">
+</ellipse>
+ <ellipse cx="131" cy="116" rx="10" ry="12" stroke="black" stroke-width="2px" style="fill:lime">
+</ellipse>
+ <ellipse cx="160" cy="126" rx="10" ry="12" stroke="black" stroke-width="2px" style="fill:lime">
+</ellipse>
+ <ellipse cx="183" cy="134" rx="10" ry="12" stroke="black" stroke-width="2px" style="fill:lime">
 </ellipse>
  <ellipse cx="85" cy="74" rx="10" ry="12" stroke="black" stroke-width="2px" style="fill:lime">
 </ellipse>
@@ -301,7 +301,7 @@ secondly just highight point needed </text>
 </ellipse>
  <ellipse cx="322" cy="83" rx="10" ry="12" stroke="black" stroke-width="2px" style="fill:lime">
 </ellipse>
- </g> </g><!-- Two overlap -->
+ </g> </g><polyline id="hexagon" points="42.470588235294116,22.296691568836714 78.47058823529412,58.296691568836714 111.47058823529412,91.2966915688367" class="hexa" onclick="changeFill()"/><!-- Two overlap -->
 <g transform="translate(100,30);rotate(90);" >
 	
 

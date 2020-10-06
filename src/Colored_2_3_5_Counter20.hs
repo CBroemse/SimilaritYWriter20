@@ -1686,10 +1686,48 @@ tensorExp3 r forFoBrad input fstOSnd = do
                         in xHead --yHead --xHead --if xHead == 3 then 
            putStrLn (digiTs)   
         ------------------------------------- 
+-- prepare a selected line and atom to write SVG "src/zooSvg.svg" 
+-- e.g *>Col..> mapExp3 foBrad 2 4
+-- [[[157.47058823529412],[137.2966915688367]]] 
+-- anchor : [[(Double,Double)]] e.g 'foBrad'
+-- line   : Int ; which line of forBrad the x coordinate  
+-- atom   : Int ; which atom of a line  the y coordinate
+-- function to be mapped in 'fofina2' which is the actual svg writer
+-- this one depends on the selected anchor0 xy where z coordinate is dropped
+-- anchor2 has coordinates xyz
+-- anchor3 are the in ascending order sorted occouring ptc values 
+mapExp3	anchor line atom = do
+           let anchor0 = nub$ptc6 10
+           let anchor1 = [(map maximum(transpose(ptc6 10)))]
+           let anchor2 =  group$nub$sort$concat (ptc6 10) --[(map minimum(transpose(ptc6 10)))]
+           let anchor3 = [(map minimum(transpose(ptc6 10)))]
+        -- turn ptc into 2d drop z coordinate for now
+           let dropZet =  map tail$ reverse anchor0 --drop 2 $ map reverse anchor2 --(map show $map reverse(map (drop 1 )(map reverse anchor2)))              -- should be set to 200 or move whole field
+           plugExpri3 <- forM [1] (\ly -> do 
+                aMonada <- forM [1] (\os -> do 
+                let conLongituda =  (tk os anchor)
+                let readMore = if length anchor == 1 then 1 
+                               else (length conLongituda)
+                innRead <- forM [1..2] (\cs -> do 
+                     let gtFst = show$fst$head$ausw cs conLongituda
+                     let rekenOrder = if ly==1 then  ((lengthXY (ptc6 )  [foBrad] line (head $ausw cs (head dropZet)) fst  "26.470588235294116" "2.647" atom 1))
+                                      else (lengthXY (ptc6 )  [foBrad] line (head $ausw cs (head (ausw 2 dropZet))) snd  "12" "2.647" 1 1)
+                     --let gtSnd = show$snd$head$ausw cs conLongituda
+                     return (rekenOrder))
+                return(innRead))
+                let zooSvg = ( aMonada)
+                return(zooSvg))
+           let aTriangle = concat $ plugExpri3 
+           return (concat aTriangle)          
+  
+
 
 -- Write SVG "src/zooSvg.svg" 
 -- e.g *> fofina2 foBrad
-fofina2	 anchor = do
+-- anchor : [[(Double,Double)]] e.g 'foBrad'
+-- line   : Int ; which line of forBrad the x coordinate  
+-- atom   : Int ; which atom of a line  the y coordinate
+fofina2	 anchor line atom = do
            exp3Header <- readFile "textS/Experiment3Header.txt"
            exp3Tail <- readFile "textS/Experiment3Tail.txt"
            let anchor0 = nub$ptc6 10
@@ -1698,6 +1736,8 @@ fofina2	 anchor = do
            let anchor3 = [(map minimum(transpose(ptc6 10)))]
         -- turn ptc into 2d drop z coordinate for now
            let dropZet =  map tail$ reverse anchor0 --drop 2 $ map reverse anchor2 --(map show $map reverse(map (drop 1 )(map reverse anchor2)))              -- should be set to 200 or move whole field
+           let fopolRAW r =  unwords (map (filter (/=']')) (map (filter (/='[')) (map show r))) 
+
            let fopol =  unwords (map (filter (/=']')) (map (filter (/='[')) (map show dropZet))) 
            let graphs all = "<polyline id=\"hexagon\" points=\""++ all ++"\" class=\"hexa\" onclick=\"changeFill()\"/>"
  
@@ -1717,6 +1757,9 @@ fofina2	 anchor = do
                                else (length conLongituda)
                 innRead <- forM [1..(length conLongituda)] (\cs -> do 
                      let gtFst = show$fst$head$ausw cs conLongituda
+                     let rekenOrder = if ly==1 then fst
+                                      else snd
+                    -- let plugExp3 = tensorExp3 1 foBrad (realToFrac (fst$head$ausw cs conLongituda)) rekenOrder
                      let gtSnd = show$snd$head$ausw cs conLongituda
                      let inPlug = el gtFst gtSnd (unwords( map fst$dotSize ly)) (unwords(map snd$dotSize ly)) (concat plugCol)                    
                      return (inPlug))
@@ -1725,18 +1768,28 @@ fofina2	 anchor = do
                  
                 let zooSvg = (mapField ly)++(concat aMonada)++(words ("</g>\n</g>\n"))
                 return(zooSvg))
+          
+           let outerLength = [1..(length anchor0)] --e.g [26.470588235294116,6.296691568836714] [0.0,25.233644859813086] [14.338235294117647,6.296691568836714] 
+           plugExpri3 <- forM outerLength (\ly -> do
+              --  let innerLengthLines = [1..6]  -- select how many rows are involved in plot !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! 06-10-2020
+                let withMapExp3 = mapExp3 foBrad ly 1    
+                return (withMapExp3))
+                 
+           let prpplug = concat$concat$concat$ plugExpri3
+           let aTriangle = fopolRAW (plugExpri3) 
            let zooSvg2 = ((words("<g transform=\"translate(0,200)\">\n"++"<g>\n"))++(words ("</g>\n</g>\n")))
-           let zooSvg = exp3Header++ (unwords$concat$ layerNO)++(polyLine)++exp3Tail
+           let zooSvg = exp3Header++ (unwords$concat$ layerNO)++(graphs aTriangle)++exp3Tail
 
            writeFile "zooSvg.svg" (zooSvg)                            
           -- putStrLn (show aMonada)
            putStrLn "transformed to hexagon"
-           putStrLn (polyLine)
+           putStrLn (polyLine) -- test triangle x y values of ptc
            putStrLn (unwords (map show dropZet))
            putStrLn (show anchor0)
            putStrLn ((show anchor2)++" spectrum")
            putStrLn  ((show anchor3)++" missing medians")
-           putStrLn  ((show anchor1)++" the maxima")  
+           putStrLn  ((show anchor1)++" the maxima")
+           putStrLn (show aTriangle) --aTriangle) 
           
   where
      dar is so =  ausw is so;

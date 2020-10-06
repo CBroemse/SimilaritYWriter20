@@ -251,7 +251,7 @@ minkowskiAdd2 val crit dipfa foMax foptc atom line =
                --     putStrLn (show makEven)
                  --   putStrLn (show(aSpectrum)) --(unwords(concat aSpectrum))
        -- => export: max limit A , normal level B, first two digits B, location B in given minkowskiAdd 
-                    [show rekenMe,show rekenNorm,show makEven,( aSpectrum)]
+                    [show rekenMe,show rekenNorm,show makEven,aSpectrum]
 
 
      where
@@ -334,8 +334,8 @@ lengthXY foptc forBrad rowNumber aPunkt fstOsnd foXorY forMinkAdd atom line = le
                   in let calcMinkListRat = ((realToFrac (seeRat - seeEnd)) /100)   
                   in let bradY = (map snd ofBradLine)
    ------------------------------------------------------------------------------------
-                  in let toSvgInt = (aPunkt / calcRat) + (realToFrac (head bradX))
-                  in [toSvgInt] --,ratio,calcRat,seeRat,seeEnd,calcMinkListRat]
+                  in let toSvgInt k = (aPunkt) + (realToFrac (head (drop(k-1)(take k bradX))))
+                  in [(toSvgInt atom)] --,ratio,calcRat,seeRat,seeEnd,calcMinkListRat]
                 {-    do 
                      let go = take findCoordinate [1,2,3]--minkIntStep --byThisMetric
                      putStrLn "yo"
