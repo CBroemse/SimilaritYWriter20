@@ -196,7 +196,7 @@ minkowskiAdd val crit dipfa = let a=  maxMy val crit dipfa
 --                          x y z coordinate points
 --
 --atom: Double e.g 22.28 any value x or y of any list of pairs with varieng length 
---e.g Col*> minkowskiAdd2  10.0 "1" ["2.9","2.8","0.01"] "2.81" (((ptc6 ))) 1 1  ------------UNDER DEVELOPMENT 03-10-2020
+--e.g Col*> minkowskiAdd2  10.0 "1" ["2.9","2.8","0.01"] "2.81" (((ptc6 ))) 1 1  ------------UNDER DEVELOPMENT 06-10-2020
 -- wrap selected value of ptc values in [[]]  
 minkowskiAdd2 val crit dipfa foMax foptc atom line = 
                     --let foMax = concat (mximum dipfa)
