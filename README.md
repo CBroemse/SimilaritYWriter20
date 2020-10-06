@@ -2,22 +2,10 @@
 
 ##### visiualize your network or your name 
      
-    prepare the path to use 2 main modules
-    a) src/Colored_2_3_5_Counter20.hs
-    b) src/TheAtoBplotter.hs
-    *Main>root
-    *Main>/c:/stack/SimilaritYWriter20/src/
-    *Main>:t root
-    *Main>:i root
-    Change the function 'root' to your system 
-    
- open folder ../src/wxms  ; compile lala2.wxm  -> plot 
-  
-   
- visiualize a syntactic 'Char'-type based topology of the sentence:
+  visiualize a syntactic 'Char'-type based topology of a sentence e.g:
   1.The world is everything that is the case.∗ -> sentence -> [String] -> [[String]]
   
-    b)
+    a)
     Colored_2_3_..*> let li = ["The","world","is","everything"]
                   *> let li2 = ["that","is","the","case."]
                   *> let li3 = [[li1,li2]]
@@ -85,7 +73,7 @@
  ###### experiment 2
   How does the data look like on screen? Our eyes are a broadband connection 
   with the environment. Can we literally gain more insigths by plotting
-  and watchin graphics of ptc functions on screen?
+  and watching graphics of ptc functions on screen?
    A catalouge of ptc functions ptc4 ..ptc9 to see the differences between
    ptc functions is deviced, different outputs always depend on different [String] (li lists).
    The data is handed to the wxm file generator.
@@ -122,7 +110,7 @@ note! a 3x3 matrix function
 file: ptclibrary/Experiment3description1.png
 
 How does the plot look like? There is a 'mistake' in the concept
-of the quirky example how does that change of we correct 'progVar2' and 'progVar3'?
+of the quirky example. How does that change if we correct 'progVar2' and 'progVar3'?
                  
                         :
                         progVar2 = "0*x + y + 0*z = 3x + 0 + 0*z = 6"
@@ -131,9 +119,9 @@ of the quirky example how does that change of we correct 'progVar2' and 'progVar
  Does that lead to insights about the syntactical side of the 'quirky example'?
  
  ###### experiment 3
-   PartII: find n many solutions to the question above, with a random number generator.
-           When selecting other progVars how is the syntactical side of the 'quirky example'
-           equivalent to other 3x3 matricres in which we do not know the result?
+   PartII: find n many solutions to the question above with a random number generator.
+           When selecting other progVars, how is the syntactical side of the 'quirky example'
+           equivalent to other 3x3 matricres with an unknown result?
                 
                          :
                          progVar5 = "0*x + 0*y + z = 2x + y + z = ??"
@@ -141,15 +129,15 @@ of the quirky example how does that change of we correct 'progVar2' and 'progVar
                          :
    
    PartI:
-   Transform data into hexagon and write to 'zooSvg.svg'.
+   transform data into hexagon and write to 'zooSvg.svg'
    
-   A ptc function is nubbed ' nubbed
+   a ptc function is nubbed
    
                            *Colored_2_3_5_Counter20> nub (ptc6 10)
 [[22.77992277992278,14.338235294117647,6.296691568836714],[10.03861003861004,0.0,25.233644859813086],[10.03861003861004,26.470588235294116,6.296691568836714]]
                            
                            *Colored_2_3_5_Counter20> fofina2 foBrad 1 3
-   A geometric tansformation of ptc data in a 2d hexagon using 'Busschop-Bradley's method.
+   A geometric transformation of ptc data in a 2d hexagon using 'Busschop-Bradley's method.
    The result is a Svg plot with ptc data on screen. Three different functions help to 
    retrieve, observe and to manipulate the coordinate points of a ptc function.
    
@@ -166,15 +154,12 @@ of the quirky example how does that change of we correct 'progVar2' and 'progVar
                 
                 
   
-      
-##### state of development
+   ##### state of development
 
                                        |    the List for ListIV    
                                        | visiualize the reduction in
                                        | the ptc functions matrices
-
-                                   
-
+ 
                                        | whished visualization of
                                        | the 2_3_5_Counter with data
                                        | from catlouge and experiment3.
@@ -183,12 +168,12 @@ of the quirky example how does that change of we correct 'progVar2' and 'progVar
 
                                        | - integrate the MQ functions in the display
                                        |   the 'Dom' ??
-                                       |
+                                       
                                        | - how can Gnuplot scripts or Wxmaxima
                                        |   be embedded lazily
                                        | - fill up a library , an overview of everything 
                                        |   also in Git-pages
-                                       |
+                                       
                                        | - experiment with calling Haskell from Html
                                        |   in index.html top button row
 
@@ -204,7 +189,6 @@ of the quirky example how does that change of we correct 'progVar2' and 'progVar
                                          random number generator. 
                                          
      
-
 ##### sort and filter any [String] ~ [[Char]] with similaritYValue in function 'kArmTrack5' = gh1
     thought experiment
       gh: ["A","B","A","A"] to ["A","A","A","B"]
@@ -454,7 +438,16 @@ lists of the same list compares them und gives back a percentage of the "Einerst
                           in let c2 = c1 a   -- length
                           in let c3 = c1 b--length
                           in simiValF c2 c3 
-
+###### install  
+    prepare the path to use 2 main modules
+    a) src/Colored_2_3_5_Counter20.hs
+    b) src/TheAtoBplotter.hs
+    *Main>root
+    *Main>/c:/stack/SimilaritYWriter20/src/
+    *Main>:t root
+    *Main>:i root
+    Change the function 'root' to your system 
+    
 ###### Programmers nodes
 Status Q
 Shurely the 'Punkt' data type can do error handling but is it useful this way or is another way to handle errors better?
