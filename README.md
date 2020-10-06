@@ -105,11 +105,11 @@
                         output [String]        choose a case of the catalouge
                                                
    If we choose another A that strives to add the known mathematical matrix algebra to the syntactical
-   side with the operators: '0', '=' and the the result of that matrix to the conceptual side.
-   an example which is:  Experiment 3
+   side with the operators: '0', '=' and the result of that matrix to the conceptual side one example is:
+ Experiment 3
 'quirky example': (ptc6 5) (ptc6 25) (ptc6 150)...
               ... (ptc6 100) (ptc6 125) (ptc6 50)
-with double pv2 pv5
+with doubled length of pv2 pv5
 
                        progVar1 = "0*x + y + 0*z = 3"
                        progVar2 = "0*x + y + 0*z = 33*x + 0 + 0*z = 6"
@@ -119,11 +119,10 @@ with double pv2 pv5
                        progVar6 = "x + y + z = 11"
                        
 note! a 3x3 matrix function
-with varieng n which point of a ptc6
 file: ptclibrary/Experiment3description1.png
 
-How does the plot look like ? There is a 'mistake' in concept
-of the quirky example how does that change of we correct progVar2,progVar3 ?
+How does the plot look like? There is a 'mistake' in the concept
+of the quirky example how does that change of we correct 'progVar2' and 'progVar3'?
                  
                         :
                         progVar2 = "0*x + y + 0*z = 3x + 0 + 0*z = 6"
@@ -132,26 +131,41 @@ of the quirky example how does that change of we correct progVar2,progVar3 ?
  Does that lead to insights about the syntactical side of the 'quirky example'?
  
  ###### experiment 3
-   PartII: find n many soutions to the question above, with a random number generator.
+   PartII: find n many solutions to the question above, with a random number generator.
            When selecting other progVars how is the syntactical side of the 'quirky example'
-           equivlent to other 3x3 matricres where we do not know?
+           equivalent to other 3x3 matricres in which we do not know the result?
                 
                          :
                          progVar5 = "0*x + 0*y + z = 2x + y + z = ??"
                          progVar6 = "x + y + z = ??"
                          :
-   Part I: The 'quirky example' is ' nubbed  (group $ sort a) > 1
-      = 
+   
+   PartI:
+   Transform data into hexagon and write to 'zooSvg.svg'.
+   
+   A ptc function is nubbed ' nubbed
+   
+                           *Colored_2_3_5_Counter20> nub (ptc6 10)
+[[22.77992277992278,14.338235294117647,6.296691568836714],[10.03861003861004,0.0,25.233644859813086],[10.03861003861004,26.470588235294116,6.296691568836714]]
+                           
+                           *Colored_2_3_5_Counter20> fofina2 foBrad 1 3
    A geometric tansformation of ptc data in a 2d hexagon using 'Busschop-Bradley's method.
    The result is a Svg plot with ptc data on screen. Three different functions help to 
-   retrieve, observe and to manipulate the coordinate points of a ptc function
+   retrieve, observe and to manipulate the coordinate points of a ptc function.
    
-               *Colored_2_3_5_Counter20> (lengthXY (ptc4 )  [foBrad] 1 6.2 fst  "26666.470588235294116" "2.647"1 2)
+               -- find input "2.81" in list 
+               *Col..>  minkowskiAdd2  10.0 "1" ["2.9","2.8","0.01"] "2.81" (((ptc6 ))) 1 1
+                ["2278","2277","2200","54"] 
+                -- calc value 6.2 at line one take atom 1
+               *Col..> (lengthXY (ptc4 )  [foBrad] 1 6.2 fst  "26666.470588235294116" "2.647"1 2)
                 [22.2]
-    partII.
-             B in A  with the 'quirky example of the 'catalouge'
-                                         by highlighting finds in A with a
-                                         random number generator.
+                *Col..> mapExp3 foBrad 2 3   -- calc x y of selected ptc (anchor0)
+                [[131.47058823529412],[111.2966915688367]]
+                
+                *Col..> fofina2 foBrad 1 3  -- => overview how data is transformed -> write 'zooSvg.svg'
+                
+                
+  
       
 ##### state of development
 
