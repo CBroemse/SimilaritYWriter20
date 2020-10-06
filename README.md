@@ -82,8 +82,76 @@
                get3: Int ,compare get3 to get3++get4
                get4: Int ,compare get4 to get3++get4
      
+ ###### experiment 2
+  How does the data look like on screen? Our eyes are a broadband connection 
+  with the environment. Can we literally gain more insigths by plotting
+  and watchin graphics of ptc functions on screen?
+   A catalouge of ptc functions ptc4 ..ptc9 to see the differences between
+   ptc functions is deviced, different outputs always depend on different [String] (li lists).
+   The data is handed to the wxm file generator.
+   How does the graph change when the input data is brought into square matrices.
+   If the length of a given list that shall be brought into a square matrix
+   does not match up additional '0' are added until this is achieved. The catalouge exploits this step by plotting
+   various examples of ways how this adding of zeros could be done. This second
+   experiment also explores how different A's that are subgroups of 
+   the Haskell char set encoding appears on screen with regard to varieng ptc functions.
+   At one point we select a subgoup that only contains numbers and letters 
+   and try to establish an ?'arythmetic-operator'? '+' and observe that on screen.
+   We have established a group with one of the mentioned As that only operates 
+   on letters and numbers  
+   
+                       syntactical layer       conceptual layer  
+                        plot ptc as wxm        select a ptc function
+                        output [String]        choose a case of the catalouge
+                                               
+   If we choose another A that strives to add the known mathematical matrix algebra to the syntactical
+   side with the operators: '0', '=' and the the result of that matrix to the conceptual side.
+   an example which is:  Experiment 3
+'quirky example': (ptc6 5) (ptc6 25) (ptc6 150)...
+              ... (ptc6 100) (ptc6 125) (ptc6 50)
+with double pv2 pv5
 
+                       progVar1 = "0*x + y + 0*z = 3"
+                       progVar2 = "0*x + y + 0*z = 33*x + 0 + 0*z = 6"
+                       progVar3 = "3*x + 0 + 0*z = 6"
+                       progVar4 = "0*x + 0*y + z = 2
+                       progVar5 = "0*x + 0*y + z = 2x + y + z = 11"
+                       progVar6 = "x + y + z = 11"
+                       
+note! a 3x3 matrix function
+with varieng n which point of a ptc6
+file: ptclibrary/Experiment3description1.png
 
+How does the plot look like ? There is a 'mistake' in concept
+of the quirky example how does that change of we correct progVar2,progVar3 ?
+                 
+                        :
+                        progVar2 = "0*x + y + 0*z = 3x + 0 + 0*z = 6"
+                        progVar3 = "x + 0 + 0*z = 6"
+                        :
+ Does that lead to insights about the syntactical side of the 'quirky example'?
+ 
+ ###### experiment 3
+   PartII: find n many soutions to the question above, with a random number generator.
+           When selecting other progVars how is the syntactical side of the 'quirky example'
+           equivlent to other 3x3 matricres where we do not know?
+                
+                         :
+                         progVar5 = "0*x + 0*y + z = 2x + y + z = ??"
+                         progVar6 = "x + y + z = ??"
+                         :
+   Part I: The 'quirky example' is ' nubbed  (group $ sort a) > 1
+      = 
+   A geometric tansformation of ptc data in a 2d hexagon using 'Busschop-Bradley's method.
+   The result is a Svg plot with ptc data on screen. Three different functions help to 
+   retrieve, observe and to manipulate the coordinate points of a ptc function
+   
+               *Colored_2_3_5_Counter20> (lengthXY (ptc4 )  [foBrad] 1 6.2 fst  "26666.470588235294116" "2.647"1 2)
+                [22.2]
+    partII.
+             B in A  with the 'quirky example of the 'catalouge'
+                                         by highlighting finds in A with a
+                                         random number generator.
       
 ##### state of development
 
@@ -91,12 +159,11 @@
                                        | visiualize the reduction in
                                        | the ptc functions matrices
 
-                                       | finalize to add text to every 'ptc butoon' (weird writing helps my memory)
-                                       | when clicked
+                                   
 
                                        | whished visualization of
                                        | the 2_3_5_Counter with data
-                                       | from above
+                                       | from catlouge and experiment3.
 
                                        | - keep track of the wxm files
 
@@ -111,12 +178,18 @@
                                        | - experiment with calling Haskell from Html
                                        |   in index.html top button row
 
-                                       | - follow the development track of kArmTrack5
-                                       |       embed the occurence display neatly, lazily
-
-                                       |  Zweig Haken Stab in a path
-                                           geometry, pull, push...
-    
+                                       | complete Experiment2 'catalouge'
+                                       | embed Experiment3 into the main program
+                                         partI. 
+                                         a geometric tansformation of ptc
+                                         data in a 2d hexagon using 'Busschop-Bradley's
+                                         method. The result is a Svg plot with ptc data on screen.
+                                         partII.
+                                         guessing B in A  with the 'quirky example of the 'catalouge'
+                                         by highlighting finds in A with a
+                                         random number generator. 
+                                         
+     
 
 ##### sort and filter any [String] ~ [[Char]] with similaritYValue in function 'kArmTrack5' = gh1
     thought experiment
