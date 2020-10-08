@@ -1635,7 +1635,7 @@ egTriangle = [[(10.0,26.470588235294116),(10.0,15.0),(6.636306217783966,15.0)]]
 --    of a line 'r' of 'foBrad' [[(Double,Double)]]
 --    which is the coordinate plan for this metric
 --    with this all shapes shall be plotted in 'fofina2' below. 
-tensorExp3 r forFoBrad input fstOSnd = do
+tensorExp3 r forFoBrad input fstOSnd atom = do
            let goPtc = head$ausw r (transpose (ptc6 10))
            let go  =  goPtc --(map realToFrac (map fst (head(ausw r forFoBrad))))
            let anchor2 = [go] -- nub(ptc6 10)
@@ -1675,18 +1675,21 @@ tensorExp3 r forFoBrad input fstOSnd = do
                      let findElemB = ((minkowskiAdd2  10.0 "1" ["2.9","2.8","0.01"] (digiTs) ptc6 1 1)) 
                    --  let sqaushDown = show$ head findElemB
                      let runSnd = if cs == 1 then fst 
-                                  else snd 
-                     let infoBar =  (lengthXY (ptc6 ) [foBrad] r input fstOSnd getPairPtc digiTs 1 1) 
+                                  else snd
+                    -- r: Int rownumber (line) ,  
+                     let infoBar =  (lengthXY (ptc6 ) [foBrad] r input fstOSnd getPairPtc digiTs atom 1) 
                      return (infoBar)) --(findElemB)) --(digiTs)) --(digiTs)) --(map show filT )) -- (findElemB))
                 return(innRead))
                 let minko = withM --(mapField ly)++(map show (concat withM))++(words ("</g>\n</g>\n"))
                 return(minko))
-           let digiTs = let xHead = show(concat( concat(concat$minkowskiNO))) 
+           let digiTs = let xHead = (concat( concat(concat$minkowskiNO))) 
                        -- in let yHead = (unwords$last$concat$concat$minkowskiNO) 
                         in xHead --yHead --xHead --if xHead == 3 then 
-           putStrLn (digiTs)   
+           digiTs   
         ------------------------------------- 
--- prepare a selected line and atom to write SVG "src/zooSvg.svg" 
+-- prepare a selected line and atom to write SVG "src/zooSvg.svg"
+-- ADD SELECTED  2d plot of a 3d projection of a ?hypercube degree 5 or 6?
+--  all maxima of a given ptc are collected    
 -- e.g *>Col..> mapExp3 foBrad 2 4
 -- [[[157.47058823529412],[137.2966915688367]]] 
 -- anchor : [[(Double,Double)]] e.g 'foBrad'
@@ -1703,23 +1706,82 @@ mapExp3	anchor line atom = do
            let anchor3 = [(map minimum(transpose(ptc6 10)))]
         -- turn ptc into 2d drop z coordinate for now
            let dropZet =  map tail$ reverse anchor0 --drop 2 $ map reverse anchor2 --(map show $map reverse(map (drop 1 )(map reverse anchor2)))              -- should be set to 200 or move whole field
+           let we t = take 5 $ show$(0.1*(head(ausw t (nub$map maximum (ptc6 10)))))
+           let tensorRAW median t =  ((minkowskiAdd2  10.0 "1" ["2.9","2.8","0.01"] (we median) ptc6 t median)) 
+ -- the median being one or two data points to make a trianlge , that very points must be in the intervall (0..max x,0..max y)
+           let tigi median =  (map (tensorRAW median ) [1..3] )
+
+        -- turn ptc into 2d drop z coordinate for now
+           let dropZet =  map tail$ reverse anchor0 --drop 2 $ map reverse anchor2 --(map show $map reverse(map (drop 1 )(map reverse anchor2)))              -- should be set to 200 or move whole field
            plugExpri3 <- forM [1] (\ly -> do 
                 aMonada <- forM [1] (\os -> do 
                 let conLongituda =  (tk os anchor)
                 let readMore = if length anchor == 1 then 1 
                                else (length conLongituda)
-                innRead <- forM [1..2] (\cs -> do 
+                innRead <- forM [1..3] (\cs -> do 
                      let gtFst = show$fst$head$ausw cs conLongituda
-                     let rekenOrder = if ly==1 then  ((lengthXY (ptc6 )  [foBrad] line (head $ausw cs (head dropZet)) fst  "26.470588235294116" "2.647" atom 1))
-                                      else (lengthXY (ptc6 )  [foBrad] line (head $ausw cs (head (ausw 2 dropZet))) snd  "12" "2.647" 1 1)
+                     let gtSnd = let step1 = (snd$head$ausw cs conLongituda)*0.1
+                                 in show step1
+                     let rekenOrder = if cs==1 then let step1 = ((lengthXY (ptc6 )  [foBrad] line (head $ausw cs (head dropZet)) fst  "26.470588235294116" "2.647" atom 1))
+                                                    in let calcPercentage = ((minkowskiAdd2  10.0 "1" ["2.9","2.8","0.01"] (gtFst) ptc6 1 1)) 
+
+                                                    in [tensorRAW line atom] --tigi cs -- calcPercentage --(tensorExp3 6 foBrad 0 snd)  
+                                      else let step1 = (lengthXY (ptc6 )  [foBrad] line (head $ausw cs (head (ausw 2 dropZet))) snd  "12" "2.647" 1 1)
+                                           in let calcPercentage = ((minkowskiAdd2  10.0 "1" ["2.9","2.8","0.01"] (gtFst) ptc6 2 1)) 
+                                           in tigi line --calcPercentage --[gtSnd] --tensorRAW cs 2 -- tigi cs --calcPercentage -- (tensorExp3 6 foBrad 0 snd) 
                      --let gtSnd = show$snd$head$ausw cs conLongituda
-                     return (rekenOrder))
+                     let playingfield = head$ausw cs rekenOrder
+                     let tica =  tigi cs
+                     return (tica))
                 return(innRead))
-                let zooSvg = ( aMonada)
+                let zooSvg = (transpose  aMonada)
                 return(zooSvg))
-           let aTriangle = concat $ plugExpri3 
-           return (concat aTriangle)          
+           let aTriangle = concat $ plugExpri3
+         -- percentage of mink list in metric foBrad 
+         --  a certain fractional devided by  
+         --   another amount to calc percentage 
+           let calcPercentage thisAmount toThatAmount = form2 thisAmount 1 toThatAmount 
+           let fortFurther = aTriangle
+           let intoMetric =  map realToFrac (tensorExp3 6 foBrad 1 fst atom) -- final to be inserted into svg 
+          -- let squareField =  realToFrac (intoMetric) --((realToFrac(head(map show(tensorExp3 1 foBrad "0" fst 6)))) -  (realToFrac(head(map show(tensorExp3 1 foBrad "0" fst 1)))))
+           --let rt = realToFrac intoMetric
+           return (intoMetric ) --(show aTriangle)          
   
+
+ptcMetric cell line = --let minkActioRaw = ((minkowskiAdd2  9.0 "1" ["1.9","1.8","0.01"] forMinkAdd (foptc ) atom line ))
+              --in let ofMinkList = (minkowskiAdd  "9.0" "1" ["1.9",forMinkAdd,"0.01"] )
+             let findCoordinate ploy = let rawform =  ((map scanChar(show (ploy)))) -- veryfies maximum is first
+                                      in let stepke = (filter (>=0) (rawform ) )
+                                      in let myLog = [1,10,100,1000,10000,100000,1000000]
+                                      in let tobuild = reverse(take (length stepke) myLog)
+                                      in let to10erSystem = sum(zipWith (*) tobuild stepke)
+                                      in to10erSystem
+             in let we t = take 5 $ show$(0.1*(head(ausw t (nub$map maximum (ptc6 10)))))
+             in let tensorRAW median t =  ((minkowskiAdd2  10.0 "1" ["2.9","2.8","0.01"] (we median) ptc6 t median)) 
+ -- the median being one or two data points to make a trianlge , that very points must be in the intervall (0..max x,0..max y)
+             in let tigi median =  (map (tensorRAW median ) [1..3] )
+             in let choosParse c focell foline = head$ausw c $head(ausw cell (tigi line))
+             in let calcPercentage thisAmount toThatAmount = form2 thisAmount 1 toThatAmount
+             in let bradleySel = head(lengthXY (ptc6 )  [foBrad] 1 0 snd  "26.470588235294116" "2.647"6 1) -- foBradley selector
+      -- one is x , two is y 
+             in let threeisZ focell foline =  head [findCoordinate (choosParse 1 focell foline), (findCoordinate(choosParse 2 focell foline)), (findCoordinate(choosParse 3 focell foline))]
+             in let ofAbovefstValue foline focell  =  (findCoordinate (choosParse 1 focell foline)) 
+             in let groupoid focell = (map (threeisZ focell) [1])
+             in let mapCell = map groupoid [1..3]
+             in threeisZ cell line --[(threeisZ cell line),(threeisZ (cell +1 ) (line +1)),(threeisZ (cell +2 ) (line +2))] --groupoid  
+
+ptcCac z = sort [(ptcMetric z 1),(ptcMetric z 2),(ptcMetric z 3)]
+
+moreCalc xorYorZ atom fstS = let step1 =  tail (ptcCac xorYorZ) 
+            in let step2 = ((realToFrac(head step1))/(realToFrac(last step1)))
+            in let bradleySel = head(lengthXY (ptc6 )  [foBrad] 1 0 snd  "26.470588235294116" "2.647"6 1) -- foBradley selector
+            in let calcBradPTC = (realToFrac bradleySel)*(step2)
+            in let bradleyGain = head(lengthXY (ptc6 )  [foBrad] atom calcBradPTC fstS  "26.470588235294116" "2.647" 6 1)
+            in bradleyGain
+
+aTriangle3 e r = let stapA e r f= (moreCalc e r f) 
+             in let stapB e r = [(stapA e r fst),(stapA e r snd)]
+             in [(stapB (e) (r+1)),(stapB (e) (r+2)),(stapB (e) (r+3)),(stapB (e) (r+4)),(stapB (e) (r+5))]
 
 
 -- Write SVG "src/zooSvg.svg" 
@@ -1738,10 +1800,10 @@ fofina2	 anchor line atom = do
            let dropZet =  map tail$ reverse anchor0 --drop 2 $ map reverse anchor2 --(map show $map reverse(map (drop 1 )(map reverse anchor2)))              -- should be set to 200 or move whole field
            let fopolRAW r =  unwords (map (filter (/=']')) (map (filter (/='[')) (map show r))) 
 
-           let fopol =  unwords (map (filter (/=']')) (map (filter (/='[')) (map show dropZet))) 
-           let graphs all = "<polyline id=\"hexagon\" points=\""++ all ++"\" class=\"hexa\" onclick=\"changeFill()\"/>"
+           let fopol =  (unwords(map (filter (/=']')) (map (filter (/='[')) (map show dropZet))) )
+           let graphs all = "<polyline id=\"hexagon\" points=\""++ all ++"\" stroke=\"green\" onclick=\"changeFill()\"/>"
  
-           let polyLine = graphs fopol    
+           let polyLine = graphs (fopolRAW (aTriangle3 line atom))    
            
         --write to svg
            let el cx cy rx ry foCol=  ("<ellipse cx=\""++cx++"\" cy=\""++cy++"\" rx=\""++rx++"\" ry=\""++ry++"\" stroke=\"black\" stroke-width=\"2px\" style=\"fill:"++foCol++"\">\n"++ "</ellipse>\n")
@@ -1769,16 +1831,16 @@ fofina2	 anchor line atom = do
                 let zooSvg = (mapField ly)++(concat aMonada)++(words ("</g>\n</g>\n"))
                 return(zooSvg))
           
-           let outerLength = [1..(length anchor0)] --e.g [26.470588235294116,6.296691568836714] [0.0,25.233644859813086] [14.338235294117647,6.296691568836714] 
+           let outerLength = [1] --e.g [26.470588235294116,6.296691568836714] [0.0,25.233644859813086] [14.338235294117647,6.296691568836714] 
            plugExpri3 <- forM outerLength (\ly -> do
               --  let innerLengthLines = [1..6]  -- select how many rows are involved in plot !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! 06-10-2020
-                let withMapExp3 = mapExp3 foBrad ly 1    
+                let withMapExp3 =  polyLine --mapExp3 foBrad ly 1    
                 return (withMapExp3))
                  
-           let prpplug = concat$concat$concat$ plugExpri3
-           let aTriangle = fopolRAW (plugExpri3) 
+           let prpplug = concat$ plugExpri3
+           let aTriangle = head (plugExpri3) 
            let zooSvg2 = ((words("<g transform=\"translate(0,200)\">\n"++"<g>\n"))++(words ("</g>\n</g>\n")))
-           let zooSvg = exp3Header++ (unwords$concat$ layerNO)++(graphs aTriangle)++exp3Tail
+           let zooSvg = exp3Header++ (unwords$concat$ layerNO)++(aTriangle)++exp3Tail
 
            writeFile "zooSvg.svg" (zooSvg)                            
           -- putStrLn (show aMonada)

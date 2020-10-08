@@ -41,7 +41,8 @@ module UsefulFunctions19 (
         , minkowskiAdd --(lister2 KAAnsatz19) a list selector to buid a tensor
         , minkowskiAdd2 -- apply a list of functions to the outcome of above 
         , maxMy
-        , lengthXY 
+        , lengthXY
+        , lengthXY2 
          ) where
      --   , nameACCESSFUNCTION ) where
 -- always color sceME 'delek'
@@ -197,20 +198,24 @@ minkowskiAdd val crit dipfa = let a=  maxMy val crit dipfa
 --
 --atom: Double e.g 22.28 any value x or y of any list of pairs with varieng length 
 --e.g Col*> minkowskiAdd2  10.0 "1" ["2.9","2.8","0.01"] "2.81" (((ptc6 ))) 1 1  ------------UNDER DEVELOPMENT 06-10-2020
--- wrap selected value of ptc values in [[]]  
+-- wrap selected value of ptc values in [[]] 
+-- phiMAX: if 1 then computbale fewer errors    
 minkowskiAdd2 val crit dipfa foMax foptc atom line = 
-                    --let foMax = concat (mximum dipfa)
-                    let a=  maxMy val crit dipfa
+                    -- how do we read ptc , set to phi max find maxima of reduction
+                    let phimax = nub$map maximum$ (foptc 10)
+                    in let a=  maxMy val crit dipfa
                     in let b = (read a)
                     in let a2 = (read (minMy val crit dipfa))
                     in let c = ((b)-0.01)
                     in let d = [(b),(c)..(a2)]
                   --  in let e = drop 4 (take 5 d)
                     in let f = map round (map (*100) d)
-           -- prepare data to do (head$head $nub$foptc 10) 
-           --  by (head$head $nub$foptc val) ; below  
+           --  changed 'rekenNorm' to function phi max 07-10-2020 as in the main algorythm of kArmTrack5
+           --  changed back to rekenNorm2  
                     in let rekenMe = ceiling(realToFrac (head$drop (atom-1)$ take atom $head$drop (line-1) $ take line$nub$foptc val)*100) -- just get same ptc values to claculate with
-                    in let rekenNorm = floor(realToFrac (head$drop (atom-1)$ take atom $head$drop (line-1) $ take line$nub$foptc val)*100) -- floor; help find value in mink add
+                    in let rekenNorm = floor(realToFrac (head$drop (atom-1)$ take atom $phimax)*100) -- floor; help find value in mink add
+                    in let rekenNorm2 = floor(realToFrac (head$drop (atom-1)$ take atom $head$drop (line-1) $ take line$nub$foptc val)*100) -- floor; help find value in mink add
+
                     in let makEven = ((floor(realToFrac (head$drop (atom-1)$ take atom $head$drop (line-1) $ take line$nub$foptc val)*1)) * 100) 
                     in let anchorInt =   (minkowskiAdd 1 "1" ["0.0",foMax,"0.01"]) 
                     in let anchor = map show (minkowskiAdd 1 "1" ["0.0",foMax,"0.01"]) -- map show (f)
@@ -237,7 +242,7 @@ minkowskiAdd2 val crit dipfa foMax foptc atom line =
                         let zooSvg = unwords$concat$aMonada -- (mapField ly)++unwords(concat( concat aMonada))++(("</g>\n</g>\n"))
                         return(zooSvg))
                     return layerNO
-                    let aSpectrum  = let toCalc = (take 3 (show rekenNorm)) -- rekenNorm
+                    let aSpectrum  = let toCalc = (take line (show rekenNorm)) -- rekenNorm
                                      in let findCalc = (read toCalc) `elemIndices` anchorInt 
                                      in show (head findCalc) --[layerNO] -- findCalc
                                          --in let abs2 = (rekenMe-((head$head$foptc 10)*100))
@@ -251,7 +256,7 @@ minkowskiAdd2 val crit dipfa foMax foptc atom line =
                --     putStrLn (show makEven)
                  --   putStrLn (show(aSpectrum)) --(unwords(concat aSpectrum))
        -- => export: max limit A , normal level B, first two digits B, location B in given minkowskiAdd 
-                    [show rekenMe,show rekenNorm,show makEven,aSpectrum]
+                    [show rekenMe,show rekenNorm2,show makEven,aSpectrum]
 
 
      where
@@ -334,7 +339,12 @@ lengthXY foptc forBrad rowNumber aPunkt fstOsnd foXorY forMinkAdd atom line = le
                   in let calcMinkListRat = ((realToFrac (seeRat - seeEnd)) /100)   
                   in let bradY = (map snd ofBradLine)
    ------------------------------------------------------------------------------------
-                  in let toSvgInt k = (aPunkt) + (realToFrac (head (drop(k-1)(take k bradX))))
+   -- determine how to add ptc data to the foBrad metric
+   --  with '+' will add below x axis with '-' vice versa
+   --  also needs the right atom to start plotting ptc (0,0) -> (foBrad 148,148)  (line 1 , atom 6)
+                 -- in let toSvgInt k = (aPunkt) + (realToFrac (head (drop(k-1)(take k bradX))))
+                  in let toSvgInt k = (-1)*(aPunkt) + (realToFrac (head (drop(k-1)(take k bradX))))
+
                   in [(toSvgInt atom)] --,ratio,calcRat,seeRat,seeEnd,calcMinkListRat]
                 {-    do 
                      let go = take findCoordinate [1,2,3]--minkIntStep --byThisMetric
@@ -349,6 +359,46 @@ lengthXY foptc forBrad rowNumber aPunkt fstOsnd foXorY forMinkAdd atom line = le
                      putStrLn (show seeRat)
                      putStrLn (show seeEnd)
                      putStrLn (show calcMinkListRat)-}
+lengthXY2 foptc forBrad rowNumber aPunkt fstOsnd foXorY forMinkAdd atom line = let foBound = foXorY --"26.470588235294116" -- map maximum (transpose(foptc 10)) -- max X coordinate
+-- => head [22.77992277992278,26.470588235294116,25.233644859813086]
+      -- a minkowskiAdd2 list 
+                  in let minkActioRaw = ((minkowskiAdd2  9.0 "1" ["1.9","1.8","0.01"] forMinkAdd (foptc ) atom line ))
+                  in let ofMinkList = (minkowskiAdd  "9.0" "1" ["1.9",forMinkAdd,"0.01"] )
+                  in let findCoordinate = let rawform =  ((map scanChar(show (last minkActioRaw)))) -- veryfies maximum is first
+                                          in let stepke = (filter (>=0) (rawform ) )
+                                          in let myLog = [1,10,100,1000,10000,100000,1000000]
+                                          in let tobuild = reverse(take (length stepke) myLog)
+                                          in let to10erSystem = sum(zipWith (*) tobuild stepke)
+                                          in to10erSystem
+        -- outcome 'ofMinkList' or finds location of coordinate smaller than  (max X) or smaller (max Y)  
+                  in let minkTake = drop (findCoordinate-1) (take (findCoordinate) ofMinkList)
+                  in let byThisMetricRAW = ((realToFrac(head ofMinkList)) / 6) -- 228 <- 2278 <- 22.779 <- maxX of (ptc6 10)
+                  in let byThisMetric = ceiling byThisMetricRAW
+                  in let foFindPunkt = floor byThisMetricRAW
+            -- get x's out of foBrad per line 
+                  in let ofBradLine  =   ( tk rowNumber (concat((forBrad)))) -- [(190,35),(270,66),(216,46),(245,55),(298,75),(322,83)]
+                  
+                  in let bradX =  ( (map fstOsnd ofBradLine)) --[190,270,216,245,298,322]
+                  in let goBrad p= drop (p-1) (take p bradX)
+                  in let ratio = (last bradX) - (head bradX) -- 132
+                  in let calcRat = ((realToFrac ratio) / 100)  -- 1.32
+   -----------------------------------------------------------------------------------
+   -- keep track of which part of minkowskiAdd list is worked on
+   --  not used yet !!!!!!!!!!!!!! 
+                  in let getOfRatRAW k p = drop (k) (take p ofMinkList)
+                  in let getOfRat = getOfRatRAW (foFindPunkt*(rowNumber-1)) (foFindPunkt*rowNumber)  -- pool every line of minkowskiAdd that has been changed
+                  in let seeRat = head getOfRat 
+                  in let seeEnd = last getOfRat 
+                  in let calcMinkListRat = ((realToFrac (seeRat - seeEnd)) /100)   
+                  in let bradY = (map snd ofBradLine)
+   ------------------------------------------------------------------------------------
+   -- determine how to add ptc data to the foBrad metric
+   --  with '+' will add below x axis with '-' vice versa
+   --  also needs the right atom to start plotting ptc (0,0) -> (foBrad 148,148)  (line 1 , atom 6)
+                 -- in let toSvgInt k = (aPunkt) + (realToFrac (head (drop(k-1)(take k bradX))))
+                  in let toSvgInt k = (aPunkt) + (realToFrac (head (drop(k-1)(take k bradX))))
+
+                  in [(toSvgInt atom)]
 -- Formel zurBerechnung der proz Wahrscheinlichkeit
 -- laesst Raum fuer offene Proznte, d,h, die liste der 
 -- Normwahrscheinlichkeit wird immer unter 100% bleiben 
