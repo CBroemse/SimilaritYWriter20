@@ -1781,7 +1781,7 @@ moreCalc xorYorZ atom fstS = let step1 =  tail (ptcCac xorYorZ)
 
 aTriangle3 e r = let stapA e r f= (moreCalc e r f) 
              in let stapB e r = [(stapA e r fst),(stapA e r snd)]
-             in [(stapB (e) (r+1)),(stapB (e) (r+2)),(stapB (e) (r+3)),(stapB (e) (r+4)),(stapB (e) (r+5))]
+             in transpose[(stapB (e) (r+1)),(stapB (e) (r+2)),(stapB (e) (r+3)),(stapB (e) (r+4)),(stapB (e) (r+5))]
 
 
 -- Write SVG "src/zooSvg.svg" 
@@ -1801,7 +1801,7 @@ fofina2	 anchor line atom = do
            let fopolRAW r =  unwords (map (filter (/=']')) (map (filter (/='[')) (map show r))) 
 
            let fopol =  (unwords(map (filter (/=']')) (map (filter (/='[')) (map show dropZet))) )
-           let graphs all = "<polyline id=\"hexagon\" points=\""++ all ++"\" stroke=\"green\" onclick=\"changeFill()\"/>"
+           let graphs all = "<polyline id=\"hexagon\" points=\""++ all ++"\" stroke=\"green\" style=\"fill:red;fill-opacity:0.6;\" onclick=\"changeFill()\"/>"
  
            let polyLine = graphs (fopolRAW (aTriangle3 line atom))    
            

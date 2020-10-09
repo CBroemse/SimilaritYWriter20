@@ -301,7 +301,7 @@ secondly just highight point needed </text>
 </ellipse>
  <ellipse cx="322" cy="83" rx="10" ry="12" stroke="black" stroke-width="2px" style="fill:lime">
 </ellipse>
- </g> </g><polyline id="hexagon" points="117.77085162423178,68.77085162423178 150.7708516242318,56.77085162423178 186.7708516242318,43.77085162423178 221.7708516242318,30.77085162423178 256.7708516242318,17.77085162423178" stroke="green" onclick="changeFill()"/><!-- Two overlap -->
+ </g> </g><polyline id="hexagon" points="146.05863708399366,179.05863708399366,215.05863708399366,250.05863708399366,285.05863708399363 97.05863708399366,85.05863708399366,72.05863708399366,59.05863708399366,46.05863708399366" stroke="green" style="fill:red;fill-opacity:0.6;" onclick="changeFill()"/><!-- Two overlap -->
 <g transform="translate(100,30);rotate(90);" >
 	
 
