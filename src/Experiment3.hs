@@ -391,37 +391,27 @@ experiment3 ghAdd d = experiment3RAW2 1 ghAdd 1 d subroutinE
 -- fopi: Punkt see differences internal pi2 is to generate Chars via 'runEXP3Char'
 experiment3RAW11 ghAdd d subroutineList foPtc foLi nforCalc fopi= do
    -- givens:
-       let pi2 = Punkt "extern" Nothing Nothing Nothing Nothing Nothing
-       let ert r = tk r (foPtc 250)
-       let xS r = head (ert r)  
-       let yS r = last (drop 1 (take 2 (ert r))) 
-       let zS r = last (ert r) 
-       let maXxS = map xS [1..100]   
-       let maXyS = map yS [1..100]
-       let maXzS = map zS [1..100]   
        let moreReads = do   
             exp3Fractional <- forM [1..(length subroutineList)] (\four4 -> do
                   let exP3 =  runEXP3 (head(ausw four4 d)) fopi ghAdd --kWORK --(G.fobase progVar1 progVar2 progVar3 progVar4 progVar5 progVar6 daZip1 daZip2 daZip3 textAA (ptcButoons) (foalt))
                   return (exP3))
-            let exp3Frac = concat$concat$exp3Fractional
-
-            let maxX = maximum maXxS
-            let maxY = maximum maXyS
-            let maxZ = maximum maXzS
-            let minS = [(minimum maXxS),(minimum maXyS),(minimum maXzS)]
+            return exp3Fractional
+       moreReads
+       let exp3Frac = moreReads
+       let minS = [(minimum maXxS),(minimum maXyS),(minimum maXzS)]
      -- 'quirky example'  --
-            let calcAlgoExperiment3 =  let triangle_' =  [(b',c'),(b',0),(0,0)]
+       let calcAlgoExperiment3 =  let triangle_' =  [(b',c'),(b',0),(0,0)]
                                        in let triangle_'' = [(b',c'),(0,0),(0,a')]
                                        in let triangle_k m = [(b',c'),(b',a'),(b,a')]
                                      --  in let triangle_p = 
-                                       in let wriSVG ank = C.fofina2 ank
+                                       in let wriSVG ank = C.fofina2 foPtc ank 1 1 
                                        in let testField = C.foBrad 
                                        in let testHex = C.aHexa
-                                       in let punktFit = do 
+                                    {-   in let punktFit = do 
                                                      let prepA = [[maxX,maxY,maxY], minS] -- wriSVG testHex --triangle_k 1 --map getOutX twoXtwo --[twoXtwo,threeXthree,(fiveXfive nforCalc)] --fiveXfive 1
                                                      polyLine <- forM [1,2] (\ly -> do  -- any geometric shape higher than 1 
-                                                                   let plugCol = colorList ly 
-                                                                   aMonada <- forM [1..(length anchor)] (\os -> do 
+                                                               let plugCol = colorList ly 
+                                                               aMonada <- forM [1..(length anchor)] (\os -> do 
                                                                    let conLongituda =  (tk os anchor)
                                                                    let readMore = if length anchor == 1 then 1 
                                                                                   else (length conLongituda)
@@ -430,15 +420,25 @@ experiment3RAW11 ghAdd d subroutineList foPtc foLi nforCalc fopi= do
                                                                           let gtSnd = show$snd$head$ausw cs conLongituda
                                                                           let inPlug = graphs ((unwords( map fst$dotSize ly))++" "++(unwords(map snd$dotSize ly)))                    
                                                                           return (inPlug))
-                                                                    return (innRead))
-                                                                    return (aMonada))
-                                                     return polyLine
-                                       return punktFit
+                                                               return (innRead))
+                                                     return (polyLine)
+                                       return punktFit -}
                                        --in punktFit 
-                                       in wriSVG testHex
-
-                  where
-                   bOn = exp3Frac;
+                                       in wriSVG testField
+       calcAlgoExperiment3
+  where
+                   maxX = maximum maXxS;
+                   maxY = maximum maXyS;
+                   maxZ = maximum maXzS;
+                   pi2 = Punkt "extern" Nothing Nothing Nothing Nothing Nothing;
+                   ert r = tk r (foPtc 250);
+                   xS r = head (ert r)  ;
+                   yS r = last (drop 1 (take 2 (ert r))) ;
+                   zS r = last (ert r) ;
+                   maXxS = map xS [1..100];   
+                   maXyS = map yS [1..100];
+                   maXzS = map zS [1..100] ;  
+                   --bOn = exp3Frac;
                    twoXtwo = [(10,maxY),(10,15),(0,15),(0,maxY)];
                    fo3y = (maxY - (maxY- (maxX-11)));
                    threeXthree = [(maxX,maxY), (maxX, 15),(11,fo3y),(11,maxY)];
@@ -483,18 +483,6 @@ experiment3RAW11 ghAdd d subroutineList foPtc foLi nforCalc fopi= do
                  -- + 1 due to offset of whole wxm data
                    b = ((((((-1)* a)) + (((-1)*c)) - (sqrt(2*a*c**cosBeta)))/10)-1)*(-1);
                    
-                  -- aAk = sin
-              -- +###############################     cCk = fofina to be continue here !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1 -- side c of triangle c #############################
-
-            let cE3 = calcAlgoExperiment3
-         --   let foRunner gb1 gb2 = let foGb1 gb =  map realToFrac (map ord gb )
-           --                        in let foGb2 gb =  map realToFrac (map ord gb )
-             --                      in  similaritYvalue (foGb1 gb1) (foGb2 gb2)
-        --    let ptcToInt m = let loadInBlank = map (\c -> if c=='.' then ' '; else c)  
-          --                   in let myTruncate = read$head$words$loadInBlank m
-            --                 in myTruncate
-            return (cE3) --ptcToInt nforCalc )--cE3 --aRunner
-       moreReads 
 --------------------------------------------
 
 ------------------------------------------------------------------------------
