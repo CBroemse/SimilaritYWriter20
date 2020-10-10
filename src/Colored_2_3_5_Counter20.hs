@@ -1737,6 +1737,14 @@ triangleKd1d foptc e r = let stapA e r f= (moreCalc foptc e r f)
              in let stapB e r = [(stapA e r snd),(stapA e r fst)]
              in [[16,99],[62,144],[111,131]] --[257,116]] --(stapB (1) (6)),(stapB (e) (r+4)),(stapB (1) (r+5)) ]
 
+triangle'' foptc e r = let stapA e r f= (moreCalc foptc e r f) 
+             in let stapB e r = [(stapA e r snd),(stapA e r fst)]
+             in [[250,111],[(stapA 2 6 fst),((stapA 3 6 snd))],[148,148]] --[257,116]] --(stapB (1) (6)),(stapB (e) (r+4)),(stapB (1) (r+5)) ]
+
+triangleKd2b foptc e r = let stapA e r f= (moreCalc foptc e r f) 
+             in let stapB e r = [(stapA e r snd),(stapA e r fst)]
+             in [[148,148],[62,144],[111,131]] --[257,116]] --(stapB (1) (6)),(stapB (e) (r+4)),(stapB (1) (r+5)) ]
+
 
 -- Write SVG "src/zooSvg.svg" 1
 -- e.g *> fofina2 foBrad
@@ -1757,14 +1765,17 @@ fofina2	foptc anchor line atom = do
            let fopol =  (unwords(map (filter (/=']')) (map (filter (/='[')) (map show dropZet))) )
            let graphs all foCol= "<polyline id=\"hexagon\" points=\""++ all ++"\" stroke=\"green\" style=\"fill:"++foCol++";fill-opacity:0.6;\" onclick=\"changeFill()\"/>"
  
-           let polyLine = (graphs (fopolRAW (triangle' foptc line atom)) "red" )  
-           let polyLine2 = (graphs (fopolRAW (triangleKd1 foptc line atom)) "blue")
-           let polyLine3 = (graphs (fopolRAW (triangleKd1b foptc line atom))  "green")
+           let polyLine = (graphs (fopolRAW (triangle' foptc line atom)) "green" )
+           let polyLine1 = (graphs (fopolRAW (triangle'' foptc line atom))  "blue")
+  
+           let polyLine2 = (graphs (fopolRAW (triangleKd1 foptc line atom)) "orange")
+           let polyLine3 = (graphs (fopolRAW (triangleKd1b foptc line atom))  "red")
            let polyLine4 = (graphs (fopolRAW (triangleKd2 foptc line atom))  "red")
-           let polyLine5 = (graphs (fopolRAW (triangleKd1c foptc line atom))  "blue")
-           let polyLine6 = (graphs (fopolRAW (triangle''' foptc line atom))  "green")
-
-
+           let polyLine5 = (graphs (fopolRAW (triangleKd1c foptc line atom))  "red")
+           let polyLine6 = (graphs (fopolRAW (triangleKd1d foptc line atom))  "grey")
+           let polyLine7 = (graphs ( fopolRAW (triangleKd2b foptc line atom)) "blue")
+           let polyLine8 = (graphs ( fopolRAW (triangle''' foptc line atom)) "red")
+ 
 
         --write to svg
            let el cx cy rx ry foCol=  ("<ellipse cx=\""++cx++"\" cy=\""++cy++"\" rx=\""++rx++"\" ry=\""++ry++"\" stroke=\"black\" stroke-width=\"2px\" style=\"fill:"++foCol++"\">\n"++ "</ellipse>\n")
@@ -1802,7 +1813,7 @@ fofina2	foptc anchor line atom = do
            let prpplug = concat$ plugExpri3
            let aTriangle = head (plugExpri3) 
            let zooSvg2 = ((words("<g transform=\"translate(0,200)\">\n"++"<g>\n"))++(words ("</g>\n</g>\n")))
-           let zooSvg = exp3Header++ (unwords$concat$ layerNO)++(aTriangle)++polyLine++polyLine2++polyLine3++polyLine4++polyLine5++polyLine6++exp3Tail
+           let zooSvg = exp3Header++ (unwords$concat$ layerNO)++(aTriangle)++polyLine++polyLine8++polyLine7++polyLine6++polyLine5++polyLine4++polyLine3++polyLine2++polyLine1++exp3Tail
 
            writeFile "zooSvg.svg" (zooSvg)                            
           -- putStrLn (show aMonada)
