@@ -1597,6 +1597,13 @@ foBrad = [[(16,99),(42,109),(70,117),(96,128),(124,137),(148,148)],{- y=0 first 
          [(154,48),(182,58),(209,69),(235,77),(263,87),(287,96)],
          [(190,35),(270,66),(216,46),(245,55),(298,75),(322,83)]]
 
+foBrad2 = [[(16,169),(42,179),(70,187),(96,198),(124,207),(148,218)],{- y=0 first front left-}
+         [(52,156),(79,167),(105,176),(131,186),(160,196),(183,204)], {- y = 1 snd from front-} 
+         [(85,144),(112,153),(139,163),(166,172),(192,182),(216,192)],
+         [(120,132),(147,140),(174,151),(201,161),(228,170),(252,179)],
+         [(154,118),(182,128),(209,139),(235,147),(263,157),(287,166)],
+         [(190,105),(270,136),(216,116),(245,125),(298,145),(322,153)]]
+
 aHexa =  [[(70,117)],{- y=0 first front left-}
          [(183,134),(52,86)], {- y = 1 snd from front-} 
          [(154,48),(287,96)],
@@ -1653,16 +1660,28 @@ ptcMetric foptc cell line = --let minkActioRaw = ((minkowskiAdd2  9.0 "1" ["1.9"
 
 ptcCac foptc z = sort [(ptcMetric foptc z 1),(ptcMetric foptc z 2),(ptcMetric foptc z 3)]
 
-moreCalc foptc xorYorZ atom fstS = let step1 =  tail (ptcCac foptc xorYorZ) 
+moreCalc foptc xorYorZ atom fstS = let step1 =  map realToFrac (tail (ptcCac foptc xorYorZ))
+            in let findCoordinate ploy = let rawform =  ((map scanChar(show (ploy)))) -- veryfies maximum is first
+                                      in let stepke = (filter (>=0) (rawform ) )
+                                      in let myLog = [1,10,100,1000,10000,100000,1000000]
+                                      in let tobuild = reverse(take (length stepke) myLog)
+                                      in let to10erSystem = sum(zipWith (*) tobuild stepke)
+                                      in to10erSystem
+ 
             in let step2 = ((realToFrac(head step1))/(realToFrac(last step1)))
-            in let bradleySel = head(lengthXY (foptc)  [foBrad] 1 0 snd  "26.470588235294116" "2.647"6 1) -- foBradley selector
-            in let calcBradPTC = (realToFrac bradleySel)*(step2)
+            in let bradleySel6 = head(lengthXY (foptc)  [foBrad] 1 0 fstS  "26.470588235294116" "2.647"6 1) -- foBradley selector
+            in let bradleySel1 = head(lengthXY (foptc)  [foBrad] 1 0 fstS  "26.470588235294116" "2.647"1 1) -- foBradley selector
+            in let lineWidth = (bradleySel6 -bradleySel1)  
+            in let calcBradPTC = (realToFrac bradleySel1)*(step2)
             in let bradleyGain = head(lengthXY (foptc )  [foBrad] atom calcBradPTC fstS  "26.470588235294116" "2.647" 6 1)
-            in bradleyGain
-
+            in let coordo = ((lineWidth)*(step2))
+            in let toDouble = (coordo)
+            in let calcOnBradley = head(lengthXY (foptc )  [foBrad] atom toDouble fstS  "26.470588235294116" "2.647" 6 1)
+            in calcOnBradley --bradleySel6 --lineWidth --coordo --calcOnBradley --(toDouble/100) --coordo --step2 --coordo --head step1 --coordo --step2 --head step1 --bradleyGain
+   
 aTriangle3 foptc e r = let stapA e r f= (moreCalc foptc e r f) 
              in let stapB e r = [(stapA e r fst),(stapA e r snd)]
-             in transpose[(stapB (e) (r+1)),(stapB (e) (r+2)),(stapB (e) (r+3)),(stapB (e) (r+4)),(stapB (e) (r+5))]
+             in [(stapB (e) (r+1)),(stapB (e) (r+2)),(stapB (e) (r+3)),(stapB (e) (r+4)),(stapB (e) (r+5))]
 
 twoTriangles foptc e r = let stapA e r f= (moreCalc foptc e r f) 
              in let stapB e r = [(stapA e r fst),(stapA e r snd)]
@@ -1674,7 +1693,7 @@ funfeck2 foptc e r = let stapA e r f= (moreCalc foptc e r f)
 
 twoTriangles2 foptc e r = let stapA e r f= (moreCalc foptc e r f) 
              in let stapB e r = [(stapA e r fst),(stapA e r snd)]
-             in [(stapB (e) (r+1)),(stapB (e) (r+2)),(stapB (2) (r+3)),(stapB (3) (r+4)),(stapB (3) (r+5))]
+             in  [(stapB (e) (r+1)),(stapB (e) (r+2)),(stapB (2) (r+3)),(stapB (3) (r+4)),(stapB (3) (r+5))]
 
 twoTriangles3 foptc e r = let stapA e r f= (moreCalc foptc e r f) 
              in let stapB e r = [(stapA e r fst),(stapA e r snd)]
@@ -1683,7 +1702,34 @@ twoTriangles3 foptc e r = let stapA e r f= (moreCalc foptc e r f)
 twoTriangles4 foptc e r = let stapA e r f= (moreCalc foptc e r f) 
              in let stapB e r = [(stapA e r fst),(stapA e r snd)]
              in [(stapB (e) (r+1)),(stapB (e) (r+2)),(stapB (3) (r+3)),(stapB (e) (r+4)),(stapB (1) (r+5)) ]
--- Write SVG "src/zooSvg.svg" 
+
+-- build from 'static' ptc3 
+triangle' foptc e r = let stapA e r f= (moreCalc foptc e r f) 
+             in let stapB e r = [(stapA e r snd),(stapA e r fst)]
+             in [[(stapA 1 1 fst),((stapA 1 1 snd))],[(stapA 2 6 fst),((stapA 3 6 snd))],[148,148]] --[257,116]] --(stapB (1) (6)),(stapB (e) (r+4)),(stapB (1) (r+5)) ]
+
+triangle''' foptc e r = let stapA e r f= (moreCalc foptc e r f) 
+             in let stapB e r = [(stapA e r snd),(stapA e r fst)]
+             in [[(120),(62)],[(stapA 1 3 fst),(stapA 3 3 snd)],[16,99]] --[257,116]] --(stapB (1) (6)),(stapB (e) (r+4)),(stapB (1) (r+5)) ]
+
+
+compton foptc e r = let stapA e r f= (moreCalc foptc e r f) 
+             in let stapB e r = [(stapA e r snd),(stapA e r fst)]
+             in transpose[[(stapA 2 6 snd),((stapA 3 6 fst))],[(stapA 2 6 snd),((stapA 3 6 fst))],[(stapA 1 1 snd),((stapA 3 1 fst))]] --[257,116]] --(stapB (1) (6)),(stapB (e) (r+4)),(stapB (1) (r+5)) ]
+
+triangleKd1 foptc e r = let stapA e r f= (moreCalc foptc e r f) 
+             in let stapB e r = [(stapA e r snd),(stapA e r fst)]
+             in [[(217),(94)],[(stapA 2 6 fst),((stapA 3 6 snd))],[120,62]] --[257,116]] --(stapB (1) (6)),(stapB (e) (r+4)),(stapB (1) (r+5)) ]
+
+triangleKd1b foptc e r =  let stapA e r f= (moreCalc foptc e r f) 
+             in let stapB e r = [(stapA e r snd),(stapA e r fst)]
+             in [[(217),(94)],[(stapA 2 6 fst),((stapA 3 6 snd))],[120,62]] --[257,116]] --(stapB (1) (6)),(stapB (e) (r+4)),(stapB (1) (r+5)) ]
+
+triangleKd2 foptc e r = let stapA e r f= (moreCalc foptc e r f) 
+             in let stapB e r = [(stapA e r snd),(stapA e r fst)]
+             in [[(217),(94)],[(stapA 1 3 fst),((stapA 3 3 snd))],[120,62]] --[257,116]] --(stapB (1) (6)),(stapB (e) (r+4)),(stapB (1) (r+5)) ]
+
+-- Write SVG "src/zooSvg.svg" 1
 -- e.g *> fofina2 foBrad
 -- anchor : [[(Double,Double)]] e.g 'foBrad'
 -- line   : Int ; which line of forBrad the x coordinate  
@@ -1702,9 +1748,9 @@ fofina2	foptc anchor line atom = do
            let fopol =  (unwords(map (filter (/=']')) (map (filter (/='[')) (map show dropZet))) )
            let graphs all foCol= "<polyline id=\"hexagon\" points=\""++ all ++"\" stroke=\"green\" style=\"fill:"++foCol++";fill-opacity:0.6;\" onclick=\"changeFill()\"/>"
  
-           let polyLine = graphs (fopolRAW (twoTriangles3 foptc line atom)) "red"   
-           let polyLine2 = graphs (fopolRAW (twoTriangles4 foptc line atom)) "blue"
-           let polyLine3 = graphs (fopolRAW (aTriangle3 foptc line atom))  "green"
+           let polyLine = (graphs (fopolRAW (triangleKd2 foptc line atom)) "red" )  
+           let polyLine2 = (graphs (fopolRAW (triangleKd1b foptc line atom)) "blue")
+           let polyLine3 = (graphs (fopolRAW (triangle''' foptc line atom))  "green")
         --write to svg
            let el cx cy rx ry foCol=  ("<ellipse cx=\""++cx++"\" cy=\""++cy++"\" rx=\""++rx++"\" ry=\""++ry++"\" stroke=\"black\" stroke-width=\"2px\" style=\"fill:"++foCol++"\">\n"++ "</ellipse>\n")
          -- all:String ; "87,0 174,50 174,150 87,200 0,150 0,50 87,0"
