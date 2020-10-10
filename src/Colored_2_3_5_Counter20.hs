@@ -1645,7 +1645,7 @@ ptcMetric foptc cell line = --let minkActioRaw = ((minkowskiAdd2  9.0 "1" ["1.9"
                                       in let to10erSystem = sum(zipWith (*) tobuild stepke)
                                       in to10erSystem
              in let we t = take 5 $ show$(0.1*(head(ausw t (nub$map maximum (foptc 10)))))
-             in let tensorRAW median t =  ((minkowskiAdd2  10.0 "1" ["2.9","2.8","0.01"] (we median) foptc t median)) 
+             in let tensorRAW median t =  ((minkowskiAdd2  10 "1" ["2.9","2.8","0.01"] (we median) foptc t median)) 
  -- the median being one or two data points to make a trianlge , that very points must be in the intervall (0..max x,0..max y)
              in let tigi median =  (map (tensorRAW median ) [1..3] )
              in let choosParse c focell foline = head$ausw c $head(ausw cell (tigi line))
