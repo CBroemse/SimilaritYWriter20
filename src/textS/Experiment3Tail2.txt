@@ -414,7 +414,7 @@ secondly just highight point needed </text>
 
 
 
-<text x="110" y="160" font-size="18" fill="yellow" fill-opacity="0.9"> quad2x2ptc6 </text>
+<text x="180" y="160" font-size="15" fill="yellow" fill-opacity="0.9"> quad2x2ptc6 </text>
 <text x="80" y="200">Eperiment3: ptc0 example; </text>
 <text x="80" y="215">*C..> 'fofina2 ptc0 foBrad 1 1'</text>
 <text x="230" y="440" font-size="18" fill="green" fill-opacity="0.4">clientX : <tspan id="cX" fill="red" fill-opacity="0.8">0</tspan></text> 
@@ -422,7 +422,7 @@ secondly just highight point needed </text>
 <text x="230" y="480" font-size="18" fill="green" fill-opacity="0.4">screenX : <tspan id="sX" fill="red" fill-opacity="0.8">0</tspan></text> 
 <text x="230" y="500" font-size="18"  fill="blue" fill-opacity="0.9">screenY : <tspan id="sY" fill="green" fill-opacity="0.8">0</tspan></text> 
 
-<rect id="go" x="200" y="50" width="300" height="650" style="fill:#1e1c1ecc;fill-opacity:0.6"/>
+<rect id="go" x="800" y="50" width="300" height="650" style="fill:#1e1c1ecc;fill-opacity:0.6"/>
 </g>
 
 
