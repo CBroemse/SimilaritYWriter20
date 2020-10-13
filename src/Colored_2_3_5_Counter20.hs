@@ -1711,12 +1711,12 @@ quad2x2ptc0 e atom moveBy = let theZero fos =   moreCalc ptc0 1 1 fos
                   in [[bdyX,bdyY*(2.1379)+moveBy],[ bdyX,(theZero snd)*1.5621+moveBy],[(theZero fst),(theZero snd)+moveBy],[(theZero fst),bdyY+moveBy]]
 
 
-quad2x2ptc8 e atom = let theZero fos =   moreCalc ptc8 1 1 fos  
+quad2x2ptc8 e atom moveBy= let theZero fos =   moreCalc ptc8 1 1 fos  
                   in let bdyX = moreCalc ptc8 1 6 fst -- x 
                   in let bdyY = moreCalc ptc8 1 6 snd --y
                   in let fosuared = bdyX*1
                   in let fosqY = bdyY*6
-                  in [[bdyX,bdyY*(2.1379)],[ bdyX,(theZero snd)*1.5621],[(theZero fst),(theZero snd)],[(theZero fst),bdyY]]
+                  in [[bdyX,bdyY*(2.1379)+moveBy],[ bdyX,(theZero snd)*1.5621+moveBy],[(theZero fst),(theZero snd)+moveBy],[(theZero fst),bdyY+moveBy]]
 
 --aSquare
  
@@ -1755,7 +1755,7 @@ triangle''' foptc e r = let stapA e r f= (moreCalc foptc e r f)
 
 -- os: [Double] ; any ptc list 
 triRead moveY foptc  = let mapper fr = map (zVal fr )[1,2,3]
-                       in [mapper 1] --(map mapper [1..3])
+                       in (map mapper [1..3])
    where
      --prepPtc k = head(ausw k foptc)
      foG fr g fsnd = moreCalc foptc fr g fsnd; 
@@ -1765,7 +1765,7 @@ triRead moveY foptc  = let mapper fr = map (zVal fr )[1,2,3]
      zVal fr g  = unlines ["<ellipse cx=\"2\" cy=\"5\" rx=\""++ show(inBoundZ fr g fst) ++"\" ry=\"1\" stroke=\"black\" stroke-width=\"0.5px\" style=\"fill:green\">"++
                        "<animateColor attributeName=\"fill\" attributeType=\"CSS\" from=\"blue\" to=\"lime\" begin=\"0.1s\" dur=\"1s\"  repeatCount=\"indefinite\" />"++
                        "<animateTransform attributeName=\"transform\" attributeType=\"XML\" type=\"rotate\" from=\"0\" to=\"90\" begin=\"0.1s\" dur=\"0.1s\" fill=\"freeze\"/>"++
-                       "<animateMotion path=\"M  0 0 L "++show (529+ (inBX 1 fr))++" "++show(moveY)++"\" begin=\"0.1s\" dur=\"0.3s\" fill=\"freeze\"/>"++"</ellipse>"]; 
+                       "<animateMotion path=\"M  0 0 L "++show (529+ (inBX 1 fr))++" "++show((inBY fr g)+moveY)++"\" begin=\"0.1s\" dur=\"0.3s\" fill=\"freeze\"/>"++"</ellipse>"]; 
                                                            --(inBX fr g 
 compton foptc e r = let stapA e r f= (moreCalc foptc e r f) 
              in let stapB e r = [(stapA e r snd),(stapA e r fst)]
@@ -1817,16 +1817,16 @@ fofina2	foptc anchor line atom = do
            let fopolRAW r =  unwords (map (filter (/=']')) (map (filter (/='[')) (map show r))) 
 
            let fopol =  (unwords(map (filter (/=']')) (map (filter (/='[')) (map show dropZet))) )
-           let graphs all foCol= "<polyline id=\"hexagon\" points=\""++ all ++"\" stroke=\"green\" style=\"fill:"++foCol++";fill-opacity:0.6;\" onclick=\"changeFill()\"/>"
+           let graphs all foCol= "<polyline id=\"hexagon\" points=\""++ all ++"\" stroke=\"orange\" style=\"fill:"++foCol++";fill-opacity:0.3;\" onclick=\"changeFill()\"/>"
  
            let polyLine = (graphs (fopolRAW (triangle'' foptc line atom)) "green" ) --(fopolRAW (triangle' foptc line atom)) "green" )
            let polyLine1 = (graphs (fopolRAW (triangle'' foptc line atom))  "blue") --triangle''
   
            let polyLine2 = (graphs (fopolRAW (quad2x2ptc0 line atom 400)) "orange") --triangleKd1  -- only working variable ptcs yet !!!!!!!!!!!!!!!
-           let polyLine3 = (graphs (fopolRAW (quad2x2ptc6 line atom 300))  "red") --triangleKd1b   -- could be a B in A a solution
+           let polyLine3 = (graphs (fopolRAW (quad2x2ptc6 line atom 400))  "red") --triangleKd1b   -- could be a B in A a solution
            let polyLine4 = (graphs (fopolRAW (quad2x2ptc3 line atom 400))  "green") -- triangleKd2  -- of a pre-selected progVar run 
-           let polyLine5 = (graphs (fopolRAW (quad2x2ptc3b line atom 100))  "purple") -- triangleKd1c -- now conencted to progVars of this module only 
-           let polyLine6 = (graphs (fopolRAW (quad2x2ptc8 line atom))  "grey") -- triangleKd1d
+           let polyLine5 = (graphs (fopolRAW (quad2x2ptc3b line atom 400))  "purple") -- triangleKd1c -- now conencted to progVars of this module only 
+           let polyLine6 = (graphs (fopolRAW (quad2x2ptc8 line atom 400))  "grey") -- triangleKd1d
 
            let polyLine7 aptc = (graphs ( fopolRAW (triangleKd2b aptc line atom)) "blue") --triangleKd2b
            let polyLine8 aptc = (graphs ( fopolRAW (triangle''' aptc line atom)) "red") 
@@ -1837,7 +1837,7 @@ fofina2	foptc anchor line atom = do
            let polyLine13 aptc= (graphs (fopolRAW (triangleKd1d aptc line atom))  "grey") -- triangleKd1d
 
         --write to svg
-           let el cx cy rx ry foCol=  ("<ellipse cx=\""++cx++"\" cy=\""++cy++"\" rx=\""++rx++"\" ry=\""++ry++"\" stroke=\"black\" stroke-width=\"2px\" style=\"fill:"++foCol++"\">\n"++ "</ellipse>\n")
+           let el cx cy rx ry foCol=  ("<ellipse cx=\""++cx++"\" cy=\""++cy++"\" rx=\""++rx++"\" ry=\""++ry++"\" stroke=\"green\" stroke-width=\"1px\" style=\"fill:"++foCol++";fill-opacity:0.3;\">\n"++ "</ellipse>\n")
          -- all:String ; "87,0 174,50 174,150 87,200 0,150 0,50 87,0"
          -- mind the empty spaces determine shape
          --  3 triangle or 6 hexagon and so on.
@@ -1875,7 +1875,7 @@ fofina2	foptc anchor line atom = do
                   
                 return (withMapExp3))
            let fotheZs z = (unlines(head( ausw z (triRead 140 ( foptc)))))
-           let theZs = "<g>"++unlines [fotheZs 1]++"</g>" -- map fotheZs [1..3]
+           let theZs = "<g>"++unlines (map fotheZs [1..3] )++"</g>" -- map fotheZs [1..3]
            let prpplug = concat$ plugExpri3
            let aTriangle = head (plugExpri3) 
            let zooSvg2 = ((words("<g transform=\"translate(0,140)\">\n"++"<g>\n"))++(words ("</g>\n</g>\n")))
@@ -1894,7 +1894,7 @@ fofina2	foptc anchor line atom = do
           
   where
      dar is so =  ausw is so;
-     colorList c = dar c ["lightblue","lime","blue","darkgray","black","white","lime"];
+     colorList c = dar c ["lightblue","lime","blue","darkgray","green","white","lime"];
      dotSize d = dar d [("5","7"),("10","12"),("5","7")];
      fieldPosi fp = (" <g transform=\"translate(0,"++ fp ++")\">\n<g>\n");
      mapField d = ausw d $ map fieldPosi ["0","200","300"];

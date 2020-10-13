@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xml="http://www.w3.org/XML/1998/namespace" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:dc="http://purl.org/dc/elements/1.1/"
-   xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" id="root" xml:space="preserve" width="700" height="800" onload="OnLoadEvent(evt)" onmousemove="get_coordo(evt)">
+   xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" id="root" xml:space="preserve" width="1000" height="1200" onload="OnLoadEvent(evt)" onmousemove="get_coordo(evt)">
 
 <script><![CDATA[
 var compati = new Array(true,true,true,true,true,true)
@@ -100,234 +100,248 @@ function changeFill() {
     </style>
 <!-- the three honies --> <g transform="translate(0,0)">
 <g>
- <ellipse cx="16" cy="99" rx="5" ry="5" stroke="black" stroke-width="2px" style="fill:lightblue">
+ <ellipse cx="16" cy="99" rx="5" ry="5" stroke="green" stroke-width="1px" style="fill:lightblue;fill-opacity:0.3;">
 </ellipse>
- <ellipse cx="42" cy="109" rx="5" ry="5" stroke="black" stroke-width="2px" style="fill:lightblue">
+ <ellipse cx="42" cy="109" rx="5" ry="5" stroke="green" stroke-width="1px" style="fill:lightblue;fill-opacity:0.3;">
 </ellipse>
- <ellipse cx="70" cy="117" rx="5" ry="5" stroke="black" stroke-width="2px" style="fill:lightblue">
+ <ellipse cx="70" cy="117" rx="5" ry="5" stroke="green" stroke-width="1px" style="fill:lightblue;fill-opacity:0.3;">
 </ellipse>
- <ellipse cx="96" cy="128" rx="5" ry="5" stroke="black" stroke-width="2px" style="fill:lightblue">
+ <ellipse cx="96" cy="128" rx="5" ry="5" stroke="green" stroke-width="1px" style="fill:lightblue;fill-opacity:0.3;">
 </ellipse>
- <ellipse cx="124" cy="137" rx="5" ry="5" stroke="black" stroke-width="2px" style="fill:lightblue">
+ <ellipse cx="124" cy="137" rx="5" ry="5" stroke="green" stroke-width="1px" style="fill:lightblue;fill-opacity:0.3;">
 </ellipse>
- <ellipse cx="148" cy="148" rx="5" ry="5" stroke="black" stroke-width="2px" style="fill:lightblue">
+ <ellipse cx="148" cy="148" rx="5" ry="5" stroke="green" stroke-width="1px" style="fill:lightblue;fill-opacity:0.3;">
 </ellipse>
- <ellipse cx="52" cy="86" rx="5" ry="5" stroke="black" stroke-width="2px" style="fill:lightblue">
+ <ellipse cx="52" cy="86" rx="5" ry="5" stroke="green" stroke-width="1px" style="fill:lightblue;fill-opacity:0.3;">
 </ellipse>
- <ellipse cx="79" cy="97" rx="5" ry="5" stroke="black" stroke-width="2px" style="fill:lightblue">
+ <ellipse cx="79" cy="97" rx="5" ry="5" stroke="green" stroke-width="1px" style="fill:lightblue;fill-opacity:0.3;">
 </ellipse>
- <ellipse cx="105" cy="106" rx="5" ry="5" stroke="black" stroke-width="2px" style="fill:lightblue">
+ <ellipse cx="105" cy="106" rx="5" ry="5" stroke="green" stroke-width="1px" style="fill:lightblue;fill-opacity:0.3;">
 </ellipse>
- <ellipse cx="131" cy="116" rx="5" ry="5" stroke="black" stroke-width="2px" style="fill:lightblue">
+ <ellipse cx="131" cy="116" rx="5" ry="5" stroke="green" stroke-width="1px" style="fill:lightblue;fill-opacity:0.3;">
 </ellipse>
- <ellipse cx="160" cy="126" rx="5" ry="5" stroke="black" stroke-width="2px" style="fill:lightblue">
+ <ellipse cx="160" cy="126" rx="5" ry="5" stroke="green" stroke-width="1px" style="fill:lightblue;fill-opacity:0.3;">
 </ellipse>
- <ellipse cx="183" cy="134" rx="5" ry="5" stroke="black" stroke-width="2px" style="fill:lightblue">
+ <ellipse cx="183" cy="134" rx="5" ry="5" stroke="green" stroke-width="1px" style="fill:lightblue;fill-opacity:0.3;">
 </ellipse>
- <ellipse cx="85" cy="74" rx="5" ry="5" stroke="black" stroke-width="2px" style="fill:lightblue">
+ <ellipse cx="85" cy="74" rx="5" ry="5" stroke="green" stroke-width="1px" style="fill:lightblue;fill-opacity:0.3;">
 </ellipse>
- <ellipse cx="112" cy="83" rx="5" ry="5" stroke="black" stroke-width="2px" style="fill:lightblue">
+ <ellipse cx="112" cy="83" rx="5" ry="5" stroke="green" stroke-width="1px" style="fill:lightblue;fill-opacity:0.3;">
 </ellipse>
- <ellipse cx="139" cy="93" rx="5" ry="5" stroke="black" stroke-width="2px" style="fill:lightblue">
+ <ellipse cx="139" cy="93" rx="5" ry="5" stroke="green" stroke-width="1px" style="fill:lightblue;fill-opacity:0.3;">
 </ellipse>
- <ellipse cx="166" cy="102" rx="5" ry="5" stroke="black" stroke-width="2px" style="fill:lightblue">
+ <ellipse cx="166" cy="102" rx="5" ry="5" stroke="green" stroke-width="1px" style="fill:lightblue;fill-opacity:0.3;">
 </ellipse>
- <ellipse cx="192" cy="112" rx="5" ry="5" stroke="black" stroke-width="2px" style="fill:lightblue">
+ <ellipse cx="192" cy="112" rx="5" ry="5" stroke="green" stroke-width="1px" style="fill:lightblue;fill-opacity:0.3;">
 </ellipse>
- <ellipse cx="216" cy="122" rx="5" ry="5" stroke="black" stroke-width="2px" style="fill:lightblue">
+ <ellipse cx="216" cy="122" rx="5" ry="5" stroke="green" stroke-width="1px" style="fill:lightblue;fill-opacity:0.3;">
 </ellipse>
- <ellipse cx="120" cy="62" rx="5" ry="5" stroke="black" stroke-width="2px" style="fill:lightblue">
+ <ellipse cx="120" cy="62" rx="5" ry="5" stroke="green" stroke-width="1px" style="fill:lightblue;fill-opacity:0.3;">
 </ellipse>
- <ellipse cx="147" cy="70" rx="5" ry="5" stroke="black" stroke-width="2px" style="fill:lightblue">
+ <ellipse cx="147" cy="70" rx="5" ry="5" stroke="green" stroke-width="1px" style="fill:lightblue;fill-opacity:0.3;">
 </ellipse>
- <ellipse cx="174" cy="81" rx="5" ry="5" stroke="black" stroke-width="2px" style="fill:lightblue">
+ <ellipse cx="174" cy="81" rx="5" ry="5" stroke="green" stroke-width="1px" style="fill:lightblue;fill-opacity:0.3;">
 </ellipse>
- <ellipse cx="201" cy="91" rx="5" ry="5" stroke="black" stroke-width="2px" style="fill:lightblue">
+ <ellipse cx="201" cy="91" rx="5" ry="5" stroke="green" stroke-width="1px" style="fill:lightblue;fill-opacity:0.3;">
 </ellipse>
- <ellipse cx="228" cy="100" rx="5" ry="5" stroke="black" stroke-width="2px" style="fill:lightblue">
+ <ellipse cx="228" cy="100" rx="5" ry="5" stroke="green" stroke-width="1px" style="fill:lightblue;fill-opacity:0.3;">
 </ellipse>
- <ellipse cx="252" cy="109" rx="5" ry="5" stroke="black" stroke-width="2px" style="fill:lightblue">
+ <ellipse cx="252" cy="109" rx="5" ry="5" stroke="green" stroke-width="1px" style="fill:lightblue;fill-opacity:0.3;">
 </ellipse>
- <ellipse cx="154" cy="48" rx="5" ry="5" stroke="black" stroke-width="2px" style="fill:lightblue">
+ <ellipse cx="154" cy="48" rx="5" ry="5" stroke="green" stroke-width="1px" style="fill:lightblue;fill-opacity:0.3;">
 </ellipse>
- <ellipse cx="182" cy="58" rx="5" ry="5" stroke="black" stroke-width="2px" style="fill:lightblue">
+ <ellipse cx="182" cy="58" rx="5" ry="5" stroke="green" stroke-width="1px" style="fill:lightblue;fill-opacity:0.3;">
 </ellipse>
- <ellipse cx="209" cy="69" rx="5" ry="5" stroke="black" stroke-width="2px" style="fill:lightblue">
+ <ellipse cx="209" cy="69" rx="5" ry="5" stroke="green" stroke-width="1px" style="fill:lightblue;fill-opacity:0.3;">
 </ellipse>
- <ellipse cx="235" cy="77" rx="5" ry="5" stroke="black" stroke-width="2px" style="fill:lightblue">
+ <ellipse cx="235" cy="77" rx="5" ry="5" stroke="green" stroke-width="1px" style="fill:lightblue;fill-opacity:0.3;">
 </ellipse>
- <ellipse cx="263" cy="87" rx="5" ry="5" stroke="black" stroke-width="2px" style="fill:lightblue">
+ <ellipse cx="263" cy="87" rx="5" ry="5" stroke="green" stroke-width="1px" style="fill:lightblue;fill-opacity:0.3;">
 </ellipse>
- <ellipse cx="287" cy="96" rx="5" ry="5" stroke="black" stroke-width="2px" style="fill:lightblue">
+ <ellipse cx="287" cy="96" rx="5" ry="5" stroke="green" stroke-width="1px" style="fill:lightblue;fill-opacity:0.3;">
 </ellipse>
- <ellipse cx="190" cy="35" rx="5" ry="5" stroke="black" stroke-width="2px" style="fill:lightblue">
+ <ellipse cx="190" cy="35" rx="5" ry="5" stroke="green" stroke-width="1px" style="fill:lightblue;fill-opacity:0.3;">
 </ellipse>
- <ellipse cx="270" cy="66" rx="5" ry="5" stroke="black" stroke-width="2px" style="fill:lightblue">
+ <ellipse cx="270" cy="66" rx="5" ry="5" stroke="green" stroke-width="1px" style="fill:lightblue;fill-opacity:0.3;">
 </ellipse>
- <ellipse cx="216" cy="46" rx="5" ry="5" stroke="black" stroke-width="2px" style="fill:lightblue">
+ <ellipse cx="216" cy="46" rx="5" ry="5" stroke="green" stroke-width="1px" style="fill:lightblue;fill-opacity:0.3;">
 </ellipse>
- <ellipse cx="245" cy="55" rx="5" ry="5" stroke="black" stroke-width="2px" style="fill:lightblue">
+ <ellipse cx="245" cy="55" rx="5" ry="5" stroke="green" stroke-width="1px" style="fill:lightblue;fill-opacity:0.3;">
 </ellipse>
- <ellipse cx="298" cy="75" rx="5" ry="5" stroke="black" stroke-width="2px" style="fill:lightblue">
+ <ellipse cx="298" cy="75" rx="5" ry="5" stroke="green" stroke-width="1px" style="fill:lightblue;fill-opacity:0.3;">
 </ellipse>
- <ellipse cx="322" cy="83" rx="5" ry="5" stroke="black" stroke-width="2px" style="fill:lightblue">
+ <ellipse cx="322" cy="83" rx="5" ry="5" stroke="green" stroke-width="1px" style="fill:lightblue;fill-opacity:0.3;">
 </ellipse>
- <polyline id="hexagon" points="250.0,111.0 279.54679334916864,73.7317444219067 148.0,148.0" stroke="green" style="fill:green;fill-opacity:0.6;" onclick="changeFill()"/><polyline id="hexagon" points="120.0,62.0 84.96240171551108,73.4671772428884 16.0,99.0" stroke="green" style="fill:red;fill-opacity:0.6;" onclick="changeFill()"/><polyline id="hexagon" points="148,148 62,144 111,131" stroke="green" style="fill:blue;fill-opacity:0.6;" onclick="changeFill()"/><polyline id="hexagon" points="250.1685196021065,120.43920321825631 250.1685196021065,189.5378468110006 76.1685196021065,121.33528379169105 76.1685196021065,56.335283791691054" stroke="green" style="fill:grey;fill-opacity:0.6;" onclick="changeFill()"/><polyline id="hexagon" points="459.78472217671157,220.4392032182563 250.1685196021065,289.5378468110006 76.1685196021065,221.33528379169104 274.2066705675834,156.33528379169104" stroke="green" style="fill:purple;fill-opacity:0.6;" onclick="changeFill()"/><polyline id="hexagon" points="225.90967741935486,501.1870368817205 225.90967741935486,575.4708609677419 51.90967741935485,512.3301075268818 51.90967741935485,447.3301075268817" stroke="green" style="fill:green;fill-opacity:0.6;" onclick="changeFill()"/><polyline id="hexagon" points="250.1685196021065,420.4392032182563 250.1685196021065,489.5378468110006 76.1685196021065,421.33528379169104 76.1685196021065,356.33528379169104" stroke="green" style="fill:red;fill-opacity:0.6;" onclick="changeFill()"/><polyline id="hexagon" points="190.96240171551108,473.4523758541816 190.96240171551108,555.2059683202287 16.962401715511078,499.35725518227304 16.962401715511078,434.35725518227304" stroke="green" style="fill:orange;fill-opacity:0.6;" onclick="changeFill()"/><polyline id="hexagon" points="250.0,111.0 279.54679334916864,73.7317444219067 148.0,148.0" stroke="green" style="fill:blue;fill-opacity:0.6;" onclick="changeFill()"/><polyline id="hexagon" points="217.0,94.0 84.96240171551108,73.4671772428884 120.0,62.0" stroke="green" style="fill:orange;fill-opacity:0.6;" onclick="changeFill()"/><polyline id="hexagon" points="217.0,94.0 242.93401015228426,34.467177242888404 120.0,62.0" stroke="green" style="fill:red;fill-opacity:0.6;" onclick="changeFill()"/><polyline id="hexagon" points="217.0,94.0 84.96240171551108,73.4671772428884 120.0,62.0" stroke="green" style="fill:green;fill-opacity:0.6;" onclick="changeFill()"/><polyline id="hexagon" points="16.0,99.0 84.96240171551108,73.4671772428884 111.0,131.0" stroke="green" style="fill:purple;fill-opacity:0.6;" onclick="changeFill()"/><polyline id="hexagon" points="16,99 62,144 111,131" stroke="green" style="fill:grey;fill-opacity:0.6;" onclick="changeFill()"/> </g> </g>  <g transform="translate(0,200)">
+ <polyline id="hexagon" points="250.0,111.0 279.54679334916864,73.7317444219067 148.0,148.0" stroke="orange" style="fill:green;fill-opacity:0.3;" onclick="changeFill()"/><polyline id="hexagon" points="120.0,62.0 84.96240171551108,73.4671772428884 16.0,99.0" stroke="orange" style="fill:red;fill-opacity:0.3;" onclick="changeFill()"/><polyline id="hexagon" points="148,148 62,144 111,131" stroke="orange" style="fill:blue;fill-opacity:0.3;" onclick="changeFill()"/><polyline id="hexagon" points="250.1685196021065,520.4392032182564 250.1685196021065,589.5378468110006 76.1685196021065,521.335283791691 76.1685196021065,456.33528379169104" stroke="orange" style="fill:grey;fill-opacity:0.3;" onclick="changeFill()"/><polyline id="hexagon" points="459.78472217671157,520.4392032182564 250.1685196021065,589.5378468110006 76.1685196021065,521.335283791691 274.2066705675834,456.33528379169104" stroke="orange" style="fill:purple;fill-opacity:0.3;" onclick="changeFill()"/><polyline id="hexagon" points="225.90967741935486,501.1870368817205 225.90967741935486,575.4708609677419 51.90967741935485,512.3301075268818 51.90967741935485,447.3301075268817" stroke="orange" style="fill:green;fill-opacity:0.3;" onclick="changeFill()"/><polyline id="hexagon" points="250.1685196021065,520.4392032182564 250.1685196021065,589.5378468110006 76.1685196021065,521.335283791691 76.1685196021065,456.33528379169104" stroke="orange" style="fill:red;fill-opacity:0.3;" onclick="changeFill()"/><polyline id="hexagon" points="190.96240171551108,473.4523758541816 190.96240171551108,555.2059683202287 16.962401715511078,499.35725518227304 16.962401715511078,434.35725518227304" stroke="orange" style="fill:orange;fill-opacity:0.3;" onclick="changeFill()"/><polyline id="hexagon" points="250.0,111.0 279.54679334916864,73.7317444219067 148.0,148.0" stroke="orange" style="fill:blue;fill-opacity:0.3;" onclick="changeFill()"/><polyline id="hexagon" points="217.0,94.0 84.96240171551108,73.4671772428884 120.0,62.0" stroke="orange" style="fill:orange;fill-opacity:0.3;" onclick="changeFill()"/><polyline id="hexagon" points="217.0,94.0 242.93401015228426,34.467177242888404 120.0,62.0" stroke="orange" style="fill:red;fill-opacity:0.3;" onclick="changeFill()"/><polyline id="hexagon" points="217.0,94.0 84.96240171551108,73.4671772428884 120.0,62.0" stroke="orange" style="fill:green;fill-opacity:0.3;" onclick="changeFill()"/><polyline id="hexagon" points="16.0,99.0 84.96240171551108,73.4671772428884 111.0,131.0" stroke="orange" style="fill:purple;fill-opacity:0.3;" onclick="changeFill()"/><polyline id="hexagon" points="16,99 62,144 111,131" stroke="orange" style="fill:grey;fill-opacity:0.3;" onclick="changeFill()"/> </g> </g>  <g transform="translate(0,200)">
 <g>
- <ellipse cx="16" cy="99" rx="10" ry="10" stroke="black" stroke-width="2px" style="fill:lime">
+ <ellipse cx="16" cy="99" rx="10" ry="10" stroke="green" stroke-width="1px" style="fill:lime;fill-opacity:0.3;">
 </ellipse>
- <ellipse cx="42" cy="109" rx="10" ry="10" stroke="black" stroke-width="2px" style="fill:lime">
+ <ellipse cx="42" cy="109" rx="10" ry="10" stroke="green" stroke-width="1px" style="fill:lime;fill-opacity:0.3;">
 </ellipse>
- <ellipse cx="70" cy="117" rx="10" ry="10" stroke="black" stroke-width="2px" style="fill:lime">
+ <ellipse cx="70" cy="117" rx="10" ry="10" stroke="green" stroke-width="1px" style="fill:lime;fill-opacity:0.3;">
 </ellipse>
- <ellipse cx="96" cy="128" rx="10" ry="10" stroke="black" stroke-width="2px" style="fill:lime">
+ <ellipse cx="96" cy="128" rx="10" ry="10" stroke="green" stroke-width="1px" style="fill:lime;fill-opacity:0.3;">
 </ellipse>
- <ellipse cx="124" cy="137" rx="10" ry="10" stroke="black" stroke-width="2px" style="fill:lime">
+ <ellipse cx="124" cy="137" rx="10" ry="10" stroke="green" stroke-width="1px" style="fill:lime;fill-opacity:0.3;">
 </ellipse>
- <ellipse cx="148" cy="148" rx="10" ry="10" stroke="black" stroke-width="2px" style="fill:lime">
+ <ellipse cx="148" cy="148" rx="10" ry="10" stroke="green" stroke-width="1px" style="fill:lime;fill-opacity:0.3;">
 </ellipse>
- <ellipse cx="52" cy="86" rx="10" ry="10" stroke="black" stroke-width="2px" style="fill:lime">
+ <ellipse cx="52" cy="86" rx="10" ry="10" stroke="green" stroke-width="1px" style="fill:lime;fill-opacity:0.3;">
 </ellipse>
- <ellipse cx="79" cy="97" rx="10" ry="10" stroke="black" stroke-width="2px" style="fill:lime">
+ <ellipse cx="79" cy="97" rx="10" ry="10" stroke="green" stroke-width="1px" style="fill:lime;fill-opacity:0.3;">
 </ellipse>
- <ellipse cx="105" cy="106" rx="10" ry="10" stroke="black" stroke-width="2px" style="fill:lime">
+ <ellipse cx="105" cy="106" rx="10" ry="10" stroke="green" stroke-width="1px" style="fill:lime;fill-opacity:0.3;">
 </ellipse>
- <ellipse cx="131" cy="116" rx="10" ry="10" stroke="black" stroke-width="2px" style="fill:lime">
+ <ellipse cx="131" cy="116" rx="10" ry="10" stroke="green" stroke-width="1px" style="fill:lime;fill-opacity:0.3;">
 </ellipse>
- <ellipse cx="160" cy="126" rx="10" ry="10" stroke="black" stroke-width="2px" style="fill:lime">
+ <ellipse cx="160" cy="126" rx="10" ry="10" stroke="green" stroke-width="1px" style="fill:lime;fill-opacity:0.3;">
 </ellipse>
- <ellipse cx="183" cy="134" rx="10" ry="10" stroke="black" stroke-width="2px" style="fill:lime">
+ <ellipse cx="183" cy="134" rx="10" ry="10" stroke="green" stroke-width="1px" style="fill:lime;fill-opacity:0.3;">
 </ellipse>
- <ellipse cx="85" cy="74" rx="10" ry="10" stroke="black" stroke-width="2px" style="fill:lime">
+ <ellipse cx="85" cy="74" rx="10" ry="10" stroke="green" stroke-width="1px" style="fill:lime;fill-opacity:0.3;">
 </ellipse>
- <ellipse cx="112" cy="83" rx="10" ry="10" stroke="black" stroke-width="2px" style="fill:lime">
+ <ellipse cx="112" cy="83" rx="10" ry="10" stroke="green" stroke-width="1px" style="fill:lime;fill-opacity:0.3;">
 </ellipse>
- <ellipse cx="139" cy="93" rx="10" ry="10" stroke="black" stroke-width="2px" style="fill:lime">
+ <ellipse cx="139" cy="93" rx="10" ry="10" stroke="green" stroke-width="1px" style="fill:lime;fill-opacity:0.3;">
 </ellipse>
- <ellipse cx="166" cy="102" rx="10" ry="10" stroke="black" stroke-width="2px" style="fill:lime">
+ <ellipse cx="166" cy="102" rx="10" ry="10" stroke="green" stroke-width="1px" style="fill:lime;fill-opacity:0.3;">
 </ellipse>
- <ellipse cx="192" cy="112" rx="10" ry="10" stroke="black" stroke-width="2px" style="fill:lime">
+ <ellipse cx="192" cy="112" rx="10" ry="10" stroke="green" stroke-width="1px" style="fill:lime;fill-opacity:0.3;">
 </ellipse>
- <ellipse cx="216" cy="122" rx="10" ry="10" stroke="black" stroke-width="2px" style="fill:lime">
+ <ellipse cx="216" cy="122" rx="10" ry="10" stroke="green" stroke-width="1px" style="fill:lime;fill-opacity:0.3;">
 </ellipse>
- <ellipse cx="120" cy="62" rx="10" ry="10" stroke="black" stroke-width="2px" style="fill:lime">
+ <ellipse cx="120" cy="62" rx="10" ry="10" stroke="green" stroke-width="1px" style="fill:lime;fill-opacity:0.3;">
 </ellipse>
- <ellipse cx="147" cy="70" rx="10" ry="10" stroke="black" stroke-width="2px" style="fill:lime">
+ <ellipse cx="147" cy="70" rx="10" ry="10" stroke="green" stroke-width="1px" style="fill:lime;fill-opacity:0.3;">
 </ellipse>
- <ellipse cx="174" cy="81" rx="10" ry="10" stroke="black" stroke-width="2px" style="fill:lime">
+ <ellipse cx="174" cy="81" rx="10" ry="10" stroke="green" stroke-width="1px" style="fill:lime;fill-opacity:0.3;">
 </ellipse>
- <ellipse cx="201" cy="91" rx="10" ry="10" stroke="black" stroke-width="2px" style="fill:lime">
+ <ellipse cx="201" cy="91" rx="10" ry="10" stroke="green" stroke-width="1px" style="fill:lime;fill-opacity:0.3;">
 </ellipse>
- <ellipse cx="228" cy="100" rx="10" ry="10" stroke="black" stroke-width="2px" style="fill:lime">
+ <ellipse cx="228" cy="100" rx="10" ry="10" stroke="green" stroke-width="1px" style="fill:lime;fill-opacity:0.3;">
 </ellipse>
- <ellipse cx="252" cy="109" rx="10" ry="10" stroke="black" stroke-width="2px" style="fill:lime">
+ <ellipse cx="252" cy="109" rx="10" ry="10" stroke="green" stroke-width="1px" style="fill:lime;fill-opacity:0.3;">
 </ellipse>
- <ellipse cx="154" cy="48" rx="10" ry="10" stroke="black" stroke-width="2px" style="fill:lime">
+ <ellipse cx="154" cy="48" rx="10" ry="10" stroke="green" stroke-width="1px" style="fill:lime;fill-opacity:0.3;">
 </ellipse>
- <ellipse cx="182" cy="58" rx="10" ry="10" stroke="black" stroke-width="2px" style="fill:lime">
+ <ellipse cx="182" cy="58" rx="10" ry="10" stroke="green" stroke-width="1px" style="fill:lime;fill-opacity:0.3;">
 </ellipse>
- <ellipse cx="209" cy="69" rx="10" ry="10" stroke="black" stroke-width="2px" style="fill:lime">
+ <ellipse cx="209" cy="69" rx="10" ry="10" stroke="green" stroke-width="1px" style="fill:lime;fill-opacity:0.3;">
 </ellipse>
- <ellipse cx="235" cy="77" rx="10" ry="10" stroke="black" stroke-width="2px" style="fill:lime">
+ <ellipse cx="235" cy="77" rx="10" ry="10" stroke="green" stroke-width="1px" style="fill:lime;fill-opacity:0.3;">
 </ellipse>
- <ellipse cx="263" cy="87" rx="10" ry="10" stroke="black" stroke-width="2px" style="fill:lime">
+ <ellipse cx="263" cy="87" rx="10" ry="10" stroke="green" stroke-width="1px" style="fill:lime;fill-opacity:0.3;">
 </ellipse>
- <ellipse cx="287" cy="96" rx="10" ry="10" stroke="black" stroke-width="2px" style="fill:lime">
+ <ellipse cx="287" cy="96" rx="10" ry="10" stroke="green" stroke-width="1px" style="fill:lime;fill-opacity:0.3;">
 </ellipse>
- <ellipse cx="190" cy="35" rx="10" ry="10" stroke="black" stroke-width="2px" style="fill:lime">
+ <ellipse cx="190" cy="35" rx="10" ry="10" stroke="green" stroke-width="1px" style="fill:lime;fill-opacity:0.3;">
 </ellipse>
- <ellipse cx="270" cy="66" rx="10" ry="10" stroke="black" stroke-width="2px" style="fill:lime">
+ <ellipse cx="270" cy="66" rx="10" ry="10" stroke="green" stroke-width="1px" style="fill:lime;fill-opacity:0.3;">
 </ellipse>
- <ellipse cx="216" cy="46" rx="10" ry="10" stroke="black" stroke-width="2px" style="fill:lime">
+ <ellipse cx="216" cy="46" rx="10" ry="10" stroke="green" stroke-width="1px" style="fill:lime;fill-opacity:0.3;">
 </ellipse>
- <ellipse cx="245" cy="55" rx="10" ry="10" stroke="black" stroke-width="2px" style="fill:lime">
+ <ellipse cx="245" cy="55" rx="10" ry="10" stroke="green" stroke-width="1px" style="fill:lime;fill-opacity:0.3;">
 </ellipse>
- <ellipse cx="298" cy="75" rx="10" ry="10" stroke="black" stroke-width="2px" style="fill:lime">
+ <ellipse cx="298" cy="75" rx="10" ry="10" stroke="green" stroke-width="1px" style="fill:lime;fill-opacity:0.3;">
 </ellipse>
- <ellipse cx="322" cy="83" rx="10" ry="10" stroke="black" stroke-width="2px" style="fill:lime">
+ <ellipse cx="322" cy="83" rx="10" ry="10" stroke="green" stroke-width="1px" style="fill:lime;fill-opacity:0.3;">
 </ellipse>
- <polyline id="hexagon" points="250.0,111.0 279.54679334916864,73.7317444219067 148.0,148.0" stroke="green" style="fill:green;fill-opacity:0.6;" onclick="changeFill()"/><polyline id="hexagon" points="120.0,62.0 119.90967741935485,76.09596199524941 16.0,99.0" stroke="green" style="fill:red;fill-opacity:0.6;" onclick="changeFill()"/><polyline id="hexagon" points="148,148 62,144 111,131" stroke="green" style="fill:blue;fill-opacity:0.6;" onclick="changeFill()"/><polyline id="hexagon" points="250.1685196021065,120.43920321825631 250.1685196021065,189.5378468110006 76.1685196021065,121.33528379169105 76.1685196021065,56.335283791691054" stroke="green" style="fill:grey;fill-opacity:0.6;" onclick="changeFill()"/><polyline id="hexagon" points="459.78472217671157,220.4392032182563 250.1685196021065,289.5378468110006 76.1685196021065,221.33528379169104 274.2066705675834,156.33528379169104" stroke="green" style="fill:purple;fill-opacity:0.6;" onclick="changeFill()"/><polyline id="hexagon" points="225.90967741935486,501.1870368817205 225.90967741935486,575.4708609677419 51.90967741935485,512.3301075268818 51.90967741935485,447.3301075268817" stroke="green" style="fill:green;fill-opacity:0.6;" onclick="changeFill()"/><polyline id="hexagon" points="250.1685196021065,420.4392032182563 250.1685196021065,489.5378468110006 76.1685196021065,421.33528379169104 76.1685196021065,356.33528379169104" stroke="green" style="fill:red;fill-opacity:0.6;" onclick="changeFill()"/><polyline id="hexagon" points="190.96240171551108,473.4523758541816 190.96240171551108,555.2059683202287 16.962401715511078,499.35725518227304 16.962401715511078,434.35725518227304" stroke="green" style="fill:orange;fill-opacity:0.6;" onclick="changeFill()"/><polyline id="hexagon" points="250.0,111.0 279.54679334916864,73.7317444219067 148.0,148.0" stroke="green" style="fill:blue;fill-opacity:0.6;" onclick="changeFill()"/><polyline id="hexagon" points="217.0,94.0 119.90967741935485,76.09596199524941 120.0,62.0" stroke="green" style="fill:orange;fill-opacity:0.6;" onclick="changeFill()"/><polyline id="hexagon" points="217.0,94.0 222.26339285714286,37.095961995249404 120.0,62.0" stroke="green" style="fill:red;fill-opacity:0.6;" onclick="changeFill()"/><polyline id="hexagon" points="217.0,94.0 119.90967741935485,76.09596199524941 120.0,62.0" stroke="green" style="fill:green;fill-opacity:0.6;" onclick="changeFill()"/><polyline id="hexagon" points="16.0,99.0 119.90967741935485,76.09596199524941 111.0,131.0" stroke="green" style="fill:purple;fill-opacity:0.6;" onclick="changeFill()"/><polyline id="hexagon" points="16,99 62,144 111,131" stroke="green" style="fill:grey;fill-opacity:0.6;" onclick="changeFill()"/> </g> </g>  <g transform="translate(0,300)">
+ <polyline id="hexagon" points="250.0,111.0 279.54679334916864,73.7317444219067 148.0,148.0" stroke="orange" style="fill:green;fill-opacity:0.3;" onclick="changeFill()"/><polyline id="hexagon" points="120.0,62.0 119.90967741935485,76.09596199524941 16.0,99.0" stroke="orange" style="fill:red;fill-opacity:0.3;" onclick="changeFill()"/><polyline id="hexagon" points="148,148 62,144 111,131" stroke="orange" style="fill:blue;fill-opacity:0.3;" onclick="changeFill()"/><polyline id="hexagon" points="250.1685196021065,520.4392032182564 250.1685196021065,589.5378468110006 76.1685196021065,521.335283791691 76.1685196021065,456.33528379169104" stroke="orange" style="fill:grey;fill-opacity:0.3;" onclick="changeFill()"/><polyline id="hexagon" points="459.78472217671157,520.4392032182564 250.1685196021065,589.5378468110006 76.1685196021065,521.335283791691 274.2066705675834,456.33528379169104" stroke="orange" style="fill:purple;fill-opacity:0.3;" onclick="changeFill()"/><polyline id="hexagon" points="225.90967741935486,501.1870368817205 225.90967741935486,575.4708609677419 51.90967741935485,512.3301075268818 51.90967741935485,447.3301075268817" stroke="orange" style="fill:green;fill-opacity:0.3;" onclick="changeFill()"/><polyline id="hexagon" points="250.1685196021065,520.4392032182564 250.1685196021065,589.5378468110006 76.1685196021065,521.335283791691 76.1685196021065,456.33528379169104" stroke="orange" style="fill:red;fill-opacity:0.3;" onclick="changeFill()"/><polyline id="hexagon" points="190.96240171551108,473.4523758541816 190.96240171551108,555.2059683202287 16.962401715511078,499.35725518227304 16.962401715511078,434.35725518227304" stroke="orange" style="fill:orange;fill-opacity:0.3;" onclick="changeFill()"/><polyline id="hexagon" points="250.0,111.0 279.54679334916864,73.7317444219067 148.0,148.0" stroke="orange" style="fill:blue;fill-opacity:0.3;" onclick="changeFill()"/><polyline id="hexagon" points="217.0,94.0 119.90967741935485,76.09596199524941 120.0,62.0" stroke="orange" style="fill:orange;fill-opacity:0.3;" onclick="changeFill()"/><polyline id="hexagon" points="217.0,94.0 222.26339285714286,37.095961995249404 120.0,62.0" stroke="orange" style="fill:red;fill-opacity:0.3;" onclick="changeFill()"/><polyline id="hexagon" points="217.0,94.0 119.90967741935485,76.09596199524941 120.0,62.0" stroke="orange" style="fill:green;fill-opacity:0.3;" onclick="changeFill()"/><polyline id="hexagon" points="16.0,99.0 119.90967741935485,76.09596199524941 111.0,131.0" stroke="orange" style="fill:purple;fill-opacity:0.3;" onclick="changeFill()"/><polyline id="hexagon" points="16,99 62,144 111,131" stroke="orange" style="fill:grey;fill-opacity:0.3;" onclick="changeFill()"/> </g> </g>  <g transform="translate(0,300)">
 <g>
- <ellipse cx="16" cy="99" rx="5" ry="5" stroke="black" stroke-width="2px" style="fill:blue">
+ <ellipse cx="16" cy="99" rx="5" ry="5" stroke="green" stroke-width="1px" style="fill:blue;fill-opacity:0.3;">
 </ellipse>
- <ellipse cx="42" cy="109" rx="5" ry="5" stroke="black" stroke-width="2px" style="fill:blue">
+ <ellipse cx="42" cy="109" rx="5" ry="5" stroke="green" stroke-width="1px" style="fill:blue;fill-opacity:0.3;">
 </ellipse>
- <ellipse cx="70" cy="117" rx="5" ry="5" stroke="black" stroke-width="2px" style="fill:blue">
+ <ellipse cx="70" cy="117" rx="5" ry="5" stroke="green" stroke-width="1px" style="fill:blue;fill-opacity:0.3;">
 </ellipse>
- <ellipse cx="96" cy="128" rx="5" ry="5" stroke="black" stroke-width="2px" style="fill:blue">
+ <ellipse cx="96" cy="128" rx="5" ry="5" stroke="green" stroke-width="1px" style="fill:blue;fill-opacity:0.3;">
 </ellipse>
- <ellipse cx="124" cy="137" rx="5" ry="5" stroke="black" stroke-width="2px" style="fill:blue">
+ <ellipse cx="124" cy="137" rx="5" ry="5" stroke="green" stroke-width="1px" style="fill:blue;fill-opacity:0.3;">
 </ellipse>
- <ellipse cx="148" cy="148" rx="5" ry="5" stroke="black" stroke-width="2px" style="fill:blue">
+ <ellipse cx="148" cy="148" rx="5" ry="5" stroke="green" stroke-width="1px" style="fill:blue;fill-opacity:0.3;">
 </ellipse>
- <ellipse cx="52" cy="86" rx="5" ry="5" stroke="black" stroke-width="2px" style="fill:blue">
+ <ellipse cx="52" cy="86" rx="5" ry="5" stroke="green" stroke-width="1px" style="fill:blue;fill-opacity:0.3;">
 </ellipse>
- <ellipse cx="79" cy="97" rx="5" ry="5" stroke="black" stroke-width="2px" style="fill:blue">
+ <ellipse cx="79" cy="97" rx="5" ry="5" stroke="green" stroke-width="1px" style="fill:blue;fill-opacity:0.3;">
 </ellipse>
- <ellipse cx="105" cy="106" rx="5" ry="5" stroke="black" stroke-width="2px" style="fill:blue">
+ <ellipse cx="105" cy="106" rx="5" ry="5" stroke="green" stroke-width="1px" style="fill:blue;fill-opacity:0.3;">
 </ellipse>
- <ellipse cx="131" cy="116" rx="5" ry="5" stroke="black" stroke-width="2px" style="fill:blue">
+ <ellipse cx="131" cy="116" rx="5" ry="5" stroke="green" stroke-width="1px" style="fill:blue;fill-opacity:0.3;">
 </ellipse>
- <ellipse cx="160" cy="126" rx="5" ry="5" stroke="black" stroke-width="2px" style="fill:blue">
+ <ellipse cx="160" cy="126" rx="5" ry="5" stroke="green" stroke-width="1px" style="fill:blue;fill-opacity:0.3;">
 </ellipse>
- <ellipse cx="183" cy="134" rx="5" ry="5" stroke="black" stroke-width="2px" style="fill:blue">
+ <ellipse cx="183" cy="134" rx="5" ry="5" stroke="green" stroke-width="1px" style="fill:blue;fill-opacity:0.3;">
 </ellipse>
- <ellipse cx="85" cy="74" rx="5" ry="5" stroke="black" stroke-width="2px" style="fill:blue">
+ <ellipse cx="85" cy="74" rx="5" ry="5" stroke="green" stroke-width="1px" style="fill:blue;fill-opacity:0.3;">
 </ellipse>
- <ellipse cx="112" cy="83" rx="5" ry="5" stroke="black" stroke-width="2px" style="fill:blue">
+ <ellipse cx="112" cy="83" rx="5" ry="5" stroke="green" stroke-width="1px" style="fill:blue;fill-opacity:0.3;">
 </ellipse>
- <ellipse cx="139" cy="93" rx="5" ry="5" stroke="black" stroke-width="2px" style="fill:blue">
+ <ellipse cx="139" cy="93" rx="5" ry="5" stroke="green" stroke-width="1px" style="fill:blue;fill-opacity:0.3;">
 </ellipse>
- <ellipse cx="166" cy="102" rx="5" ry="5" stroke="black" stroke-width="2px" style="fill:blue">
+ <ellipse cx="166" cy="102" rx="5" ry="5" stroke="green" stroke-width="1px" style="fill:blue;fill-opacity:0.3;">
 </ellipse>
- <ellipse cx="192" cy="112" rx="5" ry="5" stroke="black" stroke-width="2px" style="fill:blue">
+ <ellipse cx="192" cy="112" rx="5" ry="5" stroke="green" stroke-width="1px" style="fill:blue;fill-opacity:0.3;">
 </ellipse>
- <ellipse cx="216" cy="122" rx="5" ry="5" stroke="black" stroke-width="2px" style="fill:blue">
+ <ellipse cx="216" cy="122" rx="5" ry="5" stroke="green" stroke-width="1px" style="fill:blue;fill-opacity:0.3;">
 </ellipse>
- <ellipse cx="120" cy="62" rx="5" ry="5" stroke="black" stroke-width="2px" style="fill:blue">
+ <ellipse cx="120" cy="62" rx="5" ry="5" stroke="green" stroke-width="1px" style="fill:blue;fill-opacity:0.3;">
 </ellipse>
- <ellipse cx="147" cy="70" rx="5" ry="5" stroke="black" stroke-width="2px" style="fill:blue">
+ <ellipse cx="147" cy="70" rx="5" ry="5" stroke="green" stroke-width="1px" style="fill:blue;fill-opacity:0.3;">
 </ellipse>
- <ellipse cx="174" cy="81" rx="5" ry="5" stroke="black" stroke-width="2px" style="fill:blue">
+ <ellipse cx="174" cy="81" rx="5" ry="5" stroke="green" stroke-width="1px" style="fill:blue;fill-opacity:0.3;">
 </ellipse>
- <ellipse cx="201" cy="91" rx="5" ry="5" stroke="black" stroke-width="2px" style="fill:blue">
+ <ellipse cx="201" cy="91" rx="5" ry="5" stroke="green" stroke-width="1px" style="fill:blue;fill-opacity:0.3;">
 </ellipse>
- <ellipse cx="228" cy="100" rx="5" ry="5" stroke="black" stroke-width="2px" style="fill:blue">
+ <ellipse cx="228" cy="100" rx="5" ry="5" stroke="green" stroke-width="1px" style="fill:blue;fill-opacity:0.3;">
 </ellipse>
- <ellipse cx="252" cy="109" rx="5" ry="5" stroke="black" stroke-width="2px" style="fill:blue">
+ <ellipse cx="252" cy="109" rx="5" ry="5" stroke="green" stroke-width="1px" style="fill:blue;fill-opacity:0.3;">
 </ellipse>
- <ellipse cx="154" cy="48" rx="5" ry="5" stroke="black" stroke-width="2px" style="fill:blue">
+ <ellipse cx="154" cy="48" rx="5" ry="5" stroke="green" stroke-width="1px" style="fill:blue;fill-opacity:0.3;">
 </ellipse>
- <ellipse cx="182" cy="58" rx="5" ry="5" stroke="black" stroke-width="2px" style="fill:blue">
+ <ellipse cx="182" cy="58" rx="5" ry="5" stroke="green" stroke-width="1px" style="fill:blue;fill-opacity:0.3;">
 </ellipse>
- <ellipse cx="209" cy="69" rx="5" ry="5" stroke="black" stroke-width="2px" style="fill:blue">
+ <ellipse cx="209" cy="69" rx="5" ry="5" stroke="green" stroke-width="1px" style="fill:blue;fill-opacity:0.3;">
 </ellipse>
- <ellipse cx="235" cy="77" rx="5" ry="5" stroke="black" stroke-width="2px" style="fill:blue">
+ <ellipse cx="235" cy="77" rx="5" ry="5" stroke="green" stroke-width="1px" style="fill:blue;fill-opacity:0.3;">
 </ellipse>
- <ellipse cx="263" cy="87" rx="5" ry="5" stroke="black" stroke-width="2px" style="fill:blue">
+ <ellipse cx="263" cy="87" rx="5" ry="5" stroke="green" stroke-width="1px" style="fill:blue;fill-opacity:0.3;">
 </ellipse>
- <ellipse cx="287" cy="96" rx="5" ry="5" stroke="black" stroke-width="2px" style="fill:blue">
+ <ellipse cx="287" cy="96" rx="5" ry="5" stroke="green" stroke-width="1px" style="fill:blue;fill-opacity:0.3;">
 </ellipse>
- <ellipse cx="190" cy="35" rx="5" ry="5" stroke="black" stroke-width="2px" style="fill:blue">
+ <ellipse cx="190" cy="35" rx="5" ry="5" stroke="green" stroke-width="1px" style="fill:blue;fill-opacity:0.3;">
 </ellipse>
- <ellipse cx="270" cy="66" rx="5" ry="5" stroke="black" stroke-width="2px" style="fill:blue">
+ <ellipse cx="270" cy="66" rx="5" ry="5" stroke="green" stroke-width="1px" style="fill:blue;fill-opacity:0.3;">
 </ellipse>
- <ellipse cx="216" cy="46" rx="5" ry="5" stroke="black" stroke-width="2px" style="fill:blue">
+ <ellipse cx="216" cy="46" rx="5" ry="5" stroke="green" stroke-width="1px" style="fill:blue;fill-opacity:0.3;">
 </ellipse>
- <ellipse cx="245" cy="55" rx="5" ry="5" stroke="black" stroke-width="2px" style="fill:blue">
+ <ellipse cx="245" cy="55" rx="5" ry="5" stroke="green" stroke-width="1px" style="fill:blue;fill-opacity:0.3;">
 </ellipse>
- <ellipse cx="298" cy="75" rx="5" ry="5" stroke="black" stroke-width="2px" style="fill:blue">
+ <ellipse cx="298" cy="75" rx="5" ry="5" stroke="green" stroke-width="1px" style="fill:blue;fill-opacity:0.3;">
 </ellipse>
- <ellipse cx="322" cy="83" rx="5" ry="5" stroke="black" stroke-width="2px" style="fill:blue">
+ <ellipse cx="322" cy="83" rx="5" ry="5" stroke="green" stroke-width="1px" style="fill:blue;fill-opacity:0.3;">
 </ellipse>
- <polyline id="hexagon" points="250.0,111.0 279.54679334916864,73.7317444219067 148.0,148.0" stroke="green" style="fill:green;fill-opacity:0.6;" onclick="changeFill()"/><polyline id="hexagon" points="120.0,62.0 144.1685196021065,112.7317444219067 16.0,99.0" stroke="green" style="fill:red;fill-opacity:0.6;" onclick="changeFill()"/><polyline id="hexagon" points="148,148 62,144 111,131" stroke="green" style="fill:blue;fill-opacity:0.6;" onclick="changeFill()"/><polyline id="hexagon" points="250.1685196021065,120.43920321825631 250.1685196021065,189.5378468110006 76.1685196021065,121.33528379169105 76.1685196021065,56.335283791691054" stroke="green" style="fill:grey;fill-opacity:0.6;" onclick="changeFill()"/><polyline id="hexagon" points="459.78472217671157,220.4392032182563 250.1685196021065,289.5378468110006 76.1685196021065,221.33528379169104 274.2066705675834,156.33528379169104" stroke="green" style="fill:purple;fill-opacity:0.6;" onclick="changeFill()"/><polyline id="hexagon" points="225.90967741935486,501.1870368817205 225.90967741935486,575.4708609677419 51.90967741935485,512.3301075268818 51.90967741935485,447.3301075268817" stroke="green" style="fill:green;fill-opacity:0.6;" onclick="changeFill()"/><polyline id="hexagon" points="250.1685196021065,420.4392032182563 250.1685196021065,489.5378468110006 76.1685196021065,421.33528379169104 76.1685196021065,356.33528379169104" stroke="green" style="fill:red;fill-opacity:0.6;" onclick="changeFill()"/><polyline id="hexagon" points="190.96240171551108,473.4523758541816 190.96240171551108,555.2059683202287 16.962401715511078,499.35725518227304 16.962401715511078,434.35725518227304" stroke="green" style="fill:orange;fill-opacity:0.6;" onclick="changeFill()"/><polyline id="hexagon" points="250.0,111.0 279.54679334916864,73.7317444219067 148.0,148.0" stroke="green" style="fill:blue;fill-opacity:0.6;" onclick="changeFill()"/><polyline id="hexagon" points="217.0,94.0 144.1685196021065,112.7317444219067 120.0,62.0" stroke="green" style="fill:orange;fill-opacity:0.6;" onclick="changeFill()"/><polyline id="hexagon" points="217.0,94.0 279.54679334916864,73.7317444219067 120.0,62.0" stroke="green" style="fill:red;fill-opacity:0.6;" onclick="changeFill()"/><polyline id="hexagon" points="217.0,94.0 144.1685196021065,112.7317444219067 120.0,62.0" stroke="green" style="fill:green;fill-opacity:0.6;" onclick="changeFill()"/><polyline id="hexagon" points="16.0,99.0 144.1685196021065,112.7317444219067 111.0,131.0" stroke="green" style="fill:purple;fill-opacity:0.6;" onclick="changeFill()"/><polyline id="hexagon" points="16,99 62,144 111,131" stroke="green" style="fill:grey;fill-opacity:0.6;" onclick="changeFill()"/> </g> </g><g><ellipse cx="2" cy="5" rx="38.08425980105325" ry="1" stroke="black" stroke-width="0.5px" style="fill:green"><animateColor attributeName="fill" attributeType="CSS" from="blue" to="lime" begin="0.1s" dur="1s"  repeatCount="indefinite" /><animateTransform attributeName="transform" attributeType="XML" type="rotate" from="0" to="90" begin="0.1s" dur="0.1s" fill="freeze"/><animateMotion path="M  0 0 L 605.1685196021065 140" begin="0.1s" dur="0.3s" fill="freeze"/></ellipse>
+ <polyline id="hexagon" points="250.0,111.0 279.54679334916864,73.7317444219067 148.0,148.0" stroke="orange" style="fill:green;fill-opacity:0.3;" onclick="changeFill()"/><polyline id="hexagon" points="120.0,62.0 144.1685196021065,112.7317444219067 16.0,99.0" stroke="orange" style="fill:red;fill-opacity:0.3;" onclick="changeFill()"/><polyline id="hexagon" points="148,148 62,144 111,131" stroke="orange" style="fill:blue;fill-opacity:0.3;" onclick="changeFill()"/><polyline id="hexagon" points="250.1685196021065,520.4392032182564 250.1685196021065,589.5378468110006 76.1685196021065,521.335283791691 76.1685196021065,456.33528379169104" stroke="orange" style="fill:grey;fill-opacity:0.3;" onclick="changeFill()"/><polyline id="hexagon" points="459.78472217671157,520.4392032182564 250.1685196021065,589.5378468110006 76.1685196021065,521.335283791691 274.2066705675834,456.33528379169104" stroke="orange" style="fill:purple;fill-opacity:0.3;" onclick="changeFill()"/><polyline id="hexagon" points="225.90967741935486,501.1870368817205 225.90967741935486,575.4708609677419 51.90967741935485,512.3301075268818 51.90967741935485,447.3301075268817" stroke="orange" style="fill:green;fill-opacity:0.3;" onclick="changeFill()"/><polyline id="hexagon" points="250.1685196021065,520.4392032182564 250.1685196021065,589.5378468110006 76.1685196021065,521.335283791691 76.1685196021065,456.33528379169104" stroke="orange" style="fill:red;fill-opacity:0.3;" onclick="changeFill()"/><polyline id="hexagon" points="190.96240171551108,473.4523758541816 190.96240171551108,555.2059683202287 16.962401715511078,499.35725518227304 16.962401715511078,434.35725518227304" stroke="orange" style="fill:orange;fill-opacity:0.3;" onclick="changeFill()"/><polyline id="hexagon" points="250.0,111.0 279.54679334916864,73.7317444219067 148.0,148.0" stroke="orange" style="fill:blue;fill-opacity:0.3;" onclick="changeFill()"/><polyline id="hexagon" points="217.0,94.0 144.1685196021065,112.7317444219067 120.0,62.0" stroke="orange" style="fill:orange;fill-opacity:0.3;" onclick="changeFill()"/><polyline id="hexagon" points="217.0,94.0 279.54679334916864,73.7317444219067 120.0,62.0" stroke="orange" style="fill:red;fill-opacity:0.3;" onclick="changeFill()"/><polyline id="hexagon" points="217.0,94.0 144.1685196021065,112.7317444219067 120.0,62.0" stroke="orange" style="fill:green;fill-opacity:0.3;" onclick="changeFill()"/><polyline id="hexagon" points="16.0,99.0 144.1685196021065,112.7317444219067 111.0,131.0" stroke="orange" style="fill:purple;fill-opacity:0.3;" onclick="changeFill()"/><polyline id="hexagon" points="16,99 62,144 111,131" stroke="orange" style="fill:grey;fill-opacity:0.3;" onclick="changeFill()"/> </g> </g><g><ellipse cx="2" cy="5" rx="38.08425980105325" ry="1" stroke="black" stroke-width="0.5px" style="fill:green"><animateColor attributeName="fill" attributeType="CSS" from="blue" to="lime" begin="0.1s" dur="1s"  repeatCount="indefinite" /><animateTransform attributeName="transform" attributeType="XML" type="rotate" from="0" to="90" begin="0.1s" dur="0.1s" fill="freeze"/><animateMotion path="M  0 0 L 605.1685196021065 261.33528379169104" begin="0.1s" dur="0.3s" fill="freeze"/></ellipse>
 
-<ellipse cx="2" cy="5" rx="55.58425980105325" ry="1" stroke="black" stroke-width="0.5px" style="fill:green"><animateColor attributeName="fill" attributeType="CSS" from="blue" to="lime" begin="0.1s" dur="1s"  repeatCount="indefinite" /><animateTransform attributeName="transform" attributeType="XML" type="rotate" from="0" to="90" begin="0.1s" dur="0.1s" fill="freeze"/><animateMotion path="M  0 0 L 605.1685196021065 140" begin="0.1s" dur="0.3s" fill="freeze"/></ellipse>
+<ellipse cx="2" cy="5" rx="55.58425980105325" ry="1" stroke="black" stroke-width="0.5px" style="fill:green"><animateColor attributeName="fill" attributeType="CSS" from="blue" to="lime" begin="0.1s" dur="1s"  repeatCount="indefinite" /><animateTransform attributeName="transform" attributeType="XML" type="rotate" from="0" to="90" begin="0.1s" dur="0.1s" fill="freeze"/><animateMotion path="M  0 0 L 605.1685196021065 247.33528379169104" begin="0.1s" dur="0.3s" fill="freeze"/></ellipse>
 
-<ellipse cx="2" cy="5" rx="72.08425980105325" ry="1" stroke="black" stroke-width="0.5px" style="fill:green"><animateColor attributeName="fill" attributeType="CSS" from="blue" to="lime" begin="0.1s" dur="1s"  repeatCount="indefinite" /><animateTransform attributeName="transform" attributeType="XML" type="rotate" from="0" to="90" begin="0.1s" dur="0.1s" fill="freeze"/><animateMotion path="M  0 0 L 605.1685196021065 140" begin="0.1s" dur="0.3s" fill="freeze"/></ellipse>
+<ellipse cx="2" cy="5" rx="72.08425980105325" ry="1" stroke="black" stroke-width="0.5px" style="fill:green"><animateColor attributeName="fill" attributeType="CSS" from="blue" to="lime" begin="0.1s" dur="1s"  repeatCount="indefinite" /><animateTransform attributeName="transform" attributeType="XML" type="rotate" from="0" to="90" begin="0.1s" dur="0.1s" fill="freeze"/><animateMotion path="M  0 0 L 605.1685196021065 235.33528379169104" begin="0.1s" dur="0.3s" fill="freeze"/></ellipse>
 
 
-</g><polyline id="hexagon" points="250.0,111.0 279.54679334916864,73.7317444219067 148.0,148.0" stroke="green" style="fill:green;fill-opacity:0.6;" onclick="changeFill()"/><!-- Two overlap -->
+<ellipse cx="2" cy="5" rx="52.77339667458432" ry="1" stroke="black" stroke-width="0.5px" style="fill:green"><animateColor attributeName="fill" attributeType="CSS" from="blue" to="lime" begin="0.1s" dur="1s"  repeatCount="indefinite" /><animateTransform attributeName="transform" attributeType="XML" type="rotate" from="0" to="90" begin="0.1s" dur="0.1s" fill="freeze"/><animateMotion path="M  0 0 L 640.1685196021065 272.2408551068884" begin="0.1s" dur="0.3s" fill="freeze"/></ellipse>
+
+<ellipse cx="2" cy="5" rx="70.27339667458432" ry="1" stroke="black" stroke-width="0.5px" style="fill:green"><animateColor attributeName="fill" attributeType="CSS" from="blue" to="lime" begin="0.1s" dur="1s"  repeatCount="indefinite" /><animateTransform attributeName="transform" attributeType="XML" type="rotate" from="0" to="90" begin="0.1s" dur="0.1s" fill="freeze"/><animateMotion path="M  0 0 L 640.1685196021065 258.2408551068884" begin="0.1s" dur="0.3s" fill="freeze"/></ellipse>
+
+<ellipse cx="2" cy="5" rx="86.77339667458432" ry="1" stroke="black" stroke-width="0.5px" style="fill:green"><animateColor attributeName="fill" attributeType="CSS" from="blue" to="lime" begin="0.1s" dur="1s"  repeatCount="indefinite" /><animateTransform attributeName="transform" attributeType="XML" type="rotate" from="0" to="90" begin="0.1s" dur="0.1s" fill="freeze"/><animateMotion path="M  0 0 L 640.1685196021065 246.24085510688838" begin="0.1s" dur="0.3s" fill="freeze"/></ellipse>
+
+
+<ellipse cx="2" cy="5" rx="61.51622718052738" ry="1" stroke="black" stroke-width="0.5px" style="fill:green"><animateColor attributeName="fill" attributeType="CSS" from="blue" to="lime" begin="0.1s" dur="1s"  repeatCount="indefinite" /><animateTransform attributeName="transform" attributeType="XML" type="rotate" from="0" to="90" begin="0.1s" dur="0.1s" fill="freeze"/><animateMotion path="M  0 0 L 673.1685196021065 278.7317444219067" begin="0.1s" dur="0.3s" fill="freeze"/></ellipse>
+
+<ellipse cx="2" cy="5" rx="79.01622718052738" ry="1" stroke="black" stroke-width="0.5px" style="fill:green"><animateColor attributeName="fill" attributeType="CSS" from="blue" to="lime" begin="0.1s" dur="1s"  repeatCount="indefinite" /><animateTransform attributeName="transform" attributeType="XML" type="rotate" from="0" to="90" begin="0.1s" dur="0.1s" fill="freeze"/><animateMotion path="M  0 0 L 673.1685196021065 264.7317444219067" begin="0.1s" dur="0.3s" fill="freeze"/></ellipse>
+
+<ellipse cx="2" cy="5" rx="95.51622718052738" ry="1" stroke="black" stroke-width="0.5px" style="fill:green"><animateColor attributeName="fill" attributeType="CSS" from="blue" to="lime" begin="0.1s" dur="1s"  repeatCount="indefinite" /><animateTransform attributeName="transform" attributeType="XML" type="rotate" from="0" to="90" begin="0.1s" dur="0.1s" fill="freeze"/><animateMotion path="M  0 0 L 673.1685196021065 252.73174442190668" begin="0.1s" dur="0.3s" fill="freeze"/></ellipse>
+
+
+</g><polyline id="hexagon" points="250.0,111.0 279.54679334916864,73.7317444219067 148.0,148.0" stroke="orange" style="fill:green;fill-opacity:0.3;" onclick="changeFill()"/><!-- Two overlap -->
 <g transform="translate(100,30);rotate(90);" >
 	
 
@@ -743,7 +757,7 @@ secondly just highight point needed </text>
 
 
 
-<text x="110" y="160" font-size="18" fill="yellow" fill-opacity="0.9"> quad2x2ptc6 </text>
+<text x="180" y="160" font-size="15" fill="yellow" fill-opacity="0.9"> quad2x2ptc6 </text>
 <text x="80" y="200">Eperiment3: ptc0 example; </text>
 <text x="80" y="215">*C..> 'fofina2 ptc0 foBrad 1 1'</text>
 <text x="230" y="440" font-size="18" fill="green" fill-opacity="0.4">clientX : <tspan id="cX" fill="red" fill-opacity="0.8">0</tspan></text> 
@@ -751,7 +765,7 @@ secondly just highight point needed </text>
 <text x="230" y="480" font-size="18" fill="green" fill-opacity="0.4">screenX : <tspan id="sX" fill="red" fill-opacity="0.8">0</tspan></text> 
 <text x="230" y="500" font-size="18"  fill="blue" fill-opacity="0.9">screenY : <tspan id="sY" fill="green" fill-opacity="0.8">0</tspan></text> 
 
-<rect id="go" x="200" y="50" width="300" height="650" style="fill:#1e1c1ecc;fill-opacity:0.6"/>
+<rect id="go" x="800" y="50" width="300" height="650" style="fill:#1e1c1ecc;fill-opacity:0.6"/>
 </g>
 
 
