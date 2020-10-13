@@ -179,12 +179,12 @@ runK d = do
 progVarRAW t r = do 
     let df = head (ausw t r)
     df
-progVar1 = "0*x + y + 0*z = 3"-- "AaEe0" --"abcde0" --"abcdef" --"abcdef" --show(tussenStap 1 1) --"abcdef" --"abcde0" --"AaEe0" --"AaEe" --"Aa" --"Cesar" --"AAABB" --range --"1" --range211 --"a" --"The world" --"AAABB" 
-progVar2 = "0*x + y + 0*z = 33*x + 0 + 0*z = 6" --"AaEeI" --"fghij0" -- "ghijkl" -- "abcdefghijkl" --(show (tussenStap 1 1))++(show(tussenStap 1 2)) -- "abcdefghijkl" --"fghij0" --"AaEeI" --"AaEeIi000" --"AaEe" --"CeaserDelight" --"AAABB"++range --"AB" --range --"ab" --range --"ab" --"The world is everything" --"AAABBAABAB"
-progVar3 = "3*x + 0 + 0*z = 6" --"i0000" --"klmno0" --"mnoprr" --"ghijkl" --(show(tussenStap 1 2)) --"mnopqr" --"klmno0" --"i0000" --"Ee" --"Deight" --range --"b" --range --"b" --"is everything" --"AABAB"
-progVar4 = "0*x + 0*y + z = 2" --"OoUu0" --"pqrst0" --"stuvwx" --"mnopqr" --(show(tussenStap 1 3)) -- "stuvwx" --"pqrst0" --"OoUu0" --"OoUu" --"Ii" --"Elf" --"AAA" --"c" --range --"b" --tht is" -- find the "a" in wxms "that is" --"AAA"
-progVar5 = "0*x + 0*y + z = 2x + y + z = 11" --"OoU0Y" --"uvwxy0" --"yz0000" --"mnopqrstuvwx" --(show (tussenStap 1 3))++(show(tussenStap 1 4)) -- "yz0000000000" --"uvwxy0" --"OoUuY" --"OoUuYy000" --"AAAaaaBBBbbbA+Aaa" --"IiOo" --"ElfFool" --"AAABBBAA" --"cd" --range --"bc" --"tht is the cse" --"that is the case" --"AAABBBAA"
-progVar6 = "x + y + z = 11" --"y0000" --"z00000" --"000000" --"yz0000" --(show(tussenStap 1 4)) --"000000" --"z00000" --"y0000" --"y000" -- "BBBbbbA+Aaa" --"uvwxyz" --"uvwxyz" --"Oo" --"Fool" --"BBBAA" --"d" --range --"c" --"the cse" --"the case" --"BBBAA"
+progVar1 = "AAABB" --"0*x + y + 0*z = 3"-- "AaEe0" --"abcde0" --"abcdef" --"abcdef" --show(tussenStap 1 1) --"abcdef" --"abcde0" --"AaEe0" --"AaEe" --"Aa" --"Cesar" --"AAABB" --range --"1" --range211 --"a" --"The world" --"AAABB" 
+progVar2 = "AAABBAABAB"--"0*x + y + 0*z = 33*x + 0 + 0*z = 6" --"AaEeI" --"fghij0" -- "ghijkl" -- "abcdefghijkl" --(show (tussenStap 1 1))++(show(tussenStap 1 2)) -- "abcdefghijkl" --"fghij0" --"AaEeI" --"AaEeIi000" --"AaEe" --"CeaserDelight" --"AAABB"++range --"AB" --range --"ab" --range --"ab" --"The world is everything" --"AAABBAABAB"
+progVar3 = "AAABAB" --"3*x + 0 + 0*z = 6" --"i0000" --"klmno0" --"mnoprr" --"ghijkl" --(show(tussenStap 1 2)) --"mnopqr" --"klmno0" --"i0000" --"Ee" --"Deight" --range --"b" --range --"b" --"is everything" --"AABAB"
+progVar4 = "AAAaaaBBBbbbA+Aaa" --"0*x + 0*y + z = 2" --"OoUu0" --"pqrst0" --"stuvwx" --"mnopqr" --(show(tussenStap 1 3)) -- "stuvwx" --"pqrst0" --"OoUu0" --"OoUu" --"Ii" --"Elf" --"AAA" --"c" --range --"b" --tht is" -- find the "a" in wxms "that is" --"AAA"
+progVar5 = "AAAaaaBBBbbbA+Aaa" --"0*x + 0*y + z = 2x + y + z = 11" --"OoU0Y" --"uvwxy0" --"yz0000" --"mnopqrstuvwx" --(show (tussenStap 1 3))++(show(tussenStap 1 4)) -- "yz0000000000" --"uvwxy0" --"OoUuY" --"OoUuYy000" --"AAAaaaBBBbbbA+Aaa" --"IiOo" --"ElfFool" --"AAABBBAA" --"cd" --range --"bc" --"tht is the cse" --"that is the case" --"AAABBBAA"
+progVar6 = "BBBbbbA+Aaa"--"x + y + z = 11" --"y0000" --"z00000" --"000000" --"yz0000" --(show(tussenStap 1 4)) --"000000" --"z00000" --"y0000" --"y000" -- "BBBbbbA+Aaa" --"uvwxyz" --"uvwxyz" --"Oo" --"Fool" --"BBBAA" --"d" --range --"c" --"the cse" --"the case" --"BBBAA"
 
 progLiT = [progVar1,progVar2,progVar3,progVar4,progVar5,progVar6]
 -------------------------------------------
@@ -1645,7 +1645,7 @@ ptcMetric foptc cell line = --let minkActioRaw = ((minkowskiAdd2  9.0 "1" ["1.9"
                                       in let to10erSystem = sum(zipWith (*) tobuild stepke)
                                       in to10erSystem
              in let we t = take 5 $ show$(0.1*(head(ausw t (nub$map maximum (foptc 10)))))
-             in let tensorRAW median t =  ((minkowskiAdd2  10 "1" ["2.9","2.8","0.01"] (we median) foptc t median)) 
+             in let tensorRAW median t =  ((minkowskiAdd2  8 "1" ["2.9","2.8","0.01"] (we median) foptc t median)) 
  -- the median being one or two data points to make a trianlge , that very points must be in the intervall (0..max x,0..max y)
              in let tigi median =  (map (tensorRAW median ) [1..3] )
              in let choosParse c focell foline = head$ausw c $head(ausw cell (tigi line))
@@ -1658,8 +1658,12 @@ ptcMetric foptc cell line = --let minkActioRaw = ((minkowskiAdd2  9.0 "1" ["1.9"
              in let mapCell = map groupoid [1..3]
              in threeisZ cell line --[(threeisZ cell line),(threeisZ (cell +1 ) (line +1)),(threeisZ (cell +2 ) (line +2))] --groupoid  
 
-ptcCac foptc z = sort [(ptcMetric foptc z 1),(ptcMetric foptc z 2),(ptcMetric foptc z 3)]
+ptcCac foptc z = sort (ptcCacRAW foptc z)
 
+ptcCacRAW foptc z =  [(ptcMetric foptc z 1),(ptcMetric foptc z 2),(ptcMetric foptc z 3)]
+--xorYorZ:Int, choose line 1 to 3 of function above 
+--calc: Int ; if calc = 1 then calculat from maxima list  => find plotting boudaries
+--            else calc from zero point of metric (e.g point(0) of foBrad ([[..(148,148)], .. [..].. ]) )
 moreCalc foptc xorYorZ atom fstS = let step1 =  map realToFrac (tail (ptcCac foptc xorYorZ))
             in let findCoordinate ploy = let rawform =  ((map scanChar(show (ploy)))) -- veryfies maximum is first
                                       in let stepke = (filter (>=0) (rawform ) )
@@ -1677,8 +1681,45 @@ moreCalc foptc xorYorZ atom fstS = let step1 =  map realToFrac (tail (ptcCac fop
             in let coordo = ((lineWidth)*(step2))
             in let toDouble = (coordo)
             in let calcOnBradley = head(lengthXY (foptc )  [foBrad] atom toDouble fstS  "26.470588235294116" "2.647" 6 1)
-            in calcOnBradley --bradleySel6 --lineWidth --coordo --calcOnBradley --(toDouble/100) --coordo --step2 --coordo --head step1 --coordo --step2 --head step1 --bradleyGain
-   
+            in calcOnBradley --coordo --step2 --coordo --calcOnBradley --bradleySel6 --lineWidth --coordo --calcOnBradley --(toDouble/100) --coordo --step2 --coordo --head step1 --coordo --step2 --head step1 --bradleyGain
+quad2x2ptc3 e atom moveBy = let theZero fos =   moreCalc ptc3 1 1 fos  
+                  in let bdyX = moreCalc ptc3 1 6 fst -- x 
+                  in let bdyY = moreCalc ptc3 1 6 snd --y
+                  in [[bdyX,bdyY*2.1379+ moveBy],[ bdyX,(theZero snd)*1.5621+moveBy],[(theZero fst),(theZero snd)+moveBy],[(theZero fst),bdyY+moveBy]]
+
+hex2x2ptc3 e atom = let theZero fos =  realToFrac $ moreCalc ptc6 e 6 fos  
+                  in let bdyX = realToFrac(last$ ptcCac ptc6 1) -- x 
+                  in let bdyY = realToFrac(last $ ptcCac ptc6 2)
+                  in [[bdyX,bdyY],[ bdyX,(theZero snd)],[(theZero fst),(theZero snd)],[(theZero fst),bdyY]]
+
+quad2x2ptc3b e atom moveBy= let theZero fos =   moreCalc ptc6 1 1 fos  
+                  in let bdyX = moreCalc ptc6 1 6 fst -- x 
+                  in let bdyY = moreCalc ptc6 1 6 snd --y
+                  in [[bdyX*1.8379,bdyY*2.1379+ moveBy],[ bdyX,(theZero snd)*1.5621+moveBy],[(theZero fst),(theZero snd)+moveBy],[(theZero fst)*3.6,bdyY+moveBy]]
+quad2x2ptc6 e atom moveBy = let theZero fos =   moreCalc ptc6 1 1 fos  
+                  in let bdyX = moreCalc ptc6 1 6 fst -- x 
+                  in let bdyY = moreCalc ptc6 1 6 snd --y
+                  in let fosuared = bdyX*1
+                  in let fosqY = bdyY*6
+                  in [[bdyX,bdyY*(2.1379)+moveBy],[ bdyX,(theZero snd)*1.5621+moveBy],[(theZero fst),(theZero snd)+moveBy],[(theZero fst),bdyY+moveBy]]
+
+quad2x2ptc0 e atom moveBy = let theZero fos =   moreCalc ptc0 1 1 fos  
+                  in let bdyX = moreCalc ptc0 1 6 fst -- x 
+                  in let bdyY = moreCalc ptc0 1 6 snd --y
+                  in let fosuared = bdyX*1
+                  in let fosqY = bdyY*6
+                  in [[bdyX,bdyY*(2.1379)+moveBy],[ bdyX,(theZero snd)*1.5621+moveBy],[(theZero fst),(theZero snd)+moveBy],[(theZero fst),bdyY+moveBy]]
+
+
+quad2x2ptc8 e atom = let theZero fos =   moreCalc ptc8 1 1 fos  
+                  in let bdyX = moreCalc ptc8 1 6 fst -- x 
+                  in let bdyY = moreCalc ptc8 1 6 snd --y
+                  in let fosuared = bdyX*1
+                  in let fosqY = bdyY*6
+                  in [[bdyX,bdyY*(2.1379)],[ bdyX,(theZero snd)*1.5621],[(theZero fst),(theZero snd)],[(theZero fst),bdyY]]
+
+--aSquare
+ 
 aTriangle3 foptc e r = let stapA e r f= (moreCalc foptc e r f) 
              in let stapB e r = [(stapA e r fst),(stapA e r snd)]
              in [(stapB (e) (r+1)),(stapB (e) (r+2)),(stapB (e) (r+3)),(stapB (e) (r+4)),(stapB (e) (r+5))]
@@ -1712,7 +1753,20 @@ triangle''' foptc e r = let stapA e r f= (moreCalc foptc e r f)
              in let stapB e r = [(stapA e r snd),(stapA e r fst)]
              in [[(120),(62)],[(stapA 1 3 fst),(stapA 3 3 snd)],[16,99]] --[257,116]] --(stapB (1) (6)),(stapB (e) (r+4)),(stapB (1) (r+5)) ]
 
-
+-- os: [Double] ; any ptc list 
+triRead moveY foptc  = let mapper fr = map (zVal fr )[1,2,3]
+                       in [mapper 1] --(map mapper [1..3])
+   where
+     --prepPtc k = head(ausw k foptc)
+     foG fr g fsnd = moreCalc foptc fr g fsnd; 
+     inBoundZ fr g fsnd = 0.5*(foG fr g fsnd);
+     inBX fr g = (foG fr g fst);
+     inBY fr g = (foG fr g snd); 
+     zVal fr g  = unlines ["<ellipse cx=\"2\" cy=\"5\" rx=\""++ show(inBoundZ fr g fst) ++"\" ry=\"1\" stroke=\"black\" stroke-width=\"0.5px\" style=\"fill:green\">"++
+                       "<animateColor attributeName=\"fill\" attributeType=\"CSS\" from=\"blue\" to=\"lime\" begin=\"0.1s\" dur=\"1s\"  repeatCount=\"indefinite\" />"++
+                       "<animateTransform attributeName=\"transform\" attributeType=\"XML\" type=\"rotate\" from=\"0\" to=\"90\" begin=\"0.1s\" dur=\"0.1s\" fill=\"freeze\"/>"++
+                       "<animateMotion path=\"M  0 0 L "++show (529+ (inBX 1 fr))++" "++show(moveY)++"\" begin=\"0.1s\" dur=\"0.3s\" fill=\"freeze\"/>"++"</ellipse>"]; 
+                                                           --(inBX fr g 
 compton foptc e r = let stapA e r f= (moreCalc foptc e r f) 
              in let stapB e r = [(stapA e r snd),(stapA e r fst)]
              in transpose[[(stapA 2 6 snd),((stapA 3 6 fst))],[(stapA 2 6 snd),((stapA 3 6 fst))],[(stapA 1 1 snd),((stapA 3 1 fst))]] --[257,116]] --(stapB (1) (6)),(stapB (e) (r+4)),(stapB (1) (r+5)) ]
@@ -1745,7 +1799,7 @@ triangleKd2b foptc e r = let stapA e r f= (moreCalc foptc e r f)
              in let stapB e r = [(stapA e r snd),(stapA e r fst)]
              in [[148,148],[62,144],[111,131]] --[257,116]] --(stapB (1) (6)),(stapB (e) (r+4)),(stapB (1) (r+5)) ]
 
-
+-- aTriangle3,twoTriangles,twoTrianges2,twoTriangles3,twoTriangles3,twoTriangles4,funfeck2
 -- Write SVG "src/zooSvg.svg" 1
 -- e.g *> fofina2 foBrad
 -- anchor : [[(Double,Double)]] e.g 'foBrad'
@@ -1753,7 +1807,7 @@ triangleKd2b foptc e r = let stapA e r f= (moreCalc foptc e r f)
 -- atom   : Int ; which atom of a line  the y coordinate
 fofina2	foptc anchor line atom = do
            exp3Header <- readFile "textS/Experiment3Header.txt"
-           exp3Tail <- readFile "textS/Experiment3Tail.txt"
+           exp3Tail <- readFile "textS/Experiment3Tail2.txt"
            let anchor0 = nub$foptc 10
            let anchor1 = [(map maximum(transpose(foptc 10)))]
            let anchor2 =  group$nub$sort$concat (foptc 10) --[(map minimum(transpose(ptc6 10)))]
@@ -1765,17 +1819,22 @@ fofina2	foptc anchor line atom = do
            let fopol =  (unwords(map (filter (/=']')) (map (filter (/='[')) (map show dropZet))) )
            let graphs all foCol= "<polyline id=\"hexagon\" points=\""++ all ++"\" stroke=\"green\" style=\"fill:"++foCol++";fill-opacity:0.6;\" onclick=\"changeFill()\"/>"
  
-           let polyLine = (graphs (fopolRAW (triangle' foptc line atom)) "green" )
-           let polyLine1 = (graphs (fopolRAW (triangle'' foptc line atom))  "blue")
+           let polyLine = (graphs (fopolRAW (triangle'' foptc line atom)) "green" ) --(fopolRAW (triangle' foptc line atom)) "green" )
+           let polyLine1 = (graphs (fopolRAW (triangle'' foptc line atom))  "blue") --triangle''
   
-           let polyLine2 = (graphs (fopolRAW (triangleKd1 foptc line atom)) "orange")
-           let polyLine3 = (graphs (fopolRAW (triangleKd1b foptc line atom))  "red")
-           let polyLine4 = (graphs (fopolRAW (triangleKd2 foptc line atom))  "red")
-           let polyLine5 = (graphs (fopolRAW (triangleKd1c foptc line atom))  "red")
-           let polyLine6 = (graphs (fopolRAW (triangleKd1d foptc line atom))  "grey")
-           let polyLine7 = (graphs ( fopolRAW (triangleKd2b foptc line atom)) "blue")
-           let polyLine8 = (graphs ( fopolRAW (triangle''' foptc line atom)) "red")
- 
+           let polyLine2 = (graphs (fopolRAW (quad2x2ptc0 line atom 400)) "orange") --triangleKd1  -- only working variable ptcs yet !!!!!!!!!!!!!!!
+           let polyLine3 = (graphs (fopolRAW (quad2x2ptc6 line atom 300))  "red") --triangleKd1b   -- could be a B in A a solution
+           let polyLine4 = (graphs (fopolRAW (quad2x2ptc3 line atom 400))  "green") -- triangleKd2  -- of a pre-selected progVar run 
+           let polyLine5 = (graphs (fopolRAW (quad2x2ptc3b line atom 100))  "purple") -- triangleKd1c -- now conencted to progVars of this module only 
+           let polyLine6 = (graphs (fopolRAW (quad2x2ptc8 line atom))  "grey") -- triangleKd1d
+
+           let polyLine7 aptc = (graphs ( fopolRAW (triangleKd2b aptc line atom)) "blue") --triangleKd2b
+           let polyLine8 aptc = (graphs ( fopolRAW (triangle''' aptc line atom)) "red") 
+           let polyLine9 aptc= (graphs (fopolRAW (triangleKd2 aptc line atom )) "orange") --triangleKd1
+           let polyLine10 aptc= (graphs (fopolRAW (triangleKd1 aptc line atom ))  "red") --triangleKd1b
+           let polyLine11 aptc= (graphs (fopolRAW (triangleKd2 aptc line atom ))  "green") -- triangleKd2
+           let polyLine12 aptc= (graphs (fopolRAW (triangleKd1c aptc line atom ))  "purple") -- triangleKd1c
+           let polyLine13 aptc= (graphs (fopolRAW (triangleKd1d aptc line atom))  "grey") -- triangleKd1d
 
         --write to svg
            let el cx cy rx ry foCol=  ("<ellipse cx=\""++cx++"\" cy=\""++cy++"\" rx=\""++rx++"\" ry=\""++ry++"\" stroke=\"black\" stroke-width=\"2px\" style=\"fill:"++foCol++"\">\n"++ "</ellipse>\n")
@@ -1783,7 +1842,7 @@ fofina2	foptc anchor line atom = do
          -- mind the empty spaces determine shape
          --  3 triangle or 6 hexagon and so on.
            
-           layerNO <- forM [1,2] (\ly -> do 
+           layerNO <- forM [1,2,3] (\ly -> do 
                 let plugCol = colorList ly 
                 aMonada <- forM [1..(length anchor)] (\os -> do 
                 let conLongituda =  (tk os anchor)
@@ -1795,12 +1854,18 @@ fofina2	foptc anchor line atom = do
                                       else snd
                     -- let plugExp3 = tensorExp3 1 foBrad (realToFrac (fst$head$ausw cs conLongituda)) rekenOrder
                      let gtSnd = show$snd$head$ausw cs conLongituda
-                     let inPlug = el gtFst gtSnd (unwords( map fst$dotSize ly)) (unwords(map snd$dotSize ly)) (concat plugCol)                    
+                     let inPlug = el gtFst gtSnd (unwords( map fst$dotSize ly)) (unwords(map fst$dotSize ly)) (concat plugCol)     
+                   --  let heights = unlines ["<ellipse cx=\"2\" cy=\"5\" rx=\"59\" ry=\"1\" stroke=\"black\" stroke-width=\"0.5px\" style=\"fill:green\">"++
+                     --              "<animateColor attributeName=\"fill\" attributeType=\"CSS\" from=\"blue\" to=\"lime\" begin=\"0.1s\" dur=\"1s\"  repeatCount=\"indefinite\" />"++
+                       --            "<animateTransform attributeName=\"transform\" attributeType=\"XML\" type=\"rotate\" from=\"0\" to=\"90\" begin=\"0.1s\" dur=\"0.1s\" fill=\"freeze\"/>"++
+                         --          "<animateMotion path=\"M  0 0 L "++show(151+(os*5))++" "++show(148+(os*5))++"\" begin=\"0.1s\" dur=\"0.3s\" fill=\"freeze\"/>"++"</ellipse>"]                
                      return (inPlug))
                 return(innRead))
     -- should be set to 200 or move whole field
-                 
-                let zooSvg = (mapField ly)++(concat aMonada)++(words ("</g>\n</g>\n"))
+                let thePoly aptc = polyLine++polyLine8 aptc++polyLine7 aptc++polyLine6++polyLine5++polyLine4++polyLine3++polyLine2++polyLine1++polyLine9 aptc++polyLine10 aptc++polyLine11 aptc++polyLine12 aptc++polyLine13 aptc
+                let fodeciDe t = (head(ausw t [(ptc0 ),(ptc3 ),(ptc6 )]))
+                let deciDe = thePoly (fodeciDe ly)
+                let zooSvg = (mapField ly)++(concat aMonada)++words deciDe ++(words ("</g>\n</g>\n"))
                 return(zooSvg))
           
            let outerLength = [1] --e.g [26.470588235294116,6.296691568836714] [0.0,25.233644859813086] [14.338235294117647,6.296691568836714] 
@@ -1809,13 +1874,14 @@ fofina2	foptc anchor line atom = do
                 let withMapExp3 =  polyLine --mapExp3 foBrad ly 1  
                   
                 return (withMapExp3))
-                 
+           let fotheZs z = (unlines(head( ausw z (triRead 140 ( foptc)))))
+           let theZs = "<g>"++unlines [fotheZs 1]++"</g>" -- map fotheZs [1..3]
            let prpplug = concat$ plugExpri3
            let aTriangle = head (plugExpri3) 
-           let zooSvg2 = ((words("<g transform=\"translate(0,200)\">\n"++"<g>\n"))++(words ("</g>\n</g>\n")))
-           let zooSvg = exp3Header++ (unwords$concat$ layerNO)++(aTriangle)++polyLine++polyLine8++polyLine7++polyLine6++polyLine5++polyLine4++polyLine3++polyLine2++polyLine1++exp3Tail
+           let zooSvg2 = ((words("<g transform=\"translate(0,140)\">\n"++"<g>\n"))++(words ("</g>\n</g>\n")))
+           let zooSvg = exp3Header++ (unwords$concat$ layerNO)++theZs++(aTriangle)++exp3Tail
 
-           writeFile "zooSvg.svg" (zooSvg)                            
+           writeFile "zooSvg2.svg" (zooSvg)                            
           -- putStrLn (show aMonada)
            putStrLn "transformed to hexagon"
            putStrLn (polyLine) -- test triangle x y values of ptc
@@ -1831,7 +1897,7 @@ fofina2	foptc anchor line atom = do
      colorList c = dar c ["lightblue","lime","blue","darkgray","black","white","lime"];
      dotSize d = dar d [("5","7"),("10","12"),("5","7")];
      fieldPosi fp = (" <g transform=\"translate(0,"++ fp ++")\">\n<g>\n");
-     mapField d = ausw d $ map fieldPosi ["0","200"];
+     mapField d = ausw d $ map fieldPosi ["0","200","300"];
 
     -- rectAnimate = dar 1 legos; 
                                                                                                  -- END write TENSOREXP3 $ FOFINA2
