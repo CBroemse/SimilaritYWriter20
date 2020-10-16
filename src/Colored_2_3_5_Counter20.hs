@@ -1,5 +1,8 @@
 -- this module provides:
 -- --------------------------------------
+-- 16-10-2020
+-- fofina2 -> write zooSvg.svg now set to write in src change to 'SimilaritYWriter20'
+--            with github
 -- four lines of thought
 --
 --  I. a. compare all atoms of [String] called bonelist and order them due to similaritYvalue
@@ -1837,7 +1840,7 @@ fofina2	foptc anchor line atom = do
            let polyLine13 aptc= (graphs (fopolRAW (triangleKd1d aptc line atom))  "grey") -- triangleKd1d
 
         --write to svg
-           let el cx cy rx ry foCol=  ("<ellipse cx=\""++cx++"\" cy=\""++cy++"\" rx=\""++rx++"\" ry=\""++ry++"\" stroke=\"green\" stroke-width=\"1px\" style=\"fill:"++foCol++";fill-opacity:0.3;\">\n"++ "</ellipse>\n")
+           let el cx cy rx ry foCol=  ("<ellipse cx=\""++cx++"\" cy=\""++cy++"\" rx=\""++rx++"\" ry=\""++ry++"\" stroke=\"green\" stroke-width=\"1px\" style=\"fill:"++foCol++";fill-opacity:0.8;\">\n"++ "</ellipse>\n")
          -- all:String ; "87,0 174,50 174,150 87,200 0,150 0,50 87,0"
          -- mind the empty spaces determine shape
          --  3 triangle or 6 hexagon and so on.
@@ -1861,11 +1864,29 @@ fofina2	foptc anchor line atom = do
                          --          "<animateMotion path=\"M  0 0 L "++show(151+(os*5))++" "++show(148+(os*5))++"\" begin=\"0.1s\" dur=\"0.3s\" fill=\"freeze\"/>"++"</ellipse>"]                
                      return (inPlug))
                 return(innRead))
-    -- should be set to 200 or move whole field
+    -- write three ptcs with many dots 
                 let thePoly aptc = polyLine++polyLine8 aptc++polyLine7 aptc++polyLine6++polyLine5++polyLine4++polyLine3++polyLine2++polyLine1++polyLine9 aptc++polyLine10 aptc++polyLine11 aptc++polyLine12 aptc++polyLine13 aptc
                 let fodeciDe t = (head(ausw t [(ptc0 ),(ptc3 ),(ptc6 )]))
                 let deciDe = thePoly (fodeciDe ly)
-                let zooSvg = (mapField ly)++(concat aMonada)++words deciDe ++(words ("</g>\n</g>\n"))
+    -- write a 2d pointcloud
+                let foPlots aptc fstSnd lin = let stap1 fstSnd lin ato = moreCalc aptc ato lin fstSnd
+                         in map (stap1 fstSnd lin) [1..3] 
+                let prepWidthX e = let stap1 =  (foPlots ptc6 fst e) 
+                              in let stap2 = length stap1
+                              in let stap3 f= f +22
+                              in let stap4 = map stap3 stap1
+                              in stap4
+                let zipCoord e =  (zip(prepWidthX e)(foPlots (fodeciDe ly) snd e)) --  + 20 due to quadrant width of metric-- set to plot line 1
+                let plotData e = "<text x=\"280\" y=\"260\" font-size=\"15\" fill=\"red\" fill-opacity=\"0.5\">"++ unlines (map show (zipCoord e))  ++" </text>\n"
+                let anotherZ e = (0.01*(last (map realToFrac (ptcCacRAW foptc e)))) -- the z values
+                let pointCloudDot e foxfoy =  "<g transform=\"translate(0,"++show (anotherZ e)++")\">\n"++
+                                         "<ellipse cx=\""++show(fst foxfoy)++"\" cy=\""++show(snd foxfoy)++"\" rx=\"2\" ry=\""++ show(anotherZ e)++"\" stroke=\"black\" stroke-width=\"1px\" style=\"fill:pink\" opacity=\"0.5\">\n"++
+                                        "<animateColor attributeName=\"fill\" attributeType=\"CSS\" from=\"blue\" to=\"lime\" begin=\"1s\" dur=\"6s\"  repeatCount=\"indefinite\" />\n"++"</ellipse> </g>\n"
+                let pointSchar e = map (pointCloudDot e) (zipCoord e)
+                let pointCloud = concat (map pointSchar [1..3])
+ ------------------------------
+    -- everything above will appear three fold in 'layerNO'
+                let zooSvg = (mapField ly)++(concat aMonada)++( pointCloud )++words deciDe ++(words ("</g>\n</g>\n"))
                 return(zooSvg))
           
            let outerLength = [1] --e.g [26.470588235294116,6.296691568836714] [0.0,25.233644859813086] [14.338235294117647,6.296691568836714] 
@@ -1879,7 +1900,35 @@ fofina2	foptc anchor line atom = do
            let prpplug = concat$ plugExpri3
            let aTriangle = head (plugExpri3) 
            let zooSvg2 = ((words("<g transform=\"translate(0,140)\">\n"++"<g>\n"))++(words ("</g>\n</g>\n")))
-           let zooSvg = exp3Header++ (unwords$concat$ layerNO)++theZs++(aTriangle)++exp3Tail
+           let foPlots aptc fstSnd lin = let stap1 fstSnd lin ato = moreCalc aptc ato lin fstSnd
+                         in map (stap1 fstSnd lin) [1..3] 
+           let prepWidthX e = let stap1 =  (foPlots ptc6 fst e) 
+                              in let stap2 = length stap1
+                              in let stap3 f= f +22
+                              in let stap4 = map stap3 stap1
+                              in stap4
+           let zipCoord e =  (zip(prepWidthX e)(foPlots ptc6 snd e)) --  + 20 due to quadrant width of metric
+           let plotData e = "<text x=\"280\" y=\"260\" font-size=\"15\" fill=\"red\" fill-opacity=\"0.5\">"++ unlines (map show (zipCoord e))  ++" </text>\n"
+
+           let anotherZ e = (0.01*(last (map realToFrac (ptcCacRAW foptc e)))) -- the z values
+
+           let pointCloudDot e foxfoy =  "<g transform=\"translate(0,"++show (anotherZ e)++")\">\n"++
+                                         "<ellipse cx=\""++show(fst foxfoy)++"\" cy=\""++show(snd foxfoy)++"\" rx=\"2\" ry=\""++ show(anotherZ e)++"\" stroke=\"black\" stroke-width=\"1px\" style=\"fill:pink\" opacity=\"0.5\">\n"++
+                                        "<animateColor attributeName=\"fill\" attributeType=\"CSS\" from=\"blue\" to=\"lime\" begin=\"1s\" dur=\"6s\"  repeatCount=\"indefinite\" />\n"++"</ellipse> </g>\n"
+--                                        "<ellipse cx=\"2\" cy=\"5\" rx=\""++ show(anotherZ e) ++"\" ry=\"1\" stroke=\"black\" stroke-width=\"0.5px\" style=\"fill:green\">"++
+--                                             "<animateColor attributeName=\"fill\" attributeType=\"CSS\" from=\"blue\" to=\"lime\" begin=\"0.1s\" dur=\"1s\"  repeatCount=\"indefinite\" />"++
+  --                                           "<animateTransform attributeName=\"transform\" attributeType=\"XML\" type=\"rotate\" from=\"0\" to=\"90\" begin=\"0.1s\" dur=\"0.1s\" fill=\"freeze\"/>"++
+    --                                    "<animateMotion path=\"M  0 0 L "++show (fst foxfoy)++" "++show(snd foxfoy)++"\" begin=\"0.1s\" dur=\"0.3s\" fill=\"freeze\"/>"++"</ellipse>" 
+       
+           let pointSchar e = map (pointCloudDot e) (zipCoord e)
+           let pointCloud = map pointSchar [1..3] 
+  -- stats overvie boxes
+           let fostatsColum  e= "<g transform=\"translate("++show (50+(e*12))++",251)\">\n"++
+                              "<polyline id=\"hexagon\" points=\""++show(anotherZ e)++",50"++show( anotherZ e)++",60 174,60 174,50\" class=\"room\" onclick=\"changeFill()\"/>\n"++
+                              "<animateTransform attributeName=\"transform\" attributeType=\"XML\" type=\"scale\" from=\"1\" to=\"5\" additive=\"sum\" begin=\"0.1s\" dur=\"0.1s\" fill=\"freeze\"/>\n"++ 
+                              "</g>\n"
+           let statsColum = map fostatsColum [1..3]
+           let zooSvg = exp3Header++unwords statsColum++ (unwords$concat$ layerNO)++theZs++(aTriangle)++exp3Tail++plotData 1++unwords(concat pointCloud)++"</svg>"
 
            writeFile "zooSvg2.svg" (zooSvg)                            
           -- putStrLn (show aMonada)
