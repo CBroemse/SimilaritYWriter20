@@ -1928,7 +1928,7 @@ fofina2	foptc anchor line atom = do
                               "<animateTransform attributeName=\"transform\" attributeType=\"XML\" type=\"scale\" from=\"1\" to=\"5\" additive=\"sum\" begin=\"0.1s\" dur=\"0.1s\" fill=\"freeze\"/>\n"++ 
                               "</g>\n"
            let statsColum = map fostatsColum [1..3]
-           let zooSvg = exp3Header++unwords statsColum++ (unwords$concat$ layerNO)++theZs++(aTriangle)++exp3Tail++plotData 1++unwords(concat pointCloud)++"</svg>"
+           let zooSvg = exp3Header++unwords statsColum++ (unwords$concat$ layerNO)++theZs++(aTriangle)++exp3Tail++plotData 1++"</g>\n"++unwords(concat pointCloud)++"</svg>"
 
            writeFile "zooSvg2.svg" (zooSvg)                            
           -- putStrLn (show aMonada)
