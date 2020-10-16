@@ -347,7 +347,6 @@ which way does initiate the animation set on timer or just on click or hover? */
        id="rect3877"
         />
 
-
 <g transform="translate(999,170)">
 <polyline id="hexagon" points="87,0 174,50 174,150 87,200 0,150 0,50 87,0" class="hexa" onclick="changeFill()"/>
 <animateTransform attributeName="transform" attributeType="XML" type="scale" from="1" to="3.1" additive="sum" begin="0.1s" dur="0.1s" fill="freeze"/> 
@@ -433,7 +432,6 @@ secondly just highight point needed </text>
 
 
 
-</g>
-</svg>
+
 
 
