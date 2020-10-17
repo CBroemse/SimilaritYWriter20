@@ -421,6 +421,9 @@ secondly just highight point needed </text>
 <text x="230" y="480" font-size="18" fill="green" fill-opacity="0.4">screenX : <tspan id="sX" fill="red" fill-opacity="0.8">0</tspan></text> 
 <text x="230" y="500" font-size="18"  fill="blue" fill-opacity="0.9">screenY : <tspan id="sY" fill="green" fill-opacity="0.8">0</tspan></text> 
 
+<text x="230" y="520" class="label" font-size="18"  fill="blue" id="c" fill="green" fill-opacity="0.8"> </text> 
+
+
 <rect id="go" x="800" y="50" width="300" height="650" style="fill:#1e1c1ecc;fill-opacity:0.6"/>
 </g>
 
