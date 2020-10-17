@@ -1870,7 +1870,10 @@ fofina2	foptc anchor line atom = do
                 let deciDe = thePoly (fodeciDe ly)
     -- write a 2d pointcloud
                 let foPlots aptc fstSnd lin = let stap1 fstSnd lin ato = moreCalc aptc ato lin fstSnd
-                         in map (stap1 fstSnd lin) [1..3] 
+    -- write 3 of each ################################################################################## Main GUI svg plot 17-10-2020
+    --      with ptc0 ptc3 ptc6 a vector field testing http://www.petercollingridge.co.uk/tutorials/svg/interactive/interactive-map/
+    --      text display on 'hover' 
+                                              in map (stap1 fstSnd lin) [1..3] 
                 let prepWidthX e = let stap1 =  (foPlots ptc6 fst e) 
                               in let stap2 = length stap1
                               in let stap3 f= f +22
@@ -1880,7 +1883,7 @@ fofina2	foptc anchor line atom = do
                 let plotData e = "<text x=\"280\" y=\"260\" font-size=\"15\" fill=\"red\" fill-opacity=\"0.5\">"++ unlines (map show (zipCoord e))  ++" </text>\n"
                 let anotherZ e = (0.01*(last (map realToFrac (ptcCacRAW foptc e)))) -- the z values
                 let pointCloudDot e foxfoy =  "<g transform=\"translate(0,"++show (anotherZ e)++")\">\n"++
-                                         "<ellipse cx=\""++show(fst foxfoy)++"\" cy=\""++show(snd foxfoy)++"\" rx=\"2\" ry=\""++ show(anotherZ e)++"\" stroke=\"black\" stroke-width=\"1px\" style=\"fill:pink\" opacity=\"0.5\">\n"++
+                                         "<ellipse cx=\""++show(fst foxfoy)++"\" cy=\""++show(snd foxfoy)++"\" rx=\"2\" ry=\""++ show(anotherZ e)++"\" onmouseover=\"displayName('"++(head $colorList ly )++"')\" stroke=\"black\" stroke-width=\"1px\" style=\"fill:pink\" opacity=\"0.5\">\n"++
                                         "<animateColor attributeName=\"fill\" attributeType=\"CSS\" from=\"blue\" to=\"lime\" begin=\"1s\" dur=\"6s\"  repeatCount=\"indefinite\" />\n"++"</ellipse> </g>\n"
                 let pointSchar e = map (pointCloudDot e) (zipCoord e)
                 let pointCloud = concat (map pointSchar [1..3])
@@ -1923,12 +1926,12 @@ fofina2	foptc anchor line atom = do
            let pointSchar e = map (pointCloudDot e) (zipCoord e)
            let pointCloud = map pointSchar [1..3] 
   -- stats overvie boxes
-           let fostatsColum  e= "<g transform=\"translate("++show (50+(e*12))++",251)\">\n"++
-                              "<polyline id=\"hexagon\" points=\""++show(anotherZ e)++",50"++show( anotherZ e)++",60 174,60 174,50\" class=\"room\" onclick=\"changeFill()\"/>\n"++
-                              "<animateTransform attributeName=\"transform\" attributeType=\"XML\" type=\"scale\" from=\"1\" to=\"5\" additive=\"sum\" begin=\"0.1s\" dur=\"0.1s\" fill=\"freeze\"/>\n"++ 
-                              "</g>\n"
-           let statsColum = map fostatsColum [1..3]
-           let zooSvg = exp3Header++unwords statsColum++ (unwords$concat$ layerNO)++theZs++(aTriangle)++exp3Tail++plotData 1++"</g>\n"++unwords(concat pointCloud)++"</svg>"
+        --   let fostatsColum  e= "<g class=\"series\" transform=\"translate("++show (50+(e*12))++",21)\">\n"++
+          --                    "<rect id=\"rect1\" x=\""++show(anotherZ e)++"\" y=\""++show( anotherZ e)++"\" class=\"bar\" onmouseover=\""++ ++"\">\n"++
+            --                  "<animateTransform attributeName=\"transform\" attributeType=\"XML\" type=\"scale\" from=\"1\" to=\"5\" additive=\"sum\" begin=\"0.1s\" dur=\"0.1s\" fill=\"freeze\"/>\n"++ 
+              --                "</rect> </g>\n"
+          -- let statsColum = map fostatsColum [1..3]
+           let zooSvg = exp3Header {- ++unwords statsColum -} ++ (unwords$concat$ layerNO)++theZs++(aTriangle)++exp3Tail++plotData 1++"</g>\n"++unwords(concat pointCloud)++"</svg>"
 
            writeFile "zooSvg2.svg" (zooSvg)                            
           -- putStrLn (show aMonada)
@@ -1940,6 +1943,17 @@ fofina2	foptc anchor line atom = do
            putStrLn  ((show anchor3)++" missing medians")
            putStrLn  ((show anchor1)++" the maxima")
            putStrLn (show aTriangle) --aTriangle) 
+           putStrLn ("with one of x y z already set to 0\n"++
+                     " e.g \n"++
+                     "*Colored_2_3_5_Counter20>let u1 = abs$head$ausw 2 [0.0,-14.282466422086806,15.992256626158275]\n"++
+                     " determine with daZip another list that will be kept\n"++
+                     "*C..> let stepp = zipWith (/) [u1,u1,u1] (daZip 1) \n\n"++
+                     " run test with Experiment3 partII to optimize to find the following list\n"++
+                     " [0.028,0.46,0.52] -> minimze the differences in (stepp)\n"++
+                     " *C..> zipWith (+) [0.028,0.46,0.52] stepp\n"++
+                     "[0.6535332549883125,0.6587181190357931,0.6564706763769379]") 
+                       
+                       
           
   where
      dar is so =  ausw is so;
