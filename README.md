@@ -79,7 +79,19 @@
    The data is handed to the wxm file generator.
    How does the graph change when the input data is brought into square matrices.
    If the length of a given list that shall be brought into a square matrix
-   does not match up additional '0' are added until this is achieved. The catalouge exploits this step by plotting
+   (for symetric matrices eigenvectors and eigenspaces
+     are orthogonal *source/makeStats19.wxm*) Compare with function daZip'
+                  
+                  in wxmaxima
+                  (%13)    y: gramschmidt(Mabove);
+                  (y)	[[17.08494208494209,5.427509293680298,3.727369542066028],[-9704899/(3^3*127*641),(2^4*11*154789)/(3*3767609),(2^4*1967323)/1881619],[-(2^5*3*23*127*641*1939312688974051*10709394715085445829388803209977114513)/(97*149*151*157*883*21433*1231093*104756501*239289735677*4353051074923305463),(2*1013*952597*3767609*14406767*13031972297*30309630400722546075373424171)/(3*97*149*151*157*883*21433*1231093*104756501*239289735677*4353051074923305463),-(2^2*7*1881619*85024124848484189*663589211299840294699319006606036441)/(97*149*151*157*883*21433*1231093*104756501*239289735677*4353051074923305463)]]
+                  => almost complete prime factorization
+                  
+                  in ghc
+                  *Colored_2_3_5_Counter20> daZip 1
+                   [1.2319499833831837,3.877983984689766,5.646822478991597]
+                  
+   If a given matrix is not square additional '0' are added until this is achieved. The catalouge exploits this step by plotting
    various examples of ways how this adding of zeros could be done. This second
    experiment also explores how different A's that are subgroups of 
    the Haskell char set encoding appears on screen with regard to varieng ptc functions.
