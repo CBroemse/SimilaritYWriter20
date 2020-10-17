@@ -97,7 +97,17 @@
                   in ghc
                   *Colored_2_3_5_Counter20> daZip 1
                    [1.2319499833831837,3.877983984689766,5.646822478991597]
-                  
+                   --with one of x y z already set to 0
+                   -- e.g:
+                  *Colored_2_3_5_Counter20>let u1 = abs$head$ausw 2 [0.0,-14.282466422086806,15.992256626158275]
+                  --determine with daZip another list that will be kept
+                  *C..> let stepp = zipWith (/) [u1,u1,u1] (daZip 1) 
+                  --run test with Experiment3 partII to optimize to find the following list
+                  -- [0.028,0.46,0.52] -> minimze the differences in (stepp)
+                  *C..> zipWith (+) [0.028,0.46,0.52] stepp
+                  [0.6535332549883125,0.6587181190357931,0.6564706763769379] 
+
+                                  
    If a given matrix is not square additional '0' are added until this is achieved. The catalouge exploits this step by plotting
    various examples of ways how this adding of zeros could be done. This second
    experiment also explores how different A's that are subgroups of 
