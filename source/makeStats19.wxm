@@ -1,12 +1,49 @@
 /* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
 /* [ Created with wxMaxima version 17.10.1 ] */
 /* [wxMaxima: input   start ] */
-
+load:("eigen")$
 /* [wxMaxima: input   end   ] */
 
 
 /* [wxMaxima: input   start ] */
+vatrixNotSquarePtc6val25:matrix([17.084942084942085,5.4275092936802976,3.7273695420660276],[9.29368029739777,6.765327695560253,19.719626168224302],[9.29368029739777,21.047794117647058,3.7273695420660276],[17.084942084942085,6.765327695560253,6.765799256505576]);
+/* [wxMaxima: input   end   ] */
 
+
+/* [wxMaxima: comment start ]
+Eigenvalue-Test 
+given: eigenvalues can only be obtained of symetric matrices
+          premise: symetric matrices are square matrices !?  
+ 
+         every line of matrix above is selected due to their maximum -> max each line ->
+          .-> get three lines , the lucky circumstances the maxima are 'spread' or 
+         distributed evenly over x y z and lines 1..3 
+=>
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+Mabove: matrix([17.084942084942085,5.4275092936802976,3.7273695420660276],[9.29368029739777,6.765327695560253,19.719626168224302],[9.29368029739777,21.047794117647058,3.7273695420660276]);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: comment start ]
+Example: Make a ist a variable in WxMaxima
+   [wxMaxima: comment end   ] */
+
+
+/* [wxMaxima: input   start ] */
+[vals, vecs] : eigenvectors (Mabove);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+eigenvectors(Mabove);
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+y: gramschmidt(Mabove);
 /* [wxMaxima: input   end   ] */
 
 
@@ -90,12 +127,16 @@ Example: Make an List a Variable in WxMaxima
 
 
 /* [wxMaxima: input   start ] */
+
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
 [vals, vecs] : eigenvectors (M7A);
 /* [wxMaxima: input   end   ] */
 
 
 /* [wxMaxima: comment start ]
-
 Example: Map in wxMaxima
    [wxMaxima: comment end   ] */
 
@@ -587,6 +628,11 @@ draw2d(
 
 /* [wxMaxima: input   start ] */
 scene(cone, [background,"#9980e5"])$
+/* [wxMaxima: input   end   ] */
+
+
+/* [wxMaxima: input   start ] */
+
 /* [wxMaxima: input   end   ] */
 
 
