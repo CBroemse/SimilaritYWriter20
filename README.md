@@ -1,8 +1,52 @@
 # SimilaritYWriter20
 
-##### visiualize your network or your name 
+#### Visiualize a network or your name 
+
+1.0.0
+A baysian network optimization. Compare strings to render
+complex programming concepts such as:
+[[Int]] , [[String]] or complex Numbers with each other the goal is to visiualize higher programming concepts such as classes and types
+in 2d or 3d file output 'src/wxms/lala1.wxm'
+
+1.1.0
+an iterative process that tries to 'backpropagate' to given program variabes (pv1::String)
+Finding a random solution. 
+   1.1.1
+       'git brach: experiments' Experiment partII
+           guess n many solutions ...
+        
+1.0.1
+sort any bonelist ([[String]]) with simiaritYWriter a b = simiVals a b  with
+    ghAdd::  String -> maximum (simiVals a b ) -> c
+    => maximum filter called 'phiMax' 
+  
+1.0.2  
+I. basic axioms --  pv-variables pg-functions
      
-  visiualize a syntactic 'Char'-type based topology of a sentence e.g:
+  visiualize a syntactic 'Char'-type based topology given a certain [[String]] of letters and/or numbers
+  
+           Pv-variables -- program variables; five or six strings-> ( [[Ord]]  ) get fet into
+                           four destinct periodic functions called the
+           Pg-functions -- program ground functions; right now set to 
+                           pg1 x = F.fourierMQ6NOPAN123 x 
+                           pg2 x = (F.fourierMQ5NOPAN123 x)
+                           pg3 x = (F.fourierMQ4NOPAN123 x)
+                           pg4 x = sin(x) -- all 'src/Colored_2_3_5_Counter20.hs'
+    
+   all pg-functions can be changed, just note, the more linear the pg functions are the less divertivied is the output.
+   pg-functions are a key hole the complexity of a  basic 'algebra', mostly matrix manipulation.
+   Not everything is a computer but sufficiently differing concepts are: all pg| f (x) can be changed.
+   So far the program deals with downstream of the the former functions. Changing the pg functions is one of the future tasks 
+   for this program to be reaöized after Step IVwhich will be variable
+
+                                        
+           ptc-functions :: Pv-variabes  <=> Pg-functions 
+                                         
+  the ptc functions are the main basic for this program, see concept plotter, 
+  abstractly:
+  they are based on 'SimiVal'* compare a pv variable to another -> compare the differences with each other
+  
+  sentence e.g:
   1.The world is everything that is the case.∗ -> sentence -> [String] -> [[String]]
   
     a)
