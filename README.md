@@ -457,13 +457,14 @@ to use bone list as a mode but keep 'realy big' input like below at bay:
                     -(2^2*7*1881619*85024124848484189*663589211299840294699319006606036441)/
                      (97*149*151*157*883*21433*1231093*104756501*239289735677*4353051074923305463)]]
                      
-                   *Colored_2_3_5_Counter20> let ofgramS atom line = (head $ausw atom(head$ausw line gramS))
-                   *Colored_2_3_5_Counter20> let foGb gb =  map realToFrac (map ord gb ) 
-                   *Colored_2_3_5_Counter20> let simiVals gb1 gb2  = similaritYvalue (foGb gb1) (foGb gb2)
-                   *Colored_2_3_5_Counter20> let trivMac s r = simiVals (show aptc) (show(ofgramS s r)) 
-                   *Colored_2_3_5_Counter20> let pTriv s = map (trivMac s) [1..3]  
-                   *Colored_2_3_5_Counter20> let allGramschmidt = map pTriv [1..3] 
-                   *Colored_2_3_5_Counter20> allGramschmidt
+                   *C..> let ofgramS atom line = (head $ausw atom(head$ausw line gramS))
+                   *C..> let foGb gb =  map realToFrac (map ord gb ) 
+                   *C..> let simiVals gb1 gb2  = similaritYvalue (foGb gb1) (foGb gb2)
+                   *C..> let aptc = maximum (concat(nub(ptc6 25)))  -- set to maximum can place other ptc here
+                   *C..> let trivMac s r = simiVals (show aptc) (show(ofgramS s r)) 
+                   *C..> let pTriv s = map (trivMac s) [1..3]  
+                   *C..> let allGramschmidt = map pTriv [1..3] 
+                   *C..> allGramschmidt
                    [[5.347593582887701,4.979674796747967,5.0761421319796955], 
                     [4.491978609625669,4.812834224598931,0.6376195536663124],
                     [5.454545454545455,1.371308016877637,3.409090909090909]]  -- now can be turned to step IV
