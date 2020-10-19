@@ -1,7 +1,7 @@
 -- this module provides:
 -- --------------------------------------
 -- 16-10-2020
--- fofina2 -> write zooSvg.svg now set to write in src change to 'SimilaritYWriter20'
+-- fofina2 -> write zooSvg2.svg now set to write in src change to 'SimilaritYWriter20'
 --            with github
 -- four lines of thought
 --
@@ -94,6 +94,7 @@ module Colored_2_3_5_Counter20 (
     , foBrad -- according to this metric change above coordinate points
     , egTriangle -- a test triange
     , aHexa
+    --, daZip
       ) where
 
 import Data.List
@@ -125,7 +126,7 @@ import qualified GHCguiNfunctions as G
 --        but ':=' /= '::' thus
 --
 --simiYvals = [similaritYvalue] := pick1 a [list] -> pick2 a [list] -> compare (pick1 a) to (pick2 a)   
---        this is an equivalent unconsistent (not relyibe) way to describe the concept of this project.    
+--        this is an equivalent unconsistent (not relyible) way to describe the concept of this project.    
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 -- STEP 1: Examine
@@ -143,7 +144,7 @@ import qualified GHCguiNfunctions as G
 --                 pick2:String; b of (a,b) -> compare a to b    | The aim is to rerieve a reliable function that will destinct between
 --                                                               | any two strings. 
 --
---          via ( beRepKEY pick1 pick2 punktList )               |           punktist :: Punkt -> [Punkt] -> not used
+--          via ( beRepKEY pick1 pick2 punktList )               |           punktlist :: Punkt -> [Punkt] -> not used
 --
 --                                                                           ausw pick1 bonelist ->  atombonelist       
 --
@@ -159,9 +160,8 @@ import qualified GHCguiNfunctions as G
 --                  (Illobrandt von Ludwiger 'Heim-theory')
 
 ---- glossary ideas:
---     the colores := takes the a modified step of sieve of Eratosthens
+--     the colores := modified step of sieve of Eratosthens
 --                    2 - 3 - 5 and viusualizes structures 
---     iPunkts:= imaginary Punkts used for own reasoning
 
  --
  --e.g *> let li = ["AAABB","AABAB","AAA","BBBAA"]
@@ -828,7 +828,7 @@ changs2 w t k = F.chooseMQ ((head(findes k t))+1) ((theTrix w) k t)
 
 {-
 ------------------------------------------------------------------
--- ALL ORKS THE SAME DONT WORK  =>  constant 
+-- ALL the same=>  constant 
 ---- COMPUTE UNIQUE POINTCLOUD WITH progVar1 ; added 2-6-20
 atrixCo2 t m = (F.chooseMQ t (wohlGeor3 progVar1 m)) --added 2-6-20 
 foorder2 k t  = F.chooseMQ k (sort (amatrix3 t t))
@@ -911,7 +911,8 @@ ts = tsRAW ptc6
 maxa t =head$last$group$sort$concat$concat$ausw t ts
 picks p = concat(concat(ausw p (transpose ts)))
 runM t = take (length (picks t)) (repeat (maxa t))
-pp t = concat$concat$ausw t ts
+-- nub changes 
+pp t = nub$concat$concat$ausw t ts
 daZip t = zipWith(/) (runM t) (pp t)
 qs t = ( "1.0") `elemIndices` (map show (daZip t))
 rep r = map (\c -> if c==r then "0"; else c)
@@ -920,6 +921,23 @@ rep2 r = map (\c -> if c==r then "0"; else c)
 getrep t = rep "1.0" (map show(daZip t))
 getrep2 s t = rep s (map show(daZip t))
 source line = (group((getrep line)));
+--------------------------------------------------------------------------------
+-- list manipulation in matrix
+-- with: (ptc6 25) exploring the given concept above
+--   M: x1 .. z1   above: 1.took the first line 
+--      :  y2 :           2. found the maximum group of the rational part of M
+--                           took 1 sample , called it 'maxa t' -> biggest 'rational' value in M
+--      .. .. z3          3. given x1 < maxa 1
+--                        4. each atom: line 1 * (maxa 1)
+--                         => prepare to solve (maxa 1) in line1 for x1 y1 z1 
+--                             I*II = daZip 
+--
+--   if using different 
+--   e.g pp2 = sort$nub$concat$concat$ausw t ts    instead of pp t = nub$concat$concat$ausw t ts
+       --  will completly change solving strategy, not used here 
+--   and runM of length (concat(concat( ts))                  -- result: 12, Int
+--      -- will completly change solving
+--   => daZip , how is that related to changing the pg functions ?
 --------------------------------------------------------------------------------
 forTs r = tsRAW r
 ts2 r = (forTs r) 
@@ -1659,7 +1677,35 @@ ptcMetric foptc cell line = --let minkActioRaw = ((minkowskiAdd2  9.0 "1" ["1.9"
              in let ofAbovefstValue foline focell  =  (findCoordinate (choosParse 1 focell foline)) 
              in let groupoid focell = (map (threeisZ focell) [1])
              in let mapCell = map groupoid [1..3]
-             in threeisZ cell line --[(threeisZ cell line),(threeisZ (cell +1 ) (line +1)),(threeisZ (cell +2 ) (line +2))] --groupoid  
+             in threeisZ cell line --[(threeisZ cell line),(threeisZ (cell +1 ) (line +1)),(threeisZ (cell +2 ) (line +2))] --groupoid 
+
+----------------------------------------------------------------------------------------------- 19-10-2020
+-- for StepIV  trivailize any [String]                                            ########################################### SimilaritYWriter20 experiment with Gramschmidt
+--                                                                                                                                               and complex numbers
+--  turn long gramschmidt or complex matrices into simiVals [String]
+--
+--function moves the commatas is input
+minkLike tigi cell line =  let findCoordinate ploy = 
+                                      let rawform =  ((map scanChar(show (ploy)))) -- veryfies maximum is first
+                                      in let stepke = (filter (>=0) (rawform ) )
+                                      in let myLog = [1,10,100,1000,10000,100000,1000000]
+                                      in let tobuild = reverse(take (length stepke) myLog)
+                                      in let to10erSystem = sum(zipWith (*) tobuild stepke)
+                                      in to10erSystem
+            in let choosParse focell foline = head (ausw focell (head(ausw foline tigi)))	
+            in let threeisZ focell foline =  head [findCoordinate (choosParse focell foline), (findCoordinate(choosParse focell foline)), (findCoordinate(choosParse focell foline))]
+            in threeisZ cell line
+-- example taken from 'source/makeStats19.wxm'
+gramS = [[17.08494208494209,5.427509293680298,3.727369542066028],[-9704899/(3^3*127*641),(2^4*11*154789)/(3*3767609),(2^4*1967323)/1881619],[-(2^5*3*23*127*641*1939312688974051*10709394715085445829388803209977114513)/(97*149*151*157*883*21433*1231093*104756501*239289735677*4353051074923305463),(2*1013*952597*3767609*14406767*13031972297*30309630400722546075373424171)/(3*97*149*151*157*883*21433*1231093*104756501*239289735677*4353051074923305463),-(2^2*7*1881619*85024124848484189*663589211299840294699319006606036441)/(97*149*151*157*883*21433*1231093*104756501*239289735677*4353051074923305463)]]
+                 
+ofgramS atom line = (head (ausw atom(head(ausw line gramS))))
+foGb gb =  map realToFrac (map ord gb ) 
+simiVals gb1 gb2  = similaritYvalue (foGb gb1) (foGb gb2)
+aptc = maximum (concat(nub(ptc6 25)))  -- set to maximum can place other ptc here
+trivMac s r = simiVals (show aptc) (show(ofgramS s r)) 
+pTriv s = map (trivMac s) [1..3]  
+allGramschmidt = map pTriv [1..3] 
+-----------------------------------------------------
 
 ptcCac foptc z = sort (ptcCacRAW foptc z)
 

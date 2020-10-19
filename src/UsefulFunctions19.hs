@@ -266,6 +266,7 @@ minkowskiAdd2 val crit dipfa foMax foptc atom line =
      fieldPosi fp = (" <g transform=\"translate(0,"++ fp ++")\">\n<g>\n");
      mapField d = tk d $ map fieldPosi ["0","200"];
 
+
 -----------------------------------------------------------------------------------------------
 -- CALCULATE: get METRIC: e.g 'foBrad' ((Colored..Counter20.hs') 
 -- select line with  'rowMumber': Int ; export the foBrad coordinates
@@ -309,8 +310,8 @@ minkowskiAdd2 val crit dipfa foMax foptc atom line =
 lengthXY foptc forBrad rowNumber aPunkt fstOsnd foXorY forMinkAdd atom line = let foBound = foXorY --"26.470588235294116" -- map maximum (transpose(foptc 10)) -- max X coordinate
 -- => head [22.77992277992278,26.470588235294116,25.233644859813086]
       -- a minkowskiAdd2 list 
-                  in let minkActioRaw = ((minkowskiAdd2  9 "1" ["1.9","1.8","0.01"] forMinkAdd (foptc ) atom line ))
-                  in let ofMinkList = (minkowskiAdd  9 "1" ["1.9",forMinkAdd,"0.01"] )
+                  in let minkActioRaw = ((minkowskiAdd2  8 "1" ["1.9","1.8","0.01"] forMinkAdd (foptc ) atom line ))
+                  in let ofMinkList = (minkowskiAdd  8 "1" ["1.9",forMinkAdd,"0.01"] )
                   in let findCoordinate = let rawform =  ((map scanChar(show (last minkActioRaw)))) -- veryfies maximum is first
                                           in let stepke = (filter (>=0) (rawform ) )
                                           in let myLog = [1,10,100,1000,10000,100000,1000000]
@@ -362,8 +363,8 @@ lengthXY foptc forBrad rowNumber aPunkt fstOsnd foXorY forMinkAdd atom line = le
 lengthXY2 foptc forBrad rowNumber aPunkt fstOsnd foXorY forMinkAdd atom line = let foBound = foXorY --"26.470588235294116" -- map maximum (transpose(foptc 10)) -- max X coordinate
 -- => head [22.77992277992278,26.470588235294116,25.233644859813086]
       -- a minkowskiAdd2 list 
-                  in let minkActioRaw = ((minkowskiAdd2  9 "1" ["1.9","1.8","0.01"] forMinkAdd (foptc ) atom line ))
-                  in let ofMinkList = (minkowskiAdd  9 "1" ["1.9",forMinkAdd,"0.01"] )
+                  in let minkActioRaw = ((minkowskiAdd2  8 "1" ["1.9","1.8","0.01"] forMinkAdd (foptc ) atom line ))
+                  in let ofMinkList = (minkowskiAdd  8 "1" ["1.9",forMinkAdd,"0.01"] )
                   in let findCoordinate = let rawform =  ((map scanChar(show (last minkActioRaw)))) -- veryfies maximum is first
                                           in let stepke = (filter (>=0) (rawform ) )
                                           in let myLog = [1,10,100,1000,10000,100000,1000000]
