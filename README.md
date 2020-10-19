@@ -468,6 +468,15 @@ to use bone list as a mode but keep 'realy big' input like below at bay:
                    [[5.347593582887701,4.979674796747967,5.0761421319796955], 
                     [4.491978609625669,4.812834224598931,0.6376195536663124],
                     [5.454545454545455,1.371308016877637,3.409090909090909]]  -- now can be turned to step IV
+                    
+                    -- Step IV : turn 'allGramschmidt with 'minkowskiAdd to SVG/Html 
+                    *C..> let sieveGramMink k1 k2 = aSieve (minkLike (allGramschmidt) k1 k2 )
+                    *C..> let foSieveGM k1 = map (sieveGramMink k1) [1..3]
+                    *C..> let sieveGM = map foSieveGM [1..3]
+                    *C..> sieveGM
+                    [[[("\"red\"",1),("blue",3),("\"green\"",3)],[("blue",2),("\"red\"",3),("\"green\"",3)],[("blue",1),("\"red\"",2),("\"green\"",5)]],
+                     [[("\"red\"",2),("\"green\"",1),("\"green\"",4)],[("blue",2),("\"green\"",3),("\"red\"",4)],[("\"green\"",2),("\"red\"",2),("\"red\"",3)]],
+                     [[("\"red\"",1),("blue",3),("\"green\"",3)],[("blue",1),("\"red\"",2),("blue",4)],[("\"red\"",2),("blue",1),("\"red\"",5)]]]
                    
                      
                   
