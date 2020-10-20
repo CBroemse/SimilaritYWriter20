@@ -1940,7 +1940,7 @@ fofina2	foptc anchor line atom = do
                 let pointCloud = concat (map pointSchar [1..3])
  ------------------------------
     -- everything above will appear three fold in 'layerNO'
-                let zooSvg = (mapField ly)++(concat aMonada)++( pointCloud )++words deciDe ++(words ("</g>\n</g>\n"))
+                let zooSvg = (mapField ly)++(concat aMonada)++ pointCloud ++words deciDe ++(words ("</g>\n</g>\n"))
                 return(zooSvg))
           
            let outerLength = [1] --e.g [26.470588235294116,6.296691568836714] [0.0,25.233644859813086] [14.338235294117647,6.296691568836714] 
@@ -1982,7 +1982,7 @@ fofina2	foptc anchor line atom = do
             --                  "<animateTransform attributeName=\"transform\" attributeType=\"XML\" type=\"scale\" from=\"1\" to=\"5\" additive=\"sum\" begin=\"0.1s\" dur=\"0.1s\" fill=\"freeze\"/>\n"++ 
               --                "</rect> </g>\n"
           -- let statsColum = map fostatsColum [1..3]
-           let zooSvg = exp3Header {- ++unwords statsColum -} ++ (unwords$concat$ layerNO)++theZs++(aTriangle)++exp3Tail++plotData 1++"</g>\n"++unwords(concat pointCloud)++"</svg>"
+           let zooSvg = exp3Header {- ++unwords statsColum -} ++ (unwords$concat$ layerNO)++theZs++(aTriangle)++exp3Tail++"<g>\n"++plotData 1++"</g>\n"++unwords(concat pointCloud)++"</svg>"
 
            writeFile "zooSvg2.svg" (zooSvg)                            
           -- putStrLn (show aMonada)
