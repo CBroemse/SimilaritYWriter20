@@ -53,7 +53,7 @@ import Control.Monad
 import System.Environment
 import System.IO
 import Data.Time as T
-import System.Locale
+--import System.Locale
 import System.Random
 
 --own modules
