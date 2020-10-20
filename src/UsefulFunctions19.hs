@@ -53,7 +53,7 @@ import Control.Monad
 import System.Environment
 import System.IO
 import Data.Time as T
---import System.Locale
+import System.Locale
 import System.Random
 
 --own modules
@@ -223,19 +223,19 @@ minkowskiAdd2 val crit dipfa foMax foptc atom line =
                     layerNO <- forM [1] (\ly -> do 
                       --  let plugCol = colorList ly 
                         aMonada <- forM ([1..(length anchor)]) (\os -> do -- ..(length anchor)] (\os -> do 
-                        let conLongituda =  (tk os anchor)
-                        let readMore = if length anchor == 1 then 1 
-                                       else (length conLongituda)
-                        innRead <- forM [1] (\cs -> do -- ..(length conLongituda)] (\cs -> do
+                            let conLongituda =  (tk os anchor)
+                            let readMore = if length anchor == 1 then 1 
+                                          else (length conLongituda)
+                            innRead <- forM [1] (\cs -> do -- ..(length conLongituda)] (\cs -> do
                    -- feed minkowskiAdd to various functions 
                    --        val = 1 not used , crit "1" must be contained in dipfa otherwise error
                    --        dipfa ; the min and the max value of a given 2d field 
-                             let goONot = tk os (map show (minkowskiAdd 1 "1" ["0.0",foMax,"0.01"]))
-                             let gtFst = goONot --head$tk cs$words$show ( (conLongituda))
+                                 let goONot = tk os (map show (minkowskiAdd 1 "1" ["0.0",foMax,"0.01"]))
+                                 let gtFst = goONot --head$tk cs$words$show ( (conLongituda))
                           --   let gtSnd = show$snd$head$tk cs conLongituda
                             -- let inPlug = el gtFst gtSnd (unwords( map fst$dotSize ly)) (unwords(map snd$dotSize ly)) (concat plugCol)                    
-                             return (gtFst)) --(inPlug))
-                        return(innRead))
+                                 return (gtFst)) --(inPlug))
+                            return(innRead))
     -- should be set to 200 or move whole field
                         let findIndex = (unlines$concat aMonada)
 

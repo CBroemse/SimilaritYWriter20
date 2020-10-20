@@ -94,7 +94,12 @@ module Colored_2_3_5_Counter20 (
     , foBrad -- according to this metric change above coordinate points
     , egTriangle -- a test triange
     , aHexa
-    --, daZip
+    --, daZip -- used for curvature optimization 'in spe' with Experiment3 partII (see example to optimize git 'ReadME.md' 19-10-2020)
+    ,pg1,pg2,pg3,pg4 -- with:pg1 x = F.fourierMQ6NOPAN123 x; pg2 x = (F.fourierMQ5NOPAN123 x); pg3 x = (F.fourierMQ4NOPAN123 x); pg4 x = sin (x)
+          -- all functions can be changed just note the more linear the pg functions are the less divertivied is the output.
+          -- pg-functions are a key hole the complexity of a  basic 'algebra', mostly matrix manipulation.
+          -- Not everything is a computer but sufficiently differing concepts are: all pg| f (x) can be changed
+
       ) where
 
 import Data.List
@@ -1894,22 +1899,22 @@ fofina2	foptc anchor line atom = do
            layerNO <- forM [1,2,3] (\ly -> do 
                 let plugCol = colorList ly 
                 aMonada <- forM [1..(length anchor)] (\os -> do 
-                let conLongituda =  (tk os anchor)
-                let readMore = if length anchor == 1 then 1 
-                               else (length conLongituda)
-                innRead <- forM [1..(length conLongituda)] (\cs -> do 
-                     let gtFst = show$fst$head$ausw cs conLongituda
-                     let rekenOrder = if ly==1 then fst
-                                      else snd
+                   let conLongituda =  (tk os anchor)
+                   let readMore = if length anchor == 1 then 1 
+                                 else (length conLongituda)
+                   innRead <- forM [1..(length conLongituda)] (\cs -> do 
+                       let gtFst = show$fst$head$ausw cs conLongituda
+                       let rekenOrder = if ly==1 then fst
+                                        else snd
                     -- let plugExp3 = tensorExp3 1 foBrad (realToFrac (fst$head$ausw cs conLongituda)) rekenOrder
-                     let gtSnd = show$snd$head$ausw cs conLongituda
-                     let inPlug = el gtFst gtSnd (unwords( map fst$dotSize ly)) (unwords(map fst$dotSize ly)) (concat plugCol)     
+                       let gtSnd = show$snd$head$ausw cs conLongituda
+                       let inPlug = el gtFst gtSnd (unwords( map fst$dotSize ly)) (unwords(map fst$dotSize ly)) (concat plugCol)     
                    --  let heights = unlines ["<ellipse cx=\"2\" cy=\"5\" rx=\"59\" ry=\"1\" stroke=\"black\" stroke-width=\"0.5px\" style=\"fill:green\">"++
                      --              "<animateColor attributeName=\"fill\" attributeType=\"CSS\" from=\"blue\" to=\"lime\" begin=\"0.1s\" dur=\"1s\"  repeatCount=\"indefinite\" />"++
                        --            "<animateTransform attributeName=\"transform\" attributeType=\"XML\" type=\"rotate\" from=\"0\" to=\"90\" begin=\"0.1s\" dur=\"0.1s\" fill=\"freeze\"/>"++
                          --          "<animateMotion path=\"M  0 0 L "++show(151+(os*5))++" "++show(148+(os*5))++"\" begin=\"0.1s\" dur=\"0.3s\" fill=\"freeze\"/>"++"</ellipse>"]                
-                     return (inPlug))
-                return(innRead))
+                       return (inPlug))
+                   return(innRead))
     -- write three ptcs with many dots 
                 let thePoly aptc = polyLine++polyLine8 aptc++polyLine7 aptc++polyLine6++polyLine5++polyLine4++polyLine3++polyLine2++polyLine1++polyLine9 aptc++polyLine10 aptc++polyLine11 aptc++polyLine12 aptc++polyLine13 aptc
                 let fodeciDe t = (head(ausw t [(ptc0 ),(ptc3 ),(ptc6 )]))
