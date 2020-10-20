@@ -5,13 +5,13 @@
 -- hash: b6e4db0023ac4792852773aee29f21ee4f467d51a8dd64c6f3f5ede363b3db42
 
 name:           SimilaritYWriter20
-version:        0.1.0.0
+version:        0.2.1.0
 description:    Please see the README on GitHub at <https://github.com/CBRoemse/SimilaritYWriter20readme>
 homepage:       https://github.com/CBroemse/SimilaritYWriter20#readme
 bug-reports:    https://github.com/CBroemse/SimilaritYWriter20/issues
 author:         Author name Christian Broemse
 maintainer:     cbroemse@github.com
-copyright:      2019 Author name Christian Broemse
+copyright:      2020 Author name Christian Broemse
 license:        BSD3
 license-file:   LICENSE
 build-type:     Simple
@@ -134,7 +134,7 @@ executable SimilaritYWriter20-exe
   build-depends:
       SimilaritYWriter20
     , base >=4.2 && <5
-    , FindBin
+ --   , FindBin
     --, JuicyBox
     , cassava
     , random
