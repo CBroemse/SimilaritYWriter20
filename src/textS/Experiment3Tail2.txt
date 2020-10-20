@@ -434,7 +434,7 @@ secondly just highight point needed </text>
 <text x="150" y="350" fill="yellow" fill-opacity="0.8">fit Haskell vector field of experiment3 into Svg</text>
 
 
-
+</g>
 
 
 
