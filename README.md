@@ -9,10 +9,10 @@ complex programming concepts such as:
 in 2d or 3d file output 'src/wxms/lala1.wxm'
 
 1.1.0
-an iterative process that tries to 'backpropagate' to given program variabes (pv1::String)
+an iterative process that tries to 'backpropagate' to given program variables (pv1::String)
 Finding a random solution. 
    1.1.1
-       'git brach: experiments' Experiment partII
+       'git branch: experiments' Experiment partII
            guess n many solutions ...
         
 1.0.1
@@ -23,9 +23,9 @@ sort any bonelist ([[String]]) with simiaritYWriter a b = simiVals a b  with
 1.0.2  
 I. basic axioms --  pv-variables pg-functions
      
-  visiualize a syntactic 'Char'-type based topology given a certain [[String]] of letters and/or numbers
+  visiualize a 'Char'-type based topology given a certain [[String]] of letters and/or numbers
   
-           Pv-variables -- program variables; five or six strings-> ( [[Ord]]  ) get fet into
+           Pv-variables -- program variables; five or six strings-> ( [[Ord]]  ) get fed into
                            four destinct periodic functions called the
            Pg-functions -- program ground functions; right now set to 
                            pg1 x = F.fourierMQ6NOPAN123 x 
