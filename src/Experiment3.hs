@@ -94,7 +94,6 @@ import qualified WriteWXmaximaJuicy as M
 import qualified GHCguiNfunctions as G
 import qualified Colored_2_3_5_Counter20 as C
 
-
 --I.
  -- Experiment3 randomly guessing solutions
 -- B in A via
@@ -1087,6 +1086,8 @@ triggerWordRAW g domain focell = if domain == "intern" then show(stC1 g )
 
 ------------------------------------------------------
 -- SIMIVAL RUNS for  'Quirky example'
+-- manifest the given li function with and without 'appropiate mathematical syntax'
+-- give a simiVal list to compare both states
 runEXP3 li pi ghAdd = do
        -- domain2 syntax
        let iDF = li --["AaEe0","AaEeI","i0000","OoUu0","OoU0Y","y0000"]
