@@ -36,8 +36,7 @@ I. basic axioms --  pv-variables pg-functions
    all pg-functions can be changed, just note, the more linear the pg functions are the less divertivied is the output.
    pg-functions are a key hole the complexity of a  basic 'algebra', mostly matrix manipulation.
    Not everything is a computer but sufficiently differing concepts are: all pg| f (x) can be changed.
-   So far the program deals with downstream of the the former functions. Changing the pg functions is one of the future tasks 
-   for this program to be reaöized after Step IVwhich will be variable
+   So far the program deals with downstream of the the former functions. 
 
                                         
            ptc-functions :: Pv-variabes  <=> Pg-functions 
