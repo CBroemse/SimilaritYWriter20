@@ -563,7 +563,7 @@ experiment3RAW23 ghAdd d subroutineList foPtc foLi gb1 gb2 = do
        let maXzS = map zS [1..100]   
        let moreReads = do   
             exp3Fractional <- forM [1..(length subroutineList)] (\four4 -> do
-                  let exP3 =  runEXP3 (head(ausw four4 d)) pi2 "AAA" --kWORK --(G.fobase progVar1 progVar2 progVar3 progVar4 progVar5 progVar6 daZip1 daZip2 daZip3 textAA (ptcButoons) (foalt))
+                  let exP3 = [ runEXP3 (head(ausw four4 d)) pi2 "AAA" ]--kWORK --(G.fobase progVar1 progVar2 progVar3 progVar4 progVar5 progVar6 daZip1 daZip2 daZip3 textAA (ptcButoons) (foalt))
                   return (exP3))
             let exp3Frac = concat$concat$exp3Fractional
             exp3IntfoChar <- forM [1] (\four4 -> do
@@ -1108,7 +1108,7 @@ runEXP3 li pi ghAdd = do
                      in  if (triggerWord (filter (/=' ') (head(checkflow [] [pi]))) "intern" ) == "1" then (fst allFor)
                          else if (triggerWord (filter (/=' ') (head(checkflow [] [pi]))) "cell" )  == "1" then (map read [(triggerWord "cell" "cell3")]) -- snd (ghAdd,(snd(charFilterInt ghAdd)))
 
-                         else (concat (snd allFor))
+                         else (head (snd allFor))
 
             fg     
             return (fg))
@@ -2463,7 +2463,7 @@ kArmWORK addGh liT bonelist mofaList connectWrist dit dit2 mCommand crit= do
                       where
                         commands = bonelist; 
      
-     let frame0 ibonelist i6 i7 i8 i9 =  (frame0a)   
+     let frame0 nEbonelist i6 i7 i8 i9 =  (frame0a)   
          	  where
               --------------------------------------------------------------------------------------------------------------------------------------
             frame0a = do
