@@ -59,7 +59,9 @@ I. basic axioms --  pv-variables pg-functions
    There are 5 variable functions ( ptc5,ptc6,ptc7,ptc8,ptc9) which yield different 
    related graphs. (see 'How things are compared')
    
-    b)
+    b)  write an 'reduced' table to Htmls/yourRun.html into the ptc buttons in display
+        => aim to automatically give an overview of a selected sentence 
+
     TheAtoBplotter*> let li = ["The","world","is","everything"]
                   *> let li2 = ["that","is","the","case."]
                   *> let li3 = [[li1,li2]]
