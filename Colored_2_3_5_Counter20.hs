@@ -140,7 +140,7 @@ import qualified GHCguiNfunctions as G
 --                                       SYNTAX                  |             CONCEPT
 -- ===============================================================================================================================================
 --  hints:                 all Functions in 'e.g-sections' have  |  The 'e.g-sections' should be able to be called via ghc
---                         to be take out of the do functions    |  without a doupt that helps human understanding
+--                         to be take out of the do functions    |  to facilitate understanding
 --                         in 'chainDistribute'    AND         |  see if atom is already in list , dile:
 --                              'kArmTest5'                      |
 -----------------------------------------------------------------
@@ -187,14 +187,16 @@ runK d = do
 progVarRAW t r = do 
     let df = head (ausw t r)
     df
-progVar1 = "AAABB" --"0*x + y + 0*z = 3"-- "AaEe0" --"abcde0" --"abcdef" --"abcdef" --show(tussenStap 1 1) --"abcdef" --"abcde0" --"AaEe0" --"AaEe" --"Aa" --"Cesar" --"AAABB" --range --"1" --range211 --"a" --"The world" --"AAABB" 
-progVar2 = "AAABBAABAB"--"0*x + y + 0*z = 33*x + 0 + 0*z = 6" --"AaEeI" --"fghij0" -- "ghijkl" -- "abcdefghijkl" --(show (tussenStap 1 1))++(show(tussenStap 1 2)) -- "abcdefghijkl" --"fghij0" --"AaEeI" --"AaEeIi000" --"AaEe" --"CeaserDelight" --"AAABB"++range --"AB" --range --"ab" --range --"ab" --"The world is everything" --"AAABBAABAB"
-progVar3 = "AAABAB" --"3*x + 0 + 0*z = 6" --"i0000" --"klmno0" --"mnoprr" --"ghijkl" --(show(tussenStap 1 2)) --"mnopqr" --"klmno0" --"i0000" --"Ee" --"Deight" --range --"b" --range --"b" --"is everything" --"AABAB"
-progVar4 = "AAAaaaBBBbbbA+Aaa" --"0*x + 0*y + z = 2" --"OoUu0" --"pqrst0" --"stuvwx" --"mnopqr" --(show(tussenStap 1 3)) -- "stuvwx" --"pqrst0" --"OoUu0" --"OoUu" --"Ii" --"Elf" --"AAA" --"c" --range --"b" --tht is" -- find the "a" in wxms "that is" --"AAA"
-progVar5 = "AAAaaaBBBbbbA+Aaa" --"0*x + 0*y + z = 2x + y + z = 11" --"OoU0Y" --"uvwxy0" --"yz0000" --"mnopqrstuvwx" --(show (tussenStap 1 3))++(show(tussenStap 1 4)) -- "yz0000000000" --"uvwxy0" --"OoUuY" --"OoUuYy000" --"AAAaaaBBBbbbA+Aaa" --"IiOo" --"ElfFool" --"AAABBBAA" --"cd" --range --"bc" --"tht is the cse" --"that is the case" --"AAABBBAA"
-progVar6 = "BBBbbbA+Aaa"--"x + y + z = 11" --"y0000" --"z00000" --"000000" --"yz0000" --(show(tussenStap 1 4)) --"000000" --"z00000" --"y0000" --"y000" -- "BBBbbbA+Aaa" --"uvwxyz" --"uvwxyz" --"Oo" --"Fool" --"BBBAA" --"d" --range --"c" --"the cse" --"the case" --"BBBAA"
+-- let li551 = ["0xy0z=3","0xy0z=33x00z=6","3x1x0z=6","0x0yz=2","0x0yz=2xyz=11","xyz=11"]
+progVar1 = "0xy0z=3" -- "AAABB" --"0*x + y + 0*z = 3"-- "AaEe0" --"abcde0" --"abcdef" --"abcdef" --show(tussenStap 1 1) --"abcdef" --"abcde0" --"AaEe0" --"AaEe" --"Aa" --"Cesar" --"AAABB" --range --"1" --range211 --"a" --"The world" --"AAABB" 
+progVar2 = "0xy0z=3x0y0z=6" --"AAABBAABAB"--"0*x + y + 0*z = 33*x + 0 + 0*z = 6" --"AaEeI" --"fghij0" -- "ghijkl" -- "abcdefghijkl" --(show (tussenStap 1 1))++(show(tussenStap 1 2)) -- "abcdefghijkl" --"fghij0" --"AaEeI" --"AaEeIi000" --"AaEe" --"CeaserDelight" --"AAABB"++range --"AB" --range --"ab" --range --"ab" --"The world is everything" --"AAABBAABAB"
+progVar3 = "x0y0z=6" --"AAABAB" --"3*x + 0 + 0*z = 6" --"i0000" --"klmno0" --"mnoprr" --"ghijkl" --(show(tussenStap 1 2)) --"mnopqr" --"klmno0" --"i0000" --"Ee" --"Deight" --range --"b" --range --"b" --"is everything" --"AABAB"
+progVar4 = "0x0yz=2" --"AAAaaaBBBbbbA+Aaa" --"0*x + 0*y + z = 2" --"OoUu0" --"pqrst0" --"stuvwx" --"mnopqr" --(show(tussenStap 1 3)) -- "stuvwx" --"pqrst0" --"OoUu0" --"OoUu" --"Ii" --"Elf" --"AAA" --"c" --range --"b" --tht is" -- find the "a" in wxms "that is" --"AAA"
+progVar5 = "0x0yz=2xyz=11" --"AAAaaaBBBbbbA+Aaa" --"0*x + 0*y + z = 2x + y + z = 11" --"OoU0Y" --"uvwxy0" --"yz0000" --"mnopqrstuvwx" --(show (tussenStap 1 3))++(show(tussenStap 1 4)) -- "yz0000000000" --"uvwxy0" --"OoUuY" --"OoUuYy000" --"AAAaaaBBBbbbA+Aaa" --"IiOo" --"ElfFool" --"AAABBBAA" --"cd" --range --"bc" --"tht is the cse" --"that is the case" --"AAABBBAA"
+progVar6 = "xyz=11" --"BBBbbbA+Aaa"--"x + y + z = 11" --"y0000" --"z00000" --"000000" --"yz0000" --(show(tussenStap 1 4)) --"000000" --"z00000" --"y0000" --"y000" -- "BBBbbbA+Aaa" --"uvwxyz" --"uvwxyz" --"Oo" --"Fool" --"BBBAA" --"d" --range --"c" --"the cse" --"the case" --"BBBAA"
 
-progLiT = [progVar1,progVar2,progVar3,progVar4,progVar5,progVar6]
+progLiT = [progVar1,progVar3,progVar4,progVar6] --["A","A","A","A","A","A"] --["AAABB","AABAB","AAA","BBBAA"]
+
 -------------------------------------------
 --active 26-8-2020
 --a workwing example experiment 2 
@@ -637,14 +639,15 @@ kArmTest5 bonelist mofaList connectWrist dit dit2 mCommand crit= do
            --   M.writeWXCloudNODE (ptc6 5) (ptc6 25) (ptc6 50) (ptc6 100) (ptc6 125) (ptc6 150) -- ??? 
          --   M.writeWXCloudNODE (ptc3 5) (ptc7 25) (ptc8 150) (ptc9 100) (ptc7 125) (ptc3 50) --  a plaine  CHANGEABLE with progVars
             --  M.writeWXCloudNODE (testExp2MQ 1) ((testExp2MQ 2)) (transpose (testExp2MQ 3)) (testExp2MQ 4) (transpose(testExp2MQ 5)) (transpose (testExp2MQ 6)) --(ptc7 25) (ptc8 150) (ptc9 100) (ptc7 125) (ptc3 50)
-              M.writeWXCloudNODE (ptc6 5) (ptc6 5) (ptc6 50) (ptc6 100) (ptc6 125) (ptc6 150) -- interesting
-            --  M.writeWXCloudNODE (ptc7 5) (ptc7 25) (ptc7 50) (ptc7 100) (ptc7 125) (ptc7 150) -- half 'crown'
+            --  M.writeWXCloudNODE (ptc6 5) (ptc6 5) (ptc6 50) (ptc6 100) (ptc6 125) (ptc6 150) -- interesting
+              M.writeWXCloudNODE (ptc6 5) (ptc6 25) (ptc6 50) (ptc6 100) (ptc5 25) (ptc3 50) -- half 'crown'
              -- M.writeWXCloudNODE (ptc8 5) (ptc8 25) (ptc8 50) (ptc8 100) (ptc8 125) (ptc8 150) -- similar to above
            --   M.writeWXCloudNODE (nub(ptc6 5)) (nub(ptc6 25)) (nub(ptc6 50)) (nub(ptc6 100)) (nub(ptc6 125)) (nub(ptc6 5))    -- similar to above 
            --   M.writeWXCloudNODE (ptc0 5) (ptc0 25) (ptc0 50) (ptc0 100) (ptc0 125) (ptc0 150) -- ???
 
 --              M.writeWXCloudNODE (ptc2 5) (ptc2 15) (ptc2 25) (ptc4 2) (ptc4 3) (ptc4 5)
               M.writeWXCloud4 (ptc2 5) (ptc2 25) (ptc2 50) (ptc4 5) (ptc4 25) (ptc4 50)
+              --M.writeWXCloudNODE (ptc2 5) (ptc2 25) (ptc2 50) (ptc4 5) (ptc4 25) (ptc4 50)
               
               putStrLn "Done" 
      (frame0 bonelist (mofaList) connectWrist dit dit2) 
@@ -1092,10 +1095,11 @@ runner x = do  --scanChar
         -- (return (do r)) --putStrLn (show e) --show(return e)
 -- import your functions into kArmTest5 via formation
 preX x = head(map scanChar (frmDoubletoInt (show x)))
-pg1 x = F.fourierMQ6NOPAN123 x--(sin (read((head((formTest [father] (preX x) [show(sin (x))] (words(show(sin 2))))  ))))) -- (((([(formTest [mother] 1 [show(F.fourierMQ6NOPAN123 (realToFrac (show x)))] (words(show(sin (x)))))]  )))) -- head(ausw 1 [(F.fourierMQ6NOPAN123 x)]) 
-pg2 x = (F.fourierMQ5NOPAN123 x)
-pg3 x = (F.fourierMQ4NOPAN123 x)
-pg4 x = sin x --(F.fourierMQ4TRACE (x))
+pg1 x = F.fourierMQ6NOPAN123 x--(sin (read((head((formTest [father] (preX x) [show(sin (x))] (words(show(sin 2))))  ))))) -- (((([(formTest [mother] 1 [show(F.fourierMQ6NOPAN123 (realToFrac (show x)))] (words(show(sin (x)))))]  )))) -- head(ausw 1 [(F.fourierMQ6NOPAN123 x)]) --  0*6*x * 3*x + 0*6*x
+pg2 x = (F.fourierMQ5NOPAN123 x) --  0*6*x + 0*3*x + 0*6*tan x
+pg3 x = (F.fourierMQ4NOPAN123 x) -- 0*6*x+ 0*3*x + 2*x * cos x 
+pg4 x = (F.fourierMQ4TRACE (x))  -- sin 11* x 
+
 pg11 x = show x --show(F.fourierMQ6NOPAN123 x)
 pg22 x = show x --show(F.fourierMQ5NOPAN123 x)
 pg33 x = show x --show(F.fourierMQ4NOPAN123 x)
@@ -1120,7 +1124,7 @@ pointCloud03b n = let toMap e = last((map ((theTrix 6) e) [1..50]))
      --pg111 
     -- putStrLn (unlines(checkflow [father] (formation (pg1 1) 1)  ))
 ----------------------------------------------------------
-liT = ["AAABB","AABAB","AAA","BBBAA"] --["A","A","A","A","A","A"] --["AAABB","AABAB","AAA","BBBAA"]
+liT = [progVar1,progVar3,progVar4,progVar6] -- ["AAABB","AABAB","AAA","BBBAA"] --["A","A","A","A","A","A"] --["AAABB","AABAB","AAA","BBBAA"]
 
 --  DOMAIN:
 --  pointCoud1                    JustI or JustI and JustII or JustII -> (fst or fst/snd or snd Compare)
@@ -1175,7 +1179,18 @@ ptc3b e = pointCloud03b e
 
 ptc4 e = pointCloud04 e
 ptc5  n = pointCloud05 n 
-ptc6 n = pointCloud06 n 
+ptc6 n = pointCloud06 n
+ptcSolution x = sin x *    -- 0*x+3* y+0*z = 3 -> [0,3,0,3]     or       -- 0*x+3* y+0*z = 3 -> [0,3,0,3]
+                           -- 6*x+0*y+0*z  = 6 -> [6,0,0,6]     with     -- 6*x+0*y+0*z  = 6 -> [6,0,0,6]
+                           -- 0*x+0*y+2*z =  2 -> [0,0,2,2]     char     -- 0*(ord x)+0*(ord y)+ (ord z) =  2 -> [0,0,2,2]
+                           -- 1*x+1*y+1*z = 11 -> [1,1,1,11]
+
+                           -- 0*x+3* y+0*z = 9 -> [0,3,0,9]
+                           -- 6*x+0*y+0*z  = 36 -> [6,0,0,36]
+                           -- 0*x+0*y+2*z =  4 -> [0,0,2,4]
+                           -- 1*x+1*y+1*z = 11 -> [1,1,1,11]
+
+                           
 ptc7  n = pointCloud07 n
 ptc8  n = pointCloud08 n 
 ptc9  n = pointCloud09 n  
