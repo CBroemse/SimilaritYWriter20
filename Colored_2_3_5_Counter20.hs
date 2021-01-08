@@ -1180,15 +1180,16 @@ ptc3b e = pointCloud03b e
 ptc4 e = pointCloud04 e
 ptc5  n = pointCloud05 n 
 ptc6 n = pointCloud06 n
-ptcSolution x = sin x *    -- 0*x+3* y+0*z = 3 -> [0,3,0,3]     or       -- 0*x+3* y+0*z = 3 -> [0,3,0,3]
-                           -- 6*x+0*y+0*z  = 6 -> [6,0,0,6]     with     -- 6*x+0*y+0*z  = 6 -> [6,0,0,6]
-                           -- 0*x+0*y+2*z =  2 -> [0,0,2,2]     char     -- 0*(ord x)+0*(ord y)+ (ord z) =  2 -> [0,0,2,2]
-                           -- 1*x+1*y+1*z = 11 -> [1,1,1,11]
+ptcSolution x = sin x *   1
+ -- 0*x+3* y+0*z = 3 -> [0,3,0,3]     or     [map ord "3*y" , (ord '='), ord '3'] or  [map ord "3*y" , ((ord '=')/ ord '3')]
+ -- 6*x+0*y+0*z  = 6 -> [6,0,0,6]     with   [map ord "6*x" , (ord '='), ord '6'] or  [map ord "6*x" , ((ord '=')/ ord '6')]
+ -- 0*x+0*y+2*z =  2 -> [0,0,2,2]     char     -- 0*(ord x)+0*(ord y)+ (ord z) (ord'=' * (1/(ord '2'))) -> [0,0,2,2]
+ -- 1*x+1*y+1*z = 11 -> [1,1,1,11]
 
-                           -- 0*x+3* y+0*z = 9 -> [0,3,0,9]
-                           -- 6*x+0*y+0*z  = 36 -> [6,0,0,36]
-                           -- 0*x+0*y+2*z =  4 -> [0,0,2,4]
-                           -- 1*x+1*y+1*z = 11 -> [1,1,1,11]
+ -- 0*x+3* y+0*z = 9 -> [0,3,0,9]
+ -- 6*x+0*y+0*z  = 36 -> [6,0,0,36]
+ -- 0*x+0*y+2*z =  4 -> [0,0,2,4]
+ -- 1*x+1*y+1*z = 121 -> [1,1,1,11]
 
                            
 ptc7  n = pointCloud07 n
