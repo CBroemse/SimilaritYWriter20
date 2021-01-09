@@ -1,6 +1,6 @@
 # SimilaritYWriter20
 
-#### Visiualize a network or your name 
+#### Visiualize a network or your name - nomen est omen
 
 1.0.0
 A baysian network optimization. Compare strings to render
