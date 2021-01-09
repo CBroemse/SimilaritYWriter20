@@ -188,12 +188,12 @@ progVarRAW t r = do
     let df = head (ausw t r)
     df
 -- let li551 = ["0xy0z=3","0xy0z=33x00z=6","3x1x0z=6","0x0yz=2","0x0yz=2xyz=11","xyz=11"]
-progVar1 = "0xy0z=3" -- "AAABB" --"0*x + y + 0*z = 3"-- "AaEe0" --"abcde0" --"abcdef" --"abcdef" --show(tussenStap 1 1) --"abcdef" --"abcde0" --"AaEe0" --"AaEe" --"Aa" --"Cesar" --"AAABB" --range --"1" --range211 --"a" --"The world" --"AAABB" 
-progVar2 = "0xy0z=3x0y0z=6" --"AAABBAABAB"--"0*x + y + 0*z = 33*x + 0 + 0*z = 6" --"AaEeI" --"fghij0" -- "ghijkl" -- "abcdefghijkl" --(show (tussenStap 1 1))++(show(tussenStap 1 2)) -- "abcdefghijkl" --"fghij0" --"AaEeI" --"AaEeIi000" --"AaEe" --"CeaserDelight" --"AAABB"++range --"AB" --range --"ab" --range --"ab" --"The world is everything" --"AAABBAABAB"
-progVar3 = "x0y0z=6" --"AAABAB" --"3*x + 0 + 0*z = 6" --"i0000" --"klmno0" --"mnoprr" --"ghijkl" --(show(tussenStap 1 2)) --"mnopqr" --"klmno0" --"i0000" --"Ee" --"Deight" --range --"b" --range --"b" --"is everything" --"AABAB"
-progVar4 = "0x0yz=2" --"AAAaaaBBBbbbA+Aaa" --"0*x + 0*y + z = 2" --"OoUu0" --"pqrst0" --"stuvwx" --"mnopqr" --(show(tussenStap 1 3)) -- "stuvwx" --"pqrst0" --"OoUu0" --"OoUu" --"Ii" --"Elf" --"AAA" --"c" --range --"b" --tht is" -- find the "a" in wxms "that is" --"AAA"
-progVar5 = "0x0yz=2xyz=11" --"AAAaaaBBBbbbA+Aaa" --"0*x + 0*y + z = 2x + y + z = 11" --"OoU0Y" --"uvwxy0" --"yz0000" --"mnopqrstuvwx" --(show (tussenStap 1 3))++(show(tussenStap 1 4)) -- "yz0000000000" --"uvwxy0" --"OoUuY" --"OoUuYy000" --"AAAaaaBBBbbbA+Aaa" --"IiOo" --"ElfFool" --"AAABBBAA" --"cd" --range --"bc" --"tht is the cse" --"that is the case" --"AAABBBAA"
-progVar6 = "xyz=11" --"BBBbbbA+Aaa"--"x + y + z = 11" --"y0000" --"z00000" --"000000" --"yz0000" --(show(tussenStap 1 4)) --"000000" --"z00000" --"y0000" --"y000" -- "BBBbbbA+Aaa" --"uvwxyz" --"uvwxyz" --"Oo" --"Fool" --"BBBAA" --"d" --range --"c" --"the cse" --"the case" --"BBBAA"
+progVar1 = "0xy0z=3" -- "be" --"bendeniz" --"be" --"bendeniz" --"0xy0z=3" -- "AAABB" --"0*x + y + 0*z = 3"-- "AaEe0" --"abcde0" --"abcdef" --"abcdef" --show(tussenStap 1 1) --"abcdef" --"abcde0" --"AaEe0" --"AaEe" --"Aa" --"Cesar" --"AAABB" --range --"1" --range211 --"a" --"The world" --"AAABB" 
+progVar2 = "0xy0z=3x0y0z=6" --"ben" --"is" --"bendeniz" --"bed" --"bendeniz" --"0xy0z=3x0y0z=6" --"AAABBAABAB"--"0*x + y + 0*z = 33*x + 0 + 0*z = 6" --"AaEeI" --"fghij0" -- "ghijkl" -- "abcdefghijkl" --(show (tussenStap 1 1))++(show(tussenStap 1 2)) -- "abcdefghijkl" --"fghij0" --"AaEeI" --"AaEeIi000" --"AaEe" --"CeaserDelight" --"AAABB"++range --"AB" --range --"ab" --range --"ab" --"The world is everything" --"AAABBAABAB"
+progVar3 = "x0y0z=6" --"x0y0z=6" -- "bende"--"the best" --"bendeniz" --"d" --"bendeniz" --"x0y0z=6" --"AAABAB" --"3*x + 0 + 0*z = 6" --"i0000" --"klmno0" --"mnoprr" --"ghijkl" --(show(tussenStap 1 2)) --"mnopqr" --"klmno0" --"i0000" --"Ee" --"Deight" --range --"b" --range --"b" --"is everything" --"AABAB"
+progVar4 = "0x0yz=2" -- "benden" --"brand" --"bendeniz" --"den" --"bendeniz" --"0x0yz=2" --"AAAaaaBBBbbbA+Aaa" --"0*x + 0*y + z = 2" --"OoUu0" --"pqrst0" --"stuvwx" --"mnopqr" --(show(tussenStap 1 3)) -- "stuvwx" --"pqrst0" --"OoUu0" --"OoUu" --"Ii" --"Elf" --"AAA" --"c" --range --"b" --tht is" -- find the "a" in wxms "that is" --"AAA"
+progVar5 = "0x0yz=2xyz=11" -- "bendeni" --"in the" --"bendeniz" --"deniz" -- "bendeniz" --"0x0yz=2xyz=11" --"AAAaaaBBBbbbA+Aaa" --"0*x + 0*y + z = 2x + y + z = 11" --"OoU0Y" --"uvwxy0" --"yz0000" --"mnopqrstuvwx" --(show (tussenStap 1 3))++(show(tussenStap 1 4)) -- "yz0000000000" --"uvwxy0" --"OoUuY" --"OoUuYy000" --"AAAaaaBBBbbbA+Aaa" --"IiOo" --"ElfFool" --"AAABBBAA" --"cd" --range --"bc" --"tht is the cse" --"that is the case" --"AAABBBAA"
+progVar6 = "xyz=11" -- "bendeniz" --"world" --"bendeniz" --"iz" -- "bendeniz" --"xyz=11" --"BBBbbbA+Aaa"--"x + y + z = 11" --"y0000" --"z00000" --"000000" --"yz0000" --(show(tussenStap 1 4)) --"000000" --"z00000" --"y0000" --"y000" -- "BBBbbbA+Aaa" --"uvwxyz" --"uvwxyz" --"Oo" --"Fool" --"BBBAA" --"d" --range --"c" --"the cse" --"the case" --"BBBAA"
 
 progLiT = [progVar1,progVar3,progVar4,progVar6] --["A","A","A","A","A","A"] --["AAABB","AABAB","AAA","BBBAA"]
 
@@ -632,6 +632,8 @@ kArmTest5 bonelist mofaList connectWrist dit dit2 mCommand crit= do
               let foe t = head (ausw t bonelist)
           --    let op = atrix0a (foe 1) (foe 2) (foe 3) (foe 4) (foe 2) (foe 1) 1 1
               putStrLn "readY to plot"
+
+ -- ptc2 does not change with progVars
              -- let pop = (ptc0  5)
               --M.writeWXCloudNODE (pop) (ptc2 5) (ptc3 5) (ptc4 5) (ptc5 5) (ptc6 5)
            --   M.writeWXCloudNODE (ptc3b 1) (ptc3b 2) (ptc3b 3) (ptc3b 4) (ptc3b 5) (ptc3b 6)
@@ -640,15 +642,17 @@ kArmTest5 bonelist mofaList connectWrist dit dit2 mCommand crit= do
          --   M.writeWXCloudNODE (ptc3 5) (ptc7 25) (ptc8 150) (ptc9 100) (ptc7 125) (ptc3 50) --  a plaine  CHANGEABLE with progVars
             --  M.writeWXCloudNODE (testExp2MQ 1) ((testExp2MQ 2)) (transpose (testExp2MQ 3)) (testExp2MQ 4) (transpose(testExp2MQ 5)) (transpose (testExp2MQ 6)) --(ptc7 25) (ptc8 150) (ptc9 100) (ptc7 125) (ptc3 50)
             --  M.writeWXCloudNODE (ptc6 5) (ptc6 5) (ptc6 50) (ptc6 100) (ptc6 125) (ptc6 150) -- interesting
-              M.writeWXCloudNODE (ptc6 5) (ptc6 25) (ptc6 50) (ptc6 100) (ptc5 25) (ptc3 50) -- half 'crown'
+           --   M.writeWXCloudNODE (ptc6 5) (ptc6 25) (ptc6 30) (ptc6 42) (ptc6 50) (ptc6 60) -- half 'crown'
              -- M.writeWXCloudNODE (ptc8 5) (ptc8 25) (ptc8 50) (ptc8 100) (ptc8 125) (ptc8 150) -- similar to above
            --   M.writeWXCloudNODE (nub(ptc6 5)) (nub(ptc6 25)) (nub(ptc6 50)) (nub(ptc6 100)) (nub(ptc6 125)) (nub(ptc6 5))    -- similar to above 
            --   M.writeWXCloudNODE (ptc0 5) (ptc0 25) (ptc0 50) (ptc0 100) (ptc0 125) (ptc0 150) -- ???
 
 --              M.writeWXCloudNODE (ptc2 5) (ptc2 15) (ptc2 25) (ptc4 2) (ptc4 3) (ptc4 5)
               M.writeWXCloud4 (ptc2 5) (ptc2 25) (ptc2 50) (ptc4 5) (ptc4 25) (ptc4 50)
-              --M.writeWXCloudNODE (ptc2 5) (ptc2 25) (ptc2 50) (ptc4 5) (ptc4 25) (ptc4 50)
-              
+            --  M.writeWXCloudNODE (ptc5 5) (ptc5 25) (ptc5 30) (ptc5 35) (ptc5 40) (ptc5 50) -- deniz
+            --  M.writeWXCloudNODE (ptc7 7) (ptc7 25) (ptc7 30) (ptc7 35) (ptc7 40) (ptc7 150) --
+            --  M.writeWXCloudNODE (ptc8 7) (ptc8 25) (ptc8 30) (ptc8 35) (ptc8 9) (ptc9 150) 
+              M.writeWXCloudNODE (ptc9 7) (ptc9 25) (ptc9 30) (ptc9 35) (ptc9 9) (fourierFS 4)      -- aCompleteWX2
               putStrLn "Done" 
      (frame0 bonelist (mofaList) connectWrist dit dit2) 
 
@@ -1191,12 +1195,42 @@ ptcSolution x = sin x *   1
  -- 0*x+0*y+1*z =  2 -> [0,0,1,2]        ?? [ 0,0,(ord z) (ord'=' * (1/(ord '2'))) -> [0,0,122,61] -> [0,0,11] ??  
  -- 1*x+1*y+1*z = 11 -> [1,1,1,11] char  [map ord "1*x+1*y+1*z=11"]        -> [49,42,120,43,49,42,121,43,49,42,122,61,49,49]
 
- -- 0*x+3* y+0*z = 9 -> [0,3,0,9]
- -- 6*x+0*y+0*z  = 36 -> [6,0,0,36]
- -- 0*x+0*y+2*z =  4 -> [0,0,2,4]
- -- 1*x+1*y+1*z = 121 -> [1,1,1,121]
+ -- 0*x+3* y+0*z = 9 -> [0,3,0,9]  or  [map ord "3*y" , (ord '='), (ord '9')] ->  ??? or  [map ord "3*y" , ((ord '=')/ ord '9')]
+ -- 6*x+0*y+0*z = 36 -> [6,0,0,36] with [map ord "6*x" , (map ord "=36")] or  [map ord "6*x" , ((map ord "->")/ ord '6')]
+ -- 0*x+0*y+2*z =  4 -> [0,0,2,4] char ?? [ 0,0,(map ord "2*z") (realToFrac(ord '=')) / (realToFrac (ord '4')) -> [0,0,122,[1.1730769230769231]] ??
+ -- 1*x+1*y+1*z = 121 ->[1,1,1,121]  [map ord "sqrt 121"] -> [115,113,114,116,32,49,50,49]
+ --                              or  [map ord "sqrt(x+y+z)"] -> [115,113,114,116,40,120,43,121,43,122,41]
+ --
+--functionSol1comp = 
+--fS1c =  [0,3,0,3]  -- [[51,42,121],[45,62],[51]]
+--fS2c = [6,0,0,6]   -- [[54,42,120],[45,62],[54]]
+--fS3c = [0,0,2,2]  -- [0,0,122,61]
+--fS4c = [1,1,1,11] -- [map ord "xyz->11"] -> [[120,121,122,45,62,49,49]]
+{-
+fS1c = [0,1,0,3]  -- [[51,42,121],[45,62],[51]]
+fS2c = [1,0,0,6]   -- [[54,42,120],[45,62],[54]]
+fS3c = [0,0,1,2]  -- [0,0,122,61]
+fS4c = [1,1,1,11] -- [map ord "xyz->11"] -> [[120,121,122,45,62,49,49]]
+-}
+fS1c = [0,3,0,9]  -- [[51,42,121],[45,62],[51]]
+fS2c = [6,0,0,36]   -- [[54,42,120],[45,62],[54]]
+fS3c = [0,0,2,4]  -- [0,0,122,61]
+fS4c = [1,1,1,121] -- [map ord "xyz->11"] -> [[120,121,122,45,62,49,49]]
 
-                           
+
+cgrf t r = sin (head(ausw r t))
+fScompute foFS = map (cgrf foFS) [1..4] -- e.g map (cgrf fS1c) [1..4] 
+fSAllCompute = map fScompute [fS1c,fS2c,fS3c,fS4c]
+fSCollm t = head$ausw t fSAllCompute
+fSRow t = head $ ausw t $ transpose fSAllCompute
+fSde n fsTsnd = F.fofourierRAW n fsTsnd [(fSRow 1),(fSRow 2),(fSRow 3),(fSRow 4)] 
+fSRaw x y fstOsnd = (sin (( head (fSde y fstOsnd ))*x))+(sin((head( fSde y (fstOsnd+1)) )*x))  +  (sin((head( fSde y (fstOsnd+2)))*x )) + (sin((head ( fSde y (fstOsnd+3)))*x ))                         
+fS1o4 x = fSRaw x 1 1
+fS2o4 x = fSRaw x 2 1
+fS3o4 x = fSRaw x 3 1
+fS4o4 x = fSRaw x 4 1
+fourierFS x = (fS1o4 x + fS2o4 x +fS3o4 x +fS4o4 x)
+
 ptc7  n = pointCloud07 n
 ptc8  n = pointCloud08 n 
 ptc9  n = pointCloud09 n  
@@ -1490,8 +1524,12 @@ accesFuncWX33 l goghi dipfa fodp1 fodp2 bob =
                   in enExp aw2 aw4 aw6 --enExp
 
 
-vb x = let as = accesFuncWX33 4 [(map pg44 [1..(x)])] [(map pg33 [1..(x)])] [(map pg22 [1..(x)])] [(map pg11 [1..(x)])]  [1..x] "100"
-       in writeFile "tutu.wxm" as
+vb x = let as = accesFuncWX33 4 [map show(map pg4 [1..(x)])] [map show(map pg3 [1..(x)])] [map show(map pg2 [1..(x)])] [map show(map pg1 [1..(x)])]  [1..x] "100"
+       in writeFile "2dpgFunctions.wxm" as
+
+plot2dFourierFS vb x = let as = accesFuncWX33 4 [map show(map pg4 [1..(x)])] [map show(map pg3 [1..(x)])] [map show(map pg2 [1..(x)])] [map show(map pg1 [1..(x)])]  [1..x] "100"
+       in writeFile "2dpgFunctions.wxm" as
+
 
 
 vb2 x = let as = accesFuncWX33 4 [(map (F.fourierMQ3 1) [1..(x)])] [(map (F.fourierMQ3 2) [1..(x)])] [(map (F.fourierMQ3 3) [1..(x)])] [(map pg11 [1..(x)])]  [1..x] "1500"

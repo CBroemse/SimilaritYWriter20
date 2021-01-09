@@ -2,7 +2,7 @@
 --  with the used fourier1MQ6 ...fourier6MQ6 below.
 -- KA-MAchine will generate the Source Signal :"mixwithMQ6"
 -- a functions represents ONE COMPLETED MQ6 represented by
--- a continous fourier functions
+-- continous fourier functions
 ------------------------------------------------------------------
 ------------------------------------------------------------------
 -- There are several metohds imported from thePointNexus.wxm file

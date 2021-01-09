@@ -57,8 +57,9 @@ theDs f g = concat$ausw f ((concat g))
 -- df2 ttt offOn target plot addGh ghAdd n (theDs ttt d) (get1) (get2) (get3)  (get4) 1 (theDs ttt d)
 -- =  runKAXIOM offOn target plot addGh ghAdd n (theDs ttt d) (get1) (get2) (get3)  (get4) 1 (theDs ttt d)
 
-
-
+--05-01-21 -- under development
+-- write an 'reduced' table to Htmls/yourRun.html into the ptc buttons in display
+-- => aim to automatically give an overview of a selected sentence 
 runKBASE offOn target plot addGh ghAdd n d get1 get2 get3 get4 subroutineList= do
        allforIV <- forM [1..(length target)] (\four4 -> do
             let fg = runKAXIOM offOn target plot addGh ghAdd n (theDs four4 d) (get1) (get2) (get3) (get4) 1 (theDs four4 d) (four4) [(read(show four4))] ((tk four4 subroutineList))
@@ -699,9 +700,10 @@ defSearchRAW offOn target plot addGh ghAdd pV1 pV2 pV3 pV4 pV5 pV6 ptc0Len ptc3L
         
 ----------------------------------------------------------------------------------------------
 
+-- Main overview
 
-
-
+-- sort a network with the similaritYValue function
+-- main overview m excels with lists length 4  
 --addGh:Int ; 1 == add new line to a bonelist: ghCheck and write111111111
 -- e.g> let li = ["AAABB","AABAB","AAA","BBBAA"]
 --       let pi = Punkt "M" Nothing Nothing Nothing Nothing Nothing
