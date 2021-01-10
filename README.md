@@ -45,6 +45,11 @@ I. basic axioms --  pv-variables pg-functions
   abstractly:
   they are based on 'SimiVal'* compare a pv variable to another -> compare the differences with each other
   
+  -- assume every pg function used has a certain (slope) in the function plotted at every
+     Int (Natural number) there is a slope in all pg functions plotted together
+     at every Int. If the solution of a matrix is an Int, is there another related order connecting between this plotted 
+     functions , exclusive to the solution ??....
+     
   sentence e.g:
   1.The world is everything that is the case.∗ -> sentence -> [String] -> [[String]]
   
