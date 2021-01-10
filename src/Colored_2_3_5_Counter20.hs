@@ -1524,7 +1524,8 @@ accesFuncWX33 l goghi dipfa fodp1 fodp2 bob =
                   in enExp aw2 aw4 aw6 --enExp
 
 
-vb x = let as = accesFuncWX33 4 [map show(map pg4 [1..(x)])] [map show(map pg3 [1..(x)])] [map show(map pg2 [1..(x)])] [map show(map pg1 [1..(x)])]  [1..x] "100"
+fovB x = realToFrac (fourierFS x)*1/90
+vb x = let as = accesFuncWX33 4 [map show(map pg4 [1..(x)])] [map show(map pg3 [1..(x)])] [map show(map pg2 [1..(x)])] [map show(map fovB [1..(x)])] [1..x] "100" --[map show(map fovB [1..(x)])] [1..x] "100"
        in writeFile "2dpgFunctions.wxm" as
 
 plot2dFourierFS vb x = let as = accesFuncWX33 4 [map show(map pg4 [1..(x)])] [map show(map pg3 [1..(x)])] [map show(map pg2 [1..(x)])] [map show(map pg1 [1..(x)])]  [1..x] "100"
