@@ -31,7 +31,7 @@ I. basic axioms --  pv-variables pg-functions
                            pg1 x = F.fourierMQ6NOPAN123 x 
                            pg2 x = (F.fourierMQ5NOPAN123 x)
                            pg3 x = (F.fourierMQ4NOPAN123 x)
-                           pg4 x = sin(x) -- all 'src/Colored_2_3_5_Counter20.hs'
+                           pg4 x = sin(x) or fourierMQ4TRACE (x)-- all 'src/Colored_2_3_5_Counter20.hs'
     
    all pg-functions can be changed, just note, the more linear the pg functions are the less divertivied is the output.
    pg-functions are a key hole the complexity of a  basic 'algebra', mostly matrix manipulation.
