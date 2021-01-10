@@ -49,7 +49,7 @@ I. basic axioms --  pv-variables pg-functions
      Int (Natural number) there is a slope in all pg functions plotted together
      at every Int. If the solution of a matrix is an Int, is there another related order connecting between this plotted 
      functions , exclusive to the solution ??....
-     
+  ![alt tag](https://github.com/CBroemse/SimilaritYWriter20/blob/master/source/pgInts.png)   
   sentence e.g:
   1.The world is everything that is the case.∗ -> sentence -> [String] -> [[String]]
   
