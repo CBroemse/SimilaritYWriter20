@@ -1525,6 +1525,19 @@ accesFuncWX33 l goghi dipfa fodp1 fodp2 bob =
 
 
 fovB x = realToFrac (fourierFS x)*1/90
+-- insert fourierFS with
+ptc3dTo2dx2 takeNtail foptc = map takeNtail foptc
+--r: counter/denominator -> to tune the input signal e.g 1/90 will decrease amplitude -> y direction ??
+--takeNtail: use with (take 2 or tail) to select turn 3d point-cloud to two 2d plots
+--foptc: e.g ptc6 50     -> plot 50 Int of ptc6 
+--manyInts:Int           -> how many Int
+-- =>e.g pet 1/90 (take 2) ptc6 50
+petZip r = realToFrac r
+dummy takeNtail foptc manyInts =  (concat$ptc3dTo2dx2 (takeNtail) (foptc manyInts)) --(take (length foptc) [(petZip r),(petZip r)..])
+dummy2 r foptc manyInts = (take (length (foptc manyInts)) [(petZip r),(petZip r)..]) 
+ 
+ptc3dTo2d r takeNtail foptc manyInts = zipWith (/) (dummy2 r foptc manyInts) (dummy takeNtail foptc manyInts)
+
 vb x = let as = accesFuncWX33 4 [map show(map pg4 [1..(x)])] [map show(map pg3 [1..(x)])] [map show(map pg2 [1..(x)])] [map show(map fovB [1..(x)])] [1..x] "100" --[map show(map fovB [1..(x)])] [1..x] "100"
        in writeFile "2dpgFunctions.wxm" as
 
