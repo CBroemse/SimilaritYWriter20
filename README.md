@@ -36,20 +36,25 @@ I. basic axioms --  pv-variables pg-functions
    all pg-functions can be changed, just note, the more linear the pg functions are the less divertivied is the output.
    pg-functions are a key hole the complexity of a  basic 'algebra', mostly matrix manipulation.
    Not everything is a computer but sufficiently differing concepts are: all pg| f (x) can be changed.
-   So far the program deals with downstream of the the former functions. 
-
-                                        
-           ptc-functions :: Pv-variabes  <=> Pg-functions 
+    Pv-variabes are Pg-functions 
                                          
-  the ptc functions are the main basic for this program, see concept plotter, 
-  abstractly:
-  they are based on 'SimiVal'* compare a pv variable to another -> compare the differences with each other
+  
   
   -- assume every pg function used has a certain (slope) in the function plotted at every
      Int (Natural number) there is a slope in all pg functions plotted together
      at every Int. If the solution of a matrix is an Int, is there another related order connecting between this plotted 
      functions , exclusive to the solution ??....
+     
   ![alt tag](https://github.com/CBroemse/SimilaritYWriter20/blob/master/source/pgInts.png)   
+  
+  #####ptc
+  So far the program deals with downstream of the the former functions. 
+the ptc functions are the main basic for this program, see concept plotter, 
+  abstractly:
+  they are based on 'SimiVal'* compare a pv variable to another -> compare the differences with each other
+                                        
+           ptc-functions ::
+           
   sentence e.g:
   1.The world is everything that is the case.∗ -> sentence -> [String] -> [[String]]
   
