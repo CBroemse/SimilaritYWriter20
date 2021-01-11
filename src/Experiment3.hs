@@ -1,7 +1,7 @@
 -- this module provides:
 -- --------------------------------------
 -- EXPERIMENT 3             syntax                              concept
---gossary: 
+--glossary: 
 --   kArmTest5                                      sample IO, a do monad to sort a given li list
 --                                                  ment to be a display in 'where' passage of function, an example how to access
 --                                                  all functions dispayed there, that are accesable via allFunctions'. 
