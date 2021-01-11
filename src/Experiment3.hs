@@ -1,8 +1,27 @@
 -- this module provides:
 -- --------------------------------------
--- EXPERIMENT 3 
+-- EXPERIMENT 3             syntax                              concept
+--gossary: 
+--   kArmTest5                                      sample IO, a do monad to sort a given li list
+--                                                  ment to be a display in 'where' passage of function, an example how to access
+--                                                  all functions dispayed there, that are accesable via allFunctions'. 
+--
+--   kArmWORK                                       same as above but only one output(no GUI) to be used in other computations  
+--
+--   experiment3RAW11                               Busschop and Bradly ??? also see 'Colored_2_3_5_Counter20.hs, build a hexagon
+--                                                  turn 3d ptc functions in 2d/3d svg  
+--
+--  poolBandNotB                                    based on liT, give a list of strings  
+--                                                  import li -> randomize input -> give noisy output,   Baysian approach*1
+--                                                  enter in defSearch how many Int to take 
+--
+--  expressAsinA
+--
+--  expressAinA                                                                                                 
+-- 
+-- *1) Baysian approach
 -- A= the occoring and non ocurring Chars of an ideal
---  However the solution depends on various As.
+--  a solution depends on various As.
 --  A : One based on the ordered Char list 
 --  A' :Another based on the 'quirky example'
 --      functions :
@@ -730,6 +749,17 @@ findinCdRAW wo ist = (map (foStrCd wo ist) [1..(length ist)])
 findinCd wo ist = (findinCdRAW wo ist)
 -- reflexive function show me where B in A =>
 qw wo ist r = (foStrCd wo ist r)
+
+
+--find the gap in the data
+-- show the occurance of Char number n in a [Char]
+-- *Experiment3> foStrCd "werfgrrrrf" "wrerfrfrrf" 4
+-- [4,6,9]
+-- *Experiment3> foStrCd "werfgrrrrf" "wrerfrfrrf" 5
+-- []
+-- *Experiment3> foStrCd "werfgrrrrf" "wrerfrfrrf" 6
+-- [1,3,5,7,8]
+
 -- qw3 ready to map for different ist's(guesses)
 -- domain: higher domain of this program
 --         if 'domain' = "" then no restrictions
