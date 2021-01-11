@@ -649,7 +649,7 @@ kArmTest5 bonelist mofaList connectWrist dit dit2 mCommand crit= do
 
 --              M.writeWXCloudNODE (ptc2 5) (ptc2 15) (ptc2 25) (ptc4 2) (ptc4 3) (ptc4 5)
               M.writeWXCloud4 (ptc2 5) (ptc2 25) (ptc2 50) (ptc4 5) (ptc4 25) (ptc4 50)
-            --  M.writeWXCloudNODE (ptc5 5) (ptc5 25) (ptc5 30) (ptc5 35) (ptc5 40) (ptc5 50) -- deniz
+            --  M.writeWXCloudNODE (ptc5 5) (ptc5 25) (ptc5 30) (ptc5 35) (ptc5 40) (ptc5 50) -- 
             --  M.writeWXCloudNODE (ptc7 7) (ptc7 25) (ptc7 30) (ptc7 35) (ptc7 40) (ptc7 150) --
             --  M.writeWXCloudNODE (ptc8 7) (ptc8 25) (ptc8 30) (ptc8 35) (ptc8 9) (ptc9 150) 
               M.writeWXCloudNODE (ptc9 7) (ptc9 25) (ptc9 30) (ptc9 35) (ptc9 9) (fourierFS 4)      -- aCompleteWX2

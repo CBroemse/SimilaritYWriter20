@@ -159,7 +159,7 @@ inActie pv1 pv2 pv3 pv4 solution = do
      --     endlessSubly <- forM [1..37]
           let seeChr =  qw "werdd" "rdddw" 3  -- just there not used (jtnu)
        
-          let seperateIntandChar foli4 = aleph [head foli4] -- Just Num Chars- > Int only works on Int in String 
+          let seperateIntandChar foli4 = aleph [head foli4] --not used so far, Just Num Chars- > Int only works on Int in String  ##################### 11-1-21 reason abt cells see conceptProject21.svg
           let mainRandomLine foli4 n = cellStream3 foli4 n
            -- generate 10 different 'random lines' length 100 
            -- f set to 49 to 128
@@ -871,6 +871,20 @@ cellInt ct =   snd(charFilterInt(evalToWrite ct ))
 
 -- take length found in string build String 'ct' with variable length    
 -- turn ct's into [String] 
+--
+-- if last digtit Int then take n many iterations without Int
+-- e.g *Experiment3> iterCT "cell5" 
+--     ["cell5","cell","cell","cell","cell"]
+--
+-- will take max of 8 iterations
+--     *Experiment3> iterCT "cell55"
+--     ["cell55"]
+--     *Experiment3> iterCT "cel3l55"
+--     ["cel3l55"]
+--     *Experiment3> iterCT "cel2"
+--     ["cel2","cel"]
+--     *Experiment3> iterCT "cel8"
+--     ["cel8","cel","cel","cel","cel","cel","cel","cel"]
 iterCT ct = take (snd(charFilterInt ct)) (iterate cellType ct )-- e.g  take 4 (iterate cellType "cell44")
 aleph ed = map iterCT ed
 --pipeStringToHigherD = if qw3 w e r == aleph ed 
@@ -889,7 +903,21 @@ countABCs n wantedList solution foCalc = let stap1RAW countN wantedList solution
 -- generate one random Int based on 'rekenen'  
 runCellRAW n wantedList solution = countABCs n wantedList solution (rekenen)
 --   
+--  *Experiment3> takeMY 4 3 [1,2,5,5]
+--  [[1,2,5,5],[1,2,5,5],[1,2,5,5]]
+--
+--
+-- 'zufallsBasic1'-> 'longRun' => random number
+--                                   ||
+--                                   \/
+--                               |  rekenen   |
+--                                   ||              
+--                                   \/
+--   takeMY =>      countABCs -> runCellRAW -> runCellRnd -> ogR -> cellStream3   -> poolnotB
+--                                                                                -> inActie 
+--
 --  e.g*> (map (runCell n [1,66,34,99,0]) [1..100])
+                                                                                
 runCellRnd want sol n = runCellRAW n want sol
 
 runLists wantedist= let a= 100*wantedist
@@ -964,10 +992,33 @@ cellStream3 solu n= map (ogR solu) (runLists n)
 -- pi: Punkt , if intern switches intern 
 --             else extern
 --e.g> 
+--external cell run
+---------------------
 --pi: Punkt "extern" ...; guess String e.g "ddd"
+--    ||                ||
+--    \/                \/
+--  kArmWORK       triggerWord   -> runEXP3  -> cellStream3EXT
+--                                           -> simVALS
+--                                           -> runEXP3Char
+--                                           -> experiment3RAW11
+--                                           -> experiment3RAW22  -> buildPrior
+--                                                                -> theB'
+--                                                                -> theBQuirky
+--                                           -> experiment3RAW23 -> commmB  -> foStrCd ->  qw wo ist r = (foStrCd wo ist r)
+
+--                                                               -> commmB2
+--                                                                 ################################################### 11-1-21 reason cell run export via Punt do cellStream3EXT 
 cellStream3EXT foli4 pi guess = nub $ concat$ (runEXP3 foli4 pi guess)  -- => simvals
 
+--  vs       
+--  
+-- internal cell run
+-- --e.g> defSearchRAW "AAABB" "AAABBAAABAB" "AAABAB" "AAA" "AAABBBAA" "BBBAA" 1 1 1 1 1 li
 --
+--pipebone: variable for runKBASE, n-(length target)-many, of a [bonelist]
+-- defSearchRAW -> defSearch -> runKAXIOM -> runKBASE -> experiment3RAW -> experiment3RAW2 
+
+-- runCellRAW
 --simVALS
 --------
 -- to be mapped with Iterations and or li          --change between diferent projections
@@ -1137,7 +1188,7 @@ runEXP3Char pi ghAdd li =
      --  allforIV <- forM [1,2] (\four4 -> do
             -- first loop is 'IDF' second one is 'LP'
        --     let fg = chD four4 --runEXP3 (chD four4) pi ghAdd --kArmWORK 2 (pv1to6) (chD four4) 1 pi 1 1 [] ghAdd --(runKAXIOM offOn target plot addGh ghAdd n (theDs four4 d) (get1) (get2) (get3) (get4) 3 (theDs four4 d) (four4) [(read(show four4))] ((tk four4 subroutineList)))
-
+--obtc
          --   return (fg))
        --return (iDF)
        --return (lP)
