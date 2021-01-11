@@ -188,12 +188,12 @@ progVarRAW t r = do
     let df = head (ausw t r)
     df
 -- let li551 = ["0xy0z=3","0xy0z=33x00z=6","3x1x0z=6","0x0yz=2","0x0yz=2xyz=11","xyz=11"]
-progVar1 = "0xy0z=3" -- "be" --"bendeniz" --"be" --"bendeniz" --"0xy0z=3" -- "AAABB" --"0*x + y + 0*z = 3"-- "AaEe0" --"abcde0" --"abcdef" --"abcdef" --show(tussenStap 1 1) --"abcdef" --"abcde0" --"AaEe0" --"AaEe" --"Aa" --"Cesar" --"AAABB" --range --"1" --range211 --"a" --"The world" --"AAABB" 
-progVar2 = "0xy0z=3x0y0z=6" --"ben" --"is" --"bendeniz" --"bed" --"bendeniz" --"0xy0z=3x0y0z=6" --"AAABBAABAB"--"0*x + y + 0*z = 33*x + 0 + 0*z = 6" --"AaEeI" --"fghij0" -- "ghijkl" -- "abcdefghijkl" --(show (tussenStap 1 1))++(show(tussenStap 1 2)) -- "abcdefghijkl" --"fghij0" --"AaEeI" --"AaEeIi000" --"AaEe" --"CeaserDelight" --"AAABB"++range --"AB" --range --"ab" --range --"ab" --"The world is everything" --"AAABBAABAB"
-progVar3 = "x0y0z=6" --"x0y0z=6" -- "bende"--"the best" --"bendeniz" --"d" --"bendeniz" --"x0y0z=6" --"AAABAB" --"3*x + 0 + 0*z = 6" --"i0000" --"klmno0" --"mnoprr" --"ghijkl" --(show(tussenStap 1 2)) --"mnopqr" --"klmno0" --"i0000" --"Ee" --"Deight" --range --"b" --range --"b" --"is everything" --"AABAB"
-progVar4 = "0x0yz=2" -- "benden" --"brand" --"bendeniz" --"den" --"bendeniz" --"0x0yz=2" --"AAAaaaBBBbbbA+Aaa" --"0*x + 0*y + z = 2" --"OoUu0" --"pqrst0" --"stuvwx" --"mnopqr" --(show(tussenStap 1 3)) -- "stuvwx" --"pqrst0" --"OoUu0" --"OoUu" --"Ii" --"Elf" --"AAA" --"c" --range --"b" --tht is" -- find the "a" in wxms "that is" --"AAA"
-progVar5 = "0x0yz=2xyz=11" -- "bendeni" --"in the" --"bendeniz" --"deniz" -- "bendeniz" --"0x0yz=2xyz=11" --"AAAaaaBBBbbbA+Aaa" --"0*x + 0*y + z = 2x + y + z = 11" --"OoU0Y" --"uvwxy0" --"yz0000" --"mnopqrstuvwx" --(show (tussenStap 1 3))++(show(tussenStap 1 4)) -- "yz0000000000" --"uvwxy0" --"OoUuY" --"OoUuYy000" --"AAAaaaBBBbbbA+Aaa" --"IiOo" --"ElfFool" --"AAABBBAA" --"cd" --range --"bc" --"tht is the cse" --"that is the case" --"AAABBBAA"
-progVar6 = "xyz=11" -- "bendeniz" --"world" --"bendeniz" --"iz" -- "bendeniz" --"xyz=11" --"BBBbbbA+Aaa"--"x + y + z = 11" --"y0000" --"z00000" --"000000" --"yz0000" --(show(tussenStap 1 4)) --"000000" --"z00000" --"y0000" --"y000" -- "BBBbbbA+Aaa" --"uvwxyz" --"uvwxyz" --"Oo" --"Fool" --"BBBAA" --"d" --range --"c" --"the cse" --"the case" --"BBBAA"
+progVar1 = "0xy0z=3" -- --"0xy0z=3" -- "AAABB" --"0*x + y + 0*z = 3"-- "AaEe0" --"abcde0" --"abcdef" --"abcdef" --show(tussenStap 1 1) --"abcdef" --"abcde0" --"AaEe0" --"AaEe" --"Aa" --"Cesar" --"AAABB" --range --"1" --range211 --"a" --"The world" --"AAABB" 
+progVar2 = "0xy0z=3x0y0z=6" -- --"0xy0z=3x0y0z=6" --"AAABBAABAB"--"0*x + y + 0*z = 33*x + 0 + 0*z = 6" --"AaEeI" --"fghij0" -- "ghijkl" -- "abcdefghijkl" --(show (tussenStap 1 1))++(show(tussenStap 1 2)) -- "abcdefghijkl" --"fghij0" --"AaEeI" --"AaEeIi000" --"AaEe" --"CeaserDelight" --"AAABB"++range --"AB" --range --"ab" --range --"ab" --"The world is everything" --"AAABBAABAB"
+progVar3 = "x0y0z=6" --"x0y0z=6" --  --"x0y0z=6" --"AAABAB" --"3*x + 0 + 0*z = 6" --"i0000" --"klmno0" --"mnoprr" --"ghijkl" --(show(tussenStap 1 2)) --"mnopqr" --"klmno0" --"i0000" --"Ee" --"Deight" --range --"b" --range --"b" --"is everything" --"AABAB"
+progVar4 = "0x0yz=2" --  --"0x0yz=2" --"AAAaaaBBBbbbA+Aaa" --"0*x + 0*y + z = 2" --"OoUu0" --"pqrst0" --"stuvwx" --"mnopqr" --(show(tussenStap 1 3)) -- "stuvwx" --"pqrst0" --"OoUu0" --"OoUu" --"Ii" --"Elf" --"AAA" --"c" --range --"b" --tht is" -- find the "a" in wxms "that is" --"AAA"
+progVar5 = "0x0yz=2xyz=11" -- --"0x0yz=2xyz=11" --"AAAaaaBBBbbbA+Aaa" --"0*x + 0*y + z = 2x + y + z = 11" --"OoU0Y" --"uvwxy0" --"yz0000" --"mnopqrstuvwx" --(show (tussenStap 1 3))++(show(tussenStap 1 4)) -- "yz0000000000" --"uvwxy0" --"OoUuY" --"OoUuYy000" --"AAAaaaBBBbbbA+Aaa" --"IiOo" --"ElfFool" --"AAABBBAA" --"cd" --range --"bc" --"tht is the cse" --"that is the case" --"AAABBBAA"
+progVar6 = "xyz=11" --  --"xyz=11" --"BBBbbbA+Aaa"--"x + y + z = 11" --"y0000" --"z00000" --"000000" --"yz0000" --(show(tussenStap 1 4)) --"000000" --"z00000" --"y0000" --"y000" -- "BBBbbbA+Aaa" --"uvwxyz" --"uvwxyz" --"Oo" --"Fool" --"BBBAA" --"d" --range --"c" --"the cse" --"the case" --"BBBAA"
 
 progLiT = [progVar1,progVar3,progVar4,progVar6] --["A","A","A","A","A","A"] --["AAABB","AABAB","AAA","BBBAA"]
 
@@ -1248,7 +1248,7 @@ fourierFS x = (fS1o4 x + fS2o4 x +fS3o4 x +fS4o4 x)
 --stream0:  mq-functions-> prog variables-> ptc-functions -> plot2d => ptc as [(num String)]  and/or mq-functions
 --
 --stream1:                 prog variables-> experienced/-> plot2ds=>  1. (take 2) any [x,y,z] to [x,y] with e.g 'plot2dFour2 (take 2) 130'
---                   :                      biases                    2. taile    any [x,y,z] to [yz]  with     'plot2dFour2 tail 130'
+--                   :                      biases                    2. tail    any [x,y,z] to [y,z]  with     'plot2dFour2 tail 130'
 --                  6.  
 --
 --new bias
