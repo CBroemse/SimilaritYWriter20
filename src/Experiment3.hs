@@ -751,7 +751,7 @@ findinCd wo ist = (findinCdRAW wo ist)
 qw wo ist r = (foStrCd wo ist r)
 
 
---find the gap in the data
+--find the gap in the data 11-1-21
 -- show the occurance of Char number n in a [Char]
 -- *Experiment3> foStrCd "werfgrrrrf" "wrerfrfrrf" 4
 -- [4,6,9]
@@ -759,7 +759,8 @@ qw wo ist r = (foStrCd wo ist r)
 -- []
 -- *Experiment3> foStrCd "werfgrrrrf" "wrerfrfrrf" 6
 -- [1,3,5,7,8]
-
+----------------------------------------
+-- pre 2021
 -- qw3 ready to map for different ist's(guesses)
 -- domain: higher domain of this program
 --         if 'domain' = "" then no restrictions
@@ -933,7 +934,7 @@ countABCs n wantedList solution foCalc = let stap1RAW countN wantedList solution
 -- generate one random Int based on 'rekenen'  
 runCellRAW n wantedList solution = countABCs n wantedList solution (rekenen)
 --   
---  *Experiment3> takeMY 4 3 [1,2,5,5]
+--  *Experiment3> takeMY 4 3 [1,2,5,5] --11-1-21
 --  [[1,2,5,5],[1,2,5,5],[1,2,5,5]]
 --
 --
@@ -947,7 +948,7 @@ runCellRAW n wantedList solution = countABCs n wantedList solution (rekenen)
 --                                                                                -> inActie 
 --
 --  e.g*> (map (runCell n [1,66,34,99,0]) [1..100])
-                                                                                
+-------------------------------------------------------------------------------------------------------------                                                                                
 runCellRnd want sol n = runCellRAW n want sol
 
 runLists wantedist= let a= 100*wantedist
@@ -1022,7 +1023,7 @@ cellStream3 solu n= map (ogR solu) (runLists n)
 -- pi: Punkt , if intern switches intern 
 --             else extern
 --e.g> 
---external cell run
+--external cell run   ################################################## 11-1-21 cell reason
 ---------------------
 --pi: Punkt "extern" ...; guess String e.g "ddd"
 --    ||                ||
