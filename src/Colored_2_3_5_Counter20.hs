@@ -1202,16 +1202,16 @@ ptcSolution x = sin x *   1
  --                              or  [map ord "sqrt(x+y+z)"] -> [115,113,114,116,40,120,43,121,43,122,41]
  --
 --functionSol1comp = 
---fS1c =  [0,3,0,3]  -- [[51,42,121],[45,62],[51]]
---fS2c = [6,0,0,6]   -- [[54,42,120],[45,62],[54]]
---fS3c = [0,0,2,2]  -- [0,0,122,61]
---fS4c = [1,1,1,11] -- [map ord "xyz->11"] -> [[120,121,122,45,62,49,49]]
-{-
-fS1c = [0,1,0,3]  -- [[51,42,121],[45,62],[51]]
-fS2c = [1,0,0,6]   -- [[54,42,120],[45,62],[54]]
-fS3c = [0,0,1,2]  -- [0,0,122,61]
-fS4c = [1,1,1,11] -- [map ord "xyz->11"] -> [[120,121,122,45,62,49,49]]
--}
+fS13c =  [0,3,0,3]  -- [[51,42,121],[45,62],[51]]
+fS23c = [6,0,0,6]   -- [[54,42,120],[45,62],[54]]
+fS33c = [0,0,2,2]  -- [0,0,122,61]
+fS43c = [1,1,1,11] -- [map ord "xyz->11"] -> [[120,121,122,45,62,49,49]]
+
+fS12c = [0,1,0,3]  -- [[51,42,121],[45,62],[51]]
+fS22c = [1,0,0,6]   -- [[54,42,120],[45,62],[54]]
+fS32c = [0,0,1,2]  -- [0,0,122,61]
+fS42c = [1,1,1,11] -- [map ord "xyz->11"] -> [[120,121,122,45,62,49,49]]
+
 fS1c = [0,3,0,9]  -- [[51,42,121],[45,62],[51]]
 fS2c = [6,0,0,36]   -- [[54,42,120],[45,62],[54]]
 fS3c = [0,0,2,4]  -- [0,0,122,61]
@@ -1221,8 +1221,13 @@ fS4c = [1,1,1,121] -- [map ord "xyz->11"] -> [[120,121,122,45,62,49,49]]
 cgrf t r = sin (head(ausw r t))
 fScompute foFS = map (cgrf foFS) [1..4] -- e.g map (cgrf fS1c) [1..4] 
 fSAllCompute = map fScompute [fS1c,fS2c,fS3c,fS4c]
+fSAllCompute2 = map fScompute [fS12c,fS22c,fS32c,fS42c] -- has Int step
+fSAllCompute3 = map fScompute [fS13c,fS23c,fS33c,fS43c]
+
 fSCollm t = head$ausw t fSAllCompute
-fSRow t = head $ ausw t $ transpose fSAllCompute
+fSRow t = head $ ausw t $ transpose fSAllCompute3
+-- without transpose could refer to length of solution
+fSRowLength t = head $ ausw t $  fSAllCompute2
 fSde n fsTsnd = F.fofourierRAW n fsTsnd [(fSRow 1),(fSRow 2),(fSRow 3),(fSRow 4)] 
 fSRaw x y fstOsnd = (sin (( head (fSde y fstOsnd ))*x))+(sin((head( fSde y (fstOsnd+1)) )*x))  +  (sin((head( fSde y (fstOsnd+2)))*x )) + (sin((head ( fSde y (fstOsnd+3)))*x ))                         
 fS1o4 x = fSRaw x 1 1
@@ -1231,6 +1236,60 @@ fS3o4 x = fSRaw x 3 1
 fS4o4 x = fSRaw x 4 1
 fourierFS x = (fS1o4 x + fS2o4 x +fS3o4 x +fS4o4 x)
 
+-- Watch the files written in below functionn:
+--  plot2dFour2 (take 2) 130
+-- the result is a sine function representing possible solutions to
+-- a given pv-matrix ( a matrix made out of variable pv functions (progVar)
+-- they represent different ?biases? (experience in some sence) that shows how a certain
+-- list of program variables can be solved. 
+-- read via 'allCompute, allCompute2, alCompute3 passed to
+--
+--
+--stream0:  mq-functions-> prog variables-> ptc-functions -> plot2d => ptc as [(num String)]  and/or mq-functions
+--
+--stream1:                 prog variables-> experienced/-> plot2ds=>  1. (take 2) any [x,y,z] to [x,y] with e.g 'plot2dFour2 (take 2) 130'
+--                   :                      biases                    2. taile    any [x,y,z] to [yz]  with     'plot2dFour2 tail 130'
+--                  6.  
+--
+--new bias
+-- *Experiment3> let li5 = ["xyz+123456789","0xy0z=3","1x0y0z=6","0x0yz=2","0x0yz=2x"]
+--     simple step algorithm : I. start with 12
+--                               if result is the solution of one prog variables 
+--               (within a certain variance e.g "y3=y3y3y3y3" compared to ,"0xy0z=3" -> y=3 ??)
+--                 
+--                 I. raise by one (n+1) else do n
+-- e.g 
+-- *Experiment3> map chr (poolBandNotB li5 12)
+-- "04304040404"
+-- *Experiment3> map chr (poolBandNotB li5 122)
+-- "04304040404"
+-- *Experiment3> map chr (poolBandNotB li5 1222)
+-- "0x50x0x0x0x"
+-- *Experiment3> map chr (poolBandNotB li5 12222)
+-- "y3=y3y3y3y3"
+-- *Experiment3> map chr (poolBandNotB li5 12)
+-- "04304040404"
+-- *Experiment3> map chr (poolBandNotB li5 123)
+-- "16z16161616"
+-- *Experiment3> map chr (poolBandNotB li5 1233)
+-- "=00=0=0=0=0"
+-- *Experiment3> map chr (poolBandNotB li5 12333)
+-- "+=y+=+=+=+="
+-- *Experiment3> map chr (poolBandNotB li5 123333)
+-- "0003000303"
+-- *Experiment3> map chr (poolBandNotB li5 1233333)
+-- "20x=20202020"
+-- *Experiment3> map chr (poolBandNotB li5 12333334)
+-- "2zx2z2z2z2z"
+-- *Experiment3> map chr (poolBandNotB li5 123333345)
+-- "0z80z0z0z0z"
+-- *Experiment3> map chr (poolBandNotB li5 1233333455)
+-- "3xy23x3x3x3x"
+-- *Experiment3> map chr (poolBandNotB li5 12333334556)
+-- "yx=yxyxyxyx"
+-- *Experiment3> map chr (poolBandNotB li5 123333345566)
+-- "=y20=y2=y2=y2=y2"
+--
 ptc7  n = pointCloud07 n
 ptc8  n = pointCloud08 n 
 ptc9  n = pointCloud09 n  
@@ -1536,7 +1595,8 @@ petZip r = realToFrac r
 dummy takeNtail foptc manyInts =  (concat$ptc3dTo2dx2 (takeNtail) (foptc manyInts)) --(take (length foptc) [(petZip r),(petZip r)..])
 dummy2 r foptc manyInts = (take (length (foptc manyInts)) [(petZip r),(petZip r)..]) 
  
-ptc3dTo2d r takeNtail foptc manyInts = zipWith (/) (dummy2 r foptc manyInts) (dummy takeNtail foptc manyInts)
+ptc3dTo2d r takeNtail foptc manyInts = ( (zipWith (/) (dummy2 r foptc manyInts) (dummy takeNtail foptc manyInts)))
+-- try r = (1/9) ?? as mq functions are tuned (1/90) 
 
 vb x = let as = accesFuncWX33 4 [map show(map pg4 [1..(x)])] [map show(map pg3 [1..(x)])] [map show(map pg2 [1..(x)])] [map show(map fovB [1..(x)])] [1..x] "100" --[map show(map fovB [1..(x)])] [1..x] "100"
        in writeFile "2dpgFunctions.wxm" as
@@ -1544,6 +1604,11 @@ vb x = let as = accesFuncWX33 4 [map show(map pg4 [1..(x)])] [map show(map pg3 [
 plot2dFourierFS vb x = let as = accesFuncWX33 4 [map show(map pg4 [1..(x)])] [map show(map pg3 [1..(x)])] [map show(map pg2 [1..(x)])] [map show(map pg1 [1..(x)])]  [1..x] "100"
        in writeFile "2dpgFunctions.wxm" as
 
+plot2dFour takeNtail x = let as = accesFuncWX33 5 [(map show(ptc3dTo2d (1/9) takeNtail ptc4 x))]  [(map show(ptc3dTo2d (1/9) takeNtail ptc5 x))] [(map show(ptc3dTo2d (1/9) takeNtail ptc6 x))] [map show(map pg1 [1..(x)])] [1..x] "100"  --[map show(map (ptc3dTo2d (1/9) takeNtail ptc5) [1..(x)])] [map show(map (ptc3dTo2d (1/9) takeNtail ptc6) [1..(x)])] [map show(map (ptc3dTo2d (1/9) takeNtail ptc6) [1..(x)])]  [1..x] "100"
+                         in writeFile "2dptc4to6Functions.wxm" as
+
+plot2dFour2 takeNtail x = let as = accesFuncWX33 4 [(map show(ptc3dTo2d (1/9) takeNtail ptc6 x))]  [(map show(ptc3dTo2d (1/9) takeNtail ptc7 x))] [(map show(ptc3dTo2d (1/9) takeNtail ptc9 x))] [map show(map fovB [1..(x)])] [1..x] "100"  --[map show(map (ptc3dTo2d (1/9) takeNtail ptc5) [1..(x)])] [map show(map (ptc3dTo2d (1/9) takeNtail ptc6) [1..(x)])] [map show(map (ptc3dTo2d (1/9) takeNtail ptc6) [1..(x)])]  [1..x] "100"
+                         in writeFile "2dptc4to6Functions.wxm" as
 
 
 vb2 x = let as = accesFuncWX33 4 [(map (F.fourierMQ3 1) [1..(x)])] [(map (F.fourierMQ3 2) [1..(x)])] [(map (F.fourierMQ3 3) [1..(x)])] [(map pg11 [1..(x)])]  [1..x] "1500"
