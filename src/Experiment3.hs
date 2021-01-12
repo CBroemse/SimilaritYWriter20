@@ -664,14 +664,14 @@ commmB2 ap ap3 t = let buildA r = readAnyTh r
 -- via a C' in 2d or in 3d with C to visualize
 -- a general C where BgivenA 'CgeneralBgivenA'            
 --
--- concept                                                  A _____B
--- -------                                                   /     \
---            |      B      |    not B  |    C .. ----\  A' /       \  not
--- Astigmatic | 'aBgivenA'  |           |              \    \       /  B
--- -- ----------------------------------------         /     \____ /
--- not stigm- |                                   ----/      C'    C'
--- -- matic   |                                                \  /
---                                                              C
+-- concept                                                   A _____B
+-- -------                                                    /     \
+--             |      B      |    not B  |    C .. ----\  A' /       \  not
+-- Astigmatic  | 'aBgivenA'  |           |              \    \       /  B
+-- -- -----------  ----------------------------         /     \____ /
+-- not Astigm- |                                   ----/      C'    C'
+-- -- matic    |                                                \  /
+--                                                               C
 --
 -- syntax
 -- -------                                                             
@@ -745,6 +745,12 @@ easyCd wo k = sort$group k >>= (findinCd wo)
 -- Experiment3> foStrCd "wer" "r" 3
 -- [1]  -- where is 'r' in 'wer' look ONLY at occurance position 3 (spot 3) 
 foStrCd wo ist das =  commmB  wo ist das
+
+dasErrHnl k m = if (length k<= m) then (length k) else m
+           
+
+baysianType wo ist = map (foStrCd wo ist) [1..(dasErrHnl ist (length ist))]
+
 findinCdRAW wo ist = (map (foStrCd wo ist) [1..(length ist)])
 findinCd wo ist = (findinCdRAW wo ist)
 -- reflexive function show me where B in A =>
@@ -809,12 +815,13 @@ theA' = head li4
 --theB's -- of commmB
 ------------------------------------ ##################################################################### B's
 -- we can run a list of the length n and see which letters of a solution occure.
---   1. Asumption1 all Chars in the solution will occure with
---            given all Chars from 48 .. until 128 
+--   1. assumption 1 all Chars in the solution will occure given all Chars from 48 .. until 128 
 --                    WITHOUT...
 
 --guess based on 'quirky example'
 -- based on variable li2
+-- li :: [[String]]
+-- li3 :: [String]
 theB' li2 li3= (head(head(experiment3RAW22 "DFDGGGF" li2 subroutinE C.ptc7 [li3]))) 
 
 -- choose 4 variables as to build pv functions
@@ -1028,13 +1035,15 @@ cellStream3 solu n= map (ogR solu) (runLists n)
 --pi: Punkt "extern" ...; guess String e.g "ddd"
 --    ||                ||
 --    \/                \/
---  kArmWORK       triggerWord   -> runEXP3  -> cellStream3EXT
+--  kArmWORK       triggerWord   -> runEXP3  -> cellStream3EXT   -> expressAinA
+--                                                               -> expressAsinA
 --                                           -> simVALS
 --                                           -> runEXP3Char
 --                                           -> experiment3RAW11
---                                           -> experiment3RAW22  -> buildPrior
---                                                                -> theB'
---                                                                -> theBQuirky
+--                                           -> experiment3RAW22  -> buildPrior                      no use yet
+--                                                                -> theB' -> -- li :: [[String]]
+--                                                                               li3 :: [String]     no use yet
+--                                                                -> theBQuirky                      no use yet
 --                                           -> experiment3RAW23 -> commmB  -> foStrCd ->  qw wo ist r = (foStrCd wo ist r)
 
 --                                                               -> commmB2
