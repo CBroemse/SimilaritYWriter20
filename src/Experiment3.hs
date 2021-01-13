@@ -1,7 +1,14 @@
 -- this module provides:
 -- --------------------------------------
--- EXPERIMENT 3             syntax                              concept
+-- EXPERIMENT 3                                                
+-- the output of functions    
+-- themselves has a           syntax            AND/OR           a concept
+-- functions used with type pure outpout e.g 
+--                            kArmWORK                            kArmTest5
+--                       is a work version for other      is to illustrate this function in ghc on screen
+--                       computations
 --glossary: 
+--                            syntax                             concept
 --   kArmTest5                                      sample IO, a do monad to sort a given li list
 --                                                  ment to be a display in 'where' passage of function, an example how to access
 --                                                  all functions dispayed there, that are accesable via allFunctions'. 
@@ -11,16 +18,59 @@
 --   experiment3RAW11                               Busschop and Bradly ??? also see 'Colored_2_3_5_Counter20.hs, build a hexagon
 --                                                  turn 3d ptc functions in 2d/3d svg  
 --
---  poolBandNotB                                    based on liT, give a list of strings  
+--   baysianType                                    determine from String to String 
+--
+--   poolB           e.g*>map chr $ poolB li4 5     just parse the input li -> always show one 'Char' as  'x' :[] -> [Char]
+                                       --             [String] -> Int -> p (B|A) -> if lenght li > Int => always B or CELLI
+--                   with conditionI always B          li      -> solution => Baysian Type , CELLI  ... needs type check qw??? 
+--
+--   poolBorNotB                                    how many possibities are there?   128-48 * (length li)*(Int of population)  
+--   poolBorNotBdif                                                                       80*(length$concat li)*a
+--                                                  [String] -> a Int -> n Int -> if length i > a == True then  always B and/or not B
+--                                                                             => always cell II 
+--                                                  
+--                       --
+--   poolBandNotB                                   based on liT, give a list of strings  
 --                                                  import li -> randomize input -> give noisy output,   Baysian approach*1
 --                                                  enter in defSearch how many Int to take 
 --
---  expressAsinA
+--   buildPrior        given a  let gh r = chainDistribute r ["2","2","1"] r (lines "1")
+--                                                   
+--                                                  not used yet : expressAsinA, expressAinA                                                                                                 
+--  astigmatic::= arithmetic reihe order n
+--                 with A beard= order 2 ?!?
 --
---  expressAinA                                                                                                 
--- 
+--   runEXP3Char 
+--
+--   inActie                                        1. output fix number of suggested astigmatic A:   [String] -> [String]
+--
+--                                                            the difference between an P(A|B) and P(A|notB) is
+--                                                            the order in which letters occure
+--                                                            order 
+--                                                  2.        a letter recommondation plus possible solutions to 
+--                                                            that letter 
+--                                                  3.        fix number of type BaysianType one of many
+--                                                            possible lines concsists of: [[Int]]
+--
+-- concept                                              beard  vs   not beared
+-- -------                                                   :     :
+--                beard        not beared                    :     :
+--                collum I       collumII                 wo :_____:ist   
+--            --------------------------                    /      \    
+--    row I A |      B      |    not B  |    C .. --\  wo' /        \ 
+--  astigmatic| '  cell I   |   cell II |            \  |  \        / ist' 
+-- -- ----------------------------------------       / \|/  \______/    
+--   row II A'|     B       |    not B  |         --/  C'of wo     C' of ist
+-- not astigm |   cell III  |   cell IV |                     \  /
+-- - matic    --------------------------         
+--
+--
+-- compare "intern" "extern" "cell"
+-- --------------------------------
+--
+--
 -- *1) Baysian approach
--- A= the occoring and non ocurring Chars of an ideal
+-- A= the occoring and non ocurring Chars of an ideal==prior==bias ???
 --  a solution depends on various As.
 --  A : One based on the ordered Char list 
 --  A' :Another based on the 'quirky example'
@@ -33,14 +83,9 @@
 -- via a C' in 2d or in 3d with C to visualize
 -- a general C where BgivenA 'CgeneralBgivenA'            
 --
--- concept                                                  A _____B
--- -------                                                   /     \
---            |      B      |    not B  |    C .. ----\  A' /       \  not
--- Astigmatic | 'aBgivenA'  |           |              \    \       /  B
--- -- ----------------------------------------         /     \____ /
--- not stigm- |                                   ----/      C'    C'
--- -- matic   |                                                \  /
---                                                              C
+--               C  
+
+  --                                       C
 --
 -- syntax
 -- -------                                                             
@@ -633,8 +678,9 @@ experiment3RAW23 ghAdd d subroutineList foPtc foLi gb1 gb2 = do
 --               *> [4]
 focommmB ap ap3 t = let atSpot ap ap3 t = (head (ausw t ap)) `elemIndices` (ap3)
                     in atSpot ap ap3 t
-buildPrior r = let buildA r = readAnyTh r
-               in head$ last (experiment3RAW22 "DF" [buildA r] subroutinE C.ptc7 [buildA r]) 
+-- guess: String e.g "DrF3" 
+buildPrior r guess  = let buildA r = readAnyTh r
+                      in head$ last (experiment3RAW22 guess [buildA r] subroutinE C.ptc7 [buildA r]) 
 
 commmB ap ap3 t = let buildA r = readAnyTh r
          --  in let aprior = head$ last (experiment3RAW22 "DF" [buildA r] subroutinE C.ptc7 [buildA r]) 
@@ -746,11 +792,39 @@ easyCd wo k = sort$group k >>= (findinCd wo)
 -- [1]  -- where is 'r' in 'wer' look ONLY at occurance position 3 (spot 3) 
 foStrCd wo ist das =  commmB  wo ist das
 
-dasErrHnl k m = if (length k<= m) then (length k) else m
-           
+-- still collapses if mWidth does not occure -> if length k < length mWidth == true
+--                                           then Error0
+dasError0 k mWidth = if (length k<= mWidth) then (length k)
+                             else mWidth
 
-baysianType wo ist = map (foStrCd wo ist) [1..(dasErrHnl ist (length ist))]
+-- still collapses if mWidth does not occure -> if length k < length mWidth == true
+--                                           then Error0
+dasErrHnl k nHeight mWidth = if (length k<=length mWidth) then (length k)
+                             else if (length k<length nHeight) then (length nHeight)
+                             else if (length mWidth<length k)&&(length mWidth<length k) then read nHeight
+                             else length mWidth
 
+
+--cell1to4: 12-1-21 ----------------------------------------------------######################################################reason about cell I ..IV 
+--doesnt need Int input as syntax but as concept -> condition length k >= length ist
+--                                               => needs right length ist -> Int
+--                                                  needs right order to be cellI...
+--besides error proneness there must be an right order to 
+-- be cellI <- cellII <- cellIII <- always starts cellIV
+--                                  with Punkt Error handler always could?
+--                               <- right letters 
+--                               <- right order of letters e.g 'chainDistribute'
+--                               
+baysianTypeUnsafe wo ist = map (foStrCd wo ist) [1..(dasError0 ist (length ist))]
+-- still collapses if mWidth does not occure -> if length k < length mWidth == true
+--                                           then Error0
+-- stores a String -> Int in nHeight
+-- wo: String , a population
+--
+baysianTypeInt wo nHeight ist = map (foStrCd wo ist) [1..(dasErrHnl ist nHeight ist)]
+--------------------------------------------------------------------------------------------------------------
+
+-- before 1-1-21
 findinCdRAW wo ist = (map (foStrCd wo ist) [1..(length ist)])
 findinCd wo ist = (findinCdRAW wo ist)
 -- reflexive function show me where B in A =>
@@ -951,12 +1025,13 @@ runCellRAW n wantedList solution = countABCs n wantedList solution (rekenen)
 --                               |  rekenen   |
 --                                   ||              
 --                                   \/
---   takeMY =>      countABCs -> runCellRAW -> runCellRnd -> ogR -> cellStream3   -> poolnotB
+--   takeMY =>      countABCs -> runCellRAW -> runCellRnd -> ogR -> cellStream3   -> poolBorNotB 
 --                                                                                -> inActie 
 --
 --  e.g*> (map (runCell n [1,66,34,99,0]) [1..100])
 -------------------------------------------------------------------------------------------------------------                                                                                
 runCellRnd want sol n = runCellRAW n want sol
+runCellRnd2 wantedList solution n =  countABCs n wantedList solution (rekenen2)
 
 runLists wantedist= let a= 100*wantedist
                     in [a..(a+100)] 
@@ -981,7 +1056,16 @@ oglleLocateSolu expanS solution nIdeal = let findSol sol want = map length (orga
 --  cellStream1: 
 cellStream1 expanS solu t =  (oglleLocateSolu expanS (map ord (head(ausw t solu))) 421)
 poolB foli4 a = map ord (ausw a (concat foli4 ))  -- add solution here!!!
-poolnotB foli4 a n =  (ausw a (cellStream3 foli4 n))  -- add solution here!!!
+
+--  both create random number between 48 -128 
+--e.g*> theAChars
+-- both always are notB, if [[],[Int]] == true => must contain an empty list to be notB
+--    [String] -> Int -> 
+--    foli:[String] , a population
+--    a: Int        , char number which Int of population 
+--    n: Int        , random-number run number Int
+poolBorNotB foli4 a n =  (ausw a (cellStream3 foli4 n))  -- adds guess  -> maybe solution -- poolnotB
+poolBorNotBdif foli4 a n = (ausw a (cellStream3dif foli4 n))  --                                                            
 
 allLi4 foli4 expanS = map (cellStream1 expanS foli4) [1..6] -- length of a [pv] == 6
 goldTray foli4 expanS s = map (poolB foli4) (concat$concat$concat$ausw s (allLi4 foli4 expanS))
@@ -1024,8 +1108,11 @@ cellStream2 expanS solution t = organelleSearch expanS (map ord (head(ausw t sol
 --RANDOM LINE : cellStream3 
 --  unrestricted search with  
 ogR solu n = (runCellRnd 1 solu n)
+ogR2 solu n = (runCellRnd2 1 solu n) -- same as above with different random number run
 -- every n generates a new list +100
 cellStream3 solu n= map (ogR solu) (runLists n)
+cellStream3dif solu n= map (ogR2 solu) (runLists n)
+
 {- connect to EXTERNAL via triggerWord' last state domain must be changed .........................  -}   
 -- pi: Punkt , if intern switches intern 
 --             else extern
@@ -1094,14 +1181,18 @@ simVALS foPunkt ghAdd foli = runEXP3 foPunkt foli ghAdd
 -- RANDOM number generators
 
 longRun variance t = head $ zufallsBasic1 1 variance t
+longRun2 variance to n = last $ zufallsBasic1 n variance to
 -- variance 'from' Int 'to' Int n-many steps
-rekenenRAW to from n =  ( ( longRun to n)+from) 
+rekenenRAW to from n =  ( ( longRun to n)+from)
+rekenenRAW2 to from n =  longRun2 from to n 
+ 
 rekenen r = (rekenenRAW 80 48 r) --comparEB (head(ausw r ([li]))) (map show [1..( ( longRun 80 r)+48)])
+rekenen2 r = (rekenenRAW2 80 48 r) 
 ----------------------------------------------------
 
 -------------------------------------------------------------------------
 -- calculate Ints for String -> [Char]-> [Ord]-> add or substract
-aBgivenA li =  ((buildPrior li))
+-- aBgivenA li =  ((buildPrior li))
 allB = readAnyTh C.progLiT
 -----------------------------------------------------------
 
