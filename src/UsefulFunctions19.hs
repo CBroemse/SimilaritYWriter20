@@ -1,6 +1,7 @@
 module UsefulFunctions19 (
           replaceE
         , replaceColon
+        , replaceDit
    --     , getCurrentTime
         , zufallsBasic1
         , getInts
@@ -62,6 +63,7 @@ import DataTypePunkt
 
 replaceE = map (\c -> if c=='e' then '1'; else c)
 replaceColon = map (\c -> if c==',' then ' '; else c)
+replaceDit dit dat = map (\c -> if c== dit then dat; else c)
 
 
 add :: [String] -> IO ()  

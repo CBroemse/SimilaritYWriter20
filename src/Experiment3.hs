@@ -11,7 +11,7 @@
 --                            syntax                             concept
 --   kArmTest5                                      sample IO, a do monad to sort a given li list
 --                                                  ment to be a display in 'where' passage of function, an example how to access
---                                                  all functions dispayed there, that are accesable via allFunctions'. 
+--                                                  all functions displayed there, that are accesable via allFunctions'. 
 --
 --   kArmWORK                                       same as above but only one output(no GUI) to be used in other computations  
 --
@@ -22,21 +22,39 @@
 --
 --   poolB           e.g*>map chr $ poolB li4 5     just parse the input li -> always show one 'Char' as  'x' :[] -> [Char]
                                        --             [String] -> Int -> p (B|A) -> if lenght li > Int => always B or CELLI
---                   with conditionI always B          li      -> solution => Baysian Type , CELLI  ... needs type check qw??? 
+--                   with conditionI always B          li      -> solution 
+--                                                   => Baysian Type , CELLI  ... needs type check qw??? 
 --
---   poolBorNotB                                    how many possibities are there?   128-48 * (length li)*(Int of population)  
---   poolBorNotBdif                                                                       80*(length$concat li)*a
+--   poolBorNotB     *> poolBandNotB li4 3          how many possibities are there?   128-48 * (length li)*(Int of population)  
+--   poolBorNotBdif  *> poolBandNotBdif li4 3 [4,3,2,6,7,1]   80*(length$concat li)*a
 --                                                  [String] -> a Int -> n Int -> if length i > a == True then  always B and/or not B
---                                                                             => always cell II 
+--                                                  => BaysianTyper cell II 
 --                                                  
 --                       --
 --   poolBandNotB                                   based on liT, give a list of strings  
 --                                                  import li -> randomize input -> give noisy output,   Baysian approach*1
 --                                                  enter in defSearch how many Int to take 
 --
+--   poolBandNotBdif                                 takes an [Int] that has now further side effects yet, could be used
+--                                                  with simiVal (exter?? intern? cell?) to find a meassure of order for the given sequence of Chars
+--
 --   buildPrior        given a  let gh r = chainDistribute r ["2","2","1"] r (lines "1")
 --                                                   
---                                                  not used yet : expressAsinA, expressAinA                                                                                                 
+--                                                  not used yet : expressAsinA, expressAinA   
+--                                                    
+--  cellStream1 (cellStream1 33 li4 2 )               [String] -> Int    => BaysianType ->  CELL IV rename to cellstream4???
+--                                                      li     -> charNo => show order in Type -> [Int] <=> String -> human interpretations  
+--                                                    even if result does not carry the right letters it might
+--                                                    carry the right minimal order, it can compare the length of the result to one string of li
+--                                                    and possibly compare the length of a result with a guess 
+--                                                    and see if the invoced cellStream has similar groups in occuring letters. 
+--
+--  cellStream2  (cellStream2 3 li4 1 )=romi          [String] -> Int => [Int] <=> [Int] -> computational interpretatiosn 
+--                                                    show zero space -> find positions zeros -> 
+--                  *> [0] `elemIndices` romi         => [Int] order of occourance of zeros
+--                  [106,146,186,432,472]                                                
+--                                                     
+--  cellStream3  map chr (cellStream3 li4 22222222)   [String] -> Int => [Int] <=> String -> human interpretatiosn 
 --  astigmatic::= arithmetic reihe order n
 --                 with A beard= order 2 ?!?
 --
@@ -1014,6 +1032,8 @@ countABCs n wantedList solution foCalc = let stap1RAW countN wantedList solution
                else foCalc n
 -- generate one random Int based on 'rekenen'  
 runCellRAW n wantedList solution = countABCs n wantedList solution (rekenen)
+runCellRAWdif n wantedList solution = countABCs n wantedList solution (rekenen2)
+
 --   
 --  *Experiment3> takeMY 4 3 [1,2,5,5] --11-1-21
 --  [[1,2,5,5],[1,2,5,5],[1,2,5,5]]
@@ -1031,20 +1051,36 @@ runCellRAW n wantedList solution = countABCs n wantedList solution (rekenen)
 --  e.g*> (map (runCell n [1,66,34,99,0]) [1..100])
 -------------------------------------------------------------------------------------------------------------                                                                                
 runCellRnd want sol n = runCellRAW n want sol
-runCellRnd2 wantedList solution n =  countABCs n wantedList solution (rekenen2)
+runCellRnddif wantedList solution n =   runCellRAWdif n wantedList solution
 
 runLists wantedist= let a= 100*wantedist
                     in [a..(a+100)] 
 -- expandS +1 give 100 new random numbers
 organelleFind expanS solution n = (map (runCell n solution) (runLists expanS))
+organelleFinddif expanS solution n = (map (runCelldif n solution) (runLists expanS))
+
 
 -- solutions of B in A and A' in [0]  ------------------------######################################### locate SOLUTIONS A HERE
 organelleSearch expanS solution = map (organelleFind expanS solution) [1..(length solution)] -- solution depending of length guess
+organelleSearchdif expanS solution = map (organelleFinddif expanS solution) [1..(length solution)] 
 oglleLocateSolu expanS solution nIdeal = let findSol sol want = map length (organelleFind expanS sol want)
                   in let findposis want sol foN = foN `elemIndices` (findSol sol want)
                   in let mapUp want = map (findposis want solution) [1..(length solution)]
                   in map mapUp [1..6] -- getposis -- mapUp wanted --getposis --solution wanted nIdeal  
---oranelleGETsolution =  
+
+-- orderK : [Int] ; new order has no side effect yet
+-- shall be used together with SimiVal , compare orderK with order in solution
+--       and with order in guess  simiVal orderK li 
+--       and 
+--         simiVal orderK guess
+--    => find underlaying order ??? 
+-- stillyields different output  to function above due to different random number
+--       simiVal something to oglleLocateSolu
+oglleLocateSoludif expanS solution nIdeal orderK = let findSol sol want = map length (organelleFinddif expanS sol want)
+                  in let findposis want sol foN = foN `elemIndices` (findSol sol want)
+                  in let mapUp want = map (findposis want solution) [1..(length solution)]
+                  in map mapUp orderK -- getposis -- mapUp wanted --getposis --solution wanted nIdeal  
+ 
 
 ---------------------------------------------------------------------------------------------------
 -- Three streams in and out of cells -----------------------------------------------------------
@@ -1053,8 +1089,17 @@ oglleLocateSolu expanS solution nIdeal = let findSol sol want = map length (orga
 -- SOLUTIONS B, not b, A ,astigmatic -----------------------------------------------------
 -- ---------------------------------------------------------------------------------------
 --  1   in ----> the solution -----> B -----> out
---  cellStream1: 
+--  cellStream1:
+--  important depending of how the concept is understood how to appy the baysian logic
+--   *Experiment3> map chr $concat$concat$(cellStream1 533333333 li4 6)
+--  "\DLE8`'O"   -- one could understand this being                     cell I and cell II
+--  also  "\DLE8`'" ++ "0" -> not arithmetic A ++ arithmetic A ??       cell I and cell III
+--
+-- can give cellI + cell II or cell I + cell III
 cellStream1 expanS solu t =  (oglleLocateSolu expanS (map ord (head(ausw t solu))) 421)
+--orderK:[Int] ; which order to test Chars in li
+cellStream1dif expanS solu orderK t =  (oglleLocateSoludif expanS (map ord (head(ausw t solu))) 421 orderK)
+
 poolB foli4 a = map ord (ausw a (concat foli4 ))  -- add solution here!!!
 
 --  both create random number between 48 -128 
@@ -1068,9 +1113,18 @@ poolBorNotB foli4 a n =  (ausw a (cellStream3 foli4 n))  -- adds guess  -> maybe
 poolBorNotBdif foli4 a n = (ausw a (cellStream3dif foli4 n))  --                                                            
 
 allLi4 foli4 expanS = map (cellStream1 expanS foli4) [1..6] -- length of a [pv] == 6
+allLi4dif foli4 orderK expanS = map (cellStream1dif expanS foli4 orderK ) [1..6] -- length of a [pv] == 6
+
 goldTray foli4 expanS s = map (poolB foli4) (concat$concat$concat$ausw s (allLi4 foli4 expanS))
+goldTraydif foli4 orderK expanS s = map (poolB foli4) (concat$concat$concat$ausw s (allLi4dif foli4 orderK expanS))
 poolBandNotB foli4 expanS=  concat$ concat(map (goldTray foli4 expanS) [1..(length foli4)])
+poolBandNotBdif foli4 orderK expanS=  concat$ concat(map (goldTraydif foli4 orderK expanS) [1..(length foli4)])
+
+--
+-- all find solutions but are computationally expensive--------------------------------------------------
 tbeMapped foli4 t = map chr (poolBandNotB foli4 t)
+tbeMappeddif foli4 orderK t = map chr (poolBandNotBdif foli4 orderK t)
+
 --  2      ----> the Zero space ---> [[0]] -----> out
 --               indicate the position of all solutions 
 --               OF THIS B in A
@@ -1078,10 +1132,15 @@ tbeMapped foli4 t = map chr (poolBandNotB foli4 t)
 -- e.g*> rek2 2 
 -- *> "zz6zz6zz6zz6zz6zz6"
 bAndNotB foli4 n = filter(/='0') (head (ausw n (nub$ map (tbeMapped foli4) [1..100])))
+bAndNotBdif foli4 orderK n = filter(/='0') (head (ausw n (nub$ map (tbeMappeddif foli4 orderK) [1..100])))
+
+
 likelyhood foli4 n = let step1 =  ((bAndNotB foli4 n))
                      in let step2 = nub$reverse$sort step1
                      in if (length step2) == 1 then take 1 step1 
-                        else show ( cellInt (nub$reverse$(sort (bAndNotB foli4 n)))-1) 
+                        else show ( cellInt (nub$reverse$(sort (bAndNotB foli4 n)))-1)
+
+ 
 -- which String n of a [String] (As) does resemble 'bAndNotB' most ?
 --
 expressAsinA foli4 pi n = nub$concat$(cellStream3EXT foli4 pi ((bAndNotB foli4 n)))
@@ -1092,12 +1151,16 @@ expressAsinA foli4 pi n = nub$concat$(cellStream3EXT foli4 pi ((bAndNotB foli4 n
 -- needs v variables in solution to work. eg "e2" works
 --  "2" doesnt
 expressAinA foli4 pi n = nub$concat$(cellStream3EXT foli4 pi (likelyhood foli4 n) )
--------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------
 --NULL SPACE : cellStream2
 -- via organelleFind , organelleSearch , oglleLocate
 -- runCell -> one of above -> solutions B in A ->  cellStream1
--- to be maped with n 
+-- to be maped with n
+--  runCellRAW  -> runCell
+--  runCellRAW2 -> runCelldif 
 runCell wantedList solution n = (head (ausw wantedList solution)) `elemIndices` [runCellRAW n wantedList solution]
+runCelldif wantedList solution n = (head (ausw wantedList solution)) `elemIndices` [runCellRAWdif n wantedList solution]
+
 
 -- expanS: Int which pv function to see 1..max (sqrt [(Int range)^2] ) -- must be N > -1 	
 -- (Int range -9223372036854775808..9223372036854775807)
@@ -1108,7 +1171,7 @@ cellStream2 expanS solution t = organelleSearch expanS (map ord (head(ausw t sol
 --RANDOM LINE : cellStream3 
 --  unrestricted search with  
 ogR solu n = (runCellRnd 1 solu n)
-ogR2 solu n = (runCellRnd2 1 solu n) -- same as above with different random number run
+ogR2 solu n = (runCellRnddif 1 solu n) -- same as above with different random number run
 -- every n generates a new list +100
 cellStream3 solu n= map (ogR solu) (runLists n)
 cellStream3dif solu n= map (ogR2 solu) (runLists n)
