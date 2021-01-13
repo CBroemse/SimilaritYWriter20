@@ -7,6 +7,17 @@
 --                            kArmWORK                            kArmTest5
 --                       is a work version for other      is to illustrate this function in ghc on screen
 --                       computations
+--variables:     
+--              li      ::[String]                               any input as [String] should have minimum list length of 4
+--               => Baysian Tpye [CELLI,CELLII,CELLIII,CELLIV]                                                                 ########################################## initiate  data stream li 
+--
+--              'liSolution'::= a real Prior/Bias?!?   this String contains the 'solution' of li and liSolution:"xyz=11"                ---------------------##################### RELATED BIAS with liSolution
+--                          or " x + y + z = 11 "     a stream of data is introduced to another similar one with certain
+--                                                    properties       
+-- e.g *>let liSol = ["0*x + y + 0*z = 3","0*x + y + 0*z = 33*x + 0 + 0*z = 6","3*x + 0 + 0*z = 6","0*x + 0*y + z = 2","0*x + 0*y + z = 2x + y + z = 11","x + y + z = 11"]
+--                                                  all functions that use 'runEXP3' manouver between CELLS ?
+--                                                  can be switched to 2 different states COMPARE with "intern" vs "cell". a ghAdd::String is added to  
+
 --glossary: 
 --                            syntax                             concept
 --   kArmTest5                                      sample IO, a do monad to sort a given li list
@@ -59,7 +70,7 @@
 --                 with A beard= order 2 ?!?
 --
 --   runEXP3Char 
---
+--                                                  only depends on li
 --   inActie                                        1. output fix number of suggested astigmatic A:   [String] -> [String]
 --
 --                                                            the difference between an P(A|B) and P(A|notB) is
@@ -80,7 +91,8 @@
 -- -- ----------------------------------------       / \|/  \______/    
 --   row II A'|     B       |    not B  |         --/  C'of wo     C' of ist
 -- not astigm |   cell III  |   cell IV |                     \  /
--- - matic    --------------------------         
+-- - matic    --------------------------                                                        ########################################################  initiate  data stream li -> Baysian -> CELLS -> BIAS 
+
 --
 --
 -- compare "intern" "extern" "cell"
@@ -470,11 +482,11 @@ experiment3 ghAdd d = experiment3RAW2 1 ghAdd 1 d subroutinE
 -- *> 
 -- nforCalc: Int to be fed into 5x5 to clacuate coordinate pairs
 -- fopi: Punkt see differences internal pi2 is to generate Chars via 'runEXP3Char'
-experiment3RAW11 ghAdd d subroutineList foPtc foLi nforCalc fopi= do
+experiment3RAW11 liSolution ghAdd d subroutineList foPtc foLi nforCalc fopi= do
    -- givens:
        let moreReads = do   
             exp3Fractional <- forM [1..(length subroutineList)] (\four4 -> do
-                  let exP3 =  runEXP3 (head(ausw four4 d)) fopi ghAdd --kWORK --(G.fobase progVar1 progVar2 progVar3 progVar4 progVar5 progVar6 daZip1 daZip2 daZip3 textAA (ptcButoons) (foalt))
+                  let exP3 =  runEXP3 (head(ausw four4 d)) liSolution fopi ghAdd --kWORK --(G.fobase progVar1 progVar2 progVar3 progVar4 progVar5 progVar6 daZip1 daZip2 daZip3 textAA (ptcButoons) (foalt))
                   return (exP3))
             return exp3Fractional
        moreReads
@@ -571,7 +583,7 @@ experiment3RAW11 ghAdd d subroutineList foPtc foLi nforCalc fopi= do
 -- experiment3RAW22 "DF" li2 subroutinE C.ptc7 li2
 -- *> map ord (head(head(experiment3RAW22 "DFDF" li2 subroutinE C.ptc7 [li3])))
 -- *> [20,27,20,20]
-experiment3RAW22 ghAdd d subroutineList foPtc foLi = do
+experiment3RAW22 liSolution ghAdd d subroutineList foPtc foLi = do
    -- givens:
        let pi2 = Punkt "m" Nothing Nothing Nothing Nothing Nothing
        let ert r = tk r (foPtc 250)
@@ -583,7 +595,7 @@ experiment3RAW22 ghAdd d subroutineList foPtc foLi = do
        let maXzS = map zS [1..100]   
        let moreReads = do   
             exp3Fractional <- forM [1..(length subroutineList)] (\four4 -> do
-                  let exP3 =  runEXP3 (head(ausw four4 d)) pi2 "AAA" --kWORK --(G.fobase progVar1 progVar2 progVar3 progVar4 progVar5 progVar6 daZip1 daZip2 daZip3 textAA (ptcButoons) (foalt))
+                  let exP3 =  runEXP3 (head(ausw four4 d)) liSolution pi2 "AAA" --kWORK --(G.fobase progVar1 progVar2 progVar3 progVar4 progVar5 progVar6 daZip1 daZip2 daZip3 textAA (ptcButoons) (foalt))
                   return (exP3))
             let exp3Frac = concat$concat$exp3Fractional
             exp3IntfoChar <- forM [1] (\four4 -> do
@@ -632,7 +644,7 @@ experiment3RAW22 ghAdd d subroutineList foPtc foLi = do
      --  show (aRunner 5)
 ------------------------------------------------------------
 --similar to above shall be iterated
-experiment3RAW23 ghAdd d subroutineList foPtc foLi gb1 gb2 = do
+experiment3RAW23 liSolution ghAdd d subroutineList foPtc foLi gb1 gb2 = do
    -- givens:
        let pi2 = Punkt "m" Nothing Nothing Nothing Nothing Nothing
        let ert r = tk r (foPtc 250)
@@ -644,13 +656,13 @@ experiment3RAW23 ghAdd d subroutineList foPtc foLi gb1 gb2 = do
        let maXzS = map zS [1..100]   
        let moreReads = do   
             exp3Fractional <- forM [1..(length subroutineList)] (\four4 -> do
-                  let exP3 = [ runEXP3 (head(ausw four4 d)) pi2 "AAA" ]--kWORK --(G.fobase progVar1 progVar2 progVar3 progVar4 progVar5 progVar6 daZip1 daZip2 daZip3 textAA (ptcButoons) (foalt))
+                  let exP3 = [ runEXP3 (head(ausw four4 d)) liSolution pi2 "AAA" ]--kWORK --(G.fobase progVar1 progVar2 progVar3 progVar4 progVar5 progVar6 daZip1 daZip2 daZip3 textAA (ptcButoons) (foalt))
                   return (exP3))
             let exp3Frac = concat$concat$exp3Fractional
             exp3IntfoChar <- forM [1] (\four4 -> do
 
-                     let comp1 = runEXP3Char pi2 ghAdd (head (ausw four4 foLi))
-                     let comp2 = (zipWith (+) [1,1,1,1] (runEXP3Char pi2 ghAdd (head (ausw four4 foLi))))
+                     let comp1 = runEXP3Char pi2 liSolution ghAdd (head (ausw four4 foLi))
+                     let comp2 = (zipWith (+) [1,1,1,1] (runEXP3Char pi2 liSolution ghAdd (head (ausw four4 foLi))))
                      let comp3 = let mis t z = z - t
                                  in (map (mis 1) (runEXP3Char pi2 ghAdd (head (ausw four4 foLi))))
                      let thecombs = [comp1,comp2,comp3]
@@ -1198,7 +1210,7 @@ cellStream3dif solu n= map (ogR2 solu) (runLists n)
 
 --                                                               -> commmB2
 --                                                                 ################################################### 11-1-21 reason cell run export via Punt do cellStream3EXT 
-cellStream3EXT foli4 pi guess = nub $ concat$ (runEXP3 foli4 pi guess)  -- => simvals
+cellStream3EXT foli4 liSolution pi guess = nub $ concat$ (runEXP3 foli4 liSolution pi guess)  -- => simvals
 
 --  vs       
 --  
@@ -1217,7 +1229,7 @@ cellStream3EXT foli4 pi guess = nub $ concat$ (runEXP3 foli4 pi guess)  -- => si
 -- does kArmWORK run that simiVals 
 -- e.g *> simVALS pi "WE" li
 --     *>[[[20.490367775831874,26.761023580752717,20.175131348511385,20.450764570705708]],
-simVALS foPunkt ghAdd foli = runEXP3 foPunkt foli ghAdd
+simVALS foPunkt liSolution ghAdd foli = runEXP3 foPunkt liSolution foli ghAdd
 
  
 --theASolveBonelist -- solve relation to whole of li4 ( a bonelist) 
@@ -1273,7 +1285,7 @@ allB = readAnyTh C.progLiT
 -- let one list be the solution domain 
 -- let another be the snytactic domain
 --
--- e.g> runEXP3 li pi ghAdd
+-- e.g> runEXP3 li liSolution pi ghAdd
 -- connected to ht if ht == 3 then run Experiment3  
 -- domain a) determine how to apply LP to IDF
 --           y' = xz(IDF) + - xz (LP)
@@ -1333,11 +1345,14 @@ triggerWordRAW g domain focell = if domain == "intern" then show(stC1 g )
 -- SIMIVAL RUNS for  'Quirky example'
 -- manifest the given li function with and without 'appropiate mathematical syntax'
 -- give a simiVal list to compare both states
-runEXP3 li pi ghAdd = do
+-- liSolution: a real Prior/Bias?!? 
+-- e.g -["0*x + y + 0*z = 3","0*x + y + 0*z = 33*x + 0 + 0*z = 6","3*x + 0 + 0*z = 6","0*x + 0*y + z = 2","0*x + 0*y + z = 2x + y + z = 11","x + y + z = 11"]
+             
+runEXP3 li liSolution pi ghAdd = do
        -- domain2 syntax
        let iDF = li --["AaEe0","AaEeI","i0000","OoUu0","OoU0Y","y0000"]
        -- domain1 solution
-       let lP = ["0*x + y + 0*z = 3","0*x + y + 0*z = 33*x + 0 + 0*z = 6","3*x + 0 + 0*z = 6","0*x + 0*y + z = 2","0*x + 0*y + z = 2x + y + z = 11","x + y + z = 11"]
+       let lP = liSolution --["0*x + y + 0*z = 3","0*x + y + 0*z = 33*x + 0 + 0*z = 6","3*x + 0 + 0*z = 6","0*x + 0*y + z = 2","0*x + 0*y + z = 2x + y + z = 11","x + y + z = 11"]
        let choosDomain ff =  if ff == 1 then iDF 
                              else lP 
        let chD ff  = choosDomain ff 
@@ -1368,9 +1383,9 @@ runEXP3 li pi ghAdd = do
 -- needs not "intern" to genearate new Char guesses by
 -- adding chars to ghAdd
 -- pi: Punkt , ghAdd: String ; li: the source [String ]
-runEXP3Char pi ghAdd li = 
+runEXP3Char pi liSolution ghAdd li = 
        -- domain2 syntax
-       let asun = (runEXP3 li pi ghAdd)
+       let asun = (runEXP3 li liSolution pi ghAdd)
        in let toChar = map round $ head$ (head asun)
        in toChar
 
