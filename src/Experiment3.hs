@@ -17,14 +17,22 @@
 -- e.g *>let liSol = ["0*x + y + 0*z = 3","0*x + y + 0*z = 33*x + 0 + 0*z = 6","3*x + 0 + 0*z = 6","0*x + 0*y + z = 2","0*x + 0*y + z = 2x + y + z = 11","x + y + z = 11"]
 --                                                  all functions that use 'runEXP3' manouver between CELLS ?
 --                                                  can be switched to 2 different states COMPARE with "intern" vs "cell". a ghAdd::String is added to  
-
+--compare:  
+--            runEXP3 li4 "xyz=11" pi                set a [String] with Simval li guess to 0
+--
 --glossary: 
 --                            syntax                             concept
 --   kArmTest5                                      sample IO, a do monad to sort a given li list
 --                                                  ment to be a display in 'where' passage of function, an example how to access
 --                                                  all functions displayed there, that are accesable via allFunctions'. 
 --
---   kArmWORK                                       same as above but only one output(no GUI) to be used in other computations  
+--   kArmWORK   kArmWORK 2 ["A","","","","",""] li4 2 pi 2 2 [] "xyz=11"  
+--                                                  same as above but only one output(no GUI) to be used in other computations 
+--                                                  simiVal compare every String of li [String] with addGH
+--                                                            [String] -> String => [(Fractional)] 
+--                                                  simiVal 4x4 matrix, set to zero with addGH:: String e.g li4 && "xyz=11"  
+--                                                  only depends on li4 and addGH  the list ["A","","","","",""] is kept
+--                                                  so it can be compared to possible outcomes  
 --
 --   experiment3RAW11                               Busschop and Bradly ??? also see 'Colored_2_3_5_Counter20.hs, build a hexagon
 --                                                  turn 3d ptc functions in 2d/3d svg  
@@ -192,7 +200,7 @@ import qualified Colored_2_3_5_Counter20 as C
  -- Experiment3 randomly guessing solutions
 -- B in A via
 -- e.g
--- *Experiment3> (inActie ["0xy0z=3"] ["x0y0z=6"] ["0x0yz=2"] ["xyz=11"] li5)
+-- *Experiment3> (inActie ["0xy0z=3"] ["x0y0z=6"] ["0x0yz=2"] ["xyz=11"] li5 "xyz=11")
 -- *Experiment3> let li6 = ["1b*00=3","AAA=3BAABAB","A4A=5BAB","A5=7AA","AA5=A7BBBAA","B2BBAA"] 
 li6 = ["1b*00=3","AAA=3BAABAB","A4A=5BAB","A5=7AA","AA5=A7BBBAA","B2BBAA"] 
 -- => will work in the 'inActie' main function of 'Experiment3.hs'
@@ -229,10 +237,10 @@ li8 = ["1A00=1","ADs=D1","AB=A1BBBBB","A1AA=AAA1","A1=1AAA","A=1sss"]
 -- compare to bonelist to solution 1   expressAinA li5 pi 1    expressAsinA li5 pi 1
 --                     to solution 2   expressAinA li5 pi 2    expressAsinA li5 pi 2
 
---  *Experiment3> expressAsinA li4 pi 2
+--  *Experiment3> expressAsinA "xyz=11" li4 pi 2
 -- [48.51138353765324,48.78048780487805,48.421052631578945,43.67816091954023]     
 
---  *Experiment3> expressAinA li4 pi 1
+--  *Experiment3> expressAinA "xyz=11" li4 pi 1
 -- [90.54290718038528,90.59233449477351,90.52631578947368,89.65517241379311]
 --
 -- => change from comparing a row of a li list with its own atoms 
@@ -242,7 +250,7 @@ li8 = ["1A00=1","ADs=D1","AB=A1BBBBB","A1AA=AAA1","A1=1AAA","A=1sss"]
 --   let pi = Punkt "extern" Nothing Nothing Nothing Nothing Nothing
 
                 
-inActie pv1 pv2 pv3 pv4 solution = do
+inActie pv1 pv2 pv3 pv4 solution liSolution = do
           timE 
           let cookieForOn foAL m =  maybePu (head (ausw m foAL ))
    -- kArmWork need list length 4 , a Punkt-type that can hold data to represent
@@ -251,7 +259,7 @@ inActie pv1 pv2 pv3 pv4 solution = do
           let setAAxiom = theAChars
          
      --     endlessSubly <- forM [1..37]
-          let seeChr =  qw "werdd" "rdddw" 3  -- just there not used (jtnu)
+          let seeChr =  qw liSolution "werdd" "rdddw" 3  -- just there not used (jtnu)
        
           let seperateIntandChar foli4 = aleph [head foli4] --not used so far, Just Num Chars- > Int only works on Int in String  ##################### 11-1-21 reason abt cells see conceptProject21.svg
           let mainRandomLine foli4 n = cellStream3 foli4 n
@@ -265,8 +273,8 @@ inActie pv1 pv2 pv3 pv4 solution = do
           -- e.g*> likelyhood li4 2
           let sol100result foli4 expanS = poolBandNotB foli4 expanS -- search solutions set to max 2 
           let map100 foli4 t = tbeMapped foli4 t -- = map chr (poolBandNotB t)
-          let suggest foli4 pi n =  expressAinA foli4 pi n -- compare result to li4
-          let withOutZero foli4 pi n =  expressAsinA foli4 pi n -- compare to same result without zeros
+          let suggest foli4 pi n =  expressAinA liSolution foli4 pi n -- compare result to li4
+          let withOutZero foli4 pi n =  expressAsinA liSolution foli4 pi n -- compare to same result without zeros
          -- get two solutions B in A n>2 will lead to an error
           let drawXYZ foli4 pi n = likelyhood foli4 n  -- get an Int out of the result n	
           putStrLn "like does"
@@ -366,10 +374,10 @@ inActie pv1 pv2 pv3 pv4 solution = do
 -- e.g *> (head((experiment3RAW22 "DFDGGGF" li2 subroutinE C.ptc7 [li])))
 -- ["\154\163hg","\155\164ih","\153\162gf"]
 -- run 'calcB' until a certain boundry with simVal 
-    calcB's foLiter =  (experiment3RAW22 "DFDGGGF" [solution] subroutinE C.ptc7 [foLiter]) ; -- subitile differences nand iterate
-    simVal foPunkt ghAdd foli = simVALS foPunkt ghAdd foli;
+    calcB's foLiter =  (experiment3RAW22 liSolution "DFDGGGF" [solution] subroutinE C.ptc7 [foLiter]) ; -- subitile differences nand iterate
+    simVal foPunkt ghAdd foli = simVALS foPunkt ghAdd foli liSolution;
   -- qw3 
-    chngDomain domain guess t = map (qw guess domain) [1..(length t)] ;
+    chngDomain domain guess t = map (qw liSolution guess domain) [1..(length t)] ;
     readPunktChar g = startDchange g "intern" (1,2) ; -- if fst trigger word == 1 then internal
                  -- else external 
 ------------------------------------------------------------------
@@ -426,11 +434,11 @@ theDs f g = concat$ausw f ((concat g))
 -- df2 ttt offOn target plot addGh ghAdd n (theDs ttt d) (get1) (get2) (get3)  (get4) 1 (theDs ttt d)
 -- =  runKAXIOM offOn target plot addGh ghAdd n (theDs ttt d) (get1) (get2) (get3)  (get4) 1 (theDs ttt d)
 
--- e.g>runKBASE 1 [1,2] 1 2 "AAA" 1 (li3) 1 2 3 4 subroutinE
+-- e.g>runKBASE 1 [1,2] 1 2 "AAA" 1 (li3) 1 2 3 4 subroutinE "xyz=11"
 
-runKBASE offOn target plot addGh ghAdd n d get1 get2 get3 get4 subroutineList= do
+runKBASE offOn target plot addGh ghAdd n d get1 get2 get3 get4 subroutineList liSolution = do
        allforIV <- forM [1..(length target)] (\four4 -> do
-            let fg = runKAXIOM offOn target plot addGh ghAdd n (theDs four4 d) (get1) (get2) (get3) (get4) 1 (theDs four4 d) (four4) [(read(show four4))] ((tk four4 subroutineList))
+            let fg = runKAXIOM offOn target plot addGh ghAdd n (theDs four4 d) (get1) (get2) (get3) (get4) 1 (theDs four4 d) (four4) [(read(show four4))] ((tk four4 subroutineList)) liSolution
             fg
             return (fg))
 
@@ -452,9 +460,9 @@ runKBASE offOn target plot addGh ghAdd n d get1 get2 get3 get4 subroutineList= d
        writeFile (root++"/src/index2.html") (theListIV)
 
 -----------------------------------------------------------
-experiment3RAW offOn target plot addGh ghAdd n d get1 get2 get3 get4 subroutineList= do
+experiment3RAW offOn target plot addGh ghAdd n d get1 get2 get3 get4 subroutineList liSolution= do
        allforIV <- forM [1..(length subroutineList)] (\four4 -> do
-            let fg = runKAXIOM offOn target plot addGh ghAdd n (theDs four4 d) (get1) (get2) (get3) (get4) 1 (theDs four4 d) (four4) [(read(show four4))] ((tk four4 subroutineList))
+            let fg = runKAXIOM offOn target plot addGh ghAdd n (theDs four4 d) (get1) (get2) (get3) (get4) 1 (theDs four4 d) (four4) [(read(show four4))] ((tk four4 subroutineList)) liSolution
             fg
             return (fg))
        return allforIV
@@ -580,8 +588,8 @@ experiment3RAW11 liSolution ghAdd d subroutineList foPtc foLi nforCalc fopi= do
 
 ------------------------------------------------------------------------------
 -- guess something to add to First + -
--- experiment3RAW22 "DF" li2 subroutinE C.ptc7 li2
--- *> map ord (head(head(experiment3RAW22 "DFDF" li2 subroutinE C.ptc7 [li3])))
+-- experiment3RAW22 "xyz=11" "DF" li2 subroutinE C.ptc7 li2
+-- *> map ord (head(head(experiment3RAW22 "xyz=11" "DFDF" li2 subroutinE C.ptc7 [li3])))
 -- *> [20,27,20,20]
 experiment3RAW22 liSolution ghAdd d subroutineList foPtc foLi = do
    -- givens:
@@ -600,10 +608,10 @@ experiment3RAW22 liSolution ghAdd d subroutineList foPtc foLi = do
             let exp3Frac = concat$concat$exp3Fractional
             exp3IntfoChar <- forM [1] (\four4 -> do
 
-                     let comp1 = runEXP3Char pi2 ghAdd (head (ausw four4 foLi))
-                     let comp2 = (zipWith (+) [1,1,1,1] (runEXP3Char pi2 ghAdd (head (ausw four4 foLi))))
+                     let comp1 = runEXP3Char pi2 liSolution ghAdd (head (ausw four4 foLi))
+                     let comp2 = (zipWith (+) [1,1,1,1] (runEXP3Char pi2 liSolution ghAdd (head (ausw four4 foLi))))
                      let comp3 = let mis t z = z - t
-                                 in (map (mis 1) (runEXP3Char pi2 ghAdd (head (ausw four4 foLi))))
+                                 in (map (mis 1) (runEXP3Char pi2 liSolution ghAdd (head (ausw four4 foLi))))
                      let thecombs = [comp1,comp2,comp3]
                      return ([comp1,comp2,comp3]))-- (thecombs))
             let exp3Intfo t = head $ ausw t $ concat$exp3IntfoChar 
@@ -664,7 +672,7 @@ experiment3RAW23 liSolution ghAdd d subroutineList foPtc foLi gb1 gb2 = do
                      let comp1 = runEXP3Char pi2 liSolution ghAdd (head (ausw four4 foLi))
                      let comp2 = (zipWith (+) [1,1,1,1] (runEXP3Char pi2 liSolution ghAdd (head (ausw four4 foLi))))
                      let comp3 = let mis t z = z - t
-                                 in (map (mis 1) (runEXP3Char pi2 ghAdd (head (ausw four4 foLi))))
+                                 in (map (mis 1) (runEXP3Char pi2 liSolution ghAdd (head (ausw four4 foLi))))
                      let thecombs = [comp1,comp2,comp3]
                      return ([comp1,comp2,comp3]))-- (thecombs))
             let exp3Intfo t = head $ ausw t $ concat$exp3IntfoChar 
@@ -709,20 +717,20 @@ experiment3RAW23 liSolution ghAdd d subroutineList foPtc foLi gb1 gb2 = do
 focommmB ap ap3 t = let atSpot ap ap3 t = (head (ausw t ap)) `elemIndices` (ap3)
                     in atSpot ap ap3 t
 -- guess: String e.g "DrF3" 
-buildPrior r guess  = let buildA r = readAnyTh r
-                      in head$ last (experiment3RAW22 guess [buildA r] subroutinE C.ptc7 [buildA r]) 
+buildPrior liSolution r guess  = let buildA r = readAnyTh r
+                      in head$ last (experiment3RAW22 liSolution guess [buildA r] subroutinE C.ptc7 [buildA r]) 
 
-commmB ap ap3 t = let buildA r = readAnyTh r
+commmB liSolution ap ap3 t = let buildA r = readAnyTh r
          --  in let aprior = head$ last (experiment3RAW22 "DF" [buildA r] subroutinE C.ptc7 [buildA r]) 
            in let atSpot ap ap3 t = (head (ausw t (map ord ap))) `elemIndices` (map ord ap3)
-           in let aprior4 gb1 gb2 r = head$ last (experiment3RAW23 "DF" [(buildA r)] subroutinE C.ptc7 [buildA r] gb1 gb2)
+           in let aprior4 gb1 gb2 r = head$ last (experiment3RAW23 liSolution "DF" [(buildA r)] subroutinE C.ptc7 [buildA r] gb1 gb2)
           -- in let testIterate ap = atSpot ap (aprior4 aprior "fp")
            in atSpot ap ap3 t--aprior
 
-commmB2 ap ap3 t = let buildA r = readAnyTh r
+commmB2 liSolution ap ap3 t = let buildA r = readAnyTh r
          --  in let aprior = head$ last (experiment3RAW22 "DF" [buildA r] subroutinE C.ptc7 [buildA r]) 
            in let atSpot ap ap3 t = (head (ausw t (map ord ap))) `elemIndices` (map ord ap3)
-           in let aprior4 gb1 gb2 r = head$ last (experiment3RAW23 "DF" [(buildA r)] subroutinE C.ptc7 [buildA r] gb1 gb2)
+           in let aprior4 gb1 gb2 r = head$ last (experiment3RAW23 liSolution "DF" [(buildA r)] subroutinE C.ptc7 [buildA r] gb1 gb2)
           -- in let testIterate ap = atSpot ap (aprior4 aprior "fp")
            in aprior4 ap ap3 t--aprior
 
@@ -809,7 +817,7 @@ theAChars = map chr (sort (61 : (([48..128] \\ [58..96] ) \\ [123..128])))
 -}
 
 -- special chain destribution (Cd)
-easyCd wo k = sort$group k >>= (findinCd wo)
+easyCd liSolution wo k = sort$group k >>= (findinCd liSolution wo)
 --------------------------------------
 -- bound to A of 'ist' via the Syntax via commmB
 -- wo  :: [Char], can be B of astigmatic
@@ -818,9 +826,9 @@ easyCd wo k = sort$group k >>= (findinCd wo)
 --   =>propose, 'wo' can be everything EXCEPT not A of Haskell Char encoding !?  
 --
 -- ist :: [Char] , is a guess  
--- Experiment3> foStrCd "wer" "r" 3
+-- Experiment3> foStrCd "xyz=11" "wer" "r" 3
 -- [1]  -- where is 'r' in 'wer' look ONLY at occurance position 3 (spot 3) 
-foStrCd wo ist das =  commmB  wo ist das
+foStrCd liSolution wo ist das =  commmB liSolution wo ist das
 
 -- still collapses if mWidth does not occure -> if length k < length mWidth == true
 --                                           then Error0
@@ -845,25 +853,25 @@ dasErrHnl k nHeight mWidth = if (length k<=length mWidth) then (length k)
 --                               <- right letters 
 --                               <- right order of letters e.g 'chainDistribute'
 --                               
-baysianTypeUnsafe wo ist = map (foStrCd wo ist) [1..(dasError0 ist (length ist))]
+baysianTypeUnsafe liSolution wo ist = map (foStrCd liSolution wo ist) [1..(dasError0 ist (length ist))]
 -- still collapses if mWidth does not occure -> if length k < length mWidth == true
 --                                           then Error0
 -- stores a String -> Int in nHeight
 -- wo: String , a population
 --
-baysianTypeInt wo nHeight ist = map (foStrCd wo ist) [1..(dasErrHnl ist nHeight ist)]
+baysianTypeInt liSolution wo nHeight ist = map (foStrCd liSolution wo ist) [1..(dasErrHnl ist nHeight ist)]
 --------------------------------------------------------------------------------------------------------------
 
 -- before 1-1-21
-findinCdRAW wo ist = (map (foStrCd wo ist) [1..(length ist)])
-findinCd wo ist = (findinCdRAW wo ist)
+findinCdRAW liSolution wo ist = (map (foStrCd liSolution wo ist) [1..(length ist)])
+findinCd liSolution wo ist = (findinCdRAW liSolution wo ist)
 -- reflexive function show me where B in A =>
-qw wo ist r = (foStrCd wo ist r)
+qw liSolution wo ist r = (foStrCd liSolution wo ist r)
 
 
 --find the gap in the data 11-1-21
 -- show the occurance of Char number n in a [Char]
--- *Experiment3> foStrCd "werfgrrrrf" "wrerfrfrrf" 4
+-- *Experiment3> foStrCd "xyz=11" "werfgrrrrf" "wrerfrfrrf" 4
 -- [4,6,9]
 -- *Experiment3> foStrCd "werfgrrrrf" "wrerfrfrrf" 5
 -- []
@@ -900,7 +908,7 @@ qw wo ist r = (foStrCd wo ist r)
 -- - matic    --------------------------                        C  
 
 -- --------
-qw3 domain guess t = map (qw guess domain) [1..(length t)]
+qw3 liSolution domain guess t = map (qw liSolution guess domain) [1..(length t)]
 --   solve where is B in A
 --               is B in A'
 --               is B in C'
@@ -926,7 +934,7 @@ theA' = head li4
 -- based on variable li2
 -- li :: [[String]]
 -- li3 :: [String]
-theB' li2 li3= (head(head(experiment3RAW22 "DFDGGGF" li2 subroutinE C.ptc7 [li3]))) 
+theB' liSolution li2 li3= (head(head(experiment3RAW22 liSolution "DFDGGGF" li2 subroutinE C.ptc7 [li3]))) 
 
 -- choose 4 variables as to build pv functions
 -- progVar1 = "0*x + y + 0*z = 3"
@@ -944,7 +952,7 @@ theB' li2 li3= (head(head(experiment3RAW22 "DFDGGGF" li2 subroutinE C.ptc7 [li3]
 --progVar6 = "x + y + z = 11"
 -- *Experiment3> (head((experiment3RAW22 "DFDGGGF" [li4] subroutinE C.ptc7 [li])))
 --["\154\163hg","\155\164ih","\153\162gf"]
-theBQuirky li4 li = (head((experiment3RAW22 "DFDGGGF" [li4] subroutinE C.ptc7 [li])))
+theBQuirky liSolution li4 li = (head((experiment3RAW22 liSolution "DFDGGGF" [li4] subroutinE C.ptc7 [li])))
 
 -- put CONSTRAINT On NOTES -> do come back to experiment3RAW22 
 --  inspect 2x2 3x3 5x5 to follow instructions
@@ -1155,14 +1163,14 @@ likelyhood foli4 n = let step1 =  ((bAndNotB foli4 n))
  
 -- which String n of a [String] (As) does resemble 'bAndNotB' most ?
 --
-expressAsinA foli4 pi n = nub$concat$(cellStream3EXT foli4 pi ((bAndNotB foli4 n)))
+expressAsinA liSolution foli4 pi n = nub$concat$(cellStream3EXT liSolution foli4 pi ((bAndNotB foli4 n)))
 -- which String n of a [String] (As) does resemble the solution most ?
 -- *Experiment3> nub$concat$(cellStream3EXT pi (rek2 1))
 -- *> [68.0648769574944,67.89709172259508,68.12080536912752,70.80536912751678]
 -- => 6 is part of the solution of (head li4)
 -- needs v variables in solution to work. eg "e2" works
 --  "2" doesnt
-expressAinA foli4 pi n = nub$concat$(cellStream3EXT foli4 pi (likelyhood foli4 n) )
+expressAinA liSolution foli4 pi n = nub$concat$(cellStream3EXT liSolution foli4 pi (likelyhood foli4 n) )
 ----------------------------------------------------------------------------------------------------------------
 --NULL SPACE : cellStream2
 -- via organelleFind , organelleSearch , oglleLocate
@@ -1210,12 +1218,12 @@ cellStream3dif solu n= map (ogR2 solu) (runLists n)
 
 --                                                               -> commmB2
 --                                                                 ################################################### 11-1-21 reason cell run export via Punt do cellStream3EXT 
-cellStream3EXT foli4 liSolution pi guess = nub $ concat$ (runEXP3 foli4 liSolution pi guess)  -- => simvals
+cellStream3EXT liSolution foli4 pi guess = nub $ concat$ (runEXP3 foli4 liSolution pi guess)  -- => simvals
 
 --  vs       
 --  
 -- internal cell run
--- --e.g> defSearchRAW "AAABB" "AAABBAAABAB" "AAABAB" "AAA" "AAABBBAA" "BBBAA" 1 1 1 1 1 li
+-- --e.g> defSearchRAW "AAABB" "AAABBAAABAB" "AAABAB" "AAA" "AAABBBAA" "BBBAA" 1 1 1 1 1 li liSolution
 --
 --pipebone: variable for runKBASE, n-(length target)-many, of a [bonelist]
 -- defSearchRAW -> defSearch -> runKAXIOM -> runKBASE -> experiment3RAW -> experiment3RAW2 
@@ -1227,9 +1235,11 @@ cellStream3EXT foli4 liSolution pi guess = nub $ concat$ (runEXP3 foli4 liSoluti
 -- depend on fixed variable -- stir which domain to compare to what ....
 -- wtih length 1 maps agains
 -- does kArmWORK run that simiVals 
--- e.g *> simVALS pi "WE" li
+-- note ! change order if in need to map li
+-- set to map with liSolution
+-- e.g *> simVALS pi "WE" li "xyz=11"
 --     *>[[[20.490367775831874,26.761023580752717,20.175131348511385,20.450764570705708]],
-simVALS foPunkt liSolution ghAdd foli = runEXP3 foPunkt liSolution foli ghAdd
+simVALS foPunkt ghAdd foli liSolution = runEXP3 foPunkt liSolution foli ghAdd
 
  
 --theASolveBonelist -- solve relation to whole of li4 ( a bonelist) 
@@ -1240,12 +1250,12 @@ simVALS foPunkt liSolution ghAdd foli = runEXP3 foPunkt liSolution foli ghAdd
 -- -------------
 --   to solve from different A's 
 --   one way to solve from is  reflexive qw3
---       qw3 l1 l2 =>  where is l1 in l2
+--       qw3 liSolution l1 l2 =>  where is l1 in l2
 --                 or  where is l2 in l1 
 --    where is the prior in the latter ?
--- e.g *Experiment3> qw3 "wer" "rw"
--- [[1],[],[0]]
--- *Experiment3> qw3 "wer" "wer"
+-- e.g *Experiment3> qw3 "liSolution" "wer" "rw"
+-- [[1],[],[0]] ??
+-- *Experiment3> qw3 "xyz=1" "wer" "wer"
 -- [[0],[1],[2]]
 --
 --  secondly just see occurance 
@@ -1409,10 +1419,10 @@ runEXP3Char pi liSolution ghAdd li =
 ------------------------------------------------------------
 
 -- 4-8-2020  ***************************************************************************updated write ptc buttons
--- e.g let myTest at = runKAXIOM 1 [1,2] 2 2 at 2 (li3) 1 2 3 4 3 (head(ausw 1 li3))
+-- e.g let myTest at = runKAXIOM 1 [1,2] 2 2 at 2 (li3) 1 2 3 4 3 (head(ausw 1 li3)) "xyz=11"
 -- toca : Int ; give token to change length of pg  functions points n 
 --               write toHtml set to write index2.html via 'defSearch', under development
-runKAXIOM offOn target plot addGh ghAdd n d get1 get2 get3 get4 ht ulu bog toca subroutine=  do
+runKAXIOM offOn target plot addGh ghAdd n d get1 get2 get3 get4 ht ulu bog toca subroutine liSolution=  do
    let ghd t de = ( (ausw t de))
    let leng= if length d >1 then ((length d) - 1)
              else 1
@@ -1431,7 +1441,7 @@ runKAXIOM offOn target plot addGh ghAdd n d get1 get2 get3 get4 ht ulu bog toca 
               let wL3 = (ausw get3 topass)
               let wL4 = (ausw get4 topass)
               let wL3n4 = (wL3++wL4)
-              let vanAllen = defSearch offOn d plot addGh ghAdd whichLine1 wL1n2 wL2 wL3 wL3n4 wL4 n ulu (ulu) ht (evalToWrite("foyourRun"++show bog++".txt")) ht toca subroutine
+              let vanAllen = defSearch offOn d plot addGh ghAdd whichLine1 wL1n2 wL2 wL3 wL3n4 wL4 n ulu (ulu) ht (evalToWrite("foyourRun"++show bog++".txt")) ht toca subroutine liSolution
               vanAllen
               return([vanAllen]))
           return(dooer)
@@ -1440,11 +1450,11 @@ runKAXIOM offOn target plot addGh ghAdd n d get1 get2 get3 get4 ht ulu bog toca 
 
         
 -- program variables:
-defSearch offOn target plot addGh ghAdd pV1 pV2 pV3 pV4 pV5 pV6 n bonelist pipebone ht forRunHtml htm toca subroutine = defSearchRAW offOn target plot addGh ghAdd pV1 pV2 pV3 pV4 pV5 pV6 50 50 50 50 n bonelist pipebone ht forRunHtml htm toca subroutine 
+defSearch offOn target plot addGh ghAdd pV1 pV2 pV3 pV4 pV5 pV6 n bonelist pipebone ht forRunHtml htm toca subroutine liSolution = defSearchRAW offOn target plot addGh ghAdd pV1 pV2 pV3 pV4 pV5 pV6 50 50 50 50 n bonelist pipebone ht forRunHtml htm toca subroutine liSolution
 --e.g> defSearchRAW "AAABB" "AAABBAAABAB" "AAABAB" "AAA" "AAABBBAA" "BBBAA" 1 1 1 1 1 li
 --
 --pipebone: variable for runKBASE, n-(length target)-many, of a [bonelist]
-defSearchRAW offOn target plot addGh ghAdd pV1 pV2 pV3 pV4 pV5 pV6 ptc0Len ptc3Len ptc3aLen ptc3bLen n bonelist pipebone ht forRunHtml htm toca subroutine= do
+defSearchRAW offOn target plot addGh ghAdd pV1 pV2 pV3 pV4 pV5 pV6 ptc0Len ptc3Len ptc3aLen ptc3bLen n bonelist pipebone ht forRunHtml htm toca subroutine liSolution= do
 
      --  let pi = fopi --Punkt "M" Nothing Nothing Nothing Nothing Nothing -- switch for io at bottom
      --  ausw :: Int -> [a] -> [a]
@@ -2078,7 +2088,7 @@ defSearchRAW offOn target plot addGh ghAdd pV1 pV2 pV3 pV4 pV5 pV6 ptc0Len ptc3L
                                 putStrLn (show makeWORK )
                                 return())  
                               -}
-                     let exP3 =  (experiment3RAW22 "ttt" [liT] subroutinE ptc6 [liT]) --runEXP3 [progVar1,progVar2,progVar3,progVar4,progVar5,progVar6] pi "AAA" --kWORK --(G.fobase progVar1 progVar2 progVar3 progVar4 progVar5 progVar6 daZip1 daZip2 daZip3 textAA (ptcButoons) (foalt))
+                     let exP3 =  (experiment3RAW22 liSolution "ttt" [liT] subroutinE ptc6 [liT]) --runEXP3 [progVar1,progVar2,progVar3,progVar4,progVar5,progVar6] pi "AAA" --kWORK --(G.fobase progVar1 progVar2 progVar3 progVar4 progVar5 progVar6 daZip1 daZip2 daZip3 textAA (ptcButoons) (foalt))
             --         let comp1 = (runEXP3Char pi ghAdd)
               --       let comp2 = (zipWith (+) [1,1,1,1] (runEXP3Char pi ghAdd))
                 --     let comp3 = let mis t z = z - t
