@@ -135,6 +135,16 @@ formHoofdEX1 foli4 stringBT pi ghADD = 1
  -- map with filterB 
       actie pv1 pv3 pv4 pv6 foli ghAdd = inActie (pv1 pv3 pv4 pv6 foli [ghAdd]);
       filterB = map (filter (/='A')) E.li4;
+      solong b = [1..(length b)];
+ --which:Int length output; m: source list; fromA: Int choose from m
+      soSame  which m fromA = let stap1 = head(ausw fromA m)
+                 in take which [stap1,stap1..];
+      bayesMonad b thisAction = do 
+          let solang = solong b
+          bayWorld0 <- forM solang (\bay -> do
+              let outBayesMonad = thisAction
+              return (outBayesMonad))
+          bayWorld0;  
                    
 
 
