@@ -213,7 +213,19 @@ module Experiment3 (
     --, runKBASE -- enter a [li,li..], decide to plot, choose search for a bonelist
      , basis2 -- added 12-9-2020 within experiment3 use for Punkt type 
      , basis4 -- as above with different output
-     , checkflow -- as above could be imported to main from Colored..Writer20.hs as well 
+     , checkflow -- as above could be imported to main from Colored..Writer20.hs as well
+  -- export to HoofdDev
+     , li4 -- input to experiment3 'quirky example' 
+     , runEXP3   -- cell stream AND  data type ROLE MODEL for 'HoofdDev.hs'
+     , triggerWord   -- all needed for role model
+     , checkflow
+     , theAChars -- string domain to compare cell streams with 
+   -- own algorithms for HoofdDev
+     , kArmWORK
+     , inActie -- guess a solution
+   -- baysian types
+     , baysianTypeInt
+     , baysianTypeString 
      ) where
 
 import Data.List
@@ -888,8 +900,8 @@ dasErrHnl k nHeight mWidth = if (length k<=length mWidth) then (length k)
 --                                  with Punkt Error handler always could?
 --                               <- right letters 
 --                               <- right order of letters e.g 'chainDistribute'
---                               
-baysianTypeUnsafe liSolution wo ist = map (foStrCd liSolution wo ist) [1..(dasError0 ist (length ist))]
+--  both types are still unsafe                            
+baysianTypeString liSolution wo ist = map (foStrCd liSolution wo ist) [1..(dasError0 ist (length ist))]
 -- still collapses if mWidth does not occure -> if length k < length mWidth == true
 --                                           then Error0
 -- stores a String -> Int in nHeight
