@@ -1,6 +1,6 @@
 -- this module provides:
--- --------------------------------------                                                  -- concept                                              beard  vs   not beared
--- EXPERIMENT 3                                                
+-- --------------------------------------                                                    concept                                               beard  vs   not beared
+-- EXPERIMENT 3                                                                            -----------                                                  :     :                                  
 -- the output of functions                                                                 --                beard        not beared                    :     :
 -- themselves has a           syntax            AND/OR           a concept                 --                collum I       collumII                 wo :_____:ist   
 -- functions used with type pure outpout e.g                                               --            --------------------------                    /      \    
@@ -29,6 +29,15 @@
 --                                           -> experiment3RAW23 -> commmB  -> foStrCd ->  qw wo ist r = (foStrCd wo ist r)
 
 --                                                               -> commmB2
+--
+-- 'zufallsBasic1'-> 'longRun' => random number
+--                                   ||
+--                                   \/
+--                               |  rekenen  OR rekenen2 |
+--                                   ||              
+--                                   \/
+--   takeMY =>      countABCs -> runCellRAW -> runCellRnd -> ogR -> cellStream3   -> poolBorNotB 
+--                                                                                -> inActie 
 --                                                                 ################################################### 11-1-21 reason cell run export via Punt do cellStream3EXT
 --
 --variables: 
@@ -1133,7 +1142,7 @@ oglleLocateSoludif expanS solution nIdeal orderK = let findSol sol want = map le
 -- Three streams in and out of cells -----------------------------------------------------------
 -- --------------------------------------------------------------------------------------------
 -- --------------------------------------------------------------------------------------------
--- SOLUTIONS B, not b, A ,astigmatic -----------------------------------------------------
+-- SOLUTIONS B, not b, A stigmatinc ,Not Astigmatic -----------------------------------------------------
 -- ---------------------------------------------------------------------------------------
 --  1   in ----> the solution -----> B -----> out
 --  cellStream1:
