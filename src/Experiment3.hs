@@ -10,7 +10,7 @@
 --                                                                                         --   row II A'|     B       |    not B  |         --/  C'of wo     C' of ist
 --                                                                                         -- not astigm |   cell III  |   cell IV |                     \  /
 --                                                                                         -- - matic    --------------------------                        C
---                                                                                          ########################################################  initiate  data stream li -> Baysian -> CELLS -> BIAS 
+--                                                      ########################################################  initiate  data stream li -> Baysian -> CELLS -> BIAS 
 --                                                                         
 --external cell run   ################################################## 11-1-21 cell reason
 ---------------------
