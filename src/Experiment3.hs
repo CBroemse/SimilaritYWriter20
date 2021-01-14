@@ -1140,7 +1140,7 @@ goldTraydif foli4 orderK expanS s = map (poolB foli4) (concat$concat$concat$ausw
 poolBandNotB foli4 expanS=  concat$ concat(map (goldTray foli4 expanS) [1..(length foli4)])
 poolBandNotBdif foli4 orderK expanS=  concat$ concat(map (goldTraydif foli4 orderK expanS) [1..(length foli4)])
 
---
+------------------------------------------------------------------------- ####################################### computationally expensive
 -- all find solutions but are computationally expensive--------------------------------------------------
 tbeMapped foli4 t = map chr (poolBandNotB foli4 t)
 tbeMappeddif foli4 orderK t = map chr (poolBandNotBdif foli4 orderK t)
@@ -1148,10 +1148,19 @@ tbeMappeddif foli4 orderK t = map chr (poolBandNotBdif foli4 orderK t)
 --  2      ----> the Zero space ---> [[0]] -----> out
 --               indicate the position of all solutions 
 --               OF THIS B in A
--- 1 -> 10 , 2 -> 100 n>2 needs 1000 aso. otherwise error 
--- e.g*> rek2 2 
--- *> "zz6zz6zz6zz6zz6zz6"
+--               
+-- BewAre not functiona !!!not used 
 bAndNotB foli4 n = filter(/='0') (head (ausw n (nub$ map (tbeMapped foli4) [1..100])))
+-- carefully explore via orderK :: [Int]
+-- the order matters, the digits do and the length -> keep it short max length  n < ca. 10
+-- all Int in orderK <=6
+-- e.g*> (bAndNotBdif li4 [1,2,6] 8)  -- really export elements of B|A and notB|A
+-- "6=6=6=6=6="                          test if works: there is a population 
+--  there is a handfull of other      in which all four CELLs together are the most ordered state
+--  functions as descriped that       breaking into new 4 cells where P (A|B) or cell I is the right order 
+--  may work as well, which?              and cellII is good in length missing order and/or letters
+--                                           cell III is right order missing max 1/6 of letters 
+--                                           cell IV  the ordered state of ptc9     
 bAndNotBdif foli4 orderK n = filter(/='0') (head (ausw n (nub$ map (tbeMappeddif foli4 orderK) [1..100])))
 
 
@@ -1357,11 +1366,34 @@ triggerWordRAW g domain focell = if domain == "intern" then show(stC1 g )
 -- give a simiVal list to compare both states
 -- liSolution: a real Prior/Bias?!? 
 -- e.g -["0*x + y + 0*z = 3","0*x + y + 0*z = 33*x + 0 + 0*z = 6","3*x + 0 + 0*z = 6","0*x + 0*y + z = 2","0*x + 0*y + z = 2x + y + z = 11","x + y + z = 11"]
-             
-runEXP3 li liSolution pi ghAdd = do
-       -- domain2 syntax
-       let iDF = li --["AaEe0","AaEeI","i0000","OoUu0","OoU0Y","y0000"]
-       -- domain1 solution
+-- so far liSolution is merely a symbolic type it has no use other to be simivalued to other liSolutions 
+-- 
+-- example for Punkt as selector will try filter : PROTRACTOR at how many degrees is the blind shut
+--           test define a function that computes  
+--           with Punkt "intern" there is NO ghAdd influence ONLY li 
+--           with "cell"  YES ghAdd influence AND li plays an influence   ############### whole function is ################################## SAME AS   cellStream3EXT- 13-1-21        
+runEXP3 li liSolution pi ghAdd = do                                                          --  ########################## BOTH are an INDEX matrices (or simply values)
+       -- domain2 syntax                                                                                   ##############   I: EXPORT TO MAIN
+       --                                                                                                                  II:  PUNKT JUNCTION POINT 
+       let iDF = li --["AaEe0","AaEeI","i0000","OoUu0","OoU0Y","y0000"]                                                    III: JOIN with a. 2dplot, 3dplot, 2/3dplot, ptcChart.html
+       -- domain1 solution                                                                                                      in Main
+       --                                                                                                                  IV: EXPORT BAYSIAN type to MAIN 
+       --                                                                                                                      make nice exlpainatory interactive 
+       --                                                                                                                   V: 1-1-21 issue 'story line' join the lose ends
+       --                                                                                                                      with 'Colored_2_3_5_Counter20.hs'=C20 see overview
+       --                                                                                                                         found most versataile ptc6 ptc7? , ptc9
+       --                                                                                                                         see solutions of 'Quirky-Example' this lP function
+       --                                                                                                                         in C20 ; mix wit first 'C.vb' example
+       --                                                                                                                         => writes 'src/2dpgfunctions.wxm" 
+       --                                                                                                                            watch an ordered state and the ptc data 
+       --                                                                                                                            and the purple solution function which main aim
+       --                                                                                                                            is to turn a very ordered state into -> 
+       --                                                                                                                            -> [[Char]] -> [[Int]] -> ruEXP3 =
+       --                                                                                                                            => relation -> fourierFS to mq-functions
+       --                                                                                                                  VI: THE NEW CELL TYPE as basis ptc9 is involved 
+       --                                                                                                                      with a rating of guesses AFTER PUNKT JUNCTION POINT
+       --                                                                                                                      in Main.
+       --
        let lP = liSolution --["0*x + y + 0*z = 3","0*x + y + 0*z = 33*x + 0 + 0*z = 6","3*x + 0 + 0*z = 6","0*x + 0*y + z = 2","0*x + 0*y + z = 2x + y + z = 11","x + y + z = 11"]
        let choosDomain ff =  if ff == 1 then iDF 
                              else lP 
@@ -1374,7 +1406,7 @@ runEXP3 li liSolution pi ghAdd = do
             --let prepComp g = startDchange g (1,2)
                 -- compare internaly
             --let plugChoose = triggerWord pi  
-            let fg = let allFor = (kArmWORK 2 (chD four4) aLi 1 pi 1 1 [] ghAdd) --(runKAXIOM offOn target plot addGh ghAdd n (theDs four4 d) (get1) (get2) (get3) (get4) 3 (theDs four4 d) (four4) [(read(show four4))] ((tk four4 subroutineList)))
+            let fg = let allFor = (kArmWORK 2 (chD 2) aLi 1 pi 1 1 [] ghAdd) --(runKAXIOM offOn target plot addGh ghAdd n (theDs four4 d) (get1) (get2) (get3) (get4) 3 (theDs four4 d) (four4) [(read(show four4))] ((tk four4 subroutineList)))
                      in let toHaal =  charFilterInt ghAdd;
                      in  if (triggerWord (filter (/=' ') (head(checkflow [] [pi]))) "intern" ) == "1" then (fst allFor)
                          else if (triggerWord (filter (/=' ') (head(checkflow [] [pi]))) "cell" )  == "1" then (map read [(triggerWord "cell" "cell3")]) -- snd (ghAdd,(snd(charFilterInt ghAdd)))
@@ -1393,6 +1425,7 @@ runEXP3 li liSolution pi ghAdd = do
 -- needs not "intern" to genearate new Char guesses by
 -- adding chars to ghAdd
 -- pi: Punkt , ghAdd: String ; li: the source [String ]
+--
 runEXP3Char pi liSolution ghAdd li = 
        -- domain2 syntax
        let asun = (runEXP3 li liSolution pi ghAdd)
