@@ -1,24 +1,49 @@
 -- this module provides:
--- --------------------------------------
+-- --------------------------------------                                                  -- concept                                              beard  vs   not beared
 -- EXPERIMENT 3                                                
--- the output of functions    
--- themselves has a           syntax            AND/OR           a concept
--- functions used with type pure outpout e.g 
---                            kArmWORK                            kArmTest5
---                       is a work version for other      is to illustrate this function in ghc on screen
---                       computations
---variables:     
---              li      ::[String]                               any input as [String] should have minimum list length of 4
---               => Baysian Tpye [CELLI,CELLII,CELLIII,CELLIV]                                                                 ########################################## initiate  data stream li 
+-- the output of functions                                                                 --                beard        not beared                    :     :
+-- themselves has a           syntax            AND/OR           a concept                 --                collum I       collumII                 wo :_____:ist   
+-- functions used with type pure outpout e.g                                               --            --------------------------                    /      \    
+--                            kArmWORK                            kArmTest5                --    row I A |      B      |    not B  |    C .. --\  wo' /        \ 
+--                 is a work version for other      is to illustrate this function in ghc  --  astigmatic| '  cell I   |   cell II |            \  |  \        / ist' 
+--                 computations                     on screen                              -- -- ----------------------------------------       / \|/  \______/    
+--                                                                                         --   row II A'|     B       |    not B  |         --/  C'of wo     C' of ist
+--                                                                                         -- not astigm |   cell III  |   cell IV |                     \  /
+--                                                                                         -- - matic    --------------------------                        C
+--                                                                                          ########################################################  initiate  data stream li -> Baysian -> CELLS -> BIAS 
+--                                                                         
+--external cell run   ################################################## 11-1-21 cell reason
+---------------------
+--pi: Punkt "extern" ...; guess String e.g "ddd"
+--    ||                ||
+--    \/                \/
+--  kArmWORK       triggerWord   -> runEXP3  -> cellStream3EXT   -> expressAinA
+--                                                               -> expressAsinA
+--                                           -> simVALS
+--                                           -> runEXP3Char
+--                                           -> experiment3RAW11
+--                                           -> experiment3RAW22  -> buildPrior                      no use yet
+--                                                                -> theB' -> -- li :: [[String]]
+--                                                                               li3 :: [String]     no use yet
+--                                                                -> theBQuirky                      no use yet
+--                                           -> experiment3RAW23 -> commmB  -> foStrCd ->  qw wo ist r = (foStrCd wo ist r)
+
+--                                                               -> commmB2
+--                                                                 ################################################### 11-1-21 reason cell run export via Punt do cellStream3EXT
 --
---              'liSolution'::= a real Prior/Bias?!?   this String contains the 'solution' of li and liSolution:"xyz=11"                ---------------------##################### RELATED BIAS with liSolution
---                          or " x + y + z = 11 "     a stream of data is introduced to another similar one with certain
---                                                    properties       
+--variables: 
+-------------                                                                               
+-- li      ::[String]                                any input as [String] should have minimum list length of 4
+--              :: [CELLI,CELLII,CELLIII,CELLIV]     BAYSIAN TYPE                                                                ########################################## initiate  data stream li 
+--
+--'liSolution'::= a real Prior/Bias?!?              this String contains the 'solution' of li and liSolution:"xyz=11"                ---------------------##################### RELATED BIAS with liSolution
+--                          or " x + y + z = 11 "    a stream of data is introduced to another similar one with certain
+--                                                   properties so far in MOST functions liSolution is to compare via simival       
 -- e.g *>let liSol = ["0*x + y + 0*z = 3","0*x + y + 0*z = 33*x + 0 + 0*z = 6","3*x + 0 + 0*z = 6","0*x + 0*y + z = 2","0*x + 0*y + z = 2x + y + z = 11","x + y + z = 11"]
 --                                                  all functions that use 'runEXP3' manouver between CELLS ?
 --                                                  can be switched to 2 different states COMPARE with "intern" vs "cell". a ghAdd::String is added to  
 --compare:  
---            runEXP3 li4 "xyz=11" pi                set a [String] with Simval li guess to 0
+--   runEXP3 li4 "xyz=11" pi                       set a [String] with Simval li guess to 0
 --
 --glossary: 
 --                            syntax                             concept
@@ -43,38 +68,28 @@
                                        --             [String] -> Int -> p (B|A) -> if lenght li > Int => always B or CELLI
 --                   with conditionI always B          li      -> solution 
 --                                                   => Baysian Type , CELLI  ... needs type check qw??? 
---
---   poolBorNotB     *> poolBandNotB li4 3          how many possibities are there?   128-48 * (length li)*(Int of population)  
---   poolBorNotBdif  *> poolBandNotBdif li4 3 [4,3,2,6,7,1]   80*(length$concat li)*a
---                                                  [String] -> a Int -> n Int -> if length i > a == True then  always B and/or not B
---                                                  => BaysianTyper cell II 
---                                                  
---                       --
+-- FASTER ---------------------------------------------------------------------------------------------------------------######################################### BAYSIANS/ SOLUTIONS
 --   poolBandNotB                                   based on liT, give a list of strings  
 --                                                  import li -> randomize input -> give noisy output,   Baysian approach*1
 --                                                  enter in defSearch how many Int to take 
 --
 --   poolBandNotBdif                                 takes an [Int] that has now further side effects yet, could be used
 --                                                  with simiVal (exter?? intern? cell?) to find a meassure of order for the given sequence of Chars
---
---   buildPrior        given a  let gh r = chainDistribute r ["2","2","1"] r (lines "1")
---                                                   
---                                                  not used yet : expressAsinA, expressAinA   
---                                                    
---  cellStream1 (cellStream1 33 li4 2 )               [String] -> Int    => BaysianType ->  CELL IV rename to cellstream4???
+
+--   cellStream1 (cellStream1 33 li4 2 )               [String] -> Int    => BaysianType ->  CELL IV rename to cellstream4???
 --                                                      li     -> charNo => show order in Type -> [Int] <=> String -> human interpretations  
 --                                                    even if result does not carry the right letters it might
 --                                                    carry the right minimal order, it can compare the length of the result to one string of li
 --                                                    and possibly compare the length of a result with a guess 
 --                                                    and see if the invoced cellStream has similar groups in occuring letters. 
 --
---  cellStream2  (cellStream2 3 li4 1 )=romi          [String] -> Int => [Int] <=> [Int] -> computational interpretatiosn 
+--   cellStream2  (cellStream2 3 li4 1 )=romi          [String] -> Int => [Int] <=> [Int] -> computational interpretatiosn 
 --                                                    show zero space -> find positions zeros -> 
 --                  *> [0] `elemIndices` romi         => [Int] order of occourance of zeros
 --                  [106,146,186,432,472]                                                
 --                                                     
---  cellStream3  map chr (cellStream3 li4 22222222)   [String] -> Int => [Int] <=> String -> human interpretatiosn 
---  astigmatic::= arithmetic reihe order n
+--   cellStream3  map chr (cellStream3 li4 22222222)   [String] -> Int => [Int] <=> String -> human interpretatiosn 
+--   astigmatic::= arithmetic reihe order n
 --                 with A beard= order 2 ?!?
 --
 --   runEXP3Char 
@@ -88,6 +103,19 @@
 --                                                            that letter 
 --                                                  3.        fix number of type BaysianType one of many
 --                                                            possible lines concsists of: [[Int]]
+
+--
+-- SLOW: ------------------------------------------------------------------------------------------------------------------------- ##################### like above but slow 
+--   poolBorNotB     *> poolBandNotB li4 3          how many possibities are there?   128-48 * (length li)*(Int of population)  
+--   poolBorNotBdif  *> poolBandNotBdif li4 3 [4,3,2,6,7,1]   80*(length$concat li)*a
+--                                                  [String] -> a Int -> n Int -> if length i > a == True then  always B and/or not B
+--                                                  => BaysianTyper cell II 
+--                                                  
+
+--   buildPrior        given a  let gh r = chainDistribute r ["2","2","1"] r (lines "1")
+--                                                   
+--                                                  not used yet : expressAsinA, expressAinA   
+--                                                    
 --
 -- concept                                              beard  vs   not beared
 -- -------                                                   :     :
@@ -234,9 +262,8 @@ li8 = ["1A00=1","ADs=D1","AB=A1BBBBB","A1AA=AAA1","A1=1AAA","A=1sss"]
 
 --III./IV.
 -- li4                                    with zeros                without zeros
--- compare to bonelist to solution 1   expressAinA li5 pi 1    expressAsinA li5 pi 1
---                     to solution 2   expressAinA li5 pi 2    expressAsinA li5 pi 2
-
+-- compare to bonelist to solution 1   expressAinA liSolution li5 pi 1    expressAsinA liSolution li5 pi 1
+--                     to solution 2   expressAinA liSolution li5 pi 2    expressAsinA liSolution li5 pi 2
 --  *Experiment3> expressAsinA "xyz=11" li4 pi 2
 -- [48.51138353765324,48.78048780487805,48.421052631578945,43.67816091954023]     
 
