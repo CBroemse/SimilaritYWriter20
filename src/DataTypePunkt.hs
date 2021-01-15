@@ -1,3 +1,8 @@
+-- export Punkt type
+  --
+--data Punkt = Punkt {name::String, mother::Maybe Punkt, father::Maybe Punkt,mother2::Maybe Punkt,loopNumber:: Maybe Punkt,minMaxTrueOrFalse::Maybe Punkt}
+-- Punkt "what" 
+--data PunktInt =  PunktInt {nameI::Int, motherI::Maybe Punkt, motherII::Maybe Punkt,motherIII::Maybe Punkt,motherIV:: Maybe Punkt,motherV::Maybe Punkt} 
 module DataTypePunkt
   where
 
@@ -7,7 +12,8 @@ import Control.Monad
 import System.Environment
 import System.IO
 
-
+--------------------------------------------------
+ 
 aSieve f = [((plugit f 2),(stelle2er f)),((plugit f 3),(stelle3er f)),((plugit f 5) ,(stelle5er f))] 
 
 aSieve2 f = [((plugit2 f 2),(stelle2er f)),((plugit2 f 3),(stelle3er f)),((plugit2 f 5) ,(stelle5er f))] 
