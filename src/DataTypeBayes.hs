@@ -33,50 +33,6 @@ nameBayesDomain foA foAli  =  (unwords(checkBayes [] [(Punkt foAli foA foA foA f
 
 
 
----------------------------------------------------------
--- BELOW ALL BASIC DEEP BACK-END
--- basic needls
-ausw l t = (drop(l-1) (take l t))
-scanChar :: Char -> Int
-
-scanChar c | '0' <= c && c <= '9' = fromEnum c - fromEnum '0'
-           | otherwise = -1
-
---scanString :: String -> Int a -> Double 
-scanString = let ste = (go 0) 
-             in zipWith (/) [1] 
-    where go a [] = a
-          go a (x:xs) | 0 <= sc && sc <= 9 = go (10*a+sc) xs
-                      | otherwise = 0
-              where sc = scanChar x
--- import your functions into kArmTest5 via formation
-preX x = head(map scanChar (frmDoubletoInt (show x)))
-
-    --putStrLn "Wrote Punkt: startWert"
----------------------------------------------------------------------------
-
-frmDoubletoInt das = let st1 = map ord das
-                 in let st2 = break (==46) st1 --(e.g [55,32,54] -> ([55],[32,54] ))
-                 in let checkDigitBEFRkommata = length (fst st2) -- $break(==32)$map ord$das
-                 in let cDBk = checkDigitBEFRkommata
-                 in let toInt = map scanChar (show cDBk)
-                 in if cDBk == 0 then map chr (filter (/=46) (snd st2))
-                    else if cDBk == 1 then map chr ((fst st2))
-                    else map chr ((fst st2)   )
-basis2 foAL m = maybePu (head (ausw m foAL ))         -- ACCESS functions to any bonelist line 
-basis3 foAL =  ((map ( (basis2 foAL)) [1..(length foAL)]))
-basis2New foAL x m = maybePu (head (ausw m (foAL x))) 
--- Upload functions and apply them to the data
--- -- when buiding the final 'Punkt' structure these are different
--- computation that can be used with '[father,mother...' 
--- a) turn bonelist into Punkt
--- b) turn pg functions into Punkt via 'uniqueClassRAW' 
-formationB e = Punkt "formation" (Just (basis2 e 1 )) (Just (basis2 e 2 )) (Just (basis2 e 3 )) (Just (basis2 e 4 )) (Just (basis2 e 5 )) 
-
--- store data in String because there are only 5 other spots left
--- when reading a longer list that wont help thus store in Punkt "String"
-basis4 foAL r = maybePu (show(checkBayes [] [((basis2 foAL r))]))
-
 -- baysian data
 -- based on Punkt type 
 --addGh:Int ; 1 == add new line to a bonelist: ghCheck and write111111111
@@ -149,6 +105,63 @@ baysianRAW addGh liT bonelist mofaList connectWrist dit dit2 mCommand crit fouri
                            in map chr filAll
      let justGone2 io t = justGoneRAW2 io t  --(asDot2 ([(show(formation [] 10))])) 
      putStrLn (show(map scanChar(formationRAW [mother] [mother] (realToFrac 1))))  --------------------------------------Punkt data: show pg values
+
+
+
+
+
+
+
+
+
+
+
+
+
+---------------------------------------------------------
+-- BELOW ALL BASIC DEEP BACK-END
+-- basic needls
+ausw l t = (drop(l-1) (take l t))
+scanChar :: Char -> Int
+
+scanChar c | '0' <= c && c <= '9' = fromEnum c - fromEnum '0'
+           | otherwise = -1
+
+--scanString :: String -> Int a -> Double 
+scanString = let ste = (go 0) 
+             in zipWith (/) [1] 
+    where go a [] = a
+          go a (x:xs) | 0 <= sc && sc <= 9 = go (10*a+sc) xs
+                      | otherwise = 0
+              where sc = scanChar x
+-- import your functions into kArmTest5 via formation
+preX x = head(map scanChar (frmDoubletoInt (show x)))
+
+    --putStrLn "Wrote Punkt: startWert"
+---------------------------------------------------------------------------
+
+frmDoubletoInt das = let st1 = map ord das
+                 in let st2 = break (==46) st1 --(e.g [55,32,54] -> ([55],[32,54] ))
+                 in let checkDigitBEFRkommata = length (fst st2) -- $break(==32)$map ord$das
+                 in let cDBk = checkDigitBEFRkommata
+                 in let toInt = map scanChar (show cDBk)
+                 in if cDBk == 0 then map chr (filter (/=46) (snd st2))
+                    else if cDBk == 1 then map chr ((fst st2))
+                    else map chr ((fst st2)   )
+basis2 foAL m = maybePu (head (ausw m foAL ))         -- ACCESS functions to any bonelist line 
+basis3 foAL =  ((map ( (basis2 foAL)) [1..(length foAL)]))
+basis2New foAL x m = maybePu (head (ausw m (foAL x))) 
+-- Upload functions and apply them to the data
+-- -- when buiding the final 'Punkt' structure these are different
+-- computation that can be used with '[father,mother...' 
+-- a) turn bonelist into Punkt
+-- b) turn pg functions into Punkt via 'uniqueClassRAW' 
+formationB e = Punkt "formation" (Just (basis2 e 1 )) (Just (basis2 e 2 )) (Just (basis2 e 3 )) (Just (basis2 e 4 )) (Just (basis2 e 5 )) 
+
+-- store data in String because there are only 5 other spots left
+-- when reading a longer list that wont help thus store in Punkt "String"
+basis4 foAL r = maybePu (show(checkBayes [] [((basis2 foAL r))]))
+
 --baysian pure code
 ----------------------------------------------------------------------------------
 --see the different states of flowState above
