@@ -225,7 +225,8 @@ module Experiment3 (
      , inActie -- guess a solution
    -- baysian types
      , baysianTypeInt
-     , baysianTypeString 
+     , baysianTypeString
+     , replaceC -- transform cell data types, deep layer 
      ) where
 
 import Data.List
@@ -1219,6 +1220,10 @@ theBQuirky liSolution li4 li = (head((experiment3RAW22 liSolution "DFDGGGF" [li4
 
 replaceDot = map (\c -> if c=='.' then ' '; else c)
 replaceEmpty = map (\c -> if c==' ' then ','; else c)
+replaceC = map (\c -> if c=='T' then '2'
+                      else if c=='W' then '2' 
+                      else if c=='O' then '2'
+                      else c)
 
 readCell c = [replaceDot c] >>= replaceEmpty
 -- zip by deleting all double occurcances A sigmatic or B

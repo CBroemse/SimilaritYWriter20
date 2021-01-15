@@ -28,6 +28,64 @@ import qualified Colored_2_3_5_Counter20 as COL
 -- see example 'triggerWord' below
 -- build single standing or cells on top of 'triggerWord'
 nameBayesTypeString g domain stringBT = triggerWordRAW g domain stringBT
+---------------------------------------------------------
+-- TEST WHICH BAYSIAN TYPE IS CELL
+-- AND IF IT CARRIES AN INT VAUE 
+bayesCELLI g domain = nameBayesTypeString g domain "CELLONE" 
+--  where
+bayesAstigmatic a b = if (map chr (rulerB a)) == ("cell") then (replaceC b) ++ (map chr (rulerA a)) --nameToInt
+             else a;
+bayesCELLII g domain = nameBayesTypeString g domain "CELLTWO" --
+bayesCELLIII g domain = nameBayesTypeString g domain "CELLTHREE"
+bayesCELLIV g domain = nameBayesTypeString g domain "CELLFOUR"
+{-                                intern   extern
+                                  -----  --------
+                 ___ CELLONE  | intern  : bayesCELLI |extern__
+                /___ ..       ' each    : bayesCELLII|        \
+    bayesCELLs /              | 4 new   : bayesCELIII|         \ bayesAstigmatic
+               \____..        ' branches: bayesCELLIV|         / 
+                \___ CELLFOUR | each    :            |      __/ 
+                              ============
+                                4 X 4    branches                             -}
+---------------------------------------------------------
+-- NEXT WHICH VALUE DOES THE TYPE CARRY
+-- CHANGE THE VALUE
+--
+-- listStringBTS : [String] ; give name to cells e.g*> ["CELLONE, "CELLTWO"..."CELLIV"]
+-- bayesAs: astigmatic and NotAstig: , bayes A's 
+--
+-- bayesAs => Int to pipeine goal    this "cell1" "cell" = 1  
+-- filter Int "cellCC22" -> "22"
+-- *> rulerA 57 
+rulerA focell =  filter (<90) (map ord focell) 
+rulerB focell = filter (>90) (map ord focell) 
+
+bayesCELLs bayesAs liststringBTS = catchA bayesAs feed 
+  where
+   feed = liststringBTS;
+  -- fomapB g domain stringBT  = nameBayesTypeString g domain stringBT;
+  -- mapB = map fomapB;
+   nameToInt = replaceC feed;
+  -- transformType = map nameToInt ;
+    -- filter "cell" out of stringBTS
+    -- from "cellCC22" -> "CC22" -> "22"
+     -- if a has an Int token list it with the selected Baysian String/Int 
+   catchA a b = if (map chr (rulerB a)) == ("cell") then nameToInt ++ (map chr (rulerA a)) --nameToInt
+                else b;
+
+replaceC = map (\c -> if c== 'O' then '1'
+                      else if c=='N' then '1'
+                      else if c=='E' then '1'
+                      else if c=='T' then '2'
+                      else if c=='W' then '2' 
+                      else if c=='o' then '2'
+                      else if c=='T' then '3'
+                      else if c=='H' then '3'
+                      else if c=='R'  then '3'
+                      else c)
+
+bayesCell1 g domain = nameBayesTypeString g domain "cellONE"
+
 -- function above names the cells this function
 -- filters an Int as type recognition initiation of baysian cell types I..IV
 nameBayesTypeInt g domain stringBT = triggerWordRAW g domain stringBT
