@@ -3,7 +3,7 @@
 #### Visiualize a network or your name - nomen est omen
 
 1.0.0
-A baysian network optimization. Compare strings to render
+A bayesian network optimization. Compare strings to render
 complex programming concepts such as:
 [[Int]] , [[String]] or complex Numbers with the goal to visiualize higher programming concepts such as classes and types
 in 2d or 3d file output 'src/wxms/lala1.wxm'
