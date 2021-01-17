@@ -3,11 +3,26 @@ module DataTypeBayes(
    baysianRAW
  , basis4 -- store data in Baysian string   
  , checkType  -- how useful ? 
- , formationB -- cell1 , cell2 with ptc9 ? 
+ , formationB -- cell1 , cell2 with ptc9 ?
+ -- main ------- checkCELLs==e.g checkBayes [mother] (joinBayes "cellghj" "cell1" ["cell","CELLONEe","CELLTWO","CELLTHREE","CELLFOUR"])
+ , checkCELLs --                 checkCELLs [] "cellghj" "cell1"
+ -- CELLS
+ , bayesCELLI  -- 
+ , bayesCELLII
+ , bayesCELLIII
+ , bayesCELLIV
+
+ -- architecture
  , nameBayesTypeString -- is liSolutions
  , nameBayesTypeInt  -- help to name bayes types with Ints
  , nameBayesDomain -- most basic bayes metric so far
-
+ , bayesStringToInt
+ -- 3 bayes IO functions
+ , bayesCELLs
+ , bayesAstigmatic
+ , bayesReadDirection
+ -- export to HoofdDev.hs: formHoofdEX1
+ , joinBayes
  -- update self updating html that has some values
  -- only import from 'Col..20.hs'
  , 
@@ -22,19 +37,50 @@ import System.IO
 import UsefulFunctions19
 import DataTypePunkt
 import qualified Colored_2_3_5_Counter20 as COL
+import qualified FourierFieldCLASSIFIER as F
 ---------------------------------------------------------
 --friend front-end
 -- stringBT: String, which name to remember as liSolution(BayesType String)
 -- see example 'triggerWord' below
 -- build single standing or cells on top of 'triggerWord'
 nameBayesTypeString g domain stringBT = triggerWordRAW g domain stringBT
+
+-- ruler .. ,59] [58, ..
+--   or     ,59  ,58] [57, ..
+--   [48..59] Just Int;  [59..64] Just Operators; [65..90] Just CapLetters, [97..122] Just SmallLetters
+--   READING ORDER  left <- right for Int
+bayesStringToInt charnumber bCell = map chr (rulerRAW charnumber bCell )
 ---------------------------------------------------------
 -- TEST WHICH BAYSIAN TYPE IS CELL
--- AND IF IT CARRIES AN INT VAUE 
-bayesCELLI g domain = nameBayesTypeString g domain "CELLONE" 
+-- AND IF IT CARRIES AN INT VALUE 
+-- g:Int, which list ; domain: String ; changeDirection: String
+-- e.g*> bayesReadDirection 1 "CELLTWO" "CELLTWO" 
+--
+--formationB e = Punkt "formation" (Just (basis2 e 1 )) (Just (basis2 e 2 )) (Just (basis2 e 3 )) (Just (basis2 e 4 )) (Just (basis2 e 5 )) 
+--formationB e = [(Just (basis2 e 1 )), (Just (basis2 e 2 )), (Just (basis2 e 3 )), (Just (basis2 e 4 )), (Just (basis2 e 5 ))]
+checkCELLs io a b = checkBayes io $ joinBayes a b ["cell","CELLONE","CELLTWO","CELLTHREE","CELLFOUR"]
+joinBayes g domain cellNames = map formationB [(mapReadCells g domain cellNames)]
+mapReadCells g domain bayesCELLItoIV = map (bayesReadDirection g domain) bayesCELLItoIV 
+ 
+bayesReadDirection g domain changeDirection  = do
+            let prefu = nameBayesTypeString g domain changeDirection
+          --  let throwIn =
+            let rule = (bayesStringToInt 122 domain)  
+            let ruleInt = (bayesStringToInt 58 domain)  
+            let vvb = if (length (rulerB domain)==0) && (length(ruleInt)/=0) then domain --domain
+                      else prefu 
+                 --     else if (length (rulerA>0) then domain)
+                   --   else prefu --(catchInt (bayesStringToInt 58 domain) prefu) --Punkt "dito" Nothing Nothing Nothing Nothing (head (head$ausw 2 (catchInt domain)))  
+            vvb
+    --where 
+      --     catchInt k b = if (length k == 0 ) then do  maybeBayesPunkt n [domain] -- bayesLength maybeBayesPunkt [domain]-- carries NO Int -> must be ..e.g letters
+        --               else if (length k == 1) then do maybeBayesPunkt n [b] --[(nameBayesTypeString (show g) (head$ ausw 1 k) "CELLONE")]  --bayesLength maybeBayesPunkt [domain]  -- Just this Int
+          --             else do maybeBayesPunkt n [b] -- [(nameBayesTypeString (show g) (head$ausw 1 k) "CELLONE")]   -- maybeBayesPunkt g k -- bayesLength maybeBayesPunkt [domain]; -- several Ints
+             
 --  where
 bayesAstigmatic a b = if (map chr (rulerB a)) == ("cell") then (replaceC b) ++ (map chr (rulerA a)) --nameToInt
              else a;
+bayesCELLI g domain = nameBayesTypeString g domain "CELLONE"
 bayesCELLII g domain = nameBayesTypeString g domain "CELLTWO" --
 bayesCELLIII g domain = nameBayesTypeString g domain "CELLTHREE"
 bayesCELLIV g domain = nameBayesTypeString g domain "CELLFOUR"
@@ -46,7 +92,104 @@ bayesCELLIV g domain = nameBayesTypeString g domain "CELLFOUR"
                \____..        ' branches: bayesCELLIV|         / 
                 \___ CELLFOUR | each    :            |      __/ 
                               ============
-                                4 X 4    branches                             -}
+  ____________________________|___4 X 4______branches__________________      
+  |  3 X 1 function classes: bayesCells, bayesCell.., bayesAstigmatic |  -}
+twoBaysianTypes io a b = if (length b ==0) then (checkCELLs io a b ) --bayesAstigmatic
+                         else (checkCELLs io a b) 
+-- BAYSIAN TYPES:
+-- [Int] -> [String] -> Maybe [Punkt]
+maybeBayesPunkt k bCells = Just $ bayesPunkt k bCells
+-- [Int] -> [String] -> MaybeString
+maybeBayesString k b = (foAdecide2 (concat (map (:[]) (checkBayes [] (bayesPunkt k b )))))
+bayesPunkt k bCells = map maybePu (ausw k bCells)
+--  
+bayesLength fu list = map (mayS fu list) [1..(length list)]
+   where
+     mayS fu b a = fu a b; 
+-- bayes net
+-- order0     bayesLength -> (length bCells) -> complexity tree
+--                        take String/[Punkt] auto Int
+-- order1     sort bCells try bayesCELLI..IV
+
+                        
+-- a list to enter lists into mother father ..
+-- normal list -> [Punkt] 
+-- write a Punkt list and determine ancestorship with the sceme above
+-- if a type does not fulfil a certain criteria it will be sorted in this list accordingly
+-- the two orders are 
+--
+-- 1 just by being Punkt or not 
+-- *DataTypeBayes> let baysian k = map maybePu(ausw k ["cell","1",head$(checkBayes [] [pi])])
+--
+-- 2 the computed Value of the 3 bayes functions above 
+--
+-- assume the order to sort by depends on 
+--
+-- a )the read direction up/down, left/right or both vice versa AND
+--       can be established by following the transfer direction
+--       of an Int in the 3 classes of functions from a to b or vice versa
+--
+-- b ) one desired function and/or (liSolution or B|A?)
+--     starting : classification of the 
+
+-- ES GIBT NUR EINE AKTUELLE LESERICHTUNG UND WERTE DIE HIN UND HER WANDERN
+-- ...
+-- test to cut to HoofdDev.hs
+solong b = [1..(length b)];
+ --which:Int length output; m: source list; fromA: Int choose from m
+soSame  which m fromA = let stap1 = head(ausw fromA m)
+                        in take which [stap1,stap1..];
+bayesMonad b thisAction = do 
+          let prix = "show" 
+          let solang = solong b
+          bayWorld0 <- forM solang (\bay -> do
+              let outBayesMonad = thisAction
+              return (outBayesMonad))
+          bayWorld0; 
+
+justNames = ["name1","name2","name3"]
+motherType foas r = map (mayer2 (head(ausw r (justNames)))) ([foas])
+
+formTestRAW io r e e2 normalFunction =  let punktOrPg = checkBayes  io [(Punkt  (head(checkBayes [] [(basis4 e2 r)])) (Just (basis2 e 1 )) (Just (basis2 e 3 )) (Just (basis2 e 4 )) (Just (basis2 e 5 )) (Just (basis2 e 6))) ]
+                 in let choosBy = length(head (group(punktOrPg)))
+                 in if choosBy ==2 then normalFunction
+                                   else punktOrPg 
+ 
+-- io: IO e.g [mother] find mother function
+-- r: Int , with preX Int
+-- e:Int another function value
+-- normalFunction:  sin or ptc
+--
+formTest io r e normalFunction = formTestRAW io r e liT normalFunction
+
+
+ -- import 'roaming' data into kArmTrack5     |  
+ --  all data in one clunky data-type :
+--checkFo g = if (length g) == 0 then ""
+  --          else "MOTHER MODE: on" 
+  --
+li5 = ["xyz+123456789","0xy0z=3","1x0y0z=6","0x0yz=2","0x0yz=2x"]
+
+liT = li5 -- [progVar1,progVar2,progVar3,progVar4,progVar5,progVar6] 
+
+
+mayer2 r foa = if (foa) == [] then maybePu "empty"
+                              else maybePu2 (r) (Just(maybePu ((show [(foAdecide2 (foa))]))))
+
+-- make a function that is a [(Maybe Punkt)]-> that by itself is the definiton of
+-- mother :: Punkt -> Maybe Punkt 
+-- this function below shall lead to => a motherTYPE that is depending on the type of simiyritYvalue
+foAdecide2 foA = let boa rt t = (Just (maybePu2 rt t)) --let whereBreak = chainDistribute crit bonelist crit (lines "1")
+                          in let mapMaybePun k = let ste1 k rt = (boa (head(ausw k rt))) ((Just (maybePu (head (ausw k rt)))) ) 
+                                                 in ste1 k foA -- e.g foA = ["vb","vb2","vb3"]
+                          in let preMoa = length foA
+                          in let eindelijk = do (map mapMaybePun [1..preMoa]) 
+                          in 
+                          if foA==[] then Nothing
+                          else let chssd i = maybePu2 (head(ausw i foA))  (((boa (head(ausw i foA)) (head(ausw i eindelijk)))))  
+                               in Just (show[(chssd 1)])
+
+
 ---------------------------------------------------------
 -- NEXT WHICH VALUE DOES THE TYPE CARRY
 -- CHANGE THE VALUE
@@ -57,7 +200,8 @@ bayesCELLIV g domain = nameBayesTypeString g domain "CELLFOUR"
 -- bayesAs => Int to pipeine goal    this "cell1" "cell" = 1  
 -- filter Int "cellCC22" -> "22"
 -- *> rulerA 57 
-rulerA focell =  filter (<90) (map ord focell) 
+rulerRAW charnumber focell = filter (<charnumber) (map ord focell) 
+rulerA focell =  rulerRAW 90 focell 
 rulerB focell = filter (>90) (map ord focell) 
 
 bayesCELLs bayesAs liststringBTS = catchA bayesAs feed 
@@ -104,7 +248,7 @@ nameBayesDomain foA foAli  =  (unwords(checkBayes [] [(Punkt foAli foA foA foA f
 -- e.g> let li = ["AAABB","AABAB","AAA","BBBAA"]
 --       let pi = Punkt "M" Nothing Nothing Nothing Nothing Nothing
 -- e.g> baysianRAW 2 ["AAABB","AAABBAAABAB","AAABAB","AAA","AAABBBAA","BBBAA"] li 1 pi 1 1 [] "DD"
-baysianRAW addGh liT bonelist mofaList connectWrist dit dit2 mCommand crit fourierMQ6NOPAN123 = do
+baysianRAW addGh liT bonelist mofaList fopi dit dit2 mCommand crit fourierMQ6NOPAN123 = do
      let allAcc foPun =  (checkBayes [] [(foPun)])
  
      let foAdecide foA = if foA==[] then Nothing
@@ -141,14 +285,14 @@ baysianRAW addGh liT bonelist mofaList connectWrist dit dit2 mCommand crit fouri
      let fnACCRAW cou = if unPoint == ("\"notM\"") then fst cou
                         else snd cou
             where 
-             unPoint = (show(head(words(unwords(checkBayes [] [connectWrist]))))) ;
+             unPoint = (show(head(words(unwords(checkBayes [] [fopi]))))) ;
  
  -- import 'roaming' data into kArmTrack5     |  
  --  all data in one clunky data-type :
      let checkFo g = if (length g) == 0 then ""
                      else "MOTHER MODE: on"  
 
-     let basis mm foA = Punkt (fnACCRAW(nACCRAW (unwords(allAcc (connectWrist))) ["When set M will work:"++" now sleeping", checkFo mm ] ) ) foA foA foA foA foA
+     let basis mm foA = Punkt (fnACCRAW(nACCRAW (unwords(allAcc (fopi))) ["When set M will work:"++" now sleeping", checkFo mm ] ) ) foA foA foA foA foA
     -- EXAMPLE Punkt new format connect two [Maybe Punkt] list1 and list2
      let formationRAW io1 io2 rd = (head(head(map words(checkBayes io1 [(basis (checkBayes io1 [(basis4 liT (preX rd))]) (Just (maybePu(unwords(formTest io2 (preX rd) [show(fourierMQ6NOPAN123 rd )] (words(show(sin rd))))))  ))]))))
      let formation io2 rd = [(formationRAW [mother] io2 (realToFrac rd))] --(preX rd) list1 (checkflow [] [(basis4 list2 rd)])) 
@@ -618,7 +762,7 @@ baysianRAW addGh liT bonelist mofaList connectWrist dit dit2 mCommand crit fouri
              -- (allFunctions 2 [] [] [] ""  2)
               putStrLn "Done" 
                   
-     (frame0 bonelist (mofaList) connectWrist dit dit2) 
+     (frame0 bonelist (mofaList) fopi dit dit2) 
 ------------------------------------------------------------------------------
 -- EXPORT INTERACTIVE HTML to HoofdDEV.hs
 -------------------------------------------------------------

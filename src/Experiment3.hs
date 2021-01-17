@@ -1,6 +1,8 @@
 -- this module provides:
 -- --------------------------------------                                                    concept                                               beard  vs   not beared
--- EXPERIMENT 3                                                                            -----------                                                  :     :                                  
+-- EXPERIMENT 3    # baysian data generator# sort multi-grap network #Busshop-Bradley                                                                       -----------   
+--                 # write sorted ptc.html # kArmWork kArmTest main/oldest 
+--                 # role model for formation in action see DataTypes                                             :     :                                  
 -- the output of functions                                                                 --                beard        not beared                    :     :
 -- themselves has a           syntax            AND/OR           a concept                 --                collum I       collumII                 wo :_____:ist   
 -- functions used with type pure outpout e.g                                               --            --------------------------                    /      \    
@@ -29,6 +31,10 @@
 --                                           -> experiment3RAW23 -> commmB  -> foStrCd ->  qw wo ist r = (foStrCd wo ist r)
 
 --                                                               -> commmB2
+--
+--  formationEasy -> formationB
+--  formationPunkt -> formationRAW ->  -> pipe functions into [Punkt,Punkt] -> 
+--
 --
 -- 'zufallsBasic1'-> 'longRun' => random number
 --                                   ||
@@ -71,7 +77,7 @@
 --   experiment3RAW11                               Busschop and Bradly ??? also see 'Colored_2_3_5_Counter20.hs, build a hexagon
 --                                                  turn 3d ptc functions in 2d/3d svg  
 --
---   baysianType                                    determine from String to String 
+--   baysianTypeString                                    determine from String to String 
 --
 --   poolB           e.g*>map chr $ poolB li4 5     just parse the input li -> always show one 'Char' as  'x' :[] -> [Char]
                                        --             [String] -> Int -> p (B|A) -> if lenght li > Int => always B or CELLI
@@ -222,11 +228,14 @@ module Experiment3 (
      , theAChars -- string domain to compare cell streams with 
    -- own algorithms for HoofdDev
      , kArmWORK
-     , inActie -- guess a solution
+     , inActie -- guess a solution , illustration
+     , inActieRAW -- workable function  choose which function to export 
    -- baysian types
      , baysianTypeInt
      , baysianTypeString
-     , replaceC -- transform cell data types, deep layer 
+     , replaceC -- transform cell data types, deep layer
+     , cellStream3 -- export random strings to Hoofd.hs
+     , poolBandNotB --ready made guesses only raise+1 
      ) where
 
 import Data.List
@@ -436,7 +445,7 @@ inActie pv1 pv2 pv3 pv4 solution liSolution = do
     -- parse action , add a function via 'foCalc'
     oftheDomains n wantedList solution foCalc= countABCs n wantedList solution foCalc; 
  -- Punkt data architecture --------------------------------------
- -- r=li4 ; li4 ::  [[Char]] - > the given solution of domain A and not stigmatic
+ -- r=li4 ; li4 ::  [[Char]] - > the given solution of domain astigmatic (A) and not astigmatic  (A')
  -- B (A) of w atom 2 of r  
     bn foAL m =  maybePu (head (ausw m foAL ))
  -- store data in String because there are only 5 other spots left
@@ -464,17 +473,16 @@ inActie pv1 pv2 pv3 pv4 solution liSolution = do
 -- father,mother,father,mother2,loopNumber,minMaxTrueOrFalse
 --  ||     ||     ||     ||       ||           ||
 --  \/     \/     \/     \/       \/           \/
---
-inActieRAW pv1 pv2 pv3 pv4 solution liSolution = do
-          timE 
+--selexport:Int which function to export
+-- random maos , letterSolutions, outmatrix or more solutions 
+inActieRAW pv1 pv2 pv3 pv4 solution liSolution selexport = do
+          --timE 
           let cookieForOn foAL m =  maybePu (head (ausw m foAL ))
    -- kArmWork need list length 4 , a Punkt-type that can hold data to represent
    -- the inherent structure of 
        --   let onDefault foAL m = Punkt cookieForOn foAL m pv1 pv2 pv3 pv
           let setAAxiom = theAChars
          
-     --     endlessSubly <- forM [1..37]
-          let seeChr =  qw liSolution "werdd" "rdddw" 3  -- just there not used (jtnu)
        
           let seperateIntandChar foli4 = aleph [head foli4] --not used so far, Just Num Chars- > Int only works on Int in String  ##################### 11-1-21 reason abt cells see conceptProject21.svg
           let mainRandomLine foli4 n = cellStream3 foli4 n
@@ -492,7 +500,7 @@ inActieRAW pv1 pv2 pv3 pv4 solution liSolution = do
           let withOutZero foli4 pi n =  expressAsinA liSolution foli4 pi n -- compare to same result without zeros
          -- get two solutions B in A n>2 will lead to an error
           let drawXYZ foli4 pi n = likelyhood foli4 n  -- get an Int out of the result n	
-          putStrLn "like does"
+        --  putStrLn "like does"
          -- let wantedList = li4 --1
           let newCellStream1 expanS sol fol100 nIdeal = let findSol sol want = map length fol100 --(organelleFind expanS sol want)
                   in let findposis want sol foN = foN `elemIndices` (findSol sol want)
@@ -569,19 +577,28 @@ inActieRAW pv1 pv2 pv3 pv4 solution liSolution = do
 
           let mao2 t = show (map nub (concat(ausw 1 ( getSolus t))) ) 
          -- let punktMaschine = Punkt name 
-          putStrLn "suggested 'A'" 
+        --  putStrLn "suggested 'A'" 
           let outBandNotB = (show newRekenen) 
        --   putStrLn (show (newCellStream1 1 (map ord (head(ausw 1 li4))) 1))
-          putStrLn "continue Here !!!!" 
+       --   putStrLn "continue Here !!!!" 
           let outLetterB = (show (head(ausw 2 (mao 1))))
+          let outLetterList z = map head z
           let outMatrixX =  (show ( nub (getSolus 1)))
-          putStrLn ""
+          let outMatrixx list = map show$concat(map (map nub ) (map getSolus list))
+      --    putStrLn ""
           let moreMystery =  (map mao2 [1..10])
           --let chooseOut = do 
             --      if gD == 1 then  
-          let calcTime = timE 
-          putStrLn "Need calc difference for computing time"
-          calcTime
+          --let calcTime = timeE   
+         -- putStrLn "Need calc difference for computing time"
+         -- calcTime
+         -- return(head$ausw 1 [outLetterB])
+          return(show (mao 3 ) )--(head(ausw 1 (mao 1))))
+          let theMAos = map mao [1..6]
+          let formationB e = Punkt "formation" (Just (basis2 e 1 )) (Just (basis2 e 2 )) (Just (basis2 e 3 )) (Just (basis2 e 4 )) (Just (basis2 e 5 )) 
+          let choosF n = head$ ausw n [theMAos,[(outLetterList theMAos)],(outMatrixx [1..6]),moreMystery] 
+          -- select with selexport:Int
+          return (formationB (choosF selexport))
        
   where
     pop e y = head $ (ausw e y); 
@@ -1206,10 +1223,10 @@ theBQuirky liSolution li4 li = (head((experiment3RAW22 liSolution "DFDGGGF" [li4
 --      A _____B
 --       /     \
 --  BA' /       \  not
--- A |  \       /  B
+-- Ast.|\       /  B
 -- -- ---\____ /
--- not stiC'    C'
--- -- mati\  /
+-- not A'stic    C'
+-- -- matic\  /
 --         C
 ---------------------------------------------------------------
 
@@ -2379,7 +2396,7 @@ kArmTest5 addGh liT bonelist mofaList connectWrist dit dit2 mCommand crit= do
 
 -- make a function that is a [(Maybe Punkt)]-> that by itself is the definiton of
 -- mother :: Punkt -> Maybe Punkt 
--- this function below shall lead to => a motherTYPE that is depending on the type of simiyritYvalue
+-- this function below shall lead to => a motherTYPE that is depending on the type of similaritYvalue
      let foAdecide2 foA = let boa rt t = (Just (maybePu2 rt t)) --let whereBreak = chainDistribute crit bonelist crit (lines "1")
                           in let mapMaybePun k = let ste1 k rt = (boa (head(ausw k rt))) ((Just (maybePu (head (ausw k rt)))) ) 
                                                  in ste1 k foA -- e.g foA = ["vb","vb2","vb3"]
@@ -2392,7 +2409,7 @@ kArmTest5 addGh liT bonelist mofaList connectWrist dit dit2 mCommand crit= do
      let mayer foa = if foa == [] then [""]
                               else lines(show [(foAdecide2 foa)])
      let mayer2 r foa = if (foa) == [] then maybePu "empty"
-                                       else maybePu2 (r) (Just(maybePu ((show [(foAdecide2 (foa))]))))
+                                       else maybePu2 (r) (Just(maybePu ((show [(foAdecide2 (foa))]))))   -- connectWrist
      let justNames = ["name1","name2","name3"]
      let motherType foas r = map (mayer2 (head(ausw r (justNames)))) ([foas])
 
@@ -2415,7 +2432,7 @@ kArmTest5 addGh liT bonelist mofaList connectWrist dit dit2 mCommand crit= do
      let checkFo g = if (length g) == 0 then ""
                      else "MOTHER MODE: on"  
 
-     let basis mm foA = Punkt (fnACCRAW(nACCRAW (unwords(allAcc (connectWrist))) ["When set M will work:"++" now sleeping", checkFo mm ] ) ) foA foA foA foA foA
+     let basis mm foA = Punkt (fnACCRAW(nACCRAW (unwords(allAcc (connectWrist))) ["When set M will work:"++" now sleeping", checkFo mm ] ) ) foA foA foA foA foA -- liT
     -- EXAMPLE Punkt new format connect two [Maybe Punkt] list1 and list2
      let formationRAW io1 io2 rd = (head(head(map words(checkflow io1 [(basis (checkflow io1 [(basis4 liT (preX rd))]) (Just (maybePu(unwords(formTest io2 (preX rd) [show(F.fourierMQ6NOPAN123 rd )] (words(show(sin rd))))))  ))]))))
      let formation io2 rd = [(formationRAW [mother] io2 (realToFrac rd))] --(preX rd) list1 (checkflow [] [(basis4 list2 rd)])) 

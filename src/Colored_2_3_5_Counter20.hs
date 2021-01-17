@@ -99,7 +99,7 @@ module Colored_2_3_5_Counter20 (
           -- all functions can be changed just note the more linear the pg functions are the less divertivied is the output.
           -- pg-functions are a key hole the complexity of a  basic 'algebra', mostly matrix manipulation.
           -- Not everything is a computer but sufficiently differing concepts are: all pg| f (x) can be changed
-
+     
       ) where
 
 import Data.List

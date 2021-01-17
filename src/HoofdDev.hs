@@ -36,6 +36,7 @@ import System.IO
 -- own modules 
 import qualified Colored_2_3_5_Counter20 as C
 import qualified Experiment3 as E
+import qualified DataTypeBayes as BT
 import UsefulFunctions19
 import DataTypePunkt
    --, Experiment3
@@ -77,7 +78,10 @@ baysianTypeString=E.baysianTypeString
 -- manifest the given li function with and without 'appropiate mathematical syntax'
 -- give a simiVal list to compare both states
 -- liSolution: a real Prior/Bias?!? 
--- e.g -["0*x + y + 0*z = 3","0*x + y + 0*z = 33*x + 0 + 0*z = 6","3*x + 0 + 0*z = 6","0*x + 0*y + z = 2","0*x + 0*y + z = 2x + y + z = 11","x + y + z = 11"]
+-- e.g -
+li1 = ["0*x + y + 0*z = 3","0*x + y + 0*z = 31*x + 0 + 0*z = 6","1*x + 0 + 0*z = 6","0*x + 0*y + z = 2","0*x + 0*y + z = 2x + y + z = 11","x + y + z = 11"]
+li2 = ["0*x + y + 0*z = 3","1*x + 0 + 0*z = 6","0*x + 0*y + z = 2","x + y + z = 11"]
+
 -- so far liSolution is merely a symbolic type it has no use other to be simivalued to other liSolutions 
 -- 
 -- example for Punkt as selector will try filter : PROTRACTOR at how many degrees is the blind shut
@@ -104,7 +108,7 @@ runEXP3 li liSolution pi ghAdd = do
             --let prepComp g = startDchange g (1,2)
                 -- compare internaly
             --let plugChoose = triggerWord pi  
-            let fg = let allFor = (E.kArmWORK 2 (chD 2) aLi 1 pi 1 1 [] ghAdd) --(runKAXIOM offOn target plot addGh ghAdd n (theDs four4 d) (get1) (get2) (get3) (get4) 3 (theDs four4 d) (four4) [(read(show four4))] ((tk four4 subroutineList)))
+            let fg = let allFor = (E.kArmWORK 1 (chD 2) aLi 1 pi 1 1 [] ghAdd) --(runKAXIOM offOn target plot addGh ghAdd n (theDs four4 d) (get1) (get2) (get3) (get4) 3 (theDs four4 d) (four4) [(read(show four4))] ((tk four4 subroutineList)))
                      in let toHaal =  charFilterInt ghAdd;
                      in  if (triggerWord (filter (/=' ') (head(checkflow [] [pi]))) "intern" ) == "1" then (fst allFor)
                          else if (triggerWord (filter (/=' ') (head(checkflow [] [pi]))) "cell" )  == "1" then (map read [(triggerWord "cell" "cell3")]) -- snd (ghAdd,(snd(charFilterInt ghAdd)))
@@ -121,9 +125,73 @@ runEXP3 li liSolution pi ghAdd = do
        (return (beforeAlgo))
 
 
--- stringBT:[String]  string baysian type carries name
---
-formHoofdEX1 foli4 stringBT pi ghADD = 1 
+-- stringBT:[String]  string bayesian type carries name
+-- TWO streams 1. depend on LAST ATOM of list
+--             2. depend on ghADD             => both get simivalued
+formHoofdEX1 foli4 stringBT pi ghADD =  do
+                                        let foliOrder = [1,2,536,537,538,1073,1074,1075,1076,1610,1611,1613]
+                                        let runRandomLin foli4 = nub(map (E.cellStream3 foli4) foliOrder)
+                                        let rndLin = runRandomLin foli4
+                                        let usage h = (head$ausw h rndLin)
+                                        let kickThisOF kick this = (map ord kick) \\ (map ord this) -- this list without that  
+                                -- take n many solutions in this order
+                                        let tHisOrder = if (even(length foliOrder))==False then map usage [1] --map mapKick [1,2,3,4,5,6]
+                                                        
+                                                        else map usage [2,4,6,8,10,12]
+                                       
+                                        let takeRndChars n = zufallsBasic1 1 (length(usage 1)) n -- finally select an rand Char with n + 1 
+                                        let aTree n = if (length$rulerBT (head foli4) ghADD) == (length ghADD) then do takeRndChars n --map takeRndChars [1..50] --runRandomLin foli4
+                                                      else takeRndChars n  --stream2 > streamI
+                           -- just depends on li2 
+                                        let ping importFunc = checkflow [mother] (E.inActieRAW ["0xy0z=3"] ["x0y0z=6"] ["0x0yz=2"] ["xyz=11"] li2 ["xyz=11"] importFunc)
+                          -- pvs:[prog variables] e.g see above  ****************************************************************************************** CHANGE TYPE ORDER
+                                        let pingWORK io fofoli guesses importFunc = checkflow io (E.inActieRAW ["0xy0z=3"] ["x0y0z=6"] ["0x0yz=2"] ["xyz=11"] fofoli guesses importFunc) -- pvs can be mixed up to change order
+                                        let workLi = BT.bayesAstigmatic "wer" "wer"                           --   read   '*'   OR '**'  
+                                  -- thisLi = 
+                                      
+                                        let slot1 t = ausw t li2
+                                        let workSlotRAW streamI streamII  io1 = BT.checkCELLs io1 streamI streamII  -- simi rate this    -- Tuned bayesCELLI..IV
+                                        let workSlot io1 =  workSlotRAW "cell" "0" io1
+                                        let allSlot = map workSlot (map (:[]) [mother,father,mother2,loopNumber,minMaxTrueOrFalse])
+                                        let allSlotWORK streamI streamII = map (workSlotRAW streamI streamII) (map (:[]) [mother,father,mother2,loopNumber,minMaxTrueOrFalse])
+                                        let plugExp k = runEXP3 foli4 ( ausw k (concat allSlot)) pi ghADD -- simival depends 1. or 2.
+                             -- if lenght fourBreadCells > 4 ,output not availabe via mother etc.
+                                        let breedCELLs io a b fourBreadCells = checkflow io $ BT.joinBayes a b (["cell"] ++ fourBreadCells ++ ["CELLONE","CELLTWO","CELLTHREE","CELLFOUR"])
+ 
+                                      --  let baysNothing = pingWORK    -- or conntect ot rndLin                                            /
+                        -- connect foli4 ->              BAYES TYPES      ->                                                             /
+                        --                     allSlotRAW -> simi rate   intern  -> connected foli4 with simi rate  -> write with plugExpWORK   -> tweak 1 new layer likethis    
+                        --                                   via runEXP3                                             
+                        --                  map workSlot    
+                        --                                               extern  -> connected foli4 with bayes types
+                        --                                                          AND connected to ghADD
+                                        let plugExpWORK fofoli4 k guess a b = runEXP3 fofoli4 (ausw k (concat (allSlotWORK a b))) pi guess  
+                                        --putStrLn (unlines(map show(tHisOrder)))
+                                        putStrLn (show(plugExp 1))
+                                        let loop = do
+                                             miIO <- getLine
+                                             foB <- getLine
+                                             let ion = head (plugExp 1)
+                                             kk <- getLine
+                                             out <- getLine
+                                             let guesseS n = E.poolBandNotB E.li4 n -- as four bread cells plug into breedCells
+                                             let lab io a b guesseS = breedCELLs io a b guesseS
+                                             let bios = plugExpWORK E.li4 (read kk) "ww" miIO foB  -- simi rate 
+                                             print $show bios  
+                                           --  if show ion > ("50") then loop                      -- write Bayes
+                                             if out> "2" then loop
+                                             else return "done"
+                                        loop
+                                        putStrLn (show(workSlotRAW "CCCC" "dddd" [mother]))
+                                        putStrLn (show(workSlotRAW "CCCC" "A1" [mother]))
+                                        putStrLn (show(workSlotRAW "cell" "cell1" [mother]))
+                                        putStrLn (show(workSlotRAW "CELLONE1" "CELLONE" [father]))
+                                        putStrLn (show(workSlotRAW "CELLONE1" "CELLONE1" [father]))
+                                        putStrLn (show(workSlotRAW "CELLONE" "cCELLONE11" [father]))
+
+                                        --putStrLn (show(plugExp 3))
+
+
    where
       palette = runEXP3 foli4 stringBT pi ghADD; 
       choosDomain ff =  if ff == 1 then foli4 
@@ -144,7 +212,13 @@ formHoofdEX1 foli4 stringBT pi ghADD = 1
           bayWorld0 <- forM solang (\bay -> do
               let outBayesMonad = thisAction
               return (outBayesMonad))
-          bayWorld0;  
+          bayWorld0; 
+      typeCheckTriggerword = if (triggerWord (filter (/=' ') (head(checkflow [] [pi]))) "intern" ) == "1" then palette 
+                              else if (triggerWord (filter (/=' ') (head(checkflow [] [pi]))) "cell" )  == "1" then (map read [(triggerWord "cell" "cell3")]) -- snd (ghAdd,(snd(charFilterInt ghAdd)))
+
+                         else palette --(head (snd allFor))
+
+
                    
 
 
