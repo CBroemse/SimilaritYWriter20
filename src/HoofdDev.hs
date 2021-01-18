@@ -175,19 +175,31 @@ formHoofdEX1 foli4 stringBT pi ghADD =  do
                                              kk <- getLine
                                              out <- getLine
                                              let guesseS n = E.poolBandNotB E.li4 n -- as four bread cells plug into breedCells
-                                             let lab io a b guesseS = breedCELLs io a b guesseS
+                                             let lab io a b guesseS = breedCELLs io a b guesseS  -- write guesses into a cell system
                                              let bios = plugExpWORK E.li4 (read kk) "ww" miIO foB  -- simi rate 
                                              print $show bios  
                                            --  if show ion > ("50") then loop                      -- write Bayes
                                              if out> "2" then loop
                                              else return "done"
                                         loop
+                                        
                                         putStrLn (show(workSlotRAW "CCCC" "dddd" [mother]))
                                         putStrLn (show(workSlotRAW "CCCC" "A1" [mother]))
                                         putStrLn (show(workSlotRAW "cell" "cell1" [mother]))
                                         putStrLn (show(workSlotRAW "CELLONE1" "CELLONE" [father]))
                                         putStrLn (show(workSlotRAW "CELLONE1" "CELLONE1" [father]))
                                         putStrLn (show(workSlotRAW "CELLONE" "cCELLONE11" [father]))
+                                        putStrLn (show(allSlotWORK "CELLONE" "CELLONE" ))
+                                        putStrLn (show (plugExpWORK foli4 1 "xyz=11" "CELLONE" "CELLONE" ))
+                                  --      putStrLn (show(breedCELLs [father] "CELLONE" "CELLONE"))
+                                   --     putStrLn (show(breedCELLs [mother] "CELLONE" "CELLONE"))
+                                     --   putStrLn (show(breedCELLs [mother2] "CELLTWO" "CELLTWO"))
+                                      -- => do one pingWORK => then change li 
+                                        putStrLn$show$ pingWORK [mother] E.li4 ["guesses"] 1
+                                        putStrLn$show$ pingWORK [mother] E.li4 ["guesses"] 2
+                                        putStrLn$show$ pingWORK [father] E.li4 ["guesses"] 1
+                                        putStrLn$show$group$ unwords $ pingWORK [father] E.li4 ["guesses"] 1
+
 
                                         --putStrLn (show(plugExp 3))
 
