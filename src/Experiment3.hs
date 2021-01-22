@@ -2,7 +2,8 @@
 -- --------------------------------------                                                    concept                                               beard  vs   not beared
 -- EXPERIMENT 3    # baysian data generator# sort multi-grap network #Busshop-Bradley                                                                       -----------   
 --                 # write sorted ptc.html # kArmWork kArmTest main/oldest 
---                 # role model for formation in action see DataTypes                                             :     :                                  
+--                 # role model for formation in action see DataTypes 
+--                 # write in KArmWORK simi value  input                                          :     :                                  
 -- the output of functions                                                                 --                beard        not beared                    :     :
 -- themselves has a           syntax            AND/OR           a concept                 --                collum I       collumII                 wo :_____:ist   
 -- functions used with type pure outpout e.g                                               --            --------------------------                    /      \    
@@ -221,7 +222,8 @@ module Experiment3 (
      , basis4 -- as above with different output
      , checkflow -- as above could be imported to main from Colored..Writer20.hs as well
   -- export to HoofdDev
-     , li4 -- input to experiment3 'quirky example' 
+     , li4 -- input to experiment3 'quirky example'
+     , li8 -- export to HoofdDiv.hs example of capital letter metric 
      , runEXP3   -- cell stream AND  data type ROLE MODEL for 'HoofdDev.hs'
      , triggerWord   -- all needed for role model
      , checkflow
@@ -3088,8 +3090,8 @@ kArmWORK addGh liT bonelist mofaList connectWrist dit dit2 mCommand crit= do
                              return(theInner))
           
         --      putStrLn "below: sortEm ; inlinesortEm; "  -- 1
-        --      putStrLn ((unlines (map show (concat (sortEm)))))-- 2 ----------------------------------- THOSE TWO LINES COULD BE MAIN OUTPUT
-        --      putStrLn ((show inlinesortEm))
+          --    putStrLn ((unlines (map show (concat (sortEm)))))-- 2 ----------------------------------- THOSE TWO LINES COULD BE MAIN OUTPUT
+          --    putStrLn ((show inlinesortEm))
               let boneMax = ausw (maximum(concat(concat sortEm))) bonelist
         --      putStrLn (show boneMax)
               --run randomPunkt list with input:

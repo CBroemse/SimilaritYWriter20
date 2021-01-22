@@ -4,6 +4,7 @@ module DataTypeBayes(
  , basis4 -- store data in Baysian string   
  , checkType  -- how useful ? 
  , formationB -- cell1 , cell2 with ptc9 ?
+ , formationC -- Punkt arcitecture change name of Punkt HoofdDev.hs  e.g (formHoofdEX1 liM ["CEL"] pi "10") 
  -- main ------- checkCELLs==e.g checkBayes [mother] (joinBayes "cellghj" "cell1" ["cell","CELLONEe","CELLTWO","CELLTHREE","CELLFOUR"])
  , checkCELLs --                 checkCELLs [] "cellghj" "cell1"
  -- CELLS
@@ -22,7 +23,8 @@ module DataTypeBayes(
  , bayesAstigmatic
  , bayesReadDirection
  -- export to HoofdDev.hs: formHoofdEX1
- , joinBayes
+ , joinBayes  -- used in checkCELLs
+ , nameNewCell -- like above but names a new name of a Punkt Bayes Type
  -- update self updating html that has some values
  -- only import from 'Col..20.hs'
  , 
@@ -59,6 +61,8 @@ bayesStringToInt charnumber bCell = map chr (rulerRAW charnumber bCell )
 --formationB e = Punkt "formation" (Just (basis2 e 1 )) (Just (basis2 e 2 )) (Just (basis2 e 3 )) (Just (basis2 e 4 )) (Just (basis2 e 5 )) 
 --formationB e = [(Just (basis2 e 1 )), (Just (basis2 e 2 )), (Just (basis2 e 3 )), (Just (basis2 e 4 )), (Just (basis2 e 5 ))]
 checkCELLs io a b = checkBayes io $ joinBayes a b ["cell","CELLONE","CELLTWO","CELLTHREE","CELLFOUR"]
+nameNewCell newName g domain cellNames = map (formationC newName) [(mapReadCells g domain cellNames)]
+
 joinBayes g domain cellNames = map formationB [(mapReadCells g domain cellNames)]
 mapReadCells g domain bayesCELLItoIV = map (bayesReadDirection g domain) bayesCELLItoIV 
  
@@ -824,6 +828,8 @@ basis2New foAL x m = maybePu (head (ausw m (foAL x)))
 -- a) turn bonelist into Punkt
 -- b) turn pg functions into Punkt via 'uniqueClassRAW' 
 formationB e = Punkt "formation" (Just (basis2 e 1 )) (Just (basis2 e 2 )) (Just (basis2 e 3 )) (Just (basis2 e 4 )) (Just (basis2 e 5 )) 
+--same as above but can change Punkt name
+formationC c e = Punkt c (Just (basis2 e 1 )) (Just (basis2 e 2 )) (Just (basis2 e 3 )) (Just (basis2 e 4 )) (Just (basis2 e 5 )) 
 
 -- store data in String because there are only 5 other spots left
 -- when reading a longer list that wont help thus store in Punkt "String"
