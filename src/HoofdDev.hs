@@ -195,6 +195,7 @@ formHoofdEX1WORK foli4 stringBT pi ghADD fillBayesian =  do
                                         let ratE io line2 randOm simple lineN atom = nub(type1or2 (workPunktRAW io  (concat (bootPunkt line2 )) simple (head(ausw atom (ausw lineN abyssDevide2RAW))) randOm ) lineN atom) -- simi rate
                                         let ratEChars io line2 randOm simple lineN atom = nub(type1or2 (workPunktRAW io  (ausw atom (concat (bootPunkt line2 ))) simple (head(ausw atom (ausw lineN abyssDevide2RAW))) randOm ) lineN atom) -- simi rate
                                         let guessWithBias n =   E.poolBandNotB E.li4 n -- as four bread cells plug into breedCells
+                                        putStrLn "Enter: 0 to close"
                                         let loop = do
                                            --  miIO <- getLine
                                           --   foB <- getLine
@@ -212,7 +213,6 @@ formHoofdEX1WORK foli4 stringBT pi ghADD fillBayesian =  do
                                               --    return (ratE bio teest 1 1))
                                             -- putStrLn $show bios  
                                            --  if show ion > ("50") then loop                      -- write Bayes
-                                             putStrLn "Enter: 0 to close"
                                              if (read out)> 0 then do 
                                                             er <- getLine
                                                             at <- getLine
@@ -504,7 +504,7 @@ formHoofdEX1 foli4 stringBT pi ghADD =  do
                                         let ratEChars io line2 randOm simple lineN atom = nub(type1or2 (workPunktRAW io  (ausw atom (concat (bootPunkt line2 ))) simple (head(ausw atom (ausw lineN abyssDevide2RAW))) randOm ) lineN atom) -- simi rate
 
                                         let guessWithBias n =   E.poolBandNotB E.li4 n -- as four bread cells plug into breedCells
-
+                                        putStrLn "Enter: 0 to close"
                                         let loop = do
                                              
                                            --  miIO <- getLine
@@ -523,7 +523,6 @@ formHoofdEX1 foli4 stringBT pi ghADD =  do
                                               --    return (ratE bio teest 1 1))
                                             -- putStrLn $show bios  
                                            --  if show ion > ("50") then loop                      -- write Bayes
-                                             putStrLn "Enter: 0 to close"
                                              if (read out)> 0 then do 
                                                             er <- getLine
                                                             at <- getLine
