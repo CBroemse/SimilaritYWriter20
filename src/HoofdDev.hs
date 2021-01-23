@@ -325,7 +325,7 @@ formHoofdEX1WORK foli4 stringBT pi ghADD fillBayesian =  do
 
 
 -----------------------------------------------------------------------------------------------------------------------
--- THERE ARE FILLED IN MATICES AND UNFILLED ONES = > 'cellLogic'
+-- THERE ARE FILLED IN MATRICES AND UNFILLED ONES = > 'cellLogic'
 -- stringBT:[String]  string bayesian type carries name
 -- TWO streams 1. depend on LAST ATOM of list
 --             2. depend on ghADD             => both get simivalued
