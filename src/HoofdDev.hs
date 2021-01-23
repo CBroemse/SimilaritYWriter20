@@ -12,7 +12,7 @@
 --                            2 work flows: random number=> baysian type 
 --                                 from li and addGH    => baysian type
 --                            4 streams in and out of cells:
---                               based on the 2 work fows
+--                               based on the 2 work flows
 --                             => cell I,cell II cell III, cell IV
 --                            other destinct work flow based on ptc9
 --                            => cell1 , cell2, cell3, cell4
@@ -59,7 +59,7 @@ baysianTypeString=E.baysianTypeString
        --                                                                                                    in Main
        --                                                                                                                  IV: EXPORT BAYSIAN type to MAIN 
        --                                                                                                                      make nice exlpainatory interactive 
-       --                                                                                                                   V: 1-1-21 issue 'story line' join the lose ends
+       --                                                                                                                   V: 1-1-21 issue 'story line' join the loose ends
        --                                                                                                                      with 'Colored_2_3_5_Counter20.hs'=C20 see overview
        --                                                                                                                         found most versataile ptc6 ptc7? , ptc9
        --                                                                                                                         see solutions of 'Quirky-Example' this lP function
@@ -77,7 +77,6 @@ baysianTypeString=E.baysianTypeString
 -- SIMIVAL RUNS for  'Quirky example'
 -- manifest the given li function with and without 'appropiate mathematical syntax'
 -- give a simiVal list to compare both states
--- liSolution: a real Prior/Bias?!? 
 -- e.g -
 li1 = ["0*x + y + 0*z = 3","0*x + y + 0*z = 31*x + 0 + 0*z = 6","1*x + 0 + 0*z = 6","0*x + 0*y + z = 2","0*x + 0*y + z = 2x + y + z = 11","x + y + z = 11"]
 li2 = ["0*x + y + 0*z = 3","1*x + 0 + 0*z = 6","0*x + 0*y + z = 2","x + y + z = 11"]
@@ -107,6 +106,7 @@ simiVals bonelist pick1 pick2 punktList  =
      in beRepKEY pick1 pick2 punktList
 
 -- so far liSolution is merely a symbolic type it has no use other to be simivalued to other liSolutions 
+-- -- liSolution: a real Prior/Bias?!? 
 runEXP3 li liSolution pi ghAdd = do                                                         
        let iDF = li --["AaEe0","AaEeI","i0000","OoUu0","OoU0Y","y0000"]                                               
        let lP = liSolution --["0*x + y + 0*z = 3","0*x + y + 0*z = 33*x + 0 + 0*z = 6","3*x + 0 + 0*z = 6","0*x + 0*y + z = 2","0*x + 0*y + z = 2x + y + z = 11","x + y + z = 11"]
@@ -194,8 +194,8 @@ formHoofdEX1WORK foli4 stringBT pi ghADD fillBayesian =  do
                                                                else ["not"] 
                                         let ratE io line2 randOm simple lineN atom = nub(type1or2 (workPunktRAW io  (concat (bootPunkt line2 )) simple (head(ausw atom (ausw lineN abyssDevide2RAW))) randOm ) lineN atom) -- simi rate
                                         let ratEChars io line2 randOm simple lineN atom = nub(type1or2 (workPunktRAW io  (ausw atom (concat (bootPunkt line2 ))) simple (head(ausw atom (ausw lineN abyssDevide2RAW))) randOm ) lineN atom) -- simi rate
-                                        let guessWithBias n =   E.poolBandNotB E.li4 n -- as four bread cells plug into breedCells
-                                        putStrLn "Enter: 0 to close"
+                                        let guessWithBias n =   E.poolBandNotB E.li4 n -- as six bread cells plug into breedCells
+                                        putStrLn "Enter: just Ints OR 0 to close"
                                         let loop = do
                                            --  miIO <- getLine
                                           --   foB <- getLine
@@ -259,15 +259,7 @@ formHoofdEX1WORK foli4 stringBT pi ghADD fillBayesian =  do
                                                                                         in let celLogic io atomN line = (oneCellAbyss2 io "Z" (concat (ausw atomN abyssDevide2RAW)) line) --cellLogic  1 3 (oneCellAbyss2 io "JLLNP" (bootPunkt (read n)) line)
                                                                                         in let steps foatom = (cellLogic foatom (celLogic io atom (read n))) -- ######################### EXPORT 
                                                                                         in  map concat$nub$(transpose) [(concat(map steps [1..6])),  (concat( (ausw (read n )iterAby)))]  --writeRNDcellInput (6) (read n) -- zipWith (++) (steps (read n)) (concat(ausw atom (ausw (read n )iterAby)))
-                                        let compareCells io a b forBreadCells n atom = let choose pick2 pick1 = (ausw pick1 (concat (ausw pick2 iterAby))) 
-                                                                                        in let bootcells forBreadCells k = (mapWithAbyss2 io a forBreadCells k) 
-                                                                                        in let celLogic io atomN line = (oneCellAbyss2 io "Z" (concat (ausw atomN abyssDevide2RAW)) line) --cellLogic  1 3 (oneCellAbyss2 io "JLLNP" (bootPunkt (read n)) line)
-                                                                                        in let steps foatom = (cellLogic foatom (celLogic io atom (read n))) -- ######################### EXPORT 
-                                                                                        in let writeRNDcellInput atomN line = (plugExpWORK   ["cell","CELLONE","CELLTWO","CELLTHREE","CELLFOUR",concat(steps line )] 1 "dddd" "CELLONE" (head (bootPunkt line)) )
-                                                                                        in let type1or2 guess lineN atom = (plugExpWORK  (map concat(map bootPunkt [1..6])) 1 guess (head$ausw atom (bootPunkt lineN)) (concat(steps lineN))) 
-                                                                                        in  (type1or2 (concat(ausw (read n) foli4)) (read n) atom)
-                                        
-            -- compare booted cells == bootPunkt with guesses, random Numbers in cells and foli4
+                                                    -- compare booted cells == bootPunkt with guesses, random Numbers in cells and foli4
                                         let compareCells io a b forBreadCells n atom = let choose pick2 pick1 = (ausw pick1 (concat (ausw pick2 iterAby))) 
                                                                                         in let bootcells forBreadCells k = (mapWithAbyss2 io a forBreadCells k) 
                                                                                         in let celLogic io atomN line = (oneCellAbyss2 io "Z" (concat (ausw atomN abyssDevide2RAW)) line) --cellLogic  1 3 (oneCellAbyss2 io "JLLNP" (bootPunkt (read n)) line)
@@ -325,7 +317,7 @@ formHoofdEX1WORK foli4 stringBT pi ghADD fillBayesian =  do
 
 
 -----------------------------------------------------------------------------------------------------------------------
--- THERE ARE FILLED IN MATRICES AND UNFILLED ONES = > 'cellLogic'
+-- THERE ARE FILLED-IN MATRICES AND UNFILLED ONES = > 'cellLogic'
 -- stringBT:[String]  string bayesian type carries name
 -- TWO streams 1. depend on LAST ATOM of list
 --             2. depend on ghADD             => both get simivalued
@@ -454,17 +446,25 @@ formHoofdEX1 foli4 stringBT pi ghADD =  do
                                         putStrLn$show$breedCELLs [loopNumber] "F" "D" ( abyssDevide2)
 
                                         --    make breedCELLs (big Chars)   ->  insert by abyssDevide2
-                                        --
-                                        --      check  simiVal 
-                                        --        in type1 or type2 : 
-                                        --        change guess ____\    takeRndChars  _____\   match via
-                                        --        or change li     /    rndInt n           /   abyssDevide2 ->
-                                        --
-                                        --         wrote cell e.g  [["B","B","B"],["D","D"],["F"]]  <=> abyssDivide2 => ["B","B","B","D","D","F"]
-                                        --
-                                        --         add rndInt n  insert e.g workPunktRAW 1  => "cell6" 
-                                        --
-                                        --                       insert as  "Bcell6" ,..
+                                        --  --------------------------------------------------------------                            
+                                        --        NEW cell               |     RND          
+                                        --                     in type1 or type2 : 
+                                        --        change guess       /____\      takeRndChars  _____\   match via
+                                        --        or change li       \    /      rndInt n           /   abyssDevide2 ->
+                                        --                                                ||
+                                        --         wrote cell e.g                         ||
+                         --          [["B","B","B"],["D","D"],["F"]]  <=> abyssDivide2 => ["B","B","B","D","D","F"]
+                                        --            ||                                  ||
+               --  add rndInt n  insert e.g workPunktRAW 1  => "cell6"                    ||
+             --    insert as  "Bcell6" ,..            ||                                  ||       
+                                        --            ||                 e.g (oneCellAbyss2 [loopNumber] "JLLNP" (concat (ausw 3 abyssDevide2RAW)) 3) -- ["J"] )--(abyssDevide2)) done
+                                        --            \/                                  ||
+                                        --        [["Bcell8","Bcell1","..], ...[...]]     \/    
+                                        -- or     [["B B","B B","..], ...[...]]          iterAby == e.g [["y31y31","y31y31"," .."], ...[ ...]] 
+                                        -- --
+                                        -- _________\  ["Bcey31y31","Bce00=y=y","Bce=y=y=y","Bce=y0y=0","Bce","Dce","Fce"]
+                                        -- ---------/               
+                                        --------------------------------------------------------------------
                                         let doer fu n = if (fu ) == " cell" then let step1 = "cell" ++ (show$rndInt n)
                                                                                     in step1
                                                          else fu 
