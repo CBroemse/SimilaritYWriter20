@@ -43,7 +43,7 @@ module UsefulFunctions19 (
         , minkowskiAdd2 -- apply a list of functions to the outcome of above 
         , maxMy
         , lengthXY
-        , lengthXY2 
+        , lengthXY2
          ) where
      --   , nameACCESSFUNCTION ) where
 -- always color sceME 'delek'
@@ -175,7 +175,7 @@ minkowskiAdd val crit dipfa = let a=  maxMy val crit dipfa
                   --  in let e = drop 4 (take 5 d)
                     in let f = map round (map (*100) d)
                     in f
-----------------------------------------------------------------------
+---------------------------------------------------------------------- 
 -- To be plugged in another function that has an own metric or (maps a list)
 --  in this used in  ??? fofina2 in Col*> or experiment3RAW11 in Exp*3> ????????????????????????????
 -- -- prepare data to do (head$head $nub$foptc 10) 
@@ -468,7 +468,7 @@ reaDin pathNo = do
 ----- SimilaritYwWiter20 12-6-20
 -- Punkt functions
 --allAccU p = show(checkflow [] [p])           
-     
+  --allAcc   
 allAccU foPun =  (checkflowU [] [(foPun)])
 
 -- transform any PUNKT conctruction into a string
@@ -716,8 +716,8 @@ itemReaderPfadFinder file vektor token = do
         let hohlRest =  let as1 = drop (maximum iteM) (take (length stepper) (lines afile)) 
                         in as1
         let inseRRt = ("GraphicEngine17/Backbone/VektorBewegung/GamePosi"++ ( token)++".txt")
-        josefGassner <- readFile inseRRt
-        let checkAlles = (((unlines hohlersteZeilen)) ++("         "++( josefGassner )++"\n")++ (unlines( hohlRest)))  
+        joGas <- readFile inseRRt
+        let checkAlles = (((unlines hohlersteZeilen)) ++("         "++( joGas )++"\n")++ (unlines( hohlRest)))  
         putStrLn (show iteM) --zeilen match PFAD
   --      putStrLn (show hohlersteZeilen) -- Header der <g>..</g> File
   --      putStrLn (show stepper) laenge input file
@@ -749,6 +749,30 @@ scanString = let ste = (go 0)
                       | otherwise = 0
               where sc = scanChar x
 
+--------------------------------------------------------------------------
+-- Gaussian influenced - Aehnlichkeitswarscheinlichkeit
+---this function rates the similarity of two
+-- lists. 
+-- gibt die Prozentzahl der Einerstelle 
+-- der beiden Listen aus
+
+foaehnli1 a b = (a-b)
+foaehnli2 a b = (b-a)
+--umrechnen in % mit a < b und b > a  
+aehnlichF a b = let a1 = if a > b then ((foaehnli1 a b)/ (a/100) )
+                         else if a<b then  ((foaehnli2 a b)/ (b/100) )
+                         else 0
+                in let b1 g h = ((g) / ((h)/100)) 
+                in a1 
+
+ 
+similaritYvalue li la = let a = la -- z.b. [11,12,34,44]
+                        in let b = li 
+                        in let c1 w = sum w
+                        in let c2 = c1 a--length
+                        in let c3 = c1 b--length
+                        in  aehnlichF c2 c3 -- in let d = 
+
 
 --g: is for pi
 --h: wie spitz/flach ist Glocke
@@ -759,6 +783,11 @@ fogAussVerteilung h g= (h/(sqrt g))
 foefactor h x e= (((sqrt h^2)*(x^2))*e)
 gaussVerTeilung h g x e = ((fogAussVerteilung h g )*(foefactor h x e))
 
+
+-- the simple similarity value
+sim a b =  similaritYvalue (map realToFrac (map ord a)) (map realToFrac(map ord b))
+atoB a b =  (a++b++a++b++a++b++a++b++a++b)
+betoA a b = (b++a++b++a++b++a++b++a++b++a)
 -- write six files then start back overwrite 1 ....
 -- will turn on number digit of a Sring +1
 --  e.g "aname1.txt" -> "aname2.txt"

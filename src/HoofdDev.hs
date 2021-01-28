@@ -141,15 +141,8 @@ formHoofdEX1WORK foli4 stringBT pi ghADD fillBayesian =  do
                                         let runRandomLin foli4 = nub(map (E.cellStream3 foli4) foliOrder)
                                         let rndLin = runRandomLin foli4
                                         let usage h = (head$ausw h rndLin)
-                                        let tHisOrder = if (even(length foliOrder))==False then map usage [1] --map mapKick [1,2,3,4,5,6]
-                                                        else map usage [2,4,6,8,10,12]
-                                        let takeRndChars n = zufallsBasic1 1 (length(usage 1)) n -- finally select an rand Char with n + 1 
                                         let rndInt n =  last (zufallsBasic1 (n+1) 9 n)
-                                        let aTree n = if (length$rulerBT (head foli4) ghADD) == (length ghADD) then do takeRndChars n --map takeRndChars [1..50] --runRandomLin foli4
-                                                      else takeRndChars n  --stream2 > streamI
 -- I. MAIN DATA STREAM: 'pingWORK'   -- just depends on foli or on guesses (intern/extern)  pvs:[prog variables] e.g see above  ******************************************************************************* CHANGE TYPE ORDER
-                                        let pingWORK io fofoli guesses importFunc = checkflow io (E.inActieRAW ["0xy0z=3"] ["x0y0z=6"] ["0x0yz=2"] ["xyz=11"] fofoli guesses importFunc) -- pvs can be mixed up to change order
-                                        let newLayerRAW r = group$ unwords $ pingWORK [father] E.li8 ["guesses"] r
                                       ----------------------------------------------------------------------------------------------
 -- II. MOUNT CELL I..IV : 'workSlotRAW'
                                         let workSlotRAW streamI streamII  io1 = BT.checkCELLs io1 streamI streamII   -- ############################################ mounted  bayesCELLI..IV with BT.checkCELLs
@@ -158,22 +151,21 @@ formHoofdEX1WORK foli4 stringBT pi ghADD fillBayesian =  do
                                         let allSlotWORK streamI streamII = map (workSlotRAW streamI streamII) (map (:[]) [mother,father,mother2,loopNumber,minMaxTrueOrFalse])
 {- III. RATE LI AND GUESS:     -}       let plugExpWORK fofoli4 k guess a b = runEXP3 fofoli4 (ausw k (concat (allSlotWORK a b))) pi guess  -- ######################## COMBINES change li and BAYES Type 'new cell' 
                                         let unsortedStream  aLi left right = (simiVals aLi left right pi) -- simi rate everthing UNSORTED
-                                        let abyssDevide = let step1 = map chr $ filter (>=65) (usage 2)   
+                                        let abyssDevide = let step1 = map chr $ filter (>=65) (usage fillBayesian)   
                                                           in let step2 =   (length step1) `div` 6  
                                                           in let toRead =   if step2==0 then 1 
                                                                             else step2 
                                                           in let switch a  =  (ausw a) step1 
                                                           in map switch [1..(toRead)] 
-                                        let abyssDevide2RAW = let step1 = map (map chr) (sort$ group $ filter (>=65) (usage 2))   
+                                        let abyssDevide2RAW = let step1 = map (map chr) (sort$ group $ filter (>=65) (usage fillBayesian))   
                                                           in let step2 =   (length step1) `div` 6  
                                                           in let toRead =   if step2==0 then 1 
                                                                             else step2 
                                                           in let switch a  =  (drop ((a-1)*6)) $ (take (a*6)) step1 
                                                           in map switch [1..(toRead)]
-                                        let abyssDevide2 = head abyssDevide2RAW
-                                        let rndLi = [abyssDevide2,abyssDevide2,abyssDevide2,abyssDevide2,abyssDevide2,abyssDevide2]
-                                        let type1 =  (plugExpWORK   ["cell","CELLONE","CELLTWO","CELLTHREE","CELLFOUR",(concat abyssDevide2)] 1 "xyz=11" "dddd" "CELLONE" )  -- type 1 intern change li
-                                        let type2 =  (plugExpWORK   ["cell","CELLONE","CELLTWO","CELLTHREE","CELLFOUR",(concat abyssDevide2)] 1 "dddd" "CELLONE" "CELLONE" ) --type 2 change guess
+                                        let abyssDevide2 l = head $ (ausw l abyssDevide2RAW)
+                                        let type1 l =  (plugExpWORK   ["cell","CELLONE","CELLTWO","CELLTHREE","CELLFOUR",(concat (abyssDevide2 l))] 1 "xyz=11" "dddd" "CELLONE" )  -- type 1 intern change li
+                                        let type2 l =  (plugExpWORK   ["cell","CELLONE","CELLTWO","CELLTHREE","CELLFOUR",(concat (abyssDevide2 l))] 1 "dddd" "CELLONE" "CELLONE" ) --type 2 change guess
            ----------------------------------------------------------------------------------------------------------------------------------------------
                              --  similar to checkCELLs
                                         let breedCELLs io a b sixBreadCells = checkflow io $ BT.joinBayes a b (["cell"] ++ sixBreadCells ++ ["CELLONE","CELLTWO","CELLTHREE","CELLFOUR"])
@@ -185,60 +177,12 @@ formHoofdEX1WORK foli4 stringBT pi ghADD fillBayesian =  do
                                         let doer fu n = if (fu ) == " cell" then let step1 = "cell" ++ (show$rndInt n)
                                                                                     in step1
                                                          else fu 
-                                        let workPunkt n = doer (concat(breedCELLPunkt [] "B" "B" (abyssDevide2))) n
-                                        let workPunktRAW io a b forBreadCells n = doer(concat(breedCELLPunkt io a b forBreadCells)) n
-                                        let bootPunkt p = (head$ausw p abyssDevide2RAW)
-                                        let type1or2 guess lineN atom = (plugExpWORK  (map concat(map bootPunkt [1..6])) 1 guess (head$ausw atom (bootPunkt lineN)) (head$ausw atom (bootPunkt lineN))) --type 2 change guess
-                                        let mapWithAbyss2 io a forBreadCells b = map (b++) (map (workPunktRAW io a b forBreadCells) [1..6])
-                                        let littleWriter io a b forBreadCells = if  (workSlotRAW a b [mother]) == [" 1"] then mapWithAbyss2 io a forBreadCells b --"write data to CELL" ---------------MATCH THEN WRITE TO CELL
-                                                               else ["not"] 
-                                        let ratE io line2 randOm simple lineN atom = nub(type1or2 (workPunktRAW io  (concat (bootPunkt line2 )) simple (head(ausw atom (ausw lineN abyssDevide2RAW))) randOm ) lineN atom) -- simi rate
-                                        let ratEChars io line2 randOm simple lineN atom = nub(type1or2 (workPunktRAW io  (ausw atom (concat (bootPunkt line2 ))) simple (head(ausw atom (ausw lineN abyssDevide2RAW))) randOm ) lineN atom) -- simi rate
+                                        let workPunktRAW io a b forBreadCells n = doer(concat(breedCELLPunkt io a b forBreadCells)) n  --  ready to boot new cell names in 'forBreadCells'
+                                        let bootPunkt p = (head$ausw p abyssDevide2RAW)  -- random data filtered out letters (chr >= 65)
+      -- MOUNT cells as Punkt and fill with above
+                                        let mapWithAbyss2 io a forBreadCells b = map (b++) (map (workPunktRAW io a b forBreadCells) [1..6])  -- add random ++ cell (doer) ++ boot 'forBreadCells'
                                         let guessWithBias n =   E.poolBandNotB E.li4 n -- as six bread cells plug into breedCells
-                                        putStrLn "Enter: just Ints OR 0 to close"
-                                        let loop = do
-                                           --  miIO <- getLine
-                                          --   foB <- getLine
-                                          --   kk <- getLine
-                                             out <- getLine
-                                            -- let gonz some = read some 
-                                             let guesseS n = E.poolBandNotB E.li4 n -- as four bread cells plug into breedCells
-                                            -- let lab io a b guesseS = breedCELLs io a b guesseS  -- write guesses into a cell system
-                                          --   bios <- forM [1..9] (\bio -> do
-                                            -- lineN:Int, line of [abyssDevide2] , atom:Int, of lineN, atomGuess:Int,  
-                                                  
-                                                --  inner <- return (ratE 1 1 1)
-                                            --      teest <- getLine 
-                                               --   let ratE guess lineN atom = show (plugExpWORK  (map concat (map bootPunkt [1..6])) lineN guess (head$ausw atom (bootPunkt lineN))) 
-                                              --    return (ratE bio teest 1 1))
-                                            -- putStrLn $show bios  
-                                           --  if show ion > ("50") then loop                      -- write Bayes
-                                             if (read out)> 0 then do 
-                                                            er <- getLine
-                                                            at <- getLine
-                                                           -- io <- getLine
-                                                          --  let checkCell atomGuess randOm = ratE (read out) 1 1 1 -- (workPunktRAW [mother] (unline(bootPunkt 1)) "B" ["B"]  randOm )
-                                                          --   ["BBBDDF","FFHHJJ","JLLNNP","PPRRTT","TVVXXX","ZZZ\\\\^"]
-                                                          --                        n   atom2    line2      rnd?     aGuess 
-                                                            putStrLn $show (ratE [] (read out) (1) "B" (read out) 1) -- (read at))
-                                                            putStrLn $show (ratE [] (2) (2) "BBBB" (read out) 2) -- (read at))
-                                                            putStrLn $show (ratE [mother] (1) (3) "cell" (read out) 1) -- (read at))
-                                                            putStrLn $show (ratEChars [] (1) (7) "cell" (read out) 3) -- (read at))
-                                                            putStrLn $show (ratEChars [] (1) (7) "cell" (1) 3) -- (read at))
-
-                                                            hu <- getLine 
-                                                            putStrLn $show (ratE [mother] 1 1 hu 1 1) -- (read at))
-                                                            putStrLn $show (ratE [mother] 2 3 ("cell"++hu) 1 1) -- (read at))
-                                                            putStrLn $show (ratE [father] 2 2 hu 2 1) -- (read at))
-                                                            putStrLn $show (ratE [mother2] 3 2 hu 3 1) -- (read at))
-                                                            putStrLn $show (ratE [loopNumber] 4 2 hu 4 1) -- (read at))
-                                                            putStrLn $show (ratE [minMaxTrueOrFalse] 5 2 hu 5 1) -- (read at))
-
-
-                                                            loop
-                                             else do putStrLn $"done"
-                                        loop 
-                                      -- line:Int ; select a String from abyssDevide2RAW    #############################  COULD SPLIT foli4 instead of                           
+                                                                             -- line:Int ; select a String from abyssDevide2RAW    #############################  COULD SPLIT foli4 instead of                           
     {- MAIN BRANCH SET TO:       -}     let tailRAW line = (concat(ausw line abyssDevide2RAW))    -- #######   ["BBBDDF","FFHHJJ","JLLNNP","PPRRTT","TVVXXX","ZZZ\\\\^"]
                                         let oneCellAbyss2 io a sixBreadCells n = map (mapWithAbyss2 io a sixBreadCells) (tailRAW n) 
                                         let abyssDevide2TEST singularitY = let step1 =  concat $map guessWithBias $ map read (tails singularitY \\ [""])-- (usage 2)  
@@ -280,49 +224,34 @@ formHoofdEX1WORK foli4 stringBT pi ghADD fillBayesian =  do
                                         putStrLn$show$(littleWriter2 [mother] "nothing" " J" ((ausw 1(concat (ausw 3 abyssDevide2RAW)))) "3" 1)
                                         putStrLn$show$(littleWriter2 [loopNumber] "nothing" "P" ((ausw 1(concat (ausw 4 abyssDevide2RAW)))) "4" 1)
                                         putStrLn$show$(littleWriter2 [father] "nothing" " J" (((concat (ausw 3 abyssDevide2RAW)))) "3" 2)
+                                        putStrLn "set out"
+                                        putStrLn$show$(littleWriter2 [mother] "aaa" " B" ((ausw 1(concat (ausw 1 abyssDevide2RAW)))) "1" 1)
+                                        putStrLn$show$(littleWriter2 [father] "nothing" " J" (((concat (ausw 2 abyssDevide2RAW)))) "2" 2)
+                                        putStrLn$show$(littleWriter2 [mother2] "nothing" " F" ((ausw 1(concat (ausw 4 abyssDevide2RAW)))) "3" 3)
+                                        putStrLn$show$(littleWriter2 [loopNumber] "aaa" "B" ((ausw 4(concat (ausw 4 abyssDevide2RAW)))) "1" 3) 
+                                        putStrLn$show$(littleWriter2 [minMaxTrueOrFalse] "aaa" "B" ((ausw 4(concat (ausw 4 abyssDevide2RAW)))) "2" 5) 
+                                        putStrLn "set out"
+                                        putStrLn$show (tailRAW fillBayesian)                             
 
-                                        let choosF n = head$ ausw n [ show (oneCellAbyss2 [mother2] "Z" (concat (ausw 3 abyssDevide2RAW)) 3),show(littleWriter2 [mother] "nothing" "J" (((concat (ausw 3 abyssDevide2RAW)))) "3" 2),show(compareCells [mother] "nothing" "J" (((concat (ausw 3 abyssDevide2RAW)))) "3" 2),show(type1or2 (unlines ["ddd"]) 1 1),show(workPunktRAW [mother] (head(bootPunkt 2 )) "B" (head(ausw 1(ausw 1 abyssDevide2RAW))) 1 ){-get a cell (char) of one selected adyssDevide-}] 
+
+
+                                        let choosF n = head$ ausw n [ show (oneCellAbyss2 [mother2] "Z" (concat (ausw 3 abyssDevide2RAW)) 3),show(littleWriter2 [mother] "nothing" "J" (((concat (ausw 3 abyssDevide2RAW)))) "3" 2),show(compareCells [mother] "nothing" "J" (((concat (ausw 3 abyssDevide2RAW)))) "3" 2),show(workPunktRAW [mother] (head(bootPunkt 2 )) "B" (head(ausw 1(ausw 1 abyssDevide2RAW))) 1 ){-get a cell (char) of one selected adyssDevide-}] 
                                         return (BT.formationB [((choosF 3))]) --fillBayesian
 
 
-   where
-      palette = runEXP3 foli4 stringBT pi ghADD; 
-      choosDomain ff =  if ff == 1 then foli4 
-                                   else stringBT; 
-      chD ff  = choosDomain ff;
--- slotDomain:String, map a li; testMap:String, map various ghADD -- write to stringBT ? 
-      rulerBT slotDomain testMap = baysianTypeString [""] slotDomain testMap;  -- test with right length the order of ghADD 
-      protractorBT slotDomain strIntBT testMap = baysianTypeInt ["48","","","","","57"] slotDomain strIntBT testMap;
- -- map with filterB 
-      actie pv1 pv3 pv4 pv6 foli ghAdd = inActie (pv1 pv3 pv4 pv6 foli [ghAdd]);
-      filterB = map (filter (/='A')) E.li4;
-      solong b = [1..(length b)];
- --which:Int length output; m: source list; fromA: Int choose from m
-      soSame  which m fromA = let stap1 = head(ausw fromA m)
-                 in take which [stap1,stap1..];
-      bayesMonad b thisAction = do 
-          let solang = solong b
-          bayWorld0 <- forM solang (\bay -> do
-              let outBayesMonad = thisAction
-              return (outBayesMonad))
-          bayWorld0; 
-      typeCheckTriggerword = if (triggerWord (filter (/=' ') (head(checkflow [] [pi]))) "intern" ) == "1" then palette 
-                              else if (triggerWord (filter (/=' ') (head(checkflow [] [pi]))) "cell" )  == "1" then (map read [(triggerWord "cell" "cell3")]) -- snd (ghAdd,(snd(charFilterInt ghAdd)))
-
-                         else palette --(head (snd allFor))
-
-
-                   
+                  
 
 
 
 -----------------------------------------------------------------------------------------------------------------------
 -- THERE ARE FILLED-IN MATRICES AND UNFILLED ONES = > 'cellLogic'
+--           RANDOM STRINGS DEPENDING ON LI      => E.celStream3 >> 'rndLi' >> 'usage' >> 
+--  Turn any [String] into a new cell with  'mapWithAbyss2'  
 -- stringBT:[String]  string bayesian type carries name
 -- TWO streams 1. depend on LAST ATOM of list
 --             2. depend on ghADD             => both get simivalued
 --
- --                     allSlotRAW -> simi rate   intern  -> connected foli4 with simi rate  -> write with plugExpWORK   -> tweak 1 new layer likethis    
+ --                     allSlotRAW -> simi rate   intern  -> connected foli4 with simi rate  -> write with plugExpWORK   -> 
                         --                                   via runEXP3                                             
                         --                  map workSlot    
                         --                                               extern  -> connected foli4 with bayes types
@@ -363,7 +292,7 @@ formHoofdEX1 foli4 stringBT pi ghADD =  do
                                         let unsortedStream  aLi left right = (simiVals aLi left right pi) -- simi rate everthing UNSORTED
                                         putStrLn "use 'workSlot' distribute CELL I..IV to simi vals"
  --    RATE any A and B                      k:Int; select from type list        |   pi Punkt -> String     |
-                                        --let distCELL k a b = (unsortedStream  (ausw k (concat (allSlotWORK a b))) (concat(checkflow [] [pi])) b)  -- select from list -> make cells -> rate 
+                                      --  let distCELL k a b = (unsortedStream  (ausw k (concat (allSlotWORK a b))) (concat(checkflow [] [pi])) b)  -- select from list -> make cells -> rate 
                                       ----------------------------------------------------------------------------------------------                                          
                                         putStrLn (show(workSlotRAW "CCCC" "dddd" [mother]))
                                         putStrLn (show(workSlotRAW "CCCC" "A1" [mother]))
@@ -413,15 +342,15 @@ formHoofdEX1 foli4 stringBT pi ghADD =  do
                                         let type1 =  (plugExpWORK   ["cell","CELLONE","CELLTWO","CELLTHREE","CELLFOUR",(concat abyssDevide2)] 1 "xyz=11" "dddd" "CELLONE" )  -- type 1 intern change li
                                         let type2 =  (plugExpWORK   ["cell","CELLONE","CELLTWO","CELLTHREE","CELLFOUR",(concat abyssDevide2)] 1 "dddd" "CELLONE" "CELLONE" ) --type 2 change guess
            ----------------------------------------------------------------------------------------------------------------------------------------------
-     {- RATE CELLS UNSORTED -}          putStrLn (show(simiVals ["cell","CELLONE2","CELLTWO","CELLTHREE","CELLFOUR"] "1" "2" pi)) -- "cell" "cell1" ))
+  {- RATE CELLS UNSORTED -}             putStrLn (show(simiVals ["cell","CELLONE2","CELLTWO","CELLTHREE","CELLFOUR"] "1" "2" pi)) -- "cell" "cell1" ))
                                         putStrLn (show(workSlotRAW "cell" "cell26.45" [mother])) 
                                        
                                         -- if lenght sixBreadCells > 4 ,output not availabe via mother etc.
                              --  similar to checkCELLs
                                         let breedCELLs io a b sixBreadCells = checkflow io $ BT.joinBayes a b (["cell"] ++ sixBreadCells ++ ["CELLONE","CELLTWO","CELLTHREE","CELLFOUR"])
                             -- same as above but can match "cell" from [] name 
-                                        let breedCELLPunkt io a b sixBreadCells = checkflow io $ BT.nameNewCell "cell" a b ( sixBreadCells)
-                           -- insert data into new Punkt  retrieve from     a ->
+  {- MAKE ANY NEW CELL     -}           let breedCELLPunkt io a b sixBreadCells = checkflow io $ BT.nameNewCell "cell" a b ( sixBreadCells)   -- ##################################   prepares new cells for upload
+                           -- insert data into new Punkt  retrieve from     a ->                                                                          ############# plug into map 'workPunktRAW' -> 'mapWithAbyss2'
                            --                                      or a and b ->
                                         let bayesianastigmatic a b = (BT.bayesAstigmatic a b) \\ "cell"
                                       
@@ -481,8 +410,8 @@ formHoofdEX1 foli4 stringBT pi ghADD =  do
                                         putStrLn$ show$ map concat ((map bootPunkt [1..6]))  --(type1or2 "ddd" 1 1)
                                         putStrLn$show (workPunktRAW [] "B" "B" abyssDevide2 1)
                                         putStrLn$show$ (type1or2 (unlines ["ddd"]) 1 1)
-                                     
-                                        let mapWithAbyss2 io a forBreadCells b = map (b++) (map (workPunktRAW io a b forBreadCells) [1..6])
+                                    
+  {- WRITE NEW CELL -}                  let mapWithAbyss2 io a forBreadCells b = map (b++) (map (workPunktRAW io a b forBreadCells) [1..6]) --------------------------- ####################### new cell STILL not FILLED-IN
                                         let littleWriter io a b forBreadCells = if  (workSlotRAW a b [mother]) == [" 1"] then mapWithAbyss2 io a forBreadCells b --"write data to CELL" ---------------------------------MATCH THEN WRITE TO CELL
                                                                else ["not"] 
 
@@ -505,6 +434,7 @@ formHoofdEX1 foli4 stringBT pi ghADD =  do
 
                                         let guessWithBias n =   E.poolBandNotB E.li4 n -- as four bread cells plug into breedCells
                                         putStrLn "Enter: 0 to close"
+    {-
                                         let loop = do
                                              
                                            --  miIO <- getLine
@@ -547,9 +477,13 @@ formHoofdEX1 foli4 stringBT pi ghADD =  do
 
                                                             loop
                                              else do putStrLn $"done"
-                                        loop 
-                                      -- line:Int ; select a String from abyssDevide2RAW    #############################  COULD SPLIT foli4 instead of                           
+                                        loop  -}
+                                      -- line:Int ; select a String from abyssDevide2RAW    #############################  COULD SPLIT foli4 instead of  
+                                      -- cell layer                          
     {- MAIN BRANCH SET TO:       -}     let tailRAW line = (concat(ausw line abyssDevide2RAW))    -- #######   ["BBBDDF","FFHHJJ","JLLNNP","PPRRTT","TVVXXX","ZZZ\\\\^"]
+
+                                      -- same as above but with normal li layer as input e.g   ["00000","0xy0z=3x0y0z=6","x0y0z=6","0x0yz=2","01111","xyz=11"]
+                                        let tailLI line = (concat(ausw line abyssDevide2RAW)) 
                                         putStrLn$ show$ map chr (guessWithBias 1)
                                         putStrLn$ show$ map chr (guessWithBias 2)
                                         putStrLn$ show$ map chr (guessWithBias 3)
@@ -561,7 +495,8 @@ formHoofdEX1 foli4 stringBT pi ghADD =  do
                                         putStrLn "WROTE new cells:"
                                         putStrLn$ show$ map concat ((map bootPunkt [1..6]))  --(type1or2 "ddd" 1 1)
                                        -- let cellAbyss2 =   -- what exactly put in 
-                                        let oneCellAbyss2 io a sixBreadCells n = map (mapWithAbyss2 io a sixBreadCells) (tailRAW n) 
+                                        let oneCellAbyss2 io a sixBreadCells n = map (mapWithAbyss2 io a sixBreadCells) (tailRAW n)
+                                        let oneLiAbyss io a sixBreadCells n = map (mapWithAbyss2 io a sixBreadCells) (tailLI n)
                                         putStrLn $ show $ tailRAW 1
                                         putStrLn$ show $ (oneCellAbyss2 [] "B1456.345" ["B1.23,4"] 1 )--(abyssDevide2)) 
                                         putStrLn$ show $ (oneCellAbyss2 [mother] "B123" ["B"] 1 )--(abyssDevide2))
@@ -613,18 +548,44 @@ formHoofdEX1 foli4 stringBT pi ghADD =  do
                                                                                         in let bootcells forBreadCells k = (mapWithAbyss2 io a forBreadCells k) 
                                                                                         in let celLogic io atomN line = (oneCellAbyss2 io "Z" (concat (ausw atomN abyssDevide2RAW)) line) --cellLogic  1 3 (oneCellAbyss2 io "JLLNP" (bootPunkt (read n)) line)
                                                                                         in let steps foatom = (cellLogic foatom (celLogic io atom (read n))) -- ######################### EXPORT 
-                                                                 --     in let writeRNDcellInput atomN line = (plugExpWORK   ["cell","CELLONE","CELLTWO","CELLTHREE","CELLFOUR",(concat (usage line))] 1 "dddd" "CELLONE" ) ) 
-                                                                                        in  map concat$nub$(transpose) [(concat(map steps [1..6])),  (concat( (ausw (read n )iterAby)))]  --writeRNDcellInput (6) (read n) -- zipWith (++) (steps (read n)) (concat(ausw atom (ausw (read n )iterAby)))
-
+  -- SET TO ABYSSDEVIDE                   in let writeRNDcellInput atomN line = (plugExpWORK    ["BBBDDF","FFHHJJ","JLLNNP","PPRRTT","TVVXXX","ZZZ\\\\^"] 1 "dddd" "CELLONE" ) ) 
+                                                                                        in  map concat$nub$(transpose) [(concat(map steps [1..6])),  (concat( (ausw (read n )iterAby)))]  
+                                        
+                                        -- same as above but takes with oneLiAbyss  
+                                        let biggerWriter io a b forBreadCells n atom = let choose pick2 pick1 = (ausw pick1 (concat (ausw pick2 iterAby))) 
+                                                                                        in let bootcells forBreadCells k = (mapWithAbyss2 io a forBreadCells k) 
+                                                                                        in let celLogic io atomN line = (oneLiAbyss io "Z" ((ausw atomN foli4)) line) 
+                                                                                        in let steps foatom = (cellLogic foatom (celLogic io atom (read n))) -- ######################### EXPORT 
+ -- SET TO ABYSSDEVIDE                   in let writeRNDcellInput atomN line = (plugExpWORK    ["BBBDDF","FFHHJJ","JLLNNP","PPRRTT","TVVXXX","ZZZ\\\\^"] 1 "dddd" "CELLONE" ) ) 
+                                                                                        in  map concat$nub$(transpose) [(concat(map steps [1..6])),  (concat( (ausw (read n )iterAby)))]  
+ 
             -- compare booted cells == bootPunkt with guesses, random Numbers in cells and foli4
                                         let compareCells io a b forBreadCells n atom = let choose pick2 pick1 = (ausw pick1 (concat (ausw pick2 iterAby))) 
                                                                                         in let bootcells forBreadCells k = (mapWithAbyss2 io a forBreadCells k) 
-                                                                                        in let celLogic io atomN line = (oneCellAbyss2 io "Z" (concat (ausw atomN abyssDevide2RAW)) line) --cellLogic  1 3 (oneCellAbyss2 io "JLLNP" (bootPunkt (read n)) line)
-                                                                                        in let steps foatom = (cellLogic foatom (celLogic io atom (read n))) -- ######################### EXPORT 
-                                                                 --     in let writeRNDcellInput atomN line = (plugExpWORK   ["cell","CELLONE","CELLTWO","CELLTHREE","CELLFOUR",(concat (usage line))] 1 "dddd" "CELLONE" ) ) 
-                                                                                        in let writeRNDcellInput atomN line = (plugExpWORK   ["cell","CELLONE","CELLTWO","CELLTHREE","CELLFOUR",concat(steps line )] 1 "dddd" "CELLONE" (head (bootPunkt line)) )
-                                                                                        in let type1or2 guess lineN atom = (plugExpWORK  (map concat(map bootPunkt [1..6])) 1 guess (head$ausw atom (bootPunkt lineN)) (concat(steps lineN))) 
-                                                                                        in  (type1or2 (concat(ausw (read n) foli4)) (read n) atom)
+                                                                                        in let celLogic io atomN line = (oneCellAbyss2 io "Z" (concat (ausw atomN abyssDevide2RAW)) line) --cellLogic  1 3 (oneCellAbyss2 io "JLLNP" (bootPunkt (read n)) line)              
+                                                                                        in let inAbPu = abyssDevide2RAW 
+                                                                                        in let steps foatom = (cellLogic foatom (celLogic io atom (read n))) -- #########################  THE NEW DATA TYPE 
+                                                                 --     in let writeRNDcellInput atomN line = (plugExpWORK   ["cell","CELLONE","CELLTWO","CELLTHREE","CELLFOUR",,concat(steps line )] 1 "dddd" "CELLONE" ) ) 
+                                                                                        in let writeRNDcellInput atomN line = (plugExpWORK ["BBBDDF","BBBDDF","BBBDDF","BBBDDF","BBBDDF"] 1 "dddd" "BBBDDF" (head (bootPunkt line)) )
+                                                                                        in let type1or2 guess = (plugExpWORK  (map concat(map bootPunkt [1..6])) 1 guess ("not used here") (concat(["not used here"])))
+                                                                                        in  (type1or2 ((concat(ausw (read n) foli4 ))) )
+ 
+     {- RATE WITHOUT ORDER 2/2 -} ----------------------------------------------- compare li atoms and new filled cells with foli4  -------------------------------------------------- 
+                                                 -- with foli4 and new cell filled 
+                                                 -- choseLi: Int to get a part of li to compare against                                     
+                                        let compareCells2 io a b forBreadCells n atom choseLi = let choose pick2 pick1 = (ausw pick1 (concat (ausw pick2 iterAby))) 
+                                                                                        in let celLogic io atomN line = (oneCellAbyss2 io "Z" (concat (ausw atomN abyssDevide2RAW)) line) --cellLogic  1 3 (oneCellAbyss2 io "JLLNP" (bootPunkt (read n)) line)              
+                                                                                        in let steps foatom = (cellLogic foatom (celLogic io atom (read n))) -- #########################  THE NEW DATA TYPE 
+                                                                 --     in let writeRNDcellInput atomN line = (plugExpWORK   ["cell","CELLONE","CELLTWO","CELLTHREE","CELLFOUR",,concat(steps line )] 1 "dddd" "CELLONE" ) ) 
+                                                                                        in let plugSteps = map concat$nub$(transpose) [(concat(map steps [1..6])),  (concat( (ausw (read n )iterAby)))]                                                                                                    
+                                                                                        in let sim a pick1 b pick2 =  C.similaritYvalue (map realToFrac (map ord (concat(ausw pick1 a)))) (map realToFrac(map ord (concat(ausw pick2 b))))                                
+                                                                                      --  in let stepsLogic io atomN line =   -- siilar to celLogic  
+                                                                                     -- compare guesses and new filled cells with foli4 
+                                                                                        in  map (sim plugSteps choseLi foli4) [1..6] --stepsLogic [father] atom (read n) --(type1or3 (((ausw (read n) plugSteps ))) "2" ("1"))
+                                        let iterCompare io a b atom =  let sim a pick1 b pick2 =  C.similaritYvalue (map realToFrac (map ord (concat(ausw pick1 a)))) (map realToFrac(map ord (concat(ausw pick2 b))))                                
+                                                                                     -- compare guesses and new filled cells with foli4 
+                                                                                        in  map (sim a atom b) [1..6] --stepsLogic [father] atom (read n) --(type1or3 (((ausw (read n) plugSteps ))) "2" ("1"))
+
                                         putStrLn$show$(littleWriter2 [mother] "F" " F" ((ausw 3(concat (ausw 1 abyssDevide2RAW)))) "1" 1)                                          
                                         putStrLn $ (unwords(bootPunkt 3 ))
                                         putStrLn $ (concat(bootPunkt 3 ))
@@ -676,36 +637,138 @@ formHoofdEX1 foli4 stringBT pi ghADD =  do
 
                                         putStrLn$show$head(ausw 1(concat(ausw 1 abyssDevide2RAW))) 
         -- CHOOSE EXPORT:                                                     make new cells                                                       compare cells
-                                        let choosF n = head$ ausw n [ show (oneCellAbyss2 [mother2] "Z" (concat (ausw 3 abyssDevide2RAW)) 3),show(littleWriter2 [mother] "nothing" "J" (((concat (ausw 3 abyssDevide2RAW)))) "3" 2),show(type1or2 (unlines ["ddd"]) 1 1),show(workPunktRAW [mother] (head(bootPunkt 2 )) "B" (head(ausw 1(ausw 1 abyssDevide2RAW))) 1 ){-get a cell (char) of one selected adyssDevide-}] 
+                                        let choosF n = head$ ausw n [ show (oneCellAbyss2 [mother2] "Z" (concat (ausw 3 abyssDevide2RAW)) 3),show(littleWriter2 [mother] "nothing" "J" (((concat (ausw 3 abyssDevide2RAW)))) "3" 2),show(type1or2 (unlines ["ddd"]) 1 1),show(workPunktRAW [mother] (head(bootPunkt 2 )) "B" (head(ausw 1(ausw 1 abyssDevide2RAW))) 1 ){-get a cell (char) of one selected adyssDevide-},show(workSlotRAW "CELLONE" "CELLONE" [father]){-check CELLS-} ] 
           -- select with selexport:Int
                                         return (BT.formationB [((choosF 1))])
-
-    
-                                        --boa --littleWriter2 io atom a forBreadCells n b                                  
-                                       -- aTree
-                                       -- putStrLn $show$ (workSlotRAW "X1" "J" [father])
-
-
-
-
-
-
+                                        putStrLn$show$(workSlotRAW "B1" "CELLONE" [mother])
+                                        putStrLn$show$(workSlotRAW "CELLONE" "CELLONE" [father])
+                                        putStrLn $show$ (workSlotRAW "X1" "X1" [father])
+                                        putStrLn$show$(oneCellAbyss2 [] "B1456.345" ["B1.23,4"] 1 ) 
+                                        putStrLn$ show $ (oneCellAbyss2 [mother] "F" ["B"] 2 ) 
+                                        putStrLn$show$(compareCells [mother2] "nothing" " J" (((concat (ausw 3 abyssDevide2RAW)))) "1" 1)
+                                        putStrLn$show$(compareCells [father] "nothing" " J" (((concat (ausw 2 abyssDevide2RAW)))) "2" 2)
+                                        putStrLn$show$(compareCells [father] "nothing" " J" (((concat (ausw 2 abyssDevide2RAW)))) "1" 1)
+                                        putStrLn$show$(compareCells [mother] "nothing" "BBBDDF" (((concat (ausw 1 abyssDevide2RAW)))) "1" 1)
 
 
-                                        --        -> if breedCELLs [father] "B1" "B1" (abyssDevide2)  == 0 
-                                        --    AND
-                                        --          if simval match good write data 
-                                        --  *HoofdDev> BT.bayesAstigmatic "cell" "B1"
-                                        --  "B1"
-
-  {-  
 
 
-                                           -}
-                                        --putStrLn (show(plugExp 3))
+                                       -- Int Punkt select
+                                        let twist io =  if io==1 then [mother]
+                                                     else if io==2 then [father] 
+                                                     else if io==3 then [mother2] 
+                                                     else if io==4 then [loopNumber] 
+                                                     else if io==5 then [minMaxTrueOrFalse] 
+                                                     else []
+                                       -- workRATE
+                                        let loop = do
+                                             out <- getLine -- line
+                                             atomN <- getLine
+                                             let guesseS n = E.poolBandNotB E.li4 n -- as four bread cells plug into breedCells
+                                             let dataRAW no line = nub(littleWriter2 (twist no) "nothing" "BBBDDF" ("not used") (show no) (line))
+                                             let stopBy no = sum$head$concat$(compareCells [] "nothing" "BBBDDF" (concat (ausw 1 ["not used here"])) (no) (read out))
+
+                                             if (read out)> 0 then do 
+                                                         --   putStrLn$show$nub(compareCells [] "nothing" "BBBDDF" (concat (ausw 1 ["not used here"])) (show((read out)+5)) (read out))
+                                                         --   putStrLn$show$sum$head$concat(compareCells [mother] "nothing" "OOOOO" (concat (ausw 1 ["not used here"])) (show((read out)+5)) ((read out)+7))
+                                                            let mapStop = map stopBy (map show [1..10]) -- [207.07863440710895,217.46724890829694,84.99933359989338,83.88553350589589,203.86327831389409,68.5352678851831,400.0,400.0,400.0,400.0]
+                                                            let mapStopRAW at = take at $repeat (mapStop \\ [(minimum mapStop)])
+                                                            let elemC a = findMin a mapStop -- where ar minima in mapStop
+                                                            let findGood = map elemC (sort mapStop) -- [[5],[3],[2],[4],[0],[1],[6,7,8,9],[6,7,8,9],[6,7,8,9],[6,7,8,9]] 
+                                                            let foreturn = minimum (mapStop)                                                       
+                                                            let findAt = (foreturn `elemIndices` mapStop)
+                                                     --       putStrLn ("best suited input line"++(show findAt))
+                                                       --     putStrLn$show$stopBy (show(head findAt))
+                                                            let motherBayes = twist (head findAt) 
+                                                           -- putStrLn$show$(littleWriter2 [father] "nothing" "BBBDDF" (concat (ausw (head findAt) foli4)) (show((1))) (head findAt))
+                                                            putStrLn$show$nub(littleWriter2 motherBayes "nothing" "BBBDDF" (concat (ausw (head findAt) foli4)) (atomN) (read out)) --(head findAt))
+                                             --               putStrLn$show$nub(compareCells motherBayes "nothing" "BBBDDF" (concat (ausw (head findAt) foli4)) (atomN) (read out)) 
+  {- COMPARE LI with RANDOMS from cells ---------------------------------------------                                          ####################################################   [1..10] A..Z..a..z..?  -}
+                                               --             putStrLn$show$nub(compareCells2 motherBayes "nothing" "BBBDDF" (concat (ausw (head findAt) foli4)) (atomN) (read out) 1)
+                                                 --           putStrLn$ "different?"
+                                                   --         putStrLn$show$nub(compareCells2 motherBayes "nothing" "BBBDDF" (concat (ausw (head findAt) foli4)) (atomN) (read out) 2)
+
+                                                            let getLiNewcellCompare fon =  (compareCells2 motherBayes "nothing" "BBBDDF" (concat (ausw (head findAt) foli4)) fon (read out) 1) 
+                                                            let glN = map getLiNewcellCompare (map show [1..14])
+                                                            let suitedALLSum = map sum (glN) -- find minimum in li new cell compare  ########--------SUM WHOLE LIST   
+                               -- let suitedSingleBest = ###########################################################################under construcion                                                   
+                                                            let findAt2 = (head$(minimum suitedALLSum) `elemIndices` suitedALLSum)+1 --  getLiNewcellCompare
+                                                --            putStrLn ("best suited  input line SUM WHOLE LIST "++(show findAt2))
+                                                        --    let motherBayes2 = twist (head findAt2) --HERE
+                                                  --          putStrLn$show suitedALLSum
+                                       -- take the most similar cell 
+                                                            inflateCell <- forM [1..(length (nub findGood))] (\inf -> do -- could take 10 but setteld for three due to the length of the rnd run -> iterAby
+                                                                       let solong = ausw inf [[5],[3],[2],[4],[0],[1],[6,7,8,9]] -- == nub findGood
+                                                                       let findAt2 = ((head$concat$solong)+1)
+                                                                       let part1CompareData =   concat $ausw findAt2 (map (dataRAW inf) ([1..6])) -- new cell filled 
+                            --  let part2CompareStep =  ausw (head  under construction -- get new cell filled
+ {- EXPORT SELECTED CELL via 'infateCell'-}                                        --  Int; which atom of sel line to get
+                                                                       let expSelCell = findMin (minimum part1CompareData) part1CompareData -- select the smallest line sel of line smallest Int => most similar Char 
+                                                                                                            -- the new cell filled e.g  ["B Ny31y31","B N00=y=y","B N=y=y=y","B N=y0y=0","B N","D N","F N"]
+                                                                                                            --   minimum of above >> do the same for this minimum 
+                                                                       let takeMin = expSelCell --ausw (((head expSelCell))+1) part1CompareData -- the most similar li [Char] compared to steps =>  selected line 'takeMin' 
+                                                                       let slow = nub$concat$ (littleWriter2 motherBayes "nothing" "BBBDDF" (concat (ausw (findAt2) (part1CompareData))) (atomN) (findAt2))
+                                                       -- find minimum of glN all lists in one
+                                                                       let glNconcatMin = minimum(concat glN)
+                                                     -- do as said
+                                                                       let findMin3 = findMin glNconcatMin (concat glN)
+                                                                       -- get of new cell
+                                                                       let newCells = (littleWriter2 motherBayes "nothing" "BBBDDF" (concat (ausw (findAt2) foli4)) (show findAt2) (read out))
+                      -- ausw 1 of e.g ["Ny=0y=0","y=0y=0","=0y=0","0y=0","y=0","=0","0",""]
+                                                                       let sumIt =  tails$last$words(concat(ausw 1 newCells)) -- get most similar of new cell 
+                                                                       let iter3rdRun =  let step1 =    concat glN -- break up the connacted file with this into nice 6er list again  
+                                                                                      in let step2 =   (length step1) `div` 6  
+                                                                                      in let toRead =   if step2==0 then 1 
+                                                                                                        else step2 
+                                                                                      in let switch a  =  (drop ((a-1)*6)) $ (take (a*6)) step1 
+                                                                                      in map switch [1..(toRead)]
+
+                                                                   --    runInner <- forM [1..(length
+                                                                       let way2 = tails$last(words (head(part1CompareData)))
+                                                                       foldTail <- forM [1..(length sumIt)] (\w -> do
+                                                                                  let iT = (iterCompare motherBayes ((ausw w sumIt)) (part1CompareData) (1)) 
+                                                                                                                                                              
+                                                                                  return (iT))
+                                                                       let dropLast = reverse$tail$reverse$foldTail
+                                                                       let getaMin = (map sum dropLast)
+                                                                       let findIT = findMin (minimum getaMin) getaMin
+                                                                       let getIT = ausw (head findIT) sumIt  -- e.g ==["1y31"]
+                                                                       putStrLn ("Filled cell with data below, cell"++(show findAt2)++" in the list of newly filled cells\n compared to li 1..6 -> 'tails' $ausw 1 below")
+                                                                       putStrLn$show$sumIt 
+                                                                       putStrLn$show$(foldTail)
+                                                                       let newLength = length getIT -- get new randoms , search with length of 
+                                                                       weKnowLength <- forM [1..2] (\wk -> do
+                                                                                   let newRandom = rndInt wk -- (guessWithBias wk))
+                                                                                   return (newRandom))
+                                                                       return (takeMin,(foldTail))) --(expSelCell)) --(part1CompareData)) --(weKnowLength)) --(glNconcatMin)) --(takeMin3)) --(iter3rdRun)) --(findMin3 )) --(glNconcatMin)) --(takeMin3)) --(iter3rdRun)) --(takeMin)) --(slow)) --(exportSelectedCell))
+                                                            putStrLn$show (map fst inflateCell)
+                                                            let dropLast = reverse$tail$reverse (map fst inflateCell) 
+                                                            takeInflate <- forM [1..(3)] (\ ti -> do
+                                                                        let findAt2 = ((head$concat$dropLast)+1)
+                                                                        let part1CompareData =   concat $ausw findAt2 (map (dataRAW ti) ([1..6]))
+                                                                        let iTer = iterCompare motherBayes (part1CompareData) foli4 ti
+                                                                        return (iTer))
+                                                    --        putStrLn$show dropLast
+                                                      --      putStrLn$ "every most similar new cell compared to\n li 1..6 build search from here"
+                                                        --    putStrLn$show$takeInflate 
+                                                          --  putStrLn$show$map chr $guessWithBias 2
+                                                            --putStrLn$ "sum similaritY of a new filled cell to every li 1..6"
+
+                                                            putStrLn$show mapStop 
+                                                            putStrLn$show findGood
+                                                            putStrLn$show (((map snd inflateCell)))
+                                                            putStrLn$show ((map (map minimum) (map snd inflateCell)))
+                                                            putStrLn$show ((map (map length) (map snd inflateCell)))
+
+                                                            loop
+                                             else do putStrLn $"done"
+                                        loop 
+
+
 
 
    where
+      findMin a b=  (a `elemIndices` b) ;  --finds minima and gets first minimum
       palette = runEXP3 foli4 stringBT pi ghADD; 
       choosDomain ff =  if ff == 1 then foli4 
                                    else stringBT; 
@@ -732,6 +795,7 @@ formHoofdEX1 foli4 stringBT pi ghADD =  do
                          else palette --(head (snd allFor))
 
 
-                   
+
+
 
 

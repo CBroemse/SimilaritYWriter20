@@ -237,7 +237,8 @@ module Experiment3 (
      , baysianTypeString
      , replaceC -- transform cell data types, deep layer
      , cellStream3 -- export random strings to Hoofd.hs
-     , poolBandNotB --ready made guesses only raise+1 
+     , poolBandNotB --ready made guesses only raise+1
+     , chainDistribute -- help in HoofdDev.hs  exported to formHoofdEX1 help build cell
      ) where
 
 import Data.List
