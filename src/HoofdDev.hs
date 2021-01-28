@@ -191,7 +191,7 @@ formHoofdEX1WORK foli4 stringBT pi ghADD fillBayesian =  do
                                                                             else step2 
                                                           in let switch a  =  (drop ((a-1)*6)) $ (take (a*6)) step1 
                                                           in map switch [1..(toRead)]
-                                        let iterAby =  let step1 =    map (map chr)  (abyssDevide2TEST "12341234") -- (usage 2)  
+                                        let iterAby =  let step1 =    map (map chr)  (abyssDevide2TEST "7897891234554") -- "12341234") -- (usage 2)  
                                                           in let step2 =   (length step1) `div` 6  
                                                           in let toRead =   if step2==0 then 1 
                                                                             else step2 
@@ -212,7 +212,7 @@ formHoofdEX1WORK foli4 stringBT pi ghADD fillBayesian =  do
                                                                                         in let writeRNDcellInput atomN line = (plugExpWORK   ["cell","CELLONE","CELLTWO","CELLTHREE","CELLFOUR",concat(steps line )] 1 "dddd" "CELLONE" (head (bootPunkt line)) )
                                                                                         in let type1or2 guess lineN atom = (plugExpWORK  (map concat(map bootPunkt [1..6])) 1 guess (head$ausw atom (bootPunkt lineN)) (concat(steps lineN))) 
                                                                                         in  (type1or2 (concat(ausw (read n) foli4)) (read n) atom)
-                                        putStrLn$ show$ map (map chr) (abyssDevide2TEST "12341234")
+                                        putStrLn$ show$ map (map chr) (abyssDevide2TEST "7897891234554" ) -- "12341234")
                                         putStrLn$show $(iterAby)
                                      --   let boa = do
                                        --    io <- getLine                   --   ["BBBDDF","FFHHJJ","JLLNNP","PPRRTT","TVVXXX","ZZZ\\\\^"]
@@ -228,8 +228,8 @@ formHoofdEX1WORK foli4 stringBT pi ghADD fillBayesian =  do
                                         putStrLn$show$(littleWriter2 [mother] "aaa" " B" ((ausw 1(concat (ausw 1 abyssDevide2RAW)))) "1" 1)
                                         putStrLn$show$(littleWriter2 [father] "nothing" " J" (((concat (ausw 2 abyssDevide2RAW)))) "2" 2)
                                         putStrLn$show$(littleWriter2 [mother2] "nothing" " F" ((ausw 1(concat (ausw 4 abyssDevide2RAW)))) "3" 3)
-                                        putStrLn$show$(littleWriter2 [loopNumber] "aaa" "B" ((ausw 4(concat (ausw 4 abyssDevide2RAW)))) "1" 3) 
-                                        putStrLn$show$(littleWriter2 [minMaxTrueOrFalse] "aaa" "B" ((ausw 4(concat (ausw 4 abyssDevide2RAW)))) "2" 5) 
+                                        putStrLn$show$(littleWriter2 [loopNumber] "aaa" "B" ((ausw 4(concat (ausw 4 abyssDevide2RAW)))) "4" 4) 
+                                        putStrLn$show$(littleWriter2 [minMaxTrueOrFalse] "aaa" "B" ((ausw 4(concat (ausw 4 abyssDevide2RAW)))) "5" 5) 
                                         putStrLn "set out"
                                         putStrLn$show (tailRAW fillBayesian)                             
 
@@ -793,8 +793,6 @@ formHoofdEX1 foli4 stringBT pi ghADD =  do
                               else if (triggerWord (filter (/=' ') (head(checkflow [] [pi]))) "cell" )  == "1" then (map read [(triggerWord "cell" "cell3")]) -- snd (ghAdd,(snd(charFilterInt ghAdd)))
 
                          else palette --(head (snd allFor))
-
-
 
 
 
