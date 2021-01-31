@@ -37,7 +37,8 @@
 --
 module HoofdDev(
     formHoofdEX1WORK -- main export Bayesian Data type rate li to names and content of cells
-  , formHoofdEX1) where
+  , formHoofdEX1 -- explains and illustrates the function above 
+   ) where
 --prelude
 import Data.List
 import Data.Char
@@ -145,9 +146,11 @@ runEXP3 li liSolution pi ghAdd = do
 -- *HoofdDev> let pi0 = Punkt "unsort" Nothing Nothing Nothing Nothing Nothing
 -- e.g let liM2 = ["00000","0xy0z=3x0y0z=6","x0y0z=6","0x0yz=2","01111","xyz=11"]
 --     let pi = Punkt "intern" Nothing Nothing Nothing Nothing Nothing
+--  io: IO  mother father ... select...???
+--  goWay: Int , if == 1 then just show the main 5x5 ancestor matrix a 'tensor' ?; else [String] output 
 --  fillBayesian:Int , select export function with 'choosF' set to 2 
--- *HoofdDev> (formHoofdEX1 liM2 ["CEL"] pi0 "P" fillBayesian)  
-formHoofdEX1WORK foli4 stringBT pi ghADD fillBayesian =  do
+-- *HoofdDev> (formHoofdEX1 liM2 ["CEL"] pi0 "P" 1 fillBayesian)  
+formHoofdEX1WORK foli4 stringBT pi ghADD goWay fillBayesian =  do
                                         let foliOrder = [1,2,536,537,538,1073,1074,1075,1076,1610,1611,1613]
                                         let runRandomLin foli4 = nub(map (E.cellStream3 foli4) foliOrder)
                                         let rndLin = runRandomLin foli4
@@ -241,9 +244,17 @@ formHoofdEX1WORK foli4 stringBT pi ghADD fillBayesian =  do
  
                                         let iterRate io a b forBreadCells n atom = let pointer = map last $ map words (fst (compareCells2 io a b forBreadCells n atom)) 
                                                                                    in let ofNewCell =   plugExpWORK pointer 1 (head (ausw (read n) foli4)) "00" "00"-- compare new cell content to 1. li 2. other cells content 3. its name 4.other cell names ... 
-                                                                                   in (pointer, ofNewCell) 
+                                                                                   in (pointer, ofNewCell)
+                                        let twist io =  if io==1 then [mother]
+                                                     else if io==2 then [father] 
+                                                     else if io==3 then [mother2] 
+                                                     else if io==4 then [loopNumber] 
+                                                     else if io==5 then [minMaxTrueOrFalse] 
+                                                     else []
+ 
                                       --  putStrLn$ show$ map (map chr) (abyssDevide2TEST "7897891234554" ) -- "12341234")
-                                        putStrLn$show $(iterAby)
+                                        do if goWay==1 then do
+                                              putStrLn$show $(iterAby)
                                      --   let boa = do
                                        --    io <- getLine                   --   ["BBBDDF","FFHHJJ","JLLNNP","PPRRTT","TVVXXX","ZZZ\\\\^"]
                                         --putStrLn$show$(littleWriter2 [] "aaa" "1" (concat (ausw 4 abyssDevide2RAW)) "1" 1)        -- cell ++cell
@@ -255,13 +266,13 @@ formHoofdEX1WORK foli4 stringBT pi ghADD fillBayesian =  do
                                         --putStrLn$show$(littleWriter2 [mother] "nothing" " J" ((ausw 1(concat (ausw 3 abyssDevide2RAW)))) "3" 1)
                                         --putStrLn$show$(littleWriter2 [loopNumber] "nothing" "P" ((ausw 1(concat (ausw 4 abyssDevide2RAW)))) "4" 1)
                                         --putStrLn$show$(littleWriter2 [father] "nothing" " J" (((concat (ausw 3 abyssDevide2RAW)))) "3" 2)
-                                        putStrLn "set out"
-                                        putStrLn$show$(littleWriter2 [mother] "aaa" " B" "not used" "1" 1)
-                                        putStrLn$show$(littleWriter2 [father] "nothing" " J" "not used" "2" 2)
-                                        putStrLn$show$(littleWriter2 [mother2] "nothing" " F" "not used" "3" 3)
-                                        putStrLn$show$(littleWriter2 [loopNumber] "aaa" "B" "not used" "4" 4) 
-                                        putStrLn$show$(littleWriter2 [minMaxTrueOrFalse] "aaa" "B" "not used" "5" 5)
-                                        putStrLn$show$(littleWriter2 [mother] "aaa" "B" "not used" "5" 1) 
+                                              putStrLn "set out"
+                                              putStrLn$show$(littleWriter2 [mother] "aaa" " B" "not used" "1" 1)
+                                              putStrLn$show$(littleWriter2 [father] "nothing" " J" "not used" "2" 2)
+                                              putStrLn$show$(littleWriter2 [mother2] "nothing" " F" "not used" "3" 3)
+                                              putStrLn$show$(littleWriter2 [loopNumber] "aaa" "B" "not used" "4" 4) 
+                                              putStrLn$show$(littleWriter2 [minMaxTrueOrFalse] "aaa" "B" "not used" "5" 5)
+                                              putStrLn$show$(littleWriter2 [mother] "aaa" "B" "not used" "5" 1) 
               --                          putStrLn$show$fst (compareCells2 [minMaxTrueOrFalse] "aaa" "B" "not used" "2" 1)
                 --                        putStrLn$show$snd (compareCells2 [minMaxTrueOrFalse] "aaa" "B" "not used" "2" 1)
                   --                      putStrLn$show$fst (compareCells2 [minMaxTrueOrFalse] "aaa" "B" "not used" "1" 1)
@@ -270,18 +281,18 @@ formHoofdEX1WORK foli4 stringBT pi ghADD fillBayesian =  do
                         --                putStrLn$show$snd ( iterRate [minMaxTrueOrFalse] "aaa" "B" "not used" "1" 1)  -- show above
                           --              putStrLn$show$snd ( iterRate [minMaxTrueOrFalse] "aaa" "B" "not used" "2" 2) 
                             --            putStrLn$show$snd ( iterRate [minMaxTrueOrFalse] "OOLOO" "kkkk" "not used" "2" 1) 
-                                        let mapCompare t = (nub (concat(map concat(compareCells [minMaxTrueOrFalse] "aaa" "B" "not used" (show t) t))) )
-                                        let mCom = map mapCompare [1..6]	
+                                              let mapCompare t = (nub (concat(map concat(compareCells [minMaxTrueOrFalse] "aaa" "B" "not used" (show t) t))) )
+                                              let mCom = map mapCompare [1..6]	
                                   --      putStrLn "set out"
                                     --    putStrLn$show (tailRAW fillBayesian)
-                                        putStrLn " 'compareCells' the random cell names compared to one atom of li "
-                                        putStrLn$show$ map bootPunkt [1..6] 
-                                        putStrLn$show$ nub mCom --(compareCells [minMaxTrueOrFalse] "aaa" "B" "not used" "1" 1)
-                             
+                                              putStrLn " 'compareCells' the random cell names compared to one atom of li "
+                                              putStrLn$show$ map bootPunkt [1..6] 
+                                              putStrLn$show$ nub mCom --(compareCells [minMaxTrueOrFalse] "aaa" "B" "not used" "1" 1)
+                                              return ("")
+                                            
 
-
-
-                                        let choosF n = head$ ausw n [ show (oneCellAbyss2 [mother2] "Z" (concat (ausw 3 abyssDevide2RAW)) 3),
+                                           else do
+                                              let choosF n = head$ ausw n [ show (oneCellAbyss2 [mother2] "Z" (concat (ausw 3 abyssDevide2RAW)) 3),
                                                              show(compareCells [mother] "nothing" "J" (((concat (ausw 3 abyssDevide2RAW)))) "3" 2),
                                                              show(workPunktRAW [mother] (head(bootPunkt 2 )) "B" (head(ausw 1(ausw 1 abyssDevide2RAW))) 1 ),{-get a cell (char) of one selected adyssDevide-}
                                                              show$(littleWriter2 [mother] "nothing" "J" (((concat (ausw 3 abyssDevide2RAW)))) "3" 2),     {- new cell name ++ content -}
@@ -290,8 +301,8 @@ formHoofdEX1WORK foli4 stringBT pi ghADD fillBayesian =  do
                                                              show$snd (compareCells2 [minMaxTrueOrFalse] "aaa" "B" "not used" "2" 1),                    {- the li compared to first atom of above -}
                                                              show$fst ( iterRate [minMaxTrueOrFalse] "aaa" "B" "not used""1" 1),                          {- content compared to li -}
                                                              show$snd ( iterRate [minMaxTrueOrFalse] "aaa" "B" "not used""1" 1)] 
-                                        return (BT.formationB [((choosF 3))]) --fillBayesian
-
+                                              return (unwords(checkflow  [mother]  [(BT.formationB [((choosF fillBayesian))])]   )) --fillBayesian
+                   -- see which kind of checkCELL function would be helpful at this point                             
 
                   
 
@@ -847,6 +858,7 @@ formHoofdEX1 foli4 stringBT pi ghADD =  do
                               else if (triggerWord (filter (/=' ') (head(checkflow [] [pi]))) "cell" )  == "1" then (map read [(triggerWord "cell" "cell3")]) -- snd (ghAdd,(snd(charFilterInt ghAdd)))
 
                          else palette --(head (snd allFor))
+
 
 
 
