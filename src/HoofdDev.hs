@@ -9,8 +9,8 @@
 --                            busschop-bradley, display trivial machine
 --
 -- Experiment3:                randomize input, guesses , find solutions,
---                            2 work flows: random number=> baysian type 
---                                 from li and addGH    => baysian type
+--                            2 work flows: random number=> bayesian type 
+--                                 from li and addGH    => bayesian type
 --                            4 streams in and out of cells:
 --                               based on the 2 work flows
 --                             => cell I,cell II cell III, cell IV
@@ -37,7 +37,7 @@
 --
 module HoofdDev(
     formHoofdEX1WORK -- main export Bayesian Data type rate li to names and content of cells
-  , formHoofdEX1 -- explains and illustrates the function above 
+  , formHoofdEX1     -- explains and illustrates the function above 
    ) where
 --prelude
 import Data.List
@@ -52,7 +52,6 @@ import qualified DataTypeBayes as BT
 import UsefulFunctions19
 import DataTypePunkt
    --, Experiment3
-   --, TheA
    --
 --some functions
 ausw = C.ausw
@@ -62,29 +61,28 @@ inActie = E.inActie
 baysianTypeInt=E.baysianTypeInt
 baysianTypeString=E.baysianTypeString
 --
---
 --           ############### whole function is ################################## SAME AS   cellStream3EXT- 13-1-21        
                                                          --  ########################## BOTH are an INDEX matrices (or simply values)
-       -- domain2 syntax                                                                                   ##############   I: EXPORT TO MAIN
-       --                                                                                                                  II:  PUNKT JUNCTION POINT 
-       --                                                   III: JOIN with a. 2dplot, 3dplot, 2/3dplot, ptcChart.html
-       --                                                                                                    in Main
-       --                                                                                                                  IV: EXPORT BAYSIAN type to MAIN 
-       --                                                                                                                      make nice exlpainatory interactive 
-       --                                                                                                                   V: 1-1-21 issue 'story line' join the loose ends
-       --                                                                                                                      with 'Colored_2_3_5_Counter20.hs'=C20 see overview
-       --                                                                                                                         found most versataile ptc6 ptc7? , ptc9
-       --                                                                                                                         see solutions of 'Quirky-Example' this lP function
-       --                                                                                                                         in C20 ; mix wit first 'C.vb' example
-       --                                                                                                                         => writes 'src/2dpgfunctions.wxm" 
-       --                                                                                                                            watch an ordered state and the ptc data 
-       --                                                                                                                            and the purple solution function which main aim
-       --                                                                                                                            is to turn a very ordered state into -> 
-       --                                                                                                                            -> [[Char]] -> [[Int]] -> ruEXP3 =
-       --                                                                                                                            => relation -> fourierFS to mq-functions
-       --                                                                                                                  VI: THE NEW CELL TYPE as basis ptc9 is involved 
-       --                                                                                                                      with a rating of guesses AFTER PUNKT JUNCTION POINT
-       --                                                                                                                      in Main.
+       -- domain##############   I: EXPORT TO MAIN
+       --                       II:  PUNKT JUNCTION POINT 
+       --                      III: JOIN with a. 2dplot, 3dplot, 2/3dplot, ptcChart.html
+       --                               in Main
+       --                       IV: EXPORT BAYSIAN type to MAIN 
+       --                           make nice exlpainatory interactive 
+       --                        V: 1-1-21 issue 'story line' join the loose ends
+       --                            with 'Colored_2_3_5_Counter20.hs'=C20 see overview
+       --                            found most versataile ptc6 ptc7? , ptc9
+       --                            see solutions of 'Quirky-Example' this lP function
+       --                            in C20 ; mix wit first 'C.vb' example
+       --                            => writes 'src/2dpgfunctions.wxm" 
+       --                            watch an ordered state and the ptc data 
+       --                            and the purple solution function which main aim
+       --                            is to turn a very ordered state into -> 
+       --                            -> [[Char]] -> [[Int]] -> ruEXP3 =
+       --                            => relation -> fourierFS to mq-functions
+       --                        VI: THE NEW CELL TYPE as basis ptc9 is involved 
+       --                            with a rating of guesses AFTER PUNKT JUNCTION POINT
+       --                            in Main.
 ------------------------------------------------------
 -- SIMIVAL RUNS for  'Quirky example'
 -- manifest the given li function with and without 'appropiate mathematical syntax'
@@ -151,21 +149,21 @@ runEXP3 li liSolution pi ghAdd = do
 --  fillBayesian:Int , select export function with 'choosF' set to 2 
 --  getLine: Int ,select line of [string] (li or filled celld etc.) 
 --  getAtom: Int ; select atom of line 
--- *HoofdDev> (formHoofdEX1 liM2 ["CEL"] pi0 "P" 1 fillBayesian 1 1 )  
+-- *HoofdDev> (formHoofdEX1 [mother] liM2 ["CEL"] pi0 "P" 1 fillBayesian 1 1 )  
 formHoofdEX1WORK io foli4 stringBT pi ghADD goWay fillBayesian getLine getAtom =  do
                                         let foliOrder = [1,2,536,537,538,1073,1074,1075,1076,1610,1611,1613]
                                         let runRandomLin foli4 = nub(map (E.cellStream3 foli4) foliOrder)
                                         let rndLin = runRandomLin foli4
                                         let usage h = (head$ausw h rndLin)
                                         let rndInt n =  last (zufallsBasic1 (n+1) 9 n)
--- I. MAIN DATA STREAMS: 'pugExpWORK'   -- just depends on foli or on guesses (intern/extern)  pvs:[prog variables] e.g see above  ******************************************************************************* CHANGE TYPE ORDER
+-- I. MAIN DATA STREAMS: 'plugExpWORK -> ..'   -- just depends on foli or on guesses (intern/extern)  pvs:[prog variables] e.g see above  ************* CHANGE TYPE ORDER
                                       ----------------------------------------------------------------------------------------------
 -- II. MOUNT CELL I..IV : 'workSlotRAW'
-                                        let workSlotRAW streamI streamII  io1 = BT.checkCELLs io1 streamI streamII   -- ############################################ mounted  bayesCELLI..IV with BT.checkCELLs
+                                        let workSlotRAW streamI streamII  io1 = BT.checkCELLs io1 streamI streamII   -- ################### mounted  bayesCELLI..IV with BT.checkCELLs
                                         let workSlot io1 =  workSlotRAW "cell" "0" io1
                                         let allSlot = map workSlot (map (:[]) [mother,father,mother2,loopNumber,minMaxTrueOrFalse])
                                         let allSlotWORK streamI streamII = map (workSlotRAW streamI streamII) (map (:[]) [mother,father,mother2,loopNumber,minMaxTrueOrFalse])
-{- III. RATE LI AND GUESS:     -}       let plugExpWORK fofoli4 k guess a b = runEXP3 fofoli4 (ausw k (concat (allSlotWORK a b))) pi guess  -- ######################## COMBINES change li and BAYES Type 'new cell' 
+{- III. RATE LI AND GUESS:     -}       let plugExpWORK fofoli4 k guess a b = runEXP3 fofoli4 (ausw k (concat (allSlotWORK a b))) pi guess  -- ####### COMBINES change li and BAYES Type 'new cell' 
                                         let unsortedStream  aLi left right = (simiVals aLi left right pi) -- simi rate everthing UNSORTED
                                         let abyssDevide = let step1 = map chr $ filter (>=65) (usage fillBayesian)   
                                                           in let step2 =   (length step1) `div` 6  
