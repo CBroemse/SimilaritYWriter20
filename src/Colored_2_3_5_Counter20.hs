@@ -81,7 +81,7 @@ module Colored_2_3_5_Counter20 (
     , iframe_c -- write into storyTeller to html 
     , iframe_cRAW --
     , accesFuncWX33 -- active 28-8-2020 plot 2d
-    , vb -- exampe 2d
+    , vb -- example 2d
     , vb2 -- working example
     , runK -- plot one li list with kArmTest5
     , range211 -- experiment2 case1 all smal letters set 
@@ -2213,53 +2213,58 @@ iframe_cRAW t railW toWrite chAr ko token= do
     let exampl0 te k = ausw te [(examplRAW1 k),(examplRAW2 k)] -- switch textareas now 
     let exampl t = [(examplRAW1 t),(examplRAW2 t)]
    
-    let typesafer n = let had1 =   (head$head$exampl t) --map ord (exampl))
-                      in let had2 = (head$last$exampl t) 
-                      in if n<(had1) then had1+1
-                         else if n >(had2) then had2-1
-                         else n 
-    let saferRaw t n foHtml = drop (typesafer t) (take (typesafer n) (lines foHtml))
-    let safer t n = saferRaw t n (aRawHtmlTxt)
+   -- let typesafer n = let had1 = (head $examplRAW1 1 ) --  (head$head$exampl t) --map ord (exampl))
+     --                 in let had2 = ((last$examplRAW1 1))) --(last$head$exampl t) 
+       --               in if n<(had1) then had1+1
+         --                else if n >(had2) then had2-1
+           --              else n
+    putStrLn $show$exampl 1
+ 
+    let saferRaw t k foHtml = drop t (take k (lines foHtml))
+    let safer t k = saferRaw t k ((aRawHtmlTxt))
     let actual = (interSearch (toWrite)) -- head or last for boundaries
-    let distance = length$head$actual     
+    let distance = length$head$actual    
+   -- putStrLn $show$ safer  --drop (head $examplRAW1 1 ) (( take ((last$examplRAW1 1)-2)) (lines aRawHtmlTxt) ) 
+  
     let turns = if distance>2 then head$ ausw (distance-1) (head actual)
                 else last (last actual)
 
-    let sfrField = safer ((head$head$exampl t)+1) ((head$last$ exampl t)-1 )
-    let sfrField2 = safer ((head$head$exampl t)+1) ((last$head$ exampl t)-1 )
+    let sfrField = safer ((head$head$exampl 1)+1) ((head$last$ exampl 1)-1 )
+    let sfrField2 = safer ((head$head$exampl 1)+1) ((last$head$ exampl 1)-1 )
+    putStrLn$show $actual
 
     let theWrights g = do 
                           (writeFile ("textS/indat23720/filesystemDATA/"++(evalToWrit ("filesystem"++token++".html"))) g)
                           putStrLn ("wrote: "++ ("textS/indat23720/filesystemDATA/"++(evalToWrit ("filesystem"++token++".html")))) 
         
-    let railOut = if chAr=="w" then safer ((head$head$exampl t)+1) ((last$head$exampl t)-1)
-                  else if chAr=="du" then sfrField\\ (safer ((head$head$exampl t)-1) ((head$head$actual)-1))-- "du" delete upwards
+    let railOut = if chAr=="w" then safer ((head$head$exampl 1)+1) ((last$head$exampl 1)-1)
+                  else if chAr=="du" then sfrField\\ (safer ((head$head$exampl 1)-1) ((head$head$actual)-1))-- "du" delete upwards
                                      
                   else if chAr=="dl" then sfrField \\ ((ausw ((head$head$actual)+1) (lines aRawHtmlTxt))) -- ( --"dl" delete line
         
-                  else if chAr=="dd" then sfrField \\ ((safer (head$head$actual) (head$last$exampl t)))  --"dd" delete downwards
+                  else if chAr=="dd" then sfrField \\ ((safer (head$head$actual) (head$last$exampl 1)))  --"dd" delete downwards
                   else if chAr == "wu" then let step1 = (safer ((head$head$actual)-2) ((head$head$actual)-1))  --"wu" write insert ko upwards 
-                                               in lines ((unlines step1 )++ unlines ko ++(unlines(safer (last$head$actual) (head$last$exampl t)))) --((fst step1)) --lin
-                  else if chAr == "wd"  then let goPe =  drop ((head$head$exampl t)+1) (take ((last$head$exampl t)-6) (lines aRawHtmlTxt)) 
-                                             in goPe ++ ko --lines ((unlines sfrField2) ++ (unlines ko))
-            
-                  else if chAr =="ra" then safer ((head$head$exampl t)+1) ((last$head$exampl t)-1)
+                                               in lines ((unlines step1 )++ unlines ko ++(unlines(safer (last$head$actual) (head$last$exampl 1)))) --((fst step1)) --lin
+                  else if chAr == "wd"  then let goPe =  drop ((head$head$exampl 1)+1) (take ((head$head$exampl 1)+2) (lines aRawHtmlTxt)) 
+                                             in if t == 1 then goPe ++ (ko) --lines ((unlines sfrField2) ++ (unlines ko))   --- write into fst textarea
+                                                else  (safer (((head$head actual))) (((head$head$actual)+1))) ++ ko --  WRITE TO under searched word
+                  else if chAr =="ra" then safer ((head$head$exampl 1)+1) ((last$head$exampl 1)-1)
  --"ra" read all 
                   else if chAr =="ru" then let step1 = (safer ((head$head$actual)-2) ((head$head$actual)-1))  --"ru" read, insert ko upwards 
-                                          in lines ((unlines step1 )++ unlines ko ++(unlines(safer (head$head$actual) (head$last$exampl t)))) --((fst step1)) --lin
-                  else if chAr =="rl" then safer ((head$head$exampl t)+1) ((last$head$exampl t)-1)
-                  else if chAr =="rd" then let step1 = (safer ((head$head$exampl t)+1) ((head$head$actual)+1))  --"rd" read downwards until begin length input lines
-                                          in lines ((unlines step1 )++ unlines ko ++(unlines(safer ((head$head$actual)+2) (head$last$exampl t)))) 
+                                          in lines ((unlines step1 )++ unlines ko ++(unlines(safer (head$head$actual) (head$last$exampl 1)))) --((fst step1)) --lin
+                  else if chAr =="rl" then safer ((head$head$exampl 1)+1) ((last$head$exampl 1)-1)
+                  else if chAr =="rd" then let step1 = (safer ((head$head$exampl 1)+1) ((head$head$actual)+1))  --"rd" read downwards until begin length input lines
+                                          in lines ((unlines step1 )++ unlines ko ++(unlines(safer ((head$head$actual)+2) (head$last$exampl 1)))) 
 
-                  else let step1 = (safer ((head$head$exampl t)+1) ((last$last$ actual)+1))  --"wd" write downwards until begin length input lines
-                       in lines ((unlines step1 )++ unlines ko ++(unlines(safer ((head$head$actual)+2) (head$last$exampl t))))  
+                  else let step1 = (safer ((head$head$exampl 1)+1) ((last$last$ actual)+1))  --"wd" write downwards until begin length input lines
+                       in lines ((unlines step1 )++ unlines ko ++(unlines(safer ((head$head$actual)+2) (head$last$exampl 1))))  
 
-    let railSystemRAWdrop  foRail =  ((unlines (take ((head$head$exampl t)+1) (lines aRawHtmlTxt)))  ++ (unlines foRail) ++"\n <p>\n"++ (unlines (drop ((head$last$exampl t)) (take solo (lines aRawHtmlTxt)))))
-    let railSystemRAW  foRail =  ((unlines (take ((head$head$exampl t)+1) (lines aRawHtmlTxt)))  ++ (unlines foRail) ++"\n \n"++ (unlines (drop ((head$last$exampl t)) (take solo (lines aRawHtmlTxt)))))
+    let railSystemRAWdrop  foRail =  ((unlines (take ((head$head$exampl 1)+1) (lines aRawHtmlTxt)))  ++ (unlines foRail) ++"\n <p>\n"++ (unlines (drop ((head$last$exampl 1)) (take solo (lines aRawHtmlTxt)))))
+    let railSystemRAW  foRail =  ((unlines (take ((head$head$exampl 1)+1) (lines aRawHtmlTxt)))  ++ (unlines foRail) ++"\n \n"++ (unlines (drop ((head$last$exampl 1)) (take solo (lines aRawHtmlTxt)))))
 
     let railSystem  = if railW == 1 then railSystemRAW railOut  
                       else railSystemRAWdrop railOut  
-    putStrLn (show (exampl t))  
+    putStrLn (show (exampl 1))  
     putStrLn  (chAr++" to filesystem.html")
     putStrLn  ("searched word: "++ show toWrite)  
 
@@ -2272,7 +2277,8 @@ iframe_cRAW t railW toWrite chAr ko token= do
                                writeFile ("textS/indat23720/filesystem.html") (railSystem)
                                putStrLn ("Just READ file system \"textS/indat23720/filesystem.html\"") 
     junctionSystem
-    
+    putStrLn $show actual 
+      
 evalToWrit astrinG = if tzBool>0 then prsRoot++(head tz3)++(show tzInt)++"."++(last tz3)
                      else prsRoot++(head tz3)++("1.")++(last tz3)
      where

@@ -117,7 +117,7 @@ simiVals bonelist pick1 pick2 punktList  =
                         commands = bonelist; 
      in beRepKEY pick1 pick2 punktList
 
--- so far liSolution is merely a symbolic type it has no use other to be simivalued to other liSolutions 
+-- so far liSolution is merely a symbolic type it has no use other than to be simivalued to other liSolutions 
 -- -- liSolution: a real Prior/Bias?!? 
 runEXP3 li liSolution pi ghAdd = do                                                         
        let iDF = li --["AaEe0","AaEeI","i0000","OoUu0","OoU0Y","y0000"]                                               
@@ -146,17 +146,19 @@ runEXP3 li liSolution pi ghAdd = do
 -- *HoofdDev> let pi0 = Punkt "unsort" Nothing Nothing Nothing Nothing Nothing
 -- e.g let liM2 = ["00000","0xy0z=3x0y0z=6","x0y0z=6","0x0yz=2","01111","xyz=11"]
 --     let pi = Punkt "intern" Nothing Nothing Nothing Nothing Nothing
---  io: IO  mother father ... select...???
+--  io: IO  e.g [mother] get all output could use formationC instead 
 --  goWay: Int , if == 1 then just show the main 5x5 ancestor matrix a 'tensor' ?; else [String] output 
 --  fillBayesian:Int , select export function with 'choosF' set to 2 
--- *HoofdDev> (formHoofdEX1 liM2 ["CEL"] pi0 "P" 1 fillBayesian)  
-formHoofdEX1WORK foli4 stringBT pi ghADD goWay fillBayesian =  do
+--  getLine: Int ,select line of [string] (li or filled celld etc.) 
+--  getAtom: Int ; select atom of line 
+-- *HoofdDev> (formHoofdEX1 liM2 ["CEL"] pi0 "P" 1 fillBayesian 1 1 )  
+formHoofdEX1WORK io foli4 stringBT pi ghADD goWay fillBayesian getLine getAtom =  do
                                         let foliOrder = [1,2,536,537,538,1073,1074,1075,1076,1610,1611,1613]
                                         let runRandomLin foli4 = nub(map (E.cellStream3 foli4) foliOrder)
                                         let rndLin = runRandomLin foli4
                                         let usage h = (head$ausw h rndLin)
                                         let rndInt n =  last (zufallsBasic1 (n+1) 9 n)
--- I. MAIN DATA STREAM: 'pingWORK'   -- just depends on foli or on guesses (intern/extern)  pvs:[prog variables] e.g see above  ******************************************************************************* CHANGE TYPE ORDER
+-- I. MAIN DATA STREAMS: 'pugExpWORK'   -- just depends on foli or on guesses (intern/extern)  pvs:[prog variables] e.g see above  ******************************************************************************* CHANGE TYPE ORDER
                                       ----------------------------------------------------------------------------------------------
 -- II. MOUNT CELL I..IV : 'workSlotRAW'
                                         let workSlotRAW streamI streamII  io1 = BT.checkCELLs io1 streamI streamII   -- ############################################ mounted  bayesCELLI..IV with BT.checkCELLs
@@ -288,20 +290,22 @@ formHoofdEX1WORK foli4 stringBT pi ghADD goWay fillBayesian =  do
                                               putStrLn " 'compareCells' the random cell names compared to one atom of li "
                                               putStrLn$show$ map bootPunkt [1..6] 
                                               putStrLn$show$ nub mCom --(compareCells [minMaxTrueOrFalse] "aaa" "B" "not used" "1" 1)
-                                              return ("")
+                                              return (map concat (map bootPunkt [1..6]))
                                             
 
                                            else do
-                                              let choosF n = head$ ausw n [ show (oneCellAbyss2 [mother2] "Z" (concat (ausw 3 abyssDevide2RAW)) 3),
-                                                             show(compareCells [mother] "nothing" "J" (((concat (ausw 3 abyssDevide2RAW)))) "3" 2),
-                                                             show(workPunktRAW [mother] (head(bootPunkt 2 )) "B" (head(ausw 1(ausw 1 abyssDevide2RAW))) 1 ),{-get a cell (char) of one selected adyssDevide-}
-                                                             show$(littleWriter2 [mother] "nothing" "J" (((concat (ausw 3 abyssDevide2RAW)))) "3" 2),     {- new cell name ++ content -}
-                                                             show$(compareCells [mother] "aaa" " B" ((ausw 1(concat (ausw 1 abyssDevide2RAW)))) "1" 1),  {- compare li to head [new cells]  -}
-                                                             show$fst(compareCells2 [minMaxTrueOrFalse] "aaa" "B" "not used" "2" 1) ,                    {- a selected line of filled cells -}
-                                                             show$snd (compareCells2 [minMaxTrueOrFalse] "aaa" "B" "not used" "2" 1),                    {- the li compared to first atom of above -}
-                                                             show$fst ( iterRate [minMaxTrueOrFalse] "aaa" "B" "not used""1" 1),                          {- content compared to li -}
-                                                             show$snd ( iterRate [minMaxTrueOrFalse] "aaa" "B" "not used""1" 1)] 
-                                              return (unwords(checkflow  [mother]  [(BT.formationB [((choosF fillBayesian))])]   )) --fillBayesian
+                                              let choosF n = head$ ausw n [ show (oneCellAbyss2 io "Z" (concat (ausw 3 abyssDevide2RAW)) 3), -- [mother]
+                                                             show(compareCells io "nothing" "J" "not used" (show getLine) getAtom),  -- [mother]
+                                                             show$ map bootPunkt [1..10], --unwords $map concat $ausw getAtom $ map bootPunkt [1..6],   {- random cell names e.g [["A","A","C","C","C","E"],["E","G","G","I","I","I"],["K","K","M","M","M","O"],["O","Q","Q","Q","S","S"],["T","U","U","W","W","W"],["Y","Y","[","[","[","]"]] -}  
+                                                             show(workPunktRAW io (head(bootPunkt 2 )) "B" (head(ausw 1(ausw 1 abyssDevide2RAW))) getAtom ),{-get a cell (char) of one selected adyssDevide [mother]-}
+                                                             show$(littleWriter2 io "nothing" "J" (((concat (ausw 3 abyssDevide2RAW)))) (show getLine) getAtom),     {- new cell name ++ conten0 [mother] -}
+                                                             show$(compareCells io "aaa" " B" "not used ??" (show getLine) (getAtom)),  {- compare li to head [new cells]   [mother] -}
+                                                             show$fst(compareCells2 io "aaa" "B" "not used" (show getLine) getAtom) ,                    {- a selected line of filled cells [minmax..]-}
+                                                             show$snd (compareCells2 io "aaa" "B" "not used" (show getLine) getAtom),                    {- the li compared to first atom of above [minMax..]-}
+                                                             show$fst ( iterRate io "aaa" "B" "not used" (show getLine) getAtom),                          {- content compared to li -}
+                                                             show$snd ( iterRate io "aaa" "B" "not used" (show getLine) getAtom),
+                                                             show$ (map bootPunkt [1..6])]
+                                              return ([unwords(checkflow  [mother]  [(BT.formationB [((choosF fillBayesian))])]   )]) --fillBayesian
                    -- see which kind of checkCELL function would be helpful at this point                             
 
                   

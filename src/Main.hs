@@ -15,6 +15,7 @@ import System.Random
 --import qualified Data.Time as T
 import qualified UsefulFunctions19 as U
 import TheAtoBplotter
+import HoofdDev 
 --import GHCguiNfunctions as H
 --import Text.IPA
 ---------------------------------------------------------------
@@ -54,20 +55,30 @@ evalToWrite astrinG = if tzBool>0 then prsRoot++(head tz3)++(show tzInt)++"."++(
             else 1 ;
 
 
+-- TEST data :
+-- the main example 
+liM2 = ["00000","0xy0z=3x0y0z=6","x0y0z=6","0x0yz=2","01111","xyz=11"]
+iM2 = ["00000","0xy0z=3","x0y0z=6","0x0yz=2"]
+pi0 = Punkt "unsort" Nothing Nothing Nothing Nothing Nothing
+
+--MAIN OLD ---------------
 main:: IO()
 main = do 
   putStrLn "Setup"
   fomain
+--------
 
-rootPunkt = Punkt "fstInstance" Nothing Nothing Nothing Nothing Nothing  
-fomain = do
-  avanti ["START: 1 one analysis with plot via 'kArmTest5'\n"++
-          "        2 a list of above\n"++
+runHtml t railW toWrite chAr ko token = Co.iframe_cRAW t railW toWrite chAr ko token
+
+foform =  (formHoofdEX1WORK [] liM2 ["CEL"] pi0 "JJJff11" 1 2 3 9)
+form = do
+  avanti ["START:  1. tensor writer search in String in Punkt with 'formHoofdEXWORK1' \n"++
+          "        2  run with no GUI \n"++
           "        3. write Html\n"++
-          "        4. setup decide which functions to apply to input\n"++
-          "        5 close\n"]
+          "        4. help\n"++
+          "        5. close\n"]
   let rnd ="1" 
-  thats <- readFile ("src\\lala.wxm")   
+  thats <- readFile ("lala.wxm")   
   let rnd = head(words (U.replaceE (thats)))
   putStrLn ("the Rnd" ++ rnd) 
   stelsel <- getLine
@@ -92,6 +103,58 @@ fomain = do
            fomain
   selectOR 
 
+help ctrl = if ctrl== 1 then let does = avanti []
+                       in does
+            else putStrLn "not"
+--------
+--bEFORE 21
+rootPunkt = Punkt "fstInstance" Nothing Nothing Nothing Nothing Nothing  
+fomain = do
+  avanti ["START: 1 one analysis with plot via 'kArmTest5'\n"++
+          "        2 a list of above\n"++
+          "        3. write Html\n"++
+          "        4. setup decide which functions to apply to input\n"++
+          "        5 close\n"]
+  let rnd ="1" 
+  thats <- readFile ("lala.wxm")   
+  let rnd = head(words (U.replaceE (thats)))
+  putStrLn ("the Rnd" ++ rnd) 
+  stelsel <- getLine
+  putStrLn "show output? 1==show it"
+  hideOu <- getLine 
+
+    -- TheATOBplotter>  runKBASE 1 [1,1] 1 1 li2 1 2 3 4 
+  let selectOR = do 
+         let contrl = "1" -- set 
+         if stelsel=="1" then do
+                 if hideOu == "1" && contrl == "1" then do  fomain2 "2" "1" rnd selectOR "1" -- keyboard, direktauto make patternfile , show output
+                 else if hideOu /= "1" && contrl == "1" then do  fomain2 "2" "1" rnd selectOR "2" -- no keyboar, hide outputd
+                 else if hideOu /= "1" && contrl /= "1" then do  fomain2 "2" "1" rnd selectOR "1" -- keyboard , hide output 
+                 else fomain2 "2" "1" rnd selectOR "2" -- show output , globalvars
+        -- else if stelsel=="1" && contrl /= "1" then do  fomain "2" "1" rnd selectOR "2" --globalvars, menu ,  
+         else if stelsel=="2" && hideOu == "1" && contrl == "1" then do fomain2 "2" "2" rnd selectOR "1" --  "     , no-output , use keyboard
+         else if stelsel=="2" && hideOu == "1" && contrl /= "1" then do fomain2 "2" "2" rnd selectOR  "2" --  "     , no-output ,use GLobal Vars
+         else if stelsel=="2" && hideOu /= "1" && contrl == "1" then do fomain2 "2" "1" rnd selectOR  "1" -- yes output , keyboard
+         else if stelsel=="2" && hideOu /= "1" && contrl /= "1" then do fomain2 "2" "1" rnd selectOR  "2" -- yes output , global var  
+         else do
+           construction --easyAccess
+           fomain
+  selectOR 
+
+-- PLUG in formHoofdEX1WORK a very computabe matrix 30-01-2021
+-- --------------------------------------------------------
+--lala
+greekbayesMatrix  = do
+  putStrLn "boot random cells"
+  let pi0 = Punkt "unsort" Nothing Nothing Nothing Nothing Nothing
+  let pi = Punkt "intern" Nothing Nothing Nothing Nothing Nothing
+  let liM2 = ["00000","0xy0z=3x0y0z=6","x0y0z=6","0x0yz=2","01111","xyz=11"]
+  let liM3 = ["===========","0xy0z=3x0y0z=6","x0y0z=6","0x0yz=2","01111","xyz=11"]
+  (formHoofdEX1WORK [] liM2 ["CEL"] pi0 "JJJff11" 1 2 3 9) 
+  --foutN1 <- getLine 
+
+----------------------------------------------------------
+--before 2021
 construction = do putStrLn "construction"
 fomainAction = ["RUN: 1 one analysis with plot via 'kArmTest5'\n"++
                 "        2 a list of above\n"++
@@ -102,7 +165,7 @@ fomainAction = ["RUN: 1 one analysis with plot via 'kArmTest5'\n"++
 fomain2 autoInputI autoInputII foRnd goBack autoInputIII = do
   --dit  -- write random.txt for main
   foutN1 <- getLine 
-  foautInp2 autoInputI "1" "senior.txt" "enter File to construct" --file22writ "Enter file to write e.g senio.txt"
+  (foautInp2 autoInputI "1" "senior.txt" "enter File to construct") --file22writ "Enter file to write e.g senio.txt"
   foOutputRAW autoInputI (avanti [""]) (avanti (fomainAction)) -- show GUI or not <= autoInputII
   putStrLn "fomain2:level"
   input <- getLine     
