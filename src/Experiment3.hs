@@ -2754,7 +2754,7 @@ kArmTest5 addGh liT bonelist mofaList connectWrist dit dit2 mCommand crit= do
                                             "                    " ++ (edRGH 5 5)]
 
               --              runs <- forM [1] (\nr -> do
-                            C.iframe_c 1 2 "<p>" "wd" toFrame "3"
+                            C.iframe_c 1 2 "<p>" "wd" toFrame 1 "3"
                   --              return(gh))
                     --        return runs
                             putStrLn ((edR1 1 1)  ++ "     " ++ (edRGH 1 1)) -- maybePu

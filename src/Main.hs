@@ -16,6 +16,7 @@ import System.Random
 import qualified UsefulFunctions19 as U
 import TheAtoBplotter
 import HoofdDev 
+import qualified Iframe_c as CELL
 --import GHCguiNfunctions as H
 --import Text.IPA
 ---------------------------------------------------------------
@@ -29,31 +30,10 @@ zufallsBasic1 t a x = (take t  (randomRs (1,a) (mkStdGen x)))::[Int]
 -- filter a time string plug into random number generator
 timeRNDInts foTime soMany digits = let prepStringtoInt = (map chr (filter (<58)(filter (>47)(map ord (show foTime)))))
                                in let plugRandom wieviele = zufallsBasic1 wieviele (read prepStringtoInt) digits
-                               in (show (plugRandom soMany)) 
-
--- write six files then start back overwrite 1 ....
--- will turn on number digit of a Sring +1
---  e.g "aname1.txt" -> "aname2.txt"
---  used in time depending random file writing in 'dit' 
---aString:Sting ; the sourceFile
-evalToWrite astrinG = if tzBool>0 then prsRoot++(head tz3)++(show tzInt)++"."++(last tz3)
-                      else prsRoot++(head tz3)++("1.")++(last tz3)
-     where
-    poc1 fOsnd = reverse( fOsnd(break (=='/') (reverse(astrinG))));--prevent '/' cause trouble
-    prsInput = poc1 fst;
-    prsRoot = poc1 snd;  
-    tz0 = (map ord prsInput);
-    tz = (filter (>47) (filter (<57)  tz0));
-    tzExp = (map chr tz);
-    tzBool = length tzExp;
-    tzRootSource  = filter (==47); 
-    tz1 = tz0 \\ tz;
-    tz2 = map (\c -> if c=='.' then ' '; else c);
-    tz3 = words (tz2 (map chr tz1));
-    tzInt = if tzBool==0 then 1
-            else if (read tzExp)<7 then (read tzExp)+1
-            else 1 ;
-
+                               in (show (plugRandom soMany))
+-- eg cell =  1 1 "</p>" "wd" ( "can do this?") 1 "7" 2)
+cell c1 c2 search com insert mode token dobinne = (CELL.iframe_cRAW c1 c2 search com insert mode token dobinne)
+htmToken g = (CELL.htmlToken g)
 
 -- TEST data :
 -- the main example 
@@ -73,7 +53,8 @@ runHtml t railW toWrite chAr ko token = Co.iframe_cRAW t railW toWrite chAr ko t
 foform =  (formHoofdEX1WORK [] liM2 ["CEL"] pi0 "JJJff11" 1 2 3 9)
 form = do
   avanti ["START:  1. tensor writer search in String in Punkt with 'formHoofdEXWORK1' \n"++
-          "        2  run with no GUI \n"++
+          "        2  iframe_c with above, write to filesystem \n"++
+          "            textS/indat23720/filesystemDATA/filesystem\"++(token)++\".html\n"++
           "        3. write Html\n"++
           "        4. help\n"++
           "        5. close\n"]
@@ -89,7 +70,7 @@ form = do
   let selectOR = do 
          let contrl = "1" -- set 
          if stelsel=="1" then do
-                 if hideOu == "1" && contrl == "1" then do  fomain2 "2" "1" rnd selectOR "1" -- keyboard, direktauto make patternfile , show output
+                 if hideOu == "1" && contrl == "1" then do  (cell 1 1 "</p>" "wd" ( "can do this??\n"++"<"++htmToken "g"++">") 1 "7" 2) -- keyboard, direktauto make patternfile , show output
                  else if hideOu /= "1" && contrl == "1" then do  fomain2 "2" "1" rnd selectOR "2" -- no keyboar, hide outputd
                  else if hideOu /= "1" && contrl /= "1" then do  fomain2 "2" "1" rnd selectOR "1" -- keyboard , hide output 
                  else fomain2 "2" "1" rnd selectOR "2" -- show output , globalvars

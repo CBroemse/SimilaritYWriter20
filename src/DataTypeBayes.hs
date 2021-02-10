@@ -25,7 +25,11 @@ module DataTypeBayes(
  -- export to HoofdDev.hs: formHoofdEX1
  , joinBayes  -- used in checkCELLs
  , nameNewCell -- like above but names a new name of a Punkt Bayes Type
+ , checkBayes -- same as checkflow used 'Iframe_c.hs'
  -- update self updating html that has some values
+ , rulerRAW
+ , rulerA
+ , rulerB
  -- only import from 'Col..20.hs'
  , 
   ) where
@@ -391,7 +395,7 @@ baysianRAW addGh liT bonelist mofaList fopi dit dit2 mCommand crit fourierMQ6NOP
               putStrLn (show (map snd randPunktList))
               putStrLn "Track"
 ----------------------------------------------------------------------------------
-
+-- checkBayes
 -- MAXIMUM 'randPunktList'
 --  sortEm := maximum simSums  -> find corresponding line
 --  lineorder
@@ -615,7 +619,7 @@ baysianRAW addGh liT bonelist mofaList fopi dit dit2 mCommand crit fourierMQ6NOP
                                             "                    " ++ (edRGH 5 5)]
 
               --              runs <- forM [1] (\nr -> do
-                            COL.iframe_c 1 2 "<p>" "wd" toFrame "3"
+                            COL.iframe_c 1 2 "<p>" "wd" toFrame 1 "3"
                   --              return(gh))
                     --        return runs
                             putStrLn ((edR1 1 1)  ++ "     " ++ (edRGH 1 1)) -- maybePu
@@ -774,8 +778,9 @@ baysianRAW addGh liT bonelist mofaList fopi dit dit2 mCommand crit fourierMQ6NOP
 -- t: Int; chooses textarea , set to have 2 textareas
 -- toWrite: String ; search word in Text area and possible access points
 -- chAr : Char ; 'r' or 'w' or 'd'  ; read write or delete lines in filesystem
--- e.g> iframe_c 1 1 "<p>" "wd" [("ptc3\n")++(show (tsRAW ptc3))++"\n"] "4"
-iframe_c t railW toWrite chAr ko token= COL.iframe_cRAW t railW toWrite chAr ko token
+-- mode: Int if == 1 then search '<textarea>'
+-- e.g> iframe_c 1 1 "<p>" "wd" [("ptc3\n")++(show (tsRAW ptc3))++"\n"] 1 "4" 
+iframe_c t railW toWrite chAr ko mode token = COL.iframe_cRAW t railW toWrite chAr ko mode token
 
 
 

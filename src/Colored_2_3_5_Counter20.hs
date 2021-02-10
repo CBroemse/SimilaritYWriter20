@@ -2182,15 +2182,16 @@ textSvg = do
 -- toWrite: String ; search word in Text area and possible access points
 -- chAr : Char ; 'r' or 'w' or 'd'  ; read write or delete lines in filesystem
 -- e.g> iframe_c 1 1 "<p>" "wd" [("ptc3\n")++(show (tsRAW ptc3))++"\n"] "4"
-iframe_c t railW toWrite chAr ko token= iframe_cRAW t railW toWrite chAr ko token
+iframe_c t railW toWrite chAr ko mode token= iframe_cRAW t railW toWrite chAr ko mode token
 
 -- railW: Int if==1 one will add new lines to 'token selected' html 1 0f 9
 --            else will drop fst list entry  'token selected' html 1 0f 9
 
 --fiLe:String ;which file to read needed for saVe function
+--mode: Int ; if 1 then search textarea examplRAW1..exampl t else search 'toWrite'
 --token: Int ; keep track of state of 'evaToWrit' 
-iframe_cRAW t railW toWrite chAr ko token= do
-    let setJump = if (read token)<9 then 0 -- with evalToWrite make data closed pipe jump from 9 back to 0
+iframe_cRAW t railW toWrite chAr ko mode token = do
+    let setJump = if (read token)>9 then 0 -- with evalToWrite make data closed pipe jump from 9 back to 0
                   else (read token) -1
     
     let buyTicket fotoken = (("textS/indat23720/filesystemDATA/filesystem")++(show setJump)++".html")
@@ -2208,8 +2209,10 @@ iframe_cRAW t railW toWrite chAr ko token= do
               let serf = (1) `elemIndices` (access)
            --   putStrLn (show serf)
               return (serf)
-    let examplRAW1 t = head(ausw t (interSearch "<textarea"))  -- [195,225]
-    let examplRAW2 t = head(ausw t (interSearch "</textarea>"))
+    let examplRAW1 t = if mode == 1 then head(ausw t (interSearch "<textarea"))  -- [195,225]
+                       else head(ausw t (interSearch toWrite))
+    let examplRAW2 t = if mode == 1 then head(ausw t (interSearch "</textarea>"))
+                       else head(ausw t (interSearch toWrite))
     let exampl0 te k = ausw te [(examplRAW1 k),(examplRAW2 k)] -- switch textareas now 
     let exampl t = [(examplRAW1 t),(examplRAW2 t)]
    
@@ -2245,11 +2248,14 @@ iframe_cRAW t railW toWrite chAr ko token= do
                   else if chAr=="dd" then sfrField \\ ((safer (head$head$actual) (head$last$exampl 1)))  --"dd" delete downwards
                   else if chAr == "wu" then let step1 = (safer ((head$head$actual)-2) ((head$head$actual)-1))  --"wu" write insert ko upwards 
                                                in lines ((unlines step1 )++ unlines ko ++(unlines(safer (last$head$actual) (head$last$exampl 1)))) --((fst step1)) --lin
-                  else if chAr == "wd"  then let goPe =  drop ((head$head$exampl 1)+1) (take ((head$head$exampl 1)+2) (lines aRawHtmlTxt)) 
-                                             in if t == 1 then goPe ++ (ko) --lines ((unlines sfrField2) ++ (unlines ko))   --- write into fst textarea
-                                                else  (safer (((head$head actual))) (((head$head$actual)+1))) ++ ko --  WRITE TO under searched word
-                  else if chAr =="ra" then safer ((head$head$exampl 1)+1) ((last$head$exampl 1)-1)
- --"ra" read all 
+                  else if chAr == "wd"  then let goPe =  drop ((head$head$exampl t)+1) (take ((head$head$exampl t)+2) (lines aRawHtmlTxt)) 
+                                             in  if mode == 1 then goPe ++ (ko) --lines ((unlines sfrField2) ++ (unlines ko))   --- write into fst textarea
+                                                 else ((safer ((last$last$actual)-2) (((last$last$actual)-1))) ++ ko ++ (safer (last$last$actual) ((last$last$actual)+1))) --  WRITE TO under searched word
+        -- works with mode 2 
+                  else if chAr =="new" then if mode==1 then drop (head$head$exampl 1) (take (last$head$exampl 1) (lines aRawHtmlTxt)) ++ (drop ((head$head$exampl 1)) (take solo (lines aRawHtmlTxt)))++ ko++ (drop ((head$head$exampl 1)+1) (take solo (lines aRawHtmlTxt)))
+
+                                            else  drop ((head$head$exampl 1)) (take ((last$head$exampl 1)) (lines aRawHtmlTxt)) ++ ko ++ (drop ((head$head$exampl 1)) (take solo (lines aRawHtmlTxt)))
+                                  
                   else if chAr =="ru" then let step1 = (safer ((head$head$actual)-2) ((head$head$actual)-1))  --"ru" read, insert ko upwards 
                                           in lines ((unlines step1 )++ unlines ko ++(unlines(safer (head$head$actual) (head$last$exampl 1)))) --((fst step1)) --lin
                   else if chAr =="rl" then safer ((head$head$exampl 1)+1) ((last$head$exampl 1)-1)
@@ -2259,8 +2265,10 @@ iframe_cRAW t railW toWrite chAr ko token= do
                   else let step1 = (safer ((head$head$exampl 1)+1) ((last$last$ actual)+1))  --"wd" write downwards until begin length input lines
                        in lines ((unlines step1 )++ unlines ko ++(unlines(safer ((head$head$actual)+2) (head$last$exampl 1))))  
 
-    let railSystemRAWdrop  foRail =  ((unlines (take ((head$head$exampl 1)+1) (lines aRawHtmlTxt)))  ++ (unlines foRail) ++"\n <p>\n"++ (unlines (drop ((head$last$exampl 1)) (take solo (lines aRawHtmlTxt)))))
-    let railSystemRAW  foRail =  ((unlines (take ((head$head$exampl 1)+1) (lines aRawHtmlTxt)))  ++ (unlines foRail) ++"\n \n"++ (unlines (drop ((head$last$exampl 1)) (take solo (lines aRawHtmlTxt)))))
+    let railSystemRAWdrop  foRail =  ((unlines (take ((head$head$exampl t)+1) (lines aRawHtmlTxt)))  ++ (unlines foRail) ++"\n <p>\n"++ (unlines (drop ((head$last$exampl t)) (take solo (lines aRawHtmlTxt)))))
+
+    let railSystemRAW  foRail =  ((unlines (take ( (head(head(interSearch toWrite)))+1) (lines aRawHtmlTxt)))  ++ (unlines foRail) ++"\n \n"++ (unlines (drop  ((head(head(interSearch "</textarea>")))) (take solo (lines aRawHtmlTxt)))))
+ 
 
     let railSystem  = if railW == 1 then railSystemRAW railOut  
                       else railSystemRAWdrop railOut  
@@ -2271,13 +2279,13 @@ iframe_cRAW t railW toWrite chAr ko token= do
     putStrLn ("occourrance list"++show actual) 
   --  putStrLn (unlines sfrField)
     putStrLn (unlines(railOut))
-    let junctionSystem = if chAr == "du" || chAr=="dl"||chAr=="dd"||chAr=="wu"|| chAr =="wd" || chAr =="wd2" then do
+    let junctionSystem = if chAr == "du" || chAr=="dl"||chAr=="dd"||chAr=="wu"|| chAr =="wd" || chAr =="new" then do
                                theWrights railSystem
                          else do 
                                writeFile ("textS/indat23720/filesystem.html") (railSystem)
                                putStrLn ("Just READ file system \"textS/indat23720/filesystem.html\"") 
     junctionSystem
-    putStrLn $show actual 
+    putStrLn $show $last$head$exampl 1
       
 evalToWrit astrinG = if tzBool>0 then prsRoot++(head tz3)++(show tzInt)++"."++(last tz3)
                      else prsRoot++(head tz3)++("1.")++(last tz3)
