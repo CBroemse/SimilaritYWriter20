@@ -1,6 +1,6 @@
 module Iframe_c (
     iframe_c
-  , iframe_cRAW
+  , iframe_cWORK
   , criteria
   , htmlToken
     ) where
@@ -46,7 +46,7 @@ reconListRAW divBy foRated =  let step1 = foRated -- (usage 2)
            in let toRead =   if step2==0 then 1 
                              else step2 
            in let switch a  =  (drop ((a-1)*divBy)) $ (take (a*divBy)) step1 
-              in map switch [1..(toRead)]
+              in mac switch [1..(toRead)]
 
 reconList foRated = reconListRAW 6 foRated
 
@@ -62,31 +62,27 @@ findIt b g = let tak = minimum(b)
 
 checkflow = BT.checkBayes
 --iframe_c :: IO()
-iframe_c mode = (iframe_cRAW 1 1 "<p>" "wd" (show$Co.tsRAW Co.ptc9) mode "4")
+iframe_c mode = (iframe_cWORK "2" "2" "111" 1 1 "<p>" "wd" (show$Co.tsRAW Co.ptc9) mode "4")
 -- dobinne:Int ,if ==1 then ONLY insert aCt0 else insert from 'formHoofdEX1WORK'
-iframe_cRAW c1 c2 aCt0 aCt foptc mode c3 dobinne = do
-  iO <- getLine
-  let prep foguess r line atom =  (Hd.formHoofdEX1WORK [mother] liM2 ["CEL"] pi0 foguess (read iO) r line atom)
+--same as above no getLine in GUI all top level
+--t1: num String if 1 then show CELLS else select function
+--t2: num String select function  1..9
+--t3: numString if == "1" then transpose 9 functions over six variables (li list) else print the same without transpose
+iframe_cWORK t1 t2 t3 c1 c2 aCt0 aCt foptc mode c3 dobinne = do
+  --iO <- t1
+  let prep foguess r line atom =  (Hd.formHoofdEX1WORK [mother] liM2 ["CEL"] pi0 foguess (read t1) r line atom)
   let toHT foWay otherWay =  Co.iframe_c c1 c2 aCt0 aCt [(show foWay)++"\n\n"++(show otherWay)++"\n\n" ++(foptc)++"\n"] mode c3
 
-  if iO == "1" then do 
+  if t1 == "1" then do 
          putStrLn "show solution matrix"
-         foTH <- (prep iO 4 1 9)
+         foTH <- (prep t1 (read t2) 1 9)
          toHT foTH ("<p>")
          putStrLn ""
          --return ([""])
   else do   
-    mode <- getLine
-    {- BT.CheckCELL:: [Punkt -> Maybe Punkt] -> String -> [Char] -> [[Char]] -}
-   -- return ((BT.checkCELLs [mother] "check" "cell"))
-   -- r: Int , select function r from 'formHoofdEX1WORK'
-    
-    guees <- getLine
     foprep <- forM [1..9] (\fp -> do
-  -- SHOULD BE A GUESS guees HERE !!!!
-  --   guees <- getLine
-       inppp <- (prep guees (read mode) fp 1)
-       return (inppp))
+              inppp <- (prep t3 (read t2) fp 1)
+              return (inppp))
     
  -- break prep into one String and reform the lists
  -- t: Int ; which of the rated values to choose
@@ -96,7 +92,12 @@ iframe_cRAW c1 c2 aCt0 aCt foptc mode c3 dobinne = do
     putStrLn " process rater functions of 'formHoofdEX1WORK'"
  -- get rid of one maxima for a change to get rid of most different stuff :|
     let raterRAW fodf = (map nub(fodf))
-    let newWay =  transpose $map sort (raterRAW (map df [1..6]))
+    let foWayRAW = let commentsPlusDATA = (map lines(comment (read t2)))
+                   in if aCt == "wdc" then (map lines(comment (read t2)))
+                      else reverse$tail$reverse commentsPlusDATA
+    let newWay = if t3== "1" then transpose $mac sort (raterRAW (map df [1..6]))
+                 else  (map lines(comment (read t2)))++(raterRAW (map df [1..6]))
+
     let raters fodf = map minimum (map nub(fodf))
     let fg fodf = map show$ snd(findIt (raters fodf) 1)
     --putStrLn$show raters
@@ -112,29 +113,54 @@ iframe_cRAW c1 c2 aCt0 aCt foptc mode c3 dobinne = do
     
     let withI = (concat$raterRAW (map df [1..6]))\\ iteR -- reconListRAW (3) iteR -- \\ [(dropSoff (map df [1..6]))]
     let railout = if dobinne == 1 then toHT [("filesystem"++c3++".html")] foptc -- (raterRAW (map df [1..6])++[iteR])
-                  else toHT newWay (raterRAW (map df [1..6])++[iteR])
+                  else toHT newWay ([(comment (read t2))] ++ raterRAW (map df [1..6])++[iteR])
     railout
-    putStrLn$show newWay --(raterRAW (map df [1..6]))--ds --withI --iteR2 --ds --ithI --iteR --raters --(dopS 2)
+    putStrLn$(unlines(comment (read t2))) ++ show newWay --(raterRAW (map df [1..6]))--ds --withI --iteR2 --ds --ithI --iteR --raters --(dopS 2)
+
+rndM n =  last (Us.zufallsBasic1 (n+1) 9 n)
+
+comment e = if e == 2 then [" 'compareCells' in 'formHoofdEX1WORK'\n"++
+                          " compare booted cells: compare all of li to all of 'bootPunkt'\n"++ -- better [1..6] ?
+                          " ausw 1 'map bootPunkt [1..10] ' => \n"++
+                          " => [\"BBBDDF\",\"FFHHJJ\",\"JLLNNP\",\"PPRRTT\",\"TVVXXX\",\"ZZZ\\\\^\"]\n"++
+                          " one by one of li compared to one of above\n"]
+            else if e== 3 then comment 2
+            else if e== 8 then ["'compareCells2' in 'formHoofdEX1WORK'\n"++
+                          "  compare content in cells : compare one of li to a random char filled cell in 'rollOut'\n"++
+                          "  one of li compared to cell content\n"]
+           else [""]
 
 --crit:Int ; when stop to loop
 --thisFunc: functions to output
-criteria crit thisFunc otherFunc n = do
+-- Only 'simiVals' are func: 2 , 6 , 8 , 10   
+--      'cell content'  are: 5 , 7 , 9          
+--      'cell names'    are:  1 3 is any char, 4 insert "cell"
+criteria t3 crit thisFunc = do
     let loop = do
-         let out = head$Co.ausw n thisFunc
-         let guesseS n = otherFunc --liM3 n -- as four bread cells plug into breedCells
-         if (out)> crit then do 
-                   er <- getLine
-                   at <- getLine
-                                                          --  let checkCell atomGuess randOm = ratE (read out) 1 1 1 
-                                                          --  -- (workPunktRAW [mother] (unline(bootPunkt 1)) "B" ["B"]  randOm )
-                                                          --   ["BBBDDF","FFHHJJ","JLLNNP","PPRRTT","TVVXXX","ZZZ\\\\^"]
-                                                          --                        n   atom2    line2      rnd?     aGuess 
-              --     putStrLn $show (ratE [] (read out) (1) "B" (read out) 1) -- (read at))
-                   putStrLn $show thisFunc -- (read at))
-                   loop
-         else do putStrLn $"done"
+         let out = thisFunc -- = head$Co.ausw (read n) thisFunc
+         let clickLet n k= if n == 1 then "<p>"
+                             else "<"++(htmlToken k)++">" 
+      -- t3: Int ausw t2 [Solutions] , a list of a [list];
+      -- n: Int start if == 1 then start at <p> and increment letter to <h> ...
+      -- k: String start with "p" ; foPr: String token to write html e.g "1"
+         let theCells func n k foPr = (iframe_cWORK "2" func t3 1 1 (clickLet n k) "wd" ( "can do this?\n"++ (clickLet (n+1) (htmlToken k) )) 2 foPr 2) 
+         --let guesseS =   --liM3 n -- as four bread cells plug into breedCells
+        -- let deltIn = round $ out-crit
+         if out> crit then do 
+                prod <- forM [1..3] (\pr -> do
+                let fromCell = show$head$Co.ausw pr [2,6,8]
+                if pr==1 then theCells fromCell pr (Co.ausw (1) "p") (show pr)
+                else if pr==2 then theCells fromCell pr (Co.ausw (15+pr) "abcdefghijklmnopqrstuvwxyz") (show (pr+1))
+                else theCells fromCell pr (Co.ausw (15+pr) "abcdefghijklmnopqrstuvwxyz") (show (pr+2))
+                return (""))
+               -- loop
+                putStrLn "way 1"
+         else do putStrLn "donde" --return ["done"]
     loop
 
 htmlToken k = let step1 = map ord k
               in if (head step1) >= 122 then head$words$[chr 97]
                  else head$words$[chr$((head (step1)) + 1)]
+
+
+

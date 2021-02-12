@@ -32,7 +32,7 @@ timeRNDInts foTime soMany digits = let prepStringtoInt = (map chr (filter (<58)(
                                in let plugRandom wieviele = zufallsBasic1 wieviele (read prepStringtoInt) digits
                                in (show (plugRandom soMany))
 -- eg cell =  1 1 "</p>" "wd" ( "can do this?") 1 "7" 2)
-cell c1 c2 search com insert mode token dobinne = (CELL.iframe_cRAW c1 c2 search com insert mode token dobinne)
+cell t1 t2 t3 c1 c2 search com insert mode token dobinne = (CELL.iframe_cWORK t1 t2 t3 c1 c2 search com insert mode token dobinne)
 htmToken g = (CELL.htmlToken g)
 
 -- TEST data :
@@ -55,9 +55,10 @@ form = do
   avanti ["START:  1. tensor writer search in String in Punkt with 'formHoofdEXWORK1' \n"++
           "        2  iframe_c with above, write to filesystem \n"++
           "            textS/indat23720/filesystemDATA/filesystem\"++(token)++\".html\n"++
-          "        3. write Html\n"++
-          "        4. help\n"++
-          "        5. close\n"]
+          "        3. Only simiVals compare li list with guess Html\n"++
+          "        4. random CELL content in Html\n"++
+          "        5. help\n"++
+          "        6. close\n"]
   let rnd ="1" 
   thats <- readFile ("lala.wxm")   
   let rnd = head(words (U.replaceE (thats)))
@@ -70,7 +71,7 @@ form = do
   let selectOR = do 
          let contrl = "1" -- set 
          if stelsel=="1" then do
-                 if hideOu == "1" && contrl == "1" then do  (cell 1 1 "</p>" "wd" ( "can do this??\n"++"<"++htmToken "g"++">") 1 "7" 2) -- keyboard, direktauto make patternfile , show output
+                 if hideOu == "1" && contrl == "1" then do  (cell "2" "2" "1" 1 1 "</p>" "wd" ( "can do this??\n"++"<"++htmToken "g"++">") 1 "7" 2) -- keyboard, direktauto make patternfile , show output
                  else if hideOu /= "1" && contrl == "1" then do  fomain2 "2" "1" rnd selectOR "2" -- no keyboar, hide outputd
                  else if hideOu /= "1" && contrl /= "1" then do  fomain2 "2" "1" rnd selectOR "1" -- keyboard , hide output 
                  else fomain2 "2" "1" rnd selectOR "2" -- show output , globalvars
@@ -78,10 +79,12 @@ form = do
          else if stelsel=="2" && hideOu == "1" && contrl == "1" then do fomain2 "2" "2" rnd selectOR "1" --  "     , no-output , use keyboard
          else if stelsel=="2" && hideOu == "1" && contrl /= "1" then do fomain2 "2" "2" rnd selectOR  "2" --  "     , no-output ,use GLobal Vars
          else if stelsel=="2" && hideOu /= "1" && contrl == "1" then do fomain2 "2" "1" rnd selectOR  "1" -- yes output , keyboard
-         else if stelsel=="2" && hideOu /= "1" && contrl /= "1" then do fomain2 "2" "1" rnd selectOR  "2" -- yes output , global var  
+         else if stelsel=="2" && hideOu /= "1" && contrl /= "1" then do fomain2 "2" "1" rnd selectOR  "2" -- yes output , global var 
+         else if stelsel=="5" then do avanti help21 -- yes output , global var  
+         else if stelsel=="6" then do putStrLn "End Compute"   
          else do
            construction --easyAccess
-           fomain
+           form
   selectOR 
 
 help ctrl = if ctrl== 1 then let does = avanti []
@@ -320,5 +323,28 @@ foGb1 gb =  map realToFrac (map ord gb )
 foGb2 gb =  map realToFrac (map ord gb )
 simiVal gb1 gb2 = Co.similaritYvalue (foGb1 gb1) (foGb2 gb2)
 
+
+help21 = ["   SimiVALs: there are input list called 'li list' e.g\n"++
+          "   liM2 = [\"00000\",\"0xy0z=3x0y0z=6\",\"x0y0z=6\",\"0x0yz=2\",\"01111\",\"xyz=11\"] \n"++
+          "   in 'Main.hs'\n"++  
+          "   *Main> liM2 -- the list must of length 6 to work each sub-list must be length>4\n\n"++
+          "             there are input list called 'guesses', guess :: String  , e.g\n"++
+          "   the guess is written in 'formHoofdDevEX1WORK' of Hoofd.hs within the function\n"++
+          "   filled in cells and unfilled cells are compared see 'help22'. Both types get compared\n"++
+          "   to the li list (liM2). We can compare each atom of li (String) with one selected cell (String).\n"++
+          "   *Main 'simiVal \"aString\" \"anotherString\"'  -- to check result manually\n"++
+          "   Three different modi of 'simiVals' get exported: 1. 1/6 of li to 1 cell \n"++
+          "                                                    2. cell content compared to cell name\n"++
+          "   A whole filled in cell has a name and a content e.g [\"Bce\",\"y31y31\"] \n"++
+          "                                                    3. one of li compared to whole cell \n"++
+          "   *Main> (formHoofdEX1WORK [] liM2 [\"CEL\"] pi0 \"JJJff11\" 2 func 4 111)  -- func 1..9 all functions\n"++
+          "   Only 'simiVals' are func: 2 , 6 , 8 , 10 \n"++  
+          "        'cell content'  are: 5 , 7 , 9 \n"++         
+          "        'cell names'    are:  1\n"++      
+          "                              3 is any char, 4 insert \"cell\"\n\n"++
+          "   select one of above and write html e.g: \n"++
+          "   *Main> (cell \"2\" \"5\" \"111\" 1 1 (\"<q>\") \"wd\" ( \"can do this?\n <q>\") 2 \"4\" 2)\n"++
+          "   connect 3 computations of above and write to html \n"++
+          "   *Main> CELL.criteria \"1\" \"1\" \"3\"\n\n"]     
 
 

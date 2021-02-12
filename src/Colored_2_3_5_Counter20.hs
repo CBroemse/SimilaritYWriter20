@@ -2178,16 +2178,14 @@ textSvg = do
 
 -------------------------------------------------------------
 -- data entry accessTo iframe_c
--- t: Int; chooses textarea , set to have 2 textareas
--- toWrite: String ; search word in Text area and possible access points
--- chAr : Char ; 'r' or 'w' or 'd'  ; read write or delete lines in filesystem
 -- e.g> iframe_c 1 1 "<p>" "wd" [("ptc3\n")++(show (tsRAW ptc3))++"\n"] "4"
 iframe_c t railW toWrite chAr ko mode token= iframe_cRAW t railW toWrite chAr ko mode token
-
+-- t: Int; chooses textarea , set to have 2 textareas
 -- railW: Int if==1 one will add new lines to 'token selected' html 1 0f 9
 --            else will drop fst list entry  'token selected' html 1 0f 9
-
---fiLe:String ;which file to read needed for saVe function
+-- chAr : Char ; 'dd' or 'wd' or 'wu' or 'new'  ; read write or delete lines in filesystem
+-- toWrite: String ; search word in Text area and possible access points
+-- ko: [String] ; add any comment or data
 --mode: Int ; if 1 then search textarea examplRAW1..exampl t else search 'toWrite'
 --token: Int ; keep track of state of 'evaToWrit' 
 iframe_cRAW t railW toWrite chAr ko mode token = do
@@ -2198,18 +2196,18 @@ iframe_cRAW t railW toWrite chAr ko mode token = do
 
     aRawHtmlTxt <- readFile (buyTicket token)
     let solo = length (lines aRawHtmlTxt)
-    let interSearch foToWrite = do
+    let interSearch foToWrite = do   -- search "foToWrite" in source 'aRawHtmlTxt'
               access <- forM [1..solo] (\so -> do
                   let pull = (concat (ausw so (lines aRawHtmlTxt)))
                   let aC = (foToWrite) `elemIndices` (words pull)
-                  let withLength = if (length aC)== 0 then 0 --["",""]
-                                   else 1 --[(show so),","]
+                  let withLength = if (length aC)== 0 then 0 
+                                   else 1 
                   return (withLength))
             --  putStrLn  (show access)
               let serf = (1) `elemIndices` (access)
            --   putStrLn (show serf)
               return (serf)
-    let examplRAW1 t = if mode == 1 then head(ausw t (interSearch "<textarea"))  -- [195,225]
+    let examplRAW1 t = if mode == 1 then head(ausw t (interSearch "<textarea"))  -- e.g[195,225]
                        else head(ausw t (interSearch toWrite))
     let examplRAW2 t = if mode == 1 then head(ausw t (interSearch "</textarea>"))
                        else head(ausw t (interSearch toWrite))
@@ -2251,7 +2249,11 @@ iframe_cRAW t railW toWrite chAr ko mode token = do
                   else if chAr == "wd"  then let goPe =  drop ((head$head$exampl t)+1) (take ((head$head$exampl t)+2) (lines aRawHtmlTxt)) 
                                              in  if mode == 1 then goPe ++ (ko) --lines ((unlines sfrField2) ++ (unlines ko))   --- write into fst textarea
                                                  else ((safer ((last$last$actual)-2) (((last$last$actual)-1))) ++ ko ++ (safer (last$last$actual) ((last$last$actual)+1))) --  WRITE TO under searched word
-        -- works with mode 2 
+                 -- same like above with text comment headers -----------------------------------------------------
+                  else if chAr == "wdc"  then let goPe =  drop ((head$head$exampl t)+1) (take ((head$head$exampl t)+2) (lines aRawHtmlTxt)) 
+                                             in  if mode == 1 then goPe ++ (ko) --lines ((unlines sfrField2) ++ (unlines ko))   --- write into fst textarea
+                                                 else ((safer ((last$last$actual)-2) (((last$last$actual)-1))) ++ ko ++ (safer (last$last$actual) ((last$last$actual)+1))) --  
+                 -- works with mode2 -------------------------------------------------------------------------------  
                   else if chAr =="new" then if mode==1 then drop (head$head$exampl 1) (take (last$head$exampl 1) (lines aRawHtmlTxt)) ++ (drop ((head$head$exampl 1)) (take solo (lines aRawHtmlTxt)))++ ko++ (drop ((head$head$exampl 1)+1) (take solo (lines aRawHtmlTxt)))
 
                                             else  drop ((head$head$exampl 1)) (take ((last$head$exampl 1)) (lines aRawHtmlTxt)) ++ ko ++ (drop ((head$head$exampl 1)) (take solo (lines aRawHtmlTxt)))
@@ -2270,8 +2272,10 @@ iframe_cRAW t railW toWrite chAr ko mode token = do
     let railSystemRAW  foRail =  ((unlines (take ( (head(head(interSearch toWrite)))+1) (lines aRawHtmlTxt)))  ++ (unlines foRail) ++"\n \n"++ (unlines (drop  ((head(head(interSearch "</textarea>")))) (take solo (lines aRawHtmlTxt)))))
  
 
-    let railSystem  = if railW == 1 then railSystemRAW railOut  
-                      else railSystemRAWdrop railOut  
+    let railSystem  = if railW == 1 && chAr/="wdc" then railSystemRAW (tail railOut) 
+                      else if railW == 1 && chAr=="wdc" then railSystemRAW (railOut)  
+                      else if railW/=1 && chAr=="wdc" then railSystemRAWdrop (railOut)
+                      else railSystemRAWdrop (tail railOut)   
     putStrLn (show (exampl 1))  
     putStrLn  (chAr++" to filesystem.html")
     putStrLn  ("searched word: "++ show toWrite)  
