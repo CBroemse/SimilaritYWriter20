@@ -93,10 +93,10 @@ iframe_cWORK t1 t2 t3 c1 c2 aCt0 aCt foptc mode c3 dobinne = do
  -- get rid of one maxima for a change to get rid of most different stuff :|
     let raterRAW fodf = (map nub(fodf))
     let foWayRAW = let commentsPlusDATA = (map lines(comment (read t2)))
-                   in if aCt == "wdc" then (map lines(comment (read t2)))
-                      else reverse$tail$reverse commentsPlusDATA
+                   in commentsPlusDATA
+                     -- else reverse$tail$reverse commentsPlusDATA
     let newWay = if t3== "1" then transpose $mac sort (raterRAW (map df [1..6]))
-                 else  (map lines(comment (read t2)))++(raterRAW (map df [1..6]))
+                 else  foWayRAW ++(raterRAW (map df [1..6]))
 
     let raters fodf = map minimum (map nub(fodf))
     let fg fodf = map show$ snd(findIt (raters fodf) 1)
@@ -113,11 +113,62 @@ iframe_cWORK t1 t2 t3 c1 c2 aCt0 aCt foptc mode c3 dobinne = do
     
     let withI = (concat$raterRAW (map df [1..6]))\\ iteR -- reconListRAW (3) iteR -- \\ [(dropSoff (map df [1..6]))]
     let railout = if dobinne == 1 then toHT [("filesystem"++c3++".html")] foptc -- (raterRAW (map df [1..6])++[iteR])
-                  else toHT newWay ([(comment (read t2))] ++ raterRAW (map df [1..6])++[iteR])
+                  else toHT newWay ( foWayRAW ++ raterRAW (map df [1..6])++[iteR])
     railout
     putStrLn$(unlines(comment (read t2))) ++ show newWay --(raterRAW (map df [1..6]))--ds --withI --iteR2 --ds --ithI --iteR --raters --(dopS 2)
 
 rndM n =  last (Us.zufallsBasic1 (n+1) 9 n)
+
+iframe_cWORK2 t1 t2 t3 c1 c2 aCt0 aCt foptc mode c3 dobinne = do
+  --iO <- t1
+  let prep foguess r line atom =  (Hd.formHoofdEX1WORK [mother] liM2 ["CEL"] pi0 foguess (read t1) r line atom)
+  let toHT foWay otherWay =  Co.iframe_c c1 c2 aCt0 aCt [(show foWay)++"\n\n"++(show otherWay)++"\n\n" ++(foptc)++"\n"] mode c3
+
+  if t1 == "1" then do 
+         putStrLn "show solution matrix"
+         foTH <- (prep t1 (read t2) 1 9)
+         toHT foTH ("<p>")
+         putStrLn ""
+         --return ([""])
+  else do   
+    foprep <- forM [1..9] (\fp -> do
+              inppp <- (prep t3 (read t2) fp 1)
+              return (inppp))
+    
+ -- break prep into one String and reform the lists
+ -- t: Int ; which of the rated values to choose
+    let df t= words $ Us.replaceColon $ map chr $ (filter (<90) $ map ord (unwords(Us.tk t foprep)))
+   -- avanti$map  show$ map  (reconList) (map df [1..9])
+    avanti$map  show$map nub(map df [1..6])
+    putStrLn " process rater functions of 'formHoofdEX1WORK'"
+ -- get rid of one maxima for a change to get rid of most different stuff :|
+    let raterRAW fodf = (map nub(fodf))
+    let newWay = if t3== "1" then transpose $map sort (raterRAW (map df [1..6]))
+                 else let com = if aCt == "wdc" then (map lines(comment (read t2))) ++(raterRAW (map df [1..6]))
+                                else (raterRAW (map df [1..6]))
+                      in com 
+    let raters fodf = map minimum (map nub(fodf))
+    let fg fodf = map show$ snd(findIt (raters fodf) 1)
+    --putStrLn$show raters
+    --putStrLn$show $ sort raters
+    let dropSoff fodf = sort (raters fodf)
+    let dsRAW fodf =  ((concat(map nub fodf)) \\ (dropSoff fodf)) --reconListRAW ((length $raterRAW (df 1))-1) ((concat(map nub fodf)) \\ (dropSoff fodf))
+   -- let iterRR r = take 3 $concat$iterate dsRAW (map df r)
+    let ds = dsRAW (map df [1..6])
+  --  let anIter = iterate
+    --let dopS l = raters \\ (take l dropSoff)
+    let fg i =   (fst (findIt i 1))
+    let iteR = (raters (map df [1..6]))
+    
+    let withI = (concat$raterRAW (map df [1..6]))\\ iteR -- reconListRAW (3) iteR -- \\ [(dropSoff (map df [1..6]))]
+    let railout = if dobinne == 1 then toHT [("filesystem"++c3++".html")] foptc -- (raterRAW (map df [1..6])++[iteR])
+                  else let comm = if aCt=="wdc" then toHT newWay (map lines(comment (read t2)) ++ raterRAW (map df [1..6])++[iteR])
+                                  else toHT newWay (raterRAW (map df [1..6])++[iteR])
+                       in comm
+    railout
+    putStrLn$show newWay --(raterRAW (map df [1..6]))--ds --withI --iteR2 --ds --ithI --iteR --raters --(dopS 2)
+
+
 
 comment e = if e == 2 then [" 'compareCells' in 'formHoofdEX1WORK'\n"++
                           " compare booted cells: compare all of li to all of 'bootPunkt'\n"++ -- better [1..6] ?

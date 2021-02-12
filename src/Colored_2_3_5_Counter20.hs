@@ -2272,10 +2272,9 @@ iframe_cRAW t railW toWrite chAr ko mode token = do
     let railSystemRAW  foRail =  ((unlines (take ( (head(head(interSearch toWrite)))+1) (lines aRawHtmlTxt)))  ++ (unlines foRail) ++"\n \n"++ (unlines (drop  ((head(head(interSearch "</textarea>")))) (take solo (lines aRawHtmlTxt)))))
  
 
-    let railSystem  = if railW == 1 && chAr/="wdc" then railSystemRAW (tail railOut) 
-                      else if railW == 1 && chAr=="wdc" then railSystemRAW (railOut)  
-                      else if railW/=1 && chAr=="wdc" then railSystemRAWdrop (railOut)
-                      else railSystemRAWdrop (tail railOut)   
+    let railSystem  = if railW == 1 then railSystemRAW (railOut) 
+                      else if railW > 1 && chAr=="wdc" then railSystemRAW (railOut)  
+                      else railSystemRAWdrop (railOut)   
     putStrLn (show (exampl 1))  
     putStrLn  (chAr++" to filesystem.html")
     putStrLn  ("searched word: "++ show toWrite)  
