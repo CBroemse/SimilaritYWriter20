@@ -134,7 +134,9 @@ rndM n =  last (Us.zufallsBasic1 (n+1) 9 n)
 --thisFunc: functions to output
 -- Only 'simiVals' are func: 2 , 6 , 8 , 10   
 --      'cell content'  are: 5 , 7 , 9          
---      'cell names'    are:  1 3 is any char, 4 insert "cell"
+--      'cell names'    are:  1    ;  3 is any char, 4 insert "cell"
+--
+spyInto = [2,6,8]  -- e.g reading order
 -- e.g> criteria "1" "1" "3" 
 criteria t3 crit thisFunc = do
     let loop = do
@@ -148,11 +150,10 @@ criteria t3 crit thisFunc = do
          --let guesseS =   --liM3 n -- as four bread cells plug into breedCells
         -- let deltIn = round $ out-crit
          if out> crit then do 
-                prod <- forM [1..3] (\pr -> do
-                let fromCell = show$head$Co.ausw pr [2,6,8]
+                prod <- forM ([1..length (spyInto)]) (\pr -> do
+                let fromCell = show$head$Co.ausw pr spyInto-- [2,6,8]
                 if pr==1 then theCells fromCell pr (Co.ausw (1) "p") (show pr)
-                else if pr==2 then theCells fromCell pr (Co.ausw (15+pr) "abcdefghijklmnopqrstuvwxyz") (show (pr+1))
-                else theCells fromCell pr (Co.ausw (15+pr) "abcdefghijklmnopqrstuvwxyz") (show (pr+2))
+                else (theCells fromCell pr (Co.ausw (15+pr) "abcdefghijklmnopqrstuvwxyz") (show (pr+(pr-1))))
                 return (""))
                -- loop
                 putStrLn "way 1"
