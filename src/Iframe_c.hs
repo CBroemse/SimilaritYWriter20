@@ -136,7 +136,7 @@ rndM n =  last (Us.zufallsBasic1 (n+1) 9 n)
 --      'cell content'  are: 5 , 7 , 9          
 --      'cell names'    are:  1    ;  3 is any char, 4 insert "cell"
 --
-spyInto = [2,6,8]  -- e.g reading order
+spyInto = [2,6,8,10]  -- e.g reading order
 -- e.g> criteria "1" "1" "3" 
 criteria t3 crit thisFunc = do
     let loop = do
