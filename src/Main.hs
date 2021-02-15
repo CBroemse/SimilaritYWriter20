@@ -31,7 +31,7 @@ zufallsBasic1 t a x = (take t  (randomRs (1,a) (mkStdGen x)))::[Int]
 timeRNDInts foTime soMany digits = let prepStringtoInt = (map chr (filter (<58)(filter (>47)(map ord (show foTime)))))
                                in let plugRandom wieviele = zufallsBasic1 wieviele (read prepStringtoInt) digits
                                in (show (plugRandom soMany))
--- eg cell =  1 1 "</p>" "wd" ( "can do this?") 1 "7" 2)
+-- eg cell =  "1" "1" "1" 1 1 "</p>" "wd" ( "can do this?") 1 "7" 2)
 cell t1 t2 t3 c1 c2 search com insert mode token dobinne = (CELL.iframe_cWORK t1 t2 t3 c1 c2 search com insert mode token dobinne)
 htmToken g = (CELL.htmlToken g)
 
@@ -345,6 +345,26 @@ help21 = ["   SimiVALs: there are input list called 'li list' e.g\n"++
           "   select one of above and write html e.g: \n"++
           "   *Main> (cell \"2\" \"5\" \"111\" 1 1 (\"<q>\") \"wd\" ( \"can do this?\n <q>\") 2 \"4\" 2)\n"++
           "   connect 3 computations of above and write to html \n"++
-          "   *Main> CELL.criteria \"1\" \"1\" \"3\"\n\n"]     
+          "   *Main> CELL.criteria \"1\" \"1\" \"3\"\n\n"]    
+
+help22 = [ "Cell Content:  fill cell with random strings in HoofdDev.hs\n"++
+           " via iterAby  by choosF 7 in \n"++
+           "  'iframe_cWORK \"2\" \"7\" \"1\" 1 1 \"<p>\" \"wd\" \"wrote one line\\n<q>\" 1 \"4\" 2'\n"++
+           " via fst ( iterRate io \"aaa\" \"B\" \"not used\" (show getLine) getAtom),\n"++
+           "=>[\"B Byzyzyz\",\"B B60z60z\",\"B Bzz==0=\",\"B B\",\"D N\",\"F N\"]\n"++
+           "[\"F F=0==0=\",\"F F=000z0\",\"F Fz0z0z0\",\"F Fz0z00=\",\"F F\",\"H N\",\"J N\"]\n"++
+           "[\"J N=0==0=\",\"J N=0===1\",\"J Nyx=1yx\",\"J N=1yx=1\",\"J N=1yx00\",\"L L\",\"N N\",\"P N\"]\n"++
+           "[\"P Nx0x0x0\",\"P N=1yx=1\",\"P Nyx=1yx\",\"P N\",\"R R\",\"T N\"]\n"++
+           "[\"T N00z0z0\",\"T Nz0z0z0\",\"T Nz060y6\",\"T N0y60y6\",\"T N0y0z0=\",\"V N\",\"X X\"]\n"++
+           "[\"T N00z0z0\",\"T Nz0z0z0\",\"T Nz060y6\",\"T N0y60y6\",\"T N0y0z0=\",\"V N\",\"X N\"]\n"]
+
+help23 = [ "WORK process: Content:  fill cell with random strings in HoofdDe.hs\n"++
+           " via iterAby see in soution matrix 'type' \n"++
+           " iframe_cWORK \"1\" \"2\" \"1\" 1 1 \"<p>\" \"wd\" \"wrote one line\n<q>\" 1 \"4\" 2\n"]
+
+help33= ["Meaningful Participation: iterate sorted phi max or phi min \n"++
+         "  compare cell content to li sort by progVar e.g\n"++
+         " iframe_cWORK \"2\" \"8\" \"1\" 1 1 \"<r>\" \"wdc\" \"wrote one line\n<s>\" 2 \"5\" 2\n"]
+
 
 

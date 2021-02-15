@@ -75,7 +75,7 @@ iframe_cWORK t1 t2 t3 c1 c2 aCt0 aCt foptc mode c3 dobinne = do
 
   if t1 == "1" then do 
          putStrLn "show solution matrix"
-         foTH <- (prep t1 (read t2) 1 9)
+         foTH <- (prep t1 (read t2) 1 1)
          toHT foTH ("<p>")
          putStrLn ""
          --return ([""])
@@ -92,10 +92,21 @@ iframe_cWORK t1 t2 t3 c1 c2 aCt0 aCt foptc mode c3 dobinne = do
     putStrLn " process rater functions of 'formHoofdEX1WORK'"
  -- get rid of one maxima for a change to get rid of most different stuff :|
     let raterRAW fodf = (map nub(fodf))
-    let newWay = if t3== "1" then transpose $map sort (raterRAW (map df [1..6]))
-                 else let com = if aCt == "wdc" then (map lines(comment (read t2))) ++(raterRAW (map df [1..6]))
+    let newWay = if t3== "1" then transpose $map (map lines) (raterRAW (map df [1..6]))
+       -- WRITE process cell with rating turn to 
+                 else if t3 =="2" then let getOrder t = words$ Us.replaceColon $ map chr $ (filter (<90) $ map ord (unwords(Us.tk t foprep)))
+                                       in let bo f =  take 4 (((map realToFrac((map ord f)))))
+                                                 --  let mrM = minkowskiAdd 1 "0.1" [(bo "a"), (bo "c") ,(bo "b")]
+                                       in let tF t = t * 0.01
+                                       in let baas = map tF (map realToFrac [1..(length$bo "dfs")])
+                                       in let easier d = zipWith (*) baas (bo d) --"dfs")
+                          --  
+                                       in let dcv atom t = words$ Us.replaceColon $ map chr $ (filter (<90) $ map ord (unwords(take atom (Us.tk t foprep))))
+                                       in map (map lines) (raterRAW (map getOrder [1..6]))
+                 else let com = if aCt == "wdc" then ((map lines(comment (read t2))) ++(raterRAW (map df [1..6])))
                                 else (raterRAW (map df [1..6]))
-                      in com 
+
+                      in [com] 
     let raters fodf = map minimum (map nub(fodf))
     let fg fodf = map show$ snd(findIt (raters fodf) 1)
     --putStrLn$show raters
@@ -111,13 +122,14 @@ iframe_cWORK t1 t2 t3 c1 c2 aCt0 aCt foptc mode c3 dobinne = do
     
     let withI = (concat$raterRAW (map df [1..6]))\\ iteR -- reconListRAW (3) iteR -- \\ [(dropSoff (map df [1..6]))]
     let railout = if dobinne == 1 then toHT [("filesystem"++c3++".html")] foptc -- (raterRAW (map df [1..6])++[iteR])
-                  else let comm = if aCt=="wdc" then toHT newWay (map lines(comment (read t2)) ++ raterRAW (map df [1..6])++[iteR])
-                                  else toHT newWay (raterRAW (map df [1..6])++[iteR])
+                  else let comm = if aCt=="wdc" then (toHT newWay ((map lines(comment (read t2))) ++ raterRAW (map df [1..6])++[iteR]))
+                                  else (toHT newWay (raterRAW (map df [1..6])++[iteR]))
                        in comm
     railout
     putStrLn$show newWay --(raterRAW (map df [1..6]))--ds --withI --iteR2 --ds --ithI --iteR --raters --(dopS 2)
 
-comment e = if e == 2 then [" 'compareCells' in 'formHoofdEX1WORK'\n"++
+comment e = if e ==1 then ["created cell with a given 'abyssDivide' list pick line n of a [abyss divide]\n "]
+            else if e == 2 then [" 'compareCells' in 'formHoofdEX1WORK'\n"++
                           " compare booted cells: compare all of li to all of 'bootPunkt'\n"++ -- better [1..6] ?
                           " ausw 1 'map bootPunkt [1..10] ' => \n"++
                           " => [\"BBBDDF\",\"FFHHJJ\",\"JLLNNP\",\"PPRRTT\",\"TVVXXX\",\"ZZZ\\\\^\"]\n"++
@@ -146,19 +158,44 @@ criteria t3 crit thisFunc = do
       -- t3: Int ausw t2 [Solutions] , a list of a [list];
       -- n: Int start if == 1 then start at <p> and increment letter to <h> ...
       -- k: String start with "p" ; foPr: String token to write html e.g "1"
-         let theCells func n k foPr = (iframe_cWORK "2" func t3 1 1 (clickLet n k) "wd" ( "can do this?\n"++ (clickLet (n+1) (htmlToken k) )) 2 foPr 2) 
+         let theCells func fote3 n k foPr = (iframe_cWORK "2" func fote3 1 1 (clickLet n k) "wd" ( "can do this?\n"++ (clickLet (n+1) (htmlToken k) )) 2 foPr 2) 
          --let guesseS =   --liM3 n -- as four bread cells plug into breedCells
         -- let deltIn = round $ out-crit
-         if out> crit then do 
+         if out> crit then do
+                daT <- return t3
                 prod <- forM ([1..length (spyInto)]) (\pr -> do
                 let fromCell = show$head$Co.ausw pr spyInto-- [2,6,8]
-                if pr==1 then theCells fromCell pr (Co.ausw (1) "p") (show pr)
-                else (theCells fromCell pr (Co.ausw (15+pr) "abcdefghijklmnopqrstuvwxyz") (show (pr+(pr-1))))
+                if pr==1 then theCells fromCell daT pr (Co.ausw (1) "p") (show pr)
+                else (theCells fromCell (show(((read daT)+pr)-(pr-1))) pr (Co.ausw (15+pr) "abcdefghijklmnopqrstuvwxyz") (show (pr+(pr-1))))
                 return (""))
                -- loop
                 putStrLn "way 1"
          else do putStrLn "donde" --return ["done"]
     loop
+
+criteria t3 crit thisFunc = do
+    let loop = do
+         let out = thisFunc -- = head$Co.ausw (read n) thisFunc
+         let clickLet n k= if n == 1 then "<p>"
+                             else "<"++(htmlToken k)++">" 
+      -- t3: Int ausw t2 [Solutions] , a list of a [list];
+      -- n: Int start if == 1 then start at <p> and increment letter to <h> ...
+      -- k: String start with "p" ; foPr: String token to write html e.g "1"
+         let theCells func fote3 n k foPr = (iframe_cWORK "2" func fote3 1 1 (clickLet n k) "wd" ( "can do this?\n"++ (clickLet (n+1) (htmlToken k) )) 2 foPr 2) 
+         --let guesseS =   --liM3 n -- as four bread cells plug into breedCells
+        -- let deltIn = round $ out-crit
+         if out> crit then do
+                daT <- return t3
+                prod <- forM ([1..length (spyInto)]) (\pr -> do
+                let fromCell = show$head$Co.ausw pr spyInto-- [2,6,8]
+                if pr==1 then theCells fromCell daT pr (Co.ausw (1) "p") (show pr)
+                else (theCells fromCell (show(((read daT)+pr)-(pr-1))) pr (Co.ausw (15+pr) "abcdefghijklmnopqrstuvwxyz") (show (pr+(pr-1))))
+                return (""))
+               -- loop
+                putStrLn "way 1"
+         else do putStrLn "donde" --return ["done"]
+    loop
+    
 
 htmlToken k = let step1 = map ord k
               in if (head step1) >= 122 then head$words$[chr 97]

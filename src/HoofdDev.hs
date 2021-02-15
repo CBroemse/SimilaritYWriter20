@@ -251,6 +251,34 @@ formHoofdEX1WORK io foli4 stringBT pi ghADD goWay fillBayesian getLine getAtom =
                                                      else if io==4 then [loopNumber] 
                                                      else if io==5 then [minMaxTrueOrFalse] 
                                                      else []
+                             -- try to draw advantages found in the three functions above into a tensor compared to input variable 'stringBT'
+                             -- 'minowskiAdd' is merey a tool to parse things into a tensor ( a tensor at least the way that I understood it)
+                                        let claimTotheWorld = do 
+                                                   let backRate a b = simiVals a b 
+                                                   putStrLn "set out"
+                                                   let line1 = (littleWriter2 [mother] "aaa" " B" "not used" "1" 1)
+                                                   let line2 = (littleWriter2 [father] "nothing" " J" "not used" "2" 2)
+                                                   let line3 = (littleWriter2 [mother2] "nothing" " F" "not used" "3" 3)
+                                                   let line4 = (littleWriter2 [loopNumber] "aaa" "B" "not used" "4" 4) 
+                                                   let line5 = (littleWriter2 [minMaxTrueOrFalse] "aaa" "B" "not used" "5" 5)
+                                                   let line6 = (littleWriter2 [mother] "aaa" "B" "not used" "5" 1) 
+                                                   let alLine = line1 ++ line2 ++line3 ++line4++line5++line6
+                      -- FOLLOW UP all rated exports choosF 2,4,8,10
+                                                   let aRatedLine =  (compareCells io "nothing" "JJJJJ" "not used" (show getLine) getAtom)  -- [mother]
+                       -- truncate e.g 4.23345521 to 4.23 with two digit after comma hence 0.01 smallest possible value
+                       --  
+                                                   let getIt = map (take 4) (map (show ) (head $ausw 1 (head$ ausw 3 aRatedLine)))
+
+                                                   let bo f =  (((map realToFrac((map ord f)))))
+                                                 --  let mrM = minkowskiAdd 1 "0.1" [(bo "a"), (bo "c") ,(bo "b")]
+                                                   let tF t = t * 0.01
+                                                   let baas = map tF (map realToFrac [1..(length$bo "dfs")])
+                                                   let easier = zipWith (*) baas (bo "dfs") 
+                                                   putStrLn $show$easier
+                                                   putStrLn ("The rated line length :"++(show$length aRatedLine))
+                                                   putStrLn$show$getIt
+                                                   putStrLn$show$aRatedLine
+                                               --   let wroteBefore = if simVal  
  
                                       --  putStrLn$ show$ map (map chr) (abyssDevide2TEST "7897891234554" ) -- "12341234")
                                         do if goWay==1 then do
@@ -288,6 +316,7 @@ formHoofdEX1WORK io foli4 stringBT pi ghADD goWay fillBayesian getLine getAtom =
                                               putStrLn " 'compareCells' the random cell names compared to one atom of li "
                                               putStrLn$show$ map bootPunkt [1..6] 
                                               putStrLn$show$ nub mCom --(compareCells [minMaxTrueOrFalse] "aaa" "B" "not used" "1" 1)
+                                              claimTotheWorld
                                               return (map concat (map bootPunkt [1..6]))
                                             
 
@@ -302,7 +331,9 @@ formHoofdEX1WORK io foli4 stringBT pi ghADD goWay fillBayesian getLine getAtom =
                                                              show$snd (compareCells2 io "aaa" "B" "not used" (show getLine) getAtom),                    {- the li compared to first atom of above [minMax..]-}
                                                              show$fst ( iterRate io "aaa" "B" "not used" (show getLine) getAtom),                          {- content compared to li -}
                                                              show$snd ( iterRate io "aaa" "B" "not used" (show getLine) getAtom),
-                                                             show$ (map bootPunkt [1..6])]
+                                                             show$ (map bootPunkt [1..6]),
+                                                             show$ minkowskiAdd 1 "0.01" ["0.1", "1", "0.001"]]   -- try to identify groups with rated outputs
+                                                         
                                               return ([unwords(checkflow  [mother]  [(BT.formationB [((choosF fillBayesian))])]   )]) --fillBayesian
                    -- see which kind of checkCELL function would be helpful at this point                             
 

@@ -1,6 +1,6 @@
 -- this module provides:
 -- --------------------------------------
--- 16-10-2020
+-- 16-10-2020                            colorsceme:peachpuff
 -- fofina2 -> write zooSvg2.svg now set to write in src change to 'SimilaritYWriter20'
 --            with github
 -- four lines of thought
@@ -2273,7 +2273,7 @@ iframe_cRAW t railW toWrite chAr ko mode token = do
  
 
     let railSystem  = if railW == 1 then railSystemRAW (railOut) 
-                      else if railW > 1 && chAr=="wdc" then railSystemRAW (railOut)  
+               --       else if railW > 1 && chAr=="wdc" then railSystemRAW (railOut)  
                       else railSystemRAWdrop (railOut)   
     putStrLn (show (exampl 1))  
     putStrLn  (chAr++" to filesystem.html")
