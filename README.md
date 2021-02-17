@@ -5,13 +5,14 @@
 1.0.0
 A bayesian network optimization. Compare strings to render
 complex programming concepts such as:
-[[Int]] , [[String]] or complex Numbers with the goal to visiualize higher programming concepts such as classes and types
+[[Int]] , [[String]] =>  bayesian data;   
+or complex Numbers with the goal to visiualize higher programming concepts such as classes and types
 in 2d or 3d file output 'src/wxms/lala1.wxm'
 
 1.1.0
 an iterative process that tries to 'backpropagate' to given program variables (pv1::String)
 Finding a random solution. 
-   1.1.1
+ 1.1.1
        'git branch: experiments' Experiment partII
            guess n many solutions ...
         
@@ -46,6 +47,13 @@ I. basic axioms --  pv-variables pg-functions
      functions , exclusive to the solution ??....
      
   ![alt tag](https://github.com/CBroemse/SimilaritYWriter20/blob/master/source/pgInts.png)   
+  #####cell
+  
+  ![alt tag](https://github.com/CBroemse/SimilaritYWriter20/blob/master/source/explainCell.png)   
+  
+  ![alt tag](https://github.com/CBroemse/SimilaritYWriter20/blob/master/source/explainCell2.png)   
+  
+  ![alt tag](https://github.com/CBroemse/SimilaritYWriter20/blob/master/source/explainCell3.png)   
   
   #####ptc
   So far the program deals with downstream of the the former functions. 
