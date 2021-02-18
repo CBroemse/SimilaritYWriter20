@@ -57,7 +57,7 @@ I. basic axioms --  pv-variables pg-functions
     e.g 
 ["0*x + y + 0*z = 3","0*x + y + 0*z = 33*x + 0 + 0*z = 6","3*x + 0 + 0*z = 6","0*x + 0*y + z = 2","0*x + 0*y + z = 2x + y + z = 11","x + y + z = 11"]
 
-        liSolution is merely a symbolic type it has no use other to be simivalued to other liSolutions 
+        liSolution is merely a symbolic type it has no use other then to be simivalued to other liSolutions 
 
   ![alt tag](https://github.com/CBroemse/SimilaritYWriter20/blob/master/source/explainCell.png)   
   
