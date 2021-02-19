@@ -72,11 +72,11 @@ I. basic axioms --  pv-variables pg-functions
        cell  name   content -> 1 'filled cell'
           >"  B     Byzyzyz"
      
-  'fromHoofdDevEX1WORK':: IO()         
+  'fromHoofdDevEX1WORK':: IO ( )         
   the 'hoofd' function is one branch -- HoofdDev.hs   <-->  Main    <-> select in ghc GUI   
   
-  The main junction point around a bayesian (until falsifite) data type (see HoofdDev.hs for details)
-  one goal is to write a routine that can run a number of iterations with lists of strings called cells.
+  The main junction point around a bayesian (until falsifite) data type, see file HoofdDev.hs for details.
+  One goal is to write a routine that can run a number of iterations with lists of strings called cells.
   The idea of 'cell' combines a random guess with §1.1.0 and to the concept of 'simiVal' (bottom this README)
   
           poolBandNotB :: [[Char]] -> Int -> [Int]
@@ -95,13 +95,13 @@ I. basic axioms --  pv-variables pg-functions
       if mode =="1" then  see 'solution matrix' and write main randomly generated cell names 
                           to "textS/indat23720/filesystem"++ token +1 ++.html"
                      
-      else  select 11 different [String] to write into the html file the list are either datatype e.g
+      else  select 11 different [String] to write into the html files the list are either datatype e.g
                                      'B B'  vs '1.55654433'
-             one being all chars the the other just number digits.(num String)
+             one being all chars the the other just number digits. (num String)
  
  How to select modi of 'filled-in cells'
   selFunction:
-  'simiVals' are function  : 2 , 6 , 8 , 10   
+  'simiVals' are function  : 2 , 6 , 8 , 10   ?11?
   'cell content'  are: 5 , 7 , 9          
   'cell names'    are:  1    ;  3 is any char, 4 insert "cell"
      
