@@ -65,6 +65,30 @@ I. basic axioms --  pv-variables pg-functions
   
   ![alt tag](https://github.com/CBroemse/SimilaritYWriter20/blob/master/source/explainCell3.png)   
   
+          example line 1, list 1 of the 'solution matrix' above
+       cell  name   content -> 1 'filled cell'
+          >"  B     Byzyzyz"
+     
+  'fromHoofdDevEX1WORK':: IO()         -- HoofdDev.hs
+  
+   ~                      mode selFunction              comment1      howsearch token
+                            |   |                          |                 |  |      
+   *Iframe_c> iframe_cWORK "1" "1" "1" 1 1 "<r>" "wdc" "wrote one line\n<s>" 2 "5" 2
+                                    |        |     |                     |         |
+                                  transp  search  command            build         dataON 
+ 
+          if mode =="1" then see 'solution matrix' and write main randomly generated cell names 
+                             to "textS/indat23720/filesystem"++ token +1 ++.html"
+          else then  select 11 different [String] to write into the html file.
+                     the list are either datatype "B B"  vs "1.55654433"
+                     one being all chars the or just number digits.(num String)
+                     --'simiVals' are function  : 2 , 6 , 8 , 10   
+     selFunction:                
+     'cell content'  are: 5 , 7 , 9          
+     'cell names'    are:  1    ;  3 is any char, 4 insert "cell"
+     
+
+ 
   #####ptc
   So far the program deals with downstream of the the former functions. 
 the ptc functions are the main basic for this program, see concept plotter, 
