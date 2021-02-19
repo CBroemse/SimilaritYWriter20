@@ -77,7 +77,7 @@ I. basic axioms --  pv-variables pg-functions
   the idea of cell combines a random guess with §1.1.0 with the concept of 'simiVal' (bottom this README)
   
   
-          pooBandNotB -> 
+          poolBandNotB -> 
   
   in that matter it runs an iteration of char guess within an iteration of because:
           
