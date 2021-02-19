@@ -12,9 +12,10 @@ in 2d or 3d file output 'src/wxms/lala1.wxm'
 1.1.0
 an iterative process that tries to 'backpropagate' to given program variables (pv1::String)
 Finding a random solution. 
- 1.1.1
-       'git branch: experiments' Experiment partII
-           guess n many solutions ...
+
+1.1.1
+'git branch: experiments' Experiment partII
+guess n many solutions ...
         
 1.0.1
 sort any bonelist ([[String]]) with simiaritYWriter a b = simiVals a b  with
