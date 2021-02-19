@@ -58,7 +58,7 @@ I. basic axioms --  pv-variables pg-functions
     e.g 
 ["0*x + y + 0*z = 3","0*x + y + 0*z = 3x + 0 + 0*z = 6","1*x + 0 + 0*z = 6","0*x + 0*y + z = 2","0*x + 0*y + z = 2x + y + z = 11","x + y + z = 11"]
 
-        e.g > liM2 = ["00000","0xy0z=3x0y0z=6","x0y0z=6","0x0yz=2","01111","xyz=11"
+        e.g > liM2 = ["00000","0xy0z=3x0y0z=6","x0y0z=6","0x0yz=2","01111","xyz=11"]
         is the main DATA example of this branch it is 
         a 3x3 matrix + its solution in one [String]
   ![alt tag](https://github.com/CBroemse/SimilaritYWriter20/blob/master/source/explainCell.png)   
