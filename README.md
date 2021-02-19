@@ -69,7 +69,19 @@ I. basic axioms --  pv-variables pg-functions
        cell  name   content -> 1 'filled cell'
           >"  B     Byzyzyz"
      
-  'fromHoofdDevEX1WORK':: IO()         -- HoofdDev.hs
+  'fromHoofdDevEX1WORK':: IO()         
+  the 'hoofd' function is one branch -- HoofdDev.hs   <-->  Main    <-> select in ghc GUI   
+  
+  The main junction point around a bayesian (until falsifite) data type (see HoofdDev.hs for details)
+  one goal is to write a routine that can run an number of iterations with lists of strings called cells.
+  the idea of cell combines a random guess with §1.1.0 with the concept of 'simiVal' (bottom this README)
+  
+  
+          pooBandNotB -> 
+  
+  in that matter it runs an iteration of char guess within an iteration of because:
+          
+  
   
                                      mode selFunction              comment1      howsearch token
                                         |   |                          |                 |  |      
@@ -77,13 +89,14 @@ I. basic axioms --  pv-variables pg-functions
                                                 |        |     |                     |         |
                                               transp  search  command            build         dataON 
  
-  if mode =="1" then see 'solution matrix' and write main randomly generated cell names 
-                     to "textS/indat23720/filesystem"++ token +1 ++.html"
+      if mode =="1" then  see 'solution matrix' and write main randomly generated cell names 
+                          to "textS/indat23720/filesystem"++ token +1 ++.html"
                      
-  else then select 11 different [String] to write into the html file.
-            the list are either datatype "B B"  vs "1.55654433"
-            one being all chars the or just number digits.(num String)
+      else  select 11 different [String] to write into the html file the list are either datatype e.g
+                                     'B B'  vs '1.55654433'
+             one being all chars the the other just number digits.(num String)
  
+ How to select modi of 'filled-in cells'
   selFunction:
   'simiVals' are function  : 2 , 6 , 8 , 10   
   'cell content'  are: 5 , 7 , 9          
