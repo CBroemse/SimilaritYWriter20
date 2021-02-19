@@ -84,7 +84,7 @@ I. basic axioms --  pv-variables pg-functions
           
   
   
-                                     mode selFunction              comment1      howsearch token
+                                     mode selFunction              comment1      whatwrite token
                                         |   |                          |                 |  |      
                *Iframe_c> iframe_cWORK "1" "1" "1" 1 1 "<r>" "wdc" "wrote one line\n<s>" 2 "5" 2
                                                 |        |     |                     |         |
