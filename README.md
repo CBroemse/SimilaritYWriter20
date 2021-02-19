@@ -56,7 +56,7 @@ I. basic axioms --  pv-variables pg-functions
         give a simiVal list to compare both states
         liSolution: a real Prior/Bias?!? 
     e.g 
-["0*x + y + 0*z = 3","0*x + y + 0*z = 33*x + 0 + 0*z = 6","3*x + 0 + 0*z = 6","0*x + 0*y + z = 2","0*x + 0*y + z = 2x + y + z = 11","x + y + z = 11"]
+["0*x + y + 0*z = 3","0*x + y + 0*z = 3x + 0 + 0*z = 6","1*x + 0 + 0*z = 6","0*x + 0*y + z = 2","0*x + 0*y + z = 2x + y + z = 11","x + y + z = 11"]
 
         e.g > liM2 = ["00000","0xy0z=3x0y0z=6","x0y0z=6","0x0yz=2","01111","xyz=11"
         is the main DATA example of this branch it is 
