@@ -76,10 +76,10 @@ I. basic axioms --  pv-variables pg-functions
   the 'hoofd' function is one branch -- HoofdDev.hs   <-->  Main    <-> select in ghc GUI   
   
   The main junction point around a bayesian (until falsifite) data type (see HoofdDev.hs for details)
-  one goal is to write a routine that can run an number of iterations with lists of strings called cells.
+  one goal is to write a routine that can run a number of iterations with lists of strings called cells.
   The idea of 'cell' combines a random guess with §1.1.0 and to the concept of 'simiVal' (bottom this README)
   
-  
+          poolBandNotB :: [[Char]] -> Int -> [Int]
           poolBandNotB -> 
   
   in that matter it runs an iteration of char guess within an iteration of because:
