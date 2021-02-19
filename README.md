@@ -44,29 +44,31 @@ I. basic axioms --  pv-variables pg-functions
   
   -- assume every pg function used has a certain (slope) in the function plotted at every
      Int (Natural number) there is a slope in all pg functions plotted together
-     at every Int. If the solution of a matrix is an Int, is there another related order connecting between this plotted 
-     functions , exclusive to the solution ??....
+     at every Int. If the solution of a matrix is an Int, is there another related order connecting between these plotted 
+     functions , that is somehow unique to the solution ??....
      
   ![alt tag](https://github.com/CBroemse/SimilaritYWriter20/blob/master/source/pgInts.png)  
   
   #####cell
   
-            -- SIMIVAL RUNS for  'Quirky example'
+        SIMIVAL RUNS for  'Quirky example'
         manifest the given li function with and without 'appropiate mathematical syntax'
         give a simiVal list to compare both states
         liSolution: a real Prior/Bias?!? 
     e.g 
 ["0*x + y + 0*z = 3","0*x + y + 0*z = 33*x + 0 + 0*z = 6","3*x + 0 + 0*z = 6","0*x + 0*y + z = 2","0*x + 0*y + z = 2x + y + z = 11","x + y + z = 11"]
 
-        liSolution is merely a symbolic type it has no use other then to be simivalued to other liSolutions 
-
+        e.g > liM2 = ["00000","0xy0z=3x0y0z=6","x0y0z=6","0x0yz=2","01111","xyz=11"
+        is the main DATA example of this branch it is 
+        a 3x3 matrix + its solution in one [String]
   ![alt tag](https://github.com/CBroemse/SimilaritYWriter20/blob/master/source/explainCell.png)   
   
   ![alt tag](https://github.com/CBroemse/SimilaritYWriter20/blob/master/source/explainCell2.png)   
   
   ![alt tag](https://github.com/CBroemse/SimilaritYWriter20/blob/master/source/explainCell3.png)   
   
-          example line 1, list 1 of the 'solution matrix' above
+   example line 1, list 1 of the 'solution matrix' above
+   
        cell  name   content -> 1 'filled cell'
           >"  B     Byzyzyz"
      
@@ -75,7 +77,7 @@ I. basic axioms --  pv-variables pg-functions
   
   The main junction point around a bayesian (until falsifite) data type (see HoofdDev.hs for details)
   one goal is to write a routine that can run an number of iterations with lists of strings called cells.
-  the idea of cell combines a random guess with §1.1.0 with the concept of 'simiVal' (bottom this README)
+  The idea of 'cell' combines a random guess with §1.1.0 and to the concept of 'simiVal' (bottom this README)
   
   
           poolBandNotB -> 
