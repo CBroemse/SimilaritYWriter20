@@ -67,10 +67,18 @@ I. basic axioms --  pv-variables pg-functions
   
   ![alt tag](https://github.com/CBroemse/SimilaritYWriter20/blob/master/source/explainCell3.png)   
   
+       
    example line 1, list 1 of the 'solution matrix' above
    
        cell  name   content -> 1 'filled cell'
           >"  B     Byzyzyz"
+          
+       of cell name list [["B","B","D","D","D","F"],
+                          ["F","H","H","H","J","J"],
+                          ["L","L","L","N","N","N"],
+                          ["P","P","R","R","R","T"],
+                          ["T","V","V","V","X","X"],
+                          ["Z","Z","Z","\\","\\","\\"]]     
      
   'formHoofdDevEX1WORK':: IO ( )            
   the 'hoofd' function is one branch -- HoofdDev.hs   <-->  Main    <-> select in ghc GUI   
@@ -103,7 +111,7 @@ I. basic axioms --  pv-variables pg-functions
              one being all chars the the other just number digits. (num String)
  
  How to select modi of 'filled-in cells'
-  selFunction:
+  selFunction: 
   'simiVals' are function  : 2 , 6 , 8 , 10   
   'cell content'  are: 5 , 7 , 9          
   'cell names'    are:  1, 11   ;  3 is any char, 4 insert "cell"
