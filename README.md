@@ -112,7 +112,11 @@ I. basic axioms --  pv-variables pg-functions
   readToken = (read token)+1 
   Everything gets written into file "textS/indat23720/filesystem"++ (show readToken) ++".html" 
   case of readToken+1> 9 then 0 Start overwriting existing files in the same folder, 'search' must occure in
-  the actual file selected by 'token'otherwise error, 'transp' changes output [String] from sorted to unsorted,
+  the actual file selected by 'token'otherwise error  with every call token-1 is read and written to token+1
+  thus if iframe_c gets iterated it must be counted for step-width = 2 in other words just choose even or odd 'token'
+  numbers in that case ('criteria' Iframe_c.hs) , 'transp' changes output [String] from sorted to unsorted,
+  'command' 'dd' delete ine 'wd' write downwards or 'wu' write over search token or 'new' empty file "wdc" comments only ghc GUI,
+  
   
 
  
