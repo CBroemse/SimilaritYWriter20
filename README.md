@@ -72,7 +72,7 @@ I. basic axioms --  pv-variables pg-functions
        cell  name   content -> 1 'filled cell'
           >"  B     Byzyzyz"
      
-  'fromHoofdDevEX1WORK':: IO ( )         
+  'formHoofdDevEX1WORK':: IO ( )            
   the 'hoofd' function is one branch -- HoofdDev.hs   <-->  Main    <-> select in ghc GUI   
   
   The main junction point around a bayesian (until falsifite) data type, see file HoofdDev.hs for details.
@@ -84,7 +84,8 @@ I. basic axioms --  pv-variables pg-functions
           *Experiment3> map chr (poolBandNotB li4 1)
                        "zz6zz6zz6zz6zz6zz6"
   
-  in that matter it runs an iteration of char guess within an iteration of because:
+  in that matter it runs an iteration of char guesses via 'poolBandNotB' within an iteration 'formHoofdEX1WORK' 
+  both states are combined on iframe_cWORK (iframe_c.hs) and written to html.
           
   
   
