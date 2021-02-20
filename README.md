@@ -104,13 +104,15 @@ I. basic axioms --  pv-variables pg-functions
  
  How to select modi of 'filled-in cells'
   selFunction:
-  'simiVals' are function  : 2 , 6 , 8 , 10   ?11?
+  'simiVals' are function  : 2 , 6 , 8 , 10   
   'cell content'  are: 5 , 7 , 9          
-  'cell names'    are:  1    ;  3 is any char, 4 insert "cell"
+  'cell names'    are:  1, 11   ;  3 is any char, 4 insert "cell"
   
-  Everything gets written into file "textS/indat23720/filesystem"++ token +1 ++.html" 
-  case of token+1> 9 then 0 Start overwriting existing files in the same folder, 'search' must occure in
-  the actual file sected by 'token'otherwise error.  
+  readToken = (read token)+1 
+  Everything gets written into file "textS/indat23720/filesystem"++ (show readToken) ++".html" 
+  case of readToken+1> 9 then 0 Start overwriting existing files in the same folder, 'search' must occure in
+  the actual file selected by 'token'otherwise error, 'transp' changes output [String] from sorted to unsorted,
+  
 
  
   #####ptc
