@@ -109,8 +109,8 @@ I. basic axioms --  pv-variables pg-functions
   'cell content'  are: 5 , 7 , 9          
   'cell names'    are:  1, 11   ;  3 is any char, 4 insert "cell"
   
-  readToken = (read token)+1 
-  Everything gets written into file "textS/indat23720/filesystem"++ (show readToken) ++".html" 
+  writeToken = (read token)+1 
+  Everything gets written into file "textS/indat23720/filesystem"++ (show writeToken) ++".html" 
   case of readToken+1> 9 then 0 Start overwriting existing files in the same folder, 'search' must occure in
   the actual file selected by 'token'otherwise error  with every call token-1 is read and written to token+1
   thus if iframe_c gets iterated it must be counted for step-width = 2 in other words just choose even or odd 'token'
