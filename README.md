@@ -106,7 +106,10 @@ I. basic axioms --  pv-variables pg-functions
   'simiVals' are function  : 2 , 6 , 8 , 10   ?11?
   'cell content'  are: 5 , 7 , 9          
   'cell names'    are:  1    ;  3 is any char, 4 insert "cell"
-     
+  
+  Everything gets written into file "textS/indat23720/filesystem"++ token +1 ++.html" 
+  case of token+1> 9 then 0 Start overwriting existing files in the same folder, 'search' must occure in
+  the actual file sected by 'token'otherwise error.  
 
  
   #####ptc
