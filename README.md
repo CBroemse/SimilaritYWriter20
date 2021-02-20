@@ -81,6 +81,8 @@ I. basic axioms --  pv-variables pg-functions
   
           poolBandNotB :: [[Char]] -> Int -> [Int]
           poolBandNotB -> 
+          *Experiment3> map chr (poolBandNotB li4 1)
+                       "zz6zz6zz6zz6zz6zz6"
   
   in that matter it runs an iteration of char guess within an iteration of because:
           
