@@ -73,14 +73,7 @@ I. basic axioms --  pv-variables pg-functions
        cell  name   content -> 1 'filled cell'
           >"  B     Byzyzyz"
           
-       of cell name list [["B","B","D","D","D","F"],
-                          ["F","H","H","H","J","J"],
-                          ["L","L","L","N","N","N"],
-                          ["P","P","R","R","R","T"],
-                          ["T","V","V","V","X","X"],
-                          ["Z","Z","Z","\\","\\","\\"]]     
-     
-  'formHoofdDevEX1WORK':: IO ( )            
+ 'formHoofdDevEX1WORK':: IO ( )            
   the 'hoofd' function is one branch -- HoofdDev.hs   <-->  Main    <-> select in ghc GUI   
   
   The main junction point around a bayesian (until falsifite) data type, see file HoofdDev.hs for details.
