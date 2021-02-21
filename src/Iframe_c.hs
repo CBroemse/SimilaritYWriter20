@@ -82,7 +82,9 @@ iframe_cWORK t1 t2 t3 c1 c2 aCt0 aCt foptc mode c3 dobinne = do
   else do   
     foprep <- forM [1..9] (\fp -> do
               inppp <- (prep t3 (read t2) fp 1)
-              return (inppp))
+              let mink = if aCt=="mink" then return (show( Us.minkowskiAdd 1 "0.01" ["39.6","46.9","50.2","55.2"] )) --inppp))
+                         else inppp
+              return (mink))
     
  -- break prep into one String and reform the lists
  -- t: Int ; which of the rated values to choose
@@ -102,6 +104,7 @@ iframe_cWORK t1 t2 t3 c1 c2 aCt0 aCt foptc mode c3 dobinne = do
                                        in let easier d = zipWith (*) baas (bo d) --"dfs")
                           --  
                                        in let dcv atom t = words$ Us.replaceColon $ map chr $ (filter (<90) $ map ord (unwords(take atom (Us.tk t foprep))))
+                                     --  in let prepTens = Us.minkowskiAdd 1 "0.01" (map getOrder [1..6])
                                        in map (map lines) (raterRAW (map getOrder [1..6]))
                  else let com = if aCt == "wdc" then ((map lines(comment (read t2))) ++(raterRAW (map df [1..6])))
                                 else (raterRAW (map df [1..6]))
@@ -144,7 +147,7 @@ rndM n =  last (Us.zufallsBasic1 (n+1) 9 n)
 
 --crit:Int ; when stop to loop
 --thisFunc: functions to output
--- Only 'simiVals' are func: 2 , 6 , 8 , 10   
+--'simiVals' are function  : 2 , 6 , 8 , 10   
 --      'cell content'  are: 5 , 7 , 9          
 --      'cell names'    are:  1    ;  3 is any char, 4 insert "cell"
 --
@@ -172,30 +175,6 @@ criteria t3 crit thisFunc = do
                 putStrLn "way 1"
          else do putStrLn "donde" --return ["done"]
     loop
-
-criteria t3 crit thisFunc = do
-    let loop = do
-         let out = thisFunc -- = head$Co.ausw (read n) thisFunc
-         let clickLet n k= if n == 1 then "<p>"
-                             else "<"++(htmlToken k)++">" 
-      -- t3: Int ausw t2 [Solutions] , a list of a [list];
-      -- n: Int start if == 1 then start at <p> and increment letter to <h> ...
-      -- k: String start with "p" ; foPr: String token to write html e.g "1"
-         let theCells func fote3 n k foPr = (iframe_cWORK "2" func fote3 1 1 (clickLet n k) "wd" ( "can do this?\n"++ (clickLet (n+1) (htmlToken k) )) 2 foPr 2) 
-         --let guesseS =   --liM3 n -- as four bread cells plug into breedCells
-        -- let deltIn = round $ out-crit
-         if out> crit then do
-                daT <- return t3
-                prod <- forM ([1..length (spyInto)]) (\pr -> do
-                let fromCell = show$head$Co.ausw pr spyInto-- [2,6,8]
-                if pr==1 then theCells fromCell daT pr (Co.ausw (1) "p") (show pr)
-                else (theCells fromCell (show(((read daT)+pr)-(pr-1))) pr (Co.ausw (15+pr) "abcdefghijklmnopqrstuvwxyz") (show (pr+(pr-1))))
-                return (""))
-               -- loop
-                putStrLn "way 1"
-         else do putStrLn "donde" --return ["done"]
-    loop
-    
 
 htmlToken k = let step1 = map ord k
               in if (head step1) >= 122 then head$words$[chr 97]
