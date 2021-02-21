@@ -116,10 +116,11 @@ I. basic axioms --  pv-variables pg-functions
   thus if iframe_c gets iterated it must be counted for step-width = 2 in other words just choose even or odd 'token'
   numbers in that case ('criteria' Iframe_c.hs) , 'transp' changes output [String] from sorted to unsorted,
   'command' 'dd' delete line 'wd' write downwards or 'wu' write over search token or 'new' empty file 'wdc' comments only ghc GUI,
-          'whatwrite' if = 1 then search htm for "<textarea" else search for 'search' which will be automatically written to writeToken
-  in an iteration can search next char e.g if         'search' = "\<p\>" and 'build'== "\<q\>" and 'commant' ="wd" 
-                                           than add 'selFunction' to bottom of selected 'token' file and write to writeToken.
-                                           else put 'search' \<p\> and 'build' \<p\> with 'whatwrite' 1 write into fst textarea.
+          'whatwrite' if = 1 then search htm for "<textarea" else search for 'search' which will be automatically written to writeToken,
+                                  put 'search' \<p\> and 'build' \<p\> with 'whatwrite' 1 write into fst textarea.
+                      else   'search' = "\<p\>" and 'build'== "\<q\>" and 'commant' ="wd" 
+                             in an iteration can search next char,than add 'selFunction' to bottom of selected 'token' file and write to writeToken.
+                                           
   
   
 
