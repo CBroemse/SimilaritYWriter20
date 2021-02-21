@@ -119,9 +119,12 @@ I. basic axioms --  pv-variables pg-functions
           'whatwrite' if = 1 then search htm for "<textarea" else search for 'search' which will be automatically written to writeToken
   in an iteration can search next char e.g if         'search' = "\<p\>" and 'build'== "\<q\>" and 'commant' ="wd" 
                                            than add 'selFunction' to bottom of selected 'token' file and write to writeToken.
+                                           else put 'search' <p> and 'build' <p> with 'whatwrite' 1 write into fst textarea.
   
   
 
+ 
+ 
  
   #####ptc
   So far the program deals with downstream of the the former functions. 
