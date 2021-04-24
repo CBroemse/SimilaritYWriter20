@@ -248,10 +248,10 @@ I. basic axioms --  pv-variables pg-functions
    various examples of ways how this adding of zeros could be done. This second
    experiment also explores how different A's that are subgroups of 
    the Haskell char set encoding appears on screen with regard to varieng ptc functions.
-   At one point we select a subgoup that only contains numbers and letters 
-   and try to establish an ?'arythmetic-operator'? '+' and observe that on screen.
+   At one point we select a subgroup that only contains numbers and letters 
+   and try to establish an ?'arythmetic-operator'? '+' to observe on screen.
    We have established a group with one of the mentioned As that only operates 
-   on letters and numbers  
+   on letters and numbers.  
    
                        syntactical layer       conceptual layer  
                         plot ptc as wxm        select a ptc function
@@ -564,11 +564,11 @@ to use bone list as a mode but keep 'realy big' input like below at bay:
     The intend was to symbolize the computation that all numbers on the Haskell side became 
     their own computation. It is tempting to assemble whole programs that way, maybe its 
     like an old assembler language but that I need to ask more experienced peers. 
-    However it aint a 'walk in the park' and the number of posssibities is staggering.
+    However it 'aint a walk in the park' and the number of posssibities is staggering.
     Now the Haskell type declaration system with its syntax seems much more appealing. I believe the solution if I ought to   
     understand it must be in the Haskell types with simYvalues first and secondarily to apply this metric
-    to compare the different domains found and vsiualize their effects. So back to 'kArmTrack5'
-    map ancestory
+    to compare the different domains found and visiualize their effects. So back to 'kArmTrack5'
+    map ancestory:
     
     This last step is more for visiualization 
     in wxmaxima
