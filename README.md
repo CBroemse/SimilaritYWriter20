@@ -389,7 +389,7 @@ of the quirky example. How does that change if we correct 'progVar2' and 'progVa
         *>length(nub(concat(tsRAW ptc9)))
         *> 3
                     
- ###### There is an syntactic level and a conceptual level
+ ###### There is a syntactic level and a conceptual level
 
         =======================================================================================================================
                                   SYNTAX                  |             CONCEPT
