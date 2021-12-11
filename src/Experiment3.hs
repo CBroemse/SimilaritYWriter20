@@ -205,7 +205,7 @@
 --                          everything within normal statistical distribution.
 --                          (and no way to plot it ;)    
 --
---         crit3: ???
+--         crit3: meassure differences in: -max +max => min / max -> median / min -> ... 
 --
 --         crit4: How does the difference in li3 (with error) and li4 = (li3 without error)
 --                look in ptc6 ptc7 ptc8 and ptc9 like? 
