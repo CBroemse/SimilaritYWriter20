@@ -1,3 +1,6 @@
+{-# LANGUAGE CPP #-}
+{-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE FlexibleContexts #-}
 -- this module provides:
 -- --------------------------------------                                                    concept                                               beard  vs   not beared
 -- EXPERIMENT 3    # baysian data generator# sort multi-grap network #Busshop-Bradley                                                                       -----------   
@@ -205,7 +208,7 @@
 --                          everything within normal statistical distribution.
 --                          (and no way to plot it ;)    
 --
---         crit3: meassure differences in: -max +max => min / max -> median / min -> ... 
+--         crit3: ???
 --
 --         crit4: How does the difference in li3 (with error) and li4 = (li3 without error)
 --                look in ptc6 ptc7 ptc8 and ptc9 like? 
@@ -241,11 +244,11 @@ module Experiment3 (
      , chainDistribute -- help in HoofdDev.hs  exported to formHoofdEX1 help build cell
      ) where
 
-import Data.List
-import Data.Char
-import Control.Monad
-import System.Environment
-import System.IO
+import Data.List hiding (writeFile,readFile, putstrLn,read,map,unlines,lines)
+import Data.Char hiding (writeFile,readFile, putstrLn,read,map,unlines,lines)
+import Control.Monad hiding (writeFile,readFile, putstrLn,read,map,unlines,lines)
+import System.Environment hiding (writeFile,readFile, putstrLn,read,map,unlines,lines)
+import System.IO hiding (writeFile,readFile, putstrLn,read,map,unlines,lines)
 --import Control.Applicative
 --import Data.ByteString.Lazy
 --import qualified Data.ByteString.Read as W hiding (writeFile,readFile, putstrLn,read,map,unlines,lines)
@@ -393,25 +396,25 @@ inActie pv1 pv2 pv3 pv4 solution liSolution = do
           let mao m= head $ ausw m (((newRekenen)))
           let innerList m t = ord(head$ausw t (mao m))
           let getSolus m = do 
-              chgAble <- forM [1..6] (\cg -> do
-                 let varingLength = (length (mao m))
-                 vL <- forM [1..varingLength] (\fvL -> do
+                  chgAble <- forM [1..6] (\cg -> do
+                       let varingLength = (length (mao m))
+                       vL <- forM [1..varingLength] (\fvL -> do
   --[  [[[4]],[[4,11]],[[4]],[[4]],[[4,9]],[[2]]]...]  -> 	
-                     let ofthat f = (ausw f (mao m))
-                     let getAboveAtom =  length (ofthat fvL)
-                     let fromSolution = head $ausw cg solution
-                     parsE <- forM [1..getAboveAtom] (\pr -> do 
-                            let oft1 = head$ ausw 1 (ofthat fvL)
-                            let ghr r = r + 1
-                            let finde = map ghr (oft1 `elemIndices` fromSolution)
-                            let oft2 =  ausw ((head finde)+1) fromSolution
-                            let togth ttg = let step1 = if ttg == [] then "+"
-                                                        else  ttg --head oft2  
-                                            in  ausw (head finde) (togth fromSolution)
-                            return( finde))
-                     return (nub$concat$parsE)) --(ofthat fvL)) --(togth))
-                 return( concat vL))
-              return(nub chgAble)
+                              let ofthat f = (ausw f (mao m))
+                              let getAboveAtom =  length (ofthat fvL)
+                              let fromSolution = head $ausw cg solution
+                              parsE <- forM [1..getAboveAtom] (\pr -> do 
+                                   let oft1 = head$ ausw 1 (ofthat fvL)
+                                   let ghr r = r + 1
+                                   let finde = map ghr (oft1 `elemIndices` fromSolution)
+                                   let oft2 =  ausw ((head finde)+1) fromSolution
+                                   let togth ttg = let step1 = if ttg == [] then "+"
+                                                               else  ttg --head oft2  
+                                                   in  ausw (head finde) (togth fromSolution)
+                                   return( finde))
+                              return (nub$concat$parsE)) --(ofthat fvL)) --(togth))
+                       return( concat vL))
+                  return(nub chgAble)
 
           let mao2 t = show (map nub (concat(ausw 1 ( getSolus t))) ) 
           putStrLn "suggested 'A'" 
@@ -558,25 +561,25 @@ inActieRAW pv1 pv2 pv3 pv4 solution liSolution selexport = do
           let mao m= head $ ausw m (((newRekenen)))
           let innerList m t = ord(head$ausw t (mao m))
           let getSolus m = do 
-              chgAble <- forM [1..6] (\cg -> do
-                 let varingLength = (length (mao m))
-                 vL <- forM [1..varingLength] (\fvL -> do
+                  chgAble <- forM [1..6] (\cg -> do
+                       let varingLength = (length (mao m))
+                       vL <- forM [1..varingLength] (\fvL -> do
   --[  [[[4]],[[4,11]],[[4]],[[4]],[[4,9]],[[2]]]...]  -> 	
-                     let ofthat f = (ausw f (mao m))
-                     let getAboveAtom =  length (ofthat fvL)
-                     let fromSolution = head $ausw cg solution
-                     parsE <- forM [1..getAboveAtom] (\pr -> do 
-                            let oft1 = head$ ausw 1 (ofthat fvL)
-                            let ghr r = r + 1
-                            let finde = map ghr (oft1 `elemIndices` fromSolution)
-                            let oft2 =  ausw ((head finde)+1) fromSolution
-                            let togth ttg = let step1 = if ttg == [] then "+"
-                                                        else  ttg --head oft2  
-                                            in  ausw (head finde) (togth fromSolution)
-                            return( finde))
-                     return (nub$concat$parsE)) --(ofthat fvL)) --(togth))
-                 return( concat vL))
-              return(nub chgAble)
+                              let ofthat f = (ausw f (mao m))
+                              let getAboveAtom =  length (ofthat fvL)
+                              let fromSolution = head $ausw cg solution
+                              parsE <- forM [1..getAboveAtom] (\pr -> do 
+                                   let oft1 = head$ ausw 1 (ofthat fvL)
+                                   let ghr r = r + 1
+                                   let finde = map ghr (oft1 `elemIndices` fromSolution)
+                                   let oft2 =  ausw ((head finde)+1) fromSolution
+                                   let togth ttg = let step1 = if ttg == [] then "+"
+                                                               else  ttg --head oft2  
+                                                   in  ausw (head finde) (togth fromSolution)
+                                   return( finde))
+                              return (nub$concat$parsE)) --(ofthat fvL)) --(togth))
+                       return( concat vL))
+                  return(nub chgAble)
 
           let mao2 t = show (map nub (concat(ausw 1 ( getSolus t))) ) 
          -- let punktMaschine = Punkt name 
@@ -681,7 +684,7 @@ runKBASE offOn target plot addGh ghAdd n d get1 get2 get3 get4 subroutineList li
 
        header <- readFile "HtmlS/allRowsHeader2.txt"
        taiL <- readFile "HtmlS/allRowsTail2.txt"
-
+ -- frac
    --    let whichopen =  if clicks==0 then 7
      --                   else if clicks<7 then (tzExp)-1
        --                 else 1
@@ -727,11 +730,12 @@ experiment3 ghAdd d = experiment3RAW2 1 ghAdd 1 d subroutinE
 -- *> 
 -- nforCalc: Int to be fed into 5x5 to clacuate coordinate pairs
 -- fopi: Punkt see differences internal pi2 is to generate Chars via 'runEXP3Char'
+{-
 experiment3RAW11 liSolution ghAdd d subroutineList foPtc foLi nforCalc fopi= do
    -- givens:
        let moreReads = do   
             exp3Fractional <- forM [1..(length subroutineList)] (\four4 -> do
-                  let exP3 =  runEXP3 (head(ausw four4 d)) liSolution fopi ghAdd --kWORK --(G.fobase progVar1 progVar2 progVar3 progVar4 progVar5 progVar6 daZip1 daZip2 daZip3 textAA (ptcButoons) (foalt))
+                  let exP3 =  [runEXP3 (head(ausw four4 foLi)) liSolution fopi ghAdd] --kWORK --(G.fobase progVar1 progVar2 progVar3 progVar4 progVar5 progVar6 daZip1 daZip2 daZip3 textAA (ptcButoons) (foalt))
                   return (exP3))
             return exp3Fractional
        moreReads
@@ -820,7 +824,8 @@ experiment3RAW11 liSolution ghAdd d subroutineList foPtc foLi nforCalc fopi= do
                    cosBeta = (cos 90);
                  -- + 1 due to offset of whole wxm data
                    b = ((((((-1)* a)) + (((-1)*c)) - (sqrt(2*a*c**cosBeta)))/10)-1)*(-1);
-                   
+  
+-}                 
 --------------------------------------------
 
 ------------------------------------------------------------------------------
@@ -828,10 +833,10 @@ experiment3RAW11 liSolution ghAdd d subroutineList foPtc foLi nforCalc fopi= do
 -- experiment3RAW22 "xyz=11" "DF" li2 subroutinE C.ptc7 li2
 -- *> map ord (head(head(experiment3RAW22 "xyz=11" "DFDF" li2 subroutinE C.ptc7 [li3])))
 -- *> [20,27,20,20]
-experiment3RAW22 liSolution ghAdd d subroutineList foPtc foLi = do
+experiment3RAW22 liSolution ghAdd dooo subroutineList foPtc foLi = do
    -- givens:
        let pi2 = Punkt "m" Nothing Nothing Nothing Nothing Nothing
-       let ert r = tk r (foPtc 250)
+       let ert r = tk r (foPtc 50)
        let xS r = head (ert r)  
        let yS r = last (drop 1 (take 2 (ert r))) 
        let zS r = last (ert r) 
@@ -839,48 +844,49 @@ experiment3RAW22 liSolution ghAdd d subroutineList foPtc foLi = do
        let maXyS = map yS [1..100]
        let maXzS = map zS [1..100]   
        let moreReads = do   
-            exp3Fractional <- forM [1..(length subroutineList)] (\four4 -> do
-                  let exP3 =  runEXP3 (head(ausw four4 d)) liSolution pi2 "AAA" --kWORK --(G.fobase progVar1 progVar2 progVar3 progVar4 progVar5 progVar6 daZip1 daZip2 daZip3 textAA (ptcButoons) (foalt))
-                  return (exP3))
-            let exp3Frac = concat$concat$exp3Fractional
-            exp3IntfoChar <- forM [1] (\four4 -> do
+              --exp3Fraional <- forM [1..(length subroutineList)] (\four4 -> do
+                --    boa <- (head(ausw four4 li4))
+                  --  let exP3 = head $ head $ (runEXP3 boa liSolution pi2 "xyz=y2") --kWORK --(G.fobase progVar1 progVar2 progVar3 progVar4 progVar5 progVar6 daZip1 daZip2 daZip3 textAA (ptcButoons) (foalt))
+                    --return (exP3))
+              --let exp3Frac = head$ head $ exp3Fraional
+          --    exp3IntfoChar <- forM [1] (\four4 -> do
 
-                     let comp1 = runEXP3Char pi2 liSolution ghAdd (head (ausw four4 foLi))
-                     let comp2 = (zipWith (+) [1,1,1,1] (runEXP3Char pi2 liSolution ghAdd (head (ausw four4 foLi))))
-                     let comp3 = let mis t z = z - t
-                                 in (map (mis 1) (runEXP3Char pi2 liSolution ghAdd (head (ausw four4 foLi))))
-                     let thecombs = [comp1,comp2,comp3]
-                     return ([comp1,comp2,comp3]))-- (thecombs))
-            let exp3Intfo t = head $ ausw t $ concat$exp3IntfoChar 
-            let maxX = maximum maXxS
-            let maxY = maximum maXyS
-            let maxZ = maximum maXzS
+--                       let comp1 = runEXP3Char pi2 liSolution ghAdd (head (ausw four4 foLi))
+  --                     let comp2 = (zipWith (+) [1,1,1,1] (runEXP3Char pi2 liSolution ghAdd (head (ausw four4 foLi))))
+    --                   let comp3 = let mis t z = z - t
+      --                             in (map (mis 1) (runEXP3Char pi2 liSolution ghAdd (head (ausw four4 foLi))))
+        --               let thecombs = [comp1,comp2,comp3]
+          --             return ([comp1,comp2,comp3]))-- (thecombs))
+            --  let exp3Intfo t = head $ ausw t $ concat$exp3IntfoChar 
+              let maxX = maximum maXxS
+              let maxY = maximum maXyS
+              let maxZ = maximum maXzS
      -- 'quirky example'
-            let calcAlgoExperiment3 =  twoXtwo --fiveXfive 1
-                  where
-                   bOn = exp3Frac;
-                   twoXtwo = [(10,maxY),(10,15),(0,15),(0,maxY)];
-                   fo3y = (maxY - (maxY- (maxX-11)));
-                   threeXthree = [(maxX,maxY), (maxX, fo3y),(11,fo3y),(11,maxY)];
-                   varX x = (maxX- ( (maxX-10)- (x))); 
-                   fiveXfive x = [((varX x),25), ((varX x), 0),(0,0),((varX x),25)];
+              let calcAlgoExperiment3 =  twoXtwo --fiveXfive 1
+                    where
+               --      bOn = exp3Frac;
+                     twoXtwo = [(10,maxY),(10,15),(0,15),(0,maxY)];
+                     fo3y = (maxY - (maxY- (maxX-11)));
+                     threeXthree = [(maxX,maxY), (maxX, fo3y),(11,fo3y),(11,maxY)];
+                     varX x = (maxX- ( (maxX-10)- (x))); 
+                     fiveXfive x = [((varX x),25), ((varX x), 0),(0,0),((varX x),25)];
 
-            let cE3 = calcAlgoExperiment3
-            let foRunner gb1 gb2 = let foGb1 gb =  map realToFrac (map ord gb )
-                                   in let foGb2 gb =  map realToFrac (map ord gb )
-                                   in  similaritYvalue (foGb1 gb1) (foGb2 gb2)
-            let ptcToInt m = let loadInBlank = map (\c -> if c=='.' then ' '; else c)  
-                             in let myTruncate = read$head$words$loadInBlank m
-                             in myTruncate
-            aRunner <- forM [1..3] (\aRon -> do
-                     let bsp = map chr (exp3Intfo aRon)
-                     return (bsp))
+              let cE3 = calcAlgoExperiment3
+              let foRunner gb1 gb2 = let foGb1 gb =  map realToFrac (map ord gb )
+                                     in let foGb2 gb =  map realToFrac (map ord gb )
+                                     in  similaritYvalue (foGb1 gb1) (foGb2 gb2)
+              let ptcToInt m = let loadInBlank = map (\c -> if c=='.' then ' '; else c)  
+                               in let myTruncate = read$head$words$loadInBlank m
+                               in myTruncate
+             -- aRunner <- forM [1..3] (\aRon -> do
+               --        let bsp = map chr (exp3Intfo aRon)
+                 --      return (bsp))
             -- map chr ((exp3Intfo))
     --   show (aRunner ) -- show cE3 --exp3Frac
       -- return (aRunner )
       -- show (take 1 exp3Intfo)
        --exp3IntfoChar
-            return cE3 --aRunner
+              return cE3 --aRunner
        moreReads 
      --  show (aRunner 1)
     --   show (aRunner 2)
@@ -900,26 +906,26 @@ experiment3RAW23 liSolution ghAdd d subroutineList foPtc foLi gb1 gb2 = do
        let maXyS = map yS [1..100]
        let maXzS = map zS [1..100]   
        let moreReads = do   
-            exp3Fractional <- forM [1..(length subroutineList)] (\four4 -> do
-                  let exP3 = [ runEXP3 (head(ausw four4 d)) liSolution pi2 "AAA" ]--kWORK --(G.fobase progVar1 progVar2 progVar3 progVar4 progVar5 progVar6 daZip1 daZip2 daZip3 textAA (ptcButoons) (foalt))
-                  return (exP3))
-            let exp3Frac = concat$concat$exp3Fractional
-            exp3IntfoChar <- forM [1] (\four4 -> do
+           -- exp3Fractional <- forM [1..(length subroutineList)] (\four4 -> do
+             --     let exP3 = [ runEXP3 (head(ausw four4 d)) liSolution pi2 "AAA" ]--kWORK --(G.fobase progVar1 progVar2 progVar3 progVar4 progVar5 progVar6 daZip1 daZip2 daZip3 textAA (ptcButoons) (foalt))
+               --   return (exP3))
+          --  let exp3Frac = concat$concat$exp3Fractional
+            --exp3IntfoChar <- forM [1] (\four4 -> do
 
-                     let comp1 = runEXP3Char pi2 liSolution ghAdd (head (ausw four4 foLi))
-                     let comp2 = (zipWith (+) [1,1,1,1] (runEXP3Char pi2 liSolution ghAdd (head (ausw four4 foLi))))
-                     let comp3 = let mis t z = z - t
-                                 in (map (mis 1) (runEXP3Char pi2 liSolution ghAdd (head (ausw four4 foLi))))
-                     let thecombs = [comp1,comp2,comp3]
-                     return ([comp1,comp2,comp3]))-- (thecombs))
-            let exp3Intfo t = head $ ausw t $ concat$exp3IntfoChar 
+              --       let comp1 = runEXP3Char pi2 liSolution ghAdd (head (ausw four4 foLi))
+                --     let comp2 = (zipWith (+) [1,1,1,1] (runEXP3Char pi2 liSolution ghAdd (head (ausw four4 foLi))))
+                  --   let comp3 = let mis t z = z - t
+                    --             in (map (mis 1) (runEXP3Char pi2 liSolution ghAdd (head (ausw four4 foLi))))
+                     --let thecombs = [comp1,comp2,comp3]
+                     --return ([comp1,comp2,comp3]))-- (thecombs))
+           -- let exp3Intfo t = head $ ausw t $ concat$exp3IntfoChar 
             let maxX = maximum maXxS
             let maxY = maximum maXyS
             let maxZ = maximum maXzS
      -- 'quirky example'
             let calcAlgoExperiment3 =  twoXtwo --fiveXfive 1
                   where
-                   bOn = exp3Frac;
+            --       bOn = exp3Frac;
                    twoXtwo = [(10,maxY),(10,15),(0,15),(0,maxY)];
                    fo3y = (maxY - (maxY- (maxX-11)));
                    threeXthree = [(maxX,maxY), (maxX, fo3y),(11,fo3y),(11,maxY)];
@@ -933,9 +939,9 @@ experiment3RAW23 liSolution ghAdd d subroutineList foPtc foLi gb1 gb2 = do
             let ptcToInt m = let loadInBlank = map (\c -> if c=='.' then ' '; else c)  
                              in let myTruncate = read$head$words$loadInBlank m
                              in myTruncate
-            aRunner <- forM [1..3] (\aRon -> do
-                     let bsp = map chr (exp3Intfo aRon)
-                     return (bsp))
+           -- aRunner <- forM [1..3] (\aRon -> do
+             --        let bsp = map chr (exp3Intfo aRon)
+               --      return (bsp))
             let se =  if  (foRunner gb1 gb2) < 10.0 then foRunner gb1 gb2 --aRunner --map chr ((exp3Intfo)) --show$ "2" --foRunner (ptcToInt maxX) (ptcToInt maxY)
                       else foRunner gb1 gb2 --aRunner --show $ "3" -- zufallsBasic1 10 (ptcToInt maxX) 1
             -- map chr ((exp3Intfo))
@@ -943,7 +949,7 @@ experiment3RAW23 liSolution ghAdd d subroutineList foPtc foLi gb1 gb2 = do
       -- return (aRunner )
       -- show (take 1 exp3Intfo)
        --exp3IntfoChar
-            return aRunner --se
+            return se
        moreReads
 
 -- search in string ap3 
@@ -1038,16 +1044,11 @@ theAChars = map chr (sort (61 : (([48..128] \\ [58..96] ) \\ [123..128])))
 --                look in ptc6 ptc7 ptc8 and ptc9 like? 
 {-
  usedVowel -> P(B, given A) = "eo" = 2/2+3 = 2/5= 0.4
-
  usedNOTVowel -> (PA, given B) = "prsn" = 4/6
-
  NotusedVowel&NotusednotVowel -> case3 \\ "person" 
 "abcdfghijklmqtuvwxyz"  = 20/26
-
  NotusedVowel = "aiu" = 3/26
-
 =>  B, given A :
-
 (usedVowel / (usedVowel+ usedNOTVowel))
 *
 (usedVowel+notusedVowel)/(usedVowel+notusedVowel+usedNotVowel+notusedNotVowel)
@@ -1171,7 +1172,7 @@ theA' = head li4
 -- based on variable li2
 -- li :: [[String]]
 -- li3 :: [String]
-theB' liSolution li2 li3= (head(head(experiment3RAW22 liSolution "DFDGGGF" li2 subroutinE C.ptc7 [li3]))) 
+theB' liSolution li22 li3= (head(head(experiment3RAW22 liSolution "DFDGGGF" li22 subroutinE C.ptc7 [li3]))) 
 
 -- choose 4 variables as to build pv functions
 -- progVar1 = "0*x + y + 0*z = 3"
@@ -1489,7 +1490,7 @@ cellStream3EXT liSolution foli4 pi guess = nub $ concat$ (runEXP3 foli4 liSoluti
 -- set to map with liSolution
 -- e.g *> simVALS pi "WE" li "xyz=11"
 --     *>[[[20.490367775831874,26.761023580752717,20.175131348511385,20.450764570705708]],
-simVALS foPunkt ghAdd foli liSolution = runEXP3 foPunkt liSolution foli ghAdd
+simVALS foPunkt ghAdd foli liSolution = runEXP3 foli liSolution foPunkt ghAdd
 
  
 --theASolveBonelist -- solve relation to whole of li4 ( a bonelist) 
@@ -1667,11 +1668,16 @@ runEXP3 li liSolution pi ghAdd = do                                             
 -- adding chars to ghAdd
 -- pi: Punkt , ghAdd: String ; li: the source [String ]
 --
-runEXP3Char pi liSolution ghAdd li = 
-       -- domain2 syntax
-       let asun = (runEXP3 li liSolution pi ghAdd)
-       in let toChar = map round $ head$ (head asun)
-       in toChar
+--runEXP3Char pi liSolution ghAdd li = do       -- domain2 syntax
+  --     asun <-  (runEXP3 li liSolution pi ghAdd)
+    --   let lenger = length asun
+      -- onbyOne <- forM [1..lenger](\dg -> do
+        --    let goe f = reads f :: [(Double, String)]
+          --  let output = (fst $ head $ goe "1")
+--            return(output))
+  --     let gather = onbyOne
+    --   let toChar = gather
+      -- toChar
 
 -- ["AaEe0","AaEeI","i0000","OoUu0","OoU0Y","y0000"]
        -- domain1 solution
@@ -2331,7 +2337,6 @@ defSearchRAW offOn target plot addGh ghAdd pV1 pV2 pV3 pV4 pV5 pV6 ptc0Len ptc3L
                                 --let seleD = show((realToFrac foseleD)/3)
                                 let rightPtc = if btn == 1  then btn - 1
                                                else btn
-
                                 --chooslabel <- forM [1] (\wbt -> do  
                                 let gh = if seleD ==3 then ["ptc"++show (rightPtc)++"reduced.png"]
                                          else if seleD ==6 then ["ptc"++show (rightPtc)++"green.png"]
@@ -2350,7 +2355,6 @@ defSearchRAW offOn target plot addGh ghAdd pV1 pV2 pV3 pV4 pV5 pV6 ptc0Len ptc3L
                                 --let seleD = show((realToFrac foseleD)/3)
                             --    let rightPtc = if btn == 1  then btn - 1
                                      --          else btn
-
                                 --chooslabel <- forM [1] (\wbt -> do  
                               --  let gh = if seleD ==3 then ["ptc"++show (rightPtc)++"reduced.png"]
                                 --         else if seleD ==6 then ["ptc"++show (rightPtc)++"green.png"]
@@ -2362,15 +2366,15 @@ defSearchRAW offOn target plot addGh ghAdd pV1 pV2 pV3 pV4 pV5 pV6 ptc0Len ptc3L
                                 putStrLn (show makeWORK )
                                 return())  
                               -}
-                     let exP3 =  (experiment3RAW22 liSolution "ttt" [liT] subroutinE ptc6 [liT]) --runEXP3 [progVar1,progVar2,progVar3,progVar4,progVar5,progVar6] pi "AAA" --kWORK --(G.fobase progVar1 progVar2 progVar3 progVar4 progVar5 progVar6 daZip1 daZip2 daZip3 textAA (ptcButoons) (foalt))
+                     let exP3u =  (experiment3RAW22 liSolution "ttt" [liT] subroutinE ptc6 [liT]) --runEXP3 [progVar1,progVar2,progVar3,progVar4,progVar5,progVar6] pi "AAA" --kWORK --(G.fobase progVar1 progVar2 progVar3 progVar4 progVar5 progVar6 daZip1 daZip2 daZip3 textAA (ptcButoons) (foalt))
             --         let comp1 = (runEXP3Char pi ghAdd)
               --       let comp2 = (zipWith (+) [1,1,1,1] (runEXP3Char pi ghAdd))
                 --     let comp3 = let mis t z = z - t
                   --               in (map (mis 1) (runEXP3Char pi ghAdd))
                     -- let thecombs = [comp1,comp2,comp3]
-                     return (exP3)
+                     return (exP3u)
                     
-                     do (putStrLn$show$head$exP3)
+                     do (putStrLn$show$head$exP3u)
        --return (cd n)          
                                   --putStrLn "1"
      --  let chuckList x = [(ptc0 x),(ptc2 x),(ptc3 x)]
@@ -3402,12 +3406,12 @@ runner x = do  --scanChar
 -- import your functions into kArmTest5 via formation
 preX x = head(map scanChar (frmDoubletoInt (show x)))
 
-
-seven= ["    - - -  \n"++
+{-
+seven= [("    - - -  \n"++
         "        -   \n"++
         "      - - - \n"++
         "        -  " ]   
-      
+  -}    
 
 
 --------------------------------------------------------------------------
@@ -3448,7 +3452,7 @@ einTyp3 f g = [(plugit2 f g)]
 
 -- root needed to set path to folder
 -- change format for Linux
-root = "c:/stack/SimilaritYWriter20/"
+root = "c:/SimilaritYWriter22/"
 -- Global Variables
 xXAllWal = "textS/dininSpez1kompl1.txt"
 xXVals = "textS/aaKA30.txt"
@@ -3597,9 +3601,4 @@ getRid x = let a = (map ord x)
            in c
 
 --------------------------------------------------------------------------
-
-
-
-
-
 
