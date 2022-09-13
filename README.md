@@ -46,7 +46,10 @@ I. basic axioms --  pv-variables pg-functions
      Int (Natural number) there is a slope in all pg functions plotted together
      at every Int. If the solution of a matrix is an Int, is there another related order connecting between these plotted 
      functions , that is somehow unique to the solution ??....
-     
+     Update 14.09.2022
+     'slopes' can be influenced by higher order functions. i.o.w
+     think of sionoids like pv-functions
+      
   ![alt tag](https://github.com/CBroemse/SimilaritYWriter20/blob/master/source/pgInts.png)  
   
   #####cell
